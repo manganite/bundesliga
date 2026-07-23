@@ -58,6 +58,12 @@ Die Tests laufen offline gegen committete Fixtures
 (`packages/engine/tests/fixtures/`, 22 echte Saisons beider Ligen). Weder
 Entwicklung noch Tests laufen gegen die Live-API.
 
+Auf einem frischen Checkout laufen **297 von 303** Tests; sechs überspringen mit
+begründeter Meldung, weil die clubelo-abgeleiteten Trainings-Elo-Werte nicht
+committet sind. Das **Reproduktionstor der Fitprozedur ist deshalb derzeit nur
+lokal prüfbar** — es zieht in CI ein an dem Tag, an dem die Trainingsdaten
+committet werden dürfen. Ein „297 von 303" ist also kein Defekt.
+
 ## Zustand
 
 | Baustein | Zustand |

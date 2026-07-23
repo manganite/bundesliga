@@ -32,7 +32,18 @@ try {
 }
 
 const haveTraining = training !== null;
-const skip = haveTraining ? false : `training Elo unavailable: ${loadError?.message?.split("\n")[0]}`;
+
+// A skip has to explain itself, or a future "297 of 303" reads as a defect.
+// This one is the licence-pending state, not a fault: the pre-match Elo of the
+// training window is clubelo-derived, clubelo publishes no licence, and the
+// permission request is outstanding — so the data is deliberately not committed
+// and a fresh checkout cannot have it.
+const skip = haveTraining
+  ? false
+  : "Trainings-Elo nicht vorhanden (erwartet unter BUNDESLIGA_RATINGS_DIR, Voreinstellung "
+    + "data/ratings/training-elo/). Das ist der lizenzbedingte Zustand, kein Defekt: die Werte sind "
+    + "clubelo-abgeleitet und bleiben uncommittet, solange die Lizenzfrage offen ist. Das "
+    + "Reproduktionstor ist deshalb derzeit nur lokal prüfbar — siehe docs/FIT_EXTRACTION.md.";
 
 test("the training window is the one the shipped parameters record", { skip }, () => {
   assert.equal(training.matches.length, 9180);

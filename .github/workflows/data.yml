@@ -30,9 +30,25 @@ jobs:
 
       # The pipeline has no dependencies beyond Node itself, so there is nothing
       # to install and nothing to pin beyond the runtime.
+      # Zeitlich begrenzte Brücke (Addendum A §2.6): clubelo führt vier Klubs seit
+      # 2026-07-03 nicht fort. 2026-08-14 ist der Tag, an dem die harte 42-Tage-
+      # Decke ab effectiveAt ohnehin greift — danach ist der Übertrag unabhängig
+      # von dieser Flag unmöglich und der Lauf scheitert wieder fail-closed.
+      # Läuft von selbst ab; NICHT verlängern. Wenn clubelo bis ~2026-08-10 die
+      # vier Klubs nicht wieder führt, ist eine Eskalation fällig (zweite Mail an
+      # den Betreiber, mit Hinweis auf die am 03.07. geschlossenen Reihen).
+      #
+      # Gemessen und deshalb hier ergänzt: für die beiden BL2-Klubs (Wolfsburg,
+      # Kaiserslautern) endet der Übertrag schon am 2026-08-07. Das ist der
+      # 1. BL2-Spieltag, und ein bekanntes Spiel in der Lücke hebt das
+      # Treppenfunktions-Argument auf. Die Eskalationsfrist ist also Anfang
+      # August, nicht Mitte.
+      #
+      # Die Flag gilt nur hier. Jeder manuelle Aufruf und jeder andere
+      # Einstiegspunkt bleibt ohne sie fail-closed.
       - name: Pipeline ausführen
         id: pipeline
-        run: node pipeline/src/cli.mjs --data-dir data
+        run: node pipeline/src/cli.mjs --data-dir data --carry-forward-until 2026-08-14
 
       # Commit only on change. A run that found nothing new leaves the
       # repository untouched, so dataUpdatedAt does not move and no deployment

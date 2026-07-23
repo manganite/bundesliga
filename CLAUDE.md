@@ -41,13 +41,22 @@ node pipeline/src/compareArtefacts.mjs <alteSeasonsDir> <neueSeasonsDir>
 
 ## Der Brief ist die Spezifikation — aber verifizierte Primärquellen schlagen ihn
 
-Zwei Dateien bilden die Vorgabe: `BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md` und das
-Erratum `V5.7_ERRATUM_AND_V1_FIXES.md`. **Wo sie sich widersprechen, gilt das
-Erratum.** §11 macht mehrere Prüfungen zur Vorbedingung, und **zwei davon haben
-ergeben, dass der Brief falsch lag** — das Erratum hat sie inzwischen in die
-Spezifikation zurückgeführt. Die Befunde stehen mit Quelle und Datum in
-[docs/verification/](docs/verification/) und gelten. Wer nur v5.6 liest, baut die
-Fehler wieder ein:
+Vier Dateien bilden die Vorgabe. **Die jeweils spätere schlägt die frühere:**
+
+1. `BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md` — die Grundvorgabe.
+2. `V5.7_ERRATUM_AND_V1_FIXES.md` — korrigiert §6 gegen die Spielordnung, ordnet die
+   Engine-Korrekturen an (Protokoll 2) und trennt README von Entwicklerdoku.
+3. `V5.7_ADDENDUM_CLUBELO.md` — der begrenzte Rating-Übertrag als befristeter Schalter
+   und die Datumsprüfung der Tages-CSV.
+4. `FIT_EXTRACTION_BRIEF.md` — die Fitprozedur zieht nach `packages/fit`; das
+   Reproduktionstor ist die Abnahme, und die Summationsreihenfolge zu ändern ist
+   ab jetzt eine Prozess-B-Änderung.
+
+Wo eine verifizierte Primärquelle allen widerspricht, gilt die Quelle. §11 macht
+mehrere Prüfungen zur Vorbedingung, und **zwei davon haben ergeben, dass der Brief
+falsch lag** — das Erratum hat sie inzwischen in die Spezifikation zurückgeführt.
+Die Befunde stehen mit Quelle und Datum in [docs/verification/](docs/verification/).
+Wer nur v5.6 liest, baut die Fehler wieder ein:
 
 - **Tiebreak-Reihenfolge (§6 war falsch).** Die DFL-Spielordnung kennt keine Stufe
   „Punkte im direkten Vergleich"; Kriterium 3 ist das *Gesamtergebnis* aus Hin- und
@@ -172,16 +181,30 @@ construction.
 
 ## Aktueller Zustand
 
-- **clubelo deckt vier von 36 Klubs der laufenden Saison nicht ab.** Die Pipeline
-  verweigert deshalb korrekt den Commit; `npm run pipeline` endet mit Exit 1 und
-  unverändertem `data/`. Das ist das vorgesehene Verhalten.
-- Die committeten Daten sind die **abgeschlossene Saison 2025/26**, per Operator-Override
-  rekonstruiert. App A zeigt sie im Zustand „Saison beendet", alle Prognosen auf 100 %.
+**Wer den Projektzustand ändert, aktualisiert diese Sektion im selben Commit.**
+
+- **Saison 2026/27 ist live**, Vorsaison-Zustand, noch kein Spiel gespielt. Die
+  abgeschlossene Saison 2025/26 liegt weiterhin committet daneben.
+- **Vier Klubs rechnen mit einem übertragenen Rating vom 2026-07-03**, weil clubelo
+  ihre Reihen seither nicht fortführt: Bayern und Stuttgart (BL1), Wolfsburg und
+  Kaiserslautern (BL2). In der App je Klub mit ⚑ markiert, in der Kopfzeile benannt.
+  Der Cron läuft mit `--carry-forward-until=2026-08-14`; jeder andere Einstiegspunkt
+  bleibt ohne Flag fail-closed.
+- **Der Übertrag läuft von selbst aus, und für BL2 früher als für BL1.** Die harte
+  42-Tage-Decke ab `effectiveAt` endet am **2026-08-14** — danach ist er unabhängig
+  von jeder Flag unmöglich. Wolfsburg und Kaiserslautern fallen aber schon ab
+  **2026-08-07** heraus: das ist der 1. BL2-Spieltag, und ein bekanntes Spiel in der
+  Lücke hebt das Treppenfunktions-Argument auf. Führt clubelo sie bis dahin nicht
+  wieder, scheitert der Lauf ab dem 07.08. wieder fail-closed. Die Eskalation ist
+  also Anfang August fällig, nicht Mitte.
 - Die Fitprozedur liegt seit der Extraktion in `packages/fit` und reproduziert die
   ausgelieferten Parameter **bitgleich** (`docs/FIT_EXTRACTION.md`). `LAB_REPO_TOKEN`
   ist entfallen; erlaubt ist nur noch `GITHUB_TOKEN`. Die Trainings-Elo-Werte sind
   clubelo-abgeleitet und **nicht committet**, solange die Lizenzfrage offen ist —
-  `refit.yml` bricht auf einem frischen Runner deshalb mit klarer Meldung ab.
+  `refit.yml` bricht auf einem frischen Runner deshalb mit klarer Meldung ab. Das
+  **Reproduktionstor ist derzeit nur lokal prüfbar**; in CI überspringen sechs Tests
+  mit begründeter Meldung (297 von 303). Es zieht in CI ein, sobald die
+  Trainingsdaten committet werden dürfen.
 - **Die Summationsreihenfolge der Likelihood ist Teil der Prozedur.** Nelder-Mead ist
   ableitungsfrei und verstärkt eine Differenz von 1e-14 bis in die zweite Stelle: die
   Trainingsdaten anders zu sortieren verschob `HOME_ADV_GHOST` um 2,2. Die Reihenfolge
