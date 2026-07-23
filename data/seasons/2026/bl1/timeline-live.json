@@ -1,0 +1,9 @@
+{
+  "kind": "liveTimeline",
+  "league": "bl1",
+  "seasonId": "2026-bl1",
+  "runs": 5000,
+  "ratingBasis": "Ratings, wie sie nach dem jeweiligen Spieltag galten",
+  "points": [],
+  "gaps": []
+}
