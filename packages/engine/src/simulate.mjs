@@ -36,9 +36,12 @@ const MIN_LAMBDA = 0.12;
  *
  *   total = (Σ_h p_h)(Σ_a p_a) + Σ_{corner} p_h p_a (τ − 1)
  */
-export function drawScorelineDirect(lamH, lamA, params, u) {
+export function drawScorelineDirect(lamH, lamA, params, u, { applyDc = true } = {}) {
   const N = params.MAX_GOALS;
-  const rho = params.RHO;
+  // `applyDc: false` gives plain independent Poisson — the extra-time phase of a
+  // play-off, where §6 excludes the Dixon-Coles term: DC is fitted on full
+  // matches and its low-score correction has no basis at third-length rates.
+  const rho = applyDc ? params.RHO : 0;
 
   const ph = new Float64Array(N + 1);
   const pa = new Float64Array(N + 1);

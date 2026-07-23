@@ -45,6 +45,11 @@ const seasons = (await exists(seasonsDir))
 const index = { seasons: [] };
 for (const season of seasons.sort()) {
   if (await copy(path.join("seasons", season, "config.json"))) copied.push(`${season}/config.json`);
+  // The play-off artefact is SEASON-level, not per league: it is one simulation
+  // across both, and the two league views read it from complementary sides.
+  // A per-league copy could drift; there is deliberately only one file.
+  const hasPlayoff = await copy(path.join("seasons", season, "playoff.json"));
+  if (hasPlayoff) copied.push(`${season}/playoff.json`);
   const leagues = [];
   for (const league of ["bl1", "bl2"]) {
     const files = [];
@@ -53,7 +58,7 @@ for (const season of seasons.sort()) {
     }
     if (files.length) { leagues.push({ league, files }); copied.push(...files.map((f) => `${season}/${league}/${f}`)); }
   }
-  if (leagues.length) index.seasons.push({ season: Number(season), leagues });
+  if (leagues.length) index.seasons.push({ season: Number(season), leagues, playoff: hasPlayoff });
 }
 
 // A manifest, so the app never has to probe for files that may not exist.

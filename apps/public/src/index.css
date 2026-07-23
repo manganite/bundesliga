@@ -131,6 +131,54 @@ body {
   font-size: 0.92rem;
 }
 
+/* The league toggle and the heading it controls.
+   The heading is deliberately as loud as the site title: everything below it
+   means something different per league, and a screenshot carries no toggle. */
+.league-switch {
+  display: flex;
+  gap: 0.35rem;
+  border: 0;
+  padding: 0;
+  margin: 0.9rem 0 0;
+}
+.league-switch label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  cursor: pointer;
+}
+.league-switch label.is-active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+/* The radio stays in the accessibility tree and keeps keyboard behaviour; only
+   its default rendering is replaced by the pill. */
+.league-switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.league-switch label:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.league-heading {
+  margin: 0.55rem 0 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
 .meta-row {
   display: flex;
   flex-wrap: wrap;
@@ -203,6 +251,15 @@ h3 { font-size: 1rem; margin: 0 0 0.2rem; }
   box-shadow: var(--shadow);
 }
 .card > header { margin-bottom: 0.7rem; }
+/* A second line inside a column header — used to weight an opponent column by
+   how likely that opponent is to reach the play-off at all. */
+.th-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
 .card .caption {
   margin: 0.7rem 0 0;
   font-size: 0.85rem;

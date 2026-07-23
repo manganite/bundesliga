@@ -13,7 +13,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --test \"packages/engine/tests/**/*.test.mjs\" \"packages/fit/tests/**/*.test.mjs\" \"pipeline/tests/**/*.test.mjs\" \"apps/kicktipp/tests/**/*.test.mjs\"",
+    "test": "node --test \"packages/engine/tests/**/*.test.mjs\" \"packages/fit/tests/**/*.test.mjs\" \"pipeline/tests/**/*.test.mjs\" \"apps/kicktipp/tests/**/*.test.mjs\" \"apps/public/tests/**/*.test.mjs\"",
     "test:engine": "node --test \"packages/engine/tests/**/*.test.mjs\"",
     "gate:clubelo": "node pipeline/src/checkClubeloCoverage.mjs",
     "pipeline": "node pipeline/src/cli.mjs --data-dir data",

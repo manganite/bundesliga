@@ -21,6 +21,8 @@
         "relegationsplatz": { "places": 1, "from": 16, "to": 16, "label": "Relegationsplatz" },
         "abstieg": { "places": 2, "from": 17, "to": 18, "label": "Abstieg" }
       },
+      "_playoffPlacesComment": "Plätze, von denen aus es über die Relegation weitergeht. Ohne diese Angabe würde die Clinch-Logik „Klassenerhalt nicht mehr möglich“ sagen, sobald Platz 15 unerreichbar ist — falsch, solange Platz 16 noch geht. Von 1992/93 bis 2007/08 war die Liste leer, weil es keine Relegation gab.",
+      "playoffPlaces": [16],
       "herbstmeisterUntilMatchday": 17
     },
     "bl2": {
@@ -36,7 +38,9 @@
         "klassenerhalt": { "places": 15, "from": 1, "to": 15, "label": "Klassenerhalt" },
         "relegationsplatzAbstieg": { "places": 1, "from": 16, "to": 16, "label": "Relegationsplatz (16.)" },
         "abstieg": { "places": 2, "from": 17, "to": 18, "label": "Abstieg" }
-      }
+      },
+      "_playoffPlacesComment": "Platz 3 führt in die Relegation zur Bundesliga, Platz 16 in die Relegation gegen die 3. Liga. Die zweite berechnet die App nicht (sie führt keine Daten der 3. Liga), aber die Clinch-Logik muss von beiden wissen, sonst behauptet sie einen entschiedenen Abstieg, der keiner ist.",
+      "playoffPlaces": [3, 16]
     }
   },
   "relegationPlayoff": {
@@ -53,6 +57,8 @@
     "playoffDates": null,
     "lastLeagueMatchdayDates": null,
     "lotDrawn": null,
+    "_parameterLeagueComment": "Which parameter set applies to a match that belongs to NEITHER league. §6 says only 'the shared engine model', so this is a decision and is recorded here rather than hidden in a code default. 'bl1' means the base parameters with no league delta — the play-off is not a 2. Bundesliga fixture, and the base set is what the pooled fit produces without an adjustment. Switching to 'bl2' adds the BL2 deltas; the deltas themselves live only in season-params.json and are applied only by effectiveParams().",
+    "parameterLeague": "bl1",
     "extraTime": {
       "_comment": "§6: ET_FACTOR is exactly 1/3 (30/90 minutes — a decision, not an approximation). ET rates are the second leg's full-match lambdas including that host's HOME_ADV, scaled by the factor. NO Dixon-Coles term in the ET phase: DC is fitted on full matches and its low-score correction has no basis at third-length rates.",
       "factor": 0.3333333333333333,

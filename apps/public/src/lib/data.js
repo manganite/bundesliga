@@ -7,7 +7,11 @@
 //  origin.
 // ============================================================================
 
-const BASE = `${import.meta.env.BASE_URL}data/`;
+// Guarded so this module can also be imported by the Node tests, which have no
+// vite environment. In the browser `import.meta.env` is always present and
+// BASE_URL is what the deployment was built with.
+const ENV = import.meta.env ?? {};
+const BASE = `${ENV.BASE_URL ?? "/"}data/`;
 
 async function getJson(rel) {
   const res = await fetch(`${BASE}${rel}`, { cache: "no-cache" });
@@ -31,9 +35,16 @@ export async function loadManifest() {
   return getJson("index.json");
 }
 
-/** Everything one league-season needs, in one go. */
+/**
+ * Everything one league-season needs, in one go.
+ *
+ * `playoff.json` is SEASON-level, not per league: the relegation play-off is one
+ * simulation across both leagues and both views read it from complementary
+ * sides. Loading it here means the toggle never changes which pairing numbers
+ * are in play — only which side of them is shown.
+ */
 export async function loadLeagueSeason(season, league) {
-  const [meta, config, seasonData, outlook, timeline, prematch, params] = await Promise.all([
+  const [meta, config, seasonData, outlook, timeline, prematch, params, playoff] = await Promise.all([
     getJsonOrNull("meta.json"),
     getJson(`seasons/${season}/config.json`),
     getJson(`seasons/${season}/${league}/season.json`),
@@ -41,8 +52,9 @@ export async function loadLeagueSeason(season, league) {
     getJsonOrNull(`seasons/${season}/${league}/timeline-frozen.json`),
     getJsonOrNull(`seasons/${season}/${league}/prematch.json`),
     getJsonOrNull("season-params.json"),
+    getJsonOrNull(`seasons/${season}/playoff.json`),
   ]);
-  return { meta, config, season: seasonData, outlook, timeline, prematch, params };
+  return { meta, config, season: seasonData, outlook, timeline, prematch, params, playoff };
 }
 
 /** Clubs keyed by id, with their display name. */

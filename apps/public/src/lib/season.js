@@ -40,6 +40,48 @@ export function currentTable(season, leagueConfig) {
   return rankTable(table, played, { inSeason: !complete, rules });
 }
 
+/**
+ * Presentation order INSIDE a shared rank (§11, V1.1 addition).
+ *
+ * Before the first matchday every club is on 0 points with no goals, so the
+ * Spielordnung puts all of them on one geteilter Tabellenplatz and the ranker —
+ * correctly — refuses to order them. That leaves the display falling back to
+ * whatever order the club list happened to have, which reads as a ranking to
+ * anyone who does not know better. Ordering those rows by expected points is
+ * strictly more informative and, crucially, cannot misrepresent anything: the
+ * rows being reordered are exactly the rows the table itself declares
+ * indistinguishable.
+ *
+ * Two rules make this safe, and both are load-bearing:
+ *   * ONLY within a shared-rank block. Rows the ranker did separate keep their
+ *     order, always.
+ *   * The shared rank stays displayed, and the caption says the order inside it
+ *     is the forecast's, not the table's.
+ *
+ * With no forecast to sort by, the order is left exactly as it was.
+ */
+export function orderWithinSharedRanks(table, points) {
+  if (!points) return table;
+  const out = [];
+  for (let i = 0; i < table.length;) {
+    let j = i;
+    while (j < table.length && table[j].sharedRank && table[j].rank === table[i].rank) j++;
+    if (j - i > 1) {
+      out.push(...table.slice(i, j).sort((a, b) => {
+        const pa = points[a.clubId]?.expected;
+        const pb = points[b.clubId]?.expected;
+        if (pa === undefined || pb === undefined || pa === pb) return 0;
+        return pb - pa;
+      }));
+      i = j;
+    } else {
+      out.push(table[i]);
+      i++;
+    }
+  }
+  return out;
+}
+
 /** Targets in display order, straight from the season configuration. */
 export function targetList(leagueConfig) {
   return Object.entries(leagueConfig.targets).map(([id, t]) => ({ id, ...t }));
@@ -125,6 +167,13 @@ export function clinched(season, table, leagueConfig) {
   // Only "finish at position `to` or better" targets can be settled this way.
   const zoneTargets = targetList(leagueConfig).filter((t) => t.from === 1).sort((a, b) => a.to - b.to);
 
+  // Places from which the season continues in a play-off. Without them this
+  // function claims „Klassenerhalt nicht mehr möglich" the moment 15th becomes
+  // unreachable — which is false while 16th is still in reach, and it is a
+  // GUARANTEE, so being wrong is not a rounding matter. The list is season
+  // configuration: between 1992/93 and 2007/08 it was empty.
+  const playoffPlaces = new Set(leagueConfig.playoffPlaces ?? []);
+
   const perClub = new Map();
   for (const row of rows) perClub.set(row.clubId, { secured: [], eliminated: [] });
 
@@ -137,8 +186,15 @@ export function clinched(season, table, leagueConfig) {
       // club can still reach.
       const aboveCeiling = rows.filter((o) => o.clubId !== row.clubId && o.pts > row.ceiling).length;
 
-      if (canCatch < t.to) perClub.get(row.clubId).secured.push(t);
-      else if (aboveCeiling >= t.to) perClub.get(row.clubId).eliminated.push(t);
+      if (canCatch < t.to) {
+        perClub.get(row.clubId).secured.push(t);
+      } else if (aboveCeiling >= t.to) {
+        // The zone itself is gone. Whether that is the end depends on whether
+        // the place right below it leads into a play-off and is still reachable.
+        const playoffPlace = t.to + 1;
+        const viaPlayoff = playoffPlaces.has(playoffPlace) && aboveCeiling < playoffPlace;
+        perClub.get(row.clubId).eliminated.push({ ...t, viaPlayoff });
+      }
     }
   }
 
@@ -157,7 +213,9 @@ export function clinched(season, table, leagueConfig) {
     // out of the title race is expected for most of the league.
     const widest = eliminated[eliminated.length - 1];
     if (widest && widest.to >= rows.length - 3) {
-      results.push({ clubId, target: widest, kind: "eliminated" });
+      // `viaPlayoff` travels with the statement: the UI must not phrase a
+      // play-off route as a settled exit.
+      results.push({ clubId, target: widest, kind: "eliminated", viaPlayoff: widest.viaPlayoff === true });
     }
   }
   return results;

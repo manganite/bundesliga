@@ -210,14 +210,28 @@ construction.
   clubelo-abgeleitet und **nicht committet**, solange die Lizenzfrage offen ist —
   `refit.yml` bricht auf einem frischen Runner deshalb mit klarer Meldung ab. Das
   **Reproduktionstor ist derzeit nur lokal prüfbar**; in CI überspringen sechs Tests
-  mit begründeter Meldung (297 von 303). Es zieht in CI ein, sobald die
+  mit begründeter Meldung (397 von 403). Es zieht in CI ein, sobald die
   Trainingsdaten committet werden dürfen.
 - **Die Summationsreihenfolge der Likelihood ist Teil der Prozedur.** Nelder-Mead ist
   ableitungsfrei und verstärkt eine Differenz von 1e-14 bis in die zweite Stelle: die
   Trainingsdaten anders zu sortieren verschob `HOME_ADV_GHOST` um 2,2. Die Reihenfolge
   ist in `packages/fit/src/data.mjs` festgenagelt; sie zu ändern ist Prozess B.
-- Offen: V1.1 (2. Bundesliga per Umschalter, paarungsspezifische Relegation),
-  V1.2 (Modellgüte, Live-Rating-Timeline, „Wichtigstes kommendes Spiel"), V2.
+- **V1.1 steht.** Beide Ligen liegen hinter einem Umschalter, die Relegation ist
+  paarungsspezifisch berechnet, und die Vorsaison-Tabelle ist innerhalb des geteilten
+  Tabellenplatzes nach erwarteten Punkten sortiert. Die drei Stellen, an denen das
+  leicht kaputtgeht:
+  - `packages/engine/src/playoff.mjs` orientiert jede Paarung **kanonisch** (Klub-IDs
+    sortiert). Dadurch gilt `P(j schlägt i) = 1 − P(i schlägt j)` **bitgleich**, nicht
+    nur im Rahmen des Monte-Carlo-Fehlers — beide Ligaansichten lesen wirklich dieselbe
+    Simulation. Wer die Argumentreihenfolge in die Schlüssel zurückholt, zerstört das
+    lautlos.
+  - `data/seasons/<jahr>/playoff.json` ist **saisonweit, nicht je Liga**. Eine Kopie je
+    Liga könnte auseinanderlaufen.
+  - `playoffPlaces` in der Ligakonfiguration ist Pflicht. Fehlt es, behauptet die
+    Clinch-Logik „Klassenerhalt nicht mehr möglich", sobald Platz 15 unerreichbar ist —
+    und das ist eine **Garantie**, die falsch wäre, solange Platz 16 noch geht.
+    `pipeline/tests/seasonConfig.test.mjs` hält das fest.
+- Offen: V1.2 (Modellgüte, Live-Rating-Timeline, „Wichtigstes kommendes Spiel"), V2.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`), committete Daten ODbL — die
   beiden Lizenzen nicht vermischen.
@@ -233,7 +247,14 @@ construction.
   bewacht das jetzt. Wenn `file <datei>` „data" statt „JavaScript source" sagt, ist das
   der Grund.
 - **Deutsche Anführungszeichen in JS-Strings.** `"„Text""` beendet den String zu früh;
-  schließend gehört `“`. Trifft Testnamen und Berichtstexte.
+  schließend gehört `“`. Trifft Testnamen und Berichtstexte. Der Render-Test hat es
+  einmal in einer Caption gefunden, wo es nur *falsch aussah* statt zu brechen.
+- **Die Heimrecht-Regel der Relegation liest sich falsch herum.** „Weniger spielfreie
+  Tage vor dem Hinspiel" heißt: Der **Zweitligist** hat das Heimrecht im **Rückspiel**,
+  weil sein 34. Spieltag auf den Sonntag nach dem Bundesliga-Samstag fällt. Gegen die
+  DFL-Aussage und die gesamte Historie seit 2008/09 geprüft
+  (`docs/verification/dfl-spielordnung.md` §4.5.1); ein Test hält den Normalfall fest,
+  weil beide Richtungen plausibel aussehen.
 - **Grid-Spuren brauchen `minmax(0, 1fr)`.** Ohne das bläht ein breites Kind die Spalte
   auf und die Seite scrollt auf dem Handy seitlich.
 - **Der Node-Pin in den Workflows muss die `engines` optionaler nativer Bindings

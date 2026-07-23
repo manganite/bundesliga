@@ -104,7 +104,13 @@ function makeSources({ bump = 0, results = null } = {}) {
   return { fetchJson, fetchText, calls };
 }
 
-async function makeDataDir() {
+/**
+ * @param {object} [opts]
+ * @param {boolean} [opts.playoff]  give the synthetic season a relegation
+ *   play-off. Off by default: the pairing simulation is the expensive part of
+ *   the run and only one test needs it, so the rest stay fast.
+ */
+async function makeDataDir({ playoff = false } = {}) {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), "bl-pipe-"));
   await fs.mkdir(path.join(dir, "seasons", String(SEASON)), { recursive: true });
   const leagueConfig = {
@@ -116,12 +122,31 @@ async function makeDataDir() {
     // Targets are season configuration (§7); the artefact step needs them.
     targets: {
       meister: { places: 1, from: 1, to: 1, label: "Meister" },
+      dritter: { places: 1, from: 3, to: 3, label: "Relegationsplatz" },
       abstieg: { places: 1, from: 4, to: 4, label: "Abstieg" },
     },
+    playoffPlaces: playoff ? [3] : [],
   };
+  const relegationPlayoff = playoff
+    ? {
+      exists: true,
+      between: ["bl1:3", "bl2:3"],
+      legs: 2,
+      lastSeasonWithAwayGoals: "2020/21",
+      firstSeasonWithout: "2021/22",
+      awayGoalsApply: false,
+      homeOrderRule: "fewerRestDaysBeforeFirstLegHostsSecondLeg",
+      playoffDates: null,
+      lastLeagueMatchdayDates: null,
+      lotDrawn: null,
+      parameterLeague: "bl1",
+      extraTime: { factor: 1 / 3, applyDixonColes: false },
+      penaltyPrior: 0.5,
+    }
+    : { exists: false };
   await fs.writeFile(
     path.join(dir, "seasons", String(SEASON), "config.json"),
-    JSON.stringify({ season: SEASON, leagues: { bl1: leagueConfig, bl2: leagueConfig } }, null, 2),
+    JSON.stringify({ season: SEASON, leagues: { bl1: leagueConfig, bl2: leagueConfig }, relegationPlayoff }, null, 2),
   );
   await fs.writeFile(
     path.join(dir, "season-params.json"),
@@ -457,4 +482,62 @@ test("a club with an intervening known fixture is not carried, flag or not", asy
     }),
     /known fixture\(s\) fall between/,
   );
+});
+
+// ---------------------------------------------------------------------------
+//  The relegation play-off artefact (§6) — written by the run, at season level.
+// ---------------------------------------------------------------------------
+
+test("a season without a play-off still gets an artefact that says so", async () => {
+  const dataDir = await makeDataDir();
+  const { fetchJson, fetchText } = makeSources();
+  await runUpdate({ dataDir, fetchJson, fetchText, now: NOW, log: silent });
+
+  const file = path.join(dataDir, "seasons", String(SEASON), "playoff.json");
+  const playoff = JSON.parse(await fs.readFile(file, "utf8"));
+  assert.equal(playoff.exists, false);
+  assert.deepEqual(playoff.pairings, []);
+  // An ABSENT file and a season without a play-off would be indistinguishable.
+  assert.ok(playoff.reason);
+});
+
+test("the play-off artefact is written once at season level and both views agree", async () => {
+  const dataDir = await makeDataDir({ playoff: true });
+  const { fetchJson, fetchText } = makeSources();
+  const r = await runUpdate({ dataDir, fetchJson, fetchText, now: NOW, log: silent });
+  assert.ok(r.changes.includes("relegation play-off"));
+
+  const seasonDir = path.join(dataDir, "seasons", String(SEASON));
+  const playoff = JSON.parse(await fs.readFile(path.join(seasonDir, "playoff.json"), "utf8"));
+  assert.equal(playoff.exists, true);
+
+  // One file, not one per league: a per-league copy could drift.
+  for (const league of ["bl1", "bl2"]) {
+    await assert.rejects(() => fs.readFile(path.join(seasonDir, league, "playoff.json"), "utf8"));
+  }
+
+  // Four clubs per league, so every pairing is present.
+  assert.equal(playoff.pairings.length, 16);
+  for (const p of playoff.pairings) assert.ok(Object.is(p.pBl2Wins, 1 - p.pBl1Wins));
+
+  // Both league views exist and compose out of those same numbers.
+  const bl1Outlook = JSON.parse(await fs.readFile(path.join(seasonDir, "bl1", "outlook.json"), "utf8"));
+  for (const club of bl1Outlook.clubs) {
+    const v = playoff.bl1[club];
+    assert.ok(v.pKlassenerhalt >= v.pSafe);
+    assert.ok(v.pKlassenerhalt <= v.pSafe + v.pRelegationPlayoff + 1e-12);
+  }
+  for (const v of Object.values(playoff.bl2)) {
+    assert.ok(v.pAufstieg >= v.pDirect);
+    assert.ok(v.pAufstieg <= v.pDirect + v.pPlayoffPlace + 1e-12);
+  }
+});
+
+test("an unchanged data state rewrites nothing, including the play-off", async () => {
+  const dataDir = await makeDataDir({ playoff: true });
+  const { fetchJson, fetchText } = makeSources();
+  await runUpdate({ dataDir, fetchJson, fetchText, now: NOW, log: silent });
+  const again = await runUpdate({ dataDir, fetchJson, fetchText, now: NOW, log: silent });
+  assert.equal(again.changed, false);
+  assert.ok(!again.changes.includes("relegation play-off"));
 });

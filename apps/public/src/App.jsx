@@ -3,6 +3,7 @@ import {
   formatDataUpdatedAt, stalenessWarning, seasonPhase, SEASON_PHASE_LABEL, configStampWarning,
   carriedRatings, carriedRatingSummary,
 } from "../../../packages/engine/src/dataState.mjs";
+import { LEAGUES, leagueLabel, leagueSeasonLabel } from "../../../packages/engine/src/leagues.mjs";
 import { loadManifest, loadLeagueSeason, clubIndex, currentMatchday, toEngineFixtures } from "./lib/data.js";
 import { useSimulation, DEFAULT_RUNS } from "./hooks/useSimulation.js";
 import SimulationControls from "./components/SimulationControls.jsx";
@@ -36,6 +37,11 @@ function useHashRoute() {
 export default function App() {
   const route = useHashRoute();
   const [state, setState] = useState({ status: "loading" });
+  // Which league is shown is USER STATE, not part of the route's page id, and it
+  // survives a page change. It starts at the Bundesliga because that is what an
+  // unqualified visit means, never because the manifest happens to list it first.
+  const [league, setLeague] = useState("bl1");
+  const [available, setAvailable] = useState([]);
 
   useEffect(() => {
     let cancelled = false;
@@ -48,23 +54,42 @@ export default function App() {
         }
         // The newest committed season. Never hardcoded (§5.5).
         const newest = manifest.seasons[manifest.seasons.length - 1];
-        const league = newest.leagues.find((l) => l.league === "bl1") ?? newest.leagues[0];
-        const data = await loadLeagueSeason(newest.season, league.league);
-        if (!cancelled) setState({ status: "ready", seasonId: newest.season, league: league.league, data });
+        const present = LEAGUES.filter((l) => newest.leagues.some((e) => e.league === l));
+        // A league with no committed data is not offered at all. Offering a
+        // toggle that leads to an empty page would be worse than no toggle.
+        const chosen = present.includes(league) ? league : present[0];
+        if (!chosen) { if (!cancelled) setState({ status: "empty" }); return; }
+        if (!cancelled) setAvailable(present);
+        if (chosen !== league) { if (!cancelled) setLeague(chosen); return; }
+        // Deliberately NOT keeping the previous league's data on screen while the
+        // new one loads: that would put one league's numbers under the other
+        // league's heading for a moment, which is the exact confusion the
+        // labelling exists to prevent.
+        if (!cancelled) setState({ status: "loading" });
+        const data = await loadLeagueSeason(newest.season, chosen);
+        if (!cancelled) setState({ status: "ready", seasonId: newest.season, league: chosen, data });
       } catch (e) {
         if (!cancelled) setState({ status: "error", error: e.message });
       }
     })();
     return () => { cancelled = true; };
-  }, []);
+  }, [league]);
 
-  if (state.status === "loading") return <Shell><p className="empty">Daten werden geladen …</p></Shell>;
+  const shellProps = { league, available, onLeague: setLeague };
+
+  if (state.status === "loading") {
+    return <Shell {...shellProps}><p className="empty">Daten werden geladen …</p></Shell>;
+  }
   if (state.status === "error") {
-    return <Shell><p className="empty">Die Daten konnten nicht geladen werden: {state.error}</p></Shell>;
+    return (
+      <Shell {...shellProps}>
+        <p className="empty">Die Daten konnten nicht geladen werden: {state.error}</p>
+      </Shell>
+    );
   }
   if (state.status === "empty") {
     return (
-      <Shell>
+      <Shell {...shellProps}>
         <p className="empty">
           Es liegen noch keine committeten Daten vor. Die App zeigt ausschließlich Daten, die
           die Pipeline geprüft und committet hat — sie holt selbst nichts live nach.
@@ -73,10 +98,17 @@ export default function App() {
     );
   }
 
-  return <Ready route={route} {...state} />;
+  return (
+    <Ready
+      route={route}
+      {...state}
+      available={available}
+      onLeague={setLeague}
+    />
+  );
 }
 
-function Shell({ children }) {
+function Shell({ children, league, available = [], onLeague }) {
   return (
     <>
       <a className="skip-link" href="#inhalt">Zum Inhalt springen</a>
@@ -86,6 +118,9 @@ function Shell({ children }) {
           <p className="tagline">
             Wie die Saison ausgehen könnte — als Wahrscheinlichkeiten, mit offengelegtem Modell.
           </p>
+          {/* The switch stays put while the new league loads, so the control the
+              reader just used never disappears under them. */}
+          {onLeague ? <LeagueSwitch league={league} available={available} onLeague={onLeague} /> : null}
         </div>
       </header>
       <div className="shell"><main id="inhalt">{children}</main></div>
@@ -93,8 +128,37 @@ function Shell({ children }) {
   );
 }
 
-function Ready({ route, seasonId, league, data }) {
-  const { meta, config, season, outlook, timeline, prematch, params } = data;
+/**
+ * The league toggle.
+ *
+ * Rendered as radio buttons, not as a dropdown or a pair of links: the two
+ * options and which one is active are then both visible at a glance, and the
+ * active one is exposed to assistive technology without extra wiring. It sits
+ * directly above the heading it changes.
+ */
+function LeagueSwitch({ league, available, onLeague }) {
+  if (available.length < 2) return null;
+  return (
+    <fieldset className="league-switch">
+      <legend className="visually-hidden">Liga wählen</legend>
+      {available.map((l) => (
+        <label key={l} className={l === league ? "is-active" : undefined}>
+          <input
+            type="radio"
+            name="liga"
+            value={l}
+            checked={l === league}
+            onChange={() => onLeague(l)}
+          />
+          <span>{leagueLabel(l)}</span>
+        </label>
+      ))}
+    </fieldset>
+  );
+}
+
+function Ready({ route, seasonId, league, data, available, onLeague }) {
+  const { meta, config, season, outlook, timeline, prematch, params, playoff } = data;
 
   const clubs = useMemo(() => clubIndex(season), [season]);
   const nameOf = useMemo(() => (id) => clubs.get(id)?.name ?? id, [clubs]);
@@ -146,8 +210,17 @@ function Ready({ route, seasonId, league, data }) {
   const active = PAGES.find((p) => p.id === route) ?? PAGES[0];
   const { Component } = active;
 
+  // The heading a screenshot carries with it. The document title says it too,
+  // because a browser tab and a bookmark are the two places where the toggle
+  // state is otherwise invisible.
+  const heading = leagueSeasonLabel(league, seasonLabel(season.season));
+  useEffect(() => {
+    document.title = `${heading} — Bundesliga-Simulator`;
+  }, [heading]);
+
   const ctx = {
-    seasonId, league, leagueConfig, config, season, outlook: activeOutlook, timeline, prematch, params,
+    seasonId, league, leagueLabel: leagueLabel(league), leagueConfig, config, season,
+    outlook: activeOutlook, timeline, prematch, params, playoff,
     clubs, nameOf, matchday, phase, carried,
   };
 
@@ -162,8 +235,13 @@ function Ready({ route, seasonId, league, data }) {
             Wie die Saison ausgehen könnte — als Wahrscheinlichkeiten, mit offengelegtem Modell.
           </p>
 
+          <LeagueSwitch league={league} available={available} onLeague={onLeague} />
+
+          {/* Not one entry among many in the meta row: the league decides what
+              every number below means, so it is the heading. */}
+          <h2 className="league-heading">{heading}</h2>
+
           <div className="meta-row">
-            <span>{league === "bl1" ? "Bundesliga" : "2. Bundesliga"} {seasonLabel(season.season)}</span>
             <span>{phase === "preSeason" ? "vor dem 1. Spieltag" : `${matchday}. Spieltag`}</span>
             {/* §5.1: stated neutrally. The app derives NO workflow-health claim
                 from this timestamp — an old value is normal in an international

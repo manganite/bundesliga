@@ -14,7 +14,7 @@ import { playedFixtures } from "../lib/data.js";
  * schema extension they need. Cards with nothing to say hide entirely.
  */
 export default function Uebersicht({ ctx }) {
-  const { season, outlook, leagueConfig, nameOf, prematch, params, league } = ctx;
+  const { season, outlook, leagueConfig, nameOf, prematch, params, league, leagueLabel } = ctx;
 
   const table = useMemo(() => currentTable(season, leagueConfig), [season, leagueConfig]);
   const targets = targetList(leagueConfig);
@@ -64,7 +64,7 @@ export default function Uebersicht({ ctx }) {
 
   return (
     <>
-      <h2>Übersicht</h2>
+      <h2>Übersicht — {leagueLabel}</h2>
       <p className="page-intro">
         Der Stand der Saison in sechs Karten. Alle Wahrscheinlichkeiten stammen aus einer
         einzigen Simulation dieses Datenstands, damit keine zwei Seiten für dieselbe Zahl
@@ -180,7 +180,12 @@ export default function Uebersicht({ ctx }) {
                   <tr key={`${d.clubId}-${d.target.id}-${d.kind}`}>
                     <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(d.clubId)}</th>
                     <td className="left">
-                      {d.kind === "secured" ? `${d.target.label} sicher` : `${d.target.label} nicht mehr möglich`}
+                      {d.kind === "secured"
+                        ? `${d.target.label} sicher`
+                        : d.viaPlayoff
+                        // Not „nicht mehr möglich": the zone is gone, the season is not.
+                        ? `${d.target.label} nur noch über die Relegation`
+                        : `${d.target.label} nicht mehr möglich`}
                     </td>
                   </tr>
                 ))}

@@ -12,7 +12,7 @@ import { percent, number, weekdayDate } from "../lib/format.js";
  * this page and the Übersicht. It must not appear earlier.
  */
 export default function Spieltage({ ctx }) {
-  const { season, leagueConfig, nameOf, matchday, prematch, params, league } = ctx;
+  const { season, leagueConfig, nameOf, matchday, prematch, params, league, leagueLabel } = ctx;
   const matchdays = useMemo(
     () => [...new Set(season.fixtures.map((f) => f.matchday))].sort((a, b) => a - b),
     [season],
@@ -51,7 +51,7 @@ export default function Spieltage({ ctx }) {
 
   return (
     <>
-      <h2>Spieltage</h2>
+      <h2>Spieltage — {leagueLabel}</h2>
       <p className="page-intro">
         Ergebnisse und Prognosen je Spieltag, dazu die Tabelle, wie sie danach stand.
       </p>

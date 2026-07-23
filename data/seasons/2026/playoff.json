@@ -1,0 +1,3530 @@
+{
+  "kind": "relegationPlayoff",
+  "schemaVersion": 1,
+  "season": 2026,
+  "engineVersion": 1,
+  "simulationProtocolVersion": 2,
+  "exists": true,
+  "between": [
+    "bl1:16",
+    "bl2:3"
+  ],
+  "runs": 20000,
+  "parameterLeague": "bl1",
+  "awayGoalsApply": false,
+  "homeOrder": {
+    "rule": "fewerRestDaysBeforeFirstLegHostsSecondLeg",
+    "firstLegDate": null,
+    "lastMatchDatesFrom": "the fetched schedule",
+    "mixedPairings": 324,
+    "totalPairings": 324
+  },
+  "approximation": "Marginalnäherung: P(i schlägt j) wird aus den heutigen Ratings berechnet und mit P(i auf 16.)·P(j auf 3.) multipliziert. Die Paarungssimulation zieht RATING_SIGMA neu, statt die Ziehungen der Ligaläufe zu erben — wie es 16. zu werden über die Stärke aussagt, geht also nicht ein.",
+  "notComputed": {
+    "bl2Relegation": "Die Relegation 2. Bundesliga (16.) gegen 3. Liga (3.) wird nicht berechnet: Die App führt keine Daten der 3. Liga, also existiert die Gegnerverteilung nicht. Der Relegationsplatz (16.) bleibt deshalb eine Platzierungswahrscheinlichkeit und wird nirgends als Klassenerhalt gelesen."
+  },
+  "placeProbability": {
+    "bl1": {
+      "Augsburg": 0.0627,
+      "Bayern": 0.00005,
+      "Bremen": 0.07855,
+      "Dortmund": 0.0026,
+      "Elversberg": 0.12485,
+      "Frankfurt": 0.04315,
+      "Freiburg": 0.01885,
+      "Gladbach": 0.0595,
+      "Hoffenheim": 0.02755,
+      "HSV": 0.0838,
+      "Köln": 0.10795,
+      "Leipzig": 0.01095,
+      "Leverkusen": 0.00425,
+      "Mainz": 0.0401,
+      "Paderborn": 0.1247,
+      "Schalke": 0.12915,
+      "Stuttgart": 0.01065,
+      "Union Berlin": 0.07065
+    },
+    "bl2": {
+      "Bielefeld": 0.029,
+      "Bochum": 0.0726,
+      "Braunschweig": 0.0198,
+      "Cottbus": 0.0112,
+      "Darmstadt": 0.06105,
+      "Dresden": 0.03365,
+      "Fürth": 0.024,
+      "Hannover": 0.09625,
+      "Heidenheim": 0.10915,
+      "Hertha": 0.0579,
+      "Kaiserslautern": 0.0534,
+      "Karlsruhe": 0.04475,
+      "Kiel": 0.0587,
+      "Magdeburg": 0.0467,
+      "Nürnberg": 0.0565,
+      "Osnabrück": 0.0112,
+      "St. Pauli": 0.09755,
+      "Wolfsburg": 0.1166
+    }
+  },
+  "pairings": [
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.7915,
+      "pBl2Wins": 0.20850000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.6961,
+      "pBl2Wins": 0.30389999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.8122,
+      "pBl2Wins": 0.18779999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.85,
+      "pBl2Wins": 0.15000000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.73175,
+      "pBl2Wins": 0.26825,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.7863,
+      "pBl2Wins": 0.2137,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.8035,
+      "pBl2Wins": 0.1965,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.65175,
+      "pBl2Wins": 0.34824999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.61095,
+      "pBl2Wins": 0.38905,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.7372,
+      "pBl2Wins": 0.26280000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.73535,
+      "pBl2Wins": 0.26465000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.7602,
+      "pBl2Wins": 0.2398,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.73005,
+      "pBl2Wins": 0.26995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.76155,
+      "pBl2Wins": 0.23845000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.73515,
+      "pBl2Wins": 0.26485000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.855,
+      "pBl2Wins": 0.14500000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.641,
+      "pBl2Wins": 0.359,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Augsburg",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.5498,
+      "pBl2Wins": 0.45020000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.9869,
+      "pBl2Wins": 0.0131,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.9697,
+      "pBl2Wins": 0.030299999999999994,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.98845,
+      "pBl2Wins": 0.01154999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.9913,
+      "pBl2Wins": 0.008700000000000041,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.9746,
+      "pBl2Wins": 0.025399999999999978,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.98445,
+      "pBl2Wins": 0.015549999999999953,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.9875,
+      "pBl2Wins": 0.012499999999999956,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.95565,
+      "pBl2Wins": 0.04435,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.9479,
+      "pBl2Wins": 0.052100000000000035,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.97515,
+      "pBl2Wins": 0.02485000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.9759,
+      "pBl2Wins": 0.02410000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.9805,
+      "pBl2Wins": 0.019499999999999962,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.97585,
+      "pBl2Wins": 0.024150000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.981,
+      "pBl2Wins": 0.019000000000000017,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.9774,
+      "pBl2Wins": 0.022599999999999953,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.99155,
+      "pBl2Wins": 0.008449999999999958,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.9559,
+      "pBl2Wins": 0.04410000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bayern",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.92745,
+      "pBl2Wins": 0.07255,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.76445,
+      "pBl2Wins": 0.23555000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.6656500000000001,
+      "pBl2Wins": 0.3343499999999999,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.7813,
+      "pBl2Wins": 0.2187,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.82315,
+      "pBl2Wins": 0.17684999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.69,
+      "pBl2Wins": 0.31000000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.74725,
+      "pBl2Wins": 0.25275000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.77385,
+      "pBl2Wins": 0.22614999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.6033,
+      "pBl2Wins": 0.39670000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.57555,
+      "pBl2Wins": 0.42445,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.6949,
+      "pBl2Wins": 0.30510000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.69825,
+      "pBl2Wins": 0.30174999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.7299,
+      "pBl2Wins": 0.2701,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.694,
+      "pBl2Wins": 0.30600000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.72245,
+      "pBl2Wins": 0.27754999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.7046,
+      "pBl2Wins": 0.2954,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.82305,
+      "pBl2Wins": 0.17695000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.5998,
+      "pBl2Wins": 0.4002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Bremen",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.51435,
+      "pBl2Wins": 0.48565,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.9399,
+      "pBl2Wins": 0.06010000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.89025,
+      "pBl2Wins": 0.10975000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.9492,
+      "pBl2Wins": 0.050799999999999956,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.9632000000000001,
+      "pBl2Wins": 0.036799999999999944,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.9051,
+      "pBl2Wins": 0.09489999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.9352,
+      "pBl2Wins": 0.06479999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.9455,
+      "pBl2Wins": 0.05449999999999999,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.86075,
+      "pBl2Wins": 0.13924999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.83965,
+      "pBl2Wins": 0.16035,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.91065,
+      "pBl2Wins": 0.08935000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.9108,
+      "pBl2Wins": 0.08919999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.9241,
+      "pBl2Wins": 0.07589999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.90595,
+      "pBl2Wins": 0.09404999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.9218,
+      "pBl2Wins": 0.07820000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.9101,
+      "pBl2Wins": 0.08989999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.96375,
+      "pBl2Wins": 0.036250000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.85765,
+      "pBl2Wins": 0.14234999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Dortmund",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.79625,
+      "pBl2Wins": 0.20375,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.65715,
+      "pBl2Wins": 0.34285,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.5516,
+      "pBl2Wins": 0.4484,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.69065,
+      "pBl2Wins": 0.30935,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.7381,
+      "pBl2Wins": 0.2619,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.5827,
+      "pBl2Wins": 0.4173,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.65145,
+      "pBl2Wins": 0.34855,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.67485,
+      "pBl2Wins": 0.32515000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.49475,
+      "pBl2Wins": 0.50525,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.46185,
+      "pBl2Wins": 0.53815,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.5827,
+      "pBl2Wins": 0.4173,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.5962,
+      "pBl2Wins": 0.40380000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.6239,
+      "pBl2Wins": 0.3761,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.58075,
+      "pBl2Wins": 0.41925,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.6138,
+      "pBl2Wins": 0.3862,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.5893,
+      "pBl2Wins": 0.41069999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.7383,
+      "pBl2Wins": 0.26170000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.48865,
+      "pBl2Wins": 0.51135,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Elversberg",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.3949,
+      "pBl2Wins": 0.6051,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.8256,
+      "pBl2Wins": 0.1744,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.7357,
+      "pBl2Wins": 0.2643,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.84295,
+      "pBl2Wins": 0.15705000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.8702,
+      "pBl2Wins": 0.12980000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.76205,
+      "pBl2Wins": 0.23795,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.8154,
+      "pBl2Wins": 0.1846,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.8247,
+      "pBl2Wins": 0.1753,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.68345,
+      "pBl2Wins": 0.31655,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.6577,
+      "pBl2Wins": 0.34230000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.76675,
+      "pBl2Wins": 0.23324999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.76875,
+      "pBl2Wins": 0.23124999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.78975,
+      "pBl2Wins": 0.21025000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.76275,
+      "pBl2Wins": 0.23724999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.78585,
+      "pBl2Wins": 0.21414999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.7657,
+      "pBl2Wins": 0.23429999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.8733,
+      "pBl2Wins": 0.12670000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.6711,
+      "pBl2Wins": 0.32889999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Frankfurt",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.5782,
+      "pBl2Wins": 0.42179999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.8683,
+      "pBl2Wins": 0.13170000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.80255,
+      "pBl2Wins": 0.19745000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.89535,
+      "pBl2Wins": 0.10465000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.9167,
+      "pBl2Wins": 0.08330000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.8236,
+      "pBl2Wins": 0.1764,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.8641,
+      "pBl2Wins": 0.13590000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.8761,
+      "pBl2Wins": 0.12390000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.75165,
+      "pBl2Wins": 0.24834999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.72735,
+      "pBl2Wins": 0.27264999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.8237,
+      "pBl2Wins": 0.1763,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.83325,
+      "pBl2Wins": 0.16674999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.84885,
+      "pBl2Wins": 0.15115,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.82075,
+      "pBl2Wins": 0.17925000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.8496,
+      "pBl2Wins": 0.15039999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.82795,
+      "pBl2Wins": 0.17205000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.9168,
+      "pBl2Wins": 0.08320000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.7477,
+      "pBl2Wins": 0.25229999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Freiburg",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.6738,
+      "pBl2Wins": 0.32620000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.7968999999999999,
+      "pBl2Wins": 0.20310000000000006,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.7047,
+      "pBl2Wins": 0.2953,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.8226,
+      "pBl2Wins": 0.1774,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.8531,
+      "pBl2Wins": 0.14690000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.7322500000000001,
+      "pBl2Wins": 0.26774999999999993,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.7898000000000001,
+      "pBl2Wins": 0.21019999999999994,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.8082,
+      "pBl2Wins": 0.19179999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.6495,
+      "pBl2Wins": 0.35050000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.6159,
+      "pBl2Wins": 0.3841,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.73555,
+      "pBl2Wins": 0.26444999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.7404,
+      "pBl2Wins": 0.25960000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.7644,
+      "pBl2Wins": 0.23560000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.73475,
+      "pBl2Wins": 0.26525,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.76535,
+      "pBl2Wins": 0.23465000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.74075,
+      "pBl2Wins": 0.25925,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.8528,
+      "pBl2Wins": 0.1472,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.6432,
+      "pBl2Wins": 0.3568,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Gladbach",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.55895,
+      "pBl2Wins": 0.44105000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.85285,
+      "pBl2Wins": 0.14715,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.77455,
+      "pBl2Wins": 0.22545000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.8745499999999999,
+      "pBl2Wins": 0.12545000000000006,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.90465,
+      "pBl2Wins": 0.09535000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.80165,
+      "pBl2Wins": 0.19835000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.84155,
+      "pBl2Wins": 0.15844999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.8584,
+      "pBl2Wins": 0.14159999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.72105,
+      "pBl2Wins": 0.27895000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.6982999999999999,
+      "pBl2Wins": 0.3017000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.7975,
+      "pBl2Wins": 0.2025,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.8002,
+      "pBl2Wins": 0.19979999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.82715,
+      "pBl2Wins": 0.17284999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.79795,
+      "pBl2Wins": 0.20204999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.8218,
+      "pBl2Wins": 0.17820000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.8032,
+      "pBl2Wins": 0.19679999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.8987,
+      "pBl2Wins": 0.10129999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.7236,
+      "pBl2Wins": 0.2764,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Hoffenheim",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.63345,
+      "pBl2Wins": 0.36655000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.7504500000000001,
+      "pBl2Wins": 0.24954999999999994,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.65,
+      "pBl2Wins": 0.35,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.78525,
+      "pBl2Wins": 0.21475,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.82025,
+      "pBl2Wins": 0.17974999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.6829000000000001,
+      "pBl2Wins": 0.31709999999999994,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.74815,
+      "pBl2Wins": 0.25185,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.7674,
+      "pBl2Wins": 0.23260000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.59985,
+      "pBl2Wins": 0.40015,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.5664,
+      "pBl2Wins": 0.4336,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.69115,
+      "pBl2Wins": 0.30884999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.6941,
+      "pBl2Wins": 0.30589999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.717,
+      "pBl2Wins": 0.28300000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.68535,
+      "pBl2Wins": 0.31465,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.7157,
+      "pBl2Wins": 0.2843,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.6943,
+      "pBl2Wins": 0.30569999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.8176,
+      "pBl2Wins": 0.1824,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.6011,
+      "pBl2Wins": 0.39890000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "HSV",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.50185,
+      "pBl2Wins": 0.49815,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.71675,
+      "pBl2Wins": 0.28325,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.61345,
+      "pBl2Wins": 0.38654999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.74415,
+      "pBl2Wins": 0.25585,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.7883,
+      "pBl2Wins": 0.2117,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.6407,
+      "pBl2Wins": 0.35929999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.7041,
+      "pBl2Wins": 0.29590000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.73105,
+      "pBl2Wins": 0.26895,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.5548,
+      "pBl2Wins": 0.44520000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.5238,
+      "pBl2Wins": 0.47619999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.63725,
+      "pBl2Wins": 0.36275,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.6524,
+      "pBl2Wins": 0.3476,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.67635,
+      "pBl2Wins": 0.32365,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.64735,
+      "pBl2Wins": 0.35265,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.6751,
+      "pBl2Wins": 0.32489999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.64975,
+      "pBl2Wins": 0.35024999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.78815,
+      "pBl2Wins": 0.21184999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.5487,
+      "pBl2Wins": 0.45130000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Köln",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.45605,
+      "pBl2Wins": 0.5439499999999999,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.89625,
+      "pBl2Wins": 0.10375000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.8351999999999999,
+      "pBl2Wins": 0.16480000000000006,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.91065,
+      "pBl2Wins": 0.08935000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.93455,
+      "pBl2Wins": 0.06545000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.8564499999999999,
+      "pBl2Wins": 0.14355000000000007,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.896,
+      "pBl2Wins": 0.10399999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.9061,
+      "pBl2Wins": 0.09389999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.79495,
+      "pBl2Wins": 0.20504999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.76725,
+      "pBl2Wins": 0.23275,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.8585,
+      "pBl2Wins": 0.14149999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.8589,
+      "pBl2Wins": 0.1411,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.88225,
+      "pBl2Wins": 0.11775000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.8553,
+      "pBl2Wins": 0.14470000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.87475,
+      "pBl2Wins": 0.12524999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.86055,
+      "pBl2Wins": 0.13944999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.93285,
+      "pBl2Wins": 0.06715000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.79285,
+      "pBl2Wins": 0.20714999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leipzig",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.7103,
+      "pBl2Wins": 0.28969999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.92365,
+      "pBl2Wins": 0.07635000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.8773,
+      "pBl2Wins": 0.12270000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.93355,
+      "pBl2Wins": 0.06645000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.95215,
+      "pBl2Wins": 0.04784999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.88775,
+      "pBl2Wins": 0.11224999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.92005,
+      "pBl2Wins": 0.07994999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.92965,
+      "pBl2Wins": 0.07035000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.8362,
+      "pBl2Wins": 0.16379999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.81445,
+      "pBl2Wins": 0.18555,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.8884,
+      "pBl2Wins": 0.11160000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.8921,
+      "pBl2Wins": 0.1079,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.9071,
+      "pBl2Wins": 0.09289999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.8906499999999999,
+      "pBl2Wins": 0.10935000000000006,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.90565,
+      "pBl2Wins": 0.09435000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.88915,
+      "pBl2Wins": 0.11085,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.95295,
+      "pBl2Wins": 0.047050000000000036,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.82975,
+      "pBl2Wins": 0.17025,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Leverkusen",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.76945,
+      "pBl2Wins": 0.23055000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.83115,
+      "pBl2Wins": 0.16884999999999994,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.74335,
+      "pBl2Wins": 0.25665000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.84985,
+      "pBl2Wins": 0.15015,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.88125,
+      "pBl2Wins": 0.11875000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.7717,
+      "pBl2Wins": 0.22829999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.82285,
+      "pBl2Wins": 0.17715000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.8351500000000001,
+      "pBl2Wins": 0.16484999999999994,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.6940500000000001,
+      "pBl2Wins": 0.30594999999999994,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.65805,
+      "pBl2Wins": 0.34195,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.77155,
+      "pBl2Wins": 0.22845000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.77655,
+      "pBl2Wins": 0.22345000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.79715,
+      "pBl2Wins": 0.20284999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.7733,
+      "pBl2Wins": 0.2267,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.79035,
+      "pBl2Wins": 0.20965,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.77525,
+      "pBl2Wins": 0.22475,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.87795,
+      "pBl2Wins": 0.12204999999999999,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.6898,
+      "pBl2Wins": 0.31020000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Mainz",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.60115,
+      "pBl2Wins": 0.39885000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.6604,
+      "pBl2Wins": 0.3396,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.55855,
+      "pBl2Wins": 0.44145,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.69025,
+      "pBl2Wins": 0.30974999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.7416499999999999,
+      "pBl2Wins": 0.2583500000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.58775,
+      "pBl2Wins": 0.41225,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.6573,
+      "pBl2Wins": 0.3427,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.6756,
+      "pBl2Wins": 0.3244,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.49775,
+      "pBl2Wins": 0.50225,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.46235000000000004,
+      "pBl2Wins": 0.53765,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.58605,
+      "pBl2Wins": 0.41395000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.5989,
+      "pBl2Wins": 0.4011,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.6173500000000001,
+      "pBl2Wins": 0.38264999999999993,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.5879,
+      "pBl2Wins": 0.4121,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.62005,
+      "pBl2Wins": 0.37995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.5918,
+      "pBl2Wins": 0.4082,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.7424999999999999,
+      "pBl2Wins": 0.25750000000000006,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.4872,
+      "pBl2Wins": 0.5127999999999999,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Paderborn",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.3895,
+      "pBl2Wins": 0.6105,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.6501,
+      "pBl2Wins": 0.3499,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.54345,
+      "pBl2Wins": 0.45655,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.6915,
+      "pBl2Wins": 0.3085,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.7343,
+      "pBl2Wins": 0.26570000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.5822499999999999,
+      "pBl2Wins": 0.41775000000000007,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.64825,
+      "pBl2Wins": 0.35175,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.6685,
+      "pBl2Wins": 0.3315,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.48824999999999996,
+      "pBl2Wins": 0.51175,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.4536,
+      "pBl2Wins": 0.5464,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.5777,
+      "pBl2Wins": 0.4223,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.5863,
+      "pBl2Wins": 0.41369999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.61905,
+      "pBl2Wins": 0.38095,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.57455,
+      "pBl2Wins": 0.42545,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.60585,
+      "pBl2Wins": 0.39415,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.5830500000000001,
+      "pBl2Wins": 0.41694999999999993,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.72805,
+      "pBl2Wins": 0.27195,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.4886,
+      "pBl2Wins": 0.5114000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Schalke",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.3932,
+      "pBl2Wins": 0.6068,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.9,
+      "pBl2Wins": 0.09999999999999998,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.8343,
+      "pBl2Wins": 0.16569999999999996,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.91705,
+      "pBl2Wins": 0.08294999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.93485,
+      "pBl2Wins": 0.06515000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.8566,
+      "pBl2Wins": 0.14339999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.89425,
+      "pBl2Wins": 0.10575000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.9017,
+      "pBl2Wins": 0.09830000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.7947500000000001,
+      "pBl2Wins": 0.20524999999999993,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.77275,
+      "pBl2Wins": 0.22724999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.86,
+      "pBl2Wins": 0.14,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.8661,
+      "pBl2Wins": 0.13390000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.8714999999999999,
+      "pBl2Wins": 0.12850000000000006,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.8558,
+      "pBl2Wins": 0.1442,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.87845,
+      "pBl2Wins": 0.12155000000000005,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.86205,
+      "pBl2Wins": 0.13795000000000002,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.93685,
+      "pBl2Wins": 0.06315000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.79165,
+      "pBl2Wins": 0.20835000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Stuttgart",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.722,
+      "pBl2Wins": 0.278,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Bielefeld",
+      "pBl1Wins": 0.77855,
+      "pBl2Wins": 0.22145000000000004,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Bochum",
+      "pBl1Wins": 0.6755,
+      "pBl2Wins": 0.3245,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Braunschweig",
+      "pBl1Wins": 0.7966,
+      "pBl2Wins": 0.20340000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Cottbus",
+      "pBl1Wins": 0.83495,
+      "pBl2Wins": 0.16505000000000003,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Darmstadt",
+      "pBl1Wins": 0.71495,
+      "pBl2Wins": 0.28505,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Dresden",
+      "pBl1Wins": 0.7631,
+      "pBl2Wins": 0.2369,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Fürth",
+      "pBl1Wins": 0.786,
+      "pBl2Wins": 0.21399999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Hannover",
+      "pBl1Wins": 0.6239,
+      "pBl2Wins": 0.3761,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Heidenheim",
+      "pBl1Wins": 0.58955,
+      "pBl2Wins": 0.41045,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Hertha",
+      "pBl1Wins": 0.7134,
+      "pBl2Wins": 0.28659999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Kaiserslautern",
+      "pBl1Wins": 0.7156,
+      "pBl2Wins": 0.2844,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Karlsruhe",
+      "pBl1Wins": 0.7395,
+      "pBl2Wins": 0.26049999999999995,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Kiel",
+      "pBl1Wins": 0.7080500000000001,
+      "pBl2Wins": 0.29194999999999993,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Magdeburg",
+      "pBl1Wins": 0.73695,
+      "pBl2Wins": 0.26305,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Nürnberg",
+      "pBl1Wins": 0.7103999999999999,
+      "pBl2Wins": 0.2896000000000001,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Osnabrück",
+      "pBl1Wins": 0.83545,
+      "pBl2Wins": 0.16454999999999997,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "St. Pauli",
+      "pBl1Wins": 0.61505,
+      "pBl2Wins": 0.38495,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    },
+    {
+      "bl1Club": "Union Berlin",
+      "bl2Club": "Wolfsburg",
+      "pBl1Wins": 0.53025,
+      "pBl2Wins": 0.46975,
+      "hostsSecondLeg": null,
+      "homeOrderMixed": true,
+      "homeOrderBasis": "dates unknown",
+      "restDays": null
+    }
+  ],
+  "bl1": {
+    "Augsburg": {
+      "pSafe": 0.8459500000000001,
+      "pRelegationPlayoff": 0.0627,
+      "pKlassenerhalt": 0.8892795515042501,
+      "pWinsPlayoff": 0.6910614275000001
+    },
+    "Bayern": {
+      "pSafe": 0.9999499999999999,
+      "pRelegationPlayoff": 0.00005,
+      "pKlassenerhalt": 0.9999982364374999,
+      "pWinsPlayoff": 0.9647287499999999
+    },
+    "Bremen": {
+      "pSafe": 0.7848499999999999,
+      "pRelegationPlayoff": 0.07855,
+      "pKlassenerhalt": 0.8362285566294999,
+      "pWinsPlayoff": 0.65408729
+    },
+    "Dortmund": {
+      "pSafe": 0.995,
+      "pRelegationPlayoff": 0.0026,
+      "pKlassenerhalt": 0.9972959283945,
+      "pWinsPlayoff": 0.8830493824999999
+    },
+    "Elversberg": {
+      "pSafe": 0.5329999999999999,
+      "pRelegationPlayoff": 0.12485,
+      "pKlassenerhalt": 0.6009551333669999,
+      "pWinsPlayoff": 0.54429422
+    },
+    "Frankfurt": {
+      "pSafe": 0.89645,
+      "pRelegationPlayoff": 0.04315,
+      "pKlassenerhalt": 0.927660480976375,
+      "pWinsPlayoff": 0.7233019924999999
+    },
+    "Freiburg": {
+      "pSafe": 0.95945,
+      "pRelegationPlayoff": 0.01885,
+      "pKlassenerhalt": 0.974344143194125,
+      "pWinsPlayoff": 0.7901402224999999
+    },
+    "Gladbach": {
+      "pSafe": 0.854,
+      "pRelegationPlayoff": 0.0595,
+      "pKlassenerhalt": 0.89535586487375,
+      "pWinsPlayoff": 0.6950565525000001
+    },
+    "Hoffenheim": {
+      "pSafe": 0.9396999999999999,
+      "pRelegationPlayoff": 0.02755,
+      "pKlassenerhalt": 0.9607186238352499,
+      "pWinsPlayoff": 0.7629264549999999
+    },
+    "HSV": {
+      "pSafe": 0.7710999999999999,
+      "pRelegationPlayoff": 0.0838,
+      "pKlassenerhalt": 0.8253093325579999,
+      "pWinsPlayoff": 0.64688941
+    },
+    "Köln": {
+      "pSafe": 0.6815000000000001,
+      "pRelegationPlayoff": 0.10795,
+      "pKlassenerhalt": 0.7466562453698751,
+      "pWinsPlayoff": 0.6035780025
+    },
+    "Leipzig": {
+      "pSafe": 0.9767,
+      "pRelegationPlayoff": 0.01095,
+      "pKlassenerhalt": 0.985732758723875,
+      "pWinsPlayoff": 0.8249094725
+    },
+    "Leverkusen": {
+      "pSafe": 0.9915499999999999,
+      "pRelegationPlayoff": 0.00425,
+      "pKlassenerhalt": 0.9952147338599999,
+      "pWinsPlayoff": 0.8622903200000002
+    },
+    "Mainz": {
+      "pSafe": 0.9061000000000001,
+      "pRelegationPlayoff": 0.0401,
+      "pKlassenerhalt": 0.9355083224625002,
+      "pWinsPlayoff": 0.733374625
+    },
+    "Paderborn": {
+      "pSafe": 0.5468999999999999,
+      "pRelegationPlayoff": 0.1247,
+      "pKlassenerhalt": 0.6149818573224999,
+      "pWinsPlayoff": 0.545965175
+    },
+    "Schalke": {
+      "pSafe": 0.5222,
+      "pRelegationPlayoff": 0.12915,
+      "pKlassenerhalt": 0.591839909129,
+      "pWinsPlayoff": 0.5392172599999999
+    },
+    "Stuttgart": {
+      "pSafe": 0.97805,
+      "pRelegationPlayoff": 0.01065,
+      "pKlassenerhalt": 0.9868583788362499,
+      "pWinsPlayoff": 0.8270778249999999
+    },
+    "Union Berlin": {
+      "pSafe": 0.81755,
+      "pRelegationPlayoff": 0.07065,
+      "pKlassenerhalt": 0.864831995518625,
+      "pWinsPlayoff": 0.6692426825
+    }
+  },
+  "bl2": {
+    "Bielefeld": {
+      "pDirect": 0.038650000000000004,
+      "pPlayoffPlace": 0.029,
+      "pAufstieg": 0.046324913437500004,
+      "pWinsPlayoff": 0.2646521875
+    },
+    "Bochum": {
+      "pDirect": 0.12915,
+      "pPlayoffPlace": 0.0726,
+      "pAufstieg": 0.1554946489515,
+      "pWinsPlayoff": 0.36287395250000004
+    },
+    "Braunschweig": {
+      "pDirect": 0.02395,
+      "pPlayoffPlace": 0.0198,
+      "pAufstieg": 0.0286443592795,
+      "pWinsPlayoff": 0.23708885250000003
+    },
+    "Cottbus": {
+      "pDirect": 0.013049999999999999,
+      "pPlayoffPlace": 0.0112,
+      "pAufstieg": 0.01525767036,
+      "pWinsPlayoff": 0.19711342500000004
+    },
+    "Darmstadt": {
+      "pDirect": 0.08825,
+      "pPlayoffPlace": 0.06105,
+      "pAufstieg": 0.10852441196,
+      "pWinsPlayoff": 0.3320952
+    },
+    "Dresden": {
+      "pDirect": 0.04305,
+      "pPlayoffPlace": 0.03365,
+      "pAufstieg": 0.052202591117625,
+      "pWinsPlayoff": 0.27199379250000005
+    },
+    "Fürth": {
+      "pDirect": 0.03275,
+      "pPlayoffPlace": 0.024,
+      "pAufstieg": 0.03879630644,
+      "pWinsPlayoff": 0.251929435
+    },
+    "Hannover": {
+      "pDirect": 0.2136,
+      "pPlayoffPlace": 0.09625,
+      "pAufstieg": 0.25379434265,
+      "pWinsPlayoff": 0.41760356
+    },
+    "Heidenheim": {
+      "pDirect": 0.2713,
+      "pPlayoffPlace": 0.10915,
+      "pAufstieg": 0.320443575116375,
+      "pWinsPlayoff": 0.4502388925
+    },
+    "Hertha": {
+      "pDirect": 0.08990000000000001,
+      "pPlayoffPlace": 0.0579,
+      "pAufstieg": 0.10909976897225002,
+      "pWinsPlayoff": 0.3316022275
+    },
+    "Kaiserslautern": {
+      "pDirect": 0.0827,
+      "pPlayoffPlace": 0.0534,
+      "pAufstieg": 0.1000071088775,
+      "pWinsPlayoff": 0.3241031625
+    },
+    "Karlsruhe": {
+      "pDirect": 0.0653,
+      "pPlayoffPlace": 0.04475,
+      "pAufstieg": 0.07869227812875,
+      "pWinsPlayoff": 0.299268785
+    },
+    "Kiel": {
+      "pDirect": 0.09045,
+      "pPlayoffPlace": 0.0587,
+      "pAufstieg": 0.10997304253875001,
+      "pWinsPlayoff": 0.33259016250000006
+    },
+    "Magdeburg": {
+      "pDirect": 0.0677,
+      "pPlayoffPlace": 0.0467,
+      "pAufstieg": 0.08186692916225,
+      "pWinsPlayoff": 0.3033603675
+    },
+    "Nürnberg": {
+      "pDirect": 0.08725,
+      "pPlayoffPlace": 0.0565,
+      "pAufstieg": 0.10570514220249999,
+      "pWinsPlayoff": 0.32663968499999996
+    },
+    "Osnabrück": {
+      "pDirect": 0.0115,
+      "pPlayoffPlace": 0.0112,
+      "pAufstieg": 0.013716008088,
+      "pWinsPlayoff": 0.19785786500000002
+    },
+    "St. Pauli": {
+      "pDirect": 0.22855,
+      "pPlayoffPlace": 0.09755,
+      "pAufstieg": 0.269807536297625,
+      "pWinsPlayoff": 0.4229373275
+    },
+    "Wolfsburg": {
+      "pDirect": 0.4229,
+      "pPlayoffPlace": 0.1166,
+      "pAufstieg": 0.482879313427,
+      "pWinsPlayoff": 0.514402345
+    }
+  }
+}

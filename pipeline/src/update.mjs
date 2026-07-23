@@ -30,6 +30,7 @@ import {
 } from "./snapshots.mjs";
 import { buildPreMatchDataset, frozenRatingLabel } from "./preMatch.mjs";
 import { buildCurrentOutlook, buildFrozenTimeline, targetsFromConfig } from "./artefacts.mjs";
+import { buildPlayoffArtefact } from "./playoffArtefact.mjs";
 import { verifyAll } from "./verify.mjs";
 import {
   resolveMissingClubs, groupFixturesByClub, evaluateCarryForward, latestArchivedRating, CARRIED_PROVENANCE,
@@ -414,6 +415,7 @@ export async function runUpdate({
   // --- 6b. precomputed simulation artefacts (§3) ----------------------------
   // Heavy artefacts belong here, never in the browser. The canonical 20 000-run
   // outlook is what every displayed delta is measured against.
+  const outlooks = {};
   for (const league of LEAGUES) {
     const s = seasons[league];
     const leagueConfig = config.leagues[league];
@@ -439,6 +441,7 @@ export async function runUpdate({
     if (await writeIfChanged(path.join(dir, "outlook.json"), stable(outlook))) {
       changes.push(`${league} current outlook`);
     }
+    outlooks[league] = outlook;
 
     // The frozen curve needs ONE pre-season rating per club. Where it is
     // missing the feature does not fail — but it must not claim what it does
@@ -485,6 +488,24 @@ export async function runUpdate({
         }
       }
     }
+  }
+
+  // --- 6c. the relegation play-off (§6) -------------------------------------
+  // Deliberately AFTER both leagues: it is one simulation across the two, and
+  // both league views read it from complementary sides. It is written once, at
+  // the season level, so there is no per-league copy that could disagree.
+  {
+    const playoff = buildPlayoffArtefact({
+      season: detected.season,
+      playoffConfig: config.relegationPlayoff,
+      outlooks,
+      fixtures: { bl1: seasons.bl1.fixtures, bl2: seasons.bl2.fixtures },
+      ratings,
+      params: shippedParams,
+      log,
+    });
+    const file = path.join(dataDir, "seasons", String(detected.season), "playoff.json");
+    if (await writeIfChanged(file, stable(playoff))) changes.push("relegation play-off");
   }
 
   // --- 7. write the season data --------------------------------------------

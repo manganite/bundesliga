@@ -8,7 +8,7 @@ import { remainingFixtures } from "../lib/data.js";
 import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
 
 export default function Teams({ ctx }) {
-  const { season, outlook, timeline, leagueConfig, nameOf, prematch, params, league, carried = [] } = ctx;
+  const { season, outlook, timeline, leagueConfig, nameOf, prematch, params, league, carried = [], leagueLabel } = ctx;
 
   const table = useMemo(() => currentTable(season, leagueConfig), [season, leagueConfig]);
   const [clubId, setClubId] = useState(() => table[0]?.clubId ?? season.clubs[0]?.clubId);
@@ -60,7 +60,7 @@ export default function Teams({ ctx }) {
 
   return (
     <>
-      <h2>Teams</h2>
+      <h2>Teams — {leagueLabel}</h2>
       <p className="page-intro">Ein Klub im Detail: Aussichten, Restprogramm und Leistung gegenüber der Erwartung.</p>
 
       <div className="controls">

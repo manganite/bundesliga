@@ -78,6 +78,31 @@ bestätigt, § 5 Nr. 4:
 > abgelaufenen Spielzeit weniger spielfreie Tage vor dem Hinspiel hatte. Bei
 > gleicher Anzahl spielfreier Tage entscheidet das Los.
 
+### 4.5.1 Richtungsprüfung der Heimrecht-Regel (2026-07-23)
+
+Die Ableitung aus dem Wortlaut ergibt im Normalfall: BL1 spielt den 34. Spieltag
+am Samstag, die 2. Bundesliga am Sonntag, das Hinspiel ist am Donnerstag. Damit
+hat der Zweitligist **weniger** spielfreie Tage — und folglich das Heimrecht im
+**Rückspiel**. Der Erstligist trägt das Hinspiel aus.
+
+Das klingt zunächst falsch herum, deshalb gegengeprüft:
+
+- Die DFL stellt es selbst so fest: weil der letzte Bundesliga-Spieltag auf einen
+  Samstag und der 34. Spieltag der 2. Bundesliga auf den folgenden Sonntag fiel,
+  liegt „das Heimrecht im Rückspiel in beiden Fällen beim Club der 2. Bundesliga".
+- Die Historie seit 2008/09 zeigt durchgängig dasselbe Muster: Hinspiel beim
+  Erstligisten, Rückspiel beim Zweitligisten (2008/09 Cottbus→Nürnberg,
+  2009/10 Nürnberg→Augsburg, 2010/11 Gladbach→Bochum, 2011/12 Hertha→Düsseldorf,
+  2012/13 Hoffenheim→Kaiserslautern, …).
+
+Die Engine leitet die Reihenfolge also nicht nur wortlautgetreu, sondern auch
+ergebnisgetreu ab. `packages/engine/tests/playoff.test.mjs` hält diesen Normalfall
+als Regressionsanker fest — eine später versehentlich invertierte Regel würde
+sonst niemandem auffallen, weil beide Richtungen plausibel aussehen.
+
+Quellen: [DFL/ran zur Relegation 2026](https://ran.joyn.de/sports/fussball/relegation-bundesliga/bundesliga-relegation2026-sc-paderborn-und-spvgg-greuther-fuerth-darum-haben-beide-zweitligisten-heimrecht-im-rueckspiel-127003),
+[Wikipedia: Relegation zur deutschen Fußball-Bundesliga](https://de.wikipedia.org/wiki/Relegation_zur_deutschen_Fu%C3%9Fball-Bundesliga).
+
 **Auswärtstorregel in der Relegation** — die SpOL legt sie nicht selbst fest,
 sondern verweist dynamisch:
 

@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
-import { currentTable, scheduleStrength, duels, rulesFrom } from "../lib/season.js";
+import { currentTable, orderWithinSharedRanks, scheduleStrength, duels, rulesFrom } from "../lib/season.js";
+import Relegation from "../components/Relegation.jsx";
 import { percent, number, integer, signedInt } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
 import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
@@ -17,11 +18,21 @@ function heatColour(p) {
 }
 
 export default function TabelleUndPrognose({ ctx }) {
-  const { season, outlook, leagueConfig, nameOf, carried = [] } = ctx;
+  const { season, outlook, leagueConfig, nameOf, carried = [], league, leagueLabel, playoff } = ctx;
   const carriedByClub = new Map(carried.map((c) => [c.clubId, c]));
   const [expert, setExpert] = useState(false);
 
-  const table = useMemo(() => currentTable(season, leagueConfig), [season, leagueConfig]);
+  const ranked = useMemo(() => currentTable(season, leagueConfig), [season, leagueConfig]);
+  // Presentation order only, and only inside a block the table itself declares
+  // indistinguishable. Before the first matchday that is the whole table.
+  const table = useMemo(
+    () => orderWithinSharedRanks(ranked, outlook?.points),
+    [ranked, outlook],
+  );
+  const reordered = useMemo(
+    () => table.some((r, i) => r.clubId !== ranked[i].clubId),
+    [table, ranked],
+  );
   const rules = rulesFrom(leagueConfig);
   const remaining = remainingFixtures(season.fixtures);
 
@@ -39,10 +50,19 @@ export default function TabelleUndPrognose({ ctx }) {
   );
 
   const anyShared = table.some((r) => r.sharedRank);
+  const sharedNote = anyShared
+    ? "Klubs auf einem geteilten Tabellenplatz sind nach der Spielordnung nicht getrennt: vor absolviertem "
+      + "Hin- und Rückspiel entscheiden nur Tordifferenz und Tore, und was danach gleich bleibt, teilt sich "
+      + "den Platz."
+      + (reordered
+        ? " Innerhalb eines geteilten Platzes stehen die Klubs hier nach erwarteten Punkten — das ist die "
+          + "Reihenfolge der Prognose, nicht die der Tabelle."
+        : "")
+    : "";
 
   return (
     <>
-      <h2>Tabelle &amp; Prognose</h2>
+      <h2>Tabelle &amp; Prognose — {leagueLabel}</h2>
       <p className="page-intro">
         Links der Stand, rechts das simulierte Saisonende. Die Prognose stammt aus derselben
         Simulation wie jede andere Seite.
@@ -53,10 +73,9 @@ export default function TabelleUndPrognose({ ctx }) {
           title="Tabelle und erwartetes Saisonende"
           caption={
             carried.length
-              ? `Klubs mit ⚑ rechnen mit einem älteren Rating, weil clubelo sie derzeit nicht fortführt. ${
-                anyShared ? "Geteilte Tabellenplätze sind nach der Spielordnung nicht getrennt." : ""}`
+              ? `Klubs mit ⚑ rechnen mit einem älteren Rating, weil clubelo sie derzeit nicht fortführt. ${sharedNote}`
               : anyShared
-              ? "Klubs auf einem geteilten Tabellenplatz sind nach der Spielordnung nicht getrennt: vor absolviertem Hin- und Rückspiel entscheiden nur Tordifferenz und Tore, und was danach gleich bleibt, teilt sich den Platz."
+              ? sharedNote
               : "Erwartete Punkte und der Bereich, in dem 80 % der simulierten Saisons enden (10.–90. Perzentil)."
           }
         >
@@ -108,6 +127,8 @@ export default function TabelleUndPrognose({ ctx }) {
         </Card>
 
         {outlook ? <Heatmap outlook={outlook} table={table} nameOf={nameOf} /> : null}
+
+        <Relegation playoff={playoff} league={league} nameOf={nameOf} />
 
         <Card
           title="Direkte Duelle"

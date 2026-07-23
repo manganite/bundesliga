@@ -34,7 +34,7 @@ jede Metrik. Keine der Apps implementiert davon etwas neu.
 
 ```bash
 npm install
-npm test                       # Engine-, Pipeline- und App-B-Tests, offline
+npm test                       # Engine-, Fit-, Pipeline- und App-Tests, offline
 npm run test:engine            # nur die Engine
 npm run gate:clubelo           # Abdeckungsprüfung gegen die Live-API
 npm run pipeline               # ein Pipeline-Lauf gegen die Live-Quellen
@@ -55,11 +55,19 @@ Die Tests laufen offline gegen committete Fixtures
 (`packages/engine/tests/fixtures/`, 22 echte Saisons beider Ligen). Weder
 Entwicklung noch Tests laufen gegen die Live-API.
 
-Auf einem frischen Checkout laufen **297 von 303** Tests; sechs überspringen mit
+App A wird dabei **wirklich gerendert**: `apps/public/tests/harness/build.mjs`
+lässt Vite die JSX-Dateien in ein SSR-Bündel bauen, das die Tests mit
+`react-dom/server` rendern. Node kann JSX nicht direkt lesen, und das Projekt
+bekommt dafür keinen eigenen Transpiler — die Toolchain der App macht die Arbeit.
+Der erste Lauf baut einmal (~1 s), danach liegt das Bündel unter
+`apps/public/tests/harness/.out/` und ist gitignoriert. Grund: die letzten
+UI-Defekte hier waren allesamt unsichtbar für Logiktests.
+
+Auf einem frischen Checkout laufen **397 von 403** Tests; sechs überspringen mit
 begründeter Meldung, weil die clubelo-abgeleiteten Trainings-Elo-Werte nicht
 committet sind. Das **Reproduktionstor der Fitprozedur ist deshalb derzeit nur
 lokal prüfbar** — es zieht in CI ein an dem Tag, an dem die Trainingsdaten
-committet werden dürfen. Ein „297 von 303" ist also kein Defekt.
+committet werden dürfen. Ein „397 von 403“ ist also kein Defekt.
 
 ## Zustand
 
@@ -77,11 +85,15 @@ committet werden dürfen. Ein „297 von 303" ist also kein Defekt.
 | `pipeline` — vorberechnete Artefakte | ✅ |
 | Daten- und Deploy-Workflow | ✅ |
 | App A — fünf Seiten (V1-Umfang) | ✅ |
+| App A — Liga-Umschalter, gerenderte Tests | ✅ mit Tests |
 | App B — eine selbstständige HTML-Datei | ✅ mit Tests |
 | Refit als zwei Prozesse, Toleranzen ex ante | ✅ mit Tests |
 | `packages/fit` — Fitprozedur im Repo, bitgleich reproduziert | ✅ mit Tests |
 | Begrenzter Rating-Übertrag, Datumsprüfung der Tages-CSV | ✅ mit Tests |
-| V1.1 (2. Bundesliga, Relegation) / V1.2 / V2 | ⏳ offen |
+| V1.1 — 2. Bundesliga per Umschalter | ✅ mit Tests |
+| V1.1 — paarungsspezifische Relegation, Komplement bitgleich | ✅ mit Tests |
+| V1.1 — Vorsaison-Tabelle nach erwarteten Punkten | ✅ mit Tests |
+| V1.2 / V2 | ⏳ offen |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
 **≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
@@ -159,6 +171,40 @@ Lizenz; die Antwort des Betreibers entscheidet, ob das Archiv im öffentlichen
 Repo bleibt. Voreinstellung ist `data/ratings/`, überschreibbar über
 `BUNDESLIGA_RATINGS_DIR`. Ein Umzug ist damit eine Konfigurationsänderung plus
 ein Migrations-Commit, nie ein Refactoring.
+
+### Die Relegation (§6)
+
+Die Relegation ist **eine eigene Simulation mit eigenen Läufen** in einem eigenen
+Zufallsraum (`context: "playoff"`), berechnet aus den Ligamarginalen plus einer
+Paarungssimulation — kein gemeinsamer Zwei-Ligen-Lauf. Sie entsteht in
+`pipeline/src/playoffArtefact.mjs` und landet in
+`data/seasons/<jahr>/playoff.json`, **saisonweit, nicht je Liga**.
+
+Zwei Eigenschaften tragen den Rest:
+
+- **Kanonische Orientierung.** `pairingProbability` sortiert die beiden Klub-IDs,
+  bevor es Schlüssel baut oder spielt. `pairing(i, j)` und `pairing(j, i)` ziehen
+  deshalb dieselben Zahlen, und `P(j schlägt i) = 1 − P(i schlägt j)` gilt
+  **bitgleich**. Das ist der Grund, warum die Bundesliga- und die
+  2.-Liga-Ansicht nie über eine Paarung streiten können: es gibt nur eine.
+- **Alle Paarungen, ohne Schwelle.** 18 × 18 = 324 Paarungen à 20 000 Läufe,
+  rund 20 Sekunden je Lauf. §6 verlangt die Summe über *alle* möglichen Gegner;
+  eine Kappung wäre eine stille Ungenauigkeit in einer Zahl, deren Caption
+  Vollständigkeit behauptet. (Die App zeigt in der Tabelle nur Klubs ab 1 % — das
+  ist Anzeige, steht in der Caption und ändert keine Rechnung.)
+
+Das Heimrecht im Rückspiel wird **je Paarung** aus den Spielterminen abgeleitet
+(SpOL § 5 Nr. 4). Solange die Relegationstermine nicht veröffentlicht sind,
+liefert `secondLegHost` `null` und beide Reihenfolgen werden **je zur Hälfte**
+simuliert; das Artefakt zählt mit, wie viele Paarungen davon betroffen sind, und
+die Caption sagt es. Die Termine des letzten Spieltags kommen aus dem
+Spielplan, den die App ohnehin hat — `lastLeagueMatchdayDates` in der
+Saisonkonfiguration überschreibt sie nur, wenn der veröffentlichte Spielplan
+abweicht.
+
+Was **nicht** berechnet wird, steht im Artefakt statt zu fehlen: die Relegation
+2. Bundesliga (16.) gegen 3. Liga (3.). Die App führt keine Daten der 3. Liga,
+also existiert die Gegnerverteilung nicht.
 
 ### Artefakte vergleichen
 

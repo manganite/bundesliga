@@ -19,7 +19,7 @@ const SERIES_COLOURS = [
  * season-start strength.
  */
 export default function Verlauf({ ctx }) {
-  const { timeline, leagueConfig, nameOf } = ctx;
+  const { timeline, leagueConfig, nameOf, leagueLabel } = ctx;
   const targets = targetList(leagueConfig);
   const [targetId, setTargetId] = useState(targets[0]?.id);
 
@@ -65,7 +65,7 @@ export default function Verlauf({ ctx }) {
 
   return (
     <>
-      <h2>Verlauf</h2>
+      <h2>Verlauf — {leagueLabel}</h2>
       <p className="page-intro">
         Wie sich die Aussichten im Lauf der Saison verschoben haben — allein durch Ergebnisse,
         bei unveränderter Saisonstart-Stärke.
