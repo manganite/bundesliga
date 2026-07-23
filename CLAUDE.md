@@ -177,11 +177,15 @@ construction.
   unverändertem `data/`. Das ist das vorgesehene Verhalten.
 - Die committeten Daten sind die **abgeschlossene Saison 2025/26**, per Operator-Override
   rekonstruiert. App A zeigt sie im Zustand „Saison beendet", alle Prognosen auf 100 %.
-- Der Refit-Workflow braucht das Secret `LAB_REPO_TOKEN` und im privaten Lab ein
-  `scripts/run-refit.mjs`, das den in `pipeline/src/refit/cli.mjs` dokumentierten
-  JSON-Vertrag erfüllt. **Beides existiert dort noch nicht.** Die Fit-Prozedur wird hier
-  bewusst nicht nachgebaut — eine zweite Implementierung würde die Herkunftskette
-  wertlos machen.
+- Die Fitprozedur liegt seit der Extraktion in `packages/fit` und reproduziert die
+  ausgelieferten Parameter **bitgleich** (`docs/FIT_EXTRACTION.md`). `LAB_REPO_TOKEN`
+  ist entfallen; erlaubt ist nur noch `GITHUB_TOKEN`. Die Trainings-Elo-Werte sind
+  clubelo-abgeleitet und **nicht committet**, solange die Lizenzfrage offen ist —
+  `refit.yml` bricht auf einem frischen Runner deshalb mit klarer Meldung ab.
+- **Die Summationsreihenfolge der Likelihood ist Teil der Prozedur.** Nelder-Mead ist
+  ableitungsfrei und verstärkt eine Differenz von 1e-14 bis in die zweite Stelle: die
+  Trainingsdaten anders zu sortieren verschob `HOME_ADV_GHOST` um 2,2. Die Reihenfolge
+  ist in `packages/fit/src/data.mjs` festgenagelt; sie zu ändern ist Prozess B.
 - Offen: V1.1 (2. Bundesliga per Umschalter, paarungsspezifische Relegation),
   V1.2 (Modellgüte, Live-Rating-Timeline, „Wichtigstes kommendes Spiel"), V2.
 - Das README beschreibt die App; alles Entwicklerische steht in

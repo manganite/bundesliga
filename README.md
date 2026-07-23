@@ -44,8 +44,9 @@ Dass niemand die wahre Stärke eines Klubs kennt, steckt als `RATING_SIGMA` im
 Modell: jeder Lauf zieht für jeden Klub eine eigene hypothetische Stärke. Ein
 Favorit gewinnt deshalb nicht in jedem Lauf.
 
-Welche Modellvarianten geprüft wurden und was sich davon bewährt hat, steht im
-Lab: [football-model-lab](https://github.com/manganite/football-model-lab).
+Was sich davon belegen lässt und was ausdrücklich nicht, steht in
+[docs/MODEL_EVIDENCE.md](docs/MODEL_EVIDENCE.md). Die Fitprozedur selbst liegt
+in [packages/fit](packages/fit) und ist damit nachvollziehbar.
 
 ## Quellen und Lizenzen
 

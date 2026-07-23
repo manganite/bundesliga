@@ -49,7 +49,23 @@ export function eloToLambdas(eloHome, eloAway, p) {
   };
 }
 
-function poissonPmf(lambda, maxK) {
+/**
+ * Poisson pmf at a single k, by the standard recursion.
+ *
+ * Exported because `packages/fit` needs the likelihood of ONE observed
+ * scoreline per match and must not carry its own copy of this — one
+ * implementation of the model mathematics in the monorepo, not two. The
+ * vectorised `poissonPmf` below is the same recursion; a test holds the two
+ * bit-identical so they cannot drift apart.
+ */
+export function poissonAt(lambda, k) {
+  let p = Math.exp(-lambda);
+  for (let i = 1; i <= k; i++) p = (p * lambda) / i;
+  return p;
+}
+
+/** The same recursion, vectorised over 0…maxK. */
+export function poissonPmf(lambda, maxK) {
   const out = new Float64Array(maxK + 1);
   let p = Math.exp(-lambda);
   out[0] = p;
@@ -60,8 +76,11 @@ function poissonPmf(lambda, maxK) {
   return out;
 }
 
-/** Dixon-Coles low-score dependence term. */
-function dcTau(x, y, lh, la, rho) {
+/**
+ * Dixon-Coles low-score dependence term. Exported for the same reason as
+ * `poissonAt`: the fit needs it and must not reimplement it.
+ */
+export function dcTau(x, y, lh, la, rho) {
   if (x === 0 && y === 0) return 1 - lh * la * rho;
   if (x === 0 && y === 1) return 1 + lh * rho;
   if (x === 1 && y === 0) return 1 + la * rho;

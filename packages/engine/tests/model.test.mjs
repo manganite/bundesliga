@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {
   effectiveParams, eloToLambdas, buildScorelineDistribution, scorelineQuantile,
-  scorelineIndex, canonicalOrder, predictMatch, drawScoreline, tendencyOf,
+  scorelineIndex, canonicalOrder, predictMatch, drawScoreline, tendencyOf, poissonAt, poissonPmf, dcTau,
 } from "../src/model.mjs";
 import { makeKeyBase, uniform01 } from "../src/rng.mjs";
 
@@ -247,4 +247,30 @@ test("tendencyOf labels the three outcomes", () => {
   assert.equal(tendencyOf(2, 1), "homeWin");
   assert.equal(tendencyOf(1, 1), "draw");
   assert.equal(tendencyOf(0, 3), "awayWin");
+});
+
+// The fit consumes these primitives so the monorepo carries ONE implementation
+// of the model mathematics. That only holds if the two forms of the recursion
+// cannot drift apart, so this pins them bit-identical.
+test("the single-value and vectorised Poisson recursions agree bit for bit", () => {
+  for (const lambda of [0.12, 0.5, 1.0, 1.4732, 2.5, 4.0]) {
+    const vector = poissonPmf(lambda, 12);
+    for (let k = 0; k <= 12; k++) {
+      assert.ok(
+        Object.is(poissonAt(lambda, k), vector[k]),
+        `poissonAt(${lambda}, ${k}) = ${poissonAt(lambda, k)} but poissonPmf gave ${vector[k]}`,
+      );
+    }
+  }
+});
+
+test("dcTau corrects exactly the four low-score cells", () => {
+  const rho = -0.1;
+  assert.equal(dcTau(0, 0, 1.4, 1.1, rho), 1 - 1.4 * 1.1 * rho);
+  assert.equal(dcTau(0, 1, 1.4, 1.1, rho), 1 + 1.4 * rho);
+  assert.equal(dcTau(1, 0, 1.4, 1.1, rho), 1 + 1.1 * rho);
+  assert.equal(dcTau(1, 1, 1.4, 1.1, rho), 1 - rho);
+  for (const [h, a] of [[0, 2], [2, 0], [1, 2], [2, 1], [3, 3]]) {
+    assert.equal(dcTau(h, a, 1.4, 1.1, rho), 1, `${h}:${a} must be untouched`);
+  }
 });

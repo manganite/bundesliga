@@ -3,10 +3,21 @@
 Alles, was zum Mitbauen nötig ist. Die App selbst wird im
 [README](../README.md) beschrieben.
 
-Gebaut nach `BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md` und dem Erratum
-`V5.7_ERRATUM_AND_V1_FIXES.md`. Wo die beiden sich widersprechen, gilt das
-Erratum; wo eine verifizierte Primärquelle beiden widerspricht, gilt die Quelle
-(siehe [verification/](verification/)).
+Gebaut nach einer Kette von Vorgaben. Die jeweils spätere schlägt die frühere;
+wo eine verifizierte Primärquelle allen widerspricht, gilt die Quelle (siehe
+[verification/](verification/)):
+
+1. `BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md`
+2. `V5.7_ERRATUM_AND_V1_FIXES.md`
+3. `V5.7_ADDENDUM_CLUBELO.md`
+4. `FIT_EXTRACTION_BRIEF.md`
+
+Die Briefe bleiben unverändert stehen — sie sind das Protokoll dessen, was wann
+entschieden wurde. Was **operativ gilt**, steht hier. Zwei Punkte, die dadurch
+inzwischen anders lauten als in v5.7:
+
+- „gepinnter Lab-Commit" heißt jetzt: gepinnter Commit **dieses** Repos.
+- Die Liste erlaubter Secrets ist auf `GITHUB_TOKEN` geschrumpft.
 
 ## Aufbau
 
@@ -65,6 +76,7 @@ Entwicklung noch Tests laufen gegen die Live-API.
 | App A — fünf Seiten (V1-Umfang) | ✅ |
 | App B — eine selbstständige HTML-Datei | ✅ mit Tests |
 | Refit als zwei Prozesse, Toleranzen ex ante | ✅ mit Tests |
+| `packages/fit` — Fitprozedur im Repo, bitgleich reproduziert | ✅ mit Tests |
 | Begrenzter Rating-Übertrag, Datumsprüfung der Tages-CSV | ✅ mit Tests |
 | V1.1 (2. Bundesliga, Relegation) / V1.2 / V2 | ⏳ offen |
 
@@ -163,14 +175,15 @@ und wurden vorab festgelegt.
 
 ## Geheimnisse
 
-Erlaubt sind ausschließlich:
+Erlaubt ist ausschließlich **`GITHUB_TOKEN`**, das die Workflows selbst gestellt
+bekommen. Sonst nichts.
 
-- `GITHUB_TOKEN` — von den Workflows selbst gestellt.
-- `LAB_REPO_TOKEN` — fein granuliert, nur Lesezugriff auf `contents` von
-  `manganite/football-model-lab`, ausschließlich von `refit.yml` benutzt.
+Der frühere `LAB_REPO_TOKEN` ist entfallen: seit die Fitprozedur in
+`packages/fit` liegt, braucht kein Workflow mehr Zugriff auf ein zweites Repo
+(siehe [FIT_EXTRACTION.md](FIT_EXTRACTION.md)).
 
-Sollte die clubelo-Antwort ein privates Datenrepo erzwingen, kommt ein auf dieses
-Repo beschränkter Deploy-Key hinzu. Sonst nichts.
+Sollte die clubelo-Antwort ein privates Datenrepo erzwingen, käme ein auf dieses
+Repo beschränkter Deploy-Key hinzu — und nur der.
 
 ## Jährliche Checkliste
 
@@ -182,19 +195,25 @@ Vor jeder Saison:
 - Den Refit-Pull-Request prüfen. Der Sommerlauf committet nie direkt; er öffnet
   einen PR mit Monitoring-Bericht und neuen Produktionsparametern.
 
-### Refit — was der Workflow braucht
+### Refit — wie er läuft
 
-Die Fit-Prozedur liegt in `football-model-lab` und wird hier bewusst **nicht**
-nachgebaut: eine zweite Implementierung würde die ganze Herkunftskette wertlos
-machen. Der Workflow checkt das Lab am gepinnten Commit aus und braucht dafür:
+Die Fitprozedur liegt in [`packages/fit`](../packages/fit); der Refit ist damit
+aus diesem einen Repo reproduzierbar. Kein Fremd-Checkout, kein zusätzliches
+Secret.
 
-- das Secret `LAB_REPO_TOKEN`. Fehlt es, bricht der Lauf mit klarer Meldung ab,
-  statt irgendetwas zu rechnen, das wie ein Fit aussieht.
-- im Lab ein Skript `scripts/run-refit.mjs`, das die in
-  `pipeline/src/refit/cli.mjs` dokumentierte JSON-Datei erzeugt.
+```bash
+node packages/fit/src/cli.mjs --window 2011-2025 --monitor-season 2026 --out fit-output.json
+node pipeline/src/refit/cli.mjs --lab-output fit-output.json --out refit-output
+```
 
-Beides existiert im Lab noch nicht — das ist die offene Gegenstelle dieses
-Bausteins.
+Die erste Zeile erzeugt den JSON-Vertrag, die zweite entscheidet Prozess A oder B
+und schreibt den Pull-Request-Text. Committet wird dabei nichts.
+
+**Eine Einschränkung, solange die clubelo-Lizenzfrage offen ist:** die
+Pre-Match-Elo-Werte des Trainingsfensters sind nicht committet. Auf einem frischen
+Runner fehlen sie, und `refit.yml` bricht deshalb mit klarer Meldung ab statt
+irgendetwas zu rechnen. Der Refit läuft derzeit lokal; sobald die Daten committet
+werden dürfen, läuft er ohne weitere Änderung auch in CI.
 
 Die Reproduktionsschranken für die Prozess-A-Ausnahme stehen in
 `data/refit-tolerances.json`. Sie sind vorab festgelegt; sie nach Sicht eines

@@ -6,3 +6,7 @@ dist/
 data/cache/
 apps/public/public/data/
 apps/kicktipp/src/generated/
+
+# clubelo-derived training Elo — follows the rating archive location rule.
+# Not committed while the licence question is outstanding (FIT_EXTRACTION.md).
+data/ratings/training-elo/

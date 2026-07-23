@@ -1,8 +1,12 @@
 name: Jährlicher Refit
 
-# §5.5: „A summer job runs from the lab's code and OPENS A PR; it never commits
-# directly." Both processes open a PR carrying code, window and parameter
-# provenance — no path in this workflow writes to main.
+# §5.5: „A summer job runs from the fit procedure and OPENS A PR; it never
+# commits directly." Both processes open a PR carrying code, window and
+# parameter provenance — no path in this workflow writes to main.
+#
+# Since the fit extraction the procedure lives in THIS repository
+# (`packages/fit`, see docs/FIT_EXTRACTION.md). There is no cross-repo checkout
+# and no secret beyond the one GitHub provides.
 on:
   schedule:
     # Mid-July, after the previous season is complete and before the new one
@@ -11,8 +15,14 @@ on:
     - cron: "0 6 15 7 *"
   workflow_dispatch:
     inputs:
-      lab_ref:
-        description: "Lab-Commit oder Branch, aus dem gefittet wird (Standard: der gepinnte Commit aus season-params.json)"
+      window:
+        description: "Fit-Fenster, z. B. 2012-2026 (Standard: das Fenster aus season-params.json)"
+        required: false
+      monitor_season:
+        description: "Saison, auf der der Amtsinhaber ausgewertet wird (Prozess A)"
+        required: false
+      folds:
+        description: "Zahl der Rolling-Origin-Folds (nur nötig für Prozess B)"
         required: false
 
 permissions:
@@ -33,53 +43,36 @@ jobs:
         with:
           node-version: "22.23.1"
 
-      # The fitting code lives in a PRIVATE repository. Without a token that can
-      # read it, this job cannot run — and must say so plainly rather than
-      # falling back to something that looks like a fit.
-      - name: Zugang zum Lab prüfen
+      # The training Elo is clubelo-derived and deliberately NOT committed while
+      # the licence question is open (docs/FIT_EXTRACTION.md). A fresh runner
+      # therefore does not have it, and the job says so plainly instead of
+      # fitting on whatever it can find.
+      - name: Trainingsdaten prüfen
         run: |
-          if [ -z "${{ secrets.LAB_REPO_TOKEN }}" ]; then
-            echo "::error::Das Secret LAB_REPO_TOKEN fehlt. Der Refit fittet ausschließlich aus"
-            echo "::error::football-model-lab an einem gepinnten Commit; dieses Repo enthält die"
-            echo "::error::Fit-Prozedur bewusst nicht und darf sie nicht nachbauen."
+          if [ ! -d data/training/results ]; then
+            echo "::error::data/training/results fehlt — ohne Ergebnisse kein Fit."
+            exit 1
+          fi
+          ELO="${BUNDESLIGA_RATINGS_DIR:-data/ratings}/training-elo"
+          if [ ! -d "$ELO" ]; then
+            echo "::error::$ELO fehlt. Die Pre-Match-Elo-Werte sind clubelo-abgeleitet und"
+            echo "::error::werden nicht committet, solange die Lizenzfrage offen ist. Der Refit"
+            echo "::error::läuft deshalb derzeit lokal; siehe docs/FIT_EXTRACTION.md."
             exit 1
           fi
 
-      - name: Gepinnten Lab-Commit ermitteln
-        id: pin
+      - name: Fit rechnen
+        id: fit
         run: |
-          PINNED=$(node -e "console.log(require('./data/season-params.json').provenance.labCommit)")
-          REF="${{ inputs.lab_ref }}"
-          echo "ref=${REF:-$PINNED}" >> "$GITHUB_OUTPUT"
-          echo "incumbent=$PINNED" >> "$GITHUB_OUTPUT"
-
-      - name: Lab auschecken
-        uses: actions/checkout@v4
-        with:
-          repository: manganite/football-model-lab
-          token: ${{ secrets.LAB_REPO_TOKEN }}
-          ref: ${{ steps.pin.outputs.ref }}
-          path: lab
-
-      # The lab produces the fits and the metrics; this repository only decides
-      # and reports. The contract for this file is documented in
-      # pipeline/src/refit/cli.mjs.
-      - name: Fits im Lab rechnen
-        working-directory: lab
-        run: |
-          if [ ! -f scripts/run-refit.mjs ]; then
-            echo "::error::Das Lab stellt scripts/run-refit.mjs nicht bereit. Der Refit-Vertrag"
-            echo "::error::steht in pipeline/src/refit/cli.mjs; ohne ihn kann dieser Lauf nichts"
-            echo "::error::auswerten und erfindet nichts."
-            exit 1
-          fi
-          node scripts/run-refit.mjs \
-            --incumbent-commit "${{ steps.pin.outputs.incumbent }}" \
-            --out "$GITHUB_WORKSPACE/lab-output.json"
+          ARGS=""
+          [ -n "${{ inputs.window }}" ] && ARGS="$ARGS --window ${{ inputs.window }}"
+          [ -n "${{ inputs.monitor_season }}" ] && ARGS="$ARGS --monitor-season ${{ inputs.monitor_season }}"
+          [ -n "${{ inputs.folds }}" ] && ARGS="$ARGS --folds ${{ inputs.folds }}"
+          node packages/fit/src/cli.mjs $ARGS --out fit-output.json
 
       - name: Prozess entscheiden und Bericht erzeugen
         id: refit
-        run: node pipeline/src/refit/cli.mjs --lab-output lab-output.json --out refit-output
+        run: node pipeline/src/refit/cli.mjs --lab-output fit-output.json --out refit-output
 
       # Never a direct commit — always a pull request.
       - name: Pull Request öffnen
@@ -112,4 +105,4 @@ jobs:
           name: refit-${{ github.run_id }}
           path: |
             refit-output/
-            lab-output.json
+            fit-output.json
