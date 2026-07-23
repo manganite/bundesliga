@@ -48,10 +48,12 @@ test("the page offers what-if — and no longer the Beispielsaison (moved to Met
   assert.doesNotMatch(html, /Beispielsaison/);
 });
 
-test("the what-if explainer describes the process and rules out tendency what-if", () => {
+test("the what-if explainer describes the three states in user language", () => {
   const html = strip(renderPage(ctxFor(2026, "bl1")));
-  assert.match(html, /dieselbe\s+Simulation läuft mit denselben Zufallszahlen erneut/);
-  assert.match(html, /kein\s+Tendenz-Was-wäre-wenn/);
+  assert.match(html, /neu ausgewürfelt — mal so, mal so/);
+  assert.match(html, /mit demselben Zufall — Veränderungen kommen so wirklich von deinen Ergebnissen/);
+  // The insider sentence was removed (§2.2).
+  assert.doesNotMatch(html, /Tendenz-Was-wäre-wenn/);
 });
 
 test("the solver is ABSENT at the start of a season, not greyed or teased", () => {
@@ -69,7 +71,7 @@ test("the solver APPEARS only when at most five matchdays remain", () => {
   const html = strip(renderPage(ctxFor(2026, "bl1", { fixtures: withResults })));
   assert.match(html, /Was muss passieren/);
   // And the conservative-rule caption is present.
-  assert.match(html, /bei Punktgleichheit zählt der Vergleich zuungunsten/);
+  assert.match(html, /Der Vergleich wird bei Punktgleichheit zuungunsten des Klubs entschieden/);
 });
 
 test("six matchdays remaining is still too early — the boundary is exact", () => {

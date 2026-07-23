@@ -130,6 +130,7 @@ mit, weil die Trainingsdaten committet sind.
 | V1.2 — „Wichtigstes kommendes Spiel", Rekombinationstest im Lauf | ✅ mit Tests |
 | V2a — Szenarien (Was-wäre-wenn, Beispielsaison, Solver) | ✅ mit Tests |
 | Szenarien-UX-Politur + Methodik-Seite (§10 verfeinert) | ✅ mit Tests |
+| Ergebnis-Tabs je Ziel + Textrevisionen | ✅ mit Tests |
 | V2b — Historie | ⏳ zurückgestellt (Auslösebedingung im Brief) |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):

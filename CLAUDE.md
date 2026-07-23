@@ -64,6 +64,11 @@ spätere schlägt die frühere:**
    die Prognosen ändern) bleibt exklusiv auf Szenarien; die neue Methodik-Seite
    trägt genau ein *illustratives* Widget (die Beispielsaison), das nichts
    analysiert und nichts ändert.
+9. `SZENARIEN_TABS_TEXTE_BRIEF.md` — Ergebnistabelle in Tabs je Ziel, plus wörtliche
+   Textrevisionen und **eine Inhaltskorrektur** in Methodik Schritt 1: der Satz
+   „ein Favorit gewinnt darum nicht in jedem Durchlauf" hängte den Spielausgang
+   fälschlich an `RATING_SIGMA` (Unsicherheit über die *Stärke*, nicht Spielzufall,
+   §3) — die Ursache steht jetzt in Schritt 2 bei der Torziehung.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -305,6 +310,15 @@ construction.
   interaktive Element. Die geteilte Vorhersage-Darstellung (`FixturePrediction`)
   steht an genau einer Stelle — What-if-„Simuliert" und Methodik-Schritt 2 zeigen
   dieselbe Komponente, nie eine zweite Kopie.
+- **Die Ergebnistabelle des Was-wäre-wenn ist in Tabs je Ziel gegliedert.** Nur
+  Ziele mit einer Änderung über dem Rauschen bekommen einen Tab; die Vorwahl fällt
+  auf das Ziel mit dem größten |Δ|, damit der Haupteffekt ohne Klick sichtbar ist.
+  ARIA-Rollen `tablist`/`tab`/`tabpanel`.
+- **Kein Satz erklärt einen verlorenen Favoritensieg mit `RATING_SIGMA`.** Die
+  Streuung bildet Unsicherheit über die *Stärke* ab, nicht den Spielzufall (§3
+  wörtlich). Warum ein Favorit ein Spiel verliert, gehört zur Torziehung
+  (Methodik Schritt 2), nicht zur Streuung (Schritt 1). Ein Test verankert den
+  korrigierten Wortlaut, damit der falsche Kausalsatz nicht zurückkehrt.
 - **Was-wäre-wenn rechnet nicht automatisch.** Eingaben (`fixed`) und der zuletzt
   gerechnete Stand (`committed`) sind getrennt; nur „Szenario rechnen" überträgt.
   Ein offenes Spiel zeigt seinen Zustand (`FixturePrediction`), nie ein 0:0-Feld,

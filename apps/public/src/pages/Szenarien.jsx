@@ -53,8 +53,8 @@ export default function Szenarien({ ctx }) {
     <>
       <h2>Szenarien — {leagueLabel}</h2>
       <p className="page-intro">
-        Zum Durchspielen: eigene Ergebnisse festsetzen und sehen, wie sich die Wahrscheinlichkeiten
-        verschieben. Alles läuft im Browser und wird nirgends gespeichert.
+        Was wäre, wenn …? Ergebnisse festsetzen und sehen, wie sich die Prognose verschiebt.
+        Alles läuft im Browser und wird nirgends gespeichert.
       </p>
 
       <div className="stack">
@@ -217,12 +217,11 @@ export function FixedSummary({ fixedList, fixed, nameOf, onClearOne, onClearAll 
 export function Explainer() {
   return (
     <p className="page-intro" style={{ marginBottom: "0.8rem" }}>
-      Jedes offene Spiel ist zunächst <strong>simuliert</strong> — sein Ergebnis wird in jedem
-      Durchlauf aus der Torverteilung gezogen. Du kannst ein Spiel <strong>festsetzen</strong>, dann
-      gilt es als gespielt. Anschließend <strong>rechnest du das Szenario</strong>: dieselbe
-      Simulation läuft mit denselben Zufallszahlen erneut, und die Tabelle zeigt, welche
-      Wahrscheinlichkeiten sich dadurch verschieben. Nur exakte Ergebnisse — kein
-      Tendenz-Was-wäre-wenn.
+      Jedes offene Spiel ist zunächst <strong>simuliert</strong>: Sein Ergebnis wird in jedem
+      Durchlauf neu ausgewürfelt — mal so, mal so, gemäß den Torraten beider Klubs. Setzt du ein
+      Spiel <strong>fest</strong>, gilt stattdessen in allen Durchläufen genau dieses Ergebnis. Dann
+      <strong>Szenario rechnen</strong>: Dieselbe Simulation läuft erneut, mit demselben Zufall —
+      Veränderungen kommen so wirklich von deinen Ergebnissen und nicht vom Würfeln.
     </p>
   );
 }
@@ -298,15 +297,17 @@ export function WhatIfResult({ sim, targets, nameOf, runs, stale }) {
   }
 
   const { deltas } = sim.result;
-  const movers = [];
+
+  // One tab per target that HAS a supra-noise change (§1). Targets are kept in
+  // the league config's order; within a tab, clubs are sorted by |Δ|.
+  const tabs = [];
   for (const t of targets) {
     const rows = Object.entries(deltas[t.id] ?? {})
       .map(([clubId, d]) => ({ clubId, ...d }))
       .filter((d) => d.significant)
       .sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
-    for (const r of rows) movers.push({ target: t.label, ...r });
+    if (rows.length) tabs.push({ id: t.id, label: t.label, rows, top: rows[0] });
   }
-  movers.sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
 
   return (
     // §1.4: after any input change the previous result is dimmed and labelled.
@@ -314,42 +315,84 @@ export function WhatIfResult({ sim, targets, nameOf, runs, stale }) {
       <h3>Veränderung gegenüber der unveränderten Prognose</h3>
       {stale ? <p className="banner warn" role="status">Eingaben geändert — Ergebnis veraltet. „Szenario rechnen“ drücken.</p> : null}
       <p className="caption" style={{ marginTop: 0 }}>
-        Gezeigt werden alle Klubs und Ziele, deren Wahrscheinlichkeit sich über das Rauschen hinaus
-        ändert — auch Klubs, deren Spiele nicht festgesetzt wurden: Tabelle und Restprogramm koppeln
-        sie. Änderungen unterhalb der Rauschschwelle sind ausgeblendet ({number(runs, 0)} Läufe).
+        Alle Klubs, deren Chancen sich spürbar ändern — auch ohne eigenes festgesetztes Spiel, denn
+        jedes Ergebnis verschiebt zugleich die Rechnung der Konkurrenten. Unterschiede, die auch
+        reiner Zufall erzeugen könnte, sind ausgeblendet (gerechnet mit {number(runs, 0)} Durchläufen).
       </p>
-      <div className="table-scroll">
+      {tabs.length ? <ResultTabs tabs={tabs} nameOf={nameOf} /> : (
+        <p className="caption">
+          Keine messbare Veränderung — die festgesetzten Ergebnisse verschieben die
+          Wahrscheinlichkeiten nicht stärker, als es der Zufall auch könnte.
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** The signed change of a mover, in percentage points, as „−14,8 Pp." */
+const signedPp = (delta) => `${delta >= 0 ? "+" : "−"}${number(Math.abs(delta) * 100, 1)} Pp.`;
+
+/**
+ * One tab per target, ARIA tablist/tab/tabpanel. The default tab is the one
+ * holding the single largest |Δ| across all targets, so the headline effect is
+ * visible without a click (§1). Each tab label previews its count and biggest
+ * change, so the tab bar already tells the story.
+ */
+export function ResultTabs({ tabs, nameOf }) {
+  const defaultId = tabs
+    .slice()
+    .sort((a, b) => Math.abs(b.top.delta) - Math.abs(a.top.delta))[0].id;
+  const [selected, setSelected] = useState(null);
+  const activeId = tabs.some((t) => t.id === selected) ? selected : defaultId;
+  const active = tabs.find((t) => t.id === activeId);
+
+  return (
+    <>
+      <div role="tablist" aria-label="Ziele mit Veränderung" className="result-tabs">
+        {tabs.map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            role="tab"
+            id={`whatif-tab-${t.id}`}
+            aria-selected={t.id === activeId}
+            aria-controls={`whatif-panel-${t.id}`}
+            tabIndex={t.id === activeId ? 0 : -1}
+            className={t.id === activeId ? "result-tab is-active" : "result-tab"}
+            onClick={() => setSelected(t.id)}
+          >
+            {t.label} <span className="tab-preview">({t.rows.length} · {signedPp(t.top.delta)})</span>
+          </button>
+        ))}
+      </div>
+      <div
+        role="tabpanel"
+        id={`whatif-panel-${active.id}`}
+        aria-labelledby={`whatif-tab-${active.id}`}
+        className="table-scroll"
+      >
         <table className="data">
           <thead>
             <tr>
               <th scope="col" className="left">Klub</th>
-              <th scope="col" className="left">Ziel</th>
               <th scope="col">vorher</th>
               <th scope="col">im Szenario</th>
               <th scope="col">Veränderung</th>
             </tr>
           </thead>
           <tbody>
-            {movers.length ? movers.map((m) => (
-              <tr key={`${m.clubId}-${m.target}`}>
+            {active.rows.map((m) => (
+              <tr key={m.clubId}>
                 <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(m.clubId)}</th>
-                <td className="left">{m.target}</td>
                 <td>{percent(m.baseline, 1)}</td>
                 <td>{percent(m.modified, 1)}</td>
-                <td>{m.delta >= 0 ? "+" : ""}{number(m.delta * 100, 1)} Pp.</td>
+                <td>{signedPp(m.delta)}</td>
               </tr>
-            )) : (
-              <tr>
-                <td colSpan={5} className="left">
-                  Keine Veränderung über dem Rauschen — die festgelegten Ergebnisse verschieben die
-                  Wahrscheinlichkeiten nicht messbar.
-                </td>
-              </tr>
-            )}
+            ))}
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -387,8 +430,8 @@ function WasMussPassieren({ ctx, remaining }) {
       title="Was muss passieren?"
       caption={
         "Nur noch wenige Spieltage — hier steht, was ein Klub für ein Ziel braucht. Gerechnet wird "
-        + "konservativ nach der Spielordnung: bei Punktgleichheit zählt der Vergleich zuungunsten des "
-        + "Klubs, und für künftige Tore wird keine Obergrenze angenommen. Eine Garantie steht deshalb "
+        + "konservativ nach der Spielordnung: Der Vergleich wird bei Punktgleichheit zuungunsten des "
+        + "Klubs entschieden, und für künftige Tore wird keine Obergrenze angenommen. Eine Garantie steht deshalb "
         + "nur bei strikter Punktetrennung."
       }
     >

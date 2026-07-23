@@ -101,8 +101,8 @@ test("the result table carries its title, the coupling sentence and the noise-fl
     sim: fakeSim, targets, nameOf, runs: 20000, stale: false,
   })));
   assert.match(html, /Veränderung gegenüber der unveränderten Prognose/);
-  assert.match(html, /auch Klubs, deren Spiele nicht festgesetzt wurden: Tabelle und Restprogramm koppeln sie/);
-  assert.match(html, /unterhalb der Rauschschwelle sind ausgeblendet/);
+  assert.match(html, /jedes Ergebnis verschiebt zugleich die Rechnung der Konkurrenten/);
+  assert.match(html, /Unterschiede, die auch reiner Zufall erzeugen könnte, sind ausgeblendet/);
 });
 
 test("a stale result is dimmed and labelled until re-run (§1.4)", () => {

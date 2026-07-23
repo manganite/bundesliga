@@ -34,7 +34,7 @@ export default function Methodik({ ctx }) {
           ? <StepEineSaison ctx={ctx} />
           : (
             <Card title="3 · Eine Saison">
-              <Empty>Für die Beispielsaison wird die committete Simulation gebraucht; sie liegt noch nicht vor.</Empty>
+              <Empty>Die Beispielsaison braucht die aktuelle Prognoserechnung; sie liegt noch nicht vor.</Empty>
             </Card>
           )}
         <StepVieleSaisons runs={outlook?.runs} />
@@ -53,8 +53,9 @@ function StepStaerke() {
       <p className="methodik-step">
         Als Eingabe dienen die Elo-Ratings von <a href="http://clubelo.com/" rel="noreferrer">clubelo.com</a> —
         eine Zahl je Klub für die aktuelle Spielstärke. Wir kennen die wahre Stärke aber nicht exakt:
-        jede simulierte Saison nimmt deshalb eine leicht andere an, gesteuert von einer festen
-        Streuung um das Rating. Ein Favorit gewinnt darum nicht in jedem Durchlauf.
+        Jede simulierte Saison nimmt deshalb eine leicht andere an, gesteuert von einer festen
+        Streuung um das Rating. Diese Streuung bildet unser Unwissen über die Stärke ab — der Zufall
+        eines einzelnen Spiels kommt erst in Schritt 2.
       </p>
       <p className="caption">
         Wie aktuell die verwendeten Ratings je Spiel waren, steht auf der{" "}
@@ -87,7 +88,8 @@ export function StepEinSpiel({ season, prematch, params, league }) {
       <p className="methodik-step">
         Aus den beiden Ratings ergeben sich zwei erwartete Torraten; daraus zieht das Modell ein
         Ergebnis (Poisson, mit einer kleinen Korrektur für knappe Ergebnisse nach Dixon-Coles).
-        So sieht die Vorhersage für das nächste anstehende Spiel aus:
+        Ein Favorit gewinnt darum nicht jedes Spiel — auch bei klaren Wahrscheinlichkeiten fällt
+        jedes Ergebnis einzeln. So sieht die Vorhersage für das nächste anstehende Spiel aus:
       </p>
       {nextFixture && prediction ? (
         <p className="lead-sentence">

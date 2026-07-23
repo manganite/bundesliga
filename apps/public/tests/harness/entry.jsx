@@ -8,7 +8,7 @@ export { default as Modellguete } from "../../src/pages/Modellguete.jsx";
 export { default as Uebersicht } from "../../src/pages/Uebersicht.jsx";
 export { default as Verlauf } from "../../src/pages/Verlauf.jsx";
 export {
-  default as Szenarien, FixtureRow, FixedSummary, WhatIfResult, Explainer,
+  default as Szenarien, FixtureRow, FixedSummary, WhatIfResult, ResultTabs, Explainer,
 } from "../../src/pages/Szenarien.jsx";
 export { default as Methodik, SampleResult, StepEinSpiel } from "../../src/pages/Methodik.jsx";
 export { default as App } from "../../src/App.jsx";

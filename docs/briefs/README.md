@@ -18,6 +18,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 6 | [CLUBELO_FOLLOWTHROUGH_BRIEF.md](CLUBELO_FOLLOWTHROUGH_BRIEF.md) | Nach der Erlaubnis des clubelo-Betreibers: Protokoll, Trainingsdaten committet, Reproduktionstor in CI, ein Abruf pro Tag statt zwölf, Relaunch-Playbook, App B in CI. |
 | 7 | [V2A_SZENARIEN_BRIEF.md](V2A_SZENARIEN_BRIEF.md) | Nur die Szenarien-Hälfte von V2: Was-wäre-wenn, Beispielsaison, Solver „Was muss passieren?" (gebaut, getestet, bei > 5 Spieltagen unsichtbar). Die Historie (V2b) ist ausdrücklich zurückgestellt, mit Auslösebedingung. |
 | 8 | [SZENARIEN_UX_BRIEF.md](SZENARIEN_UX_BRIEF.md) | Reine Präsentation plus eine Spezifikationsänderung: §10 verfeinert (analytisch vs. illustrativ). What-if-Politur (Spieltagsgruppierung, Zustände, expliziter Rechnen-Button) und die neue Methodik-Seite „So entsteht die Prognose" mit der Beispielsaison als Exponat. |
+| 9 | [SZENARIEN_TABS_TEXTE_BRIEF.md](SZENARIEN_TABS_TEXTE_BRIEF.md) | Ergebnistabelle in Tabs je Ziel; wörtliche Textrevisionen; eine §8-Inhaltskorrektur in Methodik Schritt 1 (falscher Kausalsatz zu RATING_SIGMA). Reine Präsentation. |
 
 ## Diese Dateien werden nicht bearbeitet
 
