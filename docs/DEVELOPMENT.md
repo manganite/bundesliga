@@ -3,14 +3,11 @@
 Alles, was zum Mitbauen nötig ist. Die App selbst wird im
 [README](../README.md) beschrieben.
 
-Gebaut nach einer Kette von Vorgaben. Die jeweils spätere schlägt die frühere;
-wo eine verifizierte Primärquelle allen widerspricht, gilt die Quelle (siehe
-[verification/](verification/)):
-
-1. `BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md`
-2. `V5.7_ERRATUM_AND_V1_FIXES.md`
-3. `V5.7_ADDENDUM_CLUBELO.md`
-4. `FIT_EXTRACTION_BRIEF.md`
+Gebaut nach einer Kette von Vorgaben, die in [briefs/](briefs/) liegen — mit
+einem Index, der ihre Reihenfolge erklärt, denn aus den Dateinamen ist sie nicht
+ablesbar. Die jeweils spätere schlägt die frühere; wo eine verifizierte
+Primärquelle allen widerspricht, gilt die Quelle (siehe
+[verification/](verification/)).
 
 Die Briefe bleiben unverändert stehen — sie sind das Protokoll dessen, was wann
 entschieden wurde. Was **operativ gilt**, steht hier. Zwei Punkte, die dadurch

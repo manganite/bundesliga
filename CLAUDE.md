@@ -41,7 +41,9 @@ node pipeline/src/compareArtefacts.mjs <alteSeasonsDir> <neueSeasonsDir>
 
 ## Der Brief ist die Spezifikation — aber verifizierte Primärquellen schlagen ihn
 
-Vier Dateien bilden die Vorgabe. **Die jeweils spätere schlägt die frühere:**
+Die Vorgaben liegen in [docs/briefs/](docs/briefs/), mit einem Index, der die
+Reihenfolge erklärt — aus den Dateinamen ist sie nicht ablesbar. **Die jeweils
+spätere schlägt die frühere:**
 
 1. `BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md` — die Grundvorgabe.
 2. `V5.7_ERRATUM_AND_V1_FIXES.md` — korrigiert §6 gegen die Spielordnung, ordnet die
@@ -51,6 +53,11 @@ Vier Dateien bilden die Vorgabe. **Die jeweils spätere schlägt die frühere:**
 4. `FIT_EXTRACTION_BRIEF.md` — die Fitprozedur zieht nach `packages/fit`; das
    Reproduktionstor ist die Abnahme, und die Summationsreihenfolge zu ändern ist
    ab jetzt eine Prozess-B-Änderung.
+5. `PRE_V1.1_CLEANUP_BRIEF.md` — setzt die Cron-Flag und trägt zwei Zusätze für den
+   V1.1-Umfang.
+
+Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
+wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
 
 Wo eine verifizierte Primärquelle allen widerspricht, gilt die Quelle. §11 macht
 mehrere Prüfungen zur Vorbedingung, und **zwei davon haben ergeben, dass der Brief
