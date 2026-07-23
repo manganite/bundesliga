@@ -1,3 +1,4 @@
 import test from "node:test";
-// Wegwerf-Zweig: prüft, ob die Skip-Zählung in CI wirklich anschlägt.
-test("ein siebter Skip, der niemandem auffallen dürfte", { skip: "absichtlich" }, () => {});
+import assert from "node:assert/strict";
+// Wegwerf-Zweig: prüft, ob ein roter Test den Lauf wirklich rot macht.
+test("absichtlich rot", () => assert.equal(1, 2));
