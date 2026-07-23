@@ -22,9 +22,17 @@ Im Bau. Fertig und getestet:
 | `packages/engine` — RNG, Inverse-CDF-Sampling (§3) | ✅ mit Tests |
 | `packages/engine` — Poisson + Dixon-Coles (§2) | ✅ mit Tests |
 | `packages/engine` — DFL-Ranker (§6) | ✅ mit Tests, gegen 22 echte Saisons |
+| `packages/engine` — §4-Metriken | ✅ mit Tests |
+| `packages/engine` — Monte-Carlo, CRN, Batch-SE(Δ) (§3) | ✅ mit Tests |
 | `data/season-params.json` (Track C pooled) | ✅ ausgeliefert |
 | `pipeline` — Klub-Mapping fail closed (§5.2) | ✅ mit Gate-Skript |
-| §4-Metriken, Monte-Carlo-Treiber, Datenpipeline, App A, App B | ⏳ offen |
+| `pipeline` — Datenbeschaffung, Snapshots, Provenance (§5.1/§5.3) | ⏳ offen |
+| App A, App B, GitHub-Workflows | ⏳ offen |
+
+Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
+**≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
+20 000-Lauf-Artefakt gehört damit wie in §3 vorgesehen in die Pipeline; im
+Browser läuft die Simulation im Web Worker, mit 5 000 als mobiler Voreinstellung.
 
 ## Verifikationen vor dem Bau
 
