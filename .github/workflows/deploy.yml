@@ -28,10 +28,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Pinned Node version (§5.5 dependency hygiene).
+      # Pinned Node version (§5.5 dependency hygiene). It must satisfy the
+      # engine constraints of the build toolchain's OPTIONAL native bindings:
+      # rolldown's linux-x64-gnu binding requires ^20.19.0 || >=22.12.0, and npm
+      # silently SKIPS an optional dependency whose engine constraint fails —
+      # the build then dies with MODULE_NOT_FOUND far from the real cause.
       - uses: actions/setup-node@v4
         with:
-          node-version: "22.11.0"
+          node-version: "22.23.1"
           cache: npm
 
       - run: npm ci
