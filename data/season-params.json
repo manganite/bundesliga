@@ -1,0 +1,51 @@
+{
+  "_comment": "Shipped model parameters. Source: football-model-lab Track C, Part 0 — the POOLED BL1+BL2 fit (not Track A's BL1-only figures), per brief §2. Refit once before each season, never during. The BL2 fields are additive deltas on the pooled values; the application rule lives in packages/engine/src/model.mjs and is taken verbatim from the lab.",
+  "schemaVersion": 1,
+  "procedureVersion": "track-c-part0-v1",
+  "provenance": {
+    "labRepo": "manganite/football-model-lab",
+    "labCommit": "bb000fbbd945dbc19c41baf093d607065747af92",
+    "artefact": "report/params-track-c-part0.json",
+    "fitDate": "2026-07-22",
+    "fitSeasons": "2011/12–2025/26",
+    "fitSeasonCount": 15,
+    "leagues": ["bl1", "bl2"],
+    "weighting": "equal — recency weighting did not earn its keep on held-out evidence",
+    "note": "The 15-season window is the window on which the lab's recency conclusion was established. Changing the window rule is a Process B change (§5.5) and requires re-running the recency test first."
+  },
+  "params": {
+    "BASE_TOTAL": 3.0279202615048213,
+    "ELO_PER_GOAL": 213.02074119618948,
+    "HOME_ADV": 68.91055375224373,
+    "RHO": -0.10088172337685239,
+    "MAX_GOALS": 10,
+    "ET_FACTOR": 0.3333333333333333,
+    "RATING_SIGMA": 100,
+    "BASE_TOTAL_BL2": -0.22048618532780445,
+    "ELO_PER_GOAL_BL2": 14.6473666962757,
+    "HOME_ADV_BL2": -4.055085798617771,
+    "HOME_ADV_GHOST": -24.246303437330884,
+    "HOME_ADV_GHOST_BL2": 0
+  },
+  "perLeagueFields": {
+    "_comment": "§11 gate: does the Track C artefact distinguish league baselines? Yes — these three deltas were kept because they earned their keep on held-out evidence. BL2 therefore does NOT inherit the pooled baseline. See docs/verification/track-c-parameter.md.",
+    "kept": ["HOME_ADV_BL2", "BASE_TOTAL_BL2", "ELO_PER_GOAL_BL2"],
+    "effectiveBl2": {
+      "BASE_TOTAL": 2.807434076177017,
+      "ELO_PER_GOAL": 227.66810789246518,
+      "HOME_ADV": 64.85546795362596
+    }
+  },
+  "ghostWindow": {
+    "_comment": "COVID closed-door window as defined by the lab. HOME_ADV_GHOST applies only to matches inside it — relevant for V2 historical replays, inactive for the current season. §8: the pooled 95% interval [-50.8, +10.5] includes zero, so no causal claim is made anywhere in the UI.",
+    "from": "2020-03-11",
+    "to": "2021-06-01",
+    "ci95Pooled": [-50.81633161680002, 10.50122654073054]
+  },
+  "liveRatings": {
+    "_comment": "The one positive lab result (§2): live per-match ratings beat pre-season ratings. Season-clustered CI on log-loss. The lab's per-match intervals are deliberately NOT reproduced here — they are too narrow and §11 forbids quoting them.",
+    "improvementLogLoss": 0.01270144537498888,
+    "ci95SeasonClustered": [0.003852135238902948, 0.022751730000024672],
+    "seasonsPositive": "9 of 10 held-out seasons"
+  }
+}

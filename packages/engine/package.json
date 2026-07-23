@@ -1,0 +1,17 @@
+{
+  "name": "@bundesliga/engine",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Single source of truth for the model, league rules and every §4 metric. Neither app forks or re-implements these.",
+  "main": "src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./rng": "./src/rng.mjs",
+    "./model": "./src/model.mjs",
+    "./ranking": "./src/ranking.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/"
+  }
+}

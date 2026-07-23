@@ -1,0 +1,20 @@
+{
+  "name": "bundesliga",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Bundesliga-Simulator (App A) und Kicktipp-Optimierer (App B)",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "pipeline"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"packages/engine/tests/**/*.test.mjs\" \"pipeline/tests/**/*.test.mjs\"",
+    "test:engine": "node --test \"packages/engine/tests/**/*.test.mjs\"",
+    "gate:clubelo": "node pipeline/src/checkClubeloCoverage.mjs"
+  }
+}
