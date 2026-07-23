@@ -69,6 +69,10 @@ spätere schlägt die frühere:**
    „ein Favorit gewinnt darum nicht in jedem Durchlauf" hängte den Spielausgang
    fälschlich an `RATING_SIGMA` (Unsicherheit über die *Stärke*, nicht Spielzufall,
    §3) — die Ursache steht jetzt in Schritt 2 bei der Torziehung.
+10. `SCORELINE_KONVENTION_BRIEF.md` — hebt die „keine Engine-Änderung"-Klausel für
+    **genau eine** reine Anzeige-Hilfsfunktion auf: `favouriteScoreline`. Das
+    angezeigte „wahrscheinlichste Ergebnis" ist ab jetzt das Modalergebnis
+    *innerhalb der wahrscheinlichsten Tendenz*, nicht das globale Modalergebnis.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -310,6 +314,17 @@ construction.
   interaktive Element. Die geteilte Vorhersage-Darstellung (`FixturePrediction`)
   steht an genau einer Stelle — What-if-„Simuliert" und Methodik-Schritt 2 zeigen
   dieselbe Komponente, nie eine zweite Kopie.
+- **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
+  Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
+  wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
+  Widerspruch aussieht. `favouriteScoreline` in `model.mjs` ist die eine erlaubte
+  Anzeige-Hilfsfunktion; Ties lösen sich über die kanonische Scoreline-Ordnung,
+  keine neue Konvention. Anzeige und „Festsetzen"-Vorbelegung nutzen dieselbe
+  Funktion über `FixturePrediction` — kein zweiter Anzeigepfad.
+- **Die Rendertest-Harness baut je Prozess in ein eigenes `.out/p<pid>`.** node:test
+  fährt Testdateien parallel; ein gemeinsames Ausgabeverzeichnis lässt zwei Vite-
+  Builds einander mitten im Schreiben überschreiben — ein Wettlauf, der als
+  sporadischer Fehlschlag auftaucht, sobald genug Dateien die Harness nutzen.
 - **Die Ergebnistabelle des Was-wäre-wenn ist in Tabs je Ziel gegliedert.** Nur
   Ziele mit einer Änderung über dem Rauschen bekommen einen Tab; die Vorwahl fällt
   auf das Ziel mit dem größten |Δ|, damit der Haupteffekt ohne Klick sichtbar ist.

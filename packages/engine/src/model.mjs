@@ -222,9 +222,72 @@ export function predictMatch(eloHome, eloAway, params) {
   return {
     tendency: { homeWin, draw, awayWin },
     mostLikely: cells[0],
+    // The most likely scoreline WITHIN the favourite tendency (§SCORELINE_KONVENTION).
+    favourite: favouriteScoreline(dist),
     top5: cells.slice(0, 5),
     expectedGoals: [lamH, lamA],
   };
+}
+
+/**
+ * The most likely scoreline WITHIN the most likely tendency.
+ *
+ * The global modal scoreline reads as a contradiction next to the favourite
+ * tendency: draws bundle their probability onto few scorelines (mostly 1:1),
+ * wins spread theirs over many (1:0, 2:0, 2:1 …), so „Heimsieg 57 %" can sit
+ * beside a global modal of 1:1. The honest display is the modal scoreline
+ * conditioned on the favourite tendency.
+ *
+ * Ties at BOTH levels resolve by the engine's CANONICAL scoreline ordering
+ * (by total goals, then home goals) — first in the ordering wins. That ordering
+ * already exists and is protocol-stamped; no new convention is introduced. For
+ * the tendency level the tie-break is the order of each tendency's earliest
+ * canonical scoreline: draw (0:0) before home win (1:0) before away win (0:1).
+ *
+ * @param {object} dist  a scoreline distribution from buildScorelineDistribution
+ * @returns {{tendency:string, pTendency:number, scoreline:[number,number], pScoreline:number}}
+ */
+export function favouriteScoreline(dist) {
+  const N = dist.maxGoals;
+  let homeWin = 0;
+  let draw = 0;
+  let awayWin = 0;
+  for (let h = 0; h <= N; h++) {
+    for (let a = 0; a <= N; a++) {
+      const p = dist.pmf[scorelineIndex(h, a, N)];
+      if (h > a) homeWin += p;
+      else if (h === a) draw += p;
+      else awayWin += p;
+    }
+  }
+
+  // Tendency argmax with the canonical tie-break: the candidates are listed in
+  // the order of their earliest canonical scoreline, and a strict `>` keeps the
+  // first on a tie.
+  const masses = [["draw", draw], ["homeWin", homeWin], ["awayWin", awayWin]];
+  let tendency = masses[0][0];
+  let pTendency = masses[0][1];
+  for (const [t, m] of masses) if (m > pTendency) { tendency = t; pTendency = m; }
+
+  const inRegion = tendency === "homeWin"
+    ? (h, a) => h > a
+    : tendency === "awayWin"
+      ? (h, a) => h < a
+      : (h, a) => h === a;
+
+  // Argmax over that region only, walking cells in CANONICAL order so a strict
+  // `>` leaves the first-in-the-ordering winner on any tie.
+  const { order, cells } = canonicalOrder(N);
+  let scoreline = null;
+  let pScoreline = -1;
+  for (let i = 0; i < order.length; i++) {
+    const [h, a] = cells[i];
+    if (!inRegion(h, a)) continue;
+    const p = dist.pmf[order[i]];
+    if (p > pScoreline) { pScoreline = p; scoreline = [h, a]; }
+  }
+
+  return { tendency, pTendency, scoreline, pScoreline };
 }
 
 /** Tendency of an actual scoreline — the label the §4 metrics score against. */

@@ -7,6 +7,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
 import { drawSeasonRun } from "../../../packages/engine/src/simulate.mjs";
 import { predictFixture } from "../src/lib/season.js";
+import { predictMatch, effectiveParams } from "../../../packages/engine/src/model.mjs";
 
 // ============================================================================
 //  SZENARIEN_UX — presentation polish. The states are driven by component
@@ -25,6 +26,9 @@ const OUTLOOK = read("data/seasons/2026/bl1/outlook.json");
 const PREMATCH = read("data/seasons/2026/bl1/prematch.json");
 const CONFIG = read("data/seasons/2026/config.json");
 const nameOf = (() => { const m = new Map(SEASON.clubs.map((c) => [c.clubId, c.name])); return (id) => m.get(id) ?? id; })();
+
+const EP = effectiveParams(PARAMS.params, { league: "bl1" });
+const predictFixtureFor = (eh, ea) => predictMatch(eh, ea, EP);
 
 const mod = await harness();
 const { FixturePrediction, FixtureRow, FixedSummary, WhatIfResult, SampleResult, StepEinSpiel, Methodik, Szenarien } = mod;
@@ -147,6 +151,19 @@ test("real results are visually distinguished from drawn ones in the Beispielsai
   const html = renderToStaticMarkup(React.createElement(SampleResult, { sim: { status: "done", result: sample }, nameOf }));
   assert.match(html, /real-score/, "played results carry a distinct class");
   assert.match(html, /drawn-score/, "drawn results carry the drawn class");
+});
+
+test("the shared component shows the CONDITIONAL scoreline — a win tendency never reads as a draw", () => {
+  // A home favourite whose global modal is a draw: the display must show the
+  // conditional modal, which is a home win (§SCORELINE_KONVENTION).
+  const homeFav = predictFixtureFor(1720, 1600);
+  assert.equal(homeFav.mostLikely.score.join(":"), "1:1", "the global modal is a draw for this case");
+  const html = strip(renderToStaticMarkup(React.createElement(FixturePrediction, { prediction: homeFav, prefix: "Simuliert" })));
+  assert.match(html, /Heimsieg/);
+  // The shown scoreline is a home win (home goals strictly greater), never the 1:1.
+  const m = html.match(/wahrscheinlichstes Ergebnis (\d+):(\d+)/);
+  assert.ok(m, "a scoreline must be shown");
+  assert.ok(Number(m[1]) > Number(m[2]), `shown ${m[1]}:${m[2]} is not a home win`);
 });
 
 test("Methodik step 2 shows the SAME fixture presentation as the what-if „Simuliert“ state", () => {

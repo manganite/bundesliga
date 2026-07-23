@@ -274,3 +274,84 @@ test("dcTau corrects exactly the four low-score cells", () => {
     assert.equal(dcTau(h, a, 1.4, 1.1, rho), 1, `${h}:${a} must be untouched`);
   }
 });
+
+// ============================================================================
+//  favouriteScoreline (§SCORELINE_KONVENTION) — the modal scoreline WITHIN the
+//  favourite tendency, not the global modal.
+// ============================================================================
+
+import { favouriteScoreline } from "../src/model.mjs";
+
+const EP = effectiveParams(P, { league: "bl1" });
+
+test("the conditional modal diverges from the global modal — the brief's case", () => {
+  // A home favourite around 57 %: the global modal is a 1:1 draw, but the modal
+  // WITHIN the home-win region is 2:1.
+  const pred = predictMatch(1720, 1600, EP);
+  assert.equal(pred.mostLikely.score.join(":"), "1:1", "the global modal is the bundled draw");
+  const fav = pred.favourite;
+  assert.equal(fav.tendency, "homeWin");
+  assert.ok(fav.pTendency > 0.5 && fav.pTendency < 0.65);
+  assert.equal(fav.scoreline.join(":"), "2:1", "the conditional modal is a home win, not a draw");
+  // The reported scoreline is genuinely a home win.
+  assert.ok(fav.scoreline[0] > fav.scoreline[1]);
+});
+
+test("favouriteScoreline agrees with predictMatch's surfaced favourite", () => {
+  const { lamH, lamA } = eloToLambdas(1720, 1600, EP);
+  const dist = buildScorelineDistribution(lamH, lamA, EP);
+  const direct = favouriteScoreline(dist);
+  const viaPredict = predictMatch(1720, 1600, EP).favourite;
+  assert.deepEqual(direct, viaPredict);
+});
+
+test("the reported scoreline always lies inside the reported tendency", () => {
+  for (const [eh, ea] of [[1600, 1600], [1800, 1500], [1500, 1900], [2000, 1400], [1650, 1620]]) {
+    const fav = predictMatch(eh, ea, EP).favourite;
+    const [h, a] = fav.scoreline;
+    const region = h > a ? "homeWin" : h < a ? "awayWin" : "draw";
+    assert.equal(region, fav.tendency, `${eh} vs ${ea}: ${h}:${a} is not in ${fav.tendency}`);
+  }
+});
+
+test("a scoreline-level tie resolves by the canonical ordering — first in the order wins", () => {
+  // Construct a distribution by hand where two cells in the SAME region tie for
+  // the maximum. Canonical order is by total goals then home goals, so the
+  // earlier cell must be chosen.
+  const N = EP.MAX_GOALS;
+  const size = (N + 1) * (N + 1);
+  const pmf = new Float64Array(size);
+  const idx = (h, a) => h * (N + 1) + a;
+  // Two home-win cells tie: 2:0 (total 2) and 3:1 (total 4). Canonical order
+  // puts 2:0 first. Give the draw/away regions less mass so home is the tendency.
+  pmf[idx(2, 0)] = 0.25;
+  pmf[idx(3, 1)] = 0.25;
+  pmf[idx(1, 0)] = 0.10; // extra home mass so homeWin is the argmax tendency
+  pmf[idx(0, 0)] = 0.20; // draw
+  pmf[idx(0, 1)] = 0.20; // away
+  const dist = { pmf, maxGoals: N };
+  const fav = favouriteScoreline(dist);
+  assert.equal(fav.tendency, "homeWin");
+  assert.equal(fav.scoreline.join(":"), "2:0", "the earlier canonical cell must win the tie");
+});
+
+test("a tendency-level tie resolves by canonical order: draw before home before away", () => {
+  const N = EP.MAX_GOALS;
+  const size = (N + 1) * (N + 1);
+  const idx = (h, a) => h * (N + 1) + a;
+  // Home and away masses tie exactly; draw is smaller. Home's earliest canonical
+  // scoreline (1:0) precedes away's (0:1), so home wins the tendency tie.
+  const pmf = new Float64Array(size);
+  pmf[idx(1, 0)] = 0.4; // homeWin region = 0.4
+  pmf[idx(0, 1)] = 0.4; // awayWin region = 0.4
+  pmf[idx(0, 0)] = 0.2; // draw
+  const fav = favouriteScoreline({ pmf, maxGoals: N });
+  assert.equal(fav.tendency, "homeWin", "home wins a tie with away by canonical order");
+
+  // And draw wins a three-way tie (0:0 is the earliest canonical cell of all).
+  const pmf2 = new Float64Array(size);
+  pmf2[idx(0, 0)] = 1 / 3;
+  pmf2[idx(1, 0)] = 1 / 3;
+  pmf2[idx(0, 1)] = 1 / 3;
+  assert.equal(favouriteScoreline({ pmf: pmf2, maxGoals: N }).tendency, "draw");
+});

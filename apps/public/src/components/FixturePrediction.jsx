@@ -12,12 +12,16 @@ import { percent } from "../lib/format.js";
 
 const TENDENCY_LABEL = { homeWin: "Heimsieg", draw: "Unentschieden", awayWin: "Auswärtssieg" };
 
-/** The favourite tendency (argmax) and the modal scoreline, from a prediction. */
+/**
+ * The favourite tendency with its probability and the modal scoreline WITHIN
+ * that tendency (§SCORELINE_KONVENTION) — never the global modal, which reads as
+ * a contradiction next to the favourite tendency. Both come from the engine's
+ * `favouriteScoreline`, surfaced on the prediction; this component derives no
+ * scoreline of its own.
+ */
 export function favouriteOf(prediction) {
-  const t = prediction.tendency;
-  const [key] = Object.entries(t).sort((a, b) => b[1] - a[1])[0];
-  const [h, a] = prediction.mostLikely.score;
-  return { tendency: key, label: TENDENCY_LABEL[key], probability: t[key], modal: [h, a] };
+  const { tendency, pTendency, scoreline } = prediction.favourite;
+  return { tendency, label: TENDENCY_LABEL[tendency], probability: pTendency, modal: scoreline };
 }
 
 /** „Simuliert — Heimsieg 48 %, wahrscheinlichstes Ergebnis 2:1" */

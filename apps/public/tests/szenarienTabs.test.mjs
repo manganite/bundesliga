@@ -105,6 +105,13 @@ test("§2.5 CONTENT CORRECTION: the wrong causal sentence must not return", () =
   assert.ok(m.includes("Ein Favorit gewinnt darum nicht jedes Spiel — auch bei klaren Wahrscheinlichkeiten fällt\n        jedes Ergebnis einzeln."));
 });
 
+test("§SCORELINE_KONVENTION: Methodik step 2 carries the conditional-scoreline passage verbatim", () => {
+  const m = src("apps/public/src/pages/Methodik.jsx");
+  assert.ok(m.includes("Das wahrscheinlichste Einzelergebnis ist oft"));
+  assert.ok(m.includes("Angezeigt wird deshalb überall das wahrscheinlichste Ergebnis"));
+  assert.ok(m.includes("innerhalb der wahrscheinlichsten Tendenz"));
+});
+
 test("§2.6 the developer-jargon empty state is replaced", () => {
   const m = src("apps/public/src/pages/Methodik.jsx");
   assert.ok(m.includes("Die Beispielsaison braucht die aktuelle Prognoserechnung; sie liegt noch nicht vor."));

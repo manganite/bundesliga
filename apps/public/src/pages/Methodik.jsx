@@ -89,7 +89,12 @@ export function StepEinSpiel({ season, prematch, params, league }) {
         Aus den beiden Ratings ergeben sich zwei erwartete Torraten; daraus zieht das Modell ein
         Ergebnis (Poisson, mit einer kleinen Korrektur für knappe Ergebnisse nach Dixon-Coles).
         Ein Favorit gewinnt darum nicht jedes Spiel — auch bei klaren Wahrscheinlichkeiten fällt
-        jedes Ergebnis einzeln. So sieht die Vorhersage für das nächste anstehende Spiel aus:
+        jedes Ergebnis einzeln. Eine Eigenheit dabei: Das wahrscheinlichste Einzelergebnis ist oft
+        ein Remis wie das 1:1 — selbst wenn ein Sieg die wahrscheinlichere Tendenz ist. Siege
+        verteilen ihre Wahrscheinlichkeit auf viele mögliche Ergebnisse (1:0, 2:0, 2:1 …), Remis
+        bündeln sie auf wenige. Angezeigt wird deshalb überall das wahrscheinlichste Ergebnis
+        innerhalb der wahrscheinlichsten Tendenz. So sieht die Vorhersage für das nächste anstehende
+        Spiel aus:
       </p>
       {nextFixture && prediction ? (
         <p className="lead-sentence">

@@ -16,7 +16,12 @@ import path from "node:path";
 import { build } from "vite";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
-const OUT = path.join(import.meta.dirname, ".out");
+// node:test runs each test FILE in its own process, in parallel. A single shared
+// output directory would let two concurrent builds clobber each other's bundle
+// mid-write — a race that surfaces as a spurious failure once enough test files
+// consume the harness. Per-process output keeps them independent; all of `.out`
+// is gitignored.
+const OUT = path.join(import.meta.dirname, ".out", `p${process.pid}`);
 
 let built = null;
 
