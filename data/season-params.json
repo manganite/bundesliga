@@ -9,9 +9,28 @@
     "fitDate": "2026-07-22",
     "fitSeasons": "2011/12–2025/26",
     "fitSeasonCount": 15,
-    "leagues": ["bl1", "bl2"],
+    "leagues": [
+      "bl1",
+      "bl2"
+    ],
     "weighting": "equal — recency weighting did not earn its keep on held-out evidence",
-    "note": "The 15-season window is the window on which the lab's recency conclusion was established. Changing the window rule is a Process B change (§5.5) and requires re-running the recency test first."
+    "note": "The 15-season window is the window on which the lab's recency conclusion was established. Changing the window rule is a Process B change (§5.5) and requires re-running the recency test first.",
+    "hyperparameters": {
+      "window": 15,
+      "weighting": "equal",
+      "model": "v1",
+      "fitKeys": [
+        "BASE_TOTAL",
+        "ELO_PER_GOAL",
+        "RHO",
+        "HOME_ADV",
+        "HOME_ADV_GHOST",
+        "HOME_ADV_BL2",
+        "BASE_TOTAL_BL2",
+        "ELO_PER_GOAL_BL2"
+      ]
+    },
+    "_hyperComment": "Whether a summer is Process A or Process B is decided by the pinned lab commit AND this hyperparameter set. Any difference means Process B (§5.5)."
   },
   "params": {
     "BASE_TOTAL": 3.0279202615048213,
@@ -29,10 +48,14 @@
   },
   "perLeagueFields": {
     "_comment": "§11 gate: does the Track C artefact distinguish league baselines? Yes — these three deltas were kept because they earned their keep on held-out evidence. BL2 therefore does NOT inherit the pooled baseline. See docs/verification/track-c-parameter.md.",
-    "kept": ["HOME_ADV_BL2", "BASE_TOTAL_BL2", "ELO_PER_GOAL_BL2"],
+    "kept": [
+      "HOME_ADV_BL2",
+      "BASE_TOTAL_BL2",
+      "ELO_PER_GOAL_BL2"
+    ],
     "effectiveBl2": {
       "BASE_TOTAL": 2.807434076177017,
-      "ELO_PER_GOAL": 227.66810789246518,
+      "ELO_PER_GOAL": 227.66810789246517,
       "HOME_ADV": 64.85546795362596
     }
   },
@@ -40,12 +63,18 @@
     "_comment": "COVID closed-door window as defined by the lab. HOME_ADV_GHOST applies only to matches inside it — relevant for V2 historical replays, inactive for the current season. §8: the pooled 95% interval [-50.8, +10.5] includes zero, so no causal claim is made anywhere in the UI.",
     "from": "2020-03-11",
     "to": "2021-06-01",
-    "ci95Pooled": [-50.81633161680002, 10.50122654073054]
+    "ci95Pooled": [
+      -50.81633161680002,
+      10.50122654073054
+    ]
   },
   "liveRatings": {
     "_comment": "The one positive lab result (§2): live per-match ratings beat pre-season ratings. Season-clustered CI on log-loss. The lab's per-match intervals are deliberately NOT reproduced here — they are too narrow and §11 forbids quoting them.",
     "improvementLogLoss": 0.01270144537498888,
-    "ci95SeasonClustered": [0.003852135238902948, 0.022751730000024672],
+    "ci95SeasonClustered": [
+      0.003852135238902948,
+      0.022751730000024672
+    ],
     "seasonsPositive": "9 of 10 held-out seasons"
   }
 }

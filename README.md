@@ -31,7 +31,8 @@ Im Bau. Fertig und getestet:
 | Daten- und Deploy-Workflow | ✅ |
 | App A — Übersicht, Tabelle & Prognose, Spieltage, Teams, Verlauf | ✅ V1-Umfang |
 | App B — eine selbstständige HTML-Datei, 23 kB | ✅ mit Tests |
-| Refit-Workflow, V1.1 / V1.2 / V2 | ⏳ offen |
+| Refit als zwei Prozesse (§5.5), Toleranzen ex ante | ✅ mit Tests |
+| V1.1 (2. Bundesliga, Relegation) / V1.2 / V2 | ⏳ offen |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
 **≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
@@ -113,3 +114,20 @@ Vor jeder Saison:
 - Auf Regeländerungen prüfen (Auf-/Abstieg, Relegation, Tiebreak-Reihenfolge).
 - Den Refit-Pull-Request prüfen. Der Sommerlauf committet nie direkt; er öffnet
   einen PR mit Monitoring-Bericht und neuen Produktionsparametern (§5.5).
+
+### Refit — was der Workflow braucht
+
+Die Fit-Prozedur liegt in `football-model-lab` und wird hier bewusst **nicht**
+nachgebaut: eine zweite Implementierung würde die ganze Herkunftskette wertlos
+machen. Der Workflow checkt das Lab am gepinnten Commit aus und braucht dafür:
+
+- ein Repository-Secret **`LAB_REPO_TOKEN`** mit Lesezugriff auf das private
+  Lab-Repo. Fehlt es, bricht der Lauf mit klarer Meldung ab, statt irgendetwas
+  zu rechnen, das wie ein Fit aussieht.
+- im Lab ein Skript **`scripts/run-refit.mjs`**, das die in
+  `pipeline/src/refit/cli.mjs` dokumentierte JSON-Datei erzeugt. Beides existiert
+  im Lab noch nicht — das ist die offene Gegenstelle dieses Bausteins.
+
+Die Reproduktionsschranken für die Prozess-A-Ausnahme stehen in
+`data/refit-tolerances.json`. Sie sind **vorab** festgelegt; sie nach Sicht eines
+Ergebnisses zu ändern, ist genau das, was §5.6 ausschließt.

@@ -1,0 +1,68 @@
+{
+  "_comment": "Reproduction tolerances for the Process-A escape hatch (§5.5, hardened in v5.6). FIXED EX ANTE AND CHECKED IN. These bounds are NEVER chosen or adjusted after seeing a reproduction result — that is the whole point of committing them here. The refit PR reports only pass/fail against these values. Changing this file is itself a decision that must be justified in its own PR, made BEFORE the summer run it will govern.",
+  "schemaVersion": 1,
+  "fixedOn": "2026-07-23",
+
+  "preference": {
+    "_comment": "Bit-identical reproduction is preferred and is the DEFAULT EXPECTATION. The bounds below are a fallback for genuine numerical noise, not a routine allowance.",
+    "bitIdenticalPreferred": true
+  },
+
+  "parameterClasses": {
+    "_comment": "One absolute and one relative tolerance per class. A parameter passes if it is within EITHER — absolute alone would be meaningless across scales that differ by two orders of magnitude, relative alone would be meaningless for values near zero.",
+
+    "goalRate": {
+      "description": "Scoring rates, order 3 goals. BASE_TOTAL and its league deltas.",
+      "parameters": ["BASE_TOTAL", "BASE_TOTAL_BL2"],
+      "absolute": 1e-6,
+      "relative": 1e-6
+    },
+    "eloScale": {
+      "description": "Elo points per goal, order 200. ELO_PER_GOAL and its league delta.",
+      "parameters": ["ELO_PER_GOAL", "ELO_PER_GOAL_BL2"],
+      "absolute": 1e-4,
+      "relative": 1e-6
+    },
+    "eloOffset": {
+      "description": "Additive Elo offsets, order 70 but legitimately near zero for the deltas.",
+      "parameters": ["HOME_ADV", "HOME_ADV_BL2", "HOME_ADV_GHOST", "HOME_ADV_GHOST_BL2"],
+      "absolute": 1e-4,
+      "relative": 1e-6
+    },
+    "correlation": {
+      "description": "Dixon-Coles dependence, order 0.1 and bounded.",
+      "parameters": ["RHO"],
+      "absolute": 1e-8,
+      "relative": 1e-6
+    },
+    "structural": {
+      "description": "Not fitted — grid size, extra-time factor, rating noise. These are DECISIONS and must reproduce exactly; any difference is a procedure change, not numerical noise.",
+      "parameters": ["MAX_GOALS", "ET_FACTOR", "RATING_SIGMA"],
+      "absolute": 0,
+      "relative": 0
+    }
+  },
+
+  "comparativeGates": {
+    "_comment": "Process B ONLY (§5.5). There is no comparative gate in Process A — in a normal year the incumbent and a fresh fit on the same window arise from identical data and identical code, so comparing them tests nothing.",
+    "decisionMetric": "foldMeanHeldOutLogLoss",
+    "logLossMaxRelativeWorsening": 0.005,
+    "guardrails": {
+      "brierMaxRelativeWorsening": 0.01,
+      "rpsMaxRelativeWorsening": 0.01,
+      "eceMaxAbsoluteWorseningPercentagePoints": 1.0
+    },
+    "rollingOrigin": {
+      "_comment": "The lab's time-forward protocol: each of the last N completed seasons serves once as hold-out, both procedures fitted on the 15 seasons preceding that fold.",
+      "foldsPreferred": 10,
+      "foldsMinimum": 5,
+      "trainingSeasons": 15
+    }
+  },
+
+  "windowProvenance": {
+    "_comment": "15 seasons is the window on which the lab's recency conclusion ('equal weighting beats every half-life') was established. IF THE WINDOW RULE EVER CHANGES, THAT IS A PROCESS B CHANGE and the recency test must be re-run first — otherwise older football is imported into a current forecast.",
+    "seasons": 15,
+    "weighting": "equal"
+  }
+}

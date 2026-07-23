@@ -1,0 +1,115 @@
+name: Jährlicher Refit
+
+# §5.5: „A summer job runs from the lab's code and OPENS A PR; it never commits
+# directly." Both processes open a PR carrying code, window and parameter
+# provenance — no path in this workflow writes to main.
+on:
+  schedule:
+    # Mid-July, after the previous season is complete and before the new one
+    # starts. Deliberately well before the first matchday, so a Process B
+    # discussion has room.
+    - cron: "0 6 15 7 *"
+  workflow_dispatch:
+    inputs:
+      lab_ref:
+        description: "Lab-Commit oder Branch, aus dem gefittet wird (Standard: der gepinnte Commit aus season-params.json)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refit
+  cancel-in-progress: false
+
+jobs:
+  refit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.1"
+
+      # The fitting code lives in a PRIVATE repository. Without a token that can
+      # read it, this job cannot run — and must say so plainly rather than
+      # falling back to something that looks like a fit.
+      - name: Zugang zum Lab prüfen
+        run: |
+          if [ -z "${{ secrets.LAB_REPO_TOKEN }}" ]; then
+            echo "::error::Das Secret LAB_REPO_TOKEN fehlt. Der Refit fittet ausschließlich aus"
+            echo "::error::football-model-lab an einem gepinnten Commit; dieses Repo enthält die"
+            echo "::error::Fit-Prozedur bewusst nicht und darf sie nicht nachbauen."
+            exit 1
+          fi
+
+      - name: Gepinnten Lab-Commit ermitteln
+        id: pin
+        run: |
+          PINNED=$(node -e "console.log(require('./data/season-params.json').provenance.labCommit)")
+          REF="${{ inputs.lab_ref }}"
+          echo "ref=${REF:-$PINNED}" >> "$GITHUB_OUTPUT"
+          echo "incumbent=$PINNED" >> "$GITHUB_OUTPUT"
+
+      - name: Lab auschecken
+        uses: actions/checkout@v4
+        with:
+          repository: manganite/football-model-lab
+          token: ${{ secrets.LAB_REPO_TOKEN }}
+          ref: ${{ steps.pin.outputs.ref }}
+          path: lab
+
+      # The lab produces the fits and the metrics; this repository only decides
+      # and reports. The contract for this file is documented in
+      # pipeline/src/refit/cli.mjs.
+      - name: Fits im Lab rechnen
+        working-directory: lab
+        run: |
+          if [ ! -f scripts/run-refit.mjs ]; then
+            echo "::error::Das Lab stellt scripts/run-refit.mjs nicht bereit. Der Refit-Vertrag"
+            echo "::error::steht in pipeline/src/refit/cli.mjs; ohne ihn kann dieser Lauf nichts"
+            echo "::error::auswerten und erfindet nichts."
+            exit 1
+          fi
+          node scripts/run-refit.mjs \
+            --incumbent-commit "${{ steps.pin.outputs.incumbent }}" \
+            --out "$GITHUB_WORKSPACE/lab-output.json"
+
+      - name: Prozess entscheiden und Bericht erzeugen
+        id: refit
+        run: node pipeline/src/refit/cli.mjs --lab-output lab-output.json --out refit-output
+
+      # Never a direct commit — always a pull request.
+      - name: Pull Request öffnen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="refit/$(date +%Y)-prozess-${{ steps.refit.outputs.process }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+
+          if [ -f refit-output/season-params.json ]; then
+            cp refit-output/season-params.json data/season-params.json
+            git add data/season-params.json
+          fi
+          mkdir -p docs/refit
+          cp refit-output/pull-request.md "docs/refit/$(date +%Y).md"
+          git add docs/refit
+          git commit -m "Refit $(date +%Y): Prozess ${{ steps.refit.outputs.process }}"
+          git push -u origin "$BRANCH"
+
+          gh pr create \
+            --title "Jährlicher Refit $(date +%Y) — Prozess ${{ steps.refit.outputs.process }}" \
+            --body-file refit-output/pull-request.md \
+            --base main --head "$BRANCH"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: refit-${{ github.run_id }}
+          path: |
+            refit-output/
+            lab-output.json
