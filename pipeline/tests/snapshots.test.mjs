@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import {
   appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot, provenanceFor,
-  contentHash, SNAPSHOT_DIR,
+  contentHash, SNAPSHOT_DIR, resolveArchiveBase, createSnapshotStore, ARCHIVE_BASE_ENV,
 } from "../src/snapshots.mjs";
 
 const tmpDir = () => fs.mkdtemp(path.join(os.tmpdir(), "bl-snap-"));
@@ -160,4 +160,69 @@ test("provenance is a property of the data, not of when the pipeline ran", () =>
   // The boundary is the kickoff itself: a value observed at kickoff is not
   // pre-match.
   assert.equal(provenanceFor({ observedAt: kickoff }, kickoff), "backfilled");
+});
+
+// ---------------------------------------------------------------------------
+// v5.7 Part 2.5 — the archive location is configuration, not an assumption.
+// clubelo publishes no licence; the operator's answer decides whether this
+// archive stays public. That move must be a configuration change, never a
+// refactoring, so the path semantics have to be location-independent.
+// ---------------------------------------------------------------------------
+
+test("the archive base defaults to data/ratings and is overridable", () => {
+  assert.equal(resolveArchiveBase("/repo/data", { env: {} }), path.join("/repo/data", "ratings"));
+  assert.equal(
+    resolveArchiveBase("/repo/data", { env: { [ARCHIVE_BASE_ENV]: "/elsewhere/archive" } }),
+    path.resolve("/elsewhere/archive"),
+  );
+  // An explicit override beats the environment.
+  assert.equal(
+    resolveArchiveBase("/repo/data", { env: { [ARCHIVE_BASE_ENV]: "/env" }, override: "/explicit" }),
+    path.resolve("/explicit"),
+  );
+});
+
+test("an archive at a different base produces an identical tree", async () => {
+  const payload = [
+    { source: "clubelo", observedAt: "2026-08-20T04:00:00.000Z", effectiveAt: "2026-08-20", ratings: { A: 1800, B: 1700 } },
+    { source: "clubelo", observedAt: "2026-08-27T04:00:00.000Z", effectiveAt: "2026-08-27", ratings: { A: 1810, B: 1690 } },
+  ];
+
+  const build = async (dir) => {
+    const store = createSnapshotStore(dir);
+    for (const s of payload) await store.append(s);
+    const tree = [];
+    const walk = async (d, prefix = "") => {
+      for (const e of (await fs.readdir(d, { withFileTypes: true })).sort((x, y) => x.name.localeCompare(y.name))) {
+        const full = path.join(d, e.name);
+        if (e.isDirectory()) await walk(full, `${prefix}${e.name}/`);
+        else tree.push([`${prefix}${e.name}`, await fs.readFile(full, "utf8")]);
+      }
+    };
+    await walk(dir);
+    return tree;
+  };
+
+  const a = await build(await tmpDir());
+  const b = await build(await tmpDir());
+  assert.deepEqual(a.map(([n]) => n), b.map(([n]) => n), "same paths");
+  assert.deepEqual(a, b, "same paths AND same content — the location leaks nowhere");
+  assert.ok(a.some(([n]) => n === "index.json"));
+  assert.ok(a.some(([n]) => n.startsWith("snapshots/")));
+});
+
+test("the store handle exposes the same semantics as the bare functions", async () => {
+  const dir = await tmpDir();
+  const store = createSnapshotStore(dir);
+  const first = await store.append({
+    source: "clubelo", observedAt: "2026-08-20T04:00:00.000Z", effectiveAt: "2026-08-20", ratings: { A: 1800 },
+  });
+  assert.equal(first.appended, true);
+  // Idempotent through the handle, exactly as through the function.
+  const again = await store.append({
+    source: "clubelo", observedAt: "2026-08-20T09:00:00.000Z", effectiveAt: "2026-08-20", ratings: { A: 1800 },
+  });
+  assert.equal(again.appended, false);
+  assert.equal((await store.readIndex()).snapshots.length, 1);
+  assert.equal((await store.read(first.snapshotId)).ratings.A, 1800);
 });

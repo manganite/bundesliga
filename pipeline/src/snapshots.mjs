@@ -31,6 +31,43 @@ import crypto from "node:crypto";
 const INDEX = "index.json";
 const SNAPDIR = "snapshots";
 
+/**
+ * WHERE THE ARCHIVE LIVES IS CONFIGURATION, NOT AN ASSUMPTION.
+ *
+ * clubelo publishes no licence. A permission request is with the operator; the
+ * answer decides whether this archive stays in the public repository or moves to
+ * a private one. That move must be a CONFIGURATION CHANGE plus a migration
+ * commit — never a refactoring under time pressure.
+ *
+ * So every path is derived from a base directory that callers pass in, and the
+ * path semantics (index file, snapshot naming, idempotent atomic append) are
+ * location-independent. `resolveArchiveBase` is the single place that decides
+ * the default, and an operator can override it without touching code.
+ */
+export const DEFAULT_ARCHIVE_SUBDIR = "ratings";
+export const ARCHIVE_BASE_ENV = "BUNDESLIGA_RATINGS_DIR";
+
+export function resolveArchiveBase(dataDir, { env = process.env, override = null } = {}) {
+  if (override) return path.resolve(override);
+  const fromEnv = env?.[ARCHIVE_BASE_ENV];
+  if (fromEnv) return path.resolve(fromEnv);
+  return path.join(dataDir, DEFAULT_ARCHIVE_SUBDIR);
+}
+
+/**
+ * A storage handle bound to one base directory. Everything the pipeline does to
+ * the archive goes through this, so pointing it elsewhere is a one-line change.
+ */
+export function createSnapshotStore(baseDir) {
+  return {
+    baseDir,
+    readIndex: () => readIndex(baseDir),
+    append: (snapshot) => appendSnapshot(baseDir, snapshot),
+    read: (snapshotId) => readSnapshot(baseDir, snapshotId),
+    findPreMatch: (index, kickoff) => findPreMatchSnapshot(index, kickoff),
+  };
+}
+
 export class SnapshotError extends Error {}
 
 /** Stable content hash over the ratings themselves — key order cannot matter. */

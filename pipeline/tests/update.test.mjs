@@ -3,7 +3,9 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { runUpdate, attachClubIds, extractRatings, backfillDates } from "../src/update.mjs";
+import {
+  runUpdate, attachClubIds, extractRatings, backfillDates, backfillSnapshots, BACKFILL_DELAY_MS,
+} from "../src/update.mjs";
 import { normaliseSeason } from "../src/sources/openligadb.mjs";
 
 const SEASON = 2026;
@@ -305,4 +307,46 @@ test("backfill brackets each matchday and never reaches into the future", () => 
   // Matchday 6 is entirely in the future and must contribute nothing.
   assert.ok(dates.every((d) => d <= "2026-09-10"), "a future date cannot have been published");
   assert.ok(!dates.some((d) => d.startsWith("2026-10")));
+});
+
+// v5.7 Part 2.4 — the backfill is the only path that hits clubelo dozens of
+// times in a row, so it pauses between requests. Tests must never loop against
+// the live API, so the delay is injectable and set to 0 here.
+test("the backfill pauses between clubelo requests", async () => {
+  assert.equal(BACKFILL_DELAY_MS, 750, "the politeness delay must be present and non-trivial");
+
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "bl-delay-"));
+  const stamps = [];
+  const fetchText = async (url) => {
+    stamps.push(Date.now());
+    const club = [...CLUBS.bl1, ...CLUBS.bl2].find((c) => c.csv.replace(/\s/g, "") === url.split("/").pop());
+    return clubHistoryCsv(club ?? CLUBS.bl1[0]);
+  };
+
+  const clubs = CLUBS.bl1.map((c) => ({ clubId: c.shortName, clubeloUrlName: c.csv.replace(/\s/g, "") }));
+  await backfillSnapshots({
+    ratingsDir: dir, clubs, dates: ["2026-06-01"], observedAt: "2026-06-01T04:00:00.000Z",
+    fetchText, delayMs: 40,
+  });
+
+  assert.equal(stamps.length, clubs.length);
+  for (let i = 1; i < stamps.length; i++) {
+    assert.ok(stamps[i] - stamps[i - 1] >= 35, `no pause between request ${i - 1} and ${i}`);
+  }
+});
+
+// v5.7 Part 2.5 — pointing the archive elsewhere is a configuration change.
+test("the ratings archive can be relocated by configuration alone", async () => {
+  const dataDir = await makeDataDir();
+  const elsewhere = await fs.mkdtemp(path.join(os.tmpdir(), "bl-archive-"));
+  const { fetchJson, fetchText } = makeSources();
+
+  await runUpdate({ dataDir, fetchJson, fetchText, now: NOW, log: silent, ratingsDir: elsewhere });
+
+  // The archive landed at the configured base, not under data/.
+  assert.ok((await fs.readdir(elsewhere)).includes("index.json"));
+  assert.ok(!(await fs.readdir(dataDir)).includes("ratings"));
+  // And the derived data still resolved against it.
+  const pm = JSON.parse(await fs.readFile(path.join(dataDir, "seasons", String(SEASON), "bl1", "prematch.json"), "utf8"));
+  assert.ok(pm.entries.length > 0);
 });

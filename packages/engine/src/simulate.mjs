@@ -125,12 +125,37 @@ export function simulateSeason({
   const idx = new Map(clubIds.map((id, i) => [id, i]));
   const baseRating = clubs.map((c) => c.rating);
 
+  // A fixture with exactly one of gh/ga is a data defect, not an unplayed
+  // fixture. Classifying it as unplayed would silently discard the half-result
+  // that IS there and resimulate the match — a wrong number that looks fine.
+  for (const f of fixtures) {
+    if ((f.gh === undefined) !== (f.ga === undefined)) {
+      throw new Error(`fixture ${f.id} has gh xor ga — refusing to guess`);
+    }
+  }
+
   const played = fixtures.filter((f) => f.gh !== undefined && f.ga !== undefined);
   const remaining = fixtures.filter((f) => f.gh === undefined || f.ga === undefined);
 
   // Random keys: run-independent halves, computed once.
   const noiseKey = clubs.map((c) => makeKeyBase({ seasonId, context, id: c.clubId, drawKind: "noise" }));
   const fixtureKey = remaining.map((f) => makeKeyBase({ seasonId, context, id: f.id, drawKind: "scoreline" }));
+  // The criterion-6 stand-in gets its OWN key. It used to reuse the noise key
+  // with a mangled run index, which broke the documented schema ("every draw is
+  // a pure function of its key") and hid a convention inside an XOR constant.
+  const deciderKey = clubs.map((c) => makeKeyBase({ seasonId, context, id: c.clubId, drawKind: "decider" }));
+
+  // makeKeyBase folds to 32 bits. With ~500 keys per season a collision has
+  // probability ~3e-5 — small, but a collision silently couples two fixtures to
+  // one random stream, which is exactly the failure the two-key design exists to
+  // prevent. Cheap to rule out, impossible to notice later.
+  const allKeys = [...noiseKey, ...fixtureKey, ...deciderKey];
+  if (new Set(allKeys).size !== allKeys.length) {
+    throw new Error(
+      `random key collision: ${allKeys.length} keys folded to ${new Set(allKeys).size} distinct values. `
+        + "Two draws would share a stream; refusing to simulate.",
+    );
+  }
 
   const targetNames = Object.keys(targets);
   // tally[target][club] and per-batch counts, so SE(Δ) is recomputable later
@@ -174,11 +199,11 @@ export function simulateSeason({
     const table = buildTable(clubIds, allMatches, rules);
     // A completed season: every leg has been played, so the in-season rules do
     // not apply. The decider stands in for criterion 6) exactly where the rules
-    // end in a genuine tie, keyed off the same counter-based stream.
+    // end in a genuine tie, drawn from its own counter-based key.
     const ranked = rankTable(table, allMatches, {
       inSeason: false,
       rules,
-      decider: (clubId) => uniform01(noiseKey[idx.get(clubId)], run ^ 0x5f5f5f5f),
+      decider: (clubId) => uniform01(deciderKey[idx.get(clubId)], run),
     });
 
     for (const row of ranked) {

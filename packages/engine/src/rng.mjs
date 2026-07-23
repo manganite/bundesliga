@@ -26,8 +26,16 @@
  * The scoreline ordering the inverse-CDF maps through, and the structure of the
  * random keys. Bump this — and only this — when either changes. Every artefact
  * records the value it was produced under.
+ *
+ * Because this value is hashed into every key, a bump changes EVERY draw. Two
+ * artefacts produced under different protocol versions are independent samples,
+ * not paired ones — comparing them must account for that.
+ *
+ * 2 — the criterion-6 decider gained its own `drawKind: "decider"` key instead
+ *     of reusing the noise key with a mangled run index (v5.7 Part 2.1).
+ * 1 — initial.
  */
-export const SIMULATION_PROTOCOL_VERSION = 1;
+export const SIMULATION_PROTOCOL_VERSION = 2;
 
 // ---- 32-bit mixing ---------------------------------------------------------
 

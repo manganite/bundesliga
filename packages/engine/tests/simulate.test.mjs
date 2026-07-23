@@ -9,6 +9,7 @@ import {
   effectiveParams, buildScorelineDistribution, scorelineQuantile, eloToLambdas,
 } from "../src/model.mjs";
 import { reportDelta, effectiveContenders } from "../src/metrics.mjs";
+import { makeKeyBase, SIMULATION_PROTOCOL_VERSION } from "../src/rng.mjs";
 
 const P = JSON.parse(
   fs.readFileSync(path.resolve(import.meta.dirname, "../../../data/season-params.json"), "utf8"),
@@ -218,4 +219,81 @@ test("the artefact key is independent of the random stream", () => {
     artefactKey({ dataHash: "abc", runCount: 20000 }),
     artefactKey({ dataHash: "abd", runCount: 20000 }),
   );
+});
+
+// ---------------------------------------------------------------------------
+// v5.7 Part 2 — engine corrections
+// ---------------------------------------------------------------------------
+
+test("the decider is drawn from its own key with a plain run index", () => {
+  // The decider key must be a real key in the documented schema, not the noise
+  // key with a mangled run index. Distinctness is what proves it.
+  const seasonId = "2026";
+  const noise = makeKeyBase({ seasonId, context: "league", id: "C01", drawKind: "noise" });
+  const decider = makeKeyBase({ seasonId, context: "league", id: "C01", drawKind: "decider" });
+  assert.notEqual(noise, decider);
+
+  // And it actually decides: a season that ends in a genuine tie must be
+  // resolved, not left shared.
+  const two = [{ clubId: "A", rating: 1700 }, { clubId: "B", rating: 1700 }];
+  const symmetric = [
+    { id: "ab", home: "A", away: "B", gh: 1, ga: 1 },
+    { id: "ba", home: "B", away: "A", gh: 1, ga: 1 },
+  ];
+  const art = simulateSeason({
+    seasonId, league: "bl1", clubs: two, fixtures: symmetric, params: P,
+    targets: { meister: { places: 1, positions: (r) => r === 1 } },
+    runs: 100, batches: 10,
+  });
+  const total = art.probabilities.meister.A + art.probabilities.meister.B;
+  assert.ok(Math.abs(total - 1) < 1e-9, "the decider must resolve the tie every run");
+  assert.ok(art.probabilities.meister.A > 0 && art.probabilities.meister.B > 0);
+});
+
+test("a random-key collision is caught at setup rather than silently sharing a stream", () => {
+  const duplicated = [
+    { clubId: "A", rating: 1700 },
+    { clubId: "A", rating: 1650 }, // same id -> same noise and decider keys
+  ];
+  assert.throws(
+    () => simulateSeason({
+      seasonId: "2026", league: "bl1", clubs: duplicated,
+      fixtures: [{ id: "x", home: "A", away: "A" }],
+      params: P, targets: BL1_TARGETS, runs: 20, batches: 10,
+    }),
+    /random key collision/,
+  );
+
+  // Two fixtures sharing an id collide the same way.
+  assert.throws(
+    () => simulateSeason({
+      seasonId: "2026", league: "bl1",
+      clubs: [{ clubId: "A", rating: 1700 }, { clubId: "B", rating: 1650 }],
+      fixtures: [{ id: "dup", home: "A", away: "B" }, { id: "dup", home: "B", away: "A" }],
+      params: P, targets: BL1_TARGETS, runs: 20, batches: 10,
+    }),
+    /random key collision/,
+  );
+});
+
+test("a fixture with gh xor ga is refused, never silently resimulated", () => {
+  const clubsTwo = [{ clubId: "A", rating: 1700 }, { clubId: "B", rating: 1650 }];
+  for (const half of [
+    { id: "h1", home: "A", away: "B", gh: 2 },
+    { id: "h2", home: "A", away: "B", ga: 1 },
+  ]) {
+    assert.throws(
+      () => simulateSeason({
+        seasonId: "2026", league: "bl1", clubs: clubsTwo, fixtures: [half],
+        params: P, targets: BL1_TARGETS, runs: 20, batches: 10,
+      }),
+      /has gh xor ga — refusing to guess/,
+    );
+  }
+});
+
+test("the artefact records the protocol version it was produced under", () => {
+  const art = simulateSeason({ ...base, fixtures: allFixtures, runs: 200, batches: 10 });
+  assert.equal(art.simulationProtocolVersion, SIMULATION_PROTOCOL_VERSION);
+  assert.ok(SIMULATION_PROTOCOL_VERSION >= 2, "v5.7 Part 2 bumped the protocol to 2");
 });

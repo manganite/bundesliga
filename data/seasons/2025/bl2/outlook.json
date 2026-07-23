@@ -25,7 +25,7 @@
   "runs": 20000,
   "batches": 20,
   "engineVersion": 1,
-  "simulationProtocolVersion": 1,
+  "simulationProtocolVersion": 2,
   "clubs": [
     "Bielefeld",
     "Bochum",

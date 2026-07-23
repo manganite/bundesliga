@@ -25,7 +25,9 @@ import crypto from "node:crypto";
 import { detectCurrentSeason, fetchSeason } from "./sources/openligadb.mjs";
 import { fetchDailySnapshot, indexSnapshot, fetchClubHistory, ratingOn } from "./sources/clubelo.mjs";
 import { resolveClub } from "./clubMapping.mjs";
-import { appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot } from "./snapshots.mjs";
+import {
+  appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot, resolveArchiveBase,
+} from "./snapshots.mjs";
 import { buildPreMatchDataset, frozenRatingLabel } from "./preMatch.mjs";
 import { buildCurrentOutlook, buildFrozenTimeline, targetsFromConfig } from "./artefacts.mjs";
 import { verifyAll } from "./verify.mjs";
@@ -140,14 +142,27 @@ export function backfillDates(fixtures, today) {
   return [...dates].filter((d) => d <= today).sort();
 }
 
+/**
+ * Politeness delay between clubelo requests in the one-time history backfill.
+ *
+ * The backfill is the only path that hits clubelo dozens of times in a row — one
+ * full history per club. The two-hourly cron fetches a single daily CSV and needs
+ * nothing. Development and tests must never loop against the live API; they run
+ * against recorded fixtures.
+ */
+export const BACKFILL_DELAY_MS = 750;
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export async function backfillSnapshots({
-  ratingsDir, clubs, dates, observedAt, fetchText, log = () => {},
+  ratingsDir, clubs, dates, observedAt, fetchText, log = () => {}, delayMs = BACKFILL_DELAY_MS,
 }) {
   if (dates.length === 0) return { appended: 0, dates: [], gaps: [] };
 
   const histories = new Map();
   const gaps = [];
-  for (const club of clubs) {
+  for (const [i, club] of clubs.entries()) {
+    if (i > 0 && delayMs > 0) await sleep(delayMs);
     try {
       histories.set(club.clubId, await fetchClubHistory(club.clubeloUrlName, fetchText));
     } catch (e) {
@@ -197,6 +212,7 @@ export async function runUpdate({
   now = new Date(),
   seasonOverride = null,
   asOf = null,
+  ratingsDir: ratingsDirOverride = null,
   log = (m) => process.stderr.write(`${m}\n`),
 } = {}) {
   const observedAt = now.toISOString();
@@ -205,7 +221,8 @@ export async function runUpdate({
   // while the current season has no usable ratings. It never affects a normal
   // run: without it, ratings are taken as of today.
   const today = asOf ?? observedAt.slice(0, 10);
-  const ratingsDir = path.join(dataDir, "ratings");
+  // Location is configuration (§ v5.7 Part 2.5), not an assumption.
+  const ratingsDir = resolveArchiveBase(dataDir, { override: ratingsDirOverride });
 
   // --- 1. detect the season. Never hardcoded (§5.5). ------------------------
   // `seasonOverride` is an explicit operator action for rebuilding a past

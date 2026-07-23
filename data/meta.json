@@ -1,10 +1,12 @@
 {
   "schemaVersion": 1,
   "season": 2025,
-  "dataUpdatedAt": "2026-07-23T09:14:34.063Z",
+  "dataUpdatedAt": "2026-07-23T10:56:17.555Z",
   "dataHash": "1201039de05268eb",
   "lastChanges": [
     "bl1 current outlook",
-    "bl2 current outlook"
+    "bl1 frozen timeline (+35 point(s))",
+    "bl2 current outlook",
+    "bl2 frozen timeline (+35 point(s))"
   ]
 }
