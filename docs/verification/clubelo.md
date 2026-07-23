@@ -90,11 +90,22 @@ Praktisch bedeutet das: **V1 kann nicht live gehen, solange diese Lücke
 besteht.** Drei Punkte dazu:
 
 1. Die Saison beginnt am 2026-08-28. Bis dahin ist Zeit.
-2. Die übrigen Klubs haben bereits Ratings mit `To`-Datum bis 2026-08-29 bzw.
-   2026-12-31 — clubelo schreibt also vorwärts. Dass genau vier Klubs am selben
-   Tag enden, sieht nach einem noch nicht nachgezogenen Update aus, nicht nach
-   dauerhaftem Wegfall. Belegen lässt sich das nicht; es ist eine Vermutung und
-   wird hier als solche benannt.
+2. **Die Lücke ist nicht strukturell — belegt, nicht vermutet.** Gegenprobe
+   mitten in der abgelaufenen Saison:
+
+   ```
+   $ node pipeline/src/checkClubeloCoverage.mjs 2026-05-01 2025
+   clubelo snapshot 2026-05-01: 628 clubs
+   === bl1 2025 — 18 clubs — resolved 18/18 ===  ✓ every club resolves
+   === bl2 2025 — 18 clubs — resolved 18/18 ===  ✓ every club resolves
+   all clubs resolve — gate passed
+   ```
+
+   Während der Saison löst also **jeder** der 36 Klubs auf. Das Mapping ist
+   damit unabhängig verifiziert, und die vier Lücken vom 2026-07-23 sind ein
+   Zustand der Sommerpause, kein dauerhafter Wegfall. Die übrigen Klubs haben
+   überdies bereits Ratings mit `To`-Datum bis 2026-08-29 bzw. 2026-12-31 —
+   clubelo schreibt vorwärts.
 3. Sollte die Lücke bestehen bleiben, ist das eine **Entscheidung, die dem
    Betreiber gehört**, nicht der Pipeline: entweder weiter fail-closed warten,
    oder eine explizite, im Datensatz als solche markierte Fortschreibung des

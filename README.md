@@ -26,8 +26,9 @@ Im Bau. Fertig und getestet:
 | `packages/engine` — Monte-Carlo, CRN, Batch-SE(Δ) (§3) | ✅ mit Tests |
 | `data/season-params.json` (Track C pooled) | ✅ ausgeliefert |
 | `pipeline` — Klub-Mapping fail closed (§5.2) | ✅ mit Gate-Skript |
-| `pipeline` — Datenbeschaffung, Snapshots, Provenance (§5.1/§5.3) | ⏳ offen |
-| App A, App B, GitHub-Workflows | ⏳ offen |
+| `pipeline` — Datenbeschaffung, Snapshots, Provenance (§5.1/§5.3) | ✅ mit Tests |
+| Daten-Workflow (Cron, commit only on change) | ✅ |
+| App A, App B, Deploy- und Refit-Workflow | ⏳ offen |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
 **≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
@@ -67,7 +68,12 @@ docs/verification/ die §11-Gates mit Quelle und Datum
 npm install
 npm test                      # Engine- und Pipeline-Tests, offline
 npm run gate:clubelo          # §11-Abdeckungsprüfung gegen die Live-API
+npm run pipeline              # ein Pipeline-Lauf gegen die Live-Quellen
 ```
+
+Die Pipeline schreibt **nichts**, solange eine Prüfung scheitert. Solange die
+clubelo-Lücke besteht, endet `npm run pipeline` deshalb mit Exit-Code 1 und
+einem unveränderten `data/` — das ist das vorgesehene Verhalten, kein Defekt.
 
 Die Tests laufen offline gegen committete Fixtures
 (`packages/engine/tests/fixtures/`, 22 echte Saisons beider Ligen).

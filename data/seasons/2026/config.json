@@ -1,0 +1,72 @@
+{
+  "_comment": "Season-stamped configuration (§5.5). Every rule that has ever changed lives here, never as a constant in code. The app warns visibly if this stamp does not match the detected season — see configStampWarning in packages/engine/src/dataState.mjs.",
+  "schemaVersion": 1,
+  "season": 2026,
+  "label": "2026/27",
+  "leagues": {
+    "bl1": {
+      "clubCount": 18,
+      "matchdayCount": 34,
+      "pointsForWin": 3,
+      "pointsForDraw": 1,
+      "_tiebreakComment": "DFL Spielordnung Stand 06.03.2026, §5 Nr. 3c, verified against the primary source. Brief §6 had an extra 'points in the direct comparison' step that the Spielordnung does not contain — see docs/verification/dfl-spielordnung.md.",
+      "tiebreakCriteria": ["goalDifference", "goalsFor", "h2hAggregate", "h2hAwayGoals", "awayGoals"],
+      "deciderIsPlayoff": true,
+      "_zonesComment": "PLACEMENT zones, not qualification. Actual European qualification depends on cup winners and title holders, which needs data this app does not have (§6). Never fake a qualification mapping.",
+      "targets": {
+        "meister": { "places": 1, "from": 1, "to": 1, "label": "Meister" },
+        "platz1bis4": { "places": 4, "from": 1, "to": 4, "label": "Platz 1–4" },
+        "platz5bis6": { "places": 2, "from": 5, "to": 6, "label": "Platz 5–6" },
+        "klassenerhalt": { "places": 15, "from": 1, "to": 15, "label": "Klassenerhalt" },
+        "relegationsplatz": { "places": 1, "from": 16, "to": 16, "label": "Relegationsplatz" },
+        "abstieg": { "places": 2, "from": 17, "to": 18, "label": "Abstieg" }
+      },
+      "herbstmeisterUntilMatchday": 17
+    },
+    "bl2": {
+      "clubCount": 18,
+      "matchdayCount": 34,
+      "pointsForWin": 3,
+      "pointsForDraw": 1,
+      "tiebreakCriteria": ["goalDifference", "goalsFor", "h2hAggregate", "h2hAwayGoals", "awayGoals"],
+      "deciderIsPlayoff": true,
+      "targets": {
+        "aufstieg": { "places": 2, "from": 1, "to": 2, "label": "Aufstieg (Top 2)" },
+        "relegationsplatzAufstieg": { "places": 1, "from": 3, "to": 3, "label": "Relegationsplatz (3.)" },
+        "klassenerhalt": { "places": 15, "from": 1, "to": 15, "label": "Klassenerhalt" },
+        "relegationsplatzAbstieg": { "places": 1, "from": 16, "to": 16, "label": "Relegationsplatz (16.)" },
+        "abstieg": { "places": 2, "from": 17, "to": 18, "label": "Abstieg" }
+      }
+    }
+  },
+  "relegationPlayoff": {
+    "_comment": "Exists only from 2008/09 onward. Between 1992/93 and 2007/08 the bottom three went down directly and 16th was not a play-off place (§5.4/§6).",
+    "exists": true,
+    "between": ["bl1:16", "bl2:3"],
+    "legs": 2,
+    "_awayGoalsComment": "Two explicit fields, never a single ambiguous cutoff. The SpOL does not set this itself: it plays the Relegationsspiele 'entsprechend den Bestimmungen der UEFA-Clubwettbewerbe', so the boundary follows UEFA's abolition. Verified — docs/verification/dfl-spielordnung.md §4.5.",
+    "lastSeasonWithAwayGoals": "2020/21",
+    "firstSeasonWithout": "2021/22",
+    "awayGoalsApply": false,
+    "_homeOrderComment": "DFL SpOL §5 Nr. 4, verbatim: 'Das Heimrecht im Rückspiel besitzt der Club, der gemäß dem Spielplan der abgelaufenen Spielzeit weniger spielfreie Tage vor dem Hinspiel hatte. Bei gleicher Anzahl spielfreier Tage entscheidet das Los.' The engine derives the order per hypothetical pairing from the dates below; it is never a season constant. Where the rule ties and the lot has not been drawn, both orders are simulated at 50/50.",
+    "homeOrderRule": "fewerRestDaysBeforeFirstLegHostsSecondLeg",
+    "playoffDates": null,
+    "lastLeagueMatchdayDates": null,
+    "lotDrawn": null,
+    "extraTime": {
+      "_comment": "§6: ET_FACTOR is exactly 1/3 (30/90 minutes — a decision, not an approximation). ET rates are the second leg's full-match lambdas including that host's HOME_ADV, scaled by the factor. NO Dixon-Coles term in the ET phase: DC is fitted on full matches and its low-score correction has no basis at third-length rates.",
+      "factor": 0.3333333333333333,
+      "applyDixonColes": false
+    },
+    "penaltyPrior": 0.5
+  },
+  "ghostWindow": {
+    "_comment": "COVID closed-door window. Inactive this season; carried so V2 replays compute correctly. §8: no causal claim is made about these seasons — every relevant interval included zero.",
+    "from": "2020-03-11",
+    "to": "2021-06-01"
+  },
+  "staleness": {
+    "_comment": "The only staleness claim the committed data can support (§5.1).",
+    "graceHours": 6
+  }
+}

@@ -15,6 +15,7 @@
   "scripts": {
     "test": "node --test \"packages/engine/tests/**/*.test.mjs\" \"pipeline/tests/**/*.test.mjs\"",
     "test:engine": "node --test \"packages/engine/tests/**/*.test.mjs\"",
-    "gate:clubelo": "node pipeline/src/checkClubeloCoverage.mjs"
+    "gate:clubelo": "node pipeline/src/checkClubeloCoverage.mjs",
+    "pipeline": "node pipeline/src/cli.mjs --data-dir data"
   }
 }

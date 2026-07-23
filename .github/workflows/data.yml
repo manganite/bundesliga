@@ -1,0 +1,57 @@
+name: Daten aktualisieren
+
+# The scheduled run is the ONLY data path (§5.1). There is no browser-side live
+# fetch: committed files are the single source, so the app can never show a
+# state that mixes committed and freshly fetched data.
+on:
+  schedule:
+    # Every two hours. Off-season this simply finds nothing new and commits
+    # nothing — which is the intended behaviour, not a fault.
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pinned Node version (§5.5 dependency hygiene).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.11.0"
+
+      # The pipeline has no dependencies beyond Node itself, so there is nothing
+      # to install and nothing to pin beyond the runtime.
+      - name: Pipeline ausführen
+        id: pipeline
+        run: node pipeline/src/cli.mjs --data-dir data
+
+      # Commit only on change. A run that found nothing new leaves the
+      # repository untouched, so dataUpdatedAt does not move and no deployment
+      # is triggered.
+      - name: Änderungen committen
+        if: steps.pipeline.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Pipeline meldete eine Änderung, der Baum ist aber unverändert — nichts zu committen."
+            exit 0
+          fi
+          git commit -m "Daten: Saison ${{ steps.pipeline.outputs.season }} aktualisiert"
+          git push
+
+# On failure the job simply fails. Nothing is committed and no status field is
+# written into the repository — the two contradict, and the app must not derive
+# a workflow-health claim from committed data (§5.1). Workflow health is
+# monitored exclusively through GitHub Actions failure notifications; make sure
+# they are enabled for this repository.
