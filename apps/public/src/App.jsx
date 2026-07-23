@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   formatDataUpdatedAt, stalenessWarning, seasonPhase, SEASON_PHASE_LABEL, configStampWarning,
+  carriedRatings, carriedRatingSummary,
 } from "../../../packages/engine/src/dataState.mjs";
 import { loadManifest, loadLeagueSeason, clubIndex, currentMatchday, toEngineFixtures } from "./lib/data.js";
 import { useSimulation, DEFAULT_RUNS } from "./hooks/useSimulation.js";
@@ -137,13 +138,17 @@ function Ready({ route, seasonId, league, data }) {
   const phaseLabel = SEASON_PHASE_LABEL[phase];
   const staleness = stalenessWarning(season.fixtures, new Date(), config.staleness?.graceHours ?? 6);
   const stampWarning = configStampWarning(config, season.season);
+  // §8: a forecast partly built on stale inputs must say so. Self-clearing —
+  // the line disappears the moment clubelo lists the clubs again.
+  const carried = carriedRatings(activeOutlook);
+  const carriedSummary = carriedRatingSummary(carried, nameOf);
 
   const active = PAGES.find((p) => p.id === route) ?? PAGES[0];
   const { Component } = active;
 
   const ctx = {
     seasonId, league, leagueConfig, config, season, outlook: activeOutlook, timeline, prematch, params,
-    clubs, nameOf, matchday, phase,
+    clubs, nameOf, matchday, phase, carried,
   };
 
   return (
@@ -170,6 +175,7 @@ function Ready({ route, seasonId, league, data }) {
           {phaseLabel ? <p className="banner">{phaseLabel}</p> : null}
           {staleness ? <p className="banner warn" role="status">{staleness.text}</p> : null}
           {stampWarning ? <p className="banner warn" role="alert">{stampWarning}</p> : null}
+          {carriedSummary ? <p className="banner warn" role="status">{carriedSummary}</p> : null}
 
           <SimulationControls
             runs={runs}

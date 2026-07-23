@@ -265,6 +265,7 @@ table.data thead th {
 }
 table.data tbody tr:hover { background: var(--surface-2); }
 table.data .shared-rank { color: var(--warn); }
+.carried { color: var(--warn); cursor: help; }
 
 /* --- bars ----------------------------------------------------------------- */
 

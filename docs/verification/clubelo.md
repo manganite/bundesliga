@@ -168,3 +168,64 @@ besteht.** Drei Punkte dazu:
 node pipeline/src/checkClubeloCoverage.mjs            # heute
 node pipeline/src/checkClubeloCoverage.mjs 2026-08-28 # zum 1. Spieltag
 ```
+
+---
+
+## Stand 2026-07-23 — der Zustand, der V1 blockiert hat
+
+Angehängt, nicht eingearbeitet: die Befunde oben bleiben so stehen, wie sie
+erhoben wurden.
+
+**Was der gescheiterte Pipeline-Lauf gezeigt hat.** Die Saisonerkennung ist von
+selbst umgesprungen — 2026/27, 306 Spiele, 18 Klubs je Liga. Die Lücke blockierte
+damit nicht mehr nur ein rückblickendes Archiv, sondern eine *laufende* Prognose.
+
+Die Tages-CSV war intakt: sie bestand die ≥100-Zeilen-Prüfung, das Mapping löste
+auf, und **32 von 36 Klubs bekamen ein Rating**. Gegengeprüft über die Zahl der
+`Country = GER`-Zeilen (36 − 32 = 4). Es fehlte nichts unbemerkt.
+
+**Das Muster ist kein Ausfall, sondern ein hängengebliebener Zustand.** Die vier
+Klubs tragen `To = 2026-07-03` — ein Datum in der **Vergangenheit** —, während
+alle übrigen Klubs `To = 2026-08-29` oder `2026-12-31` tragen, also in der
+Zukunft. clubelo hat nicht aufgehört zu veröffentlichen; diese vier Reihen wurden
+am 3. Juli geschlossen und nie wieder geöffnet.
+
+Unabhängige Gegenprobe am selben Tag: `clubelo.com/Bayern` lädt, liefert aber
+eine zwischengespeicherte Seite vom **6. Mai 2026**, passend zum Hinweis der
+Seite „Site overloaded, only cached pages available". Alle vier Klubs sind dort
+normalerweise bewertet. **Kein Mapping-Fehler auf unserer Seite.**
+
+| Klub | letzter Wert | gültig bis |
+|---|---|---|
+| FC Bayern München | 2000,87 | 2026-07-03 |
+| VfB Stuttgart | 1763,83 | 2026-07-03 |
+| VfL Wolfsburg | 1599,57 | 2026-07-03 |
+| 1. FC Kaiserslautern | 1456,04 | 2026-07-03 |
+
+**Konsequenz im Code** (v5.7 Addendum): ein begrenzter Rating-Übertrag als
+ausdrücklicher, zeitlich befristeter Schalter — `--carry-forward-until`. Er ist
+**standardmäßig aus**; ohne ihn scheitert der Lauf weiterhin. Ein clubelo-Rating
+ist eine Treppenfunktion und ändert sich nur, wenn ein Klub spielt; in einer
+echten Sommerpause *ist* der Wert vom 3. Juli der Wert vom 23. Juli. Weil die
+Pipeline aber nur Ligaspiele sieht und nicht Pokal oder europäische
+Qualifikation, verfällt die Regel nach spätestens 42 Tagen — auch dann, wenn der
+Schalter länger gesetzt ist.
+
+**Ein Punkt, den das Addendum nicht vorhersah.** Der Übertrag braucht einen
+archivierten Snapshot aus der Zeit, als clubelo die Klubs noch führte. Unser
+Archiv reichte nur bis 2026-06-01 (52 Tage, jenseits der Decke), und *Warten
+hätte das nie geheilt*: jede künftige Tages-CSV enthält die vier Klubs nicht
+mehr, der Abstand wächst also nur. Deshalb wurde die Tages-CSV vom **2026-07-03**
+einmalig nachträglich archiviert (`pipeline/src/archiveDay.mjs`, eine Anfrage,
+dieselbe Art wie der reguläre Cron). Der Snapshot trägt sein echtes
+`effectiveAt` 2026-07-03 und ein `observedAt` von heute — nichts ist rückdatiert,
+nichts Bestehendes verändert.
+
+Danach lief die Pipeline durch: Saison 2026/27 live, vier Klubs mit einem 20 Tage
+alten Rating, in der App je Klub markiert und in der Kopfzeile benannt.
+
+**Die Lizenzfrage ist weiter offen.** Die Anfrage an den Betreiber ist raus
+(2026-07-23) und unbeantwortet. Bis zur Antwort werden über den regulären Abruf
+hinaus keine Daten geholt. Wo das Archiv liegt, ist Konfiguration
+(`BUNDESLIGA_RATINGS_DIR`); ein Umzug in ein privates Repo wäre eine
+Konfigurationsänderung plus Migration, kein Refactoring.

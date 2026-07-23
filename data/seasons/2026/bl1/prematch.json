@@ -1,0 +1,4396 @@
+{
+  "schemaVersion": 1,
+  "league": "bl1",
+  "season": 2026,
+  "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+  "entries": [
+    {
+      "fixtureId": "83156",
+      "kickoff": "2026-08-28T18:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        },
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83158",
+      "kickoff": "2026-08-29T13:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83161",
+      "kickoff": "2026-08-29T13:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83162",
+      "kickoff": "2026-08-29T13:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83163",
+      "kickoff": "2026-08-29T13:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83164",
+      "kickoff": "2026-08-29T13:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83157",
+      "kickoff": "2026-08-29T16:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83159",
+      "kickoff": "2026-08-30T13:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83160",
+      "kickoff": "2026-08-30T15:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83165",
+      "kickoff": "2026-09-04T18:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83166",
+      "kickoff": "2026-09-05T13:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83167",
+      "kickoff": "2026-09-05T13:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83169",
+      "kickoff": "2026-09-05T13:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83171",
+      "kickoff": "2026-09-05T13:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83173",
+      "kickoff": "2026-09-05T13:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83172",
+      "kickoff": "2026-09-05T16:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83170",
+      "kickoff": "2026-09-06T13:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83168",
+      "kickoff": "2026-09-06T15:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83180",
+      "kickoff": "2026-09-11T18:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83174",
+      "kickoff": "2026-09-12T13:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83176",
+      "kickoff": "2026-09-12T13:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83177",
+      "kickoff": "2026-09-12T13:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83178",
+      "kickoff": "2026-09-12T13:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83179",
+      "kickoff": "2026-09-12T13:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83181",
+      "kickoff": "2026-09-12T16:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83175",
+      "kickoff": "2026-09-13T13:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83182",
+      "kickoff": "2026-09-13T15:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83183",
+      "kickoff": "2026-09-18T18:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83186",
+      "kickoff": "2026-09-19T13:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83187",
+      "kickoff": "2026-09-19T13:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83188",
+      "kickoff": "2026-09-19T13:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83189",
+      "kickoff": "2026-09-19T13:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83184",
+      "kickoff": "2026-09-19T16:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83185",
+      "kickoff": "2026-09-20T13:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83190",
+      "kickoff": "2026-09-20T15:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83191",
+      "kickoff": "2026-09-20T17:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83192",
+      "kickoff": "2026-10-10T13:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83193",
+      "kickoff": "2026-10-10T13:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83194",
+      "kickoff": "2026-10-10T13:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83195",
+      "kickoff": "2026-10-10T13:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83196",
+      "kickoff": "2026-10-10T13:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83197",
+      "kickoff": "2026-10-10T13:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83198",
+      "kickoff": "2026-10-10T13:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83199",
+      "kickoff": "2026-10-10T13:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83200",
+      "kickoff": "2026-10-10T13:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83201",
+      "kickoff": "2026-10-17T13:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83202",
+      "kickoff": "2026-10-17T13:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83203",
+      "kickoff": "2026-10-17T13:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83204",
+      "kickoff": "2026-10-17T13:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83205",
+      "kickoff": "2026-10-17T13:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83206",
+      "kickoff": "2026-10-17T13:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83207",
+      "kickoff": "2026-10-17T13:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83208",
+      "kickoff": "2026-10-17T13:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83209",
+      "kickoff": "2026-10-17T13:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83210",
+      "kickoff": "2026-10-24T13:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83211",
+      "kickoff": "2026-10-24T13:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83212",
+      "kickoff": "2026-10-24T13:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83213",
+      "kickoff": "2026-10-24T13:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83214",
+      "kickoff": "2026-10-24T13:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83215",
+      "kickoff": "2026-10-24T13:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83216",
+      "kickoff": "2026-10-24T13:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83217",
+      "kickoff": "2026-10-24T13:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83218",
+      "kickoff": "2026-10-24T13:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83219",
+      "kickoff": "2026-10-31T14:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83220",
+      "kickoff": "2026-10-31T14:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83221",
+      "kickoff": "2026-10-31T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83222",
+      "kickoff": "2026-10-31T14:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83223",
+      "kickoff": "2026-10-31T14:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83224",
+      "kickoff": "2026-10-31T14:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83225",
+      "kickoff": "2026-10-31T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83226",
+      "kickoff": "2026-10-31T14:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83227",
+      "kickoff": "2026-10-31T14:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83228",
+      "kickoff": "2026-11-07T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83229",
+      "kickoff": "2026-11-07T14:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83230",
+      "kickoff": "2026-11-07T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83231",
+      "kickoff": "2026-11-07T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83232",
+      "kickoff": "2026-11-07T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83233",
+      "kickoff": "2026-11-07T14:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83234",
+      "kickoff": "2026-11-07T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83235",
+      "kickoff": "2026-11-07T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83236",
+      "kickoff": "2026-11-07T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83237",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83238",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83239",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83240",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83241",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83242",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83243",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83244",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83245",
+      "kickoff": "2026-11-21T14:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83246",
+      "kickoff": "2026-11-28T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83247",
+      "kickoff": "2026-11-28T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83248",
+      "kickoff": "2026-11-28T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83249",
+      "kickoff": "2026-11-28T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83250",
+      "kickoff": "2026-11-28T14:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83251",
+      "kickoff": "2026-11-28T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83252",
+      "kickoff": "2026-11-28T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83253",
+      "kickoff": "2026-11-28T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83254",
+      "kickoff": "2026-11-28T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83255",
+      "kickoff": "2026-12-05T14:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83256",
+      "kickoff": "2026-12-05T14:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83257",
+      "kickoff": "2026-12-05T14:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83258",
+      "kickoff": "2026-12-05T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83259",
+      "kickoff": "2026-12-05T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83260",
+      "kickoff": "2026-12-05T14:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83261",
+      "kickoff": "2026-12-05T14:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83262",
+      "kickoff": "2026-12-05T14:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83263",
+      "kickoff": "2026-12-05T14:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83264",
+      "kickoff": "2026-12-12T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83265",
+      "kickoff": "2026-12-12T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83266",
+      "kickoff": "2026-12-12T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83267",
+      "kickoff": "2026-12-12T14:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83268",
+      "kickoff": "2026-12-12T14:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83269",
+      "kickoff": "2026-12-12T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83270",
+      "kickoff": "2026-12-12T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83271",
+      "kickoff": "2026-12-12T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83272",
+      "kickoff": "2026-12-12T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83273",
+      "kickoff": "2026-12-19T14:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83274",
+      "kickoff": "2026-12-19T14:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83275",
+      "kickoff": "2026-12-19T14:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83276",
+      "kickoff": "2026-12-19T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83277",
+      "kickoff": "2026-12-19T14:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83278",
+      "kickoff": "2026-12-19T14:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83279",
+      "kickoff": "2026-12-19T14:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83280",
+      "kickoff": "2026-12-19T14:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83281",
+      "kickoff": "2026-12-19T14:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83282",
+      "kickoff": "2027-01-09T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83283",
+      "kickoff": "2027-01-09T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83284",
+      "kickoff": "2027-01-09T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83285",
+      "kickoff": "2027-01-09T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83286",
+      "kickoff": "2027-01-09T14:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83287",
+      "kickoff": "2027-01-09T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83288",
+      "kickoff": "2027-01-09T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83289",
+      "kickoff": "2027-01-09T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83290",
+      "kickoff": "2027-01-09T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83291",
+      "kickoff": "2027-01-12T19:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83292",
+      "kickoff": "2027-01-12T19:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83293",
+      "kickoff": "2027-01-12T19:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83294",
+      "kickoff": "2027-01-12T19:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83295",
+      "kickoff": "2027-01-12T19:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83296",
+      "kickoff": "2027-01-12T19:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83297",
+      "kickoff": "2027-01-12T19:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83298",
+      "kickoff": "2027-01-12T19:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83299",
+      "kickoff": "2027-01-12T19:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83300",
+      "kickoff": "2027-01-16T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83301",
+      "kickoff": "2027-01-16T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83302",
+      "kickoff": "2027-01-16T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83303",
+      "kickoff": "2027-01-16T14:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83304",
+      "kickoff": "2027-01-16T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83305",
+      "kickoff": "2027-01-16T14:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83306",
+      "kickoff": "2027-01-16T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83307",
+      "kickoff": "2027-01-16T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83308",
+      "kickoff": "2027-01-16T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83309",
+      "kickoff": "2027-01-23T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        },
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83310",
+      "kickoff": "2027-01-23T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83311",
+      "kickoff": "2027-01-23T14:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83312",
+      "kickoff": "2027-01-23T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83313",
+      "kickoff": "2027-01-23T14:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83314",
+      "kickoff": "2027-01-23T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83315",
+      "kickoff": "2027-01-23T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83316",
+      "kickoff": "2027-01-23T14:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83317",
+      "kickoff": "2027-01-23T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83318",
+      "kickoff": "2027-01-30T14:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83319",
+      "kickoff": "2027-01-30T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83320",
+      "kickoff": "2027-01-30T14:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83321",
+      "kickoff": "2027-01-30T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83322",
+      "kickoff": "2027-01-30T14:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83323",
+      "kickoff": "2027-01-30T14:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83324",
+      "kickoff": "2027-01-30T14:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83325",
+      "kickoff": "2027-01-30T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83326",
+      "kickoff": "2027-01-30T14:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83327",
+      "kickoff": "2027-02-06T14:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83328",
+      "kickoff": "2027-02-06T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83329",
+      "kickoff": "2027-02-06T14:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83330",
+      "kickoff": "2027-02-06T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83331",
+      "kickoff": "2027-02-06T14:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83332",
+      "kickoff": "2027-02-06T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83333",
+      "kickoff": "2027-02-06T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83334",
+      "kickoff": "2027-02-06T14:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83335",
+      "kickoff": "2027-02-06T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83336",
+      "kickoff": "2027-02-13T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83337",
+      "kickoff": "2027-02-13T14:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83338",
+      "kickoff": "2027-02-13T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83339",
+      "kickoff": "2027-02-13T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83340",
+      "kickoff": "2027-02-13T14:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83341",
+      "kickoff": "2027-02-13T14:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83342",
+      "kickoff": "2027-02-13T14:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83343",
+      "kickoff": "2027-02-13T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83344",
+      "kickoff": "2027-02-13T14:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83345",
+      "kickoff": "2027-02-20T14:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83346",
+      "kickoff": "2027-02-20T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83347",
+      "kickoff": "2027-02-20T14:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83348",
+      "kickoff": "2027-02-20T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83349",
+      "kickoff": "2027-02-20T14:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83350",
+      "kickoff": "2027-02-20T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83351",
+      "kickoff": "2027-02-20T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83352",
+      "kickoff": "2027-02-20T14:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83353",
+      "kickoff": "2027-02-20T14:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83354",
+      "kickoff": "2027-02-27T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83355",
+      "kickoff": "2027-02-27T14:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83356",
+      "kickoff": "2027-02-27T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83357",
+      "kickoff": "2027-02-27T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83358",
+      "kickoff": "2027-02-27T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83359",
+      "kickoff": "2027-02-27T14:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83360",
+      "kickoff": "2027-02-27T14:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83361",
+      "kickoff": "2027-02-27T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83362",
+      "kickoff": "2027-02-27T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83363",
+      "kickoff": "2027-03-02T19:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83364",
+      "kickoff": "2027-03-02T19:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83365",
+      "kickoff": "2027-03-02T19:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83366",
+      "kickoff": "2027-03-02T19:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83367",
+      "kickoff": "2027-03-02T19:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83368",
+      "kickoff": "2027-03-02T19:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83369",
+      "kickoff": "2027-03-02T19:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83370",
+      "kickoff": "2027-03-02T19:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83371",
+      "kickoff": "2027-03-02T19:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83372",
+      "kickoff": "2027-03-06T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83373",
+      "kickoff": "2027-03-06T14:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83374",
+      "kickoff": "2027-03-06T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83375",
+      "kickoff": "2027-03-06T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83376",
+      "kickoff": "2027-03-06T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83377",
+      "kickoff": "2027-03-06T14:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83378",
+      "kickoff": "2027-03-06T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83379",
+      "kickoff": "2027-03-06T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83380",
+      "kickoff": "2027-03-06T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83381",
+      "kickoff": "2027-03-13T14:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83382",
+      "kickoff": "2027-03-13T14:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83383",
+      "kickoff": "2027-03-13T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83384",
+      "kickoff": "2027-03-13T14:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83385",
+      "kickoff": "2027-03-13T14:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83386",
+      "kickoff": "2027-03-13T14:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83387",
+      "kickoff": "2027-03-13T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83388",
+      "kickoff": "2027-03-13T14:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83389",
+      "kickoff": "2027-03-13T14:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83390",
+      "kickoff": "2027-03-20T14:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83391",
+      "kickoff": "2027-03-20T14:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83392",
+      "kickoff": "2027-03-20T14:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83393",
+      "kickoff": "2027-03-20T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83394",
+      "kickoff": "2027-03-20T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83395",
+      "kickoff": "2027-03-20T14:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83396",
+      "kickoff": "2027-03-20T14:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83397",
+      "kickoff": "2027-03-20T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83398",
+      "kickoff": "2027-03-20T14:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83399",
+      "kickoff": "2027-04-03T13:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83400",
+      "kickoff": "2027-04-03T13:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83401",
+      "kickoff": "2027-04-03T13:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83402",
+      "kickoff": "2027-04-03T13:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83403",
+      "kickoff": "2027-04-03T13:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83404",
+      "kickoff": "2027-04-03T13:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83405",
+      "kickoff": "2027-04-03T13:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83406",
+      "kickoff": "2027-04-03T13:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83407",
+      "kickoff": "2027-04-03T13:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83408",
+      "kickoff": "2027-04-10T13:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83409",
+      "kickoff": "2027-04-10T13:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83410",
+      "kickoff": "2027-04-10T13:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83411",
+      "kickoff": "2027-04-10T13:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83412",
+      "kickoff": "2027-04-10T13:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83413",
+      "kickoff": "2027-04-10T13:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83414",
+      "kickoff": "2027-04-10T13:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83415",
+      "kickoff": "2027-04-10T13:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83416",
+      "kickoff": "2027-04-10T13:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83417",
+      "kickoff": "2027-04-17T13:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83418",
+      "kickoff": "2027-04-17T13:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83419",
+      "kickoff": "2027-04-17T13:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83420",
+      "kickoff": "2027-04-17T13:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83421",
+      "kickoff": "2027-04-17T13:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83422",
+      "kickoff": "2027-04-17T13:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83423",
+      "kickoff": "2027-04-17T13:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83424",
+      "kickoff": "2027-04-17T13:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83425",
+      "kickoff": "2027-04-17T13:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83426",
+      "kickoff": "2027-04-24T13:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83427",
+      "kickoff": "2027-04-24T13:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83428",
+      "kickoff": "2027-04-24T13:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83429",
+      "kickoff": "2027-04-24T13:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83430",
+      "kickoff": "2027-04-24T13:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83431",
+      "kickoff": "2027-04-24T13:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83432",
+      "kickoff": "2027-04-24T13:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83433",
+      "kickoff": "2027-04-24T13:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83434",
+      "kickoff": "2027-04-24T13:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83435",
+      "kickoff": "2027-05-08T13:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83436",
+      "kickoff": "2027-05-08T13:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83437",
+      "kickoff": "2027-05-08T13:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83438",
+      "kickoff": "2027-05-08T13:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83439",
+      "kickoff": "2027-05-08T13:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83440",
+      "kickoff": "2027-05-08T13:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83441",
+      "kickoff": "2027-05-08T13:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1606.01940918
+    },
+    {
+      "fixtureId": "83442",
+      "kickoff": "2027-05-08T13:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83443",
+      "kickoff": "2027-05-08T13:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83444",
+      "kickoff": "2027-05-15T13:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Köln",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1834.76879883,
+      "eloAway": 1568.16870117
+    },
+    {
+      "fixtureId": "83445",
+      "kickoff": "2027-05-15T13:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Leipzig",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1763.83459473,
+      "eloAway": 1761.90356445
+    },
+    {
+      "fixtureId": "83446",
+      "kickoff": "2027-05-15T13:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Mainz",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1700.35388184,
+      "eloAway": 1671.92565918
+    },
+    {
+      "fixtureId": "83447",
+      "kickoff": "2027-05-15T13:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Bayern",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1804.02612305,
+      "eloAway": 2000.87036133
+    },
+    {
+      "fixtureId": "83448",
+      "kickoff": "2027-05-15T13:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Elversberg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1663.77978516,
+      "eloAway": 1523.39831543
+    },
+    {
+      "fixtureId": "83449",
+      "kickoff": "2027-05-15T13:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Augsburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1640.84326172,
+      "eloAway": 1636.44641113
+    },
+    {
+      "fixtureId": "83450",
+      "kickoff": "2027-05-15T13:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Freiburg",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1602.1472168,
+      "eloAway": 1724.91296387
+    },
+    {
+      "fixtureId": "83451",
+      "kickoff": "2027-05-15T13:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Schalke",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1606.01940918,
+      "eloAway": 1519.7421875
+    },
+    {
+      "fixtureId": "83452",
+      "kickoff": "2027-05-15T13:30:00Z",
+      "homeClubId": "Paderborn",
+      "awayClubId": "Union Berlin",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1525.36755371,
+      "eloAway": 1619.43054199
+    },
+    {
+      "fixtureId": "83453",
+      "kickoff": "2027-05-22T13:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Frankfurt",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Bayern": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 2000.87036133,
+      "eloAway": 1663.77978516
+    },
+    {
+      "fixtureId": "83454",
+      "kickoff": "2027-05-22T13:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Hoffenheim",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1761.90356445,
+      "eloAway": 1700.35388184
+    },
+    {
+      "fixtureId": "83455",
+      "kickoff": "2027-05-22T13:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Dortmund",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1724.91296387,
+      "eloAway": 1834.76879883
+    },
+    {
+      "fixtureId": "83456",
+      "kickoff": "2027-05-22T13:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "HSV",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1636.44641113,
+      "eloAway": 1602.1472168
+    },
+    {
+      "fixtureId": "83457",
+      "kickoff": "2027-05-22T13:30:00Z",
+      "homeClubId": "Mainz",
+      "awayClubId": "Stuttgart",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "carried-forward",
+      "carriedFrom": {
+        "Stuttgart": {
+          "effectiveAt": "2026-07-03",
+          "ageDays": 20
+        }
+      },
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1671.92565918,
+      "eloAway": 1763.83459473
+    },
+    {
+      "fixtureId": "83458",
+      "kickoff": "2027-05-22T13:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Gladbach",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1619.43054199,
+      "eloAway": 1640.84326172
+    },
+    {
+      "fixtureId": "83459",
+      "kickoff": "2027-05-22T13:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Paderborn",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1568.16870117,
+      "eloAway": 1525.36755371
+    },
+    {
+      "fixtureId": "83460",
+      "kickoff": "2027-05-22T13:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Leverkusen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1519.7421875,
+      "eloAway": 1804.02612305
+    },
+    {
+      "fixtureId": "83461",
+      "kickoff": "2027-05-22T13:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Bremen",
+      "ratingSnapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
+      "provenance": "contemporaneous",
+      "createdAt": "2026-07-23T11:34:38.153Z",
+      "modelVersion": "track-c-part0-v1",
+      "eloHome": 1523.39831543,
+      "eloAway": 1606.01940918
+    }
+  ],
+  "gaps": [],
+  "counts": {
+    "contemporaneous": 240,
+    "backfilled": 0,
+    "carried-forward": 66
+  }
+}

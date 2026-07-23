@@ -50,6 +50,33 @@ export function parseCsv(text, { what = "clubelo response" } = {}) {
  * `date` is the `effectiveAt` of the resulting snapshot: the day the rating
  * refers to, as distinct from `observedAt`, the moment we fetched it (§5.3).
  */
+/**
+ * A response can be structurally valid — right header, ~600 rows — and still
+ * describe a DIFFERENT DAY. clubelo serves cached pages when it is overloaded,
+ * and none of the other guards would notice.
+ *
+ * So: a substantial majority of rows must actually cover the requested date.
+ * Deliberately a majority rather than all-or-nothing, because individual clubs
+ * legitimately fall outside the range — a club whose series clubelo has stopped
+ * extending is exactly the case Part 2.6 exists for. A strict "every row must
+ * cover it" rule would fail permanently on that. The majority test separates
+ * "a few clubs are stuck" from "this CSV is from another day".
+ */
+export const DATE_COVERAGE_MIN_SHARE = 0.9;
+
+export function dateCoverage(rows, date) {
+  const covering = rows.filter((r) => r.from <= date && date <= r.to);
+  const from = rows.map((r) => r.from).sort();
+  const to = rows.map((r) => r.to).sort();
+  return {
+    share: rows.length ? covering.length / rows.length : 0,
+    covering: covering.length,
+    total: rows.length,
+    // What the response actually describes, for a message worth reading.
+    describes: rows.length ? { earliestFrom: from[0], latestTo: to[to.length - 1] } : null,
+  };
+}
+
 export async function fetchDailySnapshot(date, fetchText = defaultFetchText) {
   const rows = parseCsv(await fetchText(`${BASE}/${date}`), { what: `clubelo snapshot ${date}` });
   if (rows.length < 100) {
@@ -57,7 +84,18 @@ export async function fetchDailySnapshot(date, fetchText = defaultFetchText) {
     // response, not a quiet day.
     throw new RatingSourceError(`clubelo snapshot ${date}: only ${rows.length} rows — refusing to trust it`);
   }
-  return { effectiveAt: date, rows };
+
+  const coverage = dateCoverage(rows, date);
+  if (coverage.share < DATE_COVERAGE_MIN_SHARE) {
+    throw new RatingSourceError(
+      `clubelo snapshot ${date}: only ${coverage.covering} of ${coverage.total} rows `
+        + `(${(coverage.share * 100).toFixed(1)} %) cover that date. The response describes `
+        + `${coverage.describes.earliestFrom} … ${coverage.describes.latestTo} — a stale cache is a `
+        + "source failure, not data.",
+    );
+  }
+
+  return { effectiveAt: date, rows, coverage };
 }
 
 /** Minimum rows before a club history is believable — a typo yields zero. */

@@ -123,3 +123,39 @@ export function configStampWarning(config, detectedSeason) {
   }
   return null;
 }
+
+/**
+ * Clubs currently running on a carried-forward rating (v5.7 Addendum 2.6).
+ *
+ * §8 honesty requirement, not a nicety: a forecast partly built on stale inputs
+ * must say so. The marker is per club, and it is SELF-CLEARING — the moment
+ * clubelo lists a club again its live value is used and this returns nothing.
+ */
+export function carriedRatings(outlook) {
+  const provenance = outlook?.ratingProvenance;
+  if (!provenance) return [];
+  return Object.entries(provenance)
+    .filter(([, p]) => p?.provenance === "carried-forward")
+    .map(([clubId, p]) => ({ clubId, effectiveAt: p.effectiveAt, ageDays: p.ageDays }))
+    .sort((a, b) => a.clubId.localeCompare(b.clubId));
+}
+
+/** The per-club marker text. */
+export function carriedRatingNote(entry, locale = "de-DE") {
+  const d = new Date(`${entry.effectiveAt}T00:00:00Z`);
+  const when = Number.isNaN(d.getTime())
+    ? entry.effectiveAt
+    : d.toLocaleDateString(locale, { day: "numeric", month: "long", timeZone: "UTC" });
+  return `Rating vom ${when} — clubelo führt diesen Klub derzeit nicht fort.`;
+}
+
+/** One summary line for the header, while any carried rating is in use. */
+export function carriedRatingSummary(carried, nameOf = (id) => id) {
+  if (!carried.length) return null;
+  const names = carried.map((c) => nameOf(c.clubId)).join(", ");
+  const oldest = Math.max(...carried.map((c) => c.ageDays));
+  return carried.length === 1
+    ? `${names} rechnet mit einem ${oldest} Tage alten Rating — clubelo führt den Klub derzeit nicht fort.`
+    : `${carried.length} Klubs rechnen mit einem älteren Rating (bis zu ${oldest} Tage): ${names}. `
+      + "clubelo führt sie derzeit nicht fort.";
+}

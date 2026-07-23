@@ -98,16 +98,22 @@ test("a snapshot missing one club's rating is a gap, not a partial entry", async
   assert.match(ds.gaps[0].reason, /lacks a rating for Z/);
 });
 
-test("split keeps the two provenance groups apart", () => {
+test("split keeps the provenance groups apart", () => {
   const entries = [
     { fixtureId: "a", provenance: "contemporaneous" },
     { fixtureId: "b", provenance: "backfilled" },
     { fixtureId: "c", provenance: "contemporaneous" },
+    // v5.7 Addendum 2.6: a third group, kept apart for the same reason as the
+    // second — a figure resting partly on a stale input is not the same figure.
+    { fixtureId: "d", provenance: "carried-forward" },
   ];
   const s = split(entries);
   assert.equal(s.contemporaneous.length, 2);
   assert.equal(s.backfilled.length, 1);
-  assert.deepEqual(countByProvenance(entries), { contemporaneous: 2, backfilled: 1 });
+  assert.equal(s["carried-forward"].length, 1);
+  assert.deepEqual(countByProvenance(entries), {
+    contemporaneous: 2, backfilled: 1, "carried-forward": 1,
+  });
 });
 
 // §5.3: the feature does not fail when the pre-season snapshot is missing — but

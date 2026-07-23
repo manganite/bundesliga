@@ -5,9 +5,10 @@ import { currentTable, scoredMatches } from "../lib/season.js";
 import { performanceVsExpectation } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, signed, weekdayDate } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
+import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
 
 export default function Teams({ ctx }) {
-  const { season, outlook, timeline, leagueConfig, nameOf, prematch, params, league } = ctx;
+  const { season, outlook, timeline, leagueConfig, nameOf, prematch, params, league, carried = [] } = ctx;
 
   const table = useMemo(() => currentTable(season, leagueConfig), [season, leagueConfig]);
   const [clubId, setClubId] = useState(() => table[0]?.clubId ?? season.clubs[0]?.clubId);
@@ -70,6 +71,12 @@ export default function Teams({ ctx }) {
       </div>
 
       <div className="stack">
+        {carried.find((c) => c.clubId === clubId) ? (
+          <p className="banner warn" role="status">
+            {carriedRatingNote(carried.find((c) => c.clubId === clubId))}
+          </p>
+        ) : null}
+
         <Card
           title="Wo die Saison endet"
           when={Boolean(positions)}

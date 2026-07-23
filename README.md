@@ -55,7 +55,9 @@ Lab: [football-model-lab](https://github.com/manganite/football-model-lab).
   der ODbL und nennen ihre Quelle je Datei.
 - **Ratings:** [clubelo.com](http://clubelo.com/). clubelo veröffentlicht keine
   Lizenz; eine Anfrage an den Betreiber läuft. Bis zur Antwort werden über den
-  regulären Abruf hinaus keine Daten geholt.
+  regulären Abruf hinaus keine Daten geholt. Einzelne Klubs können vorübergehend
+  mit einem älteren Rating rechnen, wenn clubelo sie gerade nicht fortführt — die
+  App markiert diese Klubs und nennt das Datum.
 - **Code:** GPL-3.0, siehe [LICENSE](LICENSE).
 
 Code und Daten stehen unter verschiedenen Lizenzen. Das ist Absicht und darf

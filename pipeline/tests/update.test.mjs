@@ -253,7 +253,7 @@ test("a club missing from the clubelo snapshot blocks the commit", async () => {
   };
   await assert.rejects(
     () => runUpdate({ dataDir, fetchJson, fetchText, now: NOW, log: silent }),
-    /have no clubelo rating/,
+    /no usable clubelo rating/,
   );
 });
 
@@ -284,7 +284,10 @@ test("extractRatings reports missing clubs instead of substituting", () => {
   const { ratings, missing } = extractRatings(s.clubs, snapshot);
   assert.deepEqual(Object.keys(ratings).sort(), ["Bayern", "Dortmund"]);
   assert.equal(missing.length, 2);
-  assert.ok(missing.some((m) => /Leverkusen/.test(m)));
+  // Structured, so the carry-forward step can work with club ids rather than
+  // parsing a message back apart.
+  assert.ok(missing.every((m) => m.clubId && m.name && m.clubeloCsvName));
+  assert.ok(missing.some((m) => m.clubId === "Leverkusen"));
 });
 
 test("backfill brackets each matchday and never reaches into the future", () => {
@@ -349,4 +352,109 @@ test("the ratings archive can be relocated by configuration alone", async () => 
   // And the derived data still resolved against it.
   const pm = JSON.parse(await fs.readFile(path.join(dataDir, "seasons", String(SEASON), "bl1", "prematch.json"), "utf8"));
   assert.ok(pm.entries.length > 0);
+});
+
+// ---------------------------------------------------------------------------
+// v5.7 Addendum 2.6 — bounded carry-forward. Fail-closed stays the default.
+// ---------------------------------------------------------------------------
+
+/** Sources where one club has vanished from the daily CSV, as clubelo did. */
+function makeSourcesWithMissingClub(missingCsvName) {
+  const s = makeSources();
+  const fetchText = async (url) => {
+    const text = await s.fetchText(url);
+    if (/clubelo\.com\/\d{4}-\d{2}-\d{2}$/.test(url)) {
+      return text.split("\n").filter((l) => !l.startsWith(`1,${missingCsvName},`)).join("\n");
+    }
+    return text;
+  };
+  return { fetchJson: s.fetchJson, fetchText };
+}
+
+test("a club absent from the snapshot still fails the job without the flag", async () => {
+  const dataDir = await makeDataDir();
+  const { fetchJson, fetchText } = makeSourcesWithMissingClub("Bayern");
+  await assert.rejects(
+    () => runUpdate({ dataDir, fetchJson, fetchText, now: NOW, log: silent }),
+    /no usable clubelo rating/,
+  );
+  assert.ok(!(await fs.readdir(dataDir)).includes("meta.json"), "nothing may be written");
+});
+
+test("with the flag the club is carried, marked, and the archive stays truthful", async () => {
+  const dataDir = await makeDataDir();
+  // First a clean run, so the archive holds a rating for every club.
+  const clean = makeSources();
+  await runUpdate({ dataDir, fetchJson: clean.fetchJson, fetchText: clean.fetchText, now: NOW, log: silent });
+
+  // Now Bayern vanishes from the daily CSV, one day later.
+  const later = new Date("2026-09-11T04:00:00.000Z");
+  const gone = makeSourcesWithMissingClub("Bayern");
+  const messages = [];
+  const r = await runUpdate({
+    dataDir, fetchJson: gone.fetchJson, fetchText: gone.fetchText, now: later,
+    carryForwardUntil: "2026-10-31", log: (m) => messages.push(m),
+  });
+
+  assert.equal(r.carried.length, 1);
+  assert.equal(r.carried[0].clubId, "Bayern");
+  assert.equal(r.carried[0].effectiveAt, "2026-09-10", "the real date of the rating, not today");
+  assert.equal(r.carried[0].ageDays, 1);
+
+  // Logged loudly, so the Actions notification is a truthful record.
+  assert.ok(messages.some((m) => /CARRIED FORWARD/.test(m)));
+
+  // The outlook marks it per club; every other club stays live.
+  const outlook = JSON.parse(await fs.readFile(path.join(dataDir, "seasons", String(SEASON), "bl1", "outlook.json"), "utf8"));
+  assert.equal(outlook.ratingProvenance.Bayern.provenance, "carried-forward");
+  assert.equal(outlook.ratingProvenance.Bayern.effectiveAt, "2026-09-10");
+  assert.equal(outlook.ratingProvenance.Dortmund.provenance, "live");
+
+  // The ARCHIVE records what clubelo actually published — no fabricated row.
+  const index = JSON.parse(await fs.readFile(path.join(dataDir, "ratings", "index.json"), "utf8"));
+  const todaySnap = index.snapshots.find((s) => s.effectiveAt === "2026-09-11");
+  const snap = JSON.parse(await fs.readFile(
+    path.join(dataDir, "ratings", "snapshots", `${todaySnap.snapshotId}.json`), "utf8",
+  ));
+  assert.equal(snap.ratings.Bayern, undefined, "a carried value must never enter the archive as an observation");
+  assert.ok(snap.ratings.Dortmund !== undefined);
+});
+
+test("the marker is self-clearing — once clubelo lists the club again it is live", async () => {
+  const dataDir = await makeDataDir();
+  const clean = makeSources();
+  await runUpdate({ dataDir, fetchJson: clean.fetchJson, fetchText: clean.fetchText, now: NOW, log: silent });
+
+  const gone = makeSourcesWithMissingClub("Bayern");
+  await runUpdate({
+    dataDir, fetchJson: gone.fetchJson, fetchText: gone.fetchText,
+    now: new Date("2026-09-11T04:00:00.000Z"), carryForwardUntil: "2026-10-31", log: silent,
+  });
+
+  // clubelo resumes. No manual reset, no migration.
+  const back = makeSources({ bump: 3 });
+  const r = await runUpdate({
+    dataDir, fetchJson: back.fetchJson, fetchText: back.fetchText,
+    now: new Date("2026-09-12T04:00:00.000Z"), carryForwardUntil: "2026-10-31", log: silent,
+  });
+  assert.deepEqual(r.carried, []);
+  const outlook = JSON.parse(await fs.readFile(path.join(dataDir, "seasons", String(SEASON), "bl1", "outlook.json"), "utf8"));
+  assert.equal(outlook.ratingProvenance.Bayern.provenance, "live");
+});
+
+test("a club with an intervening known fixture is not carried, flag or not", async () => {
+  const dataDir = await makeDataDir();
+  const clean = makeSources();
+  await runUpdate({ dataDir, fetchJson: clean.fetchJson, fetchText: clean.fetchText, now: NOW, log: silent });
+
+  // Matchday 4 is on 2026-09-18; asking on the 19th puts a played fixture in
+  // the gap, so the step-function argument no longer holds.
+  const gone = makeSourcesWithMissingClub("Bayern");
+  await assert.rejects(
+    () => runUpdate({
+      dataDir, fetchJson: gone.fetchJson, fetchText: gone.fetchText,
+      now: new Date("2026-09-19T04:00:00.000Z"), carryForwardUntil: "2026-10-31", log: silent,
+    }),
+    /known fixture\(s\) fall between/,
+  );
 });

@@ -23,6 +23,7 @@
 // ============================================================================
 
 import { findPreMatchSnapshot, provenanceFor } from "./snapshots.mjs";
+import { CARRIED_PROVENANCE } from "./carryForward.mjs";
 
 export const PRE_MATCH_RULE = "latest snapshot whose effectiveAt is strictly before the kickoff date";
 
@@ -41,6 +42,7 @@ export class PreMatchError extends Error {}
  */
 export async function buildPreMatchDataset({
   league, season, fixtures, index, loadSnapshot, existing = null, modelVersion, createdAt,
+  carryForward = null,
 }) {
   const entries = new Map();
   for (const e of existing?.entries ?? []) entries.set(e.fixtureId, e);
@@ -69,8 +71,26 @@ export async function buildPreMatchDataset({
     }
 
     const snap = await load(snapMeta.snapshotId);
-    const eloHome = snap.ratings[fx.homeClubId];
-    const eloAway = snap.ratings[fx.awayClubId];
+    let eloHome = snap.ratings[fx.homeClubId];
+    let eloAway = snap.ratings[fx.awayClubId];
+    let provenance = provenanceFor(snapMeta, fx.kickoff);
+    const carriedFrom = {};
+
+    // A club clubelo has temporarily stopped listing has no rating in the
+    // chosen snapshot. Under the bounded carry-forward rule its last archived
+    // value may stand in — and the entry then says so, because a forecast built
+    // partly on a stale input has to be distinguishable from one that is not.
+    for (const [side, clubId] of [["home", fx.homeClubId], ["away", fx.awayClubId]]) {
+      const have = side === "home" ? eloHome : eloAway;
+      if (have !== undefined || !carryForward) continue;
+      const resolved = await carryForward({ clubId, snapshotEffectiveAt: snapMeta.effectiveAt, fixture: fx });
+      if (!resolved) continue;
+      if (side === "home") eloHome = resolved.rating;
+      else eloAway = resolved.rating;
+      carriedFrom[clubId] = { effectiveAt: resolved.effectiveAt, ageDays: resolved.ageDays };
+      provenance = CARRIED_PROVENANCE;
+    }
+
     if (eloHome === undefined || eloAway === undefined) {
       gaps.push({
         fixtureId: fx.id,
@@ -88,7 +108,8 @@ export async function buildPreMatchDataset({
       awayClubId: fx.awayClubId,
       ratingSnapshotId: snapMeta.snapshotId,
       rule: PRE_MATCH_RULE,
-      provenance: provenanceFor(snapMeta, fx.kickoff),
+      provenance,
+      ...(Object.keys(carriedFrom).length ? { carriedFrom } : {}),
       createdAt,
       modelVersion,
       eloHome,
@@ -119,7 +140,7 @@ export async function buildPreMatchDataset({
 }
 
 export function countByProvenance(entries) {
-  const out = { contemporaneous: 0, backfilled: 0 };
+  const out = { contemporaneous: 0, backfilled: 0, [CARRIED_PROVENANCE]: 0 };
   for (const e of entries) out[e.provenance] = (out[e.provenance] ?? 0) + 1;
   return out;
 }
@@ -135,6 +156,10 @@ export function split(entries) {
   return {
     contemporaneous: entries.filter((e) => e.provenance === "contemporaneous"),
     backfilled: entries.filter((e) => e.provenance === "backfilled"),
+    // A third group, kept apart for the same reason as the second: a figure
+    // resting partly on a stale input is not the same figure as one that does
+    // not, and pooling them silently would hide exactly that.
+    [CARRIED_PROVENANCE]: entries.filter((e) => e.provenance === CARRIED_PROVENANCE),
   };
 }
 

@@ -4,6 +4,7 @@ import Chart from "../components/Chart.jsx";
 import { currentTable, scheduleStrength, duels, rulesFrom } from "../lib/season.js";
 import { percent, number, integer, signedInt } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
+import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
 
 const HEAT_STEPS = ["--heat-0", "--heat-1", "--heat-2", "--heat-3", "--heat-4", "--heat-5"];
 
@@ -16,7 +17,8 @@ function heatColour(p) {
 }
 
 export default function TabelleUndPrognose({ ctx }) {
-  const { season, outlook, leagueConfig, nameOf } = ctx;
+  const { season, outlook, leagueConfig, nameOf, carried = [] } = ctx;
+  const carriedByClub = new Map(carried.map((c) => [c.clubId, c]));
   const [expert, setExpert] = useState(false);
 
   const table = useMemo(() => currentTable(season, leagueConfig), [season, leagueConfig]);
@@ -50,7 +52,10 @@ export default function TabelleUndPrognose({ ctx }) {
         <Card
           title="Tabelle und erwartetes Saisonende"
           caption={
-            anyShared
+            carried.length
+              ? `Klubs mit ⚑ rechnen mit einem älteren Rating, weil clubelo sie derzeit nicht fortführt. ${
+                anyShared ? "Geteilte Tabellenplätze sind nach der Spielordnung nicht getrennt." : ""}`
+              : anyShared
               ? "Klubs auf einem geteilten Tabellenplatz sind nach der Spielordnung nicht getrennt: vor absolviertem Hin- und Rückspiel entscheiden nur Tordifferenz und Tore, und was danach gleich bleibt, teilt sich den Platz."
               : "Erwartete Punkte und der Bereich, in dem 80 % der simulierten Saisons enden (10.–90. Perzentil)."
           }
@@ -78,7 +83,16 @@ export default function TabelleUndPrognose({ ctx }) {
                         {r.rank}{r.sharedRank ? "." : "."}
                         {r.sharedRank ? <span className="visually-hidden"> geteilter Platz</span> : null}
                       </td>
-                      <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(r.clubId)}</th>
+                      <th scope="row" className="left" style={{ fontWeight: 500 }}>
+                        {nameOf(r.clubId)}
+                        {carriedByClub.has(r.clubId) ? (
+                          <span className="carried" title={carriedRatingNote(carriedByClub.get(r.clubId))}>
+                            {" "}⚑<span className="visually-hidden">
+                              {" "}{carriedRatingNote(carriedByClub.get(r.clubId))}
+                            </span>
+                          </span>
+                        ) : null}
+                      </th>
                       <td>{r.played}</td>
                       <td>{r.gf}:{r.ga}</td>
                       <td>{signedInt(r.gd)}</td>

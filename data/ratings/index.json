@@ -1566,6 +1566,24 @@
       "contentHash": "fdc0a97cc23d2916",
       "correctionOf": null,
       "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-07-03-15da4e2e4cf808de",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T11:34:29.882Z",
+      "effectiveAt": "2026-07-03",
+      "contentHash": "15da4e2e4cf808de",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-07-23-a606bc5200090dc1",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T11:34:38.153Z",
+      "effectiveAt": "2026-07-23",
+      "contentHash": "a606bc5200090dc1",
+      "correctionOf": null,
+      "clubs": 32
     }
   ]
 }

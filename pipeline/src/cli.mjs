@@ -4,6 +4,13 @@
  *
  *   node pipeline/src/cli.mjs [--data-dir data]
  *   node pipeline/src/cli.mjs --season 2025 --as-of 2026-06-01
+ *   node pipeline/src/cli.mjs --carry-forward-until 2026-08-15
+ *
+ * --carry-forward-until lets clubs that clubelo has temporarily stopped listing
+ * run on their last archived rating, bounded by that date and by a hard 42-day
+ * ceiling. It is OFF BY DEFAULT: without it an unresolved club still fails the
+ * job and blocks the commit. See pipeline/src/carryForward.mjs for why this is
+ * sound during an off-season and why it must expire.
  *
  * The two override flags rebuild a COMPLETED season from clubelo's published
  * history. They are an explicit operator action — the scheduled workflow never
@@ -31,9 +38,10 @@ const flag = (name, fallback) => {
 const dataDir = path.resolve(flag("data-dir", "data"));
 const seasonOverride = flag("season", null);
 const asOf = flag("as-of", null);
+const carryForwardUntil = flag("carry-forward-until", null);
 
 try {
-  const result = await runUpdate({ dataDir, seasonOverride, asOf });
+  const result = await runUpdate({ dataDir, seasonOverride, asOf, carryForwardUntil });
   // GitHub Actions reads this to decide whether to commit at all.
   if (process.env.GITHUB_OUTPUT) {
     const { appendFileSync } = await import("node:fs");
@@ -45,6 +53,9 @@ try {
     season: result.season,
     changes: result.changes,
     dataUpdatedAt: result.dataUpdatedAt,
+    carriedForward: (result.carried ?? []).map((c) => ({
+      clubId: c.clubId, effectiveAt: c.effectiveAt, ageDays: c.ageDays,
+    })),
   }, null, 2)}\n`);
 } catch (e) {
   if (e instanceof VerificationError) {

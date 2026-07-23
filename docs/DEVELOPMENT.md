@@ -65,6 +65,7 @@ Entwicklung noch Tests laufen gegen die Live-API.
 | App A — fünf Seiten (V1-Umfang) | ✅ |
 | App B — eine selbstständige HTML-Datei | ✅ mit Tests |
 | Refit als zwei Prozesse, Toleranzen ex ante | ✅ mit Tests |
+| Begrenzter Rating-Übertrag, Datumsprüfung der Tages-CSV | ✅ mit Tests |
 | V1.1 (2. Bundesliga, Relegation) / V1.2 / V2 | ⏳ offen |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
@@ -83,9 +84,10 @@ Datum in [verification/](verification/). Zwei Befunde haben den Bau verändert:
    kein Entscheidungsspiel während der Saison) fehlten im Brief ganz. Der Ranker
    folgt der Primärquelle — [Details](verification/dfl-spielordnung.md). Das
    Erratum v5.7 Part 1.1 hat das in die Spezifikation zurückgeführt.
-2. **clubelo hat aktuell eine Abdeckungslücke** für vier von 36 Klubs. Die
-   Pipeline verweigert deshalb korrekt den Commit —
-   [Details](verification/clubelo.md).
+2. **clubelo führt vier von 36 Klubs seit dem 03.07.2026 nicht fort.** Die
+   Pipeline verweigerte deshalb den Commit — bis der begrenzte Übertrag
+   (v5.7 Addendum) eingeführt wurde. Die vier Klubs rechnen jetzt sichtbar
+   markiert mit ihrem letzten Wert — [Details](verification/clubelo.md).
 
 Ein Gate ist noch offen und blockiert nur V2: ob sich die Tiebreak-Reihenfolge
 innerhalb des Fensters ab 1995/96 geändert hat.
@@ -95,15 +97,46 @@ innerhalb des Fensters ab 1995/96 geändert hat.
 Ein geplanter Workflow ist der einzige Datenpfad. Die App holt nichts live nach;
 committete Dateien sind die einzige Quelle.
 
-Die Pipeline schreibt **nichts**, solange eine Prüfung scheitert. Solange die
-clubelo-Lücke besteht, endet `npm run pipeline` deshalb mit Exit-Code 1 und
-unverändertem `data/` — das ist das vorgesehene Verhalten, kein Defekt.
+Die Pipeline schreibt **nichts**, solange eine Prüfung scheitert: sie endet mit
+Exit-Code 1 und unverändertem `data/`. Das ist das vorgesehene Verhalten, kein
+Defekt.
+
+Der geplante Workflow läuft bewusst **ohne** `--carry-forward-until`. Solange
+clubelo die vier Klubs nicht wieder führt, scheitert er deshalb und meldet das —
+die committeten Daten bleiben stehen, veralten aber. Den Schalter in den Cron zu
+nehmen wäre der Sache nach ein Automatismus, und genau davor warnt das Addendum.
+Wer die Saison laufend aktualisieren will, ruft die Pipeline mit dem Schalter
+manuell auf, bis clubelo sich fängt.
 
 Eine abgeschlossene Saison lässt sich vollständig neu aufbauen; der geplante
 Workflow übergibt diese Flags nie:
 
 ```bash
 node pipeline/src/cli.mjs --data-dir data --season 2025 --as-of 2026-06-01
+```
+
+**Wenn clubelo einen Klub nicht mehr fortführt.** clubelo schließt gelegentlich
+die Reihe eines Klubs, ohne sie wieder zu öffnen — dann fehlt er in jeder
+Tages-CSV. Standardmäßig scheitert der Lauf daran, und das bleibt so. Mit einem
+ausdrücklichen, befristeten Schalter darf der letzte archivierte Wert einspringen:
+
+```bash
+node pipeline/src/cli.mjs --data-dir data --carry-forward-until 2026-08-31
+```
+
+Ein clubelo-Rating ist eine Treppenfunktion und ändert sich nur, wenn ein Klub
+spielt; in einer echten Sommerpause *ist* der alte Wert der aktuelle. Weil die
+Pipeline aber nur Ligaspiele sieht und nicht Pokal oder europäische
+Qualifikation, verfällt die Regel nach spätestens **42 Tagen** — auch dann, wenn
+der Schalter länger gesetzt ist. Übertragene Klubs sind in der App markiert und
+im Protokoll namentlich genannt.
+
+Der Übertrag braucht einen archivierten Snapshot aus der Zeit, als der Klub noch
+geführt wurde. Fehlt er, lässt sich ein einzelner Tag nachtragen — eine Anfrage,
+dieselbe Art wie der reguläre Cron:
+
+```bash
+node pipeline/src/archiveDay.mjs 2026-07-03
 ```
 
 **Wo das Rating-Archiv liegt, ist Konfiguration.** clubelo veröffentlicht keine

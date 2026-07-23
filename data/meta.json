@@ -1,12 +1,15 @@
 {
   "schemaVersion": 1,
-  "season": 2025,
-  "dataUpdatedAt": "2026-07-23T10:56:17.555Z",
-  "dataHash": "1201039de05268eb",
+  "season": 2026,
+  "dataUpdatedAt": "2026-07-23T11:34:38.153Z",
+  "dataHash": "1b76c40376fc4626",
   "lastChanges": [
+    "rating snapshot clubelo-2026-07-23-a606bc5200090dc1",
+    "bl1 pre-match dataset (+306)",
+    "bl2 pre-match dataset (+306)",
     "bl1 current outlook",
-    "bl1 frozen timeline (+35 point(s))",
     "bl2 current outlook",
-    "bl2 frozen timeline (+35 point(s))"
+    "bl1 fixtures/results",
+    "bl2 fixtures/results"
   ]
 }

@@ -135,6 +135,16 @@ gescheitertes Gate das Repository unberührt lässt.
   Repo muss Konfiguration bleiben, nie ein Refactoring.
 - **Der Backfill pausiert 750 ms** zwischen clubelo-Anfragen. Entwicklung und Tests
   laufen nie gegen die Live-API.
+- **Rating-Übertrag ist ein Schalter, kein Automatismus** (`carryForward.mjs`).
+  Ohne `--carry-forward-until` scheitert ein fehlender Klub weiterhin den Lauf.
+  Harte Decke 42 Tage, auch wenn der Schalter länger gesetzt ist; `effectiveAt`
+  wird nie umgeschrieben; der Provenance-Wert `carried-forward` steht neben
+  `contemporaneous` und `backfilled` und darf in Modellgüte-Zahlen nicht mit
+  ihnen vermischt werden. Ein übertragener Wert kommt **nie** ins Archiv — dort
+  steht nur, was clubelo tatsächlich veröffentlicht hat.
+- **Die Tages-CSV wird gegen das angefragte Datum geprüft.** clubelo liefert bei
+  Überlast zwischengespeicherte Seiten, die strukturell einwandfrei sind und einen
+  anderen Tag beschreiben; ≥ 90 % der Zeilen müssen das Datum abdecken.
 
 ### App A (`apps/public/`)
 

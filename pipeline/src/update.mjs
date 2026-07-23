@@ -31,6 +31,9 @@ import {
 import { buildPreMatchDataset, frozenRatingLabel } from "./preMatch.mjs";
 import { buildCurrentOutlook, buildFrozenTimeline, targetsFromConfig } from "./artefacts.mjs";
 import { verifyAll } from "./verify.mjs";
+import {
+  resolveMissingClubs, groupFixturesByClub, evaluateCarryForward, latestArchivedRating, CARRIED_PROVENANCE,
+} from "./carryForward.mjs";
 
 export const LEAGUES = ["bl1", "bl2"];
 
@@ -86,7 +89,9 @@ export function extractRatings(clubs, snapshot) {
   for (const club of clubs) {
     const row = byClub.get(club.clubeloCsvName);
     if (!row) {
-      missing.push(`${club.name} (clubelo "${club.clubeloCsvName}")`);
+      // Structured, not a message: the carry-forward step needs the club id, and
+      // the failure text is built from these at the point of failure.
+      missing.push({ clubId: club.clubId, name: club.name, clubeloCsvName: club.clubeloCsvName });
       continue;
     }
     ratings[club.clubId] = row.elo;
@@ -213,6 +218,7 @@ export async function runUpdate({
   seasonOverride = null,
   asOf = null,
   ratingsDir: ratingsDirOverride = null,
+  carryForwardUntil = null,
   log = (m) => process.stderr.write(`${m}\n`),
 } = {}) {
   const observedAt = now.toISOString();
@@ -263,11 +269,48 @@ export async function runUpdate({
   // --- 3. ratings ----------------------------------------------------------
   const daily = await fetchDailySnapshot(today, fetchText);
   const { ratings, missing } = extractRatings([...allClubs.values()], daily);
+
+  // Clubs the daily snapshot did not cover. Fail-closed is the default: without
+  // --carry-forward-until this still fails the job (§5.2, unchanged).
+  const ratingProvenance = Object.fromEntries(
+    Object.keys(ratings).map((clubId) => [clubId, { provenance: "live", effectiveAt: today, ageDays: 0 }]),
+  );
+  const nameOfClub = (clubId) => allClubs.get(clubId)?.name ?? clubId;
+  let carried = [];
   if (missing.length) {
-    throw new Error(
-      `${missing.length} club(s) have no clubelo rating on ${today}:\n  ${missing.join("\n  ")}\n` +
-        "Under §5.2 the job fails and nothing is committed — a wrong rating is worse than a missing one.",
-    );
+    const preIndex = await readIndex(ratingsDir);
+    const allFixtures = LEAGUES.flatMap((l) => seasons[l].fixtures);
+    const { carried: ok, stillMissing } = await resolveMissingClubs({
+      missingClubIds: missing.map((m) => m.clubId),
+      requestedDate: today,
+      carryForwardUntil,
+      index: preIndex,
+      loadSnapshot: (id) => readSnapshot(ratingsDir, id),
+      fixturesByClub: groupFixturesByClub(allFixtures),
+    });
+    carried = ok;
+
+    if (stillMissing.length) {
+      throw new Error(
+        `${stillMissing.length} club(s) have no usable clubelo rating on ${today}:\n`
+          + `${stillMissing.map((m) => `  ${nameOfClub(m.clubId)}: ${m.reason}`).join("\n")}\n`
+          + "Under §5.2 the job fails and nothing is committed — a wrong rating is worse than a missing one.",
+      );
+    }
+
+    // Logged loudly: the Actions notification must be a truthful record of what
+    // was committed, and a forecast partly built on stale inputs has to say so.
+    for (const c of carried) {
+      ratings[c.clubId] = c.rating;
+      ratingProvenance[c.clubId] = {
+        provenance: CARRIED_PROVENANCE,
+        effectiveAt: c.effectiveAt,
+        ageDays: c.ageDays,
+        snapshotId: c.snapshotId,
+      };
+      log(`CARRIED FORWARD ${nameOfClub(c.clubId)}: rating from ${c.effectiveAt}, ${c.ageDays} day(s) old`);
+    }
+    log(`${carried.length} club(s) running on a carried-forward rating (--carry-forward-until=${carryForwardUntil})`);
   }
 
   // --- 4. VERIFY before anything is written --------------------------------
@@ -312,14 +355,20 @@ export async function runUpdate({
     if (backfill.appended) changes.push(`${backfill.appended} backfilled snapshot(s)`);
   }
 
+  // The archive records what clubelo ACTUALLY published — carried values are a
+  // resolution step, never a fabricated observation.
+  const observedRatings = Object.fromEntries(
+    Object.entries(ratings).filter(([clubId]) => ratingProvenance[clubId].provenance === "live"),
+  );
   const appended = await appendSnapshot(ratingsDir, {
-    source: "clubelo", observedAt, effectiveAt: today, ratings,
+    source: "clubelo", observedAt, effectiveAt: today, ratings: observedRatings,
   });
   if (appended.appended) changes.push(`rating snapshot ${appended.snapshotId}`);
   else log(`snapshot unchanged: ${appended.reason}`);
 
   // --- 6. derive the per-fixture pre-match dataset --------------------------
   const index = await readIndex(ratingsDir);
+  const fixturesByClubAll = groupFixturesByClub(LEAGUES.flatMap((l) => seasons[l].fixtures));
   const shipped = JSON.parse(await fs.readFile(path.join(dataDir, "season-params.json"), "utf8"));
   const shippedParams = shipped.params;
   for (const league of LEAGUES) {
@@ -339,6 +388,23 @@ export async function runUpdate({
       existing,
       modelVersion: shipped.procedureVersion,
       createdAt: observedAt,
+      // Same bounded rule as the current ratings, evaluated per fixture: the
+      // snapshot's own date is what the age is measured from.
+      carryForward: carryForwardUntil
+        ? async ({ clubId, snapshotEffectiveAt, fixture }) => {
+          const previous = await latestArchivedRating({
+            clubId, date: snapshotEffectiveAt, index, loadSnapshot: (id) => readSnapshot(ratingsDir, id),
+          });
+          const verdict = evaluateCarryForward({
+            clubId,
+            requestedDate: snapshotEffectiveAt,
+            carryForwardUntil,
+            previous,
+            clubFixtures: (fixturesByClubAll.get(clubId) ?? []).filter((f) => f.id !== fixture.id),
+          });
+          return verdict.ok ? verdict : null;
+        }
+        : null,
     });
     if (await writeIfChanged(file, stable(dataset))) {
       changes.push(`${league} pre-match dataset (+${created})`);
@@ -360,10 +426,16 @@ export async function runUpdate({
     const dir = path.join(dataDir, "seasons", String(detected.season), league);
 
     const currentClubs = s.clubs.map((c) => ({ clubId: c.clubId, rating: ratings[c.clubId] }));
-    const outlook = buildCurrentOutlook({
-      seasonId: `${detected.season}-${league}`,
-      league, clubs: currentClubs, fixtures: s.fixtures, params: shippedParams, targets, rules,
-    });
+    const outlook = {
+      ...buildCurrentOutlook({
+        seasonId: `${detected.season}-${league}`,
+        league, clubs: currentClubs, fixtures: s.fixtures, params: shippedParams, targets, rules,
+      }),
+      // Per club, where its rating came from. The app marks anything not live.
+      ratingProvenance: Object.fromEntries(
+        s.clubs.map((c) => [c.clubId, ratingProvenance[c.clubId]]),
+      ),
+    };
     if (await writeIfChanged(path.join(dir, "outlook.json"), stable(outlook))) {
       changes.push(`${league} current outlook`);
     }
@@ -441,7 +513,7 @@ export async function runUpdate({
 
   if (changes.length === 0) {
     log("nothing changed — no commit, and dataUpdatedAt deliberately stays put");
-    return { changed: false, season: detected.season, changes: [], dataUpdatedAt: meta.dataUpdatedAt };
+    return { changed: false, season: detected.season, changes: [], dataUpdatedAt: meta.dataUpdatedAt, carried };
   }
 
   meta = {
@@ -456,5 +528,5 @@ export async function runUpdate({
   await writeIfChanged(metaFile, stable(meta));
   log(`changed: ${changes.join(", ")}`);
 
-  return { changed: true, season: detected.season, changes, dataUpdatedAt: observedAt, backfill };
+  return { changed: true, season: detected.season, changes, dataUpdatedAt: observedAt, backfill, carried };
 }
