@@ -231,6 +231,12 @@ construction.
     Clinch-Logik „Klassenerhalt nicht mehr möglich", sobald Platz 15 unerreichbar ist —
     und das ist eine **Garantie**, die falsch wäre, solange Platz 16 noch geht.
     `pipeline/tests/seasonConfig.test.mjs` hält das fest.
+- **CI: `test.yml` ist das Tor.** Läuft auf jedem Push und jedem Pull Request ohne
+  Pfadfilter; der Deploy ruft dieselbe Datei per `workflow_call` als Vorbedingung
+  auf, statt `npm test` erneut zu buchstabieren — eine Definition von „grün", die
+  nicht auseinanderlaufen kann. Ein zweiter Schritt prüft, dass es **genau sechs**
+  Skips sind. Ändern sich die Trainingsdaten-Lizenzlage oder die Testzahl, gehört
+  diese Zahl zusammen mit `docs/DEVELOPMENT.md` angepasst.
 - Offen: V1.2 (Modellgüte, Live-Rating-Timeline, „Wichtigstes kommendes Spiel"), V2.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`), committete Daten ODbL — die

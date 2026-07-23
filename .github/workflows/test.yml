@@ -1,0 +1,81 @@
+name: Tests
+
+# The gate for main. Every push and every pull request runs the full suite —
+# deliberately WITHOUT a paths filter, because the deploy workflow's filter is
+# scoped to what changes the published site and therefore misses whole areas:
+# apps/kicktipp/** (never deployed, but very much tested), docs/**, and the
+# workflows themselves. A commit there used to reach main with no CI at all.
+#
+# The deploy workflow calls this same file as its precondition (`workflow_call`
+# below), so there is exactly ONE definition of „die Tests sind grün" — a change
+# here changes the deployment gate too, and cannot drift away from it.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # `github.workflow` is the CALLER's name for a reusable workflow, so the run
+  # started by the deploy workflow lands in a different group than the standalone
+  # run for the same commit. Sharing one group would let the two cancel each
+  # other — and cancelling the deployment's own gate would fail the deployment
+  # for no reason.
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pinned Node version (§5.5 dependency hygiene). It must satisfy the
+      # engine constraints of the build toolchain's OPTIONAL native bindings:
+      # rolldown's linux-x64-gnu binding requires ^20.19.0 || >=22.12.0, and npm
+      # silently SKIPS an optional dependency whose engine constraint fails. The
+      # render tests build the app's JSX with vite, so they need that binding —
+      # a wrong pin here shows up as MODULE_NOT_FOUND far from its cause.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.1"
+          cache: npm
+
+      - run: npm ci
+
+      # The suite is offline: it runs against committed fixtures and never
+      # against the live APIs.
+      - name: Tests ausführen
+        run: |
+          set -o pipefail
+          npm test 2>&1 | tee test-output.txt
+
+      # The six skips are an EXPECTED state, not a defect: the clubelo-derived
+      # training Elo is not committed while the licence question is open, so the
+      # fit's reproduction gate can only be checked locally (docs/FIT_EXTRACTION.md).
+      #
+      # Expected does not mean unchecked. Without this step a newly skipped test
+      # anywhere else would ride along silently under the same „six skips are
+      # fine" story — which is exactly how a skip stops being noticed.
+      - name: Nur die sechs erwarteten Skips
+        run: |
+          # TAP („# skipped 6") in CI, spec („ℹ skipped 6") on a local TTY.
+          if ! grep -Eq '^(#|ℹ)[[:space:]]*skipped[[:space:]]+6$' test-output.txt; then
+            echo "::error::Die Zahl der übersprungenen Tests ist nicht 6."
+            echo
+            echo "Erwartet sind genau die sechs Tests des Reproduktionstors in"
+            echo "packages/fit/tests/reproduction.test.mjs: die Trainings-Elo-Werte sind"
+            echo "clubelo-abgeleitet und bleiben uncommittet, solange die Lizenzfrage offen"
+            echo "ist (docs/FIT_EXTRACTION.md)."
+            echo
+            echo "Mehr Skips heißt: irgendwo überspringt ein Test unbemerkt."
+            echo "Weniger heißt: die Trainingsdaten sind da — dann gehört diese Zahl"
+            echo "zusammen mit docs/DEVELOPMENT.md angepasst, und das Tor zieht in CI ein."
+            echo
+            grep -E '^(#|ℹ)[[:space:]]*(tests|pass|fail|skipped|todo)[[:space:]]' test-output.txt || true
+            exit 1
+          fi

@@ -63,6 +63,24 @@ Der erste Lauf baut einmal (~1 s), danach liegt das Bündel unter
 `apps/public/tests/harness/.out/` und ist gitignoriert. Grund: die letzten
 UI-Defekte hier waren allesamt unsichtbar für Logiktests.
 
+### Was CI prüft
+
+`.github/workflows/test.yml` fährt die gesamte Suite auf **jedem Push und jedem
+Pull Request**, bewusst **ohne Pfadfilter**: der Filter des Deploy-Workflows ist
+auf das ausgerichtet, was die veröffentlichte Seite verändert, und ließ damit
+ganze Bereiche ungeprüft — `apps/kicktipp/**`, `docs/**` und die Workflows
+selbst.
+
+Der Deploy ruft **dieselbe Datei** als Vorbedingung auf (`workflow_call`), statt
+`npm test` ein zweites Mal zu buchstabieren. Es gibt deshalb genau eine
+Definition von „die Tests sind grün", und sie kann nicht auseinanderlaufen: kein
+grüner Lauf, kein Deploy.
+
+Ein zweiter Schritt prüft, dass **genau sechs** Tests übersprungen werden. Dass
+sie übersprungen werden, ist der erwartete lizenzbedingte Zustand — dass es
+sechs bleiben, ist die Prüfung. Ohne sie liefe ein anderswo neu übersprungener
+Test unbemerkt unter derselben Erzählung mit.
+
 Auf einem frischen Checkout laufen **397 von 403** Tests; sechs überspringen mit
 begründeter Meldung, weil die clubelo-abgeleiteten Trainings-Elo-Werte nicht
 committet sind. Das **Reproduktionstor der Fitprozedur ist deshalb derzeit nur
@@ -84,6 +102,7 @@ committet werden dürfen. Ein „397 von 403“ ist also kein Defekt.
 | `pipeline` — Datenbeschaffung, Snapshots, Provenance | ✅ mit Tests |
 | `pipeline` — vorberechnete Artefakte | ✅ |
 | Daten- und Deploy-Workflow | ✅ |
+| Tests in CI auf Push und PR, Deploy daran gebunden | ✅ |
 | App A — fünf Seiten (V1-Umfang) | ✅ |
 | App A — Liga-Umschalter, gerenderte Tests | ✅ mit Tests |
 | App B — eine selbstständige HTML-Datei | ✅ mit Tests |

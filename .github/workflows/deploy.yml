@@ -16,6 +16,9 @@ on:
       # workspace was added without regenerating it and `npm ci` refused.
       - "package-lock.json"
       - ".github/workflows/deploy.yml"
+      # The test workflow IS the deployment gate (see the `test` job below), so
+      # a change to it changes what deploying means.
+      - ".github/workflows/test.yml"
   workflow_dispatch:
 
 permissions:
@@ -28,7 +31,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # The tests are the precondition, not a step inside the build: no green suite,
+  # no deployment. Calling the shared workflow rather than repeating `npm test`
+  # here means the deployment gate and the branch gate cannot drift apart — and
+  # a failure reads as „Tests" in the run list instead of hiding inside „build".
+  test:
+    uses: ./.github/workflows/test.yml
+
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -44,10 +55,6 @@ jobs:
           cache: npm
 
       - run: npm ci
-
-      # The engine and pipeline tests gate the deployment: a broken ranker or a
-      # broken metric must never reach the published site.
-      - run: npm test
 
       # `prebuild` syncs the committed data into the app's public directory.
       # There is no browser-side live fetch — the site serves only what this
