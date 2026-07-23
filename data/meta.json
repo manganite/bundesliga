@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "season": 2025,
+  "dataUpdatedAt": "2026-07-23T08:53:54.246Z",
+  "dataHash": "1201039de05268eb",
+  "lastChanges": [
+    "173 backfilled snapshot(s)",
+    "rating snapshot clubelo-2026-06-01-fdc0a97cc23d2916",
+    "bl1 pre-match dataset (+306)",
+    "bl2 pre-match dataset (+306)",
+    "bl1 fixtures/results",
+    "bl2 fixtures/results"
+  ]
+}

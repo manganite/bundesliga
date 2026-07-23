@@ -83,26 +83,68 @@ export function verifyEveryClubHasRating(fixtures, ratings) {
   return problems;
 }
 
+const dayOffset = (isoDate, days) => {
+  const d = new Date(`${isoDate}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+};
+
+/**
+ * How far either side of a kickoff a snapshot may sit and still isolate that
+ * one match. Two days is deliberately tight — see the warning below.
+ */
+export const DEFAULT_MAX_BRACKET_DAYS = 2;
+
 /**
  * Pre-match rating check: after a decisive result the winner's rating must rise.
  *
  * This catches the failure that matters — ratings joined to the wrong club, or
- * a source whose dates are offset — and it catches it in the one direction Elo
- * guarantees.
+ * a source whose dates are offset — in the one direction Elo guarantees.
  *
- * The check is only meaningful where two snapshots BRACKET EXACTLY ONE match
- * for that club. A club that played twice between the snapshots can legitimately
- * end lower after a win, so those cases are skipped rather than reported, and
- * the number skipped is returned so an empty check cannot masquerade as a pass.
+ * THE BRACKET MUST BE TIGHT, and this is not a detail. clubelo rates EVERY
+ * competition a club plays; our fixture list is league-only. With a week-wide
+ * bracket a club can win on Saturday and lose in Europe on Wednesday, and its
+ * rating legitimately ends lower — measured on real 2025/26 data, a weekly
+ * bracket produced 22 "violations" in 216 checks, every one of them a European
+ * or cup match the league fixtures cannot see. Widening this window does not
+ * make the check stronger, it makes it wrong.
+ *
+ * So: the two snapshots must sit within `maxBracketDays` either side of the
+ * kickoff, and no other LEAGUE match of that club may fall between them. A club
+ * plays at most once a day, so a ±2-day bracket around a kickoff isolates that
+ * fixture in practice. Anything wider is skipped rather than reported, and the
+ * skipped count is returned so an empty check cannot masquerade as a pass.
+ *
+ * CLUBELO'S DATING CONVENTION, verified on real 2025/26 data: the row covering
+ * the match date is the PRE-match rating, and the new value starts the day
+ * AFTER. Three worked examples, all consistent:
+ *
+ *   Leverkusen won 27 Sep — 1838.5 valid 26–27 Sep, 1841.9 from 28 Sep
+ *   Bayern     won 29 Nov — 1988.5 valid 28–29 Nov, 1989.6 from 30 Nov
+ *   Frankfurt  won 14 Mar — 1681.8 valid 13–14 Mar, 1684.8 from 15 Mar
+ *
+ * So `before` is the rating valid ON the match date, not one strictly earlier.
+ * Taking a strictly earlier snapshot pulls in whatever else happened in
+ * between — Bayern lost in Europe on 26 Nov, which is why the 27 Nov value is
+ * 1990.3 and a naive comparison "showed" a win lowering the rating.
+ *
+ * NOTE the deliberate asymmetry with the forecast rule in preMatch.mjs, which
+ * uses the latest snapshot STRICTLY BEFORE the kickoff date. That rule is
+ * conservative on purpose: it can never leak a match's own result into its
+ * forecast, even if clubelo were to change its dating. This gate has the
+ * opposite job — isolating one match as tightly as possible — so it follows the
+ * convention above instead. The two differing rules are intentional, not an
+ * inconsistency.
  *
  * @param {Array} playedFixtures  decisive, finished fixtures with kickoff + result
  * @param {Array} snapshots       [{ effectiveAt, ratings }], any order
  */
-export function verifyRatingDirection(playedFixtures, snapshots) {
+export function verifyRatingDirection(playedFixtures, snapshots, { maxBracketDays = DEFAULT_MAX_BRACKET_DAYS } = {}) {
   const ordered = snapshots.slice().sort((a, b) => a.effectiveAt.localeCompare(b.effectiveAt));
   const problems = [];
   let checked = 0;
   let skipped = 0;
+  let unchanged = 0;
 
   const matchesOf = new Map();
   for (const f of playedFixtures) {
@@ -116,28 +158,48 @@ export function verifyRatingDirection(playedFixtures, snapshots) {
     if (f.gh === f.ga) continue; // only decisive results say anything
     const winner = f.gh > f.ga ? f.homeClubId : f.awayClubId;
     const day = String(f.kickoff).slice(0, 10);
+    const earliest = dayOffset(day, -maxBracketDays);
+    const latest = dayOffset(day, maxBracketDays);
 
-    const before = [...ordered].reverse().find((s) => s.effectiveAt <= day && s.ratings[winner] !== undefined);
-    const after = ordered.find((s) => s.effectiveAt > day && s.ratings[winner] !== undefined);
+    // `<= day`: clubelo's row covering the match date is the pre-match value.
+    const before = [...ordered].reverse().find(
+      (s) => s.effectiveAt <= day && s.effectiveAt >= earliest && s.ratings[winner] !== undefined,
+    );
+    const after = ordered.find(
+      (s) => s.effectiveAt > day && s.effectiveAt <= latest && s.ratings[winner] !== undefined,
+    );
     if (!before || !after) { skipped++; continue; }
 
-    // Confounded if the club played anything else inside the window.
+    // Confounded if the club played another LEAGUE match inside the window.
+    // Other competitions are invisible here, which is exactly why the bracket
+    // is kept narrow enough that they cannot fit.
     const others = (matchesOf.get(winner) ?? []).filter((m) => {
       const d = String(m.kickoff).slice(0, 10);
       return m.id !== f.id && d >= before.effectiveAt && d < after.effectiveAt;
     });
     if (others.length) { skipped++; continue; }
 
+    const pre = before.ratings[winner];
+    const post = after.ratings[winner];
+
+    // EXACT equality means clubelo published no update for this match and
+    // carried the value forward — which is what it does after a season's final
+    // matchday. That is a data-availability condition, not a join error: a
+    // mis-joined rating shows up as a FALL, and bit-identical floats are not
+    // something a wrong join produces. Counted separately so it stays visible
+    // rather than silently passing or wrongly failing.
+    if (post === pre) { unchanged++; continue; }
+
     checked++;
-    if (after.ratings[winner] <= before.ratings[winner]) {
+    if (post < pre) {
       problems.push(
-        `${winner} won fixture ${f.id} (${f.gh}:${f.ga}) on ${day} but its rating did not rise: ` +
-          `${before.ratings[winner]} (${before.effectiveAt}) -> ${after.ratings[winner]} (${after.effectiveAt})`,
+        `${winner} won fixture ${f.id} (${f.gh}:${f.ga}) on ${day} but its rating fell: ` +
+          `${pre} (${before.effectiveAt}) -> ${post} (${after.effectiveAt})`,
       );
     }
   }
 
-  return { problems, checked, skipped };
+  return { problems, checked, skipped, unchanged };
 }
 
 /** Run every gate and throw with the full list rather than the first failure. */

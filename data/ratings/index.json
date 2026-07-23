@@ -1,0 +1,1571 @@
+{
+  "schemaVersion": 1,
+  "snapshots": [
+    {
+      "snapshotId": "clubelo-2025-07-31-ed9dbffbee628493",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-07-31",
+      "contentHash": "ed9dbffbee628493",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-01-ed9dbffbee628493",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-01",
+      "contentHash": "ed9dbffbee628493",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-02-7f7ba16c425b52e5",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-02",
+      "contentHash": "7f7ba16c425b52e5",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-03-018769c815c5dfb2",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-03",
+      "contentHash": "018769c815c5dfb2",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-07-f2cf32d76f5b6f6c",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-07",
+      "contentHash": "f2cf32d76f5b6f6c",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-08-f2cf32d76f5b6f6c",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-08",
+      "contentHash": "f2cf32d76f5b6f6c",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-09-690abd34c48b2774",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-09",
+      "contentHash": "690abd34c48b2774",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-10-608b0e0f71f29dcf",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-10",
+      "contentHash": "608b0e0f71f29dcf",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-21-c0d08485983cd2dc",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-21",
+      "contentHash": "c0d08485983cd2dc",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-22-8cdd3b5246ab81c8",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-22",
+      "contentHash": "8cdd3b5246ab81c8",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-23-ab40c89c25443b37",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-23",
+      "contentHash": "ab40c89c25443b37",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-24-7fca1a92e166f382",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-24",
+      "contentHash": "7fca1a92e166f382",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-25-3f201e25c7cfba0e",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-25",
+      "contentHash": "3f201e25c7cfba0e",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-28-3f201e25c7cfba0e",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-28",
+      "contentHash": "3f201e25c7cfba0e",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-29-41cbd6bb8aa51241",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-29",
+      "contentHash": "41cbd6bb8aa51241",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-30-50ccbeeec90dc831",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-30",
+      "contentHash": "50ccbeeec90dc831",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-08-31-80233f3d6905da6a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-08-31",
+      "contentHash": "80233f3d6905da6a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-01-aa0055cb0422709a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-01",
+      "contentHash": "aa0055cb0422709a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-11-aa0055cb0422709a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-11",
+      "contentHash": "aa0055cb0422709a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-12-aa0055cb0422709a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-12",
+      "contentHash": "aa0055cb0422709a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-13-623fb753760c80e2",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-13",
+      "contentHash": "623fb753760c80e2",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-14-160052dfb0868f1f",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-14",
+      "contentHash": "160052dfb0868f1f",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-15-358c4ee7ff322b0c",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-15",
+      "contentHash": "358c4ee7ff322b0c",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-18-719f80014a183ed1",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-18",
+      "contentHash": "719f80014a183ed1",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-19-06a2c67f7e5dcaf4",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-19",
+      "contentHash": "06a2c67f7e5dcaf4",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-20-850058a7e8e4de64",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-20",
+      "contentHash": "850058a7e8e4de64",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-21-3a6acfbc4246db53",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-21",
+      "contentHash": "3a6acfbc4246db53",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-22-90db437e7e3ce4e1",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-22",
+      "contentHash": "90db437e7e3ce4e1",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-25-c9681ce144d1f564",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-25",
+      "contentHash": "c9681ce144d1f564",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-26-da42f7d5769b7dd4",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-26",
+      "contentHash": "da42f7d5769b7dd4",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-27-f94dbba31bf242cb",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-27",
+      "contentHash": "f94dbba31bf242cb",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-28-c1a40861b5168d74",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-28",
+      "contentHash": "c1a40861b5168d74",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-09-29-3de1cbbd774b90da",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-09-29",
+      "contentHash": "3de1cbbd774b90da",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-02-5297f1a42252106e",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-02",
+      "contentHash": "5297f1a42252106e",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-03-ed5ebdb3d74aa18e",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-03",
+      "contentHash": "ed5ebdb3d74aa18e",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-04-d2b92a0b7b3b7e61",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-04",
+      "contentHash": "d2b92a0b7b3b7e61",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-05-b00757a9721a6d60",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-05",
+      "contentHash": "b00757a9721a6d60",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-06-7a3480561767119b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-06",
+      "contentHash": "7a3480561767119b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-16-7a3480561767119b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-16",
+      "contentHash": "7a3480561767119b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-17-7a3480561767119b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-17",
+      "contentHash": "7a3480561767119b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-18-44552b48b183aad9",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-18",
+      "contentHash": "44552b48b183aad9",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-19-e6b1a2faac17f427",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-19",
+      "contentHash": "e6b1a2faac17f427",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-20-056b334902f6d0ec",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-20",
+      "contentHash": "056b334902f6d0ec",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-23-abe549915ce03adc",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-23",
+      "contentHash": "abe549915ce03adc",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-24-0764b1c4d95733ed",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-24",
+      "contentHash": "0764b1c4d95733ed",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-25-ad9c26807261d87f",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-25",
+      "contentHash": "ad9c26807261d87f",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-26-04c999095b4cfb57",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-26",
+      "contentHash": "04c999095b4cfb57",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-27-394e2e70aafaeee0",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-27",
+      "contentHash": "394e2e70aafaeee0",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-30-394e2e70aafaeee0",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-30",
+      "contentHash": "394e2e70aafaeee0",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-10-31-394e2e70aafaeee0",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-10-31",
+      "contentHash": "394e2e70aafaeee0",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-01-7725b2eb43f12524",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-01",
+      "contentHash": "7725b2eb43f12524",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-02-e06693e85bbaf9fc",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-02",
+      "contentHash": "e06693e85bbaf9fc",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-03-f294ebbb5f7c6570",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-03",
+      "contentHash": "f294ebbb5f7c6570",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-06-994e1b1ad87ad265",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-06",
+      "contentHash": "994e1b1ad87ad265",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-07-7a433a07d89d28ce",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-07",
+      "contentHash": "7a433a07d89d28ce",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-08-d70705120b0f434e",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-08",
+      "contentHash": "d70705120b0f434e",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-09-e29608a7a0af28f1",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-09",
+      "contentHash": "e29608a7a0af28f1",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-10-15933a67b4a4a3b2",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-10",
+      "contentHash": "15933a67b4a4a3b2",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-20-15933a67b4a4a3b2",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-20",
+      "contentHash": "15933a67b4a4a3b2",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-21-15933a67b4a4a3b2",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-21",
+      "contentHash": "15933a67b4a4a3b2",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-22-93daa45bf37c1c96",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-22",
+      "contentHash": "93daa45bf37c1c96",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-23-3c00fd9c3a3ed636",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-23",
+      "contentHash": "3c00fd9c3a3ed636",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-24-8a4d0d728d0bd217",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-24",
+      "contentHash": "8a4d0d728d0bd217",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-27-2c9e61d50fd2e046",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-27",
+      "contentHash": "2c9e61d50fd2e046",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-28-50ef488136c70075",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-28",
+      "contentHash": "50ef488136c70075",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-29-46a5fc1d1d15309f",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-29",
+      "contentHash": "46a5fc1d1d15309f",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-11-30-fcf9989a83deb93e",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-11-30",
+      "contentHash": "fcf9989a83deb93e",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-01-8c4c34e676b1a08a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-01",
+      "contentHash": "8c4c34e676b1a08a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-04-8c4c34e676b1a08a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-04",
+      "contentHash": "8c4c34e676b1a08a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-05-8c4c34e676b1a08a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-05",
+      "contentHash": "8c4c34e676b1a08a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-06-f135874df1227814",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-06",
+      "contentHash": "f135874df1227814",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-07-23a37bfb76effded",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-07",
+      "contentHash": "23a37bfb76effded",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-08-7b28998adf94e86f",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-08",
+      "contentHash": "7b28998adf94e86f",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-11-b2ede732df0cf468",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-11",
+      "contentHash": "b2ede732df0cf468",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-12-e91d7828c6885238",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-12",
+      "contentHash": "e91d7828c6885238",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-13-a07a4750abfddc8a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-13",
+      "contentHash": "a07a4750abfddc8a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-14-8ee1bac8337c4ff8",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-14",
+      "contentHash": "8ee1bac8337c4ff8",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-15-3471118442b06327",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-15",
+      "contentHash": "3471118442b06327",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-18-3471118442b06327",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-18",
+      "contentHash": "3471118442b06327",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-19-c7f2c996b0d5f7b7",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-19",
+      "contentHash": "c7f2c996b0d5f7b7",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-20-1b2bc2ffe5682795",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-20",
+      "contentHash": "1b2bc2ffe5682795",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-21-92979ca7ddc37e99",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-21",
+      "contentHash": "92979ca7ddc37e99",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2025-12-22-7716ad637e3dc537",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2025-12-22",
+      "contentHash": "7716ad637e3dc537",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-09-7716ad637e3dc537",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-09",
+      "contentHash": "7716ad637e3dc537",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-10-d1a3c1c8eda546d6",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-10",
+      "contentHash": "d1a3c1c8eda546d6",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-11-02f1edac45da2833",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-11",
+      "contentHash": "02f1edac45da2833",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-13-8dd7fc112362d23a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-13",
+      "contentHash": "8dd7fc112362d23a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-14-fffe632274dfe355",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-14",
+      "contentHash": "fffe632274dfe355",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-15-c66b774b409e1a6b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-15",
+      "contentHash": "c66b774b409e1a6b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-16-4428eb8f25e7875d",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-16",
+      "contentHash": "4428eb8f25e7875d",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-17-8f9f508cc480e956",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-17",
+      "contentHash": "8f9f508cc480e956",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-18-51be49e305427c3f",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-18",
+      "contentHash": "51be49e305427c3f",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-19-935483bb05f1ede6",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-19",
+      "contentHash": "935483bb05f1ede6",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-22-97dbf77fdac413c8",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-22",
+      "contentHash": "97dbf77fdac413c8",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-23-6dc7947fc855f084",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-23",
+      "contentHash": "6dc7947fc855f084",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-24-b5a18fc140fc5107",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-24",
+      "contentHash": "b5a18fc140fc5107",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-25-1b1682d8a93d58db",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-25",
+      "contentHash": "1b1682d8a93d58db",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-26-c32a1022db80392d",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-26",
+      "contentHash": "c32a1022db80392d",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-27-c32a1022db80392d",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-27",
+      "contentHash": "c32a1022db80392d",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-28-f38a295dd9a56c62",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-28",
+      "contentHash": "f38a295dd9a56c62",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-29-d3a4da7aec8e3613",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-29",
+      "contentHash": "d3a4da7aec8e3613",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-30-5a7905109d9cbf9f",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-30",
+      "contentHash": "5a7905109d9cbf9f",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-01-31-edfe8f9dc37897cd",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-01-31",
+      "contentHash": "edfe8f9dc37897cd",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-01-432b7979742272ef",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-01",
+      "contentHash": "432b7979742272ef",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-02-e870d635f315701b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-02",
+      "contentHash": "e870d635f315701b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-05-e870d635f315701b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-05",
+      "contentHash": "e870d635f315701b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-06-e870d635f315701b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-06",
+      "contentHash": "e870d635f315701b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-07-020ece7bdbf56263",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-07",
+      "contentHash": "020ece7bdbf56263",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-08-6b7f6ab636ea99d7",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-08",
+      "contentHash": "6b7f6ab636ea99d7",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-09-ef0d9ea2b3c1ca4c",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-09",
+      "contentHash": "ef0d9ea2b3c1ca4c",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-12-ef0d9ea2b3c1ca4c",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-12",
+      "contentHash": "ef0d9ea2b3c1ca4c",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-13-ef0d9ea2b3c1ca4c",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-13",
+      "contentHash": "ef0d9ea2b3c1ca4c",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-14-04a93233b16bf745",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-14",
+      "contentHash": "04a93233b16bf745",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-15-2f2bffd6e3801ffb",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-15",
+      "contentHash": "2f2bffd6e3801ffb",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-16-bea5d5ff58e4b58e",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-16",
+      "contentHash": "bea5d5ff58e4b58e",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-19-63399d209356ff4e",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-19",
+      "contentHash": "63399d209356ff4e",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-20-c741ff78f4fcc448",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-20",
+      "contentHash": "c741ff78f4fcc448",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-21-08743f340cc4a6e2",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-21",
+      "contentHash": "08743f340cc4a6e2",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-22-422e235965754a92",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-22",
+      "contentHash": "422e235965754a92",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-23-ca4c31caf01a22d7",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-23",
+      "contentHash": "ca4c31caf01a22d7",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-26-fb8fc05ae9f7e4d3",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-26",
+      "contentHash": "fb8fc05ae9f7e4d3",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-27-b769132f4cde08d2",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-27",
+      "contentHash": "b769132f4cde08d2",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-02-28-a6f0d9e51db8250a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-02-28",
+      "contentHash": "a6f0d9e51db8250a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-01-10a8f77f4cb80f7f",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-01",
+      "contentHash": "10a8f77f4cb80f7f",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-02-72f1e22dd172d3a3",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-02",
+      "contentHash": "72f1e22dd172d3a3",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-04-72f1e22dd172d3a3",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-04",
+      "contentHash": "72f1e22dd172d3a3",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-05-1659814092a13776",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-05",
+      "contentHash": "1659814092a13776",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-06-1659814092a13776",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-06",
+      "contentHash": "1659814092a13776",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-07-6df119695b9aef4c",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-07",
+      "contentHash": "6df119695b9aef4c",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-08-cc018807e4f4f81e",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-08",
+      "contentHash": "cc018807e4f4f81e",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-09-3ef2aa9721143741",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-09",
+      "contentHash": "3ef2aa9721143741",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-12-b7ba56509f8ed011",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-12",
+      "contentHash": "b7ba56509f8ed011",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-13-db6c04035a270dae",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-13",
+      "contentHash": "db6c04035a270dae",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-14-10b7838249f7d6d7",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-14",
+      "contentHash": "10b7838249f7d6d7",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-15-dae0328eb02afce6",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-15",
+      "contentHash": "dae0328eb02afce6",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-16-68407c725fb293d8",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-16",
+      "contentHash": "68407c725fb293d8",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-19-c07842996ff7a8d0",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-19",
+      "contentHash": "c07842996ff7a8d0",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-20-91099bb8ed62aa72",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-20",
+      "contentHash": "91099bb8ed62aa72",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-21-3f048749bfb86e38",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-21",
+      "contentHash": "3f048749bfb86e38",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-22-b530540c6d4b5b54",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-22",
+      "contentHash": "b530540c6d4b5b54",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-03-23-3fe70d37b3391327",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-03-23",
+      "contentHash": "3fe70d37b3391327",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-03-3fe70d37b3391327",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-03",
+      "contentHash": "3fe70d37b3391327",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-04-3fe70d37b3391327",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-04",
+      "contentHash": "3fe70d37b3391327",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-05-11bd7d3ca057e557",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-05",
+      "contentHash": "11bd7d3ca057e557",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-06-5adcd3678df72865",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-06",
+      "contentHash": "5adcd3678df72865",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-09-2278d243e8f5d6b3",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-09",
+      "contentHash": "2278d243e8f5d6b3",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-10-30d36c0163708a0b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-10",
+      "contentHash": "30d36c0163708a0b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-11-a61f0f9aea8d522f",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-11",
+      "contentHash": "a61f0f9aea8d522f",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-12-16d463e1ec3ccdb0",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-12",
+      "contentHash": "16d463e1ec3ccdb0",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-13-5bc67ec2abd6c07b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-13",
+      "contentHash": "5bc67ec2abd6c07b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-16-c09cee4f5696dfe2",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-16",
+      "contentHash": "c09cee4f5696dfe2",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-17-4daaae0c782918e8",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-17",
+      "contentHash": "4daaae0c782918e8",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-18-2763da0e78d4b6a4",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-18",
+      "contentHash": "2763da0e78d4b6a4",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-19-fee94f1fe09c4851",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-19",
+      "contentHash": "fee94f1fe09c4851",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-20-afd3f5ed9916a4ea",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-20",
+      "contentHash": "afd3f5ed9916a4ea",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-23-afd3f5ed9916a4ea",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-23",
+      "contentHash": "afd3f5ed9916a4ea",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-24-afd3f5ed9916a4ea",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-24",
+      "contentHash": "afd3f5ed9916a4ea",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-25-65c05028e0b02101",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-25",
+      "contentHash": "65c05028e0b02101",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-26-34903ee0dda44dd8",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-26",
+      "contentHash": "34903ee0dda44dd8",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-04-27-7471d91a22d4617a",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-04-27",
+      "contentHash": "7471d91a22d4617a",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-01-0b5b340082090cfb",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-01",
+      "contentHash": "0b5b340082090cfb",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-02-0b5b340082090cfb",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-02",
+      "contentHash": "0b5b340082090cfb",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-03-f750309fdb96f125",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-03",
+      "contentHash": "f750309fdb96f125",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-04-4bbefabd4bcfa4a8",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-04",
+      "contentHash": "4bbefabd4bcfa4a8",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-07-7e6c3a53d0fa75d2",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-07",
+      "contentHash": "7e6c3a53d0fa75d2",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-08-c6f1ed86caa7254b",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-08",
+      "contentHash": "c6f1ed86caa7254b",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-09-c20ce4d5de368eca",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-09",
+      "contentHash": "c20ce4d5de368eca",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-10-831b47fe09a84827",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-10",
+      "contentHash": "831b47fe09a84827",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-11-052df7836ec39f46",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-11",
+      "contentHash": "052df7836ec39f46",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-15-052df7836ec39f46",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-15",
+      "contentHash": "052df7836ec39f46",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-16-052df7836ec39f46",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-16",
+      "contentHash": "052df7836ec39f46",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-17-fd94b85429a4efe1",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-17",
+      "contentHash": "fd94b85429a4efe1",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-05-18-127fde29d0bbce40",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-05-18",
+      "contentHash": "127fde29d0bbce40",
+      "correctionOf": null,
+      "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-06-01-fdc0a97cc23d2916",
+      "source": "clubelo",
+      "observedAt": "2026-07-23T08:53:54.246Z",
+      "effectiveAt": "2026-06-01",
+      "contentHash": "fdc0a97cc23d2916",
+      "correctionOf": null,
+      "clubs": 36
+    }
+  ]
+}

@@ -104,19 +104,39 @@ export function extractRatings(clubs, snapshot) {
  * stays a documented gap and the app enters its degraded state.
  */
 export function backfillDates(fixtures, today) {
-  const firstKickoffByMatchday = new Map();
+  const shift = (iso, days) => {
+    const d = new Date(`${String(iso).slice(0, 10)}T00:00:00Z`);
+    d.setUTCDate(d.getUTCDate() + days);
+    return d.toISOString().slice(0, 10);
+  };
+
+  const span = new Map();
   for (const f of fixtures) {
-    const cur = firstKickoffByMatchday.get(f.matchday);
-    if (!cur || f.kickoff < cur) firstKickoffByMatchday.set(f.matchday, f.kickoff);
+    const cur = span.get(f.matchday);
+    if (!cur) span.set(f.matchday, { first: f.kickoff, last: f.kickoff });
+    else {
+      if (f.kickoff < cur.first) cur.first = f.kickoff;
+      if (f.kickoff > cur.last) cur.last = f.kickoff;
+    }
   }
+
   const dates = new Set();
-  for (const kickoff of firstKickoffByMatchday.values()) {
-    const d = new Date(`${String(kickoff).slice(0, 10)}T00:00:00Z`);
-    d.setUTCDate(d.getUTCDate() - 1);
-    const iso = d.toISOString().slice(0, 10);
-    if (iso <= today) dates.add(iso);
+  for (const { first, last } of span.values()) {
+    // The day before the matchday starts — the pre-match rating the §5.3
+    // forecast rule asks for (latest snapshot STRICTLY before the kickoff).
+    dates.add(shift(first, -1));
+    // And the day after it ends, so the rating-direction gate has a bracket
+    // tight enough to isolate a single match. Without this the gate is either
+    // vacuous or confounded by European fixtures (see verify.mjs).
+    dates.add(shift(last, 1));
   }
-  return [...dates].sort();
+  // The kickoff dates themselves: under clubelo's dating the row covering the
+  // match date is that match's pre-match value, which is what the direction
+  // gate compares against (verify.mjs).
+  for (const f of fixtures) dates.add(String(f.kickoff).slice(0, 10));
+  // A future date cannot have been published; inventing one would be exactly the
+  // silent fabrication §5.3 forbids.
+  return [...dates].filter((d) => d <= today).sort();
 }
 
 export async function backfillSnapshots({
@@ -174,15 +194,26 @@ export async function runUpdate({
   fetchJson,
   fetchText,
   now = new Date(),
+  seasonOverride = null,
+  asOf = null,
   log = (m) => process.stderr.write(`${m}\n`),
 } = {}) {
   const observedAt = now.toISOString();
-  const today = observedAt.slice(0, 10);
+  // `asOf` lets an operator rebuild a COMPLETED season from clubelo's published
+  // history — V2 groundwork, and the only way to exercise the full pipeline
+  // while the current season has no usable ratings. It never affects a normal
+  // run: without it, ratings are taken as of today.
+  const today = asOf ?? observedAt.slice(0, 10);
   const ratingsDir = path.join(dataDir, "ratings");
 
   // --- 1. detect the season. Never hardcoded (§5.5). ------------------------
-  const detected = await detectCurrentSeason("bl1", fetchJson);
-  log(`detected season ${detected.season} (${detected.leagueName}), matchday ${detected.matchday}`);
+  // `seasonOverride` is an explicit operator action for rebuilding a past
+  // season, not a hardcoded season: the scheduled workflow never passes it, so
+  // the automatic detection §5.5 requires stays the only path in production.
+  const detected = seasonOverride
+    ? { season: Number(seasonOverride), matchday: null, leagueName: `manual override ${seasonOverride}`, detectedFrom: "operator override" }
+    : await detectCurrentSeason("bl1", fetchJson);
+  log(`${seasonOverride ? "season override" : "detected season"} ${detected.season} (${detected.leagueName})`);
 
   const configFile = path.join(dataDir, "seasons", String(detected.season), "config.json");
   let config;
@@ -223,8 +254,11 @@ export async function runUpdate({
 
   // --- 4. VERIFY before anything is written --------------------------------
   const existingIndex = await readIndex(ratingsDir);
+  // Load the whole archive, not a tail: the rating-direction gate needs the
+  // snapshots that actually bracket recent fixtures, and a fixed tail silently
+  // makes the gate vacuous whenever the archive is sparse.
   const archived = [];
-  for (const meta of existingIndex.snapshots.slice(-8)) {
+  for (const meta of existingIndex.snapshots) {
     archived.push(await readSnapshot(ratingsDir, meta.snapshotId));
   }
   const verification = {};
@@ -236,11 +270,17 @@ export async function runUpdate({
       snapshots: [...archived, { effectiveAt: today, ratings }],
     });
   }
-  log(
-    "verified: counts, club ratings, rating direction "
-      + `(checked ${LEAGUES.reduce((a, l) => a + verification[l].ratingDirection.checked, 0)}, `
-      + `skipped ${LEAGUES.reduce((a, l) => a + verification[l].ratingDirection.skipped, 0)} as confounded)`,
-  );
+  const checked = LEAGUES.reduce((a, l) => a + verification[l].ratingDirection.checked, 0);
+  const skipped = LEAGUES.reduce((a, l) => a + verification[l].ratingDirection.skipped, 0);
+  const unchanged = LEAGUES.reduce((a, l) => a + verification[l].ratingDirection.unchanged, 0);
+  log(`verified: counts, club ratings, rating direction `
+    + `(checked ${checked}, skipped ${skipped}, ${unchanged} with no published rating update)`);
+  if (checked === 0 && skipped > 0) {
+    // Not a failure — early in a season, or on a first run, there is simply no
+    // bracketing snapshot yet. Said out loud so a vacuous gate is never mistaken
+    // for a passing one.
+    log("  note: the rating-direction gate had nothing to check — no snapshot pair brackets a decisive result yet");
+  }
 
   // --- 5. archive. Idempotent, atomic, append-only. -------------------------
   const changes = [];

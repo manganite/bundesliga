@@ -280,7 +280,7 @@ test("extractRatings reports missing clubs instead of substituting", () => {
   assert.ok(missing.some((m) => /Leverkusen/.test(m)));
 });
 
-test("backfill targets the day before each matchday, and never the future", () => {
+test("backfill brackets each matchday and never reaches into the future", () => {
   const fixtures = [
     { matchday: 1, kickoff: "2026-08-14T15:30:00Z" },
     { matchday: 1, kickoff: "2026-08-15T15:30:00Z" },
@@ -288,6 +288,16 @@ test("backfill targets the day before each matchday, and never the future", () =
     { matchday: 6, kickoff: "2026-10-02T15:30:00Z" },
   ];
   const dates = backfillDates(fixtures, "2026-09-10");
-  assert.deepEqual(dates, ["2026-08-13", "2026-08-20"]);
-  assert.ok(!dates.includes("2026-10-01"), "a future date cannot have been published");
+  assert.deepEqual(dates, [
+    "2026-08-13", // day before matchday 1 — the forecast rule's pre-match date
+    "2026-08-14", // kickoff dates themselves — clubelo's pre-match value
+    "2026-08-15",
+    "2026-08-16", // day after matchday 1 — the direction gate's post value
+    "2026-08-20",
+    "2026-08-21",
+    "2026-08-22",
+  ]);
+  // Matchday 6 is entirely in the future and must contribute nothing.
+  assert.ok(dates.every((d) => d <= "2026-09-10"), "a future date cannot have been published");
+  assert.ok(!dates.some((d) => d.startsWith("2026-10")));
 });

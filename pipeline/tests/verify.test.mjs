@@ -107,16 +107,69 @@ test("a winner whose rating fell is caught — the join is wrong", () => {
 test("a club that played twice inside the window is skipped, not reported", () => {
   const played = [
     { id: "m1", kickoff: "2026-09-05T15:30:00Z", homeClubId: "A", awayClubId: "B", gh: 2, ga: 0 },
-    { id: "m2", kickoff: "2026-09-05T18:30:00Z", homeClubId: "C", awayClubId: "A", gh: 5, ga: 0 },
+    { id: "m2", kickoff: "2026-09-06T18:30:00Z", homeClubId: "C", awayClubId: "A", gh: 5, ga: 0 },
   ];
   const snapshots = [
     { effectiveAt: "2026-09-04", ratings: { A: 1800, B: 1750, C: 1700 } },
-    { effectiveAt: "2026-09-08", ratings: { A: 1770, B: 1740, C: 1740 } },
+    { effectiveAt: "2026-09-07", ratings: { A: 1770, B: 1740, C: 1740 } },
   ];
   const r = verifyRatingDirection(played, snapshots);
   // A won m1 but also lost m2 in the same window — legitimately lower.
   assert.deepEqual(r.problems, [], "a confounded case must not be reported as a failure");
   assert.ok(r.skipped >= 1);
+});
+
+// Measured on real 2025/26 data: a week-wide bracket produced 22 "violations"
+// in 216 checks, every one of them a European or cup match the league fixtures
+// cannot see. clubelo rates every competition; our fixture list does not.
+test("a bracket too wide to isolate one match is skipped, not reported", () => {
+  const played = [{ id: "m1", kickoff: "2026-09-05T15:30:00Z", homeClubId: "A", awayClubId: "B", gh: 2, ga: 0 }];
+  // A won on the 5th; the rating is lower a week later because of a midweek
+  // European defeat that this data cannot see.
+  const wide = [
+    { effectiveAt: "2026-09-01", ratings: { A: 1800, B: 1750 } },
+    { effectiveAt: "2026-09-12", ratings: { A: 1780, B: 1760 } },
+  ];
+  const r = verifyRatingDirection(played, wide);
+  assert.deepEqual(r.problems, [], "a week-wide bracket must never produce a verdict");
+  assert.equal(r.checked, 0);
+  assert.equal(r.skipped, 1);
+});
+
+// Observed on the final matchday of 2025/26: Elversberg won 3:0 and clubelo
+// carried the value forward bit-identically instead of recomputing it. That is
+// a data-availability condition, not a join error — a mis-joined rating shows
+// up as a FALL, and identical floats are not something a wrong join produces.
+test("a bit-identical rating counts as 'no update published', not as a violation", () => {
+  const played = [{ id: "m1", kickoff: "2026-05-17T15:30:00Z", homeClubId: "A", awayClubId: "B", gh: 3, ga: 0 }];
+  const frozen = [
+    { effectiveAt: "2026-05-17", ratings: { A: 1525.5423584, B: 1400 } },
+    { effectiveAt: "2026-05-18", ratings: { A: 1525.5423584, B: 1400 } },
+  ];
+  const r = verifyRatingDirection(played, frozen);
+  assert.deepEqual(r.problems, []);
+  assert.equal(r.unchanged, 1);
+  assert.equal(r.checked, 0, "an unchanged rating is not evidence either way");
+});
+
+test("a winner whose rating actually fell is still a violation", () => {
+  const played = [{ id: "m1", kickoff: "2026-05-17T15:30:00Z", homeClubId: "A", awayClubId: "B", gh: 3, ga: 0 }];
+  const fell = [
+    { effectiveAt: "2026-05-17", ratings: { A: 1525.5, B: 1400 } },
+    { effectiveAt: "2026-05-18", ratings: { A: 1520.0, B: 1400 } },
+  ];
+  const r = verifyRatingDirection(played, fell);
+  assert.equal(r.problems.length, 1);
+  assert.match(r.problems[0], /rating fell/);
+});
+
+test("a tight bracket does produce a verdict", () => {
+  const played = [{ id: "m1", kickoff: "2026-09-05T15:30:00Z", homeClubId: "A", awayClubId: "B", gh: 2, ga: 0 }];
+  const tight = [
+    { effectiveAt: "2026-09-04", ratings: { A: 1800, B: 1750 } },
+    { effectiveAt: "2026-09-06", ratings: { A: 1812, B: 1738 } },
+  ];
+  assert.equal(verifyRatingDirection(played, tight).checked, 1);
 });
 
 test("draws say nothing about direction and are ignored", () => {

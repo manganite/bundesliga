@@ -3,6 +3,13 @@
  * Pipeline entry point. The scheduled workflow runs exactly this.
  *
  *   node pipeline/src/cli.mjs [--data-dir data]
+ *   node pipeline/src/cli.mjs --season 2025 --as-of 2026-06-01
+ *
+ * The two override flags rebuild a COMPLETED season from clubelo's published
+ * history. They are an explicit operator action — the scheduled workflow never
+ * passes them, so automatic season detection (§5.5) remains the only path in
+ * production. Everything rebuilt this way is `backfilled` provenance by
+ * construction and must never be presented as „die damalige Prognose" (§5.3).
  *
  * Exit codes:
  *   0  ran cleanly — see `changed` in the summary for whether anything moved
@@ -22,9 +29,11 @@ const flag = (name, fallback) => {
 };
 
 const dataDir = path.resolve(flag("data-dir", "data"));
+const seasonOverride = flag("season", null);
+const asOf = flag("as-of", null);
 
 try {
-  const result = await runUpdate({ dataDir });
+  const result = await runUpdate({ dataDir, seasonOverride, asOf });
   // GitHub Actions reads this to decide whether to commit at all.
   if (process.env.GITHUB_OUTPUT) {
     const { appendFileSync } = await import("node:fs");

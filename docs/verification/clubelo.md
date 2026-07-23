@@ -79,6 +79,55 @@ Gegenprobe: der Snapshot enthält 32 Klubs mit `Country = GER`, 36 − 32 = 4 �
 gibt also keine umbenannten Doppel, die der Join übersehen hätte. Die Lücke ist
 echt.
 
+## Befund 1d — Datierungskonvention: die Zeile des Spieltags ist das Pre-Match-Rating
+
+Verifiziert an echten Daten der Saison 2025/26. clubelo führt die Zeile, die den
+**Spieltag selbst** abdeckt, als Wert **vor** dem Spiel; die Änderung erscheint
+am Folgetag:
+
+| Klub | Sieg am | Zeile über den Spieltag | ab dem Folgetag |
+|---|---|---|---|
+| Leverkusen | 27.09.2025 | 1838,5 (26.–27.09.) | 1841,9 (ab 28.09.) |
+| Bayern | 29.11.2025 | 1988,5 (28.–29.11.) | 1989,6 (ab 30.11.) |
+| Frankfurt | 14.03.2026 | 1681,8 (13.–14.03.) | 1684,8 (ab 15.03.) |
+
+Das hat zwei Konsequenzen, die im Code bewusst **auseinanderfallen**:
+
+- Die **Prognoseregel** (`preMatch.mjs`) nimmt weiterhin den letzten Snapshot
+  *strikt vor* dem Anstoßdatum. Konservativ mit Absicht: so kann das Ergebnis
+  eines Spiels niemals in die eigene Prognose lecken, selbst wenn clubelo die
+  Datierung änderte. Bei täglichen Snapshots kostet das höchstens einen Tag
+  Aktualität.
+- Das **Richtungs-Gate** (`verify.mjs`) nimmt die Zeile *des Spieltags*, weil es
+  die entgegengesetzte Aufgabe hat: ein einzelnes Spiel möglichst eng isolieren.
+
+## Befund 1e — clubelo bewertet alle Wettbewerbe, unsere Spielpläne nur die Liga
+
+Das Richtungs-Gate („nach einem Sieg muss das Rating steigen") war zunächst mit
+einem wochenbreiten Fenster gebaut und meldete **22 Verstöße in 216 Prüfungen**.
+Keiner davon war echt: clubelo rechnet Champions League und Pokal mit, die
+Ligadaten kennen diese Spiele nicht. Bayern etwa gewann am 29.11. — das Rating
+stieg korrekt —, verlor aber am 01.12. in Europa, und der Wochenvergleich zeigte
+deshalb einen Rückgang.
+
+Ein breiteres Fenster macht die Prüfung nicht stärker, sondern falsch. Mit einem
+±2-Tage-Fenster und der Datierungskonvention aus 1d bleibt von den 22 Meldungen
+**keine** übrig:
+
+```
+verified: counts, club ratings, rating direction
+  (checked 457, skipped 5, 1 with no published rating update)
+```
+
+457 entschiedene Spiele beider Ligen, **null Verstöße**. Das validiert
+Klub-Mapping, Datumsausrichtung und Snapshot-Archiv unabhängig voneinander.
+
+Der eine Fall „ohne veröffentlichte Aktualisierung" ist Elversberg am letzten
+BL2-Spieltag: 3:0 gewonnen, Rating auf die Nachkommastelle unverändert. clubelo
+schreibt nach Saisonende fort, statt neu zu rechnen. Exakte Gleichheit wird
+deshalb als fehlende Aktualisierung gezählt, nicht als Verstoß — ein falscher
+Join zeigt sich als *Rückgang*, nicht als bitgleicher Wert.
+
 ## Konsequenz für den Bau
 
 §5.2 ist eindeutig: *„Ein unresolved club **fails the job and blocks the
