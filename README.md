@@ -1,133 +1,76 @@
-# Bundesliga-Simulator + Kicktipp-Optimierer
+# Bundesliga-Simulator
 
-Monorepo für zwei Anwendungen, gebaut nach `BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md`.
+Wie die Bundesliga-Saison ausgehen könnte — als Wahrscheinlichkeiten, mit
+offengelegtem Modell.
 
-- **App A** — Bundesliga-Simulator, statische GitHub-Pages-Seite, Monte-Carlo im
-  Web Worker, kein Backend. Enthält nichts Kicktipp-, Quoten- oder
-  Tipp-Bezogenes.
-- **App B** — Kicktipp-Optimierer, eine einzelne selbstständige HTML-Datei. Nicht
-  deployt, nicht verlinkt. Der Quelltext liegt im öffentlichen Repo; „privat"
-  heißt hier ausschließlich „nicht als Website veröffentlicht".
+**→ [manganite.github.io/bundesliga](https://manganite.github.io/bundesliga/)**
 
-Beide konsumieren `packages/engine` — die einzige Quelle der Wahrheit für Modell,
-Ligaregeln und jede Metrik. Keine der Apps implementiert davon irgendetwas neu.
+![Der Saisonverlauf: wie sich die Titelchancen Spieltag für Spieltag verschoben haben](docs/images/app.png)
 
-## Stand
+## Was die App zeigt
 
-Im Bau. Fertig und getestet:
+**Übersicht** — der Stand der Saison in sechs Karten: Titelrennen,
+Abstiegskampf, Platzierungszonen, der letzte Spieltag, der Spannungsindex und
+was bereits entschieden ist. Karten, die nichts zu sagen haben, blenden sich
+aus.
 
-| Baustein | Zustand |
-|---|---|
-| §11-Verifikationen vor dem Bau | 5 von 7 Gates geschlossen, siehe unten |
-| `packages/engine` — RNG, Inverse-CDF-Sampling (§3) | ✅ mit Tests |
-| `packages/engine` — Poisson + Dixon-Coles (§2) | ✅ mit Tests |
-| `packages/engine` — DFL-Ranker (§6) | ✅ mit Tests, gegen 22 echte Saisons |
-| `packages/engine` — §4-Metriken | ✅ mit Tests |
-| `packages/engine` — Monte-Carlo, CRN, Batch-SE(Δ) (§3) | ✅ mit Tests |
-| `data/season-params.json` (Track C pooled) | ✅ ausgeliefert |
-| `pipeline` — Klub-Mapping fail closed (§5.2) | ✅ mit Gate-Skript |
-| `pipeline` — Datenbeschaffung, Snapshots, Provenance (§5.1/§5.3) | ✅ mit Tests |
-| `pipeline` — vorberechnete Artefakte (Outlook, eingefrorene Timeline) | ✅ |
-| Daten- und Deploy-Workflow | ✅ |
-| App A — Übersicht, Tabelle & Prognose, Spieltage, Teams, Verlauf | ✅ V1-Umfang |
-| App B — eine selbstständige HTML-Datei, 23 kB | ✅ mit Tests |
-| Refit als zwei Prozesse (§5.5), Toleranzen ex ante | ✅ mit Tests |
-| V1.1 (2. Bundesliga, Relegation) / V1.2 / V2 | ⏳ offen |
+**Tabelle & Prognose** — die aktuelle Tabelle neben dem simulierten Saisonende,
+mit erwarteten Punkten und dem Bereich, in dem 80 % der simulierten Saisons
+landen. Die Heatmap darunter zeigt für jeden Klub, wie wahrscheinlich jeder
+einzelne Tabellenplatz ist.
 
-Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
-**≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
-20 000-Lauf-Artefakt gehört damit wie in §3 vorgesehen in die Pipeline; im
-Browser läuft die Simulation im Web Worker, mit 5 000 als mobiler Voreinstellung.
+**Spieltage** — Ergebnisse und Vorhersagen je Spieltag, die Tabelle wie sie
+danach stand, und wer sich am weitesten bewegt hat. Dazu die größten
+Überraschungen, gemessen daran, wie unwahrscheinlich das Ergebnis vorher war.
 
-## Verifikationen vor dem Bau
+**Teams** — ein Klub im Detail: wo die Saison für ihn endet, wie sich seine
+Titelchance entwickelt hat, was noch aussteht, und ob er mehr oder weniger
+Punkte geholt hat als erwartet.
 
-§11 macht diese Prüfungen zur Vorbedingung. Ergebnisse mit Quelle und Datum in
-[docs/verification/](docs/verification/). Zwei Befunde haben den Bau verändert:
-
-1. **Brief §6 gab die Tiebreak-Reihenfolge falsch wieder.** Die DFL-Spielordnung
-   kennt keine Stufe „Punkte im direkten Vergleich", und die In-Saison-Regeln
-   (nur die ersten beiden Kriterien vor dem Rückspiel, geteilte Tabellenplätze,
-   kein Entscheidungsspiel während der Saison) fehlten im Brief ganz. Der Ranker
-   folgt der Primärquelle — [Details](docs/verification/dfl-spielordnung.md).
-2. **clubelo hat aktuell eine Abdeckungslücke** für vier von 36 Klubs. Die
-   Pipeline verweigert deshalb korrekt den Commit — [Details](docs/verification/clubelo.md).
-
-Ein Gate ist noch offen und blockiert nur V2: ob sich die Tiebreak-Reihenfolge
-innerhalb des Fensters ab 1995/96 geändert hat.
-
-## Aufbau
-
-```
-packages/engine/   Modell, Ligaregeln, Metriken — von beiden Apps konsumiert
-pipeline/          Datenbeschaffung, Verifikation, vorberechnete Artefakte
-apps/public/       App A (Vite, wird nach GitHub Pages deployt)
-apps/kicktipp/     App B (eine HTML-Datei, gebündelt aus packages/engine)
-data/              ausgelieferte Parameter und committete Daten
-docs/verification/ die §11-Gates mit Quelle und Datum
-```
-
-## Entwickeln
-
-```
-npm install
-npm test                      # Engine- und Pipeline-Tests, offline
-npm run gate:clubelo          # §11-Abdeckungsprüfung gegen die Live-API
-npm run pipeline              # ein Pipeline-Lauf gegen die Live-Quellen
-npm run dev --workspace @bundesliga/app     # App A lokal
-npm run build --workspace @bundesliga/app   # App A bauen
-npm run build:kicktipp                      # App B -> apps/kicktipp/dist/kicktipp.html
-```
-
-**App B** entsteht als einzelne Datei `apps/kicktipp/dist/kicktipp.html`. Sie
-läuft aus `file://` ohne Server und ohne Netz — im Browser verifiziert: kein
-einziger externer Request. Sie wird **nicht** deployt und **nicht** verlinkt;
-der Deploy-Workflow veröffentlicht ausschließlich `apps/public`.
-
-Die Pipeline schreibt **nichts**, solange eine Prüfung scheitert. Solange die
-clubelo-Lücke besteht, endet `npm run pipeline` deshalb mit Exit-Code 1 und
-einem unveränderten `data/` — das ist das vorgesehene Verhalten, kein Defekt.
-
-Die Tests laufen offline gegen committete Fixtures
-(`packages/engine/tests/fixtures/`, 22 echte Saisons beider Ligen).
-
-## Datenquellen und Lizenz
-
-- **Ergebnisse und Spielpläne:** [OpenLigaDB](https://www.openligadb.de/), unter
-  der [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/).
-  Kein API-Schlüssel nötig. Die aus OpenLigaDB abgeleiteten, hier committeten
-  Datendateien stehen ihrerseits unter der ODbL; jede Datei nennt ihre Quelle im
-  `source`-Feld.
-- **Ratings:** [clubelo.com](http://clubelo.com/).
-- **Modellparameter:** `football-model-lab`, Track C, pooled BL1+BL2-Fit über 15
-  Saisons. Herkunft (Commit, Fitdatum, Fenster) steht in
-  `data/season-params.json`.
+**Verlauf** — wie sich die Aussichten über die Saison verschoben haben. Die
+Kurven verwenden durchgehend die Stärke vom Saisonstart und zeigen deshalb
+ausschließlich, was die Ergebnisse bewirkt haben.
 
 Die Prognose verändert sich durch neue Ergebnisse und aktualisierte Ratings. Die
 Modellparameter bleiben während der Saison unverändert.
 
-## Jährliche Checkliste
+## Das Modell
 
-Vor jeder Saison:
+Jedes Spiel ist ein Poisson-Modell mit Dixon-Coles-Korrektur für niedrige
+Ergebnisse, gespeist aus den Elo-Ratings von clubelo. Daraus wird die Saison
+zehntausendfach durchgespielt; gezählt wird, wie oft welcher Klub wo landet.
 
-- Europapokalplätze der kommenden Saison prüfen und die Saisonkonfiguration
-  stempeln.
-- Auf Regeländerungen prüfen (Auf-/Abstieg, Relegation, Tiebreak-Reihenfolge).
-- Den Refit-Pull-Request prüfen. Der Sommerlauf committet nie direkt; er öffnet
-  einen PR mit Monitoring-Bericht und neuen Produktionsparametern (§5.5).
+Dass niemand die wahre Stärke eines Klubs kennt, steckt als `RATING_SIGMA` im
+Modell: jeder Lauf zieht für jeden Klub eine eigene hypothetische Stärke. Ein
+Favorit gewinnt deshalb nicht in jedem Lauf.
 
-### Refit — was der Workflow braucht
+Welche Modellvarianten geprüft wurden und was sich davon bewährt hat, steht im
+Lab: [football-model-lab](https://github.com/manganite/football-model-lab).
 
-Die Fit-Prozedur liegt in `football-model-lab` und wird hier bewusst **nicht**
-nachgebaut: eine zweite Implementierung würde die ganze Herkunftskette wertlos
-machen. Der Workflow checkt das Lab am gepinnten Commit aus und braucht dafür:
+## Quellen und Lizenzen
 
-- ein Repository-Secret **`LAB_REPO_TOKEN`** mit Lesezugriff auf das private
-  Lab-Repo. Fehlt es, bricht der Lauf mit klarer Meldung ab, statt irgendetwas
-  zu rechnen, das wie ein Fit aussieht.
-- im Lab ein Skript **`scripts/run-refit.mjs`**, das die in
-  `pipeline/src/refit/cli.mjs` dokumentierte JSON-Datei erzeugt. Beides existiert
-  im Lab noch nicht — das ist die offene Gegenstelle dieses Bausteins.
+- **Ergebnisse und Spielpläne:** [OpenLigaDB](https://www.openligadb.de/), unter
+  der [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/).
+  Die hier committeten, daraus abgeleiteten Datendateien stehen ihrerseits unter
+  der ODbL und nennen ihre Quelle je Datei.
+- **Ratings:** [clubelo.com](http://clubelo.com/). clubelo veröffentlicht keine
+  Lizenz; eine Anfrage an den Betreiber läuft. Bis zur Antwort werden über den
+  regulären Abruf hinaus keine Daten geholt.
+- **Code:** GPL-3.0, siehe [LICENSE](LICENSE).
 
-Die Reproduktionsschranken für die Prozess-A-Ausnahme stehen in
-`data/refit-tolerances.json`. Sie sind **vorab** festgelegt; sie nach Sicht eines
-Ergebnisses zu ändern, ist genau das, was §5.6 ausschließt.
+Code und Daten stehen unter verschiedenen Lizenzen. Das ist Absicht und darf
+nicht vermischt werden.
+
+Der Tabellenrechner folgt der DFL-Spielordnung. Gegen 22 echte Abschlusstabellen
+beider Ligen geprüft sind damit das Einstiegskriterium Punkte sowie Tordifferenz
+und erzielte Tore; **keine** dieser Saisons brauchte den direkten Vergleich. Der
+ist durch Testfälle abgedeckt, die aus dem Wortlaut der Spielordnung konstruiert
+sind — nicht durch echte Tabellen.
+
+## Mitentwickeln
+
+Aufbau, Befehle, Datenpipeline, Zustand und die jährliche Checkliste stehen in
+[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
+
+Das Repo enthält außerdem ein nicht deploytes, privates Tipp-Hilfswerkzeug unter
+`apps/kicktipp` — nicht Teil der Website.

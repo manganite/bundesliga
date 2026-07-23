@@ -33,12 +33,21 @@ node pipeline/src/cli.mjs --data-dir data --season 2025 --as-of 2026-06-01
 Der geplante Workflow übergibt diese Flags **nie**; die automatische Saisonerkennung
 bleibt der einzige Produktionspfad.
 
+Nach jeder Änderung an den Zufallsströmen prüfen, ob der Unterschied nur Streuung ist:
+
+```bash
+node pipeline/src/compareArtefacts.mjs <alteSeasonsDir> <neueSeasonsDir>
+```
+
 ## Der Brief ist die Spezifikation — aber verifizierte Primärquellen schlagen ihn
 
-`BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md` ist die Bauvorgabe. §11 macht mehrere Prüfungen
-zur Vorbedingung, und **zwei davon haben ergeben, dass der Brief falsch lag**. Die
-Befunde stehen mit Quelle und Datum in [docs/verification/](docs/verification/) und
-gelten. Wer nur den Brief liest, baut die Fehler wieder ein:
+Zwei Dateien bilden die Vorgabe: `BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md` und das
+Erratum `V5.7_ERRATUM_AND_V1_FIXES.md`. **Wo sie sich widersprechen, gilt das
+Erratum.** §11 macht mehrere Prüfungen zur Vorbedingung, und **zwei davon haben
+ergeben, dass der Brief falsch lag** — das Erratum hat sie inzwischen in die
+Spezifikation zurückgeführt. Die Befunde stehen mit Quelle und Datum in
+[docs/verification/](docs/verification/) und gelten. Wer nur v5.6 liest, baut die
+Fehler wieder ein:
 
 - **Tiebreak-Reihenfolge (§6 war falsch).** Die DFL-Spielordnung kennt keine Stufe
   „Punkte im direkten Vergleich"; Kriterium 3 ist das *Gesamtergebnis* aus Hin- und
@@ -83,7 +92,13 @@ für das Modell und bündelt sie in ihre eine HTML-Datei.
 - **Kanonische Scoreline-Reihenfolge: nach Gesamttoren, dann Heimtore.** Nicht
   row-major — gemessen, nicht gewählt (Zahlen stehen in `model.mjs`). Eine Änderung
   bricht CRN gegen jedes bestehende Artefakt und verlangt einen Bump von
-  `SIMULATION_PROTOCOL_VERSION`.
+  `SIMULATION_PROTOCOL_VERSION` (steht aktuell auf **2**).
+- **Ein Protokoll-Bump ändert JEDEN Schlüssel**, weil die Version in jeden Schlüssel
+  gehasht wird. Zwei Artefakte unter verschiedenen Protokollversionen sind damit
+  **unabhängige** Stichproben, keine gepaarten — die gepaarte SE-Formel aus §3 gilt
+  dort nicht. `pipeline/src/compareArtefacts.mjs` rechnet richtig und begründet es.
+- **Jede Ziehung hat ihren eigenen `drawKind`.** Kein Wiederverwenden eines fremden
+  Schlüssels mit verbogenem Laufindex; Kollisionen werden beim Setup geprüft.
 - **`SE(Δ) = SD(Δ_b)/√B`.** Die Division durch √B ist tragend; ohne sie ist der
   Rauschboden bei B = 20 rund 4,5-fach zu groß.
 
@@ -114,6 +129,12 @@ gescheitertes Gate das Repository unberührt lässt.
 - **Datenalter ≠ Workflow-Gesundheit.** Die App leitet aus `dataUpdatedAt` keine
   Aussage über den Workflow ab; die einzige ehrliche Veraltungswarnung ist
   spielplanbasiert.
+- **Wo das Rating-Archiv liegt, ist Konfiguration**, nicht Annahme: Voreinstellung
+  `data/ratings/`, überschreibbar über `BUNDESLIGA_RATINGS_DIR` oder den Parameter
+  `ratingsDir`. clubelo hat keine Lizenz veröffentlicht; ein Umzug in ein privates
+  Repo muss Konfiguration bleiben, nie ein Refactoring.
+- **Der Backfill pausiert 750 ms** zwischen clubelo-Anfragen. Entwicklung und Tests
+  laufen nie gegen die Live-API.
 
 ### App A (`apps/public/`)
 
@@ -153,6 +174,9 @@ construction.
   wertlos machen.
 - Offen: V1.1 (2. Bundesliga per Umschalter, paarungsspezifische Relegation),
   V1.2 (Modellgüte, Live-Rating-Timeline, „Wichtigstes kommendes Spiel"), V2.
+- Das README beschreibt die App; alles Entwicklerische steht in
+  `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`), committete Daten ODbL — die
+  beiden Lizenzen nicht vermischen.
 
 ## Fallen, die hier schon Zeit gekostet haben
 
