@@ -13,6 +13,7 @@ import TabelleUndPrognose from "./pages/TabelleUndPrognose.jsx";
 import Spieltage from "./pages/Spieltage.jsx";
 import Teams from "./pages/Teams.jsx";
 import Verlauf from "./pages/Verlauf.jsx";
+import Modellguete from "./pages/Modellguete.jsx";
 
 const REPO = "https://github.com/manganite/bundesliga";
 
@@ -22,6 +23,7 @@ const PAGES = [
   { id: "spieltage", label: "Spieltage", Component: Spieltage },
   { id: "teams", label: "Teams", Component: Teams },
   { id: "verlauf", label: "Verlauf", Component: Verlauf },
+  { id: "modellguete", label: "Modellgüte", Component: Modellguete },
 ];
 
 function useHashRoute() {
@@ -158,7 +160,7 @@ function LeagueSwitch({ league, available, onLeague }) {
 }
 
 function Ready({ route, seasonId, league, data, available, onLeague }) {
-  const { meta, config, season, outlook, timeline, prematch, params, playoff } = data;
+  const { meta, config, season, outlook, timeline, timelineLive, prematch, params, playoff } = data;
 
   const clubs = useMemo(() => clubIndex(season), [season]);
   const nameOf = useMemo(() => (id) => clubs.get(id)?.name ?? id, [clubs]);
@@ -220,7 +222,7 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
 
   const ctx = {
     seasonId, league, leagueLabel: leagueLabel(league), leagueConfig, config, season,
-    outlook: activeOutlook, timeline, prematch, params, playoff,
+    outlook: activeOutlook, timeline, timelineLive, prematch, params, playoff,
     clubs, nameOf, matchday, phase, carried,
   };
 

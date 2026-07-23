@@ -15,7 +15,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83513",
@@ -28,7 +30,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83516",
@@ -41,7 +45,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83522",
@@ -54,7 +60,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83524",
@@ -67,7 +75,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83510",
@@ -90,7 +100,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83511",
@@ -103,7 +115,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83519",
@@ -116,7 +130,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83525",
@@ -129,7 +145,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83533",
@@ -142,7 +160,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83536",
@@ -155,7 +175,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83528",
@@ -168,7 +190,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83537",
@@ -181,7 +205,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83538",
@@ -194,7 +220,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83527",
@@ -213,7 +241,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83526",
@@ -232,7 +262,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83530",
@@ -245,7 +277,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83535",
@@ -258,7 +292,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83543",
@@ -271,7 +307,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83546",
@@ -284,7 +322,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83540",
@@ -297,7 +337,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83544",
@@ -316,7 +358,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83547",
@@ -329,7 +373,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83542",
@@ -342,7 +388,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83539",
@@ -361,7 +409,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83541",
@@ -374,7 +424,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83545",
@@ -387,7 +439,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83550",
@@ -400,7 +454,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83559",
@@ -413,7 +469,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83548",
@@ -432,7 +490,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83554",
@@ -451,7 +511,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83558",
@@ -464,7 +526,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83557",
@@ -477,7 +541,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83556",
@@ -490,7 +556,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83560",
@@ -503,7 +571,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83561",
@@ -516,7 +586,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83569",
@@ -529,7 +601,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83570",
@@ -542,7 +616,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83573",
@@ -555,7 +631,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83587",
@@ -574,7 +652,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83588",
@@ -587,7 +667,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83565",
@@ -606,7 +688,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83567",
@@ -619,7 +703,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83582",
@@ -632,7 +718,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83589",
@@ -645,7 +733,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83591",
@@ -664,7 +754,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83606",
@@ -677,7 +769,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83595",
@@ -696,7 +790,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83597",
@@ -709,7 +805,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83600",
@@ -722,7 +820,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83598",
@@ -735,7 +835,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83593",
@@ -748,7 +850,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83604",
@@ -761,7 +865,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83607",
@@ -774,7 +880,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83608",
@@ -787,7 +895,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83609",
@@ -806,7 +916,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83611",
@@ -819,7 +931,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83613",
@@ -832,7 +946,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83615",
@@ -851,7 +967,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83616",
@@ -864,7 +982,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83617",
@@ -877,7 +997,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83620",
@@ -890,7 +1012,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83622",
@@ -903,7 +1027,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83626",
@@ -922,7 +1048,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83627",
@@ -935,7 +1063,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83628",
@@ -954,7 +1084,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83629",
@@ -967,7 +1099,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83630",
@@ -980,7 +1114,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83632",
@@ -993,7 +1129,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83635",
@@ -1006,7 +1144,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83639",
@@ -1019,7 +1159,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83641",
@@ -1032,7 +1174,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83645",
@@ -1045,7 +1189,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83648",
@@ -1058,7 +1204,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83650",
@@ -1071,7 +1219,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83652",
@@ -1090,7 +1240,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83655",
@@ -1109,7 +1261,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83658",
@@ -1122,7 +1276,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83659",
@@ -1135,7 +1291,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83660",
@@ -1148,7 +1306,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83661",
@@ -1161,7 +1321,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83663",
@@ -1180,7 +1342,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83664",
@@ -1193,7 +1357,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83665",
@@ -1206,7 +1372,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83667",
@@ -1219,7 +1387,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83668",
@@ -1238,7 +1408,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83669",
@@ -1251,7 +1423,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83671",
@@ -1264,7 +1438,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83673",
@@ -1277,7 +1453,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83674",
@@ -1290,7 +1468,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83678",
@@ -1303,7 +1483,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83681",
@@ -1322,7 +1504,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83682",
@@ -1335,7 +1519,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83683",
@@ -1348,7 +1534,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83684",
@@ -1361,7 +1549,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83685",
@@ -1374,7 +1564,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83686",
@@ -1387,7 +1579,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83687",
@@ -1400,7 +1594,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83688",
@@ -1419,7 +1615,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83689",
@@ -1438,7 +1636,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83691",
@@ -1451,7 +1651,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83694",
@@ -1464,7 +1666,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83697",
@@ -1477,7 +1681,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83698",
@@ -1496,7 +1702,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83699",
@@ -1509,7 +1717,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83702",
@@ -1522,7 +1732,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83705",
@@ -1535,7 +1747,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83706",
@@ -1548,7 +1762,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83707",
@@ -1561,7 +1777,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83708",
@@ -1574,7 +1792,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83709",
@@ -1587,7 +1807,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83710",
@@ -1600,7 +1822,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83712",
@@ -1619,7 +1843,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83715",
@@ -1632,7 +1858,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83717",
@@ -1651,7 +1879,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83719",
@@ -1664,7 +1894,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83722",
@@ -1677,7 +1909,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83726",
@@ -1696,7 +1930,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83729",
@@ -1709,7 +1945,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83731",
@@ -1722,7 +1960,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83732",
@@ -1735,7 +1975,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83733",
@@ -1754,7 +1996,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83735",
@@ -1767,7 +2011,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83738",
@@ -1780,7 +2026,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83741",
@@ -1793,7 +2041,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83742",
@@ -1806,7 +2056,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83743",
@@ -1819,7 +2071,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83744",
@@ -1832,7 +2086,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83745",
@@ -1845,7 +2101,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83746",
@@ -1858,7 +2116,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83747",
@@ -1877,7 +2137,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83748",
@@ -1890,7 +2152,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83749",
@@ -1903,7 +2167,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83750",
@@ -1922,7 +2188,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83751",
@@ -1935,7 +2203,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83752",
@@ -1954,7 +2224,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83753",
@@ -1967,7 +2239,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83755",
@@ -1980,7 +2254,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83756",
@@ -1999,7 +2275,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83757",
@@ -2012,7 +2290,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83760",
@@ -2025,7 +2305,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83762",
@@ -2038,7 +2320,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83765",
@@ -2051,7 +2335,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83766",
@@ -2064,7 +2350,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83770",
@@ -2083,7 +2371,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83771",
@@ -2096,7 +2386,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83772",
@@ -2115,7 +2407,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83773",
@@ -2128,7 +2422,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83774",
@@ -2141,7 +2437,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83775",
@@ -2154,7 +2452,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83776",
@@ -2167,7 +2467,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83777",
@@ -2180,7 +2482,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83778",
@@ -2193,7 +2497,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83858",
@@ -2206,7 +2512,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83859",
@@ -2229,7 +2537,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83860",
@@ -2242,7 +2552,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83861",
@@ -2255,7 +2567,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83862",
@@ -2268,7 +2582,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83863",
@@ -2281,7 +2597,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83865",
@@ -2294,7 +2612,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83867",
@@ -2307,7 +2627,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83868",
@@ -2320,7 +2642,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83869",
@@ -2339,7 +2663,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83870",
@@ -2352,7 +2678,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83871",
@@ -2365,7 +2693,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83872",
@@ -2378,7 +2708,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83874",
@@ -2391,7 +2723,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83877",
@@ -2404,7 +2738,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83879",
@@ -2423,7 +2759,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83881",
@@ -2436,7 +2774,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83882",
@@ -2449,7 +2789,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83887",
@@ -2468,7 +2810,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83888",
@@ -2481,7 +2825,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83889",
@@ -2500,7 +2846,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83890",
@@ -2513,7 +2861,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83891",
@@ -2526,7 +2876,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83892",
@@ -2539,7 +2891,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83893",
@@ -2552,7 +2906,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83894",
@@ -2565,7 +2921,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83895",
@@ -2578,7 +2936,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83896",
@@ -2591,7 +2951,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83897",
@@ -2604,7 +2966,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83898",
@@ -2623,7 +2987,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83899",
@@ -2636,7 +3002,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83900",
@@ -2649,7 +3017,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83901",
@@ -2662,7 +3032,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83902",
@@ -2675,7 +3047,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83903",
@@ -2688,7 +3062,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83904",
@@ -2707,7 +3083,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83905",
@@ -2726,7 +3104,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83906",
@@ -2739,7 +3119,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83907",
@@ -2758,7 +3140,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83908",
@@ -2771,7 +3155,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83909",
@@ -2784,7 +3170,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83910",
@@ -2797,7 +3185,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83911",
@@ -2810,7 +3200,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83912",
@@ -2823,7 +3215,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83913",
@@ -2836,7 +3230,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83914",
@@ -2849,7 +3245,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83915",
@@ -2862,7 +3260,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83916",
@@ -2881,7 +3281,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83917",
@@ -2894,7 +3296,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83918",
@@ -2907,7 +3311,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83919",
@@ -2920,7 +3326,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83920",
@@ -2933,7 +3341,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83921",
@@ -2952,7 +3362,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83922",
@@ -2965,7 +3377,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83923",
@@ -2984,7 +3398,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83924",
@@ -2997,7 +3413,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83925",
@@ -3016,7 +3434,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83926",
@@ -3029,7 +3449,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83927",
@@ -3042,7 +3464,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83928",
@@ -3055,7 +3479,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83929",
@@ -3068,7 +3494,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83930",
@@ -3081,7 +3509,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83931",
@@ -3094,7 +3524,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83932",
@@ -3107,7 +3539,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83933",
@@ -3126,7 +3560,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83934",
@@ -3139,7 +3575,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83935",
@@ -3152,7 +3590,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83936",
@@ -3165,7 +3605,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83937",
@@ -3184,7 +3626,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83938",
@@ -3197,7 +3641,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83939",
@@ -3210,7 +3656,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83940",
@@ -3223,7 +3671,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83941",
@@ -3242,7 +3692,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83942",
@@ -3255,7 +3707,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83943",
@@ -3268,7 +3722,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83944",
@@ -3287,7 +3743,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83945",
@@ -3300,7 +3758,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83946",
@@ -3313,7 +3773,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83947",
@@ -3326,7 +3788,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83948",
@@ -3339,7 +3803,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83949",
@@ -3352,7 +3818,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83950",
@@ -3365,7 +3833,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83951",
@@ -3384,7 +3854,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83952",
@@ -3397,7 +3869,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83953",
@@ -3410,7 +3884,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83954",
@@ -3423,7 +3899,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83955",
@@ -3436,7 +3914,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83956",
@@ -3449,7 +3929,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83957",
@@ -3462,7 +3944,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83958",
@@ -3481,7 +3965,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83959",
@@ -3500,7 +3986,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83960",
@@ -3513,7 +4001,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83961",
@@ -3526,7 +4016,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83962",
@@ -3539,7 +4031,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83963",
@@ -3558,7 +4052,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83964",
@@ -3571,7 +4067,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83965",
@@ -3584,7 +4082,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83966",
@@ -3597,7 +4097,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83967",
@@ -3610,7 +4112,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83968",
@@ -3623,7 +4127,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83969",
@@ -3636,7 +4142,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83970",
@@ -3649,7 +4157,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83971",
@@ -3668,7 +4178,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83972",
@@ -3687,7 +4199,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83973",
@@ -3700,7 +4214,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83974",
@@ -3713,7 +4229,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83975",
@@ -3726,7 +4244,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83976",
@@ -3739,7 +4259,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83977",
@@ -3758,7 +4280,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83978",
@@ -3771,7 +4295,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83979",
@@ -3784,7 +4310,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83980",
@@ -3797,7 +4325,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83981",
@@ -3816,7 +4346,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83982",
@@ -3829,7 +4361,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83983",
@@ -3842,7 +4376,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83984",
@@ -3855,7 +4391,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83985",
@@ -3868,7 +4406,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83986",
@@ -3881,7 +4421,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83987",
@@ -3894,7 +4436,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83989",
@@ -3907,7 +4451,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83992",
@@ -3920,7 +4466,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83993",
@@ -3933,7 +4481,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83995",
@@ -3952,7 +4502,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "83997",
@@ -3965,7 +4517,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84000",
@@ -3984,7 +4538,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84001",
@@ -3997,7 +4553,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84049",
@@ -4016,7 +4574,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84050",
@@ -4029,7 +4589,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84051",
@@ -4042,7 +4604,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84052",
@@ -4055,7 +4619,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84053",
@@ -4068,7 +4634,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84054",
@@ -4087,7 +4655,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84055",
@@ -4100,7 +4670,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84056",
@@ -4113,7 +4685,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84057",
@@ -4126,7 +4700,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84058",
@@ -4145,7 +4721,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03540039,
-      "eloAway": 1527.87036133
+      "eloAway": 1527.87036133,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84059",
@@ -4158,7 +4736,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1461.53942871,
-      "eloAway": 1532.94165039
+      "eloAway": 1532.94165039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84060",
@@ -4171,7 +4751,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1414.36047363,
-      "eloAway": 1435.78088379
+      "eloAway": 1435.78088379,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84061",
@@ -4184,7 +4766,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1462.63525391,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84062",
@@ -4203,7 +4787,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1404.89770508,
-      "eloAway": 1599.56982422
+      "eloAway": 1599.56982422,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84063",
@@ -4216,7 +4802,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1439.74853516,
-      "eloAway": 1486.64111328
+      "eloAway": 1486.64111328,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84064",
@@ -4229,7 +4817,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1381.04870605,
-      "eloAway": 1552.56970215
+      "eloAway": 1552.56970215,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84065",
@@ -4242,7 +4832,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1394.82666016,
-      "eloAway": 1463.3572998
+      "eloAway": 1463.3572998,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84066",
@@ -4255,7 +4847,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1458.7109375
+      "eloAway": 1458.7109375,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84067",
@@ -4274,7 +4868,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1599.56982422,
-      "eloAway": 1414.36047363
+      "eloAway": 1414.36047363,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84068",
@@ -4287,7 +4883,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1532.94165039,
-      "eloAway": 1381.04870605
+      "eloAway": 1381.04870605,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84069",
@@ -4300,7 +4898,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1552.56970215,
-      "eloAway": 1439.74853516
+      "eloAway": 1439.74853516,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84070",
@@ -4313,7 +4913,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1527.87036133,
-      "eloAway": 1404.89770508
+      "eloAway": 1404.89770508,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84071",
@@ -4326,7 +4928,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1463.3572998,
-      "eloAway": 1342.63464355
+      "eloAway": 1342.63464355,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84072",
@@ -4339,7 +4943,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1458.7109375,
-      "eloAway": 1461.53942871
+      "eloAway": 1461.53942871,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84073",
@@ -4352,7 +4958,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1486.64111328,
-      "eloAway": 1462.63525391
+      "eloAway": 1462.63525391,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84074",
@@ -4365,7 +4973,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1435.78088379,
-      "eloAway": 1394.82666016
+      "eloAway": 1394.82666016,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     },
     {
       "fixtureId": "84075",
@@ -4384,7 +4994,9 @@
       "createdAt": "2026-07-23T11:34:38.153Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1342.63464355,
-      "eloAway": 1456.03540039
+      "eloAway": 1456.03540039,
+      "snapshotEffectiveAt": "2026-07-23",
+      "snapshotProvenance": "contemporaneous"
     }
   ],
   "gaps": [],

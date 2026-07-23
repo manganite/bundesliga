@@ -28,7 +28,9 @@ docs/verification/ die §11-Gates mit Quelle und Datum
 ```
 
 `packages/engine` ist die einzige Quelle der Wahrheit für Modell, Ligaregeln und
-jede Metrik. Keine der Apps implementiert davon etwas neu.
+jede Metrik. Keine der Apps implementiert davon etwas neu. Metriken, die nach den
+Briefen dazugekommen sind, stehen mit Definition und Datum in
+[METRIC_ADDENDA.md](METRIC_ADDENDA.md).
 
 ## Befehle
 
@@ -123,7 +125,10 @@ mit, weil die Trainingsdaten committet sind.
 | V1.1 — 2. Bundesliga per Umschalter | ✅ mit Tests |
 | V1.1 — paarungsspezifische Relegation, Komplement bitgleich | ✅ mit Tests |
 | V1.1 — Vorsaison-Tabelle nach erwarteten Punkten | ✅ mit Tests |
-| V1.2 / V2 | ⏳ offen |
+| V1.2 — Modellgüte-Seite, drei Provenienzen getrennt | ✅ mit Tests |
+| V1.2 — Live-Rating-Timeline, Frozen/Live beschreibend | ✅ mit Tests |
+| V1.2 — „Wichtigstes kommendes Spiel", Rekombinationstest im Lauf | ✅ mit Tests |
+| V2 | ⏳ offen |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
 **≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische

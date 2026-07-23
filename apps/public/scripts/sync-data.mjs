@@ -14,7 +14,7 @@ const ROOT = path.resolve(import.meta.dirname, "../../..");
 const SRC = path.join(ROOT, "data");
 const DEST = path.join(import.meta.dirname, "..", "public", "data");
 
-const PER_LEAGUE = ["season.json", "outlook.json", "timeline-frozen.json", "prematch.json"];
+const PER_LEAGUE = ["season.json", "outlook.json", "timeline-frozen.json", "timeline-live.json", "prematch.json"];
 
 async function exists(p) {
   try { await fs.access(p); return true; } catch { return false; }

@@ -223,6 +223,30 @@ export function findSnapshotOn(index, date, source = "clubelo") {
 }
 
 /**
+ * The state AS OF a date: the newest snapshot effective on or before it.
+ *
+ * Three lookups now live side by side, and the difference between them is the
+ * whole point:
+ *   findPreMatchSnapshot — STRICTLY before a kickoff. Conservative on purpose,
+ *                          so a result can never leak into its own forecast.
+ *   findSnapshotOn       — exactly that day, latest observation wins.
+ *   findSnapshotAsOf     — on or before that day. What the live-rating timeline
+ *                          asks for: the state once a matchday is complete.
+ */
+export function findSnapshotAsOf(index, date, source = "clubelo") {
+  let best = null;
+  for (const s of index.snapshots) {
+    if (s.source !== source || s.effectiveAt > date) continue;
+    if (!best
+      || s.effectiveAt > best.effectiveAt
+      || (s.effectiveAt === best.effectiveAt && s.observedAt > best.observedAt)) {
+      best = s;
+    }
+  }
+  return best;
+}
+
+/**
  * Was this snapshot observed before the kickoff it is being used for?
  *
  * This is what separates the two provenance values of §5.3, and it is a

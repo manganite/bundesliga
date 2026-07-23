@@ -10,16 +10,24 @@ const SERIES_COLOURS = [
 ];
 
 /**
- * Verlauf — V1 ships the FROZEN-RATING form only (§1).
+ * Verlauf — the frozen curve (V1) and, since V1.2, the comparison against the
+ * curve computed with the ratings that actually applied at the time.
  *
- * A live-rating timeline requires archived point-in-time ratings and cannot be
- * reconstructed from results alone, so it arrives in V1.2 together with the
- * frozen-vs-live comparison. This page therefore shows exactly one curve per
- * club and says plainly what it is: the effect of results alone, at unchanged
- * season-start strength.
+ * THE COMPARISON IS DESCRIPTIVE, NOT A DECOMPOSITION. An earlier draft called
+ * the gap a „revaluation effect" and the frozen curve a „points effect". That is
+ * causal language for a counterfactual contrast, and it is wrong: the frozen
+ * curve also carries reduced remaining uncertainty, a changed table and tiebreak
+ * situation, and schedule interactions. The two curves therefore carry the
+ * neutral §0 labels verbatim, and the caption says what the contrast is and what
+ * it is not.
  */
+const CURVE_LABEL = {
+  frozen: "Prognose mit eingefrorener Saisonstart-Stärke",
+  live: "zusätzliche Veränderung bei aktuellen Ratings",
+};
+
 export default function Verlauf({ ctx }) {
-  const { timeline, leagueConfig, nameOf, leagueLabel } = ctx;
+  const { timeline, timelineLive, leagueConfig, nameOf, leagueLabel } = ctx;
   const targets = targetList(leagueConfig);
   const [targetId, setTargetId] = useState(targets[0]?.id);
 
@@ -101,14 +109,22 @@ export default function Verlauf({ ctx }) {
           <TensionLine series={tensionSeries} floor={target?.places ?? 1} targetLabel={target?.label} />
         </Card>
 
+        <FrozenVsLive
+          timeline={timeline}
+          timelineLive={timelineLive}
+          target={target}
+          nameOf={nameOf}
+        />
+
         <Card title="Was diese Kurven sind">
           <p className="caption" style={{ margin: 0 }}>
-            Alle Punkte verwenden dieselben Ratings vom Saisonstart
+            Die Grundkurve verwendet durchgehend dieselben Ratings vom Saisonstart
             {timeline.frozenEffectiveAt ? ` (Stand ${timeline.frozenEffectiveAt})` : ""}; nur die Menge der
-            bekannten Ergebnisse wächst. Die Kurve zeigt deshalb ausschließlich, was die Ergebnisse
-            bewirkt haben — sie enthält keine Rating-Aktualisierungen. Der Vergleich mit einer
-            Kurve bei aktuellen Ratings kommt später, sobald genug archivierte Ratings vorliegen.
-            Jeder Punkt beruht auf {number(timeline.runs, 0)} Simulationsläufen.
+            bekannten Ergebnisse wächst. Sie enthält also keine Rating-Aktualisierungen.
+            {timelineLive?.points?.length
+              ? " Die Gegenüberstellung darunter zeigt daneben die Kurve mit den Ratings, die zum jeweiligen Zeitpunkt tatsächlich galten."
+              : " Die Gegenüberstellung mit aktuellen Ratings erscheint, sobald archivierte Ratings für gespielte Spieltage vorliegen."}
+            {" "}Jeder Punkt beruht auf {number(timeline.runs, 0)} Simulationsläufen.
           </p>
         </Card>
       </div>
@@ -257,5 +273,83 @@ function TensionLine({ series, floor, targetLabel }) {
       />
       <text x={w - pad.r} y={h - 8} textAnchor="end" className="axis-label">Spieltag</text>
     </Chart>
+  );
+}
+
+/**
+ * The frozen/live comparison (§0, V1.2).
+ *
+ * Per matchday and club: the frozen probability, the live one, and the gap. The
+ * gap is labelled „zusätzliche Veränderung bei aktuellen Ratings" — deliberately
+ * neither „Aufwertungseffekt" nor anything else that names a cause.
+ */
+function FrozenVsLive({ timeline, timelineLive, target, nameOf }) {
+  const livePoints = timelineLive?.points ?? [];
+  if (!livePoints.length || !target) return null;
+
+  const frozenByMatchday = new Map((timeline?.points ?? []).map((p) => [p.matchday, p]));
+  const rows = [];
+  for (const lp of livePoints) {
+    const fp = frozenByMatchday.get(lp.matchday);
+    if (!fp) continue;
+    const liveProbs = lp.probabilities?.[target.id] ?? {};
+    const frozenProbs = fp.probabilities?.[target.id] ?? {};
+    for (const clubId of Object.keys(liveProbs)) {
+      rows.push({
+        matchday: lp.matchday,
+        clubId,
+        frozen: frozenProbs[clubId] ?? 0,
+        live: liveProbs[clubId] ?? 0,
+      });
+    }
+  }
+  if (!rows.length) return null;
+
+  // The latest common matchday, and the clubs where the two curves differ most.
+  const latest = Math.max(...rows.map((r) => r.matchday));
+  const atLatest = rows
+    .filter((r) => r.matchday === latest)
+    .map((r) => ({ ...r, gap: r.live - r.frozen }))
+    .sort((a, b) => Math.abs(b.gap) - Math.abs(a.gap))
+    .slice(0, 8);
+
+  return (
+    <Card
+      title={`${target.label}: eingefroren gegen aktuelle Ratings`}
+      caption={
+        `Stand nach dem ${latest}. Spieltag. Links „${CURVE_LABEL.frozen}“, rechts dieselbe Rechnung `
+        + `mit den Ratings, die damals galten; die dritte Spalte ist die „${CURVE_LABEL.live}“. `
+        + "Das ist eine beschreibende Gegenüberstellung, keine Zerlegung in Ursachen. Zwischen den "
+        + "beiden Rechnungen unterscheidet sich mehr als nur das Rating — die eingefrorene Kurve "
+        + "trägt dieselben Ergebnisse, dieselbe Tabelle und dieselbe verbleibende Unsicherheit, aber "
+        + "der Unterschied lässt sich daraus nicht einer einzelnen Ursache zuschreiben."
+        + (timelineLive.gaps?.length
+          ? ` Für ${timelineLive.gaps.length} Spieltag(e) liegt kein archiviertes Rating vor; sie fehlen hier, statt geschätzt zu werden.`
+          : "")
+      }
+    >
+      <div className="table-scroll">
+        <table className="data">
+          <thead>
+            <tr>
+              <th scope="col" className="left">Klub</th>
+              <th scope="col">eingefroren</th>
+              <th scope="col">aktuelle Ratings</th>
+              <th scope="col">Unterschied</th>
+            </tr>
+          </thead>
+          <tbody>
+            {atLatest.map((r) => (
+              <tr key={r.clubId}>
+                <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(r.clubId)}</th>
+                <td>{percent(r.frozen, 1)}</td>
+                <td>{percent(r.live, 1)}</td>
+                <td>{r.gap >= 0 ? "+" : ""}{number(r.gap * 100, 1)} Pp.</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Card>
   );
 }

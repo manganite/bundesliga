@@ -419,3 +419,19 @@ figure.chart figcaption {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* The plain question §8 asks calibration to lead with, answered from the data. */
+.lead-sentence {
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* A qualifier attached to a lead sentence: same paragraph, visibly subordinate.
+   The sentence §8 asks for rests on ONE calibration class, and a reader must be
+   able to see how thin that class is without hunting for it. */
+.lead-qualifier {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

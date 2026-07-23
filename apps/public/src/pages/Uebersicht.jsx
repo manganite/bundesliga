@@ -1,17 +1,20 @@
 import { useMemo } from "react";
 import { Card, ProbList, Empty } from "../components/ui.jsx";
-import { currentTable, targetList, tension, clinched, scoredMatches } from "../lib/season.js";
+import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
+import { currentTable, targetList, tension, clinched, scoredMatches, rulesFrom } from "../lib/season.js";
+import { performanceVsExpectation } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, weekdayDate } from "../lib/format.js";
 import { playedFixtures } from "../lib/data.js";
 
 /**
- * Übersicht — the V1 cards (§7):
- *   Titelrennen · Abstiegskampf · Platzierungszonen · Letzter Spieltag ·
- *   Spannungsindex · Bereits entschieden
+ * Übersicht (§7):
+ *   Titelrennen · Abstiegskampf · Platzierungszonen · Wichtigstes kommendes Spiel ·
+ *   Überflieger & Enttäuschungen · Letzter Spieltag · Spannungsindex ·
+ *   Bereits entschieden
  *
- * „Wichtigstes kommendes Spiel" and „Überflieger & Enttäuschungen" are
- * deliberately absent: they are V1.2, and they ship together with the artefact
- * schema extension they need. Cards with nothing to say hide entirely.
+ * The last two arrived with V1.2 and the artefact schema extension they need.
+ * Cards with nothing to say hide entirely — before the first matchday that is
+ * most of this page, and that is the correct behaviour, not a gap to fill.
  */
 export default function Uebersicht({ ctx }) {
   const { season, outlook, leagueConfig, nameOf, prematch, params, league, leagueLabel } = ctx;
@@ -45,6 +48,33 @@ export default function Uebersicht({ ctx }) {
     const md = Math.max(...played.map((f) => f.matchday));
     return { matchday: md, fixtures: played.filter((f) => f.matchday === md) };
   }, [season]);
+
+  // Über-/Unterperformance. The metric itself lives on Teams and Modellgüte;
+  // this card shows only the leading names and points there (§7 placement rule).
+  const performers = useMemo(() => {
+    const rules = rulesFrom(leagueConfig);
+    const scored = scoredMatches(season, prematch, params, league);
+    const byClub = new Map();
+    for (const s of scored) {
+      const { homeClubId: h, awayClubId: a, gh, ga } = s.fixture;
+      const push = (clubId, points, pWin, pDraw) => {
+        if (!byClub.has(clubId)) byClub.set(clubId, []);
+        byClub.get(clubId).push({ points, pWin, pDraw });
+      };
+      push(h, gh > ga ? rules.pointsForWin : gh === ga ? rules.pointsForDraw : 0, s.prediction.homeWin, s.prediction.draw);
+      push(a, ga > gh ? rules.pointsForWin : gh === ga ? rules.pointsForDraw : 0, s.prediction.awayWin, s.prediction.draw);
+    }
+    const ranked = [...byClub.entries()]
+      .map(([clubId, matches]) => ({ clubId, ...performanceVsExpectation(matches, rules) }))
+      .sort((x, y) => y.perMatch - x.perMatch);
+    // The two rows the card shows, built HERE. `Card`'s `when` decides whether
+    // the card is rendered, but JSX children are constructed either way — so a
+    // card that indexes into a possibly-empty array crashes the whole page in
+    // exactly the state this release has to survive: nothing played yet.
+    return ranked.length >= 2
+      ? [{ role: "Überflieger", ...ranked[0] }, { role: "Enttäuschung", ...ranked[ranked.length - 1] }]
+      : [];
+  }, [season, prematch, params, league, leagueConfig]);
 
   const surprises = useMemo(() => {
     if (!lastMatchday) return [];
@@ -107,6 +137,32 @@ export default function Uebersicht({ ctx }) {
                   </tr>
                 );
               })}
+            </tbody>
+          </table></div>
+        </Card>
+
+        <WichtigstesSpiel
+          outlook={outlook}
+          season={season}
+          leagueConfig={leagueConfig}
+          nameOf={nameOf}
+          limit={3}
+        />
+
+        <Card
+          title="Überflieger & Enttäuschungen"
+          when={performers.length === 2}
+          caption="Punkte über bzw. unter der Erwartung aus der Prognose vor jedem Spiel, je Spiel gerechnet. Die vollständige Tabelle steht unter „Modellgüte“."
+        >
+          <div className="table-scroll"><table className="data">
+            <tbody>
+              {performers.map((r) => (
+                <tr key={r.clubId}>
+                  <th scope="row" className="left">{r.role}</th>
+                  <td className="left">{nameOf(r.clubId)}</td>
+                  <td>{r.perMatch >= 0 ? "+" : ""}{number(r.perMatch, 2)} je Spiel</td>
+                </tr>
+              ))}
             </tbody>
           </table></div>
         </Card>

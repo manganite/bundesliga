@@ -251,3 +251,104 @@ export function predictFixture(fixture, prematch, params, league) {
   const p = effectiveParams(params.params, { league });
   return predictMatch(e.eloHome, e.eloAway, p);
 }
+
+// ---------------------------------------------------------------------------
+//  V1.2 — Modellgüte
+// ---------------------------------------------------------------------------
+
+/**
+ * Per PLAYED match and club: how old was the rating that prediction rested on?
+ *
+ * §4 addendum („Rating-Aktualität", renamed from „Rating-Verzögerung" — the old
+ * name promised a measurement of how far the rating LAGS true strength, which
+ * this does not make). The provenance is resolved PER CLUB, because an entry can
+ * be `carried-forward` on account of one club while the other's rating came from
+ * the snapshot as normal.
+ */
+export function ratingAgeEntries(season, prematch) {
+  if (!prematch) return [];
+  const played = new Set(playedFixtures(season.fixtures).map((f) => f.id));
+  const out = [];
+  for (const e of prematch.entries) {
+    if (!played.has(e.fixtureId)) continue;
+    for (const clubId of [e.homeClubId, e.awayClubId]) {
+      const carried = e.carriedFrom?.[clubId];
+      const effectiveAt = carried ? carried.effectiveAt : e.snapshotEffectiveAt;
+      const provenance = carried ? "carried-forward" : (e.snapshotProvenance ?? e.provenance);
+      // An entry from before the schema carried these fields contributes
+      // nothing rather than a guessed date.
+      if (!effectiveAt || !provenance) continue;
+      out.push({ fixtureId: e.fixtureId, clubId, kickoff: e.kickoff, effectiveAt, provenance });
+    }
+  }
+  return out;
+}
+
+/**
+ * The same predictions, but computed from the FROZEN pre-season ratings — the
+ * „Trefferquote live vs eingefroren" comparison.
+ *
+ * The frozen ratings come from the timeline artefact, which records the ratings
+ * its own curve was computed from. The app does not pick a second frozen rating
+ * source of its own (§10).
+ */
+export function scoredMatchesFrozen(season, timeline, params, league) {
+  const frozen = timeline?.frozenRatings;
+  if (!frozen || !params) return [];
+  const p = effectiveParams(params.params, { league });
+  const out = [];
+  for (const f of playedFixtures(season.fixtures)) {
+    const eh = frozen[f.homeClubId];
+    const ea = frozen[f.awayClubId];
+    if (!Number.isFinite(eh) || !Number.isFinite(ea)) continue;
+    out.push({
+      fixture: f,
+      // One label for the whole set: these are not pre-match ratings at all,
+      // they are the season-start ratings applied retrospectively.
+      provenance: "frozen",
+      prediction: predictMatch(eh, ea, p).tendency,
+      actual: tendencyOf(f.gh, f.ga),
+    });
+  }
+  return out;
+}
+
+/**
+ * „Wichtigstes kommendes Spiel" (§4), read from the canonical artefact.
+ *
+ * The metric is computed ONCE in the pipeline during the canonical run; this
+ * only ranks and labels it. `matchday` restricts the candidates to one matchday
+ * (the Spieltage page); without it the whole remaining season is considered.
+ */
+export function fixtureImpact(outlook, season, leagueConfig, { matchday = null } = {}) {
+  if (!outlook?.fixtureImpact?.length) return [];
+  const byId = new Map(season.fixtures.map((f) => [f.id, f]));
+  const labels = Object.fromEntries(targetList(leagueConfig).map((t) => [t.id, t.label]));
+  const rows = [];
+  for (const entry of outlook.fixtureImpact) {
+    const fx = byId.get(entry.fixtureId);
+    if (!fx) continue;
+    if (matchday !== null && fx.matchday !== matchday) continue;
+    // The larger of the two, and WHICH one — a bare number would not say what
+    // it is about, and the two targets mean very different things.
+    let best = null;
+    for (const [target, v] of Object.entries(entry.targets)) {
+      if (!best || v.shift.value > best.value) {
+        best = { target, label: labels[target] ?? target, value: v.shift.value, places: v.places };
+      }
+    }
+    if (!best) continue;
+    rows.push({
+      fixtureId: entry.fixtureId,
+      fixture: fx,
+      matchday: fx.matchday,
+      home: entry.home,
+      away: entry.away,
+      outcomeProbabilities: entry.outcomeProbabilities,
+      smallestConditionalRuns: entry.smallestConditionalRuns,
+      byTarget: entry.targets,
+      leading: best,
+    });
+  }
+  return rows.sort((a, b) => b.leading.value - a.leading.value);
+}

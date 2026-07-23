@@ -26,10 +26,13 @@ import { detectCurrentSeason, fetchSeason } from "./sources/openligadb.mjs";
 import { fetchDailySnapshot, indexSnapshot, fetchClubHistory, ratingOn } from "./sources/clubelo.mjs";
 import { resolveClub } from "./clubMapping.mjs";
 import {
-  appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot, findSnapshotOn, resolveArchiveBase,
+  appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot, findSnapshotOn, findSnapshotAsOf,
+  resolveArchiveBase,
 } from "./snapshots.mjs";
 import { buildPreMatchDataset, frozenRatingLabel } from "./preMatch.mjs";
-import { buildCurrentOutlook, buildFrozenTimeline, targetsFromConfig } from "./artefacts.mjs";
+import {
+  buildCurrentOutlook, buildFrozenTimeline, buildLiveTimeline, targetsFromConfig,
+} from "./artefacts.mjs";
 import { buildPlayoffArtefact } from "./playoffArtefact.mjs";
 import { verifyAll } from "./verify.mjs";
 import {
@@ -399,6 +402,15 @@ export async function runUpdate({
 
   // --- 6. derive the per-fixture pre-match dataset --------------------------
   const index = await readIndex(ratingsDir);
+  // Every archived snapshot, keyed by id, read once. The pre-match dataset and
+  // the live-rating timeline both need point-in-time ratings; loading them twice
+  // would be the same files and the same bytes.
+  const snapshotsById = new Map(archived.map((a) => [a.snapshotId, a]));
+  for (const meta of index.snapshots) {
+    if (!snapshotsById.has(meta.snapshotId)) {
+      snapshotsById.set(meta.snapshotId, await readSnapshot(ratingsDir, meta.snapshotId));
+    }
+  }
   const fixturesByClubAll = groupFixturesByClub(LEAGUES.flatMap((l) => seasons[l].fixtures));
   const shipped = JSON.parse(await fs.readFile(path.join(dataDir, "season-params.json"), "utf8"));
   const shippedParams = shipped.params;
@@ -462,6 +474,8 @@ export async function runUpdate({
       ...buildCurrentOutlook({
         seasonId: `${detected.season}-${league}`,
         league, clubs: currentClubs, fixtures: s.fixtures, params: shippedParams, targets, rules,
+        // §4 „Wichtigstes kommendes Spiel", from the season configuration.
+        impactTargets: leagueConfig.impactTargets ?? [],
       }),
       // Per club, where its rating came from. The app marks anything not live.
       ratingProvenance: Object.fromEntries(
@@ -507,6 +521,10 @@ export async function runUpdate({
           ...timeline,
           frozenSnapshotId: frozenMeta.snapshotId,
           frozenEffectiveAt: frozenMeta.effectiveAt,
+          // The ratings the curve was computed from. The Modellgüte page needs
+          // them for „Trefferquote live vs eingefroren" and must not invent a
+          // second frozen rating source of its own (§10).
+          frozenRatings: Object.fromEntries(s.clubs.map((c) => [c.clubId, frozenSnap.ratings[c.clubId]])),
           label: frozenRatingLabel({
             seasonStart: String(firstKickoff).slice(0, 10),
             earliestEffectiveAt: frozenMeta.effectiveAt,
@@ -517,6 +535,43 @@ export async function runUpdate({
           changes.push(`${league} frozen timeline (+${timeline.computed} point(s))`);
         }
       }
+    }
+
+    // --- the LIVE-rating timeline (§5.3, V1.2) -----------------------------
+    // Possible only where archived point-in-time ratings exist. Points without
+    // one are skipped and named, never back-extrapolated.
+    let existingLive = null;
+    try {
+      existingLive = JSON.parse(await fs.readFile(path.join(dir, "timeline-live.json"), "utf8"));
+    } catch (e) {
+      if (e.code !== "ENOENT") throw e;
+    }
+    // The index AFTER this run's snapshot was appended, not before. Reading the
+    // pre-append index would leave the live timeline one run behind — and would
+    // rewrite the file on every run, which breaks „commit only on change".
+    const live = buildLiveTimeline({
+      seasonId: `${detected.season}-${league}`,
+      league,
+      clubs: s.clubs,
+      fixtures: s.fixtures,
+      params: shippedParams,
+      targets,
+      rules,
+      ratingsOn: (date) => {
+        const meta = findSnapshotAsOf(index, date);
+        if (!meta) return null;
+        const snap = snapshotsById.get(meta.snapshotId);
+        return snap ? { snapshotId: meta.snapshotId, ratings: snap.ratings } : null;
+      },
+      existing: existingLive,
+      log,
+    });
+    if (live.gaps.length) {
+      log(`${league}: live timeline has ${live.gaps.length} gap(s) — named in the artefact, not filled`);
+    }
+    const livePayload = { ...live, computed: undefined };
+    if (await writeIfChanged(path.join(dir, "timeline-live.json"), stable(livePayload))) {
+      changes.push(`${league} live timeline (+${live.computed} point(s))`);
     }
   }
 

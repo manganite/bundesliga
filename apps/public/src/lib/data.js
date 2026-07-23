@@ -44,17 +44,18 @@ export async function loadManifest() {
  * are in play — only which side of them is shown.
  */
 export async function loadLeagueSeason(season, league) {
-  const [meta, config, seasonData, outlook, timeline, prematch, params, playoff] = await Promise.all([
+  const [meta, config, seasonData, outlook, timeline, timelineLive, prematch, params, playoff] = await Promise.all([
     getJsonOrNull("meta.json"),
     getJson(`seasons/${season}/config.json`),
     getJson(`seasons/${season}/${league}/season.json`),
     getJsonOrNull(`seasons/${season}/${league}/outlook.json`),
     getJsonOrNull(`seasons/${season}/${league}/timeline-frozen.json`),
+    getJsonOrNull(`seasons/${season}/${league}/timeline-live.json`),
     getJsonOrNull(`seasons/${season}/${league}/prematch.json`),
     getJsonOrNull("season-params.json"),
     getJsonOrNull(`seasons/${season}/playoff.json`),
   ]);
-  return { meta, config, season: seasonData, outlook, timeline, prematch, params, playoff };
+  return { meta, config, season: seasonData, outlook, timeline, timelineLive, prematch, params, playoff };
 }
 
 /** Clubs keyed by id, with their display name. */

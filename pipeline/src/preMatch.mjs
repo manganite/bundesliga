@@ -45,7 +45,30 @@ export async function buildPreMatchDataset({
   carryForward = null,
 }) {
   const entries = new Map();
-  for (const e of existing?.entries ?? []) entries.set(e.fixtureId, e);
+  const metaById = new Map(index.snapshots.map((m) => [m.snapshotId, m]));
+
+  // ENRICHMENT, NOT REWRITING. Write-once protects the provenance DECISION from
+  // decaying — a contemporaneous record must never become a backfilled one. It
+  // does not forbid recording a fact that was always true: which day the chosen
+  // snapshot refers to, and which provenance the snapshot itself yields for this
+  // kickoff. Both are pure functions of immutable inputs (the snapshot's own
+  // dates and the fixture's kickoff), so neither can decay.
+  //
+  // They are needed because an entry can be `carried-forward` on account of ONE
+  // club while the OTHER club's rating came from the snapshot as normal. Without
+  // the snapshot-level provenance that second club's Rating-Aktualität could only
+  // be guessed, and §4 figures do not guess.
+  for (const e of existing?.entries ?? []) {
+    const meta = metaById.get(e.ratingSnapshotId);
+    const enriched = { ...e };
+    if (meta) {
+      if (enriched.snapshotEffectiveAt === undefined) enriched.snapshotEffectiveAt = meta.effectiveAt;
+      if (enriched.snapshotProvenance === undefined) {
+        enriched.snapshotProvenance = provenanceFor(meta, e.kickoff);
+      }
+    }
+    entries.set(e.fixtureId, enriched);
+  }
 
   const cache = new Map();
   const load = async (id) => {
@@ -107,6 +130,12 @@ export async function buildPreMatchDataset({
       homeClubId: fx.homeClubId,
       awayClubId: fx.awayClubId,
       ratingSnapshotId: snapMeta.snapshotId,
+      snapshotEffectiveAt: snapMeta.effectiveAt,
+      // The provenance the SNAPSHOT yields for this kickoff, before any
+      // carry-forward. For a club that was not carried this is its provenance;
+      // `provenance` above is the entry-level value and turns `carried-forward`
+      // as soon as either club was.
+      snapshotProvenance: provenanceFor(snapMeta, fx.kickoff),
       rule: PRE_MATCH_RULE,
       provenance,
       ...(Object.keys(carriedFrom).length ? { carriedFrom } : {}),

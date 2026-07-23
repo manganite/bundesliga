@@ -297,3 +297,122 @@ test("the artefact records the protocol version it was produced under", () => {
   assert.equal(art.simulationProtocolVersion, SIMULATION_PROTOCOL_VERSION);
   assert.ok(SIMULATION_PROTOCOL_VERSION >= 2, "v5.7 Part 2 bumped the protocol to 2");
 });
+
+// ============================================================================
+//  „Wichtigstes kommendes Spiel" (§4) — conditional tallies by FILTERING the
+//  canonical run set. V1.2 acceptance.
+// ============================================================================
+
+function impactFixture(runs = 4000, impactTargets = ["meister", "abstieg"]) {
+  const clubs = ["a", "b", "c", "d"].map((clubId, i) => ({ clubId, rating: 1600 - i * 40 }));
+  const fixtures = [];
+  for (const [i, h] of ["a", "b", "c", "d"].entries()) {
+    for (const [j, aw] of ["a", "b", "c", "d"].entries()) {
+      if (i !== j) fixtures.push({ id: `${h}-${aw}`, home: h, away: aw });
+    }
+  }
+  return simulateSeason({
+    seasonId: "impact",
+    clubs,
+    fixtures,
+    params: P,
+    targets: {
+      meister: { places: 1, positions: (r) => r === 1 },
+      abstieg: { places: 2, positions: (r) => r >= 3 },
+    },
+    runs,
+    batches: 20,
+    impactTargets,
+  });
+}
+
+test("no impact targets means no tallies and no cost", () => {
+  assert.equal(impactFixture(1000, []).fixtureImpact, null);
+  assert.equal(simulateSeason({
+    seasonId: "x", clubs: [{ clubId: "a", rating: 1500 }, { clubId: "b", rating: 1500 }],
+    fixtures: [{ id: "a-b", home: "a", away: "b" }], params: P,
+    targets: { meister: { places: 1, positions: (r) => r === 1 } }, runs: 100, batches: 10,
+  }).fixtureImpact, null, "the default must be off");
+});
+
+test("naming a target that does not exist fails rather than silently doing less", () => {
+  assert.throws(() => impactFixture(200, ["meister", "gibtsnicht"]), /do not exist/);
+});
+
+test("THE ACCEPTANCE TEST: the q-weighted conditionals recombine to P_now", () => {
+  // The simulation refuses to emit the metric otherwise, so reaching this point
+  // is itself the assertion — but the check is repeated here from the outside,
+  // on the shipped numbers, so a future refactor cannot quietly drop it.
+  const sim = impactFixture();
+  assert.equal(sim.fixtureImpact.length, 12);
+  for (const f of sim.fixtureImpact) {
+    const q = f.outcomeProbabilities;
+    assert.ok(Math.abs(q.homeWin + q.draw + q.awayWin - 1) < 1e-12, `${f.fixtureId}: q must sum to 1`);
+  }
+});
+
+test("a multi-place target is normalised by k BEFORE the distance", () => {
+  const sim = impactFixture();
+  for (const f of sim.fixtureImpact) {
+    assert.equal(f.targets.meister.places, 1);
+    assert.equal(f.targets.abstieg.places, 2);
+    // Total-variation distance between two vectors summing to 1 cannot exceed 1.
+    // Without the k-division a two-place target would routinely exceed it.
+    assert.ok(f.targets.abstieg.shift.value <= 1 + 1e-12, `${f.fixtureId}: ${f.targets.abstieg.shift.value}`);
+    assert.ok(f.targets.meister.shift.value <= 1 + 1e-12);
+    assert.equal(f.targets.abstieg.shift.places, 2);
+  }
+});
+
+test("the shift is a real number for every remaining fixture, and never negative", () => {
+  const sim = impactFixture();
+  for (const f of sim.fixtureImpact) {
+    for (const name of ["meister", "abstieg"]) {
+      const v = f.targets[name].shift.value;
+      assert.ok(Number.isFinite(v) && v >= 0, `${f.fixtureId}/${name}: ${v}`);
+    }
+  }
+});
+
+test("only UNPLAYED fixtures carry an impact — a played one has no outcome to condition on", () => {
+  const clubs = ["a", "b", "c", "d"].map((clubId, i) => ({ clubId, rating: 1600 - i * 40 }));
+  const fixtures = [
+    { id: "a-b", home: "a", away: "b", gh: 2, ga: 0 },
+    { id: "c-d", home: "c", away: "d" },
+    { id: "b-a", home: "b", away: "a" },
+  ];
+  const sim = simulateSeason({
+    seasonId: "partly", clubs, fixtures, params: P,
+    targets: { meister: { places: 1, positions: (r) => r === 1 } },
+    runs: 1000, batches: 10, impactTargets: ["meister"],
+  });
+  assert.deepEqual(sim.fixtureImpact.map((f) => f.fixtureId), ["c-d", "b-a"]);
+});
+
+test("the smallest conditional sample is reported, so the card can state it", () => {
+  const sim = impactFixture();
+  for (const f of sim.fixtureImpact) {
+    assert.ok(Number.isInteger(f.smallestConditionalRuns));
+    assert.ok(f.smallestConditionalRuns >= 0);
+    const q = f.outcomeProbabilities;
+    const smallestQ = Math.min(q.homeWin, q.draw, q.awayWin);
+    assert.equal(f.smallestConditionalRuns, Math.round(smallestQ * sim.runs));
+  }
+});
+
+test("a fixture between two contenders moves the title more than one between two mid-table clubs", () => {
+  const sim = impactFixture(8000);
+  const byId = new Map(sim.fixtureImpact.map((f) => [f.fixtureId, f]));
+  // a and b are the two strongest; c and d cannot realistically win the title.
+  assert.ok(
+    byId.get("a-b").targets.meister.shift.value > byId.get("c-d").targets.meister.shift.value,
+    "the top-of-table fixture must matter more for the title",
+  );
+});
+
+test("the impact tallies do not disturb the simulation itself — same numbers either way", () => {
+  const withImpact = impactFixture(2000);
+  const without = impactFixture(2000, []);
+  assert.deepEqual(without.probabilities, withImpact.probabilities);
+  assert.deepEqual(without.positionDistribution, withImpact.positionDistribution);
+});

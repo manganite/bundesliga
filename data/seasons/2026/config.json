@@ -10,43 +10,128 @@
       "pointsForWin": 3,
       "pointsForDraw": 1,
       "_tiebreakComment": "DFL Spielordnung Stand 06.03.2026, §5 Nr. 3c, verified against the primary source. Brief §6 had an extra 'points in the direct comparison' step that the Spielordnung does not contain — see docs/verification/dfl-spielordnung.md.",
-      "tiebreakCriteria": ["goalDifference", "goalsFor", "h2hAggregate", "h2hAwayGoals", "awayGoals"],
+      "tiebreakCriteria": [
+        "goalDifference",
+        "goalsFor",
+        "h2hAggregate",
+        "h2hAwayGoals",
+        "awayGoals"
+      ],
       "deciderIsPlayoff": true,
       "_zonesComment": "PLACEMENT zones, not qualification. Actual European qualification depends on cup winners and title holders, which needs data this app does not have (§6). Never fake a qualification mapping.",
       "targets": {
-        "meister": { "places": 1, "from": 1, "to": 1, "label": "Meister" },
-        "platz1bis4": { "places": 4, "from": 1, "to": 4, "label": "Platz 1–4" },
-        "platz5bis6": { "places": 2, "from": 5, "to": 6, "label": "Platz 5–6" },
-        "klassenerhalt": { "places": 15, "from": 1, "to": 15, "label": "Klassenerhalt" },
-        "relegationsplatz": { "places": 1, "from": 16, "to": 16, "label": "Relegationsplatz" },
-        "abstieg": { "places": 2, "from": 17, "to": 18, "label": "Abstieg" }
+        "meister": {
+          "places": 1,
+          "from": 1,
+          "to": 1,
+          "label": "Meister"
+        },
+        "platz1bis4": {
+          "places": 4,
+          "from": 1,
+          "to": 4,
+          "label": "Platz 1–4"
+        },
+        "platz5bis6": {
+          "places": 2,
+          "from": 5,
+          "to": 6,
+          "label": "Platz 5–6"
+        },
+        "klassenerhalt": {
+          "places": 15,
+          "from": 1,
+          "to": 15,
+          "label": "Klassenerhalt"
+        },
+        "relegationsplatz": {
+          "places": 1,
+          "from": 16,
+          "to": 16,
+          "label": "Relegationsplatz"
+        },
+        "abstieg": {
+          "places": 2,
+          "from": 17,
+          "to": 18,
+          "label": "Abstieg"
+        }
       },
       "_playoffPlacesComment": "Plätze, von denen aus es über die Relegation weitergeht. Ohne diese Angabe würde die Clinch-Logik „Klassenerhalt nicht mehr möglich“ sagen, sobald Platz 15 unerreichbar ist — falsch, solange Platz 16 noch geht. Von 1992/93 bis 2007/08 war die Liste leer, weil es keine Relegation gab.",
-      "playoffPlaces": [16],
-      "herbstmeisterUntilMatchday": 17
+      "playoffPlaces": [
+        16
+      ],
+      "herbstmeisterUntilMatchday": 17,
+      "_impactTargetsComment": "Die zwei Zielverteilungen, für die „Wichtigstes kommendes Spiel“ (§4) gerechnet wird — die Karte zeigt die größere der beiden und sagt welche. Konfiguration, keine Konstante: in der Bundesliga ist es Meisterschaft gegen Abstieg, in der 2. Liga Aufstieg gegen Abstieg. Die bedingten Tallies kosten Speicher und etwas Rechenzeit, deshalb genau zwei und nicht alle.",
+      "impactTargets": [
+        "meister",
+        "abstieg"
+      ]
     },
     "bl2": {
       "clubCount": 18,
       "matchdayCount": 34,
       "pointsForWin": 3,
       "pointsForDraw": 1,
-      "tiebreakCriteria": ["goalDifference", "goalsFor", "h2hAggregate", "h2hAwayGoals", "awayGoals"],
+      "tiebreakCriteria": [
+        "goalDifference",
+        "goalsFor",
+        "h2hAggregate",
+        "h2hAwayGoals",
+        "awayGoals"
+      ],
       "deciderIsPlayoff": true,
       "targets": {
-        "aufstieg": { "places": 2, "from": 1, "to": 2, "label": "Aufstieg (Top 2)" },
-        "relegationsplatzAufstieg": { "places": 1, "from": 3, "to": 3, "label": "Relegationsplatz (3.)" },
-        "klassenerhalt": { "places": 15, "from": 1, "to": 15, "label": "Klassenerhalt" },
-        "relegationsplatzAbstieg": { "places": 1, "from": 16, "to": 16, "label": "Relegationsplatz (16.)" },
-        "abstieg": { "places": 2, "from": 17, "to": 18, "label": "Abstieg" }
+        "aufstieg": {
+          "places": 2,
+          "from": 1,
+          "to": 2,
+          "label": "Aufstieg (Top 2)"
+        },
+        "relegationsplatzAufstieg": {
+          "places": 1,
+          "from": 3,
+          "to": 3,
+          "label": "Relegationsplatz (3.)"
+        },
+        "klassenerhalt": {
+          "places": 15,
+          "from": 1,
+          "to": 15,
+          "label": "Klassenerhalt"
+        },
+        "relegationsplatzAbstieg": {
+          "places": 1,
+          "from": 16,
+          "to": 16,
+          "label": "Relegationsplatz (16.)"
+        },
+        "abstieg": {
+          "places": 2,
+          "from": 17,
+          "to": 18,
+          "label": "Abstieg"
+        }
       },
       "_playoffPlacesComment": "Platz 3 führt in die Relegation zur Bundesliga, Platz 16 in die Relegation gegen die 3. Liga. Die zweite berechnet die App nicht (sie führt keine Daten der 3. Liga), aber die Clinch-Logik muss von beiden wissen, sonst behauptet sie einen entschiedenen Abstieg, der keiner ist.",
-      "playoffPlaces": [3, 16]
+      "playoffPlaces": [
+        3,
+        16
+      ],
+      "_impactTargetsComment": "Die zwei Zielverteilungen, für die „Wichtigstes kommendes Spiel“ (§4) gerechnet wird — die Karte zeigt die größere der beiden und sagt welche. Konfiguration, keine Konstante: in der Bundesliga ist es Meisterschaft gegen Abstieg, in der 2. Liga Aufstieg gegen Abstieg. Die bedingten Tallies kosten Speicher und etwas Rechenzeit, deshalb genau zwei und nicht alle.",
+      "impactTargets": [
+        "aufstieg",
+        "abstieg"
+      ]
     }
   },
   "relegationPlayoff": {
     "_comment": "Exists only from 2008/09 onward. Between 1992/93 and 2007/08 the bottom three went down directly and 16th was not a play-off place (§5.4/§6).",
     "exists": true,
-    "between": ["bl1:16", "bl2:3"],
+    "between": [
+      "bl1:16",
+      "bl2:3"
+    ],
     "legs": 2,
     "_awayGoalsComment": "Two explicit fields, never a single ambiguous cutoff. The SpOL does not set this itself: it plays the Relegationsspiele 'entsprechend den Bestimmungen der UEFA-Clubwettbewerbe', so the boundary follows UEFA's abolition. Verified — docs/verification/dfl-spielordnung.md §4.5.",
     "lastSeasonWithAwayGoals": "2020/21",

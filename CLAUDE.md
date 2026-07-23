@@ -242,7 +242,28 @@ construction.
   nicht auseinanderlaufen kann. Ein zweiter Schritt prüft, dass es **genau sechs**
   Skips sind. Ändern sich die Trainingsdaten-Lizenzlage oder die Testzahl, gehört
   diese Zahl zusammen mit `docs/DEVELOPMENT.md` angepasst.
-- Offen: V1.2 (Modellgüte, Live-Rating-Timeline, „Wichtigstes kommendes Spiel"), V2.
+- **V1.2 steht.** Modellgüte-Seite, Live-Rating-Timeline mit der Frozen/Live-
+  Gegenüberstellung, und „Wichtigstes kommendes Spiel" auf Übersicht und Spieltage.
+  Vier Stellen, an denen das leicht kaputtgeht:
+  - **Drei Provenienzen, nie stillschweigend gepoolt.** `modelQuality.mjs` gibt zu
+    jeder gemischten Zahl eine `note` zurück; eine Ansicht, die die Zahl zeigt und
+    die Note wegwirft, ist genau der Fehler, den §5.3 verbietet. Die Provenienz
+    wird **je Klub** aufgelöst — 64 der 66 übertragenen Einträge betreffen nur
+    einen der beiden Klubs.
+  - **Der Rekombinationstest läuft in `simulateSeason` selbst**, vor dem Schreiben.
+    Er ist exakt, nicht tolerant: jeder Lauf fällt in genau einen Ausgang. Schlägt
+    er fehl, ist das Tallying falsch — keine Toleranz nachziehen.
+  - **Die Live-Timeline liest den Index NACH dem Anhängen des Tagessnapshots.**
+    Davor gelesen hinkt sie einen Lauf hinterher und schreibt bei jedem Lauf neu,
+    was „commit only on change" bricht.
+  - **`Card`s `when` schützt die Kinder nicht.** JSX-Kinder werden gebaut, bevor
+    `Card` entscheidet — eine Karte, die in ein womöglich leeres Array greift,
+    stürzt genau im leeren Zustand ab, den diese Version aushalten muss.
+- **Die Karte „Rating-Verzögerung" aus §7 heißt jetzt „Rating-Aktualität".** Der
+  alte Name versprach die Messung, dass das Elo träge folgt; die findet nicht
+  statt, und §9 ordnet genau diese Behauptung als „reasoning, not measurement"
+  ein. Definition und Begründung: `docs/METRIC_ADDENDA.md`.
+- Offen: V2.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
   ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern

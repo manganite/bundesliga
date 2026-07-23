@@ -16,6 +16,7 @@
 import { makeKeyBase, uniform01, ratingNoise, SIMULATION_PROTOCOL_VERSION } from "./rng.mjs";
 import { effectiveParams, eloToLambdas } from "./model.mjs";
 import { buildTable, rankTable, CURRENT_SEASON_RULES } from "./ranking.mjs";
+import { expectedTargetShift, conditionalsRecombine } from "./metrics.mjs";
 
 /** Bump when the tallying or artefact shape changes. Part of the cache key. */
 export const ENGINE_VERSION = 1;
@@ -105,6 +106,10 @@ export function drawScorelineDirect(lamH, lamA, params, u, { applyDc = true } = 
  * @param {number} [input.batches]   default 20 — paired batches for SE(Δ)
  * @param {object} [input.rules]     season rules for the ranker
  * @param {string} [input.context]   random-key namespace, "league" by default
+ * @param {string[]} [input.impactTargets]  targets for which per-(fixture,
+ *   outcome) conditional tallies are kept — the §4 „Wichtigstes kommendes
+ *   Spiel" metric. Empty by default: the tallies cost memory and a little time,
+ *   and only two targets are ever shown.
  */
 export function simulateSeason({
   seasonId,
@@ -117,6 +122,7 @@ export function simulateSeason({
   batches = 20,
   rules = CURRENT_SEASON_RULES,
   context = "league",
+  impactTargets = [],
 }) {
   if (runs % batches !== 0) {
     throw new Error(`runs (${runs}) must be a multiple of batches (${batches}) — batches must be equal size`);
@@ -172,6 +178,28 @@ export function simulateSeason({
   const pointsTotal = new Float64Array(nClubs);
   const pointsSamples = Array.from({ length: nClubs }, () => new Int16Array(runs));
 
+  // ---- conditional tallies for „Wichtigstes kommendes Spiel" (§4) ----------
+  //
+  // P_o(club, target) — how often a club reaches the target among the runs in
+  // which THIS fixture came out as `o`. Obtained by FILTERING the canonical
+  // run set, never by a separate forced-outcome simulation: the filtered
+  // conditional is the exact conditional inside the model's own joint
+  // simulation, and it recombines to P_now by construction.
+  //
+  // Cheap because target membership is sparse: a k-place target puts exactly k
+  // clubs in the bucket per run, so the inner loop is k, not nClubs.
+  const impact = impactTargets.filter((t) => targetNames.includes(t));
+  if (impact.length !== impactTargets.length) {
+    const missing = impactTargets.filter((t) => !targetNames.includes(t));
+    throw new Error(`impactTargets name targets that do not exist: ${missing.join(", ")}`);
+  }
+  const OUTCOMES = 3; // 0 home win, 1 draw, 2 away win
+  // cond[t][f * 3 + o][club]
+  const cond = impact.map(() =>
+    Array.from({ length: remaining.length * OUTCOMES }, () => new Int32Array(nClubs)));
+  const outcomeCount = Array.from({ length: remaining.length }, () => new Int32Array(OUTCOMES));
+  const fixtureOutcome = new Uint8Array(remaining.length);
+
   const runsPerBatch = runs / batches;
   const noisy = new Float64Array(nClubs);
   const simulated = new Array(remaining.length);
@@ -196,6 +224,11 @@ export function simulateSeason({
         u,
       );
       simulated[f] = { home: fx.home, away: fx.away, gh, ga };
+      if (impact.length) {
+        const o = gh > ga ? 0 : gh === ga ? 1 : 2;
+        fixtureOutcome[f] = o;
+        outcomeCount[f][o]++;
+      }
     }
 
     const allMatches = played.concat(simulated);
@@ -219,6 +252,19 @@ export function simulateSeason({
           tally[name][i]++;
           batchTally[name][batch][i]++;
         }
+      }
+    }
+
+    // Only the clubs that ARE in an impact target this run, so the cost is
+    // k per fixture rather than nClubs per fixture.
+    for (const [t, name] of impact.entries()) {
+      const members = [];
+      for (const row of ranked) if (targets[name].positions(row.rank)) members.push(idx.get(row.clubId));
+      if (!members.length) continue;
+      const bucketsForTarget = cond[t];
+      for (let f = 0; f < remaining.length; f++) {
+        const bucket = bucketsForTarget[f * OUTCOMES + fixtureOutcome[f]];
+        for (const m of members) bucket[m]++;
       }
     }
   }
@@ -252,6 +298,65 @@ export function simulateSeason({
     }),
   );
 
+  // ---- „Wichtigstes kommendes Spiel" (§4) ---------------------------------
+  //
+  // Shipped as the METRIC, not as the conditional distributions: the app needs
+  // the ranking and the top fixture, and the raw tallies would be ~500 KB of
+  // JSON per league for numbers no view reads. The recombination property is
+  // checked HERE, where the tallies still exist.
+  const fixtureImpact = impact.length
+    ? remaining.map((fx, f) => {
+      const total = outcomeCount[f][0] + outcomeCount[f][1] + outcomeCount[f][2];
+      const q = { homeWin: outcomeCount[f][0] / total, draw: outcomeCount[f][1] / total, awayWin: outcomeCount[f][2] / total };
+      const perTarget = {};
+      for (const [t, name] of impact.entries()) {
+        const places = targets[name].places ?? 1;
+        const pNow = Object.fromEntries(clubIds.map((id, i) => [id, tally[name][i] / runs]));
+        const byOutcome = ["homeWin", "draw", "awayWin"].map((key, o) => {
+          const n = outcomeCount[f][o];
+          const bucket = cond[t][f * OUTCOMES + o];
+          return {
+            outcome: key,
+            q: q[key],
+            sampleSize: n,
+            // A zero-run outcome carries weight zero in the expectation, so its
+            // distribution never enters it — but it must not be NaN either.
+            conditional: Object.fromEntries(clubIds.map((id, i) => [id, n ? bucket[i] / n : 0])),
+          };
+        });
+        // §4 acceptance: the q-weighted conditionals must recombine to P_now.
+        // Exact by construction — every run lands in exactly one outcome — so a
+        // failure here means the tallying is wrong, not that a tolerance is
+        // tight. Checked before the artefact is written, never after.
+        const recombination = conditionalsRecombine(pNow, byOutcome);
+        if (!recombination.ok) {
+          throw new Error(
+            `conditional tallies for ${fx.id} / ${name} do not recombine to P_now `
+              + `(worst deviation ${recombination.worstDeviation}). The filtering semantics of §4 `
+              + "are violated; refusing to emit the metric.",
+          );
+        }
+        perTarget[name] = {
+          places,
+          // Multi-place targets sum to `places`, not 1. Total-variation distance
+          // presupposes vectors summing to 1, so both sides are divided by k
+          // BEFORE the distance — otherwise a two-place relegation reading is
+          // inflated ≈ 2-fold and structurally wins every comparison.
+          shift: expectedTargetShift(pNow, byOutcome, places),
+        };
+      }
+      return {
+        fixtureId: fx.id,
+        home: fx.home,
+        away: fx.away,
+        outcomeProbabilities: q,
+        // The card must state the smallest conditional sample it rests on.
+        smallestConditionalRuns: Math.min(outcomeCount[f][0], outcomeCount[f][1], outcomeCount[f][2]),
+        targets: perTarget,
+      };
+    })
+    : null;
+
   return {
     seasonId,
     league,
@@ -268,6 +373,7 @@ export function simulateSeason({
       clubIds.map((id, i) => [id, Array.from(positions[i], (n) => n / runs)]),
     ),
     points: pointsSummary,
+    fixtureImpact,
   };
 }
 

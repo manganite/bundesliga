@@ -70,6 +70,7 @@ const toEngineFixtures = (fixtures) => fixtures.map((f) => ({
  */
 export function buildCurrentOutlook({
   seasonId, league, clubs, fixtures, params, targets, runs = CANONICAL_RUNS, rules,
+  impactTargets = [],
 }) {
   return {
     kind: "currentOutlook",
@@ -81,6 +82,10 @@ export function buildCurrentOutlook({
       seasonId, league, clubs,
       fixtures: toEngineFixtures(fixtures),
       params, targets, runs, batches: BATCHES, rules,
+      // „Wichtigstes kommendes Spiel" (§4): computed ONCE here, during the
+      // canonical run, and consumed by both Übersicht and Spieltage. No extra
+      // simulation — the conditionals are filtered from these very runs.
+      impactTargets,
     }),
   };
 }
@@ -151,6 +156,107 @@ export function buildFrozenTimeline({
     runs,
     ratingBasis: "frozen pre-season ratings — the curve carries no rating updates",
     points: [...byMatchday.values()].sort((a, b) => a.matchday - b.matchday),
+    computed,
+  };
+}
+
+/**
+ * The LIVE-rating timeline (§5.3, V1.2).
+ *
+ * Point M answers: „wie sah die Prognose nach dem M. Spieltag aus, mit den
+ * Ratings, die damals galten?" That needs archived point-in-time ratings and
+ * cannot be reconstructed from results alone — which is exactly why the archive
+ * exists from day one.
+ *
+ * The rating for point M is the newest snapshot effective ON OR BEFORE the day
+ * AFTER that matchday's last kickoff. „After", not „before": the point is the
+ * state once the matchday is complete, so the update that matchday caused
+ * belongs in it. Under clubelo's dating convention (docs/verification/clubelo.md
+ * §1d) the change appears on the following day, hence +1.
+ *
+ * Where no snapshot is available for a point, that point is SKIPPED and named in
+ * `gaps` — never back-extrapolated, never silently dropped (§5.3 degraded state).
+ *
+ * @param {(date:string)=>object|null} input.ratingsOn  snapshot lookup by date
+ */
+export function buildLiveTimeline({
+  seasonId, league, clubs, fixtures, params, targets, rules,
+  ratingsOn, runs = TIMELINE_RUNS, existing = null, log = () => {},
+}) {
+  const matchdays = [...new Set(fixtures.map((f) => f.matchday))].sort((a, b) => a - b);
+  const lastPlayed = fixtures.reduce((m, f) => (f.gh !== undefined ? Math.max(m, f.matchday) : m), 0);
+
+  const byMatchday = new Map();
+  for (const point of existing?.points ?? []) {
+    if (point.runs === runs
+      && point.engineVersion === ENGINE_VERSION
+      && point.simulationProtocolVersion === SIMULATION_PROTOCOL_VERSION) {
+      byMatchday.set(point.matchday, point);
+    }
+  }
+
+  const shiftDays = (iso, days) => {
+    const d = new Date(`${String(iso).slice(0, 10)}T00:00:00Z`);
+    d.setUTCDate(d.getUTCDate() + days);
+    return d.toISOString().slice(0, 10);
+  };
+
+  const gaps = [];
+  let computed = 0;
+  for (const md of matchdays.filter((m) => m <= lastPlayed)) {
+    if (byMatchday.has(md)) continue;
+    const dayFixtures = fixtures.filter((f) => f.matchday === md);
+    const lastKickoff = dayFixtures.reduce((max, f) => (f.kickoff > max ? f.kickoff : max), dayFixtures[0].kickoff);
+    const asOf = shiftDays(lastKickoff, 1);
+
+    const snap = ratingsOn(asOf);
+    const missing = snap ? clubs.filter((c) => snap.ratings[c.clubId] === undefined) : clubs;
+    if (!snap || missing.length) {
+      gaps.push({
+        matchday: md,
+        asOf,
+        reason: snap
+          ? `${missing.length} Klub(s) ohne Rating in diesem Snapshot`
+          : "kein archivierter Snapshot bis zu diesem Datum",
+      });
+      continue;
+    }
+
+    const state = stateAfterMatchday(fixtures, md);
+    const sim = simulateSeason({
+      seasonId: `${seasonId}-live-md${md}`,
+      league,
+      clubs: clubs.map((c) => ({ clubId: c.clubId, rating: snap.ratings[c.clubId] })),
+      fixtures: toEngineFixtures(state),
+      params,
+      targets,
+      runs,
+      batches: BATCHES,
+      rules,
+    });
+    byMatchday.set(md, {
+      matchday: md,
+      asOf,
+      snapshotId: snap.snapshotId,
+      runs,
+      engineVersion: sim.engineVersion,
+      simulationProtocolVersion: sim.simulationProtocolVersion,
+      playedCount: sim.playedCount,
+      probabilities: sim.probabilities,
+      points: sim.points,
+    });
+    computed++;
+    log(`live timeline ${league} matchday ${md}: ratings as of ${asOf}`);
+  }
+
+  return {
+    kind: "liveTimeline",
+    league,
+    seasonId,
+    runs,
+    ratingBasis: "Ratings, wie sie nach dem jeweiligen Spieltag galten",
+    points: [...byMatchday.values()].sort((a, b) => a.matchday - b.matchday),
+    gaps,
     computed,
   };
 }

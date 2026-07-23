@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
+import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
 import { currentTable, predictFixture, scoredMatches } from "../lib/season.js";
 import { percent, number, weekdayDate } from "../lib/format.js";
 
@@ -12,7 +13,7 @@ import { percent, number, weekdayDate } from "../lib/format.js";
  * this page and the Übersicht. It must not appear earlier.
  */
 export default function Spieltage({ ctx }) {
-  const { season, leagueConfig, nameOf, matchday, prematch, params, league, leagueLabel } = ctx;
+  const { season, outlook, leagueConfig, nameOf, matchday, prematch, params, league, leagueLabel } = ctx;
   const matchdays = useMemo(
     () => [...new Set(season.fixtures.map((f) => f.matchday))].sort((a, b) => a - b),
     [season],
@@ -64,6 +65,15 @@ export default function Spieltage({ ctx }) {
       </div>
 
       <div className="stack">
+        <WichtigstesSpiel
+          outlook={outlook}
+          season={season}
+          leagueConfig={leagueConfig}
+          nameOf={nameOf}
+          matchday={selected}
+          limit={9}
+        />
+
         <Card title={`${selected}. Spieltag`}>
           <div className="table-scroll"><table className="data">
             <thead>
