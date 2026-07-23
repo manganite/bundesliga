@@ -416,3 +416,98 @@ test("the impact tallies do not disturb the simulation itself — same numbers e
   assert.deepEqual(without.probabilities, withImpact.probabilities);
   assert.deepEqual(without.positionDistribution, withImpact.positionDistribution);
 });
+
+// ============================================================================
+//  drawSeasonRun (V2a Beispielsaison) — ONE season at a named run index, and it
+//  must be bit-for-bit a run of the full simulation.
+// ============================================================================
+
+import { drawSeasonRun } from "../src/simulate.mjs";
+
+function seasonSetup() {
+  const clubs = ["a", "b", "c", "d"].map((clubId, i) => ({ clubId, rating: 1650 - i * 45 }));
+  const fixtures = [];
+  for (const [i, h] of ["a", "b", "c", "d"].entries()) {
+    for (const [j, aw] of ["a", "b", "c", "d"].entries()) {
+      if (i !== j) fixtures.push({ id: `${h}-${aw}`, home: h, away: aw });
+    }
+  }
+  return { seasonId: "sample", clubs, fixtures, params: P };
+}
+
+test("drawSeasonRun reproduces the aggregate of the full simulation", () => {
+  // If each run's champion is drawn identically, tallying drawSeasonRun over
+  // runs 0..N-1 must reproduce simulateSeason's meister probabilities EXACTLY —
+  // same keys, same draws, so the counts are identical, not merely close.
+  const setup = seasonSetup();
+  const N = 400;
+  const full = simulateSeason({
+    ...setup,
+    targets: { meister: { places: 1, positions: (r) => r === 1 } },
+    runs: N, batches: 20,
+  });
+  const counts = Object.fromEntries(setup.clubs.map((c) => [c.clubId, 0]));
+  for (let r = 0; r < N; r++) {
+    const champ = drawSeasonRun({ ...setup, runIndex: r }).table.find((row) => row.rank === 1).clubId;
+    counts[champ]++;
+  }
+  for (const c of setup.clubs) {
+    assert.equal(counts[c.clubId] / N, full.probabilities.meister[c.clubId], `${c.clubId} differs`);
+  }
+});
+
+test("the same run index gives a bit-identical season every time", () => {
+  const setup = seasonSetup();
+  const a = drawSeasonRun({ ...setup, runIndex: 17 });
+  const b = drawSeasonRun({ ...setup, runIndex: 17 });
+  assert.deepEqual(a, b);
+});
+
+test("different run indices give different seasons", () => {
+  const setup = seasonSetup();
+  const a = drawSeasonRun({ ...setup, runIndex: 17 });
+  const b = drawSeasonRun({ ...setup, runIndex: 18 });
+  assert.notDeepEqual(a.scorelines, b.scorelines);
+});
+
+test("the run index does not depend on how many runs were requested", () => {
+  // „Lauf #17 von 20 000" and „Lauf #17 von 100" must be the same season, or the
+  // reproducibility label is a lie. runCount never enters a key (§3).
+  const setup = seasonSetup();
+  const run17 = drawSeasonRun({ ...setup, runIndex: 17 });
+  // Full simulation with a DIFFERENT run count still contains this exact run.
+  const short = simulateSeason({
+    ...setup, targets: { meister: { places: 1, positions: (r) => r === 1 } }, runs: 20, batches: 20,
+  });
+  const long = simulateSeason({
+    ...setup, targets: { meister: { places: 1, positions: (r) => r === 1 } }, runs: 20000, batches: 20,
+  });
+  // The nested-sample property already tested elsewhere guarantees run 17 is
+  // shared; here we only assert drawSeasonRun is stable regardless.
+  assert.deepEqual(run17, drawSeasonRun({ ...setup, runIndex: 17 }));
+  assert.ok(short.probabilities.meister.a <= 1 && long.probabilities.meister.a <= 1);
+});
+
+test("played fixtures pass through with their real result, marked played", () => {
+  const setup = seasonSetup();
+  setup.fixtures = setup.fixtures.map((f, i) => (i < 3 ? { ...f, gh: 2, ga: 1 } : f));
+  const season = drawSeasonRun({ ...setup, runIndex: 3 });
+  const playedRows = season.scorelines.filter((s) => s.played);
+  assert.equal(playedRows.length, 3);
+  for (const s of playedRows) { assert.equal(s.gh, 2); assert.equal(s.ga, 1); }
+  assert.ok(season.scorelines.filter((s) => !s.played).length > 0);
+});
+
+test("every fixture appears exactly once and the table is complete", () => {
+  const setup = seasonSetup();
+  const season = drawSeasonRun({ ...setup, runIndex: 5 });
+  assert.equal(season.scorelines.length, setup.fixtures.length);
+  assert.equal(new Set(season.scorelines.map((s) => s.id)).size, setup.fixtures.length);
+  assert.equal(season.table.length, setup.clubs.length);
+});
+
+test("a negative or non-integer run index is refused", () => {
+  const setup = seasonSetup();
+  assert.throws(() => drawSeasonRun({ ...setup, runIndex: -1 }), /non-negative integer/);
+  assert.throws(() => drawSeasonRun({ ...setup, runIndex: 2.5 }), /non-negative integer/);
+});

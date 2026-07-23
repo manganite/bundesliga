@@ -435,3 +435,15 @@ figure.chart figcaption {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
+
+/* Szenarien: drawn scoreline highlight and the help-combination list. */
+.drawn-score { font-variant-numeric: tabular-nums; }
+.scenario-list {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+}
+.scenario-list li {
+  margin: 0.3rem 0;
+  line-height: 1.4;
+}
+.scenario-list li::marker { color: var(--accent); }

@@ -636,3 +636,102 @@ test("reading from the archive stays fail-closed, and honours a correction", asy
   );
   assert.equal(dailyCalls(s.calls).length, before, "it must fail closed without asking clubelo to rescue it");
 });
+
+// ---------------------------------------------------------------------------
+//  Pre-season backfill after a late relaunch (§5.3, rolled in from V2a review).
+//
+//  The BL2 edge: clubelo's history becomes available only AFTER a league's
+//  first matchday. The frozen timeline needs a pre-season snapshot (the day
+//  before matchday 1); until the history is there, the app is in the defined
+//  degraded state. Once it arrives, the backfill must construct that pre-season
+//  point and the frozen timeline must build from matchday 1 with `backfilled`
+//  provenance — the degraded state clears with no manual step.
+// ---------------------------------------------------------------------------
+
+/** Sources whose club-history endpoint is unavailable (relaunch not yet live). */
+function makeSourcesWithoutHistory() {
+  const s = makeSources();
+  const fetchText = async (url) => {
+    if (/clubelo\.com\/\d{4}-\d{2}-\d{2}$/.test(url)) return s.fetchText(url); // daily CSV still works
+    throw new Error("Site overloaded, only cached pages available"); // history down
+  };
+  return { fetchJson: s.fetchJson, fetchText, calls: s.calls };
+}
+
+const frozenPath = (dataDir, league) =>
+  path.join(dataDir, "seasons", String(SEASON), league, "timeline-frozen.json");
+
+test("without club history the frozen timeline is skipped — the degraded state, not a fault", async () => {
+  const dataDir = await makeDataDir();
+  const gone = makeSourcesWithoutHistory();
+  const messages = [];
+  const r = await runUpdate({ dataDir, fetchJson: gone.fetchJson, fetchText: gone.fetchText, now: NOW, log: (m) => messages.push(m) });
+
+  // The run still succeeds and commits the current outlook.
+  assert.equal(r.changed, true);
+  // But there is no pre-season snapshot, so the frozen timeline is absent...
+  await assert.rejects(() => fs.readFile(frozenPath(dataDir, "bl1"), "utf8"));
+  // ...and the run says so plainly rather than inventing a curve.
+  assert.ok(messages.some((m) => /no pre-season snapshot|frozen timeline skipped/.test(m)));
+});
+
+test("once the relaunch makes history available, the pre-season point is backfilled and the frozen timeline builds from matchday 1", async () => {
+  const dataDir = await makeDataDir();
+
+  // 1. Launch during the season with no history — degraded.
+  const gone = makeSourcesWithoutHistory();
+  await runUpdate({ dataDir, fetchJson: gone.fetchJson, fetchText: gone.fetchText, now: NOW, log: silent });
+  await assert.rejects(() => fs.readFile(frozenPath(dataDir, "bl1"), "utf8"), "degraded before the relaunch");
+
+  // 2. The relaunch: history is now reachable. A later run backfills it.
+  const back = makeSources();
+  const later = new Date("2026-09-11T04:00:00.000Z");
+  const r = await runUpdate({ dataDir, fetchJson: back.fetchJson, fetchText: back.fetchText, now: later, log: silent });
+  assert.ok(r.changes.some((c) => /frozen timeline/.test(c)), "the frozen timeline must now be built");
+
+  const frozen = JSON.parse(await fs.readFile(frozenPath(dataDir, "bl1"), "utf8"));
+  // It starts at the pre-season forecast (matchday 0) and covers the played days.
+  assert.equal(frozen.points[0].matchday, 0, "the curve must start at the pre-season point");
+  assert.ok(frozen.points.length >= 4, "matchday 0 plus the three played matchdays");
+  assert.ok(Number.isFinite(frozen.frozenEffectiveAt ? 1 : NaN) || frozen.frozenEffectiveAt, "records its frozen date");
+
+  // The pre-season snapshot it rests on is BEFORE the first kickoff, and every
+  // club has a rating in it (the degraded state has genuinely cleared).
+  const firstKickoff = MATCHDAY_DATE[0];
+  assert.ok(frozen.frozenEffectiveAt < firstKickoff, `${frozen.frozenEffectiveAt} must precede ${firstKickoff}`);
+  assert.equal(Object.keys(frozen.frozenRatings).length, CLUBS.bl1.length);
+});
+
+test("the pre-season snapshot the backfill built carries backfilled provenance, never contemporaneous", async () => {
+  const dataDir = await makeDataDir();
+  const back = makeSources();
+  // A first run mid-season backfills the whole history including the pre-season
+  // date. That snapshot was reconstructed after the fact — its use as a
+  // pre-match rating for matchday 1 must be labelled backfilled (§5.3).
+  await runUpdate({ dataDir, fetchJson: back.fetchJson, fetchText: back.fetchText, now: NOW, log: silent });
+
+  const pm = JSON.parse(await fs.readFile(path.join(dataDir, "seasons", String(SEASON), "bl1", "prematch.json"), "utf8"));
+  const matchday1 = pm.entries.filter((e) => e.kickoff.slice(0, 10) === MATCHDAY_DATE[0]);
+  assert.ok(matchday1.length > 0);
+  for (const e of matchday1) {
+    assert.equal(e.provenance, "backfilled", "a rating reconstructed after the fact is never contemporaneous");
+  }
+});
+
+test("in the steady state the missing-date backfill fetches NO club history", async () => {
+  const dataDir = await makeDataDir();
+  const s = makeSources();
+  // First run backfills the whole current season from history.
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: NOW, log: silent });
+  const historyCallsAfterFirst = s.calls.text.filter((u) => !/\d{4}-\d{2}-\d{2}$/.test(u)).length;
+  assert.ok(historyCallsAfterFirst > 0, "the first run does backfill from history");
+
+  // A second run the next day: nothing required is missing, so NO history is
+  // fetched — the courtesy rule holds, and the gap-triggered backfill does not
+  // become a per-run history sweep.
+  const later = new Date("2026-09-11T04:00:00.000Z");
+  const before = s.calls.text.length;
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: later, log: silent });
+  const historyCallsSecond = s.calls.text.slice(before).filter((u) => !/\d{4}-\d{2}-\d{2}$/.test(u)).length;
+  assert.equal(historyCallsSecond, 0, "a steady-state run must not fetch club history");
+});

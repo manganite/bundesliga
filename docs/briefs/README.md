@@ -16,6 +16,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 4 | [FIT_EXTRACTION_BRIEF.md](FIT_EXTRACTION_BRIEF.md) | Die Fitprozedur zieht nach `packages/fit`; das Reproduktionstor ist die Abnahme, und die Summationsreihenfolge zu ändern ist ab jetzt eine Prozess-B-Änderung. |
 | 5 | [PRE_V1.1_CLEANUP_BRIEF.md](PRE_V1.1_CLEANUP_BRIEF.md) | Schließt die Lücken aus der Extraktions-Durchsicht und setzt die Cron-Flag. Trägt außerdem zwei Zusätze für den V1.1-Umfang. |
 | 6 | [CLUBELO_FOLLOWTHROUGH_BRIEF.md](CLUBELO_FOLLOWTHROUGH_BRIEF.md) | Nach der Erlaubnis des clubelo-Betreibers: Protokoll, Trainingsdaten committet, Reproduktionstor in CI, ein Abruf pro Tag statt zwölf, Relaunch-Playbook, App B in CI. |
+| 7 | [V2A_SZENARIEN_BRIEF.md](V2A_SZENARIEN_BRIEF.md) | Nur die Szenarien-Hälfte von V2: Was-wäre-wenn, Beispielsaison, Solver „Was muss passieren?" (gebaut, getestet, bei > 5 Spieltagen unsichtbar). Die Historie (V2b) ist ausdrücklich zurückgestellt, mit Auslösebedingung. |
 
 ## Diese Dateien werden nicht bearbeitet
 

@@ -6,4 +6,5 @@ export { default as TabelleUndPrognose } from "../../src/pages/TabelleUndPrognos
 export { default as Modellguete } from "../../src/pages/Modellguete.jsx";
 export { default as Uebersicht } from "../../src/pages/Uebersicht.jsx";
 export { default as Verlauf } from "../../src/pages/Verlauf.jsx";
+export { default as Szenarien } from "../../src/pages/Szenarien.jsx";
 export { default as App } from "../../src/App.jsx";

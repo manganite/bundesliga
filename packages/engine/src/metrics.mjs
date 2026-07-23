@@ -437,12 +437,17 @@ export function pairedBatchStandardError(batchDeltas) {
 export function reportDelta(batchDeltas) {
   const { delta, se, batches } = pairedBatchStandardError(batchDeltas);
   const floor = 2 * se;
+  // A zero delta is never a change, even when the floor is also zero (every
+  // paired batch cancelled exactly — pure CRN). Without this guard 0 ≥ 0 would
+  // report „significant" and the what-if would show „0,0 Pp." where it should
+  // say „unverändert".
+  const significant = floor > 0 ? Math.abs(delta) >= floor : delta !== 0;
   return {
     delta,
     se,
     batches,
     floor,
-    significant: Math.abs(delta) >= floor,
-    display: Math.abs(delta) >= floor ? delta : null, // null renders as „unverändert"
+    significant,
+    display: significant ? delta : null, // null renders as „unverändert"
   };
 }

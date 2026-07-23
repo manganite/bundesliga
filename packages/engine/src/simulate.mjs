@@ -378,6 +378,71 @@ export function simulateSeason({
 }
 
 /**
+ * ONE season, drawn at a NAMED run index (V2a Beispielsaison).
+ *
+ * This is not a new sampler. It rebuilds the very keys `simulateSeason` uses —
+ * same `seasonId`, `context`, `drawKind`, same `makeKeyBase` — and draws with
+ * the same primitives, so the season it returns for `runIndex = r` is bit-for-
+ * bit the season that run `r` of the full simulation drew. `runCount` never
+ * enters a key (§3), so „Lauf #17 von 20 000" is a genuine, reproducible sample
+ * from the same distribution, not a fresh draw that merely looks like one.
+ *
+ * Returns the drawn scorelines (played fixtures pass through with their real
+ * result and `played: true`) and the resulting ranked final table.
+ *
+ * @param {number} input.runIndex  which run to reproduce, 0-based
+ */
+export function drawSeasonRun({
+  seasonId, league = "bl1", clubs, fixtures, params,
+  rules = CURRENT_SEASON_RULES, context = "league", runIndex,
+}) {
+  if (!Number.isInteger(runIndex) || runIndex < 0) {
+    throw new Error(`runIndex must be a non-negative integer, got ${runIndex}`);
+  }
+  const p = effectiveParams(params, { league });
+  const sigma = params.RATING_SIGMA ?? 0;
+  const clubIds = clubs.map((c) => c.clubId);
+  const idx = new Map(clubIds.map((id, i) => [id, i]));
+
+  for (const f of fixtures) {
+    if ((f.gh === undefined) !== (f.ga === undefined)) {
+      throw new Error(`fixture ${f.id} has gh xor ga — refusing to guess`);
+    }
+  }
+  const played = fixtures.filter((f) => f.gh !== undefined && f.ga !== undefined);
+  const remaining = fixtures.filter((f) => f.gh === undefined || f.ga === undefined);
+
+  // The SAME keys the full loop builds, in the same way.
+  const noiseKey = clubs.map((c) => makeKeyBase({ seasonId, context, id: c.clubId, drawKind: "noise" }));
+  const fixtureKey = remaining.map((f) => makeKeyBase({ seasonId, context, id: f.id, drawKind: "scoreline" }));
+  const deciderKey = clubs.map((c) => makeKeyBase({ seasonId, context, id: c.clubId, drawKind: "decider" }));
+
+  const noisy = clubs.map((c, i) => c.rating + ratingNoise(noiseKey[i], runIndex, sigma));
+
+  const drawn = remaining.map((fx, f) => {
+    const pf = fx.isGhost ? effectiveParams(params, { league, isGhost: true }) : p;
+    const { lamH, lamA } = eloToLambdas(noisy[idx.get(fx.home)], noisy[idx.get(fx.away)], pf);
+    const [gh, ga] = drawScorelineDirect(
+      Math.max(MIN_LAMBDA, lamH), Math.max(MIN_LAMBDA, lamA), pf, uniform01(fixtureKey[f], runIndex),
+    );
+    return { id: fx.id, home: fx.home, away: fx.away, gh, ga, played: false };
+  });
+
+  const playedRows = played.map((f) => ({
+    id: f.id, home: f.home, away: f.away, gh: f.gh, ga: f.ga, played: true,
+  }));
+  const allMatches = playedRows.concat(drawn);
+  const table = buildTable(clubIds, allMatches, rules);
+  const ranked = rankTable(table, allMatches, {
+    inSeason: false,
+    rules,
+    decider: (clubId) => uniform01(deciderKey[idx.get(clubId)], runIndex),
+  });
+
+  return { runIndex, scorelines: allMatches, table: ranked };
+}
+
+/**
  * The cache/artefact key (§3). Decides WHICH artefact is being viewed; it has
  * nothing to do with the random stream, and the random stream has nothing to do
  * with it.

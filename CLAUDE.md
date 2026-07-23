@@ -55,6 +55,10 @@ spätere schlägt die frühere:**
    ab jetzt eine Prozess-B-Änderung.
 5. `PRE_V1.1_CLEANUP_BRIEF.md` — setzt die Cron-Flag und trägt zwei Zusätze für den
    V1.1-Umfang.
+6. `CLUBELO_FOLLOWTHROUGH_BRIEF.md` — nach der Erlaubnis des clubelo-Betreibers:
+   Trainingsdaten committet, Reproduktionstor in CI, ein Abruf pro Tag, App B in CI.
+7. `V2A_SZENARIEN_BRIEF.md` — nur die Szenarien-Hälfte von V2; die Historie (V2b)
+   ist ausdrücklich zurückgestellt, mit definierter Auslösebedingung am Ende.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -263,7 +267,35 @@ construction.
   alte Name versprach die Messung, dass das Elo träge folgt; die findet nicht
   statt, und §9 ordnet genau diese Behauptung als „reasoning, not measurement"
   ein. Definition und Begründung: `docs/METRIC_ADDENDA.md`.
-- Offen: V2.
+- **V2a steht.** Die Szenarien-Seite ist die einzige mit interaktiven Werkzeugen
+  (§10): Was-wäre-wenn, Beispielsaison, und der Solver „Was muss passieren?". Vier
+  Stellen, an denen es leicht kaputtgeht:
+  - **Der Solver garantiert konservativ, nie knapp.** Ein erschöpfendes Orakel auf
+    kleinen Ligen zählt jede mögliche Vervollständigung durch und prüft, dass die
+    Garantie **nie verletzt** wird — geprüft wird Solidität, nicht Minimalität. Die
+    Property-Tests decken größere Ligen ab. Wer die Garantie „schärfer" macht,
+    riskiert eine falsche Garantie; das ist §7 ausdrücklich verboten.
+  - **Jede ausgegebene Hilfe-Kombination trägt ein maschinenprüfbares Zertifikat
+    und ist teilminimal.** Die UI prüft das Zertifikat **selbst nach**, bevor sie
+    es zeigt (`verifyHelpCertificate(result.__state, combo)`). Vollständigkeit der
+    Suche wird nirgends behauptet oder getestet.
+  - **Der Solver ist bei > 5 Spieltagen ganz abwesend**, nicht ausgegraut, nicht
+    angeteast (§7). Beim Auguststart bleibt er monatelang unsichtbar — das ist
+    richtig; die Tests sind sein Existenzbeweis. Keine Debug-Hintertür.
+  - **Beispielsaison ist bitgleich ein Lauf der vollen Simulation** (`drawSeasonRun`
+    baut dieselben Schlüssel). „Lauf #17 von 20 000" ist eine echte, reproduzierbare
+    Stichprobe, keine frische Ziehung. `runCount` geht in keinen Schlüssel (§3).
+- **Der Backfill-Trigger ist lückenbasiert, nicht „erster Lauf".** Nach einem
+  degradierten Start (clubelo noch nicht erreichbar, kein Vorsaison-Snapshot) würde
+  ein „nur beim ersten Lauf"-Tor den Vorsaison-Punkt für immer offen lassen — der am
+  degradierten Lauf archivierte Tages-Snapshot lässt jeden späteren Lauf glauben, es
+  sei fertig. Deshalb: was das Archiv an Pflichtterminen vermisst und clubelo jetzt
+  liefern könnte, wird nachgeholt; fehlt nichts, wird keine Historie abgerufen. Das
+  ist die BL2-Relaunch-Kante aus dem V2a-Brief.
+- **V2b (Historie) existiert nicht als Aufgabe.** Auslösebedingung (alle drei):
+  clubelo-Relaunch live; die einmalige Namensform-Wiederverifikation aller 36 Klubs
+  auf der neuen Schnittstelle bestanden; ein eigener V2b-Brief geschrieben. Bis
+  dahin: nicht anfangen. Keine clubelo-Historienabrufe für eine 30-Saison-Abdeckung.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
   ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern

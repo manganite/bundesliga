@@ -380,11 +380,21 @@ export async function runUpdate({
   // --- 5. archive. Idempotent, atomic, append-only. -------------------------
   const changes = [];
   let backfill = null;
-  if (existingIndex.snapshots.length === 0) {
-    const dates = backfillDates(seasons.bl1.fixtures.concat(seasons.bl2.fixtures), today);
-    log(`first run — backfilling ${dates.length} date(s) from clubelo history`);
+  // Backfill is triggered by MISSING required dates, not by „first run". A late
+  // relaunch is the reason: clubelo's history can become available only AFTER a
+  // league's first matchday, and if the launch was degraded (no pre-season
+  // snapshot) a „first run only" gate would leave that gap forever — the daily
+  // snapshot archived on the degraded run makes every later run think the
+  // archiving is done. So instead: whatever required date the archive still
+  // lacks and clubelo could now supply, fill it. When nothing is missing — the
+  // steady state — no history is fetched at all, and the courtesy rule holds.
+  const requiredDates = backfillDates(seasons.bl1.fixtures.concat(seasons.bl2.fixtures), today);
+  const archivedDates = new Set(existingIndex.snapshots.map((s) => s.effectiveAt));
+  const missingDates = requiredDates.filter((d) => !archivedDates.has(d));
+  if (missingDates.length) {
+    log(`${missingDates.length} required date(s) missing from the archive — backfilling from clubelo history`);
     backfill = await backfillSnapshots({
-      ratingsDir, clubs: [...allClubs.values()], dates, observedAt, fetchText, log,
+      ratingsDir, clubs: [...allClubs.values()], dates: missingDates, observedAt, fetchText, log,
     });
     if (backfill.appended) changes.push(`${backfill.appended} backfilled snapshot(s)`);
   }

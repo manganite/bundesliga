@@ -128,7 +128,8 @@ mit, weil die Trainingsdaten committet sind.
 | V1.2 — Modellgüte-Seite, drei Provenienzen getrennt | ✅ mit Tests |
 | V1.2 — Live-Rating-Timeline, Frozen/Live beschreibend | ✅ mit Tests |
 | V1.2 — „Wichtigstes kommendes Spiel", Rekombinationstest im Lauf | ✅ mit Tests |
-| V2 | ⏳ offen |
+| V2a — Szenarien (Was-wäre-wenn, Beispielsaison, Solver) | ✅ mit Tests |
+| V2b — Historie | ⏳ zurückgestellt (Auslösebedingung im Brief) |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
 **≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
@@ -240,6 +241,38 @@ abweicht.
 Was **nicht** berechnet wird, steht im Artefakt statt zu fehlen: die Relegation
 2. Bundesliga (16.) gegen 3. Liga (3.). Die App führt keine Daten der 3. Liga,
 also existiert die Gegnerverteilung nicht.
+
+### Szenarien (§10, V2a)
+
+Die einzige Seite mit interaktiven Werkzeugen. Sie laufen **browserseitig by
+design** — nutzergesteuert und sitzungsgebunden —, nicht als Ausnahme vom
+Simulationsvertrag: der Was-wäre-wenn-Vergleich und die Beispielsaison stehen im
+Web Worker (`apps/public/src/worker/scenarioWorker.js`), schwere Artefakte
+bleiben pipelineseitig.
+
+- **Was-wäre-wenn** setzt exakte Ergebnisse für offene Spiele fest und rechnet mit
+  denselben Zufallsschlüsseln wie die kanonische Simulation. CRN gegen den
+  unveränderten Stand ist automatisch, weil die Schlüssel den Datenstand
+  ausschließen (§3). Die Differenz nutzt die vorhandene Paired-Batch-SE mit dem
+  2·SE-Boden; alles darunter steht als „unverändert". Nur exakte Ergebnisse, kein
+  Tendenz-Was-wäre-wenn — das bräuchte einen zweiten Ziehmechanismus.
+- **Beispielsaison** zieht eine ganze Saison an einem benannten Laufindex
+  (`drawSeasonRun`), **bitgleich** ein Lauf der vollen Simulation. „Lauf #17 von
+  20 000" ist reproduzierbar, weil `runCount` in keinen Schlüssel geht.
+- **Solver „Was muss passieren?"** (`packages/engine/src/solver.mjs`) rechnet auf
+  Punktgrenzen unter dem konservativen §6-Tiebreak — eine Garantie nur bei strikter
+  Punktetrennung, keine Obergrenze für künftige Tore. Er liefert die konservative
+  Garantie `P*`, oder — wenn es sie nicht gibt — die nötige Eigenpunktzahl plus
+  **teilminimale Hilfe-Kombinationen mit maschinenprüfbarem Zertifikat**, innerhalb
+  eines **deterministischen Knotenbudgets** (kanonische Sortierung, deterministische
+  Verzweigung, keine Map-Reihenfolge). Vollständigkeit wird **nicht** behauptet.
+  Sichtbar nur bei ≤ 5 Spieltagen; früher ganz abwesend.
+
+Das Test-Orakel für den Solver zählt auf kleinen synthetischen Ligen jede mögliche
+Vervollständigung durch und prüft, dass die Garantie **nie verletzt** wird —
+Solidität, nicht Minimalität. Größere Ligen deckt ein Property-Test ab. Zertifikat
+und Teilminimalität jeder ausgegebenen Kombination werden geprüft; die
+Erschöpfung der Suche **nie** (§7).
 
 ### Artefakte vergleichen
 
