@@ -27,8 +27,10 @@ Im Bau. Fertig und getestet:
 | `data/season-params.json` (Track C pooled) | ✅ ausgeliefert |
 | `pipeline` — Klub-Mapping fail closed (§5.2) | ✅ mit Gate-Skript |
 | `pipeline` — Datenbeschaffung, Snapshots, Provenance (§5.1/§5.3) | ✅ mit Tests |
-| Daten-Workflow (Cron, commit only on change) | ✅ |
-| App A, App B, Deploy- und Refit-Workflow | ⏳ offen |
+| `pipeline` — vorberechnete Artefakte (Outlook, eingefrorene Timeline) | ✅ |
+| Daten- und Deploy-Workflow | ✅ |
+| App A — Übersicht, Tabelle & Prognose, Spieltage, Teams, Verlauf | ✅ V1-Umfang |
+| App B, Refit-Workflow, V1.1/V1.2/V2 | ⏳ offen |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
 **≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
@@ -69,6 +71,8 @@ npm install
 npm test                      # Engine- und Pipeline-Tests, offline
 npm run gate:clubelo          # §11-Abdeckungsprüfung gegen die Live-API
 npm run pipeline              # ein Pipeline-Lauf gegen die Live-Quellen
+npm run dev --workspace @bundesliga/app     # App A lokal
+npm run build --workspace @bundesliga/app   # App A bauen
 ```
 
 Die Pipeline schreibt **nichts**, solange eine Prüfung scheitert. Solange die

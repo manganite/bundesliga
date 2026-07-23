@@ -25,8 +25,9 @@ import crypto from "node:crypto";
 import { detectCurrentSeason, fetchSeason } from "./sources/openligadb.mjs";
 import { fetchDailySnapshot, indexSnapshot, fetchClubHistory, ratingOn } from "./sources/clubelo.mjs";
 import { resolveClub } from "./clubMapping.mjs";
-import { appendSnapshot, readIndex, readSnapshot } from "./snapshots.mjs";
-import { buildPreMatchDataset } from "./preMatch.mjs";
+import { appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot } from "./snapshots.mjs";
+import { buildPreMatchDataset, frozenRatingLabel } from "./preMatch.mjs";
+import { buildCurrentOutlook, buildFrozenTimeline, targetsFromConfig } from "./artefacts.mjs";
 import { verifyAll } from "./verify.mjs";
 
 export const LEAGUES = ["bl1", "bl2"];
@@ -302,6 +303,8 @@ export async function runUpdate({
 
   // --- 6. derive the per-fixture pre-match dataset --------------------------
   const index = await readIndex(ratingsDir);
+  const shipped = JSON.parse(await fs.readFile(path.join(dataDir, "season-params.json"), "utf8"));
+  const shippedParams = shipped.params;
   for (const league of LEAGUES) {
     const file = path.join(dataDir, "seasons", String(detected.season), league, "prematch.json");
     let existing = null;
@@ -317,11 +320,81 @@ export async function runUpdate({
       index,
       loadSnapshot: (id) => readSnapshot(ratingsDir, id),
       existing,
-      modelVersion: JSON.parse(await fs.readFile(path.join(dataDir, "season-params.json"), "utf8")).procedureVersion,
+      modelVersion: shipped.procedureVersion,
       createdAt: observedAt,
     });
     if (await writeIfChanged(file, stable(dataset))) {
       changes.push(`${league} pre-match dataset (+${created})`);
+    }
+  }
+
+  // --- 6b. precomputed simulation artefacts (§3) ----------------------------
+  // Heavy artefacts belong here, never in the browser. The canonical 20 000-run
+  // outlook is what every displayed delta is measured against.
+  for (const league of LEAGUES) {
+    const s = seasons[league];
+    const leagueConfig = config.leagues[league];
+    const targets = targetsFromConfig(leagueConfig);
+    const rules = {
+      pointsForWin: leagueConfig.pointsForWin,
+      pointsForDraw: leagueConfig.pointsForDraw,
+      criteria: leagueConfig.tiebreakCriteria,
+    };
+    const dir = path.join(dataDir, "seasons", String(detected.season), league);
+
+    const currentClubs = s.clubs.map((c) => ({ clubId: c.clubId, rating: ratings[c.clubId] }));
+    const outlook = buildCurrentOutlook({
+      seasonId: `${detected.season}-${league}`,
+      league, clubs: currentClubs, fixtures: s.fixtures, params: shippedParams, targets, rules,
+    });
+    if (await writeIfChanged(path.join(dir, "outlook.json"), stable(outlook))) {
+      changes.push(`${league} current outlook`);
+    }
+
+    // The frozen curve needs ONE pre-season rating per club. Where it is
+    // missing the feature does not fail — but it must not claim what it does
+    // not have, so the artefact records the start it actually has (§5.3).
+    const firstKickoff = s.fixtures.reduce((min, f) => (f.kickoff < min ? f.kickoff : min), s.fixtures[0].kickoff);
+    const frozenMeta = findPreMatchSnapshot(index, firstKickoff);
+    if (!frozenMeta) {
+      log(`${league}: no pre-season snapshot — frozen timeline skipped, app enters its degraded state`);
+    } else {
+      const frozenSnap = await readSnapshot(ratingsDir, frozenMeta.snapshotId);
+      const missingFrozen = s.clubs.filter((c) => frozenSnap.ratings[c.clubId] === undefined);
+      if (missingFrozen.length) {
+        log(`${league}: ${missingFrozen.length} club(s) lack a pre-season rating — frozen timeline skipped`);
+      } else {
+        let existingTimeline = null;
+        try {
+          existingTimeline = JSON.parse(await fs.readFile(path.join(dir, "timeline-frozen.json"), "utf8"));
+        } catch (e) {
+          if (e.code !== "ENOENT") throw e;
+        }
+        const timeline = buildFrozenTimeline({
+          seasonId: `${detected.season}-${league}`,
+          league,
+          frozenClubs: s.clubs.map((c) => ({ clubId: c.clubId, rating: frozenSnap.ratings[c.clubId] })),
+          fixtures: s.fixtures,
+          params: shippedParams,
+          targets,
+          rules,
+          existing: existingTimeline,
+          log,
+        });
+        const payload = {
+          ...timeline,
+          frozenSnapshotId: frozenMeta.snapshotId,
+          frozenEffectiveAt: frozenMeta.effectiveAt,
+          label: frozenRatingLabel({
+            seasonStart: String(firstKickoff).slice(0, 10),
+            earliestEffectiveAt: frozenMeta.effectiveAt,
+          }),
+          computed: undefined, // run-scoped; must not make the file differ per run
+        };
+        if (await writeIfChanged(path.join(dir, "timeline-frozen.json"), stable(payload))) {
+          changes.push(`${league} frozen timeline (+${timeline.computed} point(s))`);
+        }
+      }
     }
   }
 

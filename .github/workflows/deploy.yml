@@ -1,0 +1,60 @@
+name: Nach GitHub Pages deployen
+
+# Publishes ONLY apps/public (§10). App B is never deployed and never linked —
+# „privat" means „not published as a website", and that is enforced here rather
+# than left to discipline.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/public/**"
+      - "packages/engine/**"
+      - "data/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pinned Node version (§5.5 dependency hygiene).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.11.0"
+          cache: npm
+
+      - run: npm ci
+
+      # The engine and pipeline tests gate the deployment: a broken ranker or a
+      # broken metric must never reach the published site.
+      - run: npm test
+
+      # `prebuild` syncs the committed data into the app's public directory.
+      # There is no browser-side live fetch — the site serves only what this
+      # repository committed (§5.1).
+      - run: npm run build --workspace @bundesliga/app
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/public/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

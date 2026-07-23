@@ -111,6 +111,11 @@ async function makeDataDir() {
     pointsForWin: 3,
     pointsForDraw: 1,
     tiebreakCriteria: ["goalDifference", "goalsFor", "h2hAggregate", "h2hAwayGoals", "awayGoals"],
+    // Targets are season configuration (§7); the artefact step needs them.
+    targets: {
+      meister: { places: 1, from: 1, to: 1, label: "Meister" },
+      abstieg: { places: 1, from: 4, to: 4, label: "Abstieg" },
+    },
   };
   await fs.writeFile(
     path.join(dir, "seasons", String(SEASON), "config.json"),
