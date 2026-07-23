@@ -30,7 +30,8 @@ Im Bau. Fertig und getestet:
 | `pipeline` — vorberechnete Artefakte (Outlook, eingefrorene Timeline) | ✅ |
 | Daten- und Deploy-Workflow | ✅ |
 | App A — Übersicht, Tabelle & Prognose, Spieltage, Teams, Verlauf | ✅ V1-Umfang |
-| App B, Refit-Workflow, V1.1/V1.2/V2 | ⏳ offen |
+| App B — eine selbstständige HTML-Datei, 23 kB | ✅ mit Tests |
+| Refit-Workflow, V1.1 / V1.2 / V2 | ⏳ offen |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
 **≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
@@ -73,7 +74,13 @@ npm run gate:clubelo          # §11-Abdeckungsprüfung gegen die Live-API
 npm run pipeline              # ein Pipeline-Lauf gegen die Live-Quellen
 npm run dev --workspace @bundesliga/app     # App A lokal
 npm run build --workspace @bundesliga/app   # App A bauen
+npm run build:kicktipp                      # App B -> apps/kicktipp/dist/kicktipp.html
 ```
+
+**App B** entsteht als einzelne Datei `apps/kicktipp/dist/kicktipp.html`. Sie
+läuft aus `file://` ohne Server und ohne Netz — im Browser verifiziert: kein
+einziger externer Request. Sie wird **nicht** deployt und **nicht** verlinkt;
+der Deploy-Workflow veröffentlicht ausschließlich `apps/public`.
 
 Die Pipeline schreibt **nichts**, solange eine Prüfung scheitert. Solange die
 clubelo-Lücke besteht, endet `npm run pipeline` deshalb mit Exit-Code 1 und

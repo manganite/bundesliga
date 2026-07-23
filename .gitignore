@@ -5,3 +5,4 @@ dist/
 .vite/
 data/cache/
 apps/public/public/data/
+apps/kicktipp/src/generated/

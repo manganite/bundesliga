@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Kicktipp-Optimierer</title>
+  </head>
+  <body>
+    <main id="app">
+      <h1>Kicktipp-Optimierer</h1>
+      <p class="lead">
+        Erwartete Punkte je Tipp, aus Buchmacherquoten und den Tippquoten der Runde.
+        Läuft vollständig im Browser; nichts wird gesendet, nichts abgerufen.
+      </p>
+
+      <section aria-labelledby="paste-h">
+        <h2 id="paste-h">1 · Spieltag einfügen</h2>
+        <p class="hint">
+          Die Tippabgabe-Seite im Browser markieren, kopieren und hier einfügen. Sie enthält
+          beides: die Tippquoten der Runde und die 1X2-Buchmacherquoten.
+        </p>
+        <textarea id="paste" rows="6" placeholder="Hier die kopierte Seite einfügen …"
+                  aria-describedby="paste-status"></textarea>
+        <div class="row">
+          <button id="parse" type="button">Einlesen</button>
+          <button id="demo" type="button" class="secondary">Beispiel laden</button>
+          <span id="paste-status" role="status"></span>
+        </div>
+        <p class="warn-note">
+          Die Tippquote wird nach jeder Tippabgabe neu berechnet — auch nach der eigenen.
+          Die hier eingefügten Werte sind eine Momentaufnahme und können sich bis zum
+          Anpfiff noch verschieben.
+        </p>
+      </section>
+
+      <section id="fixtures-section" aria-labelledby="fixtures-h" hidden>
+        <h2 id="fixtures-h">2 · Prüfen und optimieren</h2>
+        <p class="hint">
+          Bitte kurz gegenlesen: erkannte Vereine, Quoten und Tippquoten. Was nicht sauber
+          erkannt wurde, steht nicht in der Liste.
+        </p>
+        <div id="fixtures" class="table-wrap"></div>
+        <div id="notes"></div>
+      </section>
+
+      <section id="result-section" aria-labelledby="result-h" hidden>
+        <h2 id="result-h">3 · Vorschlag</h2>
+        <div id="warning" role="status"></div>
+        <div id="result" class="table-wrap"></div>
+        <div id="totals"></div>
+      </section>
+
+      <section aria-labelledby="log-h">
+        <h2 id="log-h">Protokoll</h2>
+        <p class="hint">
+          Quoten, Tipps und Ergebnisse werden lokal gespeichert. Der Browserspeicher geht
+          beim Gerätewechsel verloren — der Export ist die eigentliche Ablage.
+        </p>
+        <div class="row">
+          <button id="log-add" type="button">Vorschlag ins Protokoll</button>
+          <button id="log-export" type="button" class="secondary">Exportieren</button>
+          <label class="filebutton">
+            Importieren<input id="log-import" type="file" accept="application/json" />
+          </label>
+          <span id="log-status" role="status"></span>
+        </div>
+        <div id="log-figures"></div>
+      </section>
+
+      <footer>
+        <p id="provenance"></p>
+        <p>
+          Keine Automatisierung gegen Kicktipp oder Oddset — ausschließlich manuelles Einfügen.
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

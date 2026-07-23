@@ -1,0 +1,16 @@
+{
+  "name": "@bundesliga/kicktipp",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "App B — Kicktipp-Optimierer. Eine selbstständige HTML-Datei, nicht deployt, nicht verlinkt.",
+  "scripts": {
+    "prebuild": "node scripts/generate-clubs.mjs",
+    "build": "vite build && node scripts/inline.mjs",
+    "test": "node --test \"tests/**/*.test.mjs\""
+  },
+  "devDependencies": {
+    "jsdom": "29.1.1",
+    "vite": "8.1.5"
+  }
+}
