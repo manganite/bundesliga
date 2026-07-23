@@ -17,6 +17,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 5 | [PRE_V1.1_CLEANUP_BRIEF.md](PRE_V1.1_CLEANUP_BRIEF.md) | Schließt die Lücken aus der Extraktions-Durchsicht und setzt die Cron-Flag. Trägt außerdem zwei Zusätze für den V1.1-Umfang. |
 | 6 | [CLUBELO_FOLLOWTHROUGH_BRIEF.md](CLUBELO_FOLLOWTHROUGH_BRIEF.md) | Nach der Erlaubnis des clubelo-Betreibers: Protokoll, Trainingsdaten committet, Reproduktionstor in CI, ein Abruf pro Tag statt zwölf, Relaunch-Playbook, App B in CI. |
 | 7 | [V2A_SZENARIEN_BRIEF.md](V2A_SZENARIEN_BRIEF.md) | Nur die Szenarien-Hälfte von V2: Was-wäre-wenn, Beispielsaison, Solver „Was muss passieren?" (gebaut, getestet, bei > 5 Spieltagen unsichtbar). Die Historie (V2b) ist ausdrücklich zurückgestellt, mit Auslösebedingung. |
+| 8 | [SZENARIEN_UX_BRIEF.md](SZENARIEN_UX_BRIEF.md) | Reine Präsentation plus eine Spezifikationsänderung: §10 verfeinert (analytisch vs. illustrativ). What-if-Politur (Spieltagsgruppierung, Zustände, expliziter Rechnen-Button) und die neue Methodik-Seite „So entsteht die Prognose" mit der Beispielsaison als Exponat. |
 
 ## Diese Dateien werden nicht bearbeitet
 

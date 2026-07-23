@@ -15,6 +15,7 @@ import Teams from "./pages/Teams.jsx";
 import Verlauf from "./pages/Verlauf.jsx";
 import Modellguete from "./pages/Modellguete.jsx";
 import Szenarien from "./pages/Szenarien.jsx";
+import Methodik from "./pages/Methodik.jsx";
 
 const REPO = "https://github.com/manganite/bundesliga";
 
@@ -26,6 +27,7 @@ const PAGES = [
   { id: "verlauf", label: "Verlauf", Component: Verlauf },
   { id: "modellguete", label: "Modellgüte", Component: Modellguete },
   { id: "szenarien", label: "Szenarien", Component: Szenarien },
+  { id: "methodik", label: "Methodik", Component: Methodik },
 ];
 
 function useHashRoute() {

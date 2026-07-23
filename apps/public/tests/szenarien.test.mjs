@@ -42,24 +42,16 @@ function ctxFor(season, league, { fixtures } = {}) {
 
 const renderPage = (ctx) => renderToStaticMarkup(React.createElement(Szenarien, { ctx }));
 
-test("the page offers what-if and Beispielsaison when fixtures are open", () => {
+test("the page offers what-if — and no longer the Beispielsaison (moved to Methodik)", () => {
   const html = strip(renderPage(ctxFor(2026, "bl1")));
   assert.match(html, /Was-wäre-wenn/);
-  assert.match(html, /Beispielsaison/);
+  assert.doesNotMatch(html, /Beispielsaison/);
 });
 
-test("the what-if caption promises paired-run noise handling and rules out tendency what-if", () => {
+test("the what-if explainer describes the process and rules out tendency what-if", () => {
   const html = strip(renderPage(ctxFor(2026, "bl1")));
-  assert.match(html, /denselben Zufallszahlen/);
-  assert.match(html, /„unverändert“/);
-  assert.match(html, /Tendenz-Was-wäre-wenn.*gibt es bewusst nicht/);
-});
-
-test("Beispielsaison is labelled a sample, not a forecast, with a reproducible run index", () => {
-  const html = strip(renderPage(ctxFor(2026, "bl1")));
-  assert.match(html, /Eine mögliche Saison — keine Prognose/);
-  assert.match(html, /Lauf #1 von/);
-  assert.match(html, /reproduzierbar/);
+  assert.match(html, /dieselbe\s+Simulation läuft mit denselben Zufallszahlen erneut/);
+  assert.match(html, /kein\s+Tendenz-Was-wäre-wenn/);
 });
 
 test("the solver is ABSENT at the start of a season, not greyed or teased", () => {
@@ -99,14 +91,20 @@ test("a fully played season offers nothing to play through", () => {
   }
 });
 
-test("no OTHER page carries an interactive scenario tool", () => {
-  // §10: the Szenarien page is the only one with tools. Guard the source.
+test("no OTHER page carries an ANALYTIC tool — the §10 refinement", () => {
+  // Refined by SZENARIEN_UX §2.1: ANALYTIC interaction (inputs that alter a
+  // forecast) stays exclusive to Szenarien. The ILLUSTRATIVE Beispielsaison
+  // (drawSeasonRun via the sample worker) is allowed on Methodik, because it
+  // analyses nothing and changes nothing.
   const pagesDir = path.join(REPO, "apps/public/src/pages");
   const offenders = [];
   for (const file of fs.readdirSync(pagesDir)) {
     if (file === "Szenarien.jsx") continue;
     const src = fs.readFileSync(path.join(pagesDir, file), "utf8");
-    if (/useScenario|analyseRequirement|drawSeasonRun/.test(src)) offenders.push(file);
+    if (/analyseRequirement|kind: "whatif"/.test(src)) offenders.push(file);
   }
-  assert.deepEqual(offenders, [], `interactive scenario tooling leaked into: ${offenders.join(", ")}`);
+  assert.deepEqual(offenders, [], `analytic tooling leaked into: ${offenders.join(", ")}`);
+  // And Methodik is exactly where the illustrative widget lives.
+  const methodik = fs.readFileSync(path.join(pagesDir, "Methodik.jsx"), "utf8");
+  assert.match(methodik, /kind: "sample"/, "the illustrative Beispielsaison belongs on Methodik");
 });

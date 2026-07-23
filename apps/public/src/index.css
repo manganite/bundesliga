@@ -447,3 +447,58 @@ figure.chart figcaption {
   line-height: 1.4;
 }
 .scenario-list li::marker { color: var(--accent); }
+
+/* --- Szenarien UX (SZENARIEN_UX brief) ----------------------------------- */
+
+/* A primary action stands out from the secondary reset/cancel buttons. */
+button.primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+}
+button.primary:disabled { opacity: 0.45; cursor: default; }
+
+/* Fixed fixtures on other matchdays stay visible while in force (§1.1). */
+.fixed-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+.fixed-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.5rem;
+  background: var(--accent-soft);
+  border-radius: 999px;
+  color: var(--accent);
+}
+.chip-x {
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0;
+}
+.fixed-state { color: var(--accent); }
+.fixture-prediction { color: var(--text-muted); font-size: 0.9rem; }
+
+/* §1.4: a stale result is dimmed until the scenario is re-run. */
+.whatif-result.is-stale { opacity: 0.55; }
+.whatif-result h3 { margin: 0 0 0.4rem; }
+
+/* Methodik narrative steps read as prose, wider than a caption. */
+.methodik-step { margin: 0 0 0.6rem; max-width: 66ch; }
+
+/* A real (played) result stands apart from a drawn one in the Beispielsaison. */
+.real-score { font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }

@@ -59,6 +59,11 @@ spätere schlägt die frühere:**
    Trainingsdaten committet, Reproduktionstor in CI, ein Abruf pro Tag, App B in CI.
 7. `V2A_SZENARIEN_BRIEF.md` — nur die Szenarien-Hälfte von V2; die Historie (V2b)
    ist ausdrücklich zurückgestellt, mit definierter Auslösebedingung am Ende.
+8. `SZENARIEN_UX_BRIEF.md` — reine Präsentation plus eine Spezifikationsänderung:
+   §10 wird **verfeinert, nicht gebrochen** — *analytische* Interaktion (Eingaben,
+   die Prognosen ändern) bleibt exklusiv auf Szenarien; die neue Methodik-Seite
+   trägt genau ein *illustratives* Widget (die Beispielsaison), das nichts
+   analysiert und nichts ändert.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -292,6 +297,19 @@ construction.
   sei fertig. Deshalb: was das Archiv an Pflichtterminen vermisst und clubelo jetzt
   liefern könnte, wird nachgeholt; fehlt nichts, wird keine Historie abgerufen. Das
   ist die BL2-Relaunch-Kante aus dem V2a-Brief.
+- **§10 ist verfeinert (SZENARIEN_UX):** die Grenze läuft zwischen *analytischer*
+  und *illustrativer* Interaktion, nicht zwischen Seiten. Was-wäre-wenn und der
+  Solver (Eingaben, die Prognosen ändern) bleiben auf Szenarien; die Beispielsaison
+  (zeigt nur, ändert nichts) sitzt auf Methodik. Der Quellwächter prüft auf
+  `analyseRequirement`/`kind: "whatif"` außerhalb Szenarien, nicht mehr auf jedes
+  interaktive Element. Die geteilte Vorhersage-Darstellung (`FixturePrediction`)
+  steht an genau einer Stelle — What-if-„Simuliert" und Methodik-Schritt 2 zeigen
+  dieselbe Komponente, nie eine zweite Kopie.
+- **Was-wäre-wenn rechnet nicht automatisch.** Eingaben (`fixed`) und der zuletzt
+  gerechnete Stand (`committed`) sind getrennt; nur „Szenario rechnen" überträgt.
+  Ein offenes Spiel zeigt seinen Zustand (`FixturePrediction`), nie ein 0:0-Feld,
+  das als Annahme gelesen würde; „Festsetzen" füllt mit dem wahrscheinlichsten
+  Ergebnis vor. Das veraltete Ergebnis wird gedimmt, nicht versteckt.
 - **V2b (Historie) existiert nicht als Aufgabe.** Auslösebedingung (alle drei):
   clubelo-Relaunch live; die einmalige Namensform-Wiederverifikation aller 36 Klubs
   auf der neuen Schnittstelle bestanden; ein eigener V2b-Brief geschrieben. Bis
