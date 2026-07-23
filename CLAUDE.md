@@ -1,0 +1,184 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+Sprache: Oberfläche und Projektdokumentation deutsch, Code und Codekommentare englisch.
+
+## Befehle
+
+```bash
+npm test                       # alle Tests (engine, pipeline, kicktipp), offline
+npm run test:engine            # nur die Engine
+node --test packages/engine/tests/ranking.test.mjs          # eine Testdatei
+node --test --test-name-pattern="floor" "packages/engine/tests/**/*.test.mjs"   # ein Test
+
+npm run pipeline               # Pipeline-Lauf gegen die Live-Quellen
+npm run gate:clubelo           # §11-Abdeckungsprüfung (clubelo)
+npm run dev   --workspace @bundesliga/app        # App A lokal
+npm run build --workspace @bundesliga/app        # App A bauen
+npm run build:kicktipp                           # App B -> apps/kicktipp/dist/kicktipp.html
+```
+
+Die Testpfade brauchen Glob-Anführungszeichen; `node --test <verzeichnis>` scheitert.
+Es gibt keinen Linter und keinen Build-Schritt für Engine oder Pipeline — beides ist
+reines ESM ohne Transpilation.
+
+Eine abgeschlossene Saison lässt sich vollständig neu aufbauen (V2-Vorarbeit, und der
+einzige Weg, die Pipeline zu üben, solange die laufende Saison keine Ratings hat):
+
+```bash
+node pipeline/src/cli.mjs --data-dir data --season 2025 --as-of 2026-06-01
+```
+
+Der geplante Workflow übergibt diese Flags **nie**; die automatische Saisonerkennung
+bleibt der einzige Produktionspfad.
+
+## Der Brief ist die Spezifikation — aber verifizierte Primärquellen schlagen ihn
+
+`BUNDESLIGA_APPS_BRIEF_V5.6_FINAL.md` ist die Bauvorgabe. §11 macht mehrere Prüfungen
+zur Vorbedingung, und **zwei davon haben ergeben, dass der Brief falsch lag**. Die
+Befunde stehen mit Quelle und Datum in [docs/verification/](docs/verification/) und
+gelten. Wer nur den Brief liest, baut die Fehler wieder ein:
+
+- **Tiebreak-Reihenfolge (§6 war falsch).** Die DFL-Spielordnung kennt keine Stufe
+  „Punkte im direkten Vergleich"; Kriterium 3 ist das *Gesamtergebnis* aus Hin- und
+  Rückspiel, Kriterium 4 separat die Auswärtstore im direkten Vergleich. Zusätzlich
+  fehlten dem Brief die In-Saison-Regeln ganz: vor absolviertem Rückspiel zählen nur
+  Tordifferenz und Tore, Unauflösbares steht auf **geteiltem Tabellenplatz**
+  (`sharedRank`), und Kriterium 6 gilt während der Saison nicht.
+- **clubelo bewertet alle Wettbewerbe**, die Spielpläne hier nur die Liga. Prüffenster,
+  die breiter als ±2 Tage sind, melden deshalb Scheinfehler.
+
+Kein Wert und keine Regel wird geraten. Wo eine Quelle etwas nicht hergibt, steht das
+als dokumentierte Lücke — nicht als plausibler Ersatzwert.
+
+## Architektur
+
+`packages/engine` ist die einzige Quelle der Wahrheit für Modell, Ligaregeln und jede
+Metrik. Beide Apps konsumieren sie; keine implementiert etwas davon neu.
+
+```
+packages/engine/src/
+  rng.mjs        counter-based Uniforms (kein Stream-Zustand) + AS241
+  model.mjs      Poisson + Dixon-Coles, additive BL2-Deltas, kanonische Reihenfolge
+  ranking.mjs    DFL-Ranker nach verifizierter Spielordnung, inkl. geteilter Plätze
+  metrics.mjs    alle §4-Metriken
+  simulate.mjs   Monte-Carlo, CRN, per-Batch-Frequenzen
+  dataState.mjs  Datenstand, Veraltungswarnung, Saisonphase (App A konsumiert das)
+```
+
+Die Kicktipp-Logik liegt **absichtlich nicht** in der Engine (`apps/kicktipp/src/`):
+App A darf laut §10 nichts Tipp-Bezogenes enthalten. App B importiert die Engine nur
+für das Modell und bündelt sie in ihre eine HTML-Datei.
+
+### Simulationsvertrag (§3) — die Stellen, die man nicht anfassen darf
+
+- **Zwei Schlüssel, nie einer.** Artefakt-Key `(dataHash, runCount, engineVersion)`
+  entscheidet, *welches* Artefakt man sieht. Der Zufalls-Key ist davon unabhängig und
+  enthält `runCount` bewusst **nicht** — mehr Läufe müssen die Stichprobe *verlängern*,
+  nicht neu ziehen.
+- **Kein Stream-Sampler.** Ein mutabler RNG-Zustand verbraucht datenabhängig viele
+  Variaten, desynchronisiert die Ströme und zerstört die CRN-Aufhebung. Das V1-
+  Abnahmekriterium schließt ihn ausdrücklich aus.
+- **Kanonische Scoreline-Reihenfolge: nach Gesamttoren, dann Heimtore.** Nicht
+  row-major — gemessen, nicht gewählt (Zahlen stehen in `model.mjs`). Eine Änderung
+  bricht CRN gegen jedes bestehende Artefakt und verlangt einen Bump von
+  `SIMULATION_PROTOCOL_VERSION`.
+- **`SE(Δ) = SD(Δ_b)/√B`.** Die Division durch √B ist tragend; ohne sie ist der
+  Rauschboden bei B = 20 rund 4,5-fach zu groß.
+
+### Pipeline (`pipeline/src/`)
+
+Reihenfolge ist nicht beiläufig:
+`fetch → Klubs auflösen (fail closed) → verifizieren → archivieren → ableiten → schreiben`
+
+Alles wird im Speicher berechnet und **vor** dem ersten Schreiben geprüft, damit ein
+gescheitertes Gate das Repository unberührt lässt.
+
+- **`clubMapping.mjs` scheitert laut.** Ein unaufgelöster Klub blockiert den Commit.
+  clubelo führt zwei Namensformen (URL ohne Leerzeichen, CSV-Feld mit) und antwortet auf
+  einen falschen Namen mit **HTTP 200 und leerem Body** — deshalb `hasRealHistory()`.
+  Die Eins-zu-eins-Bedingung liegt auf der Klubidentität, nicht auf der OpenLigaDB-`teamId`
+  (Würzburger Kickers hat zwei).
+- **`snapshots.mjs`**: unveränderlich, idempotent, atomar angehängt, nie verschoben.
+  `observedAt` und `effectiveAt`, bewusst **kein** globales `phase`-Feld.
+- **`preMatch.mjs`**: pro Partie der verwendete Snapshot, die Regel und die
+  `provenance`. `contemporaneous` nur bei `observedAt` vor Anstoß; Einträge sind
+  **write-once**, damit ein solcher Eintrag später nicht zu `backfilled` verfällt.
+  Die Prognoseregel nimmt den Snapshot *strikt vor* dem Anstoßdatum, das Richtungs-Gate
+  in `verify.mjs` die Zeile *des Spieltags* — diese Asymmetrie ist beabsichtigt und in
+  beiden Dateien begründet.
+- **„Commit only on change"**: `dataUpdatedAt` bewegt sich nur bei substantieller
+  Änderung. Persistierte Dateien müssen reine Funktionen ihrer Eingaben sein — eine
+  Laufstatistik darin erzwingt alle zwei Stunden einen Commit und ein Deployment.
+- **Datenalter ≠ Workflow-Gesundheit.** Die App leitet aus `dataUpdatedAt` keine
+  Aussage über den Workflow ab; die einzige ehrliche Veraltungswarnung ist
+  spielplanbasiert.
+
+### App A (`apps/public/`)
+
+Liest ausschließlich committete Artefakte; **kein** Browser-Fetch von Ergebnissen oder
+Ratings. Der Web Worker rechnet nur die *Ansicht* neu, wenn der Nutzer die Laufzahl
+ändert — Spieltagsdifferenzen bleiben immer auf dem kanonischen 20 000-Lauf-Artefakt.
+Schwere Artefakte entstehen in `pipeline/src/artefacts.mjs`, nie im Browser.
+
+`components/Chart.jsx` erzwingt den Barrierefreiheitsvertrag aus §10 zentral
+(`role="img"`, datengetriebenes `aria-label`, `title`/`desc`, versteckte Datentabelle) —
+`table` ist Pflichtparameter, nicht optional.
+
+### App B (`apps/kicktipp/`)
+
+Eine selbstständige HTML-Datei, **nie deployt, nie verlinkt**; der Deploy-Workflow
+veröffentlicht ausschließlich `apps/public`. Eingefügtes ist nicht vertrauenswürdig:
+`DOMParser`, nur validierte typisierte Felder kommen zurück, alles andere wird
+**verworfen statt bereinigt angezeigt**. Ein Test durchsucht den Quelltext nach
+`innerHTML`, `outerHTML`, `insertAdjacentHTML` und `document.write`.
+
+Punkteschema ist **best-of, max 11**: Quote 3–9 plus genau *ein* Bonus (Sieg: +2 exakt
+oder +1 Tordifferenz; Remis: nur +2 exakt, kein Tordifferenz-Rang). Scoreline-Form durch
+**Region-Umgewichtung, nicht λ-Fitting** — die Marktränder stimmen dadurch exakt by
+construction.
+
+## Aktueller Zustand
+
+- **clubelo deckt vier von 36 Klubs der laufenden Saison nicht ab.** Die Pipeline
+  verweigert deshalb korrekt den Commit; `npm run pipeline` endet mit Exit 1 und
+  unverändertem `data/`. Das ist das vorgesehene Verhalten.
+- Die committeten Daten sind die **abgeschlossene Saison 2025/26**, per Operator-Override
+  rekonstruiert. App A zeigt sie im Zustand „Saison beendet", alle Prognosen auf 100 %.
+- Der Refit-Workflow braucht das Secret `LAB_REPO_TOKEN` und im privaten Lab ein
+  `scripts/run-refit.mjs`, das den in `pipeline/src/refit/cli.mjs` dokumentierten
+  JSON-Vertrag erfüllt. **Beides existiert dort noch nicht.** Die Fit-Prozedur wird hier
+  bewusst nicht nachgebaut — eine zweite Implementierung würde die Herkunftskette
+  wertlos machen.
+- Offen: V1.1 (2. Bundesliga per Umschalter, paarungsspezifische Relegation),
+  V1.2 (Modellgüte, Live-Rating-Timeline, „Wichtigstes kommendes Spiel"), V2.
+
+## Fallen, die hier schon Zeit gekostet haben
+
+- **Literale NUL-Bytes machen eine Quelldatei für `grep` unsichtbar.** `rng.mjs` trug
+  vier davon als Schlüsseltrenner; die Datei lief einwandfrei, aber jede Suche über das
+  Repo hat sie **stillschweigend übersprungen** — auch eine Prüfung, die genau einen
+  ihrer Exporte bestätigen sollte. Der Trenner selbst ist richtig (NUL kann in keiner
+  Klub- oder Spiel-ID vorkommen, sonst wären die Schlüssel mehrdeutig); er muss nur als
+  Escape-Sequenz geschrieben werden. `packages/engine/tests/sourceHygiene.test.mjs`
+  bewacht das jetzt. Wenn `file <datei>` „data" statt „JavaScript source" sagt, ist das
+  der Grund.
+- **Deutsche Anführungszeichen in JS-Strings.** `"„Text""` beendet den String zu früh;
+  schließend gehört `“`. Trifft Testnamen und Berichtstexte.
+- **Grid-Spuren brauchen `minmax(0, 1fr)`.** Ohne das bläht ein breites Kind die Spalte
+  auf und die Seite scrollt auf dem Handy seitlich.
+- **Der Node-Pin in den Workflows muss die `engines` optionaler nativer Bindings
+  erfüllen.** npm überspringt eine optionale Abhängigkeit mit verfehlter Bedingung
+  **stillschweigend**; der Build stirbt dann mit `MODULE_NOT_FOUND` weit entfernt von der
+  Ursache.
+- **Der Echtdaten-Ranker-Test ist weniger trennscharf, als er aussieht.** Keine der 22
+  Saisons brauchte Kriterium 3 oder höher — die H2H-Logik deckt nur `ranking.test.mjs`
+  ab. Steht so im Test; die Aussage nicht überdehnen.
+
+## Ehrlichkeit (§8) — gilt für Code, Captions und Commit-Messages
+
+Ein Nullbefund ist „kein messbarer Vorteil", nie „gibt es nicht". Keine kausale Aussage
+über die Geisterspielsaisons. Keine Präzisionszahl aus den per-match-Intervallen des
+Labs. Wo eine Auswertung in-sample ist oder auf `backfilled`-Ratings beruht, muss das
+dranstehen — Modellgüte darf die beiden Provenance-Gruppen nie stillschweigend mischen.
