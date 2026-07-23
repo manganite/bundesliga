@@ -8,8 +8,13 @@ on:
     branches: [main]
     paths:
       - "apps/public/**"
-      - "packages/engine/**"
+      - "packages/**"
+      - "pipeline/**"
       - "data/**"
+      - "package.json"
+      # A lockfile change alone can break the build — it did once, when a new
+      # workspace was added without regenerating it and `npm ci` refused.
+      - "package-lock.json"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
