@@ -229,3 +229,102 @@ alten Rating, in der App je Klub markiert und in der Kopfzeile benannt.
 hinaus keine Daten geholt. Wo das Archiv liegt, ist Konfiguration
 (`BUNDESLIGA_RATINGS_DIR`); ein Umzug in ein privates Repo wäre eine
 Konfigurationsänderung plus Migration, kein Refactoring.
+
+---
+
+## Stand 2026-07-23, 16:34 MESZ — die Erlaubnis liegt vor ✅
+
+Angehängt, nicht eingearbeitet (Addendum A §2.8): die Abschnitte oben bleiben so
+stehen, wie sie erhoben wurden. Der letzte Satz des vorigen Abschnitts
+(„Die Lizenzfrage ist weiter offen") ist damit **überholt** — hier steht, was
+stattdessen gilt.
+
+### Was gefragt wurde
+
+Anfrage am 2026-07-23, 11:43 MESZ, an den Betreiber von clubelo.com. Zwei
+Fragen, wörtlich:
+
+> 1. Planned API usage: one daily-CSV fetch every ~2 hours in season, plus a
+>    one-time cached backfill of current-season histories — sequential requests,
+>    descriptive user agent, no test loops against the live API. Is that okay?
+>
+> 2. The pipeline would commit small derived rating snapshots (36 German clubs,
+>    point-in-time values) to the public repo for reproducibility. Are you fine
+>    with that, or should the archive stay private?
+
+Die Fragen stehen hier mit, weil die Antwort ohne sie nicht lesbar ist: „both"
+bezieht sich genau auf diese beiden.
+
+### Was geantwortet wurde
+
+Antwort am **2026-07-23, 16:34 MESZ**, wörtlich und vollständig:
+
+> in principle this is fine, both, no problem at all, just be aware that i
+> relaunch the website before the new season and have projections myself.
+
+Die Mailadresse des Betreibers steht hier bewusst **nicht**; dieses Repository
+ist öffentlich, und für das Protokoll genügt, dass die Erlaubnis vom Betreiber
+kam und wann.
+
+### Was das abdeckt
+
+- **(a) Das geplante Abrufmuster.** Tages-CSV im Zwei-Stunden-Rhythmus während
+  der Saison, einmaliger Backfill der Saisonhistorien, sequentiell, mit
+  sprechendem User-Agent, keine Testschleifen gegen die Live-API.
+- **(b) Die öffentliche Weitergabe abgeleiteter Rating-Snapshots**, damit auch
+  der Trainings-Elo-Datensatz unter `data/ratings/training-elo/`. Das Archiv
+  bleibt öffentlich; ein privates Repo ist nicht mehr nötig.
+
+**Eine Genauigkeit zum Umfang, damit ein späterer Leser sie nicht selbst
+herausfinden muss.** Frage 2 nannte in der Klammer „36 German clubs,
+point-in-time values". Der Trainings-Elo-Datensatz ist dieselbe *Art* Daten —
+abgeleitete Pre-Match-Werte deutscher Klubs, committet zur Reproduzierbarkeit —
+aber über 15 Saisons und damit über mehr als 36 Klubs und rund 964 KB. Die
+Antwort „both, no problem at all" zu einer ausdrücklich nicht-kommerziellen,
+quelloffenen Nutzung deckt das nach unserer Lesart ab; wer das enger sehen will,
+findet hier beide Texte im Wortlaut und kann selbst urteilen.
+
+### Die Höflichkeitsregel bleibt in Kraft — wörtlich
+
+> **access as sparingly as possible; permission is not a licence to be greedy.**
+
+Eine Erlaubnis ist kein Freibrief. Umgesetzt ist sie ab jetzt nicht nur als
+Vorsatz, sondern als Code: der Tagesabruf **entfällt**, sobald der heutige Stand
+im Archiv liegt (`pipeline/src/update.mjs`). clubelo veröffentlicht höchstens
+einen Snapshot je Tag; der Cron lief zwölfmal täglich und holte jedes Mal.
+Im eingeschwungenen Zustand bleibt **eine Anfrage pro Tag** statt zwölf. Der
+OpenLigaDB-Abruf behält seinen Zwei-Stunden-Rhythmus — Ergebnisse ändern sich
+untertägig, Ratings nicht.
+
+### Betriebliche Tatsache: der Relaunch
+
+Der Betreiber kündigt an, **die Website vor der neuen Saison neu zu starten**,
+und weist darauf hin, dass er selbst Projektionen anbietet. Beides ist zur
+Kenntnis genommen: das erste als Betriebsrisiko (siehe das Playbook unten), das
+zweite als Hinweis, dass diese App eine unabhängige, klar attribuierte
+Zweitverwertung ist und keine Konkurrenz behauptet.
+
+## Playbook — wenn der Cron nach dem Relaunch rot wird
+
+Der Relaunch fällt voraussichtlich **genau in die Wochen vor dem BL2-Start am
+2026-08-07**. Endpunkte, Namensformen oder CSV-Form können sich dabei ändern.
+
+**Vorsorglich wird nichts umgebaut.** Die bestehenden Wächter sind die richtigen
+Detektoren und sollen anschlagen: ≥100-Zeilen-Prüfung, Datumsabdeckung ≥ 90 %,
+fail-closed-Mapping. Was fehlte, war nicht Code, sondern eine Diagnosereihenfolge:
+
+> Wenn der Cron nach dem Relaunch rot wird: zuerst Formatdrift annehmen, nicht
+> Datenfehler. Prüfreihenfolge: (1) HTTP-Status und Zeilenzahl der Tages-CSV,
+> (2) Header-Spalten, (3) Namensformen gegen das Mapping (beide Formen!),
+> (4) Datumsabdeckung. Erst wenn alle vier stimmen, ist es ein Datenproblem.
+> Nach dem Relaunch einmalig die Namensform-Verifikation aus
+> docs/verification/clubelo.md für alle 36 Klubs wiederholen — als Gate-Lauf,
+> nicht als Bulk (die Tages-CSV enthält alle Namen in einem Abruf).
+
+Der Gate-Lauf dafür ist `npm run gate:clubelo` — ein Abruf, alle Namen.
+
+**Eine Hoffnung, kein Plan:** der Relaunch könnte die vier eingefrorenen
+Rating-Reihen wieder in Gang bringen. Falls ja, räumen sich die
+Carry-Forward-Markierungen von selbst ab und die Flag `--carry-forward-until`
+vom 2026-08-14 läuft ungenutzt aus. Planungsgrundlage ist das nicht: die
+Eskalationsfrist Anfang August bleibt stehen.

@@ -15,6 +15,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 3 | [V5.7_ADDENDUM_CLUBELO.md](V5.7_ADDENDUM_CLUBELO.md) | Der begrenzte Rating-Übertrag als befristeter Schalter und die Datumsprüfung der Tages-CSV. |
 | 4 | [FIT_EXTRACTION_BRIEF.md](FIT_EXTRACTION_BRIEF.md) | Die Fitprozedur zieht nach `packages/fit`; das Reproduktionstor ist die Abnahme, und die Summationsreihenfolge zu ändern ist ab jetzt eine Prozess-B-Änderung. |
 | 5 | [PRE_V1.1_CLEANUP_BRIEF.md](PRE_V1.1_CLEANUP_BRIEF.md) | Schließt die Lücken aus der Extraktions-Durchsicht und setzt die Cron-Flag. Trägt außerdem zwei Zusätze für den V1.1-Umfang. |
+| 6 | [CLUBELO_FOLLOWTHROUGH_BRIEF.md](CLUBELO_FOLLOWTHROUGH_BRIEF.md) | Nach der Erlaubnis des clubelo-Betreibers: Protokoll, Trainingsdaten committet, Reproduktionstor in CI, ein Abruf pro Tag statt zwölf, Relaunch-Playbook, App B in CI. |
 
 ## Diese Dateien werden nicht bearbeitet
 
@@ -26,6 +27,9 @@ Rolle gespielt haben:
   da; was gilt, steht in [../verification/dfl-spielordnung.md](../verification/dfl-spielordnung.md).
 - v5.7 §10 erlaubte noch `LAB_REPO_TOKEN`. Seit der Fit-Extraktion ist nur noch
   `GITHUB_TOKEN` erlaubt.
+- Der Fit-Extraktions-Brief ging davon aus, dass die Trainings-Elo-Werte
+  uncommittet bleiben. Seit der Erlaubnis des clubelo-Betreibers vom 2026-07-23
+  sind sie committet (Brief 6).
 
 **Was operativ gilt, steht in [../DEVELOPMENT.md](../DEVELOPMENT.md)**, nicht
 hier. Wer wissen will, wie das Projekt heute funktioniert, liest dort — wer

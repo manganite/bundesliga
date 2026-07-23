@@ -13,9 +13,15 @@ import { classOf, checkReproduction } from "../../../pipeline/src/refit/decide.m
 //  was a same-language move, so the standard is BIT-IDENTICAL — the tolerance
 //  classes are the fallback, not the target.
 //
-//  These tests need the clubelo-derived training Elo, which is deliberately not
-//  committed while the licence question is open. On a clone without it they skip
-//  with a message rather than pretending to pass.
+//  These tests need the clubelo-derived training Elo. It is COMMITTED since the
+//  operator's permission of 2026-07-23 (docs/verification/clubelo.md), so the
+//  gate runs in CI on every push and pull request.
+//
+//  They used to skip when the data was absent, because absence was the expected
+//  licence-pending state. It no longer is: the archive location is configurable
+//  (BUNDESLIGA_RATINGS_DIR), so a missing dataset now means the configuration
+//  points somewhere without it — a misconfiguration, which fails loudly rather
+//  than quietly reducing the suite.
 // ============================================================================
 
 const REPO = path.resolve(import.meta.dirname, "../../..");
@@ -31,21 +37,22 @@ try {
   loadError = e;
 }
 
-const haveTraining = training !== null;
+/**
+ * Fail with the reason, rather than skipping. Called first in every test that
+ * needs the data, so the message names the cause instead of leaving a
+ * `TypeError: null` behind.
+ */
+function requireTraining() {
+  if (training) return;
+  assert.fail(
+    "Trainings-Elo nicht gefunden (erwartet unter BUNDESLIGA_RATINGS_DIR, Voreinstellung "
+      + "data/ratings/training-elo/). Diese Daten sind seit der Erlaubnis vom 2026-07-23 committet "
+      + `— ein Fehlen ist also eine Fehlkonfiguration, kein erwarteter Zustand. Ursache: ${loadError?.message}`,
+  );
+}
 
-// A skip has to explain itself, or a future "297 of 303" reads as a defect.
-// This one is the licence-pending state, not a fault: the pre-match Elo of the
-// training window is clubelo-derived, clubelo publishes no licence, and the
-// permission request is outstanding — so the data is deliberately not committed
-// and a fresh checkout cannot have it.
-const skip = haveTraining
-  ? false
-  : "Trainings-Elo nicht vorhanden (erwartet unter BUNDESLIGA_RATINGS_DIR, Voreinstellung "
-    + "data/ratings/training-elo/). Das ist der lizenzbedingte Zustand, kein Defekt: die Werte sind "
-    + "clubelo-abgeleitet und bleiben uncommittet, solange die Lizenzfrage offen ist. Das "
-    + "Reproduktionstor ist deshalb derzeit nur lokal prüfbar — siehe docs/FIT_EXTRACTION.md.";
-
-test("the training window is the one the shipped parameters record", { skip }, () => {
+test("the training window is the one the shipped parameters record", () => {
+  requireTraining();
   assert.equal(training.matches.length, 9180);
   assert.equal(training.seasons.length, shipped.provenance.fitSeasonCount);
   assert.equal(training.seasons[0], 2011);
@@ -53,14 +60,16 @@ test("the training window is the one the shipped parameters record", { skip }, (
   assert.equal(new Set(training.matches.map((m) => m.league)).size, 2, "both leagues, pooled");
 });
 
-test("every training match carries a pre-match rating pair", { skip }, () => {
+test("every training match carries a pre-match rating pair", () => {
+  requireTraining();
   for (const m of training.matches) {
     assert.ok(Number.isFinite(m.eloHome) && Number.isFinite(m.eloAway), `${m.id} lacks a rating`);
   }
 });
 
 // The finding that made the gate pass: the sum's order is part of the procedure.
-test("the training order is pinned — by file, then the file's own order", { skip }, () => {
+test("the training order is pinned — by file, then the file's own order", () => {
+  requireTraining();
   const seen = [];
   for (const m of training.matches) {
     const key = `${m.league}-${m.season}`;
@@ -71,7 +80,8 @@ test("the training order is pinned — by file, then the file's own order", { sk
   assert.equal(seen.at(-1), "bl2-2025");
 });
 
-test("reordering the same matches perturbs the likelihood in the last bits", { skip }, () => {
+test("reordering the same matches perturbs the likelihood in the last bits", () => {
+  requireTraining();
   const base = { ...defaults(), HOME_ADV: 80 };
   const asLoaded = negativeLogLikelihood(training.matches, base);
   const reordered = negativeLogLikelihood(
@@ -82,7 +92,8 @@ test("reordering the same matches perturbs the likelihood in the last bits", { s
   assert.ok(Math.abs(asLoaded - reordered) < 1e-12, "but only in the last bits");
 });
 
-test("THE GATE: the extracted procedure reproduces the shipped parameters bit for bit", { skip }, () => {
+test("THE GATE: the extracted procedure reproduces the shipped parameters bit for bit", () => {
+  requireTraining();
   const { params } = fit(training.matches, { keys: KEYS, start: { HOME_ADV: 80 } });
 
   const rows = KEYS.map((key) => {
@@ -116,7 +127,8 @@ test("THE GATE: the extracted procedure reproduces the shipped parameters bit fo
   assert.equal(differing.length, 0);
 });
 
-test("the fit is deterministic — same inputs, same output", { skip }, () => {
+test("the fit is deterministic — same inputs, same output", () => {
+  requireTraining();
   const a = fit(training.matches, { keys: KEYS, start: { HOME_ADV: 80 } });
   const b = fit(training.matches, { keys: KEYS, start: { HOME_ADV: 80 } });
   for (const key of KEYS) assert.ok(Object.is(a.params[key], b.params[key]), key);

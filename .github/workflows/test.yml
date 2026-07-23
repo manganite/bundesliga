@@ -54,28 +54,51 @@ jobs:
           set -o pipefail
           npm test 2>&1 | tee test-output.txt
 
-      # The six skips are an EXPECTED state, not a defect: the clubelo-derived
-      # training Elo is not committed while the licence question is open, so the
-      # fit's reproduction gate can only be checked locally (docs/FIT_EXTRACTION.md).
+      # A skipped test is a test that is not protecting anything. The expected
+      # number lives in ONE place — expected-skips.json next to this file — so a
+      # legitimate change touches a number, never this guard's logic.
       #
-      # Expected does not mean unchecked. Without this step a newly skipped test
-      # anywhere else would ride along silently under the same „six skips are
-      # fine" story — which is exactly how a skip stops being noticed.
-      - name: Nur die sechs erwarteten Skips
+      # It is 0 since the clubelo permission of 2026-07-23: the training Elo is
+      # committed, so the fit's reproduction gate runs here instead of only on a
+      # developer machine.
+      - name: Erwartete Zahl übersprungener Tests
         run: |
-          # TAP („# skipped 6") in CI, spec („ℹ skipped 6") on a local TTY.
-          if ! grep -Eq '^(#|ℹ)[[:space:]]*skipped[[:space:]]+6$' test-output.txt; then
-            echo "::error::Die Zahl der übersprungenen Tests ist nicht 6."
+          EXPECTED=$(node -p "require('./.github/workflows/expected-skips.json').expectedSkips")
+          # TAP („# skipped N") in CI, spec („ℹ skipped N") on a local TTY.
+          if ! grep -Eq "^(#|ℹ)[[:space:]]*skipped[[:space:]]+$EXPECTED\$" test-output.txt; then
+            echo "::error::Die Zahl der übersprungenen Tests ist nicht $EXPECTED."
             echo
-            echo "Erwartet sind genau die sechs Tests des Reproduktionstors in"
-            echo "packages/fit/tests/reproduction.test.mjs: die Trainings-Elo-Werte sind"
-            echo "clubelo-abgeleitet und bleiben uncommittet, solange die Lizenzfrage offen"
-            echo "ist (docs/FIT_EXTRACTION.md)."
-            echo
-            echo "Mehr Skips heißt: irgendwo überspringt ein Test unbemerkt."
-            echo "Weniger heißt: die Trainingsdaten sind da — dann gehört diese Zahl"
-            echo "zusammen mit docs/DEVELOPMENT.md angepasst, und das Tor zieht in CI ein."
+            echo "Erwartet werden $EXPECTED Skips (.github/workflows/expected-skips.json)."
+            echo "Mehr heißt: irgendwo überspringt ein Test unbemerkt — ein Test, der nichts"
+            echo "mehr schützt, sieht in der Zusammenfassung aus wie ein bestandener."
+            echo "Weniger heißt: ein bisher übersprungener Test läuft jetzt — dann gehört die"
+            echo "Zahl in expected-skips.json angepasst, mit einer Zeile in dessen _history."
             echo
             grep -E '^(#|ℹ)[[:space:]]*(tests|pass|fail|skipped|todo)[[:space:]]' test-output.txt || true
+            exit 1
+          fi
+
+      # App B is never deployed (§10) and was therefore never built in CI — its
+      # tests cover the logic, but a bundling error in the one HTML file would
+      # only have shown up on a developer machine.
+      #
+      # The §9 form decision („eine selbstständige HTML-Datei") is checked as a
+      # form: build succeeds, and dist/ holds exactly one file. No size gate and
+      # no content heuristics — everything else is already covered by the tests,
+      # and a threshold nobody can justify is worse than no threshold.
+      - name: App B bauen und die Einzeldatei prüfen
+        run: |
+          rm -rf apps/kicktipp/dist
+          npm run build:kicktipp
+          COUNT=$(find apps/kicktipp/dist -type f | wc -l)
+          if [ "$COUNT" -ne 1 ]; then
+            echo "::error::apps/kicktipp/dist enthält $COUNT Dateien, erwartet ist genau eine."
+            echo "App B ist laut §9 eine selbstständige HTML-Datei. Mehrere Dateien heißen,"
+            echo "dass etwas nicht mehr eingebettet, sondern daneben gelegt wird."
+            find apps/kicktipp/dist -type f
+            exit 1
+          fi
+          if [ ! -f apps/kicktipp/dist/kicktipp.html ]; then
+            echo "::error::apps/kicktipp/dist/kicktipp.html fehlt."
             exit 1
           fi

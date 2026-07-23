@@ -43,24 +43,12 @@ jobs:
         with:
           node-version: "22.23.1"
 
-      # The training Elo is clubelo-derived and deliberately NOT committed while
-      # the licence question is open (docs/FIT_EXTRACTION.md). A fresh runner
-      # therefore does not have it, and the job says so plainly instead of
-      # fitting on whatever it can find.
-      - name: Trainingsdaten prüfen
-        run: |
-          if [ ! -d data/training/results ]; then
-            echo "::error::data/training/results fehlt — ohne Ergebnisse kein Fit."
-            exit 1
-          fi
-          ELO="${BUNDESLIGA_RATINGS_DIR:-data/ratings}/training-elo"
-          if [ ! -d "$ELO" ]; then
-            echo "::error::$ELO fehlt. Die Pre-Match-Elo-Werte sind clubelo-abgeleitet und"
-            echo "::error::werden nicht committet, solange die Lizenzfrage offen ist. Der Refit"
-            echo "::error::läuft deshalb derzeit lokal; siehe docs/FIT_EXTRACTION.md."
-            exit 1
-          fi
-
+      # Both halves of the training data are committed since the clubelo
+      # permission of 2026-07-23, so a fresh runner has everything it needs and
+      # the pre-flight abort that used to sit here is gone. Nothing replaces it:
+      # `loadTrainingData` already fails with a TrainingDataError that names the
+      # missing half and the path it looked in — a second check in bash would
+      # only be a worse copy of that message.
       - name: Fit rechnen
         id: fit
         run: |

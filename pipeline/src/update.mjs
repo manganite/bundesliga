@@ -26,7 +26,7 @@ import { detectCurrentSeason, fetchSeason } from "./sources/openligadb.mjs";
 import { fetchDailySnapshot, indexSnapshot, fetchClubHistory, ratingOn } from "./sources/clubelo.mjs";
 import { resolveClub } from "./clubMapping.mjs";
 import {
-  appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot, resolveArchiveBase,
+  appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot, findSnapshotOn, resolveArchiveBase,
 } from "./snapshots.mjs";
 import { buildPreMatchDataset, frozenRatingLabel } from "./preMatch.mjs";
 import { buildCurrentOutlook, buildFrozenTimeline, targetsFromConfig } from "./artefacts.mjs";
@@ -268,18 +268,48 @@ export async function runUpdate({
   for (const league of LEAGUES) for (const c of seasons[league].clubs) allClubs.set(c.clubId, c);
 
   // --- 3. ratings ----------------------------------------------------------
-  const daily = await fetchDailySnapshot(today, fetchText);
-  const { ratings, missing } = extractRatings([...allClubs.values()], daily);
+  // FETCH ECONOMY — the courtesy rule as code, not as good intentions.
+  //
+  // clubelo publishes at most ONE snapshot per day; this job runs twelve times
+  // a day. Fetching the daily CSV every time asked the operator's server for
+  // the same bytes eleven times for nothing. So: if today is already archived,
+  // the ratings come out of the archive and clubelo is not contacted at all.
+  //
+  // This is not a cache. The archive is the committed, verified record, and
+  // reading it is exactly what the carry-forward path already does. The
+  // OpenLigaDB fetch above keeps its two-hour rhythm — results DO change
+  // intraday, ratings do not.
+  const archiveIndex = await readIndex(ratingsDir);
+  const todayArchived = findSnapshotOn(archiveIndex, today, "clubelo");
 
-  // Clubs the daily snapshot did not cover. Fail-closed is the default: without
-  // --carry-forward-until this still fails the job (§5.2, unchanged).
+  let ratings;
+  let missing;
+  if (todayArchived) {
+    const snap = await readSnapshot(ratingsDir, todayArchived.snapshotId);
+    ratings = { ...snap.ratings };
+    // A club absent from the archived snapshot is treated exactly as a club
+    // absent from a fresh CSV: fail-closed, or carried forward if the switch is
+    // set. The archive is the same observation, not a weaker one.
+    missing = [...allClubs.values()]
+      .filter((club) => ratings[club.clubId] === undefined)
+      .map((club) => ({ clubId: club.clubId, name: club.name, clubeloCsvName: club.clubeloCsvName }));
+    // One line, so a run's log still accounts for every source.
+    log("clubelo: Tagesstand vorhanden, kein Abruf");
+  } else {
+    const daily = await fetchDailySnapshot(today, fetchText);
+    ({ ratings, missing } = extractRatings([...allClubs.values()], daily));
+  }
+
+  // Clubs the snapshot did not cover, whether it came from the network or the
+  // archive. Fail-closed is the default: without --carry-forward-until this
+  // still fails the job (§5.2, unchanged).
   const ratingProvenance = Object.fromEntries(
     Object.keys(ratings).map((clubId) => [clubId, { provenance: "live", effectiveAt: today, ageDays: 0 }]),
   );
   const nameOfClub = (clubId) => allClubs.get(clubId)?.name ?? clubId;
   let carried = [];
   if (missing.length) {
-    const preIndex = await readIndex(ratingsDir);
+    const preIndex = archiveIndex;
     const allFixtures = LEAGUES.flatMap((l) => seasons[l].fixtures);
     const { carried: ok, stillMissing } = await resolveMissingClubs({
       missingClubIds: missing.map((m) => m.clubId),

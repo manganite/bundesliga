@@ -45,11 +45,14 @@ deshalb: **bitgleiche** Reproduktion.
 | Ghost-Flag | `isGhost`, Fenster 2020-03-11 bis 2021-06-01 |
 | höchste Torzahl einer Seite | 9 |
 
-Die Ergebnisse liegen jetzt committet unter `data/training/results/`, jede Datei
-mit ihrem `source`-Feld. Die Elo-Werte folgen der Standortregel des Archivs
-(`BUNDESLIGA_RATINGS_DIR`, Voreinstellung `data/ratings/`) und sind **nicht
-committet**, solange die Lizenzfrage bei clubelo offen ist. Wird sie positiv
-beantwortet, ist das Nachcommitten eine Konfigurations- und Kopieroperation.
+Die Ergebnisse liegen committet unter `data/training/results/`, jede Datei mit
+ihrem `source`-Feld. Die Elo-Werte folgen der Standortregel des Archivs
+(`BUNDESLIGA_RATINGS_DIR`, Voreinstellung `data/ratings/`) und sind **seit dem
+2026-07-23 ebenfalls committet**, unter `data/ratings/training-elo/` mit
+clubelo-Attribution im `source`-Feld — der Betreiber hat die öffentliche
+Weitergabe abgeleiteter Ratings erlaubt (docs/verification/clubelo.md). Damit
+läuft das Reproduktionstor in CI statt nur lokal. Die Standortregel bleibt
+trotzdem: sie ist unabhängig von der Lizenzfrage gute Hygiene.
 
 **Null clubelo-Anfragen in der gesamten Extraktion.** Die Daten stammen
 vollständig aus dem lokalen Bestand des Labs.

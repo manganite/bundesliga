@@ -6,12 +6,6 @@ dist/
 data/cache/
 apps/public/public/data/
 apps/kicktipp/src/generated/
-# Build output of the JSX test harness (apps/public/tests/harness/build.mjs).
-apps/public/tests/harness/.out/
-
-# clubelo-derived training Elo — follows the rating archive location rule.
-# Not committed while the licence question is outstanding (FIT_EXTRACTION.md).
-data/ratings/training-elo/
 
 # Build output of the JSX test harness (apps/public/tests/harness/build.mjs).
 apps/public/tests/harness/.out/

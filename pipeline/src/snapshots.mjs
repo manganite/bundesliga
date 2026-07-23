@@ -205,6 +205,24 @@ export function findPreMatchSnapshot(index, kickoffIso) {
 }
 
 /**
+ * The snapshot that IS the state of a given day, or null.
+ *
+ * Not `snapshots.find(...)`: the archive is append-only and a correction never
+ * edits its predecessor, it names it. Several entries can therefore carry the
+ * same `effectiveAt`, and the one that counts is the one observed LAST — the
+ * same supersession rule `findPreMatchSnapshot` applies, kept here beside it so
+ * the two cannot drift apart.
+ */
+export function findSnapshotOn(index, date, source = "clubelo") {
+  let best = null;
+  for (const s of index.snapshots) {
+    if (s.source !== source || s.effectiveAt !== date) continue;
+    if (!best || s.observedAt > best.observedAt) best = s;
+  }
+  return best;
+}
+
+/**
  * Was this snapshot observed before the kickoff it is being used for?
  *
  * This is what separates the two provenance values of §5.3, and it is a

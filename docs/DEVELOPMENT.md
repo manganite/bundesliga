@@ -76,22 +76,29 @@ Der Deploy ruft **dieselbe Datei** als Vorbedingung auf (`workflow_call`), statt
 Definition von „die Tests sind grün", und sie kann nicht auseinanderlaufen: kein
 grüner Lauf, kein Deploy.
 
-Ein zweiter Schritt prüft, dass **genau sechs** Tests übersprungen werden. Dass
-sie übersprungen werden, ist der erwartete lizenzbedingte Zustand — dass es
-sechs bleiben, ist die Prüfung. Ohne sie liefe ein anderswo neu übersprungener
-Test unbemerkt unter derselben Erzählung mit.
+Ein zweiter Schritt prüft die Zahl der **übersprungenen** Tests gegen
+`.github/workflows/expected-skips.json` — heute **0**. Ein übersprungener Test
+schützt nichts, sieht in der Zusammenfassung aber aus wie ein bestandener. Die
+Zahl steht in genau einer Datei, damit die nächste berechtigte Änderung eine
+Zahl ist und nicht die Logik des Wächters; die `_history` darin sagt, warum sie
+sich zuletzt bewegt hat.
 
-Auf einem frischen Checkout laufen **397 von 403** Tests; sechs überspringen mit
-begründeter Meldung, weil die clubelo-abgeleiteten Trainings-Elo-Werte nicht
-committet sind. Das **Reproduktionstor der Fitprozedur ist deshalb derzeit nur
-lokal prüfbar** — es zieht in CI ein an dem Tag, an dem die Trainingsdaten
-committet werden dürfen. Ein „397 von 403“ ist also kein Defekt.
+Ein dritter Schritt baut **App B** und prüft, dass `apps/kicktipp/dist` genau
+**eine** Datei enthält. App B wird nie deployt, war deshalb nie in CI, und ein
+Bündelungsfehler in der einen HTML-Datei wäre erst lokal aufgefallen. Geprüft
+wird die Form aus §9, nicht der Inhalt: kein Größenlimit, keine Heuristik — das
+Übrige decken die Tests ab.
+
+Auf einem frischen Checkout laufen **alle** Tests, es wird nichts mehr
+übersprungen. Insbesondere läuft das **Reproduktionstor der Fitprozedur**
+(8 von 8 Parametern bitgleich) seit der clubelo-Erlaubnis vom 2026-07-23 in CI
+mit, weil die Trainingsdaten committet sind.
 
 ## Zustand
 
 | Baustein | Zustand |
 |---|---|
-| Verifikationen vor dem Bau | 5 von 7 Gates geschlossen |
+| Verifikationen vor dem Bau | 5 von 7 Gates geschlossen; Gate 3 (clubelo) mit Erlaubnis abgeschlossen |
 | `packages/engine` — RNG, Inverse-CDF-Sampling | ✅ mit Tests |
 | `packages/engine` — Poisson + Dixon-Coles | ✅ mit Tests |
 | `packages/engine` — DFL-Ranker | ✅ mit Tests, gegen 22 echte Saisons |
@@ -103,6 +110,10 @@ committet werden dürfen. Ein „397 von 403“ ist also kein Defekt.
 | `pipeline` — vorberechnete Artefakte | ✅ |
 | Daten- und Deploy-Workflow | ✅ |
 | Tests in CI auf Push und PR, Deploy daran gebunden | ✅ |
+| clubelo-Erlaubnis protokolliert, Trainingsdaten committet | ✅ |
+| Reproduktionstor der Fitprozedur läuft in CI | ✅ |
+| Ein clubelo-Abruf pro Tag statt zwölf | ✅ mit Tests |
+| App B wird in CI gebaut und auf Einzeldatei geprüft | ✅ |
 | App A — fünf Seiten (V1-Umfang) | ✅ |
 | App A — Liga-Umschalter, gerenderte Tests | ✅ mit Tests |
 | App B — eine selbstständige HTML-Datei | ✅ mit Tests |
@@ -277,11 +288,12 @@ node pipeline/src/refit/cli.mjs --lab-output fit-output.json --out refit-output
 Die erste Zeile erzeugt den JSON-Vertrag, die zweite entscheidet Prozess A oder B
 und schreibt den Pull-Request-Text. Committet wird dabei nichts.
 
-**Eine Einschränkung, solange die clubelo-Lizenzfrage offen ist:** die
-Pre-Match-Elo-Werte des Trainingsfensters sind nicht committet. Auf einem frischen
-Runner fehlen sie, und `refit.yml` bricht deshalb mit klarer Meldung ab statt
-irgendetwas zu rechnen. Der Refit läuft derzeit lokal; sobald die Daten committet
-werden dürfen, läuft er ohne weitere Änderung auch in CI.
+Seit der clubelo-Erlaubnis vom 2026-07-23 sind **beide Hälften der
+Trainingsdaten committet** — Ergebnisse unter `data/training/results/`, die
+Pre-Match-Elo-Werte unter `data/ratings/training-elo/` mit Attribution. Ein
+frischer Runner hat damit alles; der Vorab-Abbruch in `refit.yml` ist entfallen.
+Fehlt das Elo-Verzeichnis trotzdem, zeigt das auf ein falsch gesetztes
+`BUNDESLIGA_RATINGS_DIR`, und `loadTrainingData` sagt genau das.
 
 Die Reproduktionsschranken für die Prozess-A-Ausnahme stehen in
 `data/refit-tolerances.json`. Sie sind vorab festgelegt; sie nach Sicht eines

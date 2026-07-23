@@ -49,9 +49,10 @@ export async function loadTrainingData({ dataDir, window = null }) {
   if (!(await exists(paths.elo))) {
     throw new TrainingDataError(
       `no training Elo at ${paths.elo}.\n`
-        + "It is clubelo-derived and deliberately not committed while the licence question is open "
-        + "(docs/FIT_EXTRACTION.md), so a fresh clone does not have it. Point BUNDESLIGA_RATINGS_DIR "
-        + "at an archive that does, or run the migration script against the lab working copy.",
+        + "It IS committed since the clubelo permission of 2026-07-23 "
+        + "(docs/verification/clubelo.md), so this is a misconfiguration rather than an expected "
+        + "state: BUNDESLIGA_RATINGS_DIR points at an archive without it. Unset it to use the "
+        + "default data/ratings/, or point it at an archive that carries training-elo/.",
     );
   }
 

@@ -70,7 +70,8 @@ for (const file of files) {
       migratedFrom: "football-model-lab data/track-c",
       migratedOn: new Date().toISOString().slice(0, 10),
       note: "Ergebnisse und Spielplan. Die zugehörigen Pre-Match-Elo-Werte liegen "
-        + "getrennt im Rating-Archiv und sind nicht committet.",
+        + "getrennt im Rating-Archiv (BUNDESLIGA_RATINGS_DIR, Voreinstellung "
+        + "data/ratings/training-elo/) — anderes Quellrecht, deshalb anderer Ort.",
     },
     matches: season.matches.map((m) => ({
       id: m.id,

@@ -206,12 +206,17 @@ construction.
   also Anfang August fällig, nicht Mitte.
 - Die Fitprozedur liegt seit der Extraktion in `packages/fit` und reproduziert die
   ausgelieferten Parameter **bitgleich** (`docs/FIT_EXTRACTION.md`). `LAB_REPO_TOKEN`
-  ist entfallen; erlaubt ist nur noch `GITHUB_TOKEN`. Die Trainings-Elo-Werte sind
-  clubelo-abgeleitet und **nicht committet**, solange die Lizenzfrage offen ist —
-  `refit.yml` bricht auf einem frischen Runner deshalb mit klarer Meldung ab. Das
-  **Reproduktionstor ist derzeit nur lokal prüfbar**; in CI überspringen sechs Tests
-  mit begründeter Meldung (397 von 403). Es zieht in CI ein, sobald die
-  Trainingsdaten committet werden dürfen.
+  ist entfallen; erlaubt ist nur noch `GITHUB_TOKEN`.
+- **Die clubelo-Lizenzfrage ist beantwortet (2026-07-23).** Der Betreiber erlaubt
+  sowohl das geplante Abrufmuster als auch die öffentliche Weitergabe abgeleiteter
+  Ratings; Wortlaut beider Seiten in `docs/verification/clubelo.md`. Folgen: die
+  Trainings-Elo-Werte sind committet, das **Reproduktionstor läuft in CI**, der
+  Vorab-Abbruch in `refit.yml` ist weg, und **nichts wird mehr übersprungen** —
+  `.github/workflows/expected-skips.json` steht auf 0 und wird geprüft.
+  Die Höflichkeitsregel bleibt und ist jetzt Code: **der Tagesabruf entfällt, wenn
+  der heutige Stand schon im Archiv liegt** — eine clubelo-Anfrage pro Tag statt
+  zwölf. Der Betreiber startet die Website vor der Saison neu; das Diagnose-Playbook
+  für den ersten roten Lauf steht in `docs/verification/clubelo.md`.
 - **Die Summationsreihenfolge der Likelihood ist Teil der Prozedur.** Nelder-Mead ist
   ableitungsfrei und verstärkt eine Differenz von 1e-14 bis in die zweite Stelle: die
   Trainingsdaten anders zu sortieren verschob `HOME_ADV_GHOST` um 2,2. Die Reihenfolge
@@ -239,8 +244,12 @@ construction.
   diese Zahl zusammen mit `docs/DEVELOPMENT.md` angepasst.
 - Offen: V1.2 (Modellgüte, Live-Rating-Timeline, „Wichtigstes kommendes Spiel"), V2.
 - Das README beschreibt die App; alles Entwicklerische steht in
-  `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`), committete Daten ODbL — die
-  beiden Lizenzen nicht vermischen.
+  `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
+  ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern
+  unter der Erlaubnis vom 2026-07-23. Drei Lizenzlagen, nicht vermischen.
+  Die archivierten Snapshots werden dafür **nicht** nachträglich umgeschrieben —
+  sie sind unveränderlich; die Lizenzlage steht im README und in
+  `docs/verification/clubelo.md`.
 
 ## Fallen, die hier schon Zeit gekostet haben
 

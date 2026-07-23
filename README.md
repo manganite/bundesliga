@@ -55,14 +55,20 @@ in [packages/fit](packages/fit) und ist damit nachvollziehbar.
   Die hier committeten, daraus abgeleiteten Datendateien stehen ihrerseits unter
   der ODbL und nennen ihre Quelle je Datei.
 - **Ratings:** [clubelo.com](http://clubelo.com/). clubelo veröffentlicht keine
-  Lizenz; eine Anfrage an den Betreiber läuft. Bis zur Antwort werden über den
-  regulären Abruf hinaus keine Daten geholt. Einzelne Klubs können vorübergehend
+  Lizenz, aber der Betreiber hat am **2026-07-23** ausdrücklich erlaubt, die
+  Ratings so abzurufen wie hier beschrieben **und** die daraus abgeleiteten
+  Snapshots öffentlich weiterzugeben. Wortlaut und Umfang stehen in
+  [docs/verification/clubelo.md](docs/verification/clubelo.md). Die committeten
+  Rating-Dateien unter `data/ratings/` stehen deshalb **nicht** unter der ODbL,
+  sondern unter dieser Erlaubnis, und nennen sie je Datei im `source`-Feld.
+  Die Erlaubnis ist kein Freibrief: abgerufen wird so sparsam wie möglich, im
+  eingeschwungenen Zustand **einmal am Tag**. Einzelne Klubs können vorübergehend
   mit einem älteren Rating rechnen, wenn clubelo sie gerade nicht fortführt — die
   App markiert diese Klubs und nennt das Datum.
 - **Code:** GPL-3.0, siehe [LICENSE](LICENSE).
 
-Code und Daten stehen unter verschiedenen Lizenzen. Das ist Absicht und darf
-nicht vermischt werden.
+Code und Daten stehen unter verschiedenen Lizenzen, und die beiden Datenquellen
+untereinander ebenfalls. Das ist Absicht und darf nicht vermischt werden.
 
 Der Tabellenrechner folgt der DFL-Spielordnung. Gegen 22 echte Abschlusstabellen
 beider Ligen geprüft sind damit das Einstiegskriterium Punkte sowie Tordifferenz

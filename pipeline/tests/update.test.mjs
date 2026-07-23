@@ -541,3 +541,98 @@ test("an unchanged data state rewrites nothing, including the play-off", async (
   assert.equal(again.changed, false);
   assert.ok(!again.changes.includes("relegation play-off"));
 });
+
+// ---------------------------------------------------------------------------
+//  Fetch economy (Brief 6 §2): at most one clubelo request per day.
+//
+//  The courtesy rule the operator's permission came with — „access as sparingly
+//  as possible" — is checked here rather than trusted. What is counted is the
+//  actual URLs the run asked for.
+// ---------------------------------------------------------------------------
+
+const dailyCalls = (calls) => calls.text.filter((u) => /clubelo\.com\/\d{4}-\d{2}-\d{2}$/.test(u));
+
+test("the second run of a day does not ask clubelo again, and says so", async () => {
+  const dataDir = await makeDataDir();
+  const s = makeSources();
+
+  const first = [];
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: NOW, log: (m) => first.push(m) });
+  const afterFirst = dailyCalls(s.calls).length;
+  assert.ok(afterFirst >= 1, "the first run of a day must fetch the daily CSV");
+  assert.ok(!first.some((m) => /kein Abruf/.test(m)));
+
+  const second = [];
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: NOW, log: (m) => second.push(m) });
+  assert.equal(dailyCalls(s.calls).length, afterFirst, "the second run must not fetch the daily CSV at all");
+  // A run's log still accounts for every source, including the one not used.
+  assert.ok(second.some((m) => m === "clubelo: Tagesstand vorhanden, kein Abruf"));
+});
+
+test("a new day fetches again — the skip is per day, not permanent", async () => {
+  const dataDir = await makeDataDir();
+  const s = makeSources();
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: NOW, log: silent });
+  const afterFirstDay = dailyCalls(s.calls).length;
+
+  const nextDay = new Date(NOW.getTime() + 24 * 3600 * 1000);
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: nextDay, log: silent });
+  assert.equal(dailyCalls(s.calls).length, afterFirstDay + 1, "exactly one further request, for the new day");
+});
+
+test("twelve runs in one day cost one request, not twelve", async () => {
+  const dataDir = await makeDataDir();
+  const s = makeSources();
+  for (let i = 0; i < 12; i++) {
+    await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: NOW, log: silent });
+  }
+  assert.equal(dailyCalls(s.calls).length, 1, `${dailyCalls(s.calls).length} daily requests for one day`);
+});
+
+test("the archived ratings are the same ratings — the skip is not a degraded mode", async () => {
+  const dataDir = await makeDataDir();
+  const s = makeSources();
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: NOW, log: silent });
+  const file = path.join(dataDir, "seasons", String(SEASON), "bl1", "outlook.json");
+  const afterFetch = JSON.parse(await fs.readFile(file, "utf8")).ratings;
+
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: NOW, log: silent });
+  const afterSkip = JSON.parse(await fs.readFile(file, "utf8")).ratings;
+  assert.deepEqual(afterSkip, afterFetch);
+  for (const v of Object.values(afterSkip)) assert.ok(Number.isFinite(v));
+});
+
+test("reading from the archive stays fail-closed, and honours a correction", async () => {
+  const dataDir = await makeDataDir();
+  const s = makeSources();
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: NOW, log: silent });
+
+  const ratingsDir = path.join(dataDir, "ratings");
+  const { readIndex, readSnapshot, appendSnapshot, findSnapshotOn } = await import("../src/snapshots.mjs");
+  const today = NOW.toISOString().slice(0, 10);
+  const current = await readSnapshot(ratingsDir, findSnapshotOn(await readIndex(ratingsDir), today).snapshotId);
+
+  // A later observation of the SAME day that no longer carries one club. The
+  // archive never edits its predecessor, so this is a correction sitting beside
+  // it — and the run must read the corrected one, not the first one listed.
+  const [dropped] = Object.keys(current.ratings);
+  const rest = { ...current.ratings };
+  delete rest[dropped];
+  const correction = await appendSnapshot(ratingsDir, {
+    source: "clubelo",
+    observedAt: new Date(NOW.getTime() + 3600 * 1000).toISOString(),
+    effectiveAt: today,
+    ratings: rest,
+  });
+  assert.equal(correction.appended, true);
+  assert.equal(findSnapshotOn(await readIndex(ratingsDir), today).snapshotId, correction.snapshotId);
+
+  // Second run of the same day: no fetch, reads the correction — and the missing
+  // club fails the job exactly as a missing club in a fresh CSV would.
+  const before = dailyCalls(s.calls).length;
+  await assert.rejects(
+    () => runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: NOW, log: silent }),
+    /no usable clubelo rating/,
+  );
+  assert.equal(dailyCalls(s.calls).length, before, "it must fail closed without asking clubelo to rescue it");
+});

@@ -226,3 +226,51 @@ test("the store handle exposes the same semantics as the bare functions", async 
   assert.equal((await store.readIndex()).snapshots.length, 1);
   assert.equal((await store.read(first.snapshotId)).ratings.A, 1800);
 });
+
+// ---------------------------------------------------------------------------
+//  findSnapshotOn — which snapshot IS the state of a day.
+//
+//  The fetch-economy path in update.mjs reads the day's ratings out of the
+//  archive instead of asking clubelo again, so picking a SUPERSEDED entry here
+//  would quietly compute a forecast from corrected-away values.
+// ---------------------------------------------------------------------------
+
+test("the day's snapshot is the one observed last, not the one listed first", async () => {
+  const { findSnapshotOn } = await import("../src/snapshots.mjs");
+  const index = {
+    snapshots: [
+      { snapshotId: "clubelo-2026-07-23-aaa", source: "clubelo", effectiveAt: "2026-07-23", observedAt: "2026-07-23T06:00:00.000Z" },
+      { snapshotId: "clubelo-2026-07-23-bbb", source: "clubelo", effectiveAt: "2026-07-23", observedAt: "2026-07-23T18:00:00.000Z" },
+      { snapshotId: "clubelo-2026-07-24-ccc", source: "clubelo", effectiveAt: "2026-07-24", observedAt: "2026-07-24T06:00:00.000Z" },
+    ],
+  };
+  assert.equal(findSnapshotOn(index, "2026-07-23").snapshotId, "clubelo-2026-07-23-bbb");
+  assert.equal(findSnapshotOn(index, "2026-07-24").snapshotId, "clubelo-2026-07-24-ccc");
+});
+
+test("a day with no snapshot is null, and another source never stands in", async () => {
+  const { findSnapshotOn } = await import("../src/snapshots.mjs");
+  const index = {
+    snapshots: [
+      { snapshotId: "other-2026-07-23", source: "elsewhere", effectiveAt: "2026-07-23", observedAt: "2026-07-23T06:00:00.000Z" },
+    ],
+  };
+  assert.equal(findSnapshotOn(index, "2026-07-22"), null);
+  assert.equal(findSnapshotOn(index, "2026-07-23"), null, "a foreign source must not be mistaken for clubelo's");
+  assert.equal(findSnapshotOn(index, "2026-07-23", "elsewhere").snapshotId, "other-2026-07-23");
+});
+
+test("it agrees with the archive's own ordering after a real correction", async () => {
+  const { appendSnapshot, readIndex, findSnapshotOn } = await import("../src/snapshots.mjs");
+  const dir = await tmpDir();
+  await appendSnapshot(dir, {
+    source: "clubelo", observedAt: "2026-07-23T06:00:00.000Z", effectiveAt: "2026-07-23",
+    ratings: { A: 1500 },
+  });
+  const corrected = await appendSnapshot(dir, {
+    source: "clubelo", observedAt: "2026-07-23T18:00:00.000Z", effectiveAt: "2026-07-23",
+    ratings: { A: 1500, B: 1400 },
+  });
+  assert.equal(corrected.appended, true);
+  assert.equal(findSnapshotOn(await readIndex(dir), "2026-07-23").snapshotId, corrected.snapshotId);
+});

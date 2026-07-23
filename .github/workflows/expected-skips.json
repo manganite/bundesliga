@@ -1,0 +1,8 @@
+{
+  "_comment": "Wie viele Tests die Suite überspringen DARF. Eine Quelle, damit die nächste berechtigte Änderung eine Zahl ist und nicht die Logik des Wächters. Der Wächter steht in test.yml.",
+  "_history": [
+    "6 — bis 2026-07-23: das Reproduktionstor der Fitprozedur konnte nicht laufen, weil die clubelo-abgeleiteten Trainings-Elo-Werte ohne Lizenzzusage nicht committet waren.",
+    "0 — seit 2026-07-23: die Erlaubnis des Betreibers liegt vor (docs/verification/clubelo.md), die Trainingsdaten sind committet, das Tor läuft in CI."
+  ],
+  "expectedSkips": 0
+}
