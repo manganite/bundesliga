@@ -168,6 +168,19 @@ test("without an indicator prop the LeagueTable has no shift column (Spieltage /
   assert.doesNotMatch(html, /shift-cell/);
 });
 
+test("the „Δ Platz“ indicator is the LAST column, after the 10–90 band (§ABSCHLUSS)", () => {
+  const table = currentTable(SEASON, CONFIG.leagues.bl1).slice(0, 3);
+  const indicator = new Map(table.map((r, i) => [r.clubId, { posDelta: i - 1, ptsDelta: 0.5 }]));
+  const html = renderToStaticMarkup(React.createElement(LeagueTable, {
+    table, nameOf, zoneTargets, points: OUTLOOK.points, indicator,
+  }));
+  assert.match(html, />Δ Platz</, "the indicator header reads „Δ Platz“");
+  // Header + cell both sit at the RIGHT edge, after the band and after erw. Pkt —
+  // no longer next to the # column where it would read as a rank change.
+  assert.ok(html.indexOf("Δ Platz") > html.indexOf("10–90"), "Δ Platz must be the rightmost header");
+  assert.ok(html.indexOf("shift-cell") > html.indexOf("erw. Pkt"), "the shift cell is on the right");
+});
+
 // ---------------------------------------------------------------------------
 //  §2.3 the CRN-honest base: artefact defaults before a run, paired base after
 // ---------------------------------------------------------------------------
@@ -205,7 +218,11 @@ test("after a run the scenario table carries the indicator and the CRN caption",
   const committed = { [SEASON.fixtures[0].id]: { kind: "fixed", gh: 1, ga: 0 } };
   const sim = { status: "done", result: { points, basePoints } };
   const html = renderToStaticMarkup(React.createElement(ScenarioTable, { ctx: ctxFor(), committed, sim, stale: false }));
-  assert.match(strip(html), /gegen die unveränderte Prognose, gleiche Zufallszahlen/);
+  const text = strip(html);
+  // The new, simpler anchor sentence (the spatial contrast is obsolete now that
+  // the column moved to the right edge, §ABSCHLUSS).
+  assert.match(text, /Der Pfeil misst die Verschiebung in der Reihenfolge nach erwarteten Punkten gegenüber der unveränderten Prognose — gleiche Zufallszahlen/);
+  assert.doesNotMatch(text, /vergleicht die erwarteten Punkte gegen die unveränderte Prognose/);
   assert.match(html, /shift-cell/);
 });
 
