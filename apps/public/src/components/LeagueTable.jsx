@@ -35,7 +35,6 @@ export default function LeagueTable({ table, nameOf, zoneTargets, points, indica
           <thead>
             <tr>
               <th scope="col">#</th>
-              {indicator ? <th scope="col"><span className="visually-hidden">Veränderung gegenüber der unveränderten Prognose</span><span aria-hidden="true">±</span></th> : null}
               <th scope="col" className="left">Klub</th>
               <th scope="col">Sp</th>
               <th scope="col">Tore</th>
@@ -43,6 +42,17 @@ export default function LeagueTable({ table, nameOf, zoneTargets, points, indica
               <th scope="col">Pkt</th>
               {points ? <th scope="col">erw. Pkt</th> : null}
               {points ? <th scope="col">10–90 %</th> : null}
+              {/* The indicator measures the shift in the EXPECTED-POINTS order, so
+                  it sits at the RIGHT edge beside those columns — not next to #,
+                  where it would read as a rank change (§SZENARIO_TABELLE_ABSCHLUSS). */}
+              {indicator ? (
+                <th scope="col">
+                  Δ Platz
+                  <span className="visually-hidden">
+                    {" "}— Verschiebung in der Reihenfolge nach erwarteten Punkten gegenüber der unveränderten Prognose
+                  </span>
+                </th>
+              ) : null}
             </tr>
           </thead>
           <tbody>
@@ -59,7 +69,6 @@ export default function LeagueTable({ table, nameOf, zoneTargets, points, indica
                     {r.rank}.
                     {r.sharedRank ? <span className="visually-hidden"> geteilter Platz</span> : null}
                   </td>
-                  {indicator ? <ShiftCell shift={indicator.get(r.clubId)} /> : null}
                   <th scope="row" className="left" style={{ fontWeight: 500 }}>
                     {nameOf(r.clubId)}
                     {carriedByClub?.has(r.clubId) ? (
@@ -76,6 +85,7 @@ export default function LeagueTable({ table, nameOf, zoneTargets, points, indica
                   <td><strong>{r.pts}</strong></td>
                   {points ? <td>{number(pts?.expected, 1)}</td> : null}
                   {points ? <td>{pts ? `${integer(pts.p10)}–${integer(pts.p90)}` : "–"}</td> : null}
+                  {indicator ? <ShiftCell shift={indicator.get(r.clubId)} /> : null}
                 </tr>
               );
             })}
