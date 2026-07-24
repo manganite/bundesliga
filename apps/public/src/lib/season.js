@@ -4,7 +4,9 @@
 // ============================================================================
 
 import { buildTable, rankTable, CURRENT_SEASON_RULES } from "../../../../packages/engine/src/ranking.mjs";
-import { effectiveParams, predictMatch, tendencyOf } from "../../../../packages/engine/src/model.mjs";
+import {
+  effectiveParams, predictMatch, tendencyOf, eloToLambdas, buildScorelineDistribution, regionModal,
+} from "../../../../packages/engine/src/model.mjs";
 import {
   effectiveContenders, remainingScheduleStrength, directDuels, surprisal,
 } from "../../../../packages/engine/src/metrics.mjs";
@@ -261,6 +263,139 @@ export function predictFixture(fixture, prematch, params, league) {
   return predictMatch(e.eloHome, e.eloAway, p);
 }
 
+/**
+ * The full model for a fixture — the scoreline distribution AND the prediction —
+ * so the scenario presets can ask for region modals (§PRESETS §2). Uses the
+ * engine's own primitives; the app computes no model of its own.
+ */
+export function fixtureModel(fixture, prematch, params, league) {
+  if (!prematch || !params) return null;
+  const e = prematch.entries.find((x) => x.fixtureId === fixture.id);
+  if (!e) return null;
+  const p = effectiveParams(params.params, { league });
+  const { lamH, lamA } = eloToLambdas(e.eloHome, e.eloAway, p);
+  const dist = buildScorelineDistribution(lamH, lamA, p);
+  return { dist, prediction: predictMatch(e.eloHome, e.eloAway, p) };
+}
+
+/** The least-likely tendency, canonical tie-break (draw < home < away order). */
+function leastLikelyTendency(masses) {
+  const order = ["draw", "homeWin", "awayWin"];
+  let least = order[0];
+  for (const k of order) if (masses[k] < masses[least]) least = k;
+  return least;
+}
+
+/**
+ * The scoreline a preset RECIPE sets a fixture to, or null when the recipe has
+ * no unambiguous result for it (then the fixture is left untouched). The recipe
+ * definitions are the contract (§PRESETS §2.2); the captions name them.
+ *
+ * @param {string} recipe  forecast | global | clubWins | clubLoses | surprise
+ * @param {object} model   from fixtureModel
+ * @param {object} fixture { homeClubId, awayClubId }
+ * @param {string} [clubId] required for „clubWins" / „clubLoses"
+ */
+export function recipeScoreline(recipe, model, fixture, clubId = null) {
+  const { dist, prediction } = model;
+  if (recipe === "forecast") return prediction.favourite.scoreline;
+  if (recipe === "global") return prediction.mostLikely.score;
+  if (recipe === "surprise") return regionModal(dist, leastLikelyTendency(prediction.tendency)).scoreline;
+  if (recipe === "clubWins" || recipe === "clubLoses") {
+    if (clubId !== fixture.homeClubId && clubId !== fixture.awayClubId) return null; // not this club's match
+    const isHome = clubId === fixture.homeClubId;
+    // „gewinnt alles" → this club's win region; „verliert alles" → the opposite.
+    const region = (recipe === "clubWins") === isHome ? "homeWin" : "awayWin";
+    return regionModal(dist, region).scoreline;
+  }
+  return null;
+}
+
+/**
+ * The data-state transformation the what-if page hands the worker (§PRESETS §1).
+ * It runs in the UI layer — NO engine change: the fixture keys stay
+ * data-state-independent, so CRN against the unmodified baseline holds. Each
+ * override sets or removes BOTH goals, never one, so the engine's half-defined
+ * guard can never fire:
+ *
+ *   { kind: "fixed", gh, ga } → both goals set to the chosen result
+ *   { kind: "released" }        → both goals removed → simulated like an open game
+ *   absent                      → open stays open, played keeps its real result
+ */
+export function scenarioFixtures(fixtures, overrides) {
+  return fixtures.map((f) => {
+    const o = overrides?.[f.id];
+    const base = { id: f.id, home: f.homeClubId, away: f.awayClubId };
+    if (o?.kind === "fixed") return { ...base, gh: o.gh, ga: o.ga };
+    if (o?.kind === "released") return base; // both goals removed → simulated
+    return f.gh !== undefined ? { ...base, gh: f.gh, ga: f.ga } : base;
+  });
+}
+
+const PRESET_AREAS = {
+  open: (f) => f.gh === undefined,
+  played: (f) => f.gh !== undefined,
+};
+
+/**
+ * Applying a preset RECIPE to an AREA (§PRESETS §2). Pure: given the current
+ * overrides it returns the next overrides plus the transparency message. Presets
+ * STACK — a second application overwrites only the fixtures in its own area, the
+ * rest of the map is carried through untouched (§2.4). A fixture the recipe has
+ * no unambiguous result for is left exactly as it was.
+ *
+ * @param {object} p
+ * @param {Array}  p.fixtures  the season's fixtures
+ * @param {object} p.overrides the current override map (carried forward)
+ * @param {string} p.area      open | played | matchday | club | duels
+ * @param {string} p.recipe    forecast | global | clubWins | clubLoses | surprise | reroll
+ * @param {string} [p.club]    the club param (area „club" and recipe „clubWins")
+ * @param {number} [p.areaMd]  the matchday (area „matchday")
+ * @param {Map}    [p.duelBy]  fixtureId → duel targets (area „duels")
+ * @param {(f)=>object|null} p.modelOf  a fixture's { dist, prediction } or null
+ */
+export function computePreset({ fixtures, overrides, area, recipe, club, areaMd, duelBy, modelOf }) {
+  const inArea = area === "matchday"
+    ? (f) => f.matchday === areaMd
+    : area === "club"
+      ? (f) => f.homeClubId === club || f.awayClubId === club
+      : area === "duels"
+        ? (f) => duelBy?.has(f.id)
+        : (PRESET_AREAS[area] ?? (() => false));
+
+  const next = { ...overrides };
+  let fixed = 0; let released = 0; let simulated = 0; let unchanged = 0;
+  for (const f of fixtures) {
+    if (!inArea(f)) continue;
+    if (recipe === "reroll") {
+      if (f.gh !== undefined) {
+        // A played fixture already released is already simulated — count it as
+        // unchanged instead of re-releasing (accurate message, no needless rewrite).
+        if (next[f.id]?.kind === "released") unchanged++;
+        else { next[f.id] = { kind: "released" }; released++; }
+      } else if (next[f.id]) { delete next[f.id]; simulated++; }
+      else unchanged++;
+      continue;
+    }
+    const model = modelOf(f);
+    const sl = model
+      ? recipeScoreline(recipe, model, { homeClubId: f.homeClubId, awayClubId: f.awayClubId }, club)
+      : null;
+    if (!sl) { unchanged++; continue; }
+    next[f.id] = { kind: "fixed", gh: sl[0], ga: sl[1] };
+    fixed++;
+  }
+
+  const parts = [];
+  if (fixed) parts.push(`${fixed} festgesetzt`);
+  if (released) parts.push(`${released} freigegeben`);
+  if (simulated) parts.push(`${simulated} auf simuliert zurückgesetzt`);
+  if (unchanged) parts.push(`${unchanged} unverändert`);
+  const message = (parts.length ? parts.join(", ") : "nichts geändert")
+    + (unchanged ? " — Spiele ohne eindeutiges Rezeptergebnis bleiben unberührt." : ".");
+  return { overrides: next, message };
+}
+
 // ---------------------------------------------------------------------------
 //  V1.2 — Modellgüte
 // ---------------------------------------------------------------------------
@@ -360,4 +495,24 @@ export function fixtureImpact(outlook, season, leagueConfig, { matchday = null }
     });
   }
   return rows.sort((a, b) => b.leading.value - a.leading.value);
+}
+
+/**
+ * Direct-duel targets per fixture — ONE shared source (§PRESETS §3), the same
+ * θ-duel list the Duelle card uses, keyed by fixtureId. Both the what-if list
+ * and the Spieltage page read this; there is no second computation.
+ *
+ * Each fixture maps to its duel targets in league-config order (the highest
+ * first), so a chip can show the top one and name the rest.
+ */
+export function duelTargetsByFixture(season, outlook, leagueConfig, theta = 0.1) {
+  const list = duels(season, outlook, leagueConfig, theta);
+  const rank = new Map(targetList(leagueConfig).map((t, i) => [t.id, i]));
+  const byFixture = new Map();
+  for (const d of list) {
+    if (!byFixture.has(d.fixtureId)) byFixture.set(d.fixtureId, []);
+    byFixture.get(d.fixtureId).push({ target: d.target, label: d.targetLabel, rank: rank.get(d.target) ?? 99 });
+  }
+  for (const arr of byFixture.values()) arr.sort((a, b) => a.rank - b.rank);
+  return byFixture;
 }

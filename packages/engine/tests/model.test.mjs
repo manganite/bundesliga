@@ -355,3 +355,59 @@ test("a tendency-level tie resolves by canonical order: draw before home before 
   pmf2[idx(0, 1)] = 1 / 3;
   assert.equal(favouriteScoreline({ pmf: pmf2, maxGoals: N }).tendency, "draw");
 });
+
+// ============================================================================
+//  regionModal (§PRESETS §2.3) — the one new helper. favouriteScoreline delegates.
+// ============================================================================
+
+import { regionModal } from "../src/model.mjs";
+
+test("regionModal picks the modal cell within a region", () => {
+  const { lamH, lamA } = eloToLambdas(1720, 1600, EP);
+  const dist = buildScorelineDistribution(lamH, lamA, EP);
+  const home = regionModal(dist, "homeWin");
+  assert.ok(home.scoreline[0] > home.scoreline[1], "home region cell is a home win");
+  const draw = regionModal(dist, "draw");
+  assert.equal(draw.scoreline[0], draw.scoreline[1]);
+  const away = regionModal(dist, "awayWin");
+  assert.ok(away.scoreline[0] < away.scoreline[1]);
+});
+
+test("favouriteScoreline delegates to regionModal — same cell for the favourite tendency", () => {
+  const { lamH, lamA } = eloToLambdas(1720, 1600, EP);
+  const dist = buildScorelineDistribution(lamH, lamA, EP);
+  const fav = favouriteScoreline(dist);
+  const direct = regionModal(dist, fav.tendency);
+  assert.deepEqual(fav.scoreline, direct.scoreline);
+  assert.equal(fav.pScoreline, direct.prob);
+});
+
+test("regionModal resolves a tie by the canonical ordering", () => {
+  const N = EP.MAX_GOALS;
+  const size = (N + 1) * (N + 1);
+  const idx = (h, a) => h * (N + 1) + a;
+  const pmf = new Float64Array(size);
+  // Two home-win cells tie; canonical order (total goals, then home) puts 2:0
+  // (total 2) before 3:1 (total 4).
+  pmf[idx(2, 0)] = 0.3;
+  pmf[idx(3, 1)] = 0.3;
+  const r = regionModal({ pmf, maxGoals: N }, "homeWin");
+  assert.equal(r.scoreline.join(":"), "2:0");
+});
+
+test("a region with no mass returns its earliest canonical cell with prob 0", () => {
+  const N = EP.MAX_GOALS;
+  const pmf = new Float64Array((N + 1) * (N + 1));
+  pmf[0] = 1; // only 0:0, a draw
+  const home = regionModal({ pmf, maxGoals: N }, "homeWin");
+  // Every region is representable at MAX_GOALS ≥ 1, but with all mass on 0:0 the
+  // home region's max prob is 0 — the earliest home cell wins with prob 0.
+  assert.ok(home.scoreline[0] > home.scoreline[1]);
+  assert.equal(home.prob, 0);
+});
+
+test("an unknown region throws rather than defaulting to the draw", () => {
+  const { lamH, lamA } = eloToLambdas(1600, 1600, EP);
+  const dist = buildScorelineDistribution(lamH, lamA, EP);
+  assert.throws(() => regionModal(dist, "homewin"), /unknown region/);
+});

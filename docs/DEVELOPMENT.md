@@ -136,6 +136,7 @@ mit, weil die Trainingsdaten committet sind.
 | Zahlenformat (fester Dezimal, ein Vorzeichen-Pfad, rating) + Restprogramm | ✅ mit Tests |
 | Header/Footer-Umbau, Läufe-Auswahl weg, Farbsystem (Tokens) | ✅ mit Tests |
 | Zonen-Anzahl, Spaltenlayout, „Wie gerechnet?"-Regel, Releases | ✅ mit Tests |
+| Szenario-Presets · Freigeben · Duell-Hervorhebung (Brief 16) | ✅ mit Tests |
 | V2b — Historie | ⏳ zurückgestellt (Auslösebedingung im Brief) |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):

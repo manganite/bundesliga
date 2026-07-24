@@ -93,6 +93,14 @@ spätere schlägt die frühere:**
     zeigt `max(Zonenplätze, 3)`, Übersicht als Spaltenlayout, „Wie gerechnet?"
     wird geteilte Komponente und **stehende Regel**, und die Version wird Tag +
     Release (ebenfalls stehende Regel).
+16. `PRESETS_FREIGEBEN_DUELLE_BRIEF.md` — ein neues Primitiv (Freigeben:
+    gespielte Spiele im Was-wäre-wenn, real/freigegeben/festgesetzt, „statt real"
+    klein), eine Preset-Leiste (Bereich × Rezept + „Anwenden", fünf Rezepte,
+    Stapel-Semantik), eine seitenübergreifende Duell-Hervorhebung aus einer
+    Quelle. **Genau ein neuer Engine-Helper** (`regionModal`, §2.3);
+    `favouriteScoreline` delegiert darauf. Das Freigeben ist eine
+    Datenstands-Transformation in der UI-Schicht — kein Engine-Eingriff, die
+    Schlüssel bleiben datenstandsunabhängig, CRN gilt unverändert.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -410,11 +418,40 @@ construction.
   wörtlich). Warum ein Favorit ein Spiel verliert, gehört zur Torziehung
   (Methodik Schritt 2), nicht zur Streuung (Schritt 1). Ein Test verankert den
   korrigierten Wortlaut, damit der falsche Kausalsatz nicht zurückkehrt.
-- **Was-wäre-wenn rechnet nicht automatisch.** Eingaben (`fixed`) und der zuletzt
-  gerechnete Stand (`committed`) sind getrennt; nur „Szenario rechnen" überträgt.
-  Ein offenes Spiel zeigt seinen Zustand (`FixturePrediction`), nie ein 0:0-Feld,
-  das als Annahme gelesen würde; „Festsetzen" füllt mit dem wahrscheinlichsten
-  Ergebnis vor. Das veraltete Ergebnis wird gedimmt, nicht versteckt.
+- **Was-wäre-wenn rechnet nicht automatisch.** Eingaben (`overrides`) und der
+  zuletzt gerechnete Stand (`committed`) sind getrennt; nur „Szenario rechnen"
+  überträgt. Ein offenes Spiel zeigt seinen Zustand (`FixturePrediction`), nie ein
+  0:0-Feld, das als Annahme gelesen würde; „Festsetzen" füllt mit dem
+  wahrscheinlichsten Ergebnis vor. Das veraltete Ergebnis wird gedimmt, nicht
+  versteckt.
+- **Brief 16 steht (Presets · Freigeben · Duelle).** Vier Stellen, an denen es
+  leicht kaputtgeht:
+  - **Freigeben ist eine reine Datenstands-Transformation, kein Engine-Eingriff.**
+    `scenarioFixtures(fixtures, overrides)` (in `lib/season.js`) baut die
+    `modifiedFixtures` in der UI-Schicht: `released` → **beide** Tore entfernt,
+    `fixed` → beide gesetzt, sonst unverändert. Die Fixture-Schlüssel bleiben
+    datenstandsunabhängig, also gilt CRN gegen die unveränderte Basis weiter; ein
+    Test zeigt, dass ein freigegebener Nachbar keinen anderen Spielausgang im
+    selben Lauf verschiebt. Wer je nur *ein* Tor setzt, weckt den Halbdefiniert-
+    Guard — deshalb immer beide.
+  - **Genau ein neuer Engine-Export: `regionModal(dist, region)`.** Modalergebnis
+    innerhalb einer benannten Region (`homeWin`/`draw`/`awayWin`), Ties über die
+    kanonische Scoreline-Ordnung. `favouriteScoreline` delegiert darauf — **eine**
+    Implementierung, per Test nachgewiesen. Kein zweiter Helper (kein
+    `tendencyMasses` o. Ä.): die Massen liefert `predictMatch(...).tendency`.
+  - **Die Preset-Logik ist rein und stapelt.** `computePreset(...)` in
+    `lib/season.js` überschreibt nur den gewählten Bereich und trägt die übrigen
+    Overrides unverändert durch; die Meldungszeile zählt festgesetzt/freigegeben/
+    zurückgesetzt/unverändert. „Nur Überraschungen" = Modalergebnis der
+    **unwahrscheinlichsten** Tendenz (kann das Remis sein), „Verein gewinnt alles"
+    = Modalergebnis in der Siegregion *dieses* Klubs, „Verein verliert alles"
+    (Nach-Brief-Ergänzung) spiegelbildlich die Niederlagenregion — beide über
+    dieselbe `clubWins`/`clubLoses`-Verzweigung. Ein Spiel ohne eindeutiges
+    Rezeptergebnis bleibt unberührt.
+  - **Duell-Hervorhebung aus einer Quelle.** `duelTargetsByFixture` (über die
+    θ-Liste `duels()`) speist sowohl die Was-wäre-wenn-Liste als auch Spieltage;
+    `DuelChip` ist die eine geteilte Komponente (höchstes Ziel im Chip, alle im
+    `title`). Keine zweite Duell-Berechnung fürs Markieren.
 - **V2b (Historie) existiert nicht als Aufgabe.** Auslösebedingung (alle drei):
   clubelo-Relaunch live; die einmalige Namensform-Wiederverifikation aller 36 Klubs
   auf der neuen Schnittstelle bestanden; ein eigener V2b-Brief geschrieben. Bis

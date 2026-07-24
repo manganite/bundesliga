@@ -1,9 +1,18 @@
 import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import FixturePrediction, { favouriteOf } from "../components/FixturePrediction.jsx";
+import DuelChip, { duelStripeColor } from "../components/DuelChip.jsx";
 import Tabs from "../components/Tabs.jsx";
 import { useScenario } from "../hooks/useScenario.js";
-import { targetList, currentTable, predictFixture } from "../lib/season.js";
+import {
+  targetList,
+  currentTable,
+  predictFixture,
+  fixtureModel,
+  duelTargetsByFixture,
+  scenarioFixtures,
+  computePreset,
+} from "../lib/season.js";
 import { remainingFixtures, toEngineFixtures } from "../lib/data.js";
 import { analyseRequirement, verifyHelpCertificate } from "../../../../packages/engine/src/solver.mjs";
 import { percent, number, pp } from "../lib/format.js";
@@ -86,36 +95,40 @@ function WasWaereWenn({ ctx, remaining }) {
   const runs = WHATIF_RUNS;
   const batches = WHATIF_BATCHES;
 
-  // fixtureId -> { gh, ga }. The INPUTS. Editing these never runs anything.
-  const [fixed, setFixed] = useState({});
-  // The inputs the last run was computed from. The result is stale whenever
-  // `fixed` has moved away from this. §1.4: no simulation without the button.
+  // fixtureId -> override. THE INPUTS; editing them never runs anything.
+  //   { kind: "fixed", gh, ga }  — set to a chosen result (open OR played)
+  //   { kind: "released" }        — a played match, simulated like an open one
+  // Absent: the default — open stays simulated, played keeps its real result.
+  const [overrides, setOverrides] = useState({});
   const [committed, setCommitted] = useState(null);
-  const fixedCount = Object.keys(fixed).length;
+  const [message, setMessage] = useState(null);
+  const overrideCount = Object.keys(overrides).length;
 
-  // Matchday grouping (§1.1): show one matchday, default to the next unplayed.
+  // The whole fixture list, played AND open (§PRESETS §1). One matchday at a time.
   const matchdays = useMemo(
-    () => [...new Set(remaining.map((f) => f.matchday))].sort((a, b) => a - b),
-    [remaining],
+    () => [...new Set(season.fixtures.map((f) => f.matchday))].sort((a, b) => a - b),
+    [season],
   );
-  const [selectedMd, setSelectedMd] = useState(() => matchdays[0]);
-  const visibleFixtures = remaining.filter((f) => f.matchday === selectedMd);
+  const firstOpen = remaining.length ? Math.min(...remaining.map((f) => f.matchday)) : matchdays[0];
+  const [selectedMd, setSelectedMd] = useState(() => firstOpen);
+  const visibleFixtures = season.fixtures
+    .filter((f) => f.matchday === selectedMd)
+    .sort((a, b) => String(a.kickoff).localeCompare(String(b.kickoff)));
 
-  // Predictions for the visible fixtures — the modal scoreline both displays the
-  // „Simuliert" state (§1.2) and prefills „Festsetzen" (§1.3).
+  const duelBy = useMemo(() => duelTargetsByFixture(season, outlook, leagueConfig), [season, outlook, leagueConfig]);
+  const modelOf = (fixture) => fixtureModel(fixture, prematch, params, league);
   const predictionOf = (fixture) => predictFixture(fixture, prematch, params, league);
 
   const request = useMemo(() => {
     if (!committed || !Object.keys(committed).length) return null;
     const clubs = season.clubs.map((c) => ({ clubId: c.clubId, rating: outlook.ratings[c.clubId] }));
-    const modifiedFixtures = toEngineFixtures(
-      season.fixtures.map((f) => (committed[f.id] ? { ...f, gh: committed[f.id].gh, ga: committed[f.id].ga } : f)),
-    );
+    // The data-state transformation happens HERE, in the UI layer — no engine
+    // change (§PRESETS §1). „released" removes BOTH goals, „fixed" sets both, so
+    // the half-defined guard in the engine can never fire.
+    const modifiedFixtures = scenarioFixtures(season.fixtures, committed);
     return {
       kind: "whatif",
       payload: {
-        // The SAME seasonId as the canonical artefact → the same random keys →
-        // CRN against the baseline (§3).
         seasonId: `${season.season}-${league}`,
         league,
         clubs,
@@ -135,25 +148,37 @@ function WasWaereWenn({ ctx, remaining }) {
   }, [committed, season, outlook, league, leagueConfig, params, runs, batches]);
 
   const sim = useScenario(request);
-  const stale = fixedCount > 0 && JSON.stringify(fixed) !== JSON.stringify(committed ?? {});
-  const canRun = fixedCount > 0 && stale;
+  const stale = overrideCount > 0 && JSON.stringify(overrides) !== JSON.stringify(committed ?? {});
+  const canRun = overrideCount > 0 && stale;
 
-  const fixTo = (id, gh, ga) => setFixed((prev) => ({ ...prev, [id]: { gh, ga } }));
-  const clearOne = (id) => setFixed((prev) => { const next = { ...prev }; delete next[id]; return next; });
-  const clearAll = () => setFixed({});
-  const runScenario = () => setCommitted({ ...fixed });
+  const setOverride = (id, o) => setOverrides((prev) => ({ ...prev, [id]: o }));
+  const clearOne = (id) => setOverrides((prev) => { const next = { ...prev }; delete next[id]; return next; });
+  // „Alles zurücksetzen" räumt wirklich komplett: die Eingaben UND den zuletzt
+  // gerechneten Stand, sonst bliebe das veraltete Ergebnis stehen (§2.4).
+  const clearAll = () => { setOverrides({}); setCommitted(null); setMessage(null); };
+  const runScenario = () => setCommitted({ ...overrides });
 
   const targets = targetList(leagueConfig);
-  const fixedList = Object.keys(fixed).map((id) => remaining.find((f) => f.id === id)).filter(Boolean);
+  const overrideList = Object.keys(overrides)
+    .map((id) => ({ fixture: season.fixtures.find((f) => f.id === id), o: overrides[id] }))
+    .filter((x) => x.fixture);
 
   return (
     <Card title="Was-wäre-wenn">
       <Explainer />
 
-      {/* Fixed fixtures on OTHER matchdays stay visible, so nothing that is in
-          force is ever off-screen (§1.1). */}
-      {fixedCount ? (
-        <FixedSummary fixedList={fixedList} fixed={fixed} nameOf={nameOf} onClearOne={clearOne} onClearAll={clearAll} />
+      <PresetBar
+        ctx={ctx}
+        matchdays={matchdays}
+        duelBy={duelBy}
+        modelOf={modelOf}
+        onApply={(next, msg) => { setOverrides(next); setMessage(msg); }}
+        overrides={overrides}
+      />
+      {message ? <p className="preset-message" role="status">{message}</p> : null}
+
+      {overrideCount ? (
+        <OverrideSummary overrideList={overrideList} nameOf={nameOf} onClearOne={clearOne} onClearAll={clearAll} />
       ) : null}
 
       <div className="controls" style={{ margin: "0.8rem 0 0.4rem" }}>
@@ -165,11 +190,14 @@ function WasWaereWenn({ ctx, remaining }) {
         </label>
       </div>
 
+      <p className="caption" style={{ marginBottom: "0.3rem" }}>
+        Hervorgehoben: direkte Duelle (beide Klubs ≥ 10 % auf dasselbe Ziel).
+      </p>
       <div className="table-scroll">
         <table className="data">
           <thead>
             <tr>
-              <th scope="col" className="left">offenes Spiel</th>
+              <th scope="col" className="left">Spiel</th>
               <th scope="col" className="left">Zustand</th>
               <th scope="col" />
             </tr>
@@ -181,8 +209,10 @@ function WasWaereWenn({ ctx, remaining }) {
                 fixture={f}
                 nameOf={nameOf}
                 prediction={predictionOf(f)}
-                fixed={fixed[f.id]}
-                onFix={(gh, ga) => fixTo(f.id, gh, ga)}
+                override={overrides[f.id]}
+                duel={duelBy.get(f.id)}
+                onFix={(gh, ga) => setOverride(f.id, { kind: "fixed", gh, ga })}
+                onRelease={() => setOverride(f.id, { kind: "released" })}
                 onReset={() => clearOne(f.id)}
               />
             ))}
@@ -204,18 +234,120 @@ function WasWaereWenn({ ctx, remaining }) {
   );
 }
 
+/** §1.6 + §1 honesty: the three states, and that ratings do not rewind. */
+export function Explainer() {
+  return (
+    <>
+      <p className="page-intro" style={{ marginBottom: "0.4rem" }}>
+        Jedes offene Spiel ist zunächst <strong>simuliert</strong>: Sein Ergebnis wird in jedem
+        Durchlauf neu ausgewürfelt — mal so, mal so, gemäß den Torraten beider Klubs. Setzt du ein
+        Spiel <strong>fest</strong>, gilt stattdessen in allen Durchläufen genau dieses Ergebnis;
+        ein bereits gespieltes Spiel kannst du <strong>freigeben</strong>, dann wird es wieder
+        simuliert. Dann <strong>Szenario rechnen</strong>: Dieselbe Simulation läuft erneut, mit
+        demselben Zufall — Veränderungen kommen so wirklich von deinen Ergebnissen und nicht vom
+        Würfeln.
+      </p>
+      <p className="caption" style={{ marginTop: 0 }}>
+        Ratings spulen nicht zurück — auch bei geänderten früheren Ergebnissen rechnet die
+        Simulation mit den Ratings des aktuellen Datenstands.
+      </p>
+    </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+//  Preset bar: Bereich × Rezept (§PRESETS §2).
+// ---------------------------------------------------------------------------
+
+const RECIPES = [
+  { id: "forecast", label: "Wie prognostiziert" },
+  { id: "global", label: "Absolut wahrscheinlichstes Ergebnis" },
+  { id: "clubWins", label: "Verein gewinnt alles" },
+  { id: "clubLoses", label: "Verein verliert alles" },
+  { id: "surprise", label: "Nur Überraschungen" },
+  { id: "reroll", label: "Neu auswürfeln" },
+];
+
+const RECIPE_CAPTION = {
+  forecast: "Setzt jedes Spiel auf das wahrscheinlichste Ergebnis innerhalb der wahrscheinlichsten Tendenz.",
+  global: "Setzt auf das absolut wahrscheinlichste Einzelergebnis — oft ein Remis (siehe Methodik, Schritt 2).",
+  clubWins: "Setzt jedes Spiel des Vereins auf sein wahrscheinlichstes Ergebnis innerhalb der Siegregion dieses Vereins.",
+  clubLoses: "Setzt jedes Spiel des Vereins auf sein wahrscheinlichstes Ergebnis innerhalb der Niederlagenregion dieses Vereins.",
+  surprise: "Überraschung = der aus Modellsicht unwahrscheinlichste Ausgang, mit dessen wahrscheinlichstem Ergebnis.",
+  reroll: "Offene Spiele zurück auf simuliert, gespielte werden freigegeben.",
+};
+
+export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides }) {
+  const { season, nameOf } = ctx;
+  const [area, setArea] = useState("open");
+  const [recipe, setRecipe] = useState("forecast");
+  const [club, setClub] = useState(season.clubs[0]?.clubId);
+  const [areaMd, setAreaMd] = useState(matchdays[0]);
+
+  const needsClub = area === "club" || recipe === "clubWins" || recipe === "clubLoses";
+  const needsMd = area === "matchday";
+
+  const apply = () => {
+    const { overrides: next, message } = computePreset({
+      fixtures: season.fixtures, overrides, area, recipe, club, areaMd, duelBy, modelOf,
+    });
+    onApply(next, message);
+  };
+
+  return (
+    <div className="preset-bar">
+      <label>
+        Bereich{" "}
+        <select value={area} onChange={(e) => setArea(e.target.value)}>
+          <option value="open">Alle offenen Spiele</option>
+          <option value="played">Alle gespielten Spiele</option>
+          <option value="matchday">Ein Spieltag</option>
+          <option value="club">Ein Verein</option>
+          <option value="duels">Direkte Duelle</option>
+        </select>
+      </label>
+      {needsMd ? (
+        <label>
+          Spieltag{" "}
+          <select value={areaMd} onChange={(e) => setAreaMd(Number(e.target.value))}>
+            {matchdays.map((m) => <option key={m} value={m}>{m}.</option>)}
+          </select>
+        </label>
+      ) : null}
+      {needsClub ? (
+        <label>
+          Verein{" "}
+          <select value={club} onChange={(e) => setClub(e.target.value)}>
+            {season.clubs.map((c) => <option key={c.clubId} value={c.clubId}>{nameOf(c.clubId)}</option>)}
+          </select>
+        </label>
+      ) : null}
+      <label>
+        Rezept{" "}
+        <select value={recipe} onChange={(e) => setRecipe(e.target.value)}>
+          {RECIPES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
+        </select>
+      </label>
+      <button type="button" onClick={apply}>Anwenden</button>
+      <p className="caption preset-recipe-caption">{RECIPE_CAPTION[recipe]}</p>
+    </div>
+  );
+}
+
 /**
- * Fixed fixtures, shown above the table so a result in force is NEVER off-screen
- * even when its matchday is not the selected one (§1.1).
+ * Overrides in force, shown above the table so nothing that is set or released is
+ * ever off-screen (§1.1), across all matchdays.
  */
-export function FixedSummary({ fixedList, fixed, nameOf, onClearOne, onClearAll }) {
+export function OverrideSummary({ overrideList, nameOf, onClearOne, onClearAll }) {
   return (
     <div className="fixed-summary">
-      <strong>Festgesetzt ({fixedList.length}):</strong>{" "}
-      {fixedList.map((f) => (
-        <span key={f.id} className="fixed-chip">
-          {nameOf(f.homeClubId)} {fixed[f.id].gh}:{fixed[f.id].ga} {nameOf(f.awayClubId)}
-          <button type="button" className="chip-x" onClick={() => onClearOne(f.id)} aria-label="zurücksetzen">×</button>
+      <strong>Im Szenario ({overrideList.length}):</strong>{" "}
+      {overrideList.map(({ fixture, o }) => (
+        <span key={fixture.id} className="fixed-chip">
+          {o.kind === "fixed"
+            ? `${nameOf(fixture.homeClubId)} ${o.gh}:${o.ga} ${nameOf(fixture.awayClubId)}`
+            : `${nameOf(fixture.homeClubId)} – ${nameOf(fixture.awayClubId)} (freigegeben)`}
+          <button type="button" className="chip-x" onClick={() => onClearOne(fixture.id)} aria-label="zurücksetzen">×</button>
         </span>
       ))}
       <button type="button" onClick={onClearAll}>alles zurücksetzen</button>
@@ -223,49 +355,52 @@ export function FixedSummary({ fixedList, fixed, nameOf, onClearOne, onClearAll 
   );
 }
 
-/** §1.6: the process, not the features — simuliert → festgesetzt → rechnen. */
-export function Explainer() {
-  return (
-    <p className="page-intro" style={{ marginBottom: "0.8rem" }}>
-      Jedes offene Spiel ist zunächst <strong>simuliert</strong>: Sein Ergebnis wird in jedem
-      Durchlauf neu ausgewürfelt — mal so, mal so, gemäß den Torraten beider Klubs. Setzt du ein
-      Spiel <strong>fest</strong>, gilt stattdessen in allen Durchläufen genau dieses Ergebnis. Dann
-      <strong>Szenario rechnen</strong>: Dieselbe Simulation läuft erneut, mit demselben Zufall —
-      Veränderungen kommen so wirklich von deinen Ergebnissen und nicht vom Würfeln.
-    </p>
-  );
-}
-
-export function FixtureRow({ fixture, nameOf, prediction, fixed, onFix, onReset }) {
+export function FixtureRow({ fixture, nameOf, prediction, override, duel, onFix, onRelease, onReset }) {
   const [editing, setEditing] = useState(false);
   const modal = prediction ? favouriteOf(prediction).modal : [0, 0];
+  const played = fixture.gh !== undefined;
+  const real = played ? `${fixture.gh}:${fixture.ga}` : null;
+  // What „real" was, kept small whenever a played match is overridden (§1).
+  const insteadOf = played && override ? <span className="instead-of"> statt real {real}</span> : null;
 
   return (
-    <tr>
-      <th scope="row" className="left" style={{ fontWeight: 400 }}>
+    <tr className={duel ? "duel-row" : undefined}>
+      <th
+        scope="row"
+        className={duel ? "left zone-stripe" : "left"}
+        style={{ fontWeight: 400, ...(duel ? { borderLeftColor: duelStripeColor(duel) } : {}) }}
+      >
         {nameOf(fixture.homeClubId)} – {nameOf(fixture.awayClubId)}
+        {duel ? <> <DuelChip targets={duel} /></> : null}
       </th>
       <td className="left">
-        {fixed ? (
-          <span className="fixed-state"><strong>Festgesetzt: {fixed.gh}:{fixed.ga}</strong></span>
-        ) : editing ? (
+        {editing ? (
           <ScorePicker
             home={nameOf(fixture.homeClubId)}
             away={nameOf(fixture.awayClubId)}
-            initial={modal}
+            initial={override?.kind === "fixed" ? [override.gh, override.ga] : modal}
             onConfirm={(gh, ga) => { onFix(gh, ga); setEditing(false); }}
             onCancel={() => setEditing(false)}
           />
+        ) : override?.kind === "fixed" ? (
+          <span className="fixed-state"><strong>Festgesetzt: {override.gh}:{override.ga}</strong>{insteadOf}</span>
+        ) : override?.kind === "released" ? (
+          <span className="fixed-state"><strong>Freigegeben</strong> — wird simuliert{insteadOf}</span>
+        ) : played ? (
+          <span className="real-state">Real <strong>{real}</strong></span>
         ) : (
-          // §1.2: open fixtures show STATE, never a 0:0 input that reads as an
-          // assumption the simulation does not make.
           <FixturePrediction prediction={prediction} />
         )}
       </td>
       <td>
-        {fixed ? (
-          <button type="button" onClick={onReset}>zurück zu simuliert</button>
-        ) : editing ? null : (
+        {editing ? null : override ? (
+          <button type="button" onClick={onReset}>{played ? "zurück zu real" : "zurück zu simuliert"}</button>
+        ) : played ? (
+          <span style={{ display: "inline-flex", gap: "0.4rem" }}>
+            <button type="button" onClick={onRelease}>Freigeben</button>
+            <button type="button" onClick={() => setEditing(true)}>Festsetzen</button>
+          </span>
+        ) : (
           <button type="button" onClick={() => setEditing(true)}>Festsetzen</button>
         )}
       </td>

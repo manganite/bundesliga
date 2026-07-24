@@ -25,6 +25,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 13 | [UEBERSICHT_HEADER_FOOTER_BRIEF.md](UEBERSICHT_HEADER_FOOTER_BRIEF.md) | Präsentation + zwei Amendments (Läufe-Auswahl weg, Was-wäre-wenn fix 2 000): Platzierungszonen-Umbau, entzerrtes „Wichtigstes Spiel" mit §10-Toggle, dreizeiliger Footer mit Version+Build-Stempel, Provenienz nach Methodik. |
 | 14 | [FARBEN_UNTERTITEL_BRIEF.md](FARBEN_UNTERTITEL_BRIEF.md) | Addendum zu 13: entschiedener Header-Untertitel und ein Farbsystem aus Tokens (Ausgang/Vorzeichen/Zonen), Farbe nie alleiniger Bedeutungsträger. |
 | 15 | [ZONEN_LAYOUT_RELEASES_BRIEF.md](ZONEN_LAYOUT_RELEASES_BRIEF.md) | Zonen-Karte `max(Zonenplätze, 3)`, Übersicht als Spaltenlayout, „Wie gerechnet?" als geteilte Komponente und stehende Regel, Version wird Tag + Release, README-Badges. |
+| 16 | [PRESETS_FREIGEBEN_DUELLE_BRIEF.md](PRESETS_FREIGEBEN_DUELLE_BRIEF.md) | Ein neues Primitiv (Freigeben: gespielte Spiele im Was-wäre-wenn), eine Preset-Leiste (Bereich × Rezept, fünf Rezepte, Stapel-Semantik), eine seitenübergreifende Duell-Hervorhebung aus einer Quelle. Genau ein Engine-Helper (`regionModal`); Freigeben ist eine UI-Datenstands-Transformation, kein Engine-Eingriff. |
 
 ## Diese Dateien werden nicht bearbeitet
 

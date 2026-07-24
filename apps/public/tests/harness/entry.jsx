@@ -8,8 +8,9 @@ export { default as Modellguete } from "../../src/pages/Modellguete.jsx";
 export { default as Uebersicht } from "../../src/pages/Uebersicht.jsx";
 export { default as Verlauf } from "../../src/pages/Verlauf.jsx";
 export {
-  default as Szenarien, FixtureRow, FixedSummary, WhatIfResult, ResultTabs, Explainer,
+  default as Szenarien, FixtureRow, OverrideSummary, PresetBar, WhatIfResult, ResultTabs, Explainer,
 } from "../../src/pages/Szenarien.jsx";
+export { default as DuelChip, duelChipLabel } from "../../src/components/DuelChip.jsx";
 export { default as Methodik, SampleResult, StepEinSpiel } from "../../src/pages/Methodik.jsx";
 export { default as DirekteDuelle } from "../../src/components/DirekteDuelle.jsx";
 export { default as Tabs } from "../../src/components/Tabs.jsx";
