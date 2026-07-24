@@ -108,13 +108,14 @@ function Kalibrierung({ scored, quality, expert }) {
   return (
     <Card
       title="Kalibrierung — wenn die App 70 % sagt, tritt es dann auch in 70 % der Fälle ein?"
-      caption={
-        `Erwarteter Kalibrierungsfehler: ${number(cal.ecePercentagePoints, 1)} Prozentpunkte — `
-        + "das ist der mittlere Abstand zwischen gesagt und eingetreten. "
-        + `Basiert auf ${cal.matches} Spielen (${cal.probabilities} Wahrscheinlichkeiten): je Spiel gehen alle drei `
-        + "Ausgänge ein, und die drei sind nicht unabhängig, weil sie sich zu 1 addieren. "
-        + "Balken mit weniger als 10 Wahrscheinlichkeiten sind blass — sie tragen zu wenig, um etwas zu belegen."
-        + (quality?.note ? ` ${quality.note}` : "")
+      caption={`Erwarteter Kalibrierungsfehler: ${number(cal.ecePercentagePoints, 1)} Prozentpunkte — der mittlere Abstand zwischen gesagt und eingetreten.`}
+      method={
+        <p className="caption" style={{ marginTop: "0.5rem" }}>
+          Basiert auf {cal.matches} Spielen ({cal.probabilities} Wahrscheinlichkeiten): je Spiel
+          gehen alle drei Ausgänge ein, und die drei sind nicht unabhängig, weil sie sich zu 1
+          addieren. Balken mit weniger als 10 Wahrscheinlichkeiten sind blass — sie tragen zu wenig,
+          um etwas zu belegen.{quality?.note ? ` ${quality.note}` : ""}
+        </p>
       }
     >
       {sentence ? (
@@ -356,12 +357,13 @@ function RatingAktualitaet({ entries }) {
   return (
     <Card
       title="Rating-Aktualität"
-      caption={
-        "Wie alt war das Rating, auf dem eine Prognose stand — Tage zwischen dem Stichtag des "
-        + "Ratings und dem Anstoß, je Spiel und Klub. Das ist eine Betriebszahl über den Datenstand "
-        + "der Eingaben. Sie sagt nichts darüber, ob oder wie stark ein Rating der wahren Stärke "
-        + "nachläuft; diese Messung findet hier nicht statt."
-        + (f.note ? ` ${f.note}` : "")
+      caption="Wie alt war das Rating, auf dem eine Prognose stand — Tage zwischen dem Stichtag des Ratings und dem Anstoß, je Spiel und Klub."
+      method={
+        <p className="caption" style={{ marginTop: "0.5rem" }}>
+          Das ist eine Betriebszahl über den Datenstand der Eingaben. Sie sagt nichts darüber, ob
+          oder wie stark ein Rating der wahren Stärke nachläuft; diese Messung findet hier nicht
+          statt.{f.note ? ` ${f.note}` : ""}
+        </p>
       }
     >
       <div className="table-scroll">

@@ -1,4 +1,5 @@
 import { Card } from "./ui.jsx";
+import Disclosure from "./Disclosure.jsx";
 import { integer, points } from "../lib/format.js";
 import { fixtureImpact } from "../lib/season.js";
 
@@ -54,8 +55,7 @@ export default function WichtigstesSpiel({
         ))}
       </ul>
 
-      <details className="method-disclosure">
-        <summary>Wie gerechnet?</summary>
+      <Disclosure>
         <p className="caption" style={{ marginTop: "0.5rem" }}>
           Erwartete Verschiebung der Zielverteilung, wenn dieses Spiel gespielt ist — gemessen als
           mittlerer Abstand zwischen der Verteilung vorher und der Verteilung unter den einzelnen
@@ -67,7 +67,7 @@ export default function WichtigstesSpiel({
           dafür, wie stark ein Spiel mit dem Ziel zusammenhängt — und ausdrücklich keine Prognose,
           um wie viele Prozentpunkte sich die Anzeige nach dem Spiel tatsächlich ändert.
         </p>
-      </details>
+      </Disclosure>
     </Card>
   );
 }

@@ -24,6 +24,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 12 | [ZAHLENFORMAT_BRIEF.md](ZAHLENFORMAT_BRIEF.md) | Reine Präsentation: feste Nachkommastelle in `percent()`, ein Vorzeichen-Pfad (`pp`/`points`), `rating()` ohne Tausenderpunkt, Restprogramm-Schwere als Abweichung vom Ligamittel (vor dem 1. Spieltag verborgen). |
 | 13 | [UEBERSICHT_HEADER_FOOTER_BRIEF.md](UEBERSICHT_HEADER_FOOTER_BRIEF.md) | Präsentation + zwei Amendments (Läufe-Auswahl weg, Was-wäre-wenn fix 2 000): Platzierungszonen-Umbau, entzerrtes „Wichtigstes Spiel" mit §10-Toggle, dreizeiliger Footer mit Version+Build-Stempel, Provenienz nach Methodik. |
 | 14 | [FARBEN_UNTERTITEL_BRIEF.md](FARBEN_UNTERTITEL_BRIEF.md) | Addendum zu 13: entschiedener Header-Untertitel und ein Farbsystem aus Tokens (Ausgang/Vorzeichen/Zonen), Farbe nie alleiniger Bedeutungsträger. |
+| 15 | [ZONEN_LAYOUT_RELEASES_BRIEF.md](ZONEN_LAYOUT_RELEASES_BRIEF.md) | Zonen-Karte `max(Zonenplätze, 3)`, Übersicht als Spaltenlayout, „Wie gerechnet?" als geteilte Komponente und stehende Regel, Version wird Tag + Release, README-Badges. |
 
 ## Diese Dateien werden nicht bearbeitet
 

@@ -79,6 +79,13 @@ export default function DirekteDuelle({ duelList, leagueConfig, nameOf }) {
     <Card
       title="Direkte Duelle"
       caption="Verbleibende Spiele, in denen beide Klubs mindestens 10 % Chance auf dasselbe Ziel haben."
+      method={
+        <p className="caption" style={{ marginTop: "0.5rem" }}>
+          Ein Tab je Ziel; innerhalb sortiert nach dem kleineren der beiden Werte — ein Duell ist am
+          heißesten, wenn beide Klubs im Rennen sind. Der Spieltag ist der Zweitschlüssel. Die
+          Schwelle von 10 % ist die θ-Regel aus §4.
+        </p>
+      }
     >
       <Tabs tabs={tabs} defaultId={defaultId} idPrefix="duelle" ariaLabel="Ziele mit direkten Duellen" />
     </Card>

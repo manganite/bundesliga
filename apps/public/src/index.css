@@ -316,23 +316,20 @@ h3 { font-size: 1rem; margin: 0 0 0.2rem; }
   max-width: var(--measure-text);
 }
 
-.card-grid {
-  display: grid;
-  gap: var(--gap);
-  /* minmax(0, …) is load-bearing: a grid track defaults to min-width auto, so a
-     single wide table would stretch the column past the viewport and make the
-     whole page scroll sideways on a phone. */
-  grid-template-columns: minmax(0, 1fr);
-  /* Cards size to their own content — a short card must not be stretched to
-     the height of the tallest one in its row. */
-  align-items: start;
+/* Multi-column layout: cards stack per column with no row-height gaps (a grid
+   aligns every row to its tallest card, leaving holes). Reading order is the
+   source order, column by column. Mobile is a single column. */
+.card-columns {
+  column-gap: var(--gap);
+  columns: 1;
 }
-@media (min-width: 640px) {
-  .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card-columns > * {
+  break-inside: avoid;
+  /* margin-bottom, not gap: multi-column has no row gap. */
+  margin-bottom: var(--gap);
 }
-@media (min-width: 1040px) {
-  .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
+@media (min-width: 640px) { .card-columns { columns: 2; } }
+@media (min-width: 1040px) { .card-columns { columns: 3; } }
 
 .stack { display: grid; gap: var(--gap); grid-template-columns: minmax(0, 1fr); }
 
@@ -640,3 +637,6 @@ td.zone-stripe, th.zone-stripe {
 /* Footer identity line. */
 .footer-identity { font-weight: 500; }
 .footer-build { color: var(--text-muted); font-weight: 400; }
+
+/* The „Wie gerechnet?" disclosure body. */
+.method-body .caption:first-child { margin-top: 0.5rem; }

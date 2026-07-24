@@ -182,10 +182,13 @@ export default function TabelleUndPrognose({ ctx }) {
         <Card
           title="Restprogramm-Schwere"
           when={remaining.length > 0 && scheduleRows.informative}
-          caption={
-            "Mittleres Gegner-Rating der verbleibenden Spiele, als Abweichung vom Durchschnitt: "
-            + "positiv = schwereres Restprogramm. Heim und auswärts getrennt, weil dasselbe "
-            + `Gegner-Rating auswärts um rund ${homeAdv} Elo-Punkte schwerer wiegt.`
+          caption="Mittleres Gegner-Rating der verbleibenden Spiele, als Abweichung vom Durchschnitt: positiv = schwereres Restprogramm."
+          method={
+            <p className="caption" style={{ marginTop: "0.5rem" }}>
+              Heim und auswärts getrennt, weil dasselbe Gegner-Rating auswärts um rund {homeAdv}{" "}
+              Elo-Punkte schwerer wiegt. Der Sortierschlüssel ist das mittlere Gegner-Rating über
+              alle verbleibenden Spiele; die Abweichung ist die Differenz zum Ligamittel dieser Werte.
+            </p>
           }
         >
           <div className="table-scroll">

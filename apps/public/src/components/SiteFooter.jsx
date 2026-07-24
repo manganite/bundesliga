@@ -16,8 +16,11 @@ export default function SiteFooter({ version, buildStamp }) {
   return (
     <footer className="footer">
       <p className="footer-identity">
-        Bundesliga-Simulator · v{version} · Code{" "}
-        <a href={GPL} rel="noreferrer">GPL-3.0</a> ·{" "}
+        Bundesliga-Simulator ·{" "}
+        {/* The version links to its GitHub release; the build stamp stays
+            unlinked beside it (§ZONEN_LAYOUT §4). */}
+        <a href={`${REPO}/releases/tag/v${version}`} rel="noreferrer">v{version}</a> ·{" "}
+        Code <a href={GPL} rel="noreferrer">GPL-3.0</a> ·{" "}
         <a href={REPO} rel="noreferrer">Quellcode</a>
         {buildStamp ? <span className="footer-build"> · Build {buildStamp}</span> : null}
       </p>

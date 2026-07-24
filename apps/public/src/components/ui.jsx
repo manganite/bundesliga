@@ -1,15 +1,20 @@
 import { percent } from "../lib/format.js";
+import Disclosure from "./Disclosure.jsx";
 
 /**
  * A card. Empty cards HIDE (§10) — `when` is the emptiness test, and a card
  * with nothing to say renders nothing at all rather than an empty box.
- */
-/**
+ *
  * @param {boolean} [textOnly]  the card holds only flowing text (no table, chart
  *   or grid), so it shrinks to the text measure — text edge and card edge then
  *   coincide instead of leaving dead right-hand space.
+ * @param {React.ReactNode} [method]  the methodology, shown behind a shared
+ *   „Wie gerechnet?" disclosure. The RULE (§ZONEN_LAYOUT §3): a caption with more
+ *   than two sentences splits into one or two visible sentences (the answer in
+ *   the user's language) plus this — nothing honest is dropped, it moves behind
+ *   the toggle. New cards follow this from birth.
  */
-export function Card({ title, subtitle, caption, when = true, textOnly = false, children }) {
+export function Card({ title, subtitle, caption, when = true, textOnly = false, method = null, children }) {
   if (!when) return null;
   return (
     <section className={textOnly ? "card text-only" : "card"}>
@@ -19,6 +24,7 @@ export function Card({ title, subtitle, caption, when = true, textOnly = false, 
       </header>
       {children}
       {caption ? <p className="caption">{caption}</p> : null}
+      {method ? <Disclosure>{method}</Disclosure> : null}
     </section>
   );
 }

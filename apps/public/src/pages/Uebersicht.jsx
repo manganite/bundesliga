@@ -108,34 +108,13 @@ export default function Uebersicht({ ctx }) {
         etwas Verschiedenes sagen.
       </p>
 
-      <div className="card-grid">
+      <div className="card-columns">
         <Card
           title={titleTarget?.label === "Meister" ? "Titelrennen" : "Aufstiegsrennen"}
           when={Boolean(titleTarget) && ranked(titleTarget.id).some((e) => e.value > 0)}
           caption="Wahrscheinlichkeit, die Saison auf diesem Platz zu beenden."
         >
           <ProbList entries={ranked(titleTarget?.id)} nameOf={nameOf} limit={5} />
-        </Card>
-
-        <Card
-          title="Abstiegskampf"
-          when={Boolean(dropTarget) && ranked(dropTarget.id).some((e) => e.value > 0)}
-          caption={`Direkter Abstieg (${dropTarget?.label}). Der Relegationsplatz wird separat ausgewiesen.`}
-        >
-          <ProbList entries={ranked(dropTarget?.id)} nameOf={nameOf} limit={5} />
-        </Card>
-
-        <Card
-          title="Platzierungszonen"
-          when={zoneCards.some((t) => ranked(t.id).some((e) => e.value > 0))}
-          caption="Platzierungswahrscheinlichkeiten, keine Qualifikationen: wer tatsächlich europäisch spielt, hängt auch von Pokalsiegern ab — Daten, die diese App nicht hat."
-        >
-          {zoneCards.map((t) => (
-            <div key={t.id} className="zone-block">
-              <h4 className="zone-label"><ZoneDot targetId={t.id} /> {t.label}</h4>
-              <ProbList entries={ranked(t.id)} nameOf={nameOf} limit={3} emptyText="Noch offen." />
-            </div>
-          ))}
         </Card>
 
         <WichtigstesSpiel
@@ -147,31 +126,25 @@ export default function Uebersicht({ ctx }) {
         />
 
         <Card
-          title="Überflieger & Enttäuschungen"
-          when={performers.length === 2}
-          caption="Punkte über bzw. unter der Erwartung aus der Prognose vor jedem Spiel, je Spiel gerechnet. Die vollständige Tabelle steht unter „Modellgüte“."
+          title="Abstiegskampf"
+          when={Boolean(dropTarget) && ranked(dropTarget.id).some((e) => e.value > 0)}
+          caption={`Direkter Abstieg (${dropTarget?.label}). Der Relegationsplatz wird separat ausgewiesen.`}
         >
-          <div className="table-scroll"><table className="data">
-            <tbody>
-              {performers.map((r) => (
-                <tr key={r.clubId}>
-                  <th scope="row" className="left">{r.role}</th>
-                  <td className="left">{nameOf(r.clubId)}</td>
-                  <td>{signed(r.perMatch, 2)} je Spiel</td>
-                </tr>
-              ))}
-            </tbody>
-          </table></div>
+          <ProbList entries={ranked(dropTarget?.id)} nameOf={nameOf} limit={5} />
         </Card>
 
         <Card
           title="Spannungsindex"
           when={Boolean(titleTension)}
-          caption={
-            `Effektive Zahl der Bewerber, exp(H). Für ${titleTarget?.label} ist der tiefste mögliche Wert 1,0 — dann ist alles entschieden.`
-            + (dropTension
-              ? ` Beim Abstieg sind es zwei Plätze: dort ist der tiefste mögliche Wert ${number(dropTension.floor, 1)} („${number(dropTension.floor, 1)} = vollständig entschieden“), nicht 1,0.`
-              : "")
+          caption={`Effektive Zahl der Bewerber, exp(H). Für ${titleTarget?.label} ist der tiefste mögliche Wert 1,0 — dann ist alles entschieden.`}
+          method={
+            <p className="caption" style={{ marginTop: "0.5rem" }}>
+              exp(H) ist die Shannon-Entropie als „Zahl gleichwertiger Bewerber" gelesen; die
+              Wahrscheinlichkeiten werden vor der Entropie auf Summe 1 normalisiert.
+              {dropTension
+                ? ` Beim Abstieg sind es zwei Plätze: dort ist der tiefste mögliche Wert ${number(dropTension.floor, 1)} („${number(dropTension.floor, 1)} = vollständig entschieden“), nicht 1,0.`
+                : ""}
+            </p>
           }
         >
           <div className="table-scroll"><table className="data">
@@ -188,6 +161,40 @@ export default function Uebersicht({ ctx }) {
                   <td style={{ color: "var(--text-muted)" }}>Minimum {number(dropTension.floor, 1)}</td>
                 </tr>
               ) : null}
+            </tbody>
+          </table></div>
+        </Card>
+
+        <Card
+          title="Platzierungszonen"
+          when={zoneCards.some((t) => ranked(t.id).some((e) => e.value > 0))}
+          caption="Platzierungswahrscheinlichkeiten, keine Qualifikationen: wer tatsächlich europäisch spielt, hängt auch von Pokalsiegern ab — Daten, die diese App nicht hat."
+        >
+          {zoneCards.map((t) => (
+            <div key={t.id} className="zone-block">
+              <h4 className="zone-label"><ZoneDot targetId={t.id} /> {t.label}</h4>
+              {/* As many candidates as the zone has places, at least three: a
+                  four-place zone showing only three provokes „and who is 4th?".
+                  Derived from the target config, so BL2 follows automatically. */}
+              <ProbList entries={ranked(t.id)} nameOf={nameOf} limit={Math.max(t.places, 3)} emptyText="Noch offen." />
+            </div>
+          ))}
+        </Card>
+
+        <Card
+          title="Überflieger & Enttäuschungen"
+          when={performers.length === 2}
+          caption="Punkte über bzw. unter der Erwartung aus der Prognose vor jedem Spiel, je Spiel gerechnet. Die vollständige Tabelle steht unter „Modellgüte“."
+        >
+          <div className="table-scroll"><table className="data">
+            <tbody>
+              {performers.map((r) => (
+                <tr key={r.clubId}>
+                  <th scope="row" className="left">{r.role}</th>
+                  <td className="left">{nameOf(r.clubId)}</td>
+                  <td>{signed(r.perMatch, 2)} je Spiel</td>
+                </tr>
+              ))}
             </tbody>
           </table></div>
         </Card>

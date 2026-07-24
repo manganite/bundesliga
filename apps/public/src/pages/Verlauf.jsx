@@ -316,16 +316,17 @@ function FrozenVsLive({ timeline, timelineLive, target, nameOf }) {
   return (
     <Card
       title={`${target.label}: eingefroren gegen aktuelle Ratings`}
-      caption={
-        `Stand nach dem ${latest}. Spieltag. Links „${CURVE_LABEL.frozen}“, rechts dieselbe Rechnung `
-        + `mit den Ratings, die damals galten; die dritte Spalte ist die „${CURVE_LABEL.live}“. `
-        + "Das ist eine beschreibende Gegenüberstellung, keine Zerlegung in Ursachen. Zwischen den "
-        + "beiden Rechnungen unterscheidet sich mehr als nur das Rating — die eingefrorene Kurve "
-        + "trägt dieselben Ergebnisse, dieselbe Tabelle und dieselbe verbleibende Unsicherheit, aber "
-        + "der Unterschied lässt sich daraus nicht einer einzelnen Ursache zuschreiben."
-        + (timelineLive.gaps?.length
-          ? ` Für ${timelineLive.gaps.length} Spieltag(e) liegt kein archiviertes Rating vor; sie fehlen hier, statt geschätzt zu werden.`
-          : "")
+      caption={`Stand nach dem ${latest}. Spieltag. Links „${CURVE_LABEL.frozen}“, rechts dieselbe Rechnung mit den Ratings, die damals galten; die dritte Spalte ist die „${CURVE_LABEL.live}“.`}
+      method={
+        <p className="caption" style={{ marginTop: "0.5rem" }}>
+          Das ist eine beschreibende Gegenüberstellung, keine Zerlegung in Ursachen. Zwischen den
+          beiden Rechnungen unterscheidet sich mehr als nur das Rating — die eingefrorene Kurve
+          trägt dieselben Ergebnisse, dieselbe Tabelle und dieselbe verbleibende Unsicherheit, aber
+          der Unterschied lässt sich daraus nicht einer einzelnen Ursache zuschreiben.
+          {timelineLive.gaps?.length
+            ? ` Für ${timelineLive.gaps.length} Spieltag(e) liegt kein archiviertes Rating vor; sie fehlen hier, statt geschätzt zu werden.`
+            : ""}
+        </p>
       }
     >
       <div className="table-scroll">

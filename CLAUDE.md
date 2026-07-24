@@ -89,6 +89,10 @@ spätere schlägt die frühere:**
 14. `FARBEN_UNTERTITEL_BRIEF.md` — Addendum zu 13: der Header-Untertitel ist
     entschieden, und ein Farbsystem als Tokens kommt dazu (Ausgang/Vorzeichen/
     Zonen), Farbe nie alleiniger Bedeutungsträger.
+15. `ZONEN_LAYOUT_RELEASES_BRIEF.md` — Präsentation + Repo-Hygiene: Zonen-Karte
+    zeigt `max(Zonenplätze, 3)`, Übersicht als Spaltenlayout, „Wie gerechnet?"
+    wird geteilte Komponente und **stehende Regel**, und die Version wird Tag +
+    Release (ebenfalls stehende Regel).
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -330,6 +334,24 @@ construction.
   interaktive Element. Die geteilte Vorhersage-Darstellung (`FixturePrediction`)
   steht an genau einer Stelle — What-if-„Simuliert" und Methodik-Schritt 2 zeigen
   dieselbe Komponente, nie eine zweite Kopie.
+- **„Wie gerechnet?" ist eine Regel, nicht ein Einzelfall.** Jede Karten-Caption
+  mit mehr als zwei Sätzen teilt sich in 1–2 sichtbare Sätze (die Antwort in
+  Nutzersprache) plus den Methodikteil hinter der geteilten `Disclosure`
+  (`components/Disclosure.jsx`, via `Card`s `method`-Prop). Nur `Disclosure.jsx`
+  schreibt das rohe `<details>`; ein Quellwächter verbietet ein zweites. Kein
+  per Test verankerter §4/§8-Wortlaut entfällt — er wandert höchstens hinter den
+  Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
+  Karten befolgen die Regel von Geburt an.
+- **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `package.json`
+  wird je Release-Brief gebumpt (aktuell 2.1.0), dann ein Git-Tag `v<version>`
+  und ein GitHub-Release mit 3–5 Zeilen deutschen Notes aus dem zugehörigen
+  Brief. Ältere Stände werden **nicht** rückwirkend getaggt; die Historie beginnt
+  bei 2.1.0. Die Footer-Version verlinkt auf `…/releases/tag/v<version>`.
+- **Die Übersicht ist ein Spaltenlayout (`card-columns`), kein Reihen-Grid.**
+  Multi-Column stapelt Karten lückenlos (ein Grid richtet jede Reihe an der
+  höchsten Karte aus). Die Leseordnung ist die Quellreihenfolge: Titelrennen →
+  Wichtigstes Spiel → Abstiegskampf → Spannungsindex → Platzierungszonen, dann
+  der Rest. Mobile ist eine Spalte in derselben Ordnung.
 - **Keine Läufe-Auswahl mehr; alle Seiten lesen das kanonische 20 000er-Artefakt.**
   Der Header-Selector und die tote `useSimulation`/`simWorker`-Kette sind entfernt
   (Amendment B13 §2.4: real nie genutzt, „eine Simulation je Datenstand" wird ohne
