@@ -45,7 +45,14 @@ export default function LeagueTable({ table, nameOf, zoneTargets, points, indica
               {/* The indicator measures the shift in the EXPECTED-POINTS order, so
                   it sits at the RIGHT edge beside those columns — not next to #,
                   where it would read as a rank change (§SZENARIO_TABELLE_ABSCHLUSS). */}
-              {indicator ? <th scope="col">Δ Platz</th> : null}
+              {indicator ? (
+                <th scope="col">
+                  Δ Platz
+                  <span className="visually-hidden">
+                    {" "}— Verschiebung in der Reihenfolge nach erwarteten Punkten gegenüber der unveränderten Prognose
+                  </span>
+                </th>
+              ) : null}
             </tr>
           </thead>
           <tbody>

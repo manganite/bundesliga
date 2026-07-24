@@ -175,6 +175,8 @@ test("the „Δ Platz“ indicator is the LAST column, after the 10–90 band (�
     table, nameOf, zoneTargets, points: OUTLOOK.points, indicator,
   }));
   assert.match(html, />Δ Platz</, "the indicator header reads „Δ Platz“");
+  // …with a screen-reader expansion of the terse visible label.
+  assert.match(html, /visually-hidden[^>]*>[^<]*Verschiebung in der Reihenfolge nach erwarteten Punkten/);
   // Header + cell both sit at the RIGHT edge, after the band and after erw. Pkt —
   // no longer next to the # column where it would read as a rank change.
   assert.ok(html.indexOf("Δ Platz") > html.indexOf("10–90"), "Δ Platz must be the rightmost header");
