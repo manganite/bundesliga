@@ -178,9 +178,11 @@ test("before a run the scenario table shows the standard prognosis, WITHOUT the 
   }));
   const text = strip(html);
   assert.match(text, /Noch kein Szenario/);
-  // The open games are forecast-filled, so the table is a full season — the
-  // caption says so — not a mostly-empty current standing.
-  assert.match(text, /Offene Spiele sind mit dem wahrscheinlichsten Ergebnis ergänzt/);
+  // The open games are forecast-filled on the left, but the expected-points and
+  // band columns average over all runs where only the open games are re-drawn —
+  // the caption must draw exactly that distinction.
+  assert.match(text, /ergänzen offene Spiele mit ihrem wahrscheinlichsten Einzelergebnis/);
+  assert.match(text, /nur die offenen Spiele neu ausgewürfelt werden/);
   assert.doesNotMatch(html, /shift-cell/);
 });
 

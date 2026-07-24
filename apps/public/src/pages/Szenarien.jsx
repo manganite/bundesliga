@@ -280,7 +280,7 @@ export function ScenarioTable({ ctx, committed, sim, stale }) {
   const ranked = currentTable(completed, leagueConfig);
   const table = orderWithinSharedRanks(ranked, points);
 
-  const fill = "Offene Spiele sind mit dem wahrscheinlichsten Ergebnis ergänzt; erwartete Punkte und Band stammen aus der Simulation über alle Läufe.";
+  const fill = "Die Spalten Sp bis Pkt ergänzen offene Spiele mit ihrem wahrscheinlichsten Einzelergebnis; erw. Pkt und Band mitteln dagegen über alle Läufe, in denen nur die offenen Spiele neu ausgewürfelt werden — gespielte und festgesetzte Ergebnisse liegen in jedem Lauf fest.";
   const caption = hasScenario
     ? `Prognostizierte Schlusstabelle des Szenarios. ${fill} Der Pfeil vergleicht die erwarteten Punkte gegen die unveränderte Prognose, gleiche Zufallszahlen.`
     : `Noch kein Szenario — die Standardprognose als Schlusstabelle. ${fill}`;
