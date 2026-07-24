@@ -93,6 +93,16 @@ test("expectedShiftIndicator is empty when a base is missing (nothing to compare
   assert.equal(expectedShiftIndicator({ A: { expected: 1 } }, null).size, 0);
 });
 
+test("equal expected points break the tie by clubId — no spurious shift from key order", () => {
+  // Two clubs tie on expected points; the two maps carry them in OPPOSITE key
+  // order. Without a deterministic tie-break this would report a ±1 shift.
+  const points = { X: { expected: 40 }, Y: { expected: 40 } };
+  const base = { Y: { expected: 40 }, X: { expected: 40 } };
+  const ind = expectedShiftIndicator(points, base);
+  assert.equal(ind.get("X").posDelta, 0);
+  assert.equal(ind.get("Y").posDelta, 0);
+});
+
 // ---------------------------------------------------------------------------
 //  §2.2 the indicator RENDERED — arrow + place number as text, both in title
 // ---------------------------------------------------------------------------

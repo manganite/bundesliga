@@ -362,8 +362,12 @@ export function scenarioSeason(season, overrides) {
  */
 export function expectedShiftIndicator(points, basePoints) {
   if (!points || !basePoints) return new Map();
+  // Deterministic tie-break by clubId: with equal expected points a bare
+  // `expected` comparator returns 0 and the order would fall back to the input
+  // key order — which could differ between the two maps and invent a spurious
+  // ±1 shift. Sorting equal-expected clubs by id makes both orders agree.
   const order = (p) => Object.keys(p)
-    .sort((a, b) => (p[b].expected - p[a].expected))
+    .sort((a, b) => (p[b].expected - p[a].expected) || (a < b ? -1 : a > b ? 1 : 0))
     .reduce((m, id, i) => m.set(id, i + 1), new Map());
   const rankNow = order(points);
   const rankBase = order(basePoints);
