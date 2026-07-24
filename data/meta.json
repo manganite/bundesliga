@@ -1,10 +1,12 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "dataUpdatedAt": "2026-07-23T18:43:04.101Z",
+  "dataUpdatedAt": "2026-07-24T00:52:21.666Z",
   "dataHash": "1b76c40376fc4626",
   "lastChanges": [
-    "bl1 live timeline (+0 point(s))",
-    "bl2 live timeline (+0 point(s))"
+    "rating snapshot clubelo-2026-07-24-ef7c1620aaabe942",
+    "bl1 current outlook",
+    "bl2 current outlook",
+    "relegation play-off"
   ]
 }
