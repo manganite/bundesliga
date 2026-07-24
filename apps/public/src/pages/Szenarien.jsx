@@ -346,19 +346,35 @@ const RECIPE_CAPTION = {
   reset: "Setzt den Bereich zurück auf simuliert: offene Spiele verlieren ihr festgesetztes Ergebnis, gespielte werden freigegeben.",
 };
 
+const CLUB_ALL = "__all__";
+
 export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides }) {
   const { season, nameOf } = ctx;
+  // Verein is the FIRST menu and an intersecting filter, not an area. „Alle
+  // Vereine" (CLUB_ALL) passes everything; a chosen club scopes the area to its
+  // own matches AND unlocks the „Verein gewinnt/verliert alles" recipes.
+  const [club, setClub] = useState(CLUB_ALL);
   const [area, setArea] = useState("open");
   const [recipe, setRecipe] = useState("forecast");
-  const [club, setClub] = useState(season.clubs[0]?.clubId);
   const [areaMd, setAreaMd] = useState(matchdays[0]);
 
-  const needsClub = area === "club" || recipe === "clubWins" || recipe === "clubLoses";
+  const clubChosen = club !== CLUB_ALL;
   const needsMd = area === "matchday";
+  // „clubWins"/„clubLoses" only make sense for a concrete club (change 1).
+  const recipeOptions = RECIPES.filter((r) => clubChosen || (r.id !== "clubWins" && r.id !== "clubLoses"));
+  const effRecipe = recipeOptions.some((r) => r.id === recipe) ? recipe : "forecast";
+
+  // Switching to „Alle Vereine" while a club-only recipe is selected: fall back,
+  // so the recipe never dangles unavailable.
+  const onClubChange = (v) => {
+    setClub(v);
+    if (v === CLUB_ALL && (recipe === "clubWins" || recipe === "clubLoses")) setRecipe("forecast");
+  };
 
   const apply = () => {
     const { overrides: next, message } = computePreset({
-      fixtures: season.fixtures, overrides, area, recipe, club, areaMd, duelBy, modelOf,
+      fixtures: season.fixtures, overrides, area, recipe: effRecipe,
+      club: clubChosen ? club : null, areaMd, duelBy, modelOf,
     });
     onApply(next, message);
   };
@@ -366,12 +382,18 @@ export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides 
   return (
     <div className="preset-bar">
       <label>
+        Verein{" "}
+        <select value={club} onChange={(e) => onClubChange(e.target.value)}>
+          <option value={CLUB_ALL}>Alle Vereine</option>
+          {season.clubs.map((c) => <option key={c.clubId} value={c.clubId}>{nameOf(c.clubId)}</option>)}
+        </select>
+      </label>
+      <label>
         Bereich{" "}
         <select value={area} onChange={(e) => setArea(e.target.value)}>
           <option value="open">Alle offenen Spiele</option>
           <option value="played">Alle gespielten Spiele</option>
           <option value="matchday">Ein Spieltag</option>
-          <option value="club">Ein Verein</option>
           <option value="duels">Direkte Duelle</option>
         </select>
       </label>
@@ -383,22 +405,14 @@ export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides 
           </select>
         </label>
       ) : null}
-      {needsClub ? (
-        <label>
-          Verein{" "}
-          <select value={club} onChange={(e) => setClub(e.target.value)}>
-            {season.clubs.map((c) => <option key={c.clubId} value={c.clubId}>{nameOf(c.clubId)}</option>)}
-          </select>
-        </label>
-      ) : null}
       <label>
         Rezept{" "}
-        <select value={recipe} onChange={(e) => setRecipe(e.target.value)}>
-          {RECIPES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
+        <select value={effRecipe} onChange={(e) => setRecipe(e.target.value)}>
+          {recipeOptions.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
         </select>
       </label>
       <button type="button" onClick={apply}>Anwenden &amp; rechnen</button>
-      <p className="caption preset-recipe-caption">{RECIPE_CAPTION[recipe]}</p>
+      <p className="caption preset-recipe-caption">{RECIPE_CAPTION[effRecipe]}</p>
     </div>
   );
 }

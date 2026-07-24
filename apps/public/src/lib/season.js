@@ -441,12 +441,17 @@ function poissonFromUniform(lambda, u) {
  * rest of the map is carried through untouched (§2.4). A fixture the recipe has
  * no unambiguous result for is left exactly as it was.
  *
+ * The club is now a SEPARATE first-level filter that INTERSECTS the area (a
+ * fixture must be in the area AND involve the club); it is no longer an area of
+ * its own. When `club` is null the filter passes everything. „clubWins"/
+ * „clubLoses" use the same `club` as their win-region param.
+ *
  * @param {object} p
  * @param {Array}  p.fixtures  the season's fixtures
  * @param {object} p.overrides the current override map (carried forward)
- * @param {string} p.area      open | played | matchday | club | duels
+ * @param {string} p.area      open | played | matchday | duels
  * @param {string} p.recipe    forecast | global | clubWins | clubLoses | surprise | random | reset
- * @param {string} [p.club]    the club param (area „club" and recipe „clubWins"/"clubLoses")
+ * @param {string} [p.club]    the club filter/param, or null for „Alle Vereine"
  * @param {number} [p.areaMd]  the matchday (area „matchday")
  * @param {Map}    [p.duelBy]  fixtureId → duel targets (area „duels")
  * @param {(f)=>object|null} p.modelOf  a fixture's { dist, prediction } or null
@@ -456,16 +461,16 @@ function poissonFromUniform(lambda, u) {
 export function computePreset({ fixtures, overrides, area, recipe, club, areaMd, duelBy, modelOf, rng = Math.random }) {
   const inArea = area === "matchday"
     ? (f) => f.matchday === areaMd
-    : area === "club"
-      ? (f) => f.homeClubId === club || f.awayClubId === club
-      : area === "duels"
-        ? (f) => duelBy?.has(f.id)
-        : (PRESET_AREAS[area] ?? (() => false));
+    : area === "duels"
+      ? (f) => duelBy?.has(f.id)
+      : (PRESET_AREAS[area] ?? (() => false));
+  // The club is an intersecting filter, not an area: null → passes everything.
+  const involvesClub = club ? (f) => f.homeClubId === club || f.awayClubId === club : () => true;
 
   const next = { ...overrides };
   let fixed = 0; let released = 0; let simulated = 0; let unchanged = 0;
   for (const f of fixtures) {
-    if (!inArea(f)) continue;
+    if (!inArea(f) || !involvesClub(f)) continue;
     if (recipe === "reset") {
       // Back to „simulated" for the whole area: open fixtures drop their
       // override, played ones are released. NOT a random result — the name says

@@ -229,6 +229,21 @@ test("the preset button says „Anwenden & rechnen“", () => {
   assert.match(html, /Anwenden &(?:amp;)? rechnen/);
 });
 
+test("Verein is the first menu; for „Alle Vereine“ the club recipes hide and there is no second club menu", () => {
+  const html = renderToStaticMarkup(React.createElement(PresetBar, {
+    ctx: ctxFor(), matchdays: [1, 2], duelBy: new Map(), modelOf: () => null, overrides: {}, onApply: () => {},
+  }));
+  const text = strip(html);
+  assert.match(text, /Alle Vereine/, "the club menu leads with „Alle Vereine\"");
+  // Default is „Alle Vereine" → the club-only recipes are absent (change 1).
+  assert.doesNotMatch(text, /Verein gewinnt alles/);
+  assert.doesNotMatch(text, /Verein verliert alles/);
+  // Bereich no longer carries a „Verein" option, and there is exactly one club
+  // menu (no second conditional one — change 2).
+  assert.doesNotMatch(text, /Ein Verein/);
+  assert.equal((html.match(/Alle Vereine/g) || []).length, 1, "exactly one club menu");
+});
+
 test("„Anwenden & rechnen“ wires the run, and manual edits still do not auto-run", () => {
   const src = fs.readFileSync(path.join(REPO, "apps/public/src/pages/Szenarien.jsx"), "utf8");
   // The preset onApply commits (runs) as well as fills.

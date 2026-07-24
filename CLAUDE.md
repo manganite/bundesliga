@@ -458,6 +458,12 @@ construction.
     simuliert; „Zufallsergebnis" (`random`, Nach-Brief-Ergänzung) würfelt
     **Elo-frei** je Team aus derselben neutralen Poisson (`rng` injizierbar →
     rein/testbar). Ein Spiel ohne eindeutiges Rezeptergebnis bleibt unberührt.
+    **Auswahlstruktur (Nach-Brief-Umbau):** Verein ist ein eigenes **erstes
+    Menü** („Alle Vereine" + Klubs) und ein *intersektierender Filter* über den
+    Bereich — kein Bereich mehr. Der Bereich kennt daher kein „Verein" mehr
+    (open/played/matchday/duels). `clubWins`/`clubLoses` erscheinen nur bei
+    gewähltem Verein und nutzen genau diesen; ein zweites Vereinsmenü entfällt.
+    `computePreset` bekommt `club` als Filter (null = alle).
   - **Duell-Hervorhebung aus einer Quelle.** `duelTargetsByFixture` (über die
     θ-Liste `duels()`) speist sowohl die Was-wäre-wenn-Liste als auch Spieltage;
     `DuelChip` ist die eine geteilte Komponente (höchstes Ziel im Chip, alle im

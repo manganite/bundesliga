@@ -252,15 +252,25 @@ test("presets STACK — a second application overwrites only its own area (§2.4
   for (const id of md2) assert.ok(second[id], `${id} should be set by the second application`);
 });
 
-test("the „club“ area restricts to that club's own matches", () => {
+test("the club filter INTERSECTS the area — only that club's matches within it", () => {
+  // The club is a first-level filter now, not an area. With area „open" and a
+  // chosen club, only that club's OPEN matches are set.
   const club = SEASON.clubs[0].clubId;
   const { overrides } = computePreset({
-    fixtures: SEASON.fixtures, overrides: {}, area: "club", club, recipe: "forecast", modelOf,
+    fixtures: SEASON.fixtures, overrides: {}, area: "open", club, recipe: "forecast", modelOf,
   });
+  assert.ok(Object.keys(overrides).length > 0, "the club has open matches to act on");
   for (const id of Object.keys(overrides)) {
     const f = SEASON.fixtures.find((x) => x.id === id);
     assert.ok(f.homeClubId === club || f.awayClubId === club, `${id} is not a match of ${club}`);
+    assert.equal(f.gh, undefined, `${id} must be an OPEN match (area = open)`);
   }
+});
+
+test("club = null (Alle Vereine) passes every fixture in the area", () => {
+  const withoutClub = computePreset({ fixtures: SEASON.fixtures, overrides: {}, area: "open", club: null, recipe: "forecast", modelOf });
+  const openCount = SEASON.fixtures.filter((f) => f.gh === undefined).length;
+  assert.equal(Object.keys(withoutClub.overrides).length, openCount, "no club filter → the whole area");
 });
 
 test("the „duels“ area restricts to the artefact's θ-duel list — one shared source", () => {
