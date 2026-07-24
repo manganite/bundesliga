@@ -3,7 +3,7 @@ import { Card, Empty } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import { targetList } from "../lib/season.js";
 import { effectiveContenders } from "../../../../packages/engine/src/metrics.mjs";
-import { percent, number } from "../lib/format.js";
+import { percent, number, pp } from "../lib/format.js";
 
 const SERIES_COLOURS = [
   "var(--accent)", "#e0733a", "#0f7b4f", "#8b5cd6", "#c0396b", "#2f8f9d", "#a07b1f", "#4b6a8f",
@@ -344,7 +344,7 @@ function FrozenVsLive({ timeline, timelineLive, target, nameOf }) {
                 <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(r.clubId)}</th>
                 <td>{percent(r.frozen, 1)}</td>
                 <td>{percent(r.live, 1)}</td>
-                <td>{r.gap >= 0 ? "+" : ""}{number(r.gap * 100, 1)} Pp.</td>
+                <td>{pp(r.gap)}</td>
               </tr>
             ))}
           </tbody>

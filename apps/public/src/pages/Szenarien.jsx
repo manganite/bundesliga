@@ -6,7 +6,7 @@ import { useScenario } from "../hooks/useScenario.js";
 import { targetList, currentTable, predictFixture } from "../lib/season.js";
 import { remainingFixtures, toEngineFixtures } from "../lib/data.js";
 import { analyseRequirement, verifyHelpCertificate } from "../../../../packages/engine/src/solver.mjs";
-import { percent, number } from "../lib/format.js";
+import { percent, number, pp } from "../lib/format.js";
 
 // ============================================================================
 //  Szenarien — the ONLY page with ANALYTIC tools (§10, refined by the
@@ -330,9 +330,6 @@ export function WhatIfResult({ sim, targets, nameOf, runs, stale }) {
   );
 }
 
-/** The signed change of a mover, in percentage points, as „−14,8 Pp." */
-const signedPp = (delta) => `${delta >= 0 ? "+" : "−"}${number(Math.abs(delta) * 100, 1)} Pp.`;
-
 /**
  * One tab per target, ARIA tablist/tab/tabpanel. The default tab is the one
  * holding the single largest |Δ| across all targets, so the headline effect is
@@ -349,7 +346,7 @@ export function ResultTabs({ tabs, nameOf }) {
   const tabItems = tabs.map((t) => ({
     id: t.id,
     label: t.label,
-    preview: `(${t.rows.length} · ${signedPp(t.top.delta)})`,
+    preview: `(${t.rows.length} · ${pp(t.top.delta)})`,
     content: (
       <div className="table-scroll">
         <table className="data">
@@ -367,7 +364,7 @@ export function ResultTabs({ tabs, nameOf }) {
                 <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(m.clubId)}</th>
                 <td>{percent(m.baseline, 1)}</td>
                 <td>{percent(m.modified, 1)}</td>
-                <td>{signedPp(m.delta)}</td>
+                <td>{pp(m.delta)}</td>
               </tr>
             ))}
           </tbody>

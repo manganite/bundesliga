@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import { currentTable, scoredMatches, scoredMatchesFrozen, ratingAgeEntries, rulesFrom } from "../lib/season.js";
-import { percent, number, integer, signedInt } from "../lib/format.js";
+import { percent, number, integer, signedInt, signed, pp, points } from "../lib/format.js";
 import { playedFixtures } from "../lib/data.js";
 import {
   qualityByProvenance, ratingFreshness, placementVsExpectation,
@@ -330,7 +330,7 @@ function LiveVsEingefroren({ scored, frozen, timeline }) {
             </tr>
             <tr>
               <th scope="row" className="left">Unterschied</th>
-              <td>{live.value !== null && froz.value !== null ? `${live.value >= froz.value ? "+" : ""}${number((live.value - froz.value) * 100, 1)} Pp.` : "–"}</td>
+              <td>{live.value !== null && froz.value !== null ? pp(live.value - froz.value) : "–"}</td>
               <td>{liveLoss.value !== null && frozLoss.value !== null ? number(liveLoss.value - frozLoss.value, 3) : "–"}</td>
               <td>–</td>
             </tr>
@@ -446,7 +446,7 @@ function LeistungVsErwartung({ ctx, scored }) {
                 <td>{r.actual}</td>
                 <td>{number(r.expected, 1)}</td>
                 <td>{signedInt(Math.round(r.difference))}</td>
-                <td>{r.perMatch >= 0 ? "+" : ""}{number(r.perMatch, 2)}</td>
+                <td>{signed(r.perMatch, 2)}</td>
               </tr>
             ))}
           </tbody>
@@ -492,7 +492,7 @@ function PlatzierungVsErwartung({ season, outlook, leagueConfig, nameOf }) {
                 <td className={r.sharedRank ? "shared-rank" : undefined}>{r.rank}.</td>
                 <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(r.clubId)}</th>
                 <td>{number(r.expectedRank, 1)}</td>
-                <td>{r.difference === null ? "–" : `${r.difference > 0 ? "+" : ""}${number(r.difference, 1)}`}</td>
+                <td>{signed(r.difference, 1)}</td>
               </tr>
             ))}
           </tbody>
@@ -626,7 +626,7 @@ function ProvenanceDetail({ quality }) {
                   <td>{percent(g.accuracy.value, 1)}</td>
                   <td>{number(g.brier.value, 3)}</td>
                   <td>{number(g.logLoss.value, 3)}</td>
-                  <td>{number(g.calibration.ecePercentagePoints, 1)} Pp.</td>
+                  <td>{points(g.calibration.ece)}</td>
                 </tr>
               );
             })}
@@ -636,7 +636,7 @@ function ProvenanceDetail({ quality }) {
               <td>{percent(quality.pooled.accuracy.value, 1)}</td>
               <td>{number(quality.pooled.brier.value, 3)}</td>
               <td>{number(quality.pooled.logLoss.value, 3)}</td>
-              <td>{number(quality.pooled.calibration.ecePercentagePoints, 1)} Pp.</td>
+              <td>{points(quality.pooled.calibration.ece)}</td>
             </tr>
           </tbody>
         </table>

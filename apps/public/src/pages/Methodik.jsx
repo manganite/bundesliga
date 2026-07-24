@@ -4,7 +4,7 @@ import FixturePrediction from "../components/FixturePrediction.jsx";
 import { useScenario } from "../hooks/useScenario.js";
 import { predictFixture } from "../lib/season.js";
 import { remainingFixtures, toEngineFixtures } from "../lib/data.js";
-import { number } from "../lib/format.js";
+import { number, signedInt } from "../lib/format.js";
 
 // ============================================================================
 //  Methodik — „So entsteht die Prognose" (SZENARIEN_UX §2).
@@ -210,7 +210,7 @@ export function SampleResult({ sim, nameOf }) {
                 <td className={r.sharedRank ? "shared-rank" : undefined}>{r.rank}.</td>
                 <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(r.clubId)}</th>
                 <td>{r.played}</td>
-                <td>{r.gd > 0 ? "+" : ""}{r.gd}</td>
+                <td>{signedInt(r.gd)}</td>
                 <td><strong>{r.pts}</strong></td>
               </tr>
             ))}

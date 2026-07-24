@@ -77,6 +77,10 @@ spätere schlägt die frühere:**
     `--measure-text` (~88ch) als einzige Quelle für Fließtextbreite, reine
     Textkarten ziehen sich darauf zusammen; „Direkte Duelle" bekommt Tabs je Ziel
     über dieselbe geteilte `Tabs`-Komponente wie die Szenario-Ergebnistabelle.
+12. `ZAHLENFORMAT_BRIEF.md` — reine Präsentation: `percent()` mit fester
+    Nachkommastelle, ein Vorzeichen-Pfad (`pp`/`points`/`signed`) statt
+    handgerollter, `rating()` ohne Tausenderpunkt, und die Restprogramm-Schwere
+    als Abweichung vom Ligamittel — vor dem 1. Spieltag verborgen.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -335,6 +339,19 @@ construction.
   verbietet ein zweites `role="tablist"` anderswo. Vorwahl je Ort ist der
   interessanteste Tab (größter Effekt bzw. brisantestes Duell), damit die
   Schlagzeile ohne Klick sichtbar ist.
+- **Prozentpunkte und Vorzeichen kommen aus format.js, nirgends handgerollt.**
+  `pp(delta)` ist der eine signierte Pp-Pfad (echtes „−"), `points(value)` der
+  unsignierte für Beträge (ECE, Verschiebung), `signed`/`signedInt` für Zahlen,
+  `rating()` für Elo **ohne** Tausenderpunkt. Ein Quellscan verbietet das Literal
+  „ Pp." und `? "+" :`-Vorzeichenpräfixe außerhalb format.js. `percent()` zeigt
+  eine feste Nachkommastelle; die Randwert-Politik (0 %/100 % nur bei echt 0/1,
+  sonst <0,1 %/>99,9 %) bleibt.
+- **Restprogramm-Schwere ist Präsentation über den Engine-Mitteln.** Primär die
+  Abweichung vom Ligamittel der Gegner (10–30-Punkte-Unterschiede um ~1670 sonst
+  unlesbar), nach Schwere sortiert. **Vor dem 1. Spieltag verborgen**: solange
+  jeder Klub Heim- und Auswärts-Restmenge gleich hat, trägt die Karte keine
+  Spielplaninformation (nur Selbstausschluss-Arithmetik) — sie erscheint mit dem
+  ersten gespielten Spiel.
 - **Fließtextbreite kommt aus genau einem Token, `--measure-text` (~88ch).** Kein
   Fließtext-Element trägt eine eigene `max-width`; ein Quellscan erzwingt das.
   Reine Textkarten (`<Card textOnly>`) ziehen sich aufs Maß plus Padding zusammen,

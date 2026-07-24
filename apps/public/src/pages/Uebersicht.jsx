@@ -3,7 +3,7 @@ import { Card, ProbList, Empty } from "../components/ui.jsx";
 import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
 import { currentTable, targetList, tension, clinched, scoredMatches, rulesFrom } from "../lib/season.js";
 import { performanceVsExpectation } from "../../../../packages/engine/src/metrics.mjs";
-import { percent, number, weekdayDate } from "../lib/format.js";
+import { percent, number, weekdayDate, signed } from "../lib/format.js";
 import { playedFixtures } from "../lib/data.js";
 
 /**
@@ -160,7 +160,7 @@ export default function Uebersicht({ ctx }) {
                 <tr key={r.clubId}>
                   <th scope="row" className="left">{r.role}</th>
                   <td className="left">{nameOf(r.clubId)}</td>
-                  <td>{r.perMatch >= 0 ? "+" : ""}{number(r.perMatch, 2)} je Spiel</td>
+                  <td>{signed(r.perMatch, 2)} je Spiel</td>
                 </tr>
               ))}
             </tbody>

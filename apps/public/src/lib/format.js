@@ -1,9 +1,14 @@
 // German formatting helpers. The UI is German; code and comments are English.
 
-const pctFmt = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
+// One fixed decimal for percentages, so a percentage column does not flicker
+// between „5 %" and „13,4 %". digits === 0 callers use pct0Fmt instead.
+const pctFmt = new Intl.NumberFormat("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const pct0Fmt = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 });
 const numFmt = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
 const intFmt = new Intl.NumberFormat("de-DE");
+// Elo ratings are identifiers, not quantities — no thousands grouping („1678",
+// never „1.678", which reads as 1.678).
+const ratingFmt = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0, useGrouping: false });
 
 /**
  * A probability as a percentage.
@@ -34,6 +39,24 @@ export const signed = (v, digits = 1) => (v == null || Number.isNaN(v)
   : `${v > 0 ? "+" : v < 0 ? "−" : ""}${number(Math.abs(v), digits)}`);
 
 export const signedInt = (v) => (v == null ? "–" : `${v > 0 ? "+" : v < 0 ? "−" : ""}${intFmt.format(Math.abs(v))}`);
+
+/** An Elo rating: a whole number without thousands grouping. */
+export const rating = (v) => (v == null || Number.isNaN(v) ? "–" : ratingFmt.format(v));
+
+/**
+ * A signed change in percentage POINTS, e.g. „−14,8 Pp." — the ONE path for
+ * percentage-point displays, so the minus sign is the real „−" everywhere and no
+ * page hand-rolls its own. `delta` is a fraction (0.148), not already ×100.
+ */
+export const pp = (delta, digits = 1) => (delta == null || Number.isNaN(delta) ? "–" : `${signed(delta * 100, digits)} Pp.`);
+
+/**
+ * An UNSIGNED magnitude in percentage points, e.g. „2,6 Pp." — for quantities
+ * that are distances or errors (calibration ECE, the fixture-impact shift), where
+ * a „+" would be wrong. `value` is a fraction. The counterpart to `pp` so that
+ * the „ Pp." suffix lives in exactly one file.
+ */
+export const points = (value, digits = 1) => (value == null || Number.isNaN(value) ? "–" : `${number(value * 100, digits)} Pp.`);
 
 export function dateTime(iso) {
   if (!iso) return "–";

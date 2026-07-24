@@ -4,7 +4,7 @@ import Chart from "../components/Chart.jsx";
 import DirekteDuelle from "../components/DirekteDuelle.jsx";
 import { currentTable, orderWithinSharedRanks, scheduleStrength, duels, rulesFrom } from "../lib/season.js";
 import Relegation from "../components/Relegation.jsx";
-import { percent, number, integer, signedInt } from "../lib/format.js";
+import { percent, number, integer, signedInt, rating } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
 import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
 
@@ -44,6 +44,26 @@ export default function TabelleUndPrognose({ ctx }) {
     () => (outlook?.ratings ? scheduleStrength(season, outlook.ratings) : new Map()),
     [season, outlook],
   );
+
+  // Restprogramm-Schwere as PRESENTATION derived from the engine's means:
+  //   - the deviation from the league mean opponent rating, so 10–30-point gaps
+  //     around ~1670 become legible (+12 = a harder run than average);
+  //   - sorted by that severity, not alphabetically;
+  //   - and HIDDEN until it carries schedule information. Before the first match
+  //     every club still has its full double round, so home and away remaining
+  //     counts are equal for all — the only differences left are the arithmetic
+  //     of self-exclusion, not the fixture list. The card appears with the first
+  //     played match (§7: nothing to say → say nothing).
+  const scheduleRows = useMemo(() => {
+    const rows = [...strength.entries()].map(([clubId, s]) => ({ clubId, ...s }));
+    if (!rows.length) return { rows: [], informative: false };
+    const informative = rows.some((r) => r.counts.home !== r.counts.away);
+    const leagueMean = rows.reduce((acc, r) => acc + (r.overall ?? 0), 0) / rows.length;
+    const withDeviation = rows
+      .map((r) => ({ ...r, deviation: r.overall != null ? r.overall - leagueMean : null }))
+      .sort((a, b) => (b.overall ?? 0) - (a.overall ?? 0));
+    return { rows: withDeviation, informative };
+  }, [strength]);
 
   const duelList = useMemo(
     () => duels(season, outlook, leagueConfig),
@@ -135,29 +155,37 @@ export default function TabelleUndPrognose({ ctx }) {
 
         <Card
           title="Restprogramm-Schwere"
-          when={remaining.length > 0 && strength.size > 0}
-          caption="Mittleres Gegner-Rating der verbleibenden Spiele, getrennt für Heim und Auswärts — unter einem festen Heimvorteil sind die beiden nicht austauschbar."
+          when={remaining.length > 0 && scheduleRows.informative}
+          caption={
+            "Mittleres Gegner-Rating der verbleibenden Spiele, als Abweichung vom Durchschnitt: "
+            + "positiv = schwereres Restprogramm. Heim und auswärts getrennt, weil dasselbe "
+            + "Gegner-Rating auswärts schwerer wiegt."
+          }
         >
-          <table className="data">
-            <thead>
-              <tr>
-                <th scope="col" className="left">Klub</th>
-                <th scope="col">Heim</th>
-                <th scope="col">Auswärts</th>
-                <th scope="col">Spiele</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[...strength.entries()].map(([clubId, s]) => (
-                <tr key={clubId}>
-                  <th scope="row" className="left" style={{ fontWeight: 400 }}>{nameOf(clubId)}</th>
-                  <td>{number(s.home, 0)}</td>
-                  <td>{number(s.away, 0)}</td>
-                  <td>{s.counts.total}</td>
+          <div className="table-scroll">
+            <table className="data">
+              <thead>
+                <tr>
+                  <th scope="col" className="left">Klub</th>
+                  <th scope="col">Abweichung</th>
+                  <th scope="col">Heim</th>
+                  <th scope="col">Auswärts</th>
+                  <th scope="col">Spiele</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {scheduleRows.rows.map((r) => (
+                  <tr key={r.clubId}>
+                    <th scope="row" className="left" style={{ fontWeight: 400 }}>{nameOf(r.clubId)}</th>
+                    <td>{signedInt(r.deviation == null ? null : Math.round(r.deviation))}</td>
+                    <td>{rating(r.home)}</td>
+                    <td>{rating(r.away)}</td>
+                    <td>{r.counts.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </Card>
 
         {remaining.length === 0 ? (

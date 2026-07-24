@@ -1,5 +1,5 @@
 import { Card } from "./ui.jsx";
-import { percent, number, integer } from "../lib/format.js";
+import { percent, number, integer, points } from "../lib/format.js";
 import { fixtureImpact } from "../lib/season.js";
 
 // ============================================================================
@@ -69,7 +69,7 @@ export default function WichtigstesSpiel({
                 </th>
                 {matchday === null ? <td>{r.matchday}.</td> : null}
                 <td className="left">{r.leading.label}</td>
-                <td>{number(r.leading.value * 100, 1)} Pp.</td>
+                <td>{points(r.leading.value)}</td>
                 <td>
                   {percent(r.outcomeProbabilities.homeWin, 0)} / {percent(r.outcomeProbabilities.draw, 0)}
                   {" / "}{percent(r.outcomeProbabilities.awayWin, 0)}
