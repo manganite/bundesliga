@@ -444,7 +444,9 @@ construction.
     Overrides unverändert durch; die Meldungszeile zählt festgesetzt/freigegeben/
     zurückgesetzt/unverändert. „Nur Überraschungen" = Modalergebnis der
     **unwahrscheinlichsten** Tendenz (kann das Remis sein), „Verein gewinnt alles"
-    = Modalergebnis in der Siegregion *dieses* Klubs. Ein Spiel ohne eindeutiges
+    = Modalergebnis in der Siegregion *dieses* Klubs, „Verein verliert alles"
+    (Nach-Brief-Ergänzung) spiegelbildlich die Niederlagenregion — beide über
+    dieselbe `clubWins`/`clubLoses`-Verzweigung. Ein Spiel ohne eindeutiges
     Rezeptergebnis bleibt unberührt.
   - **Duell-Hervorhebung aus einer Quelle.** `duelTargetsByFixture` (über die
     θ-Liste `duels()`) speist sowohl die Was-wäre-wenn-Liste als auch Spieltage;

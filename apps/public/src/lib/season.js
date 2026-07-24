@@ -291,19 +291,21 @@ function leastLikelyTendency(masses) {
  * no unambiguous result for it (then the fixture is left untouched). The recipe
  * definitions are the contract (§PRESETS §2.2); the captions name them.
  *
- * @param {string} recipe  forecast | global | clubWins | surprise
+ * @param {string} recipe  forecast | global | clubWins | clubLoses | surprise
  * @param {object} model   from fixtureModel
  * @param {object} fixture { homeClubId, awayClubId }
- * @param {string} [clubId] required for „clubWins"
+ * @param {string} [clubId] required for „clubWins" / „clubLoses"
  */
 export function recipeScoreline(recipe, model, fixture, clubId = null) {
   const { dist, prediction } = model;
   if (recipe === "forecast") return prediction.favourite.scoreline;
   if (recipe === "global") return prediction.mostLikely.score;
   if (recipe === "surprise") return regionModal(dist, leastLikelyTendency(prediction.tendency)).scoreline;
-  if (recipe === "clubWins") {
+  if (recipe === "clubWins" || recipe === "clubLoses") {
     if (clubId !== fixture.homeClubId && clubId !== fixture.awayClubId) return null; // not this club's match
-    const region = clubId === fixture.homeClubId ? "homeWin" : "awayWin";
+    const isHome = clubId === fixture.homeClubId;
+    // „gewinnt alles" → this club's win region; „verliert alles" → the opposite.
+    const region = (recipe === "clubWins") === isHome ? "homeWin" : "awayWin";
     return regionModal(dist, region).scoreline;
   }
   return null;
@@ -346,7 +348,7 @@ const PRESET_AREAS = {
  * @param {Array}  p.fixtures  the season's fixtures
  * @param {object} p.overrides the current override map (carried forward)
  * @param {string} p.area      open | played | matchday | club | duels
- * @param {string} p.recipe    forecast | global | clubWins | surprise | reroll
+ * @param {string} p.recipe    forecast | global | clubWins | clubLoses | surprise | reroll
  * @param {string} [p.club]    the club param (area „club" and recipe „clubWins")
  * @param {number} [p.areaMd]  the matchday (area „matchday")
  * @param {Map}    [p.duelBy]  fixtureId → duel targets (area „duels")

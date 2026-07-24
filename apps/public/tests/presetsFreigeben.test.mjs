@@ -73,6 +73,20 @@ test("„clubWins“ sets the modal within THAT club's win region, and only for 
   assert.equal(recipeScoreline("clubWins", model, fixture, "OTHER"), null);
 });
 
+test("„clubLoses“ is the mirror of „clubWins“ — the modal within THAT club's LOSS region", () => {
+  const model = modelFromElos(1650, 1650);
+  const fixture = { homeClubId: "H", awayClubId: "A" };
+  // The home club losing = an away win; the away club losing = a home win.
+  const homeLoses = recipeScoreline("clubLoses", model, fixture, "H");
+  const awayLoses = recipeScoreline("clubLoses", model, fixture, "A");
+  assert.ok(homeLoses[0] < homeLoses[1], "home club loses → away goals greater");
+  assert.ok(awayLoses[0] > awayLoses[1], "away club loses → home goals greater");
+  // It is exactly the opposite region of clubWins for the same club.
+  assert.deepEqual(homeLoses, recipeScoreline("clubWins", model, fixture, "A"));
+  assert.deepEqual(awayLoses, recipeScoreline("clubWins", model, fixture, "H"));
+  assert.equal(recipeScoreline("clubLoses", model, fixture, "OTHER"), null);
+});
+
 test("„surprise“ sets the modal within the LEAST likely tendency — even when that is the draw", () => {
   // Two equally strong sides: the draw is the least likely tendency (home and
   // away each carry more mass), so the surprise is a draw scoreline.

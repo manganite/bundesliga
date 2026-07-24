@@ -263,6 +263,7 @@ const RECIPES = [
   { id: "forecast", label: "Wie prognostiziert" },
   { id: "global", label: "Absolut wahrscheinlichstes Ergebnis" },
   { id: "clubWins", label: "Verein gewinnt alles" },
+  { id: "clubLoses", label: "Verein verliert alles" },
   { id: "surprise", label: "Nur Überraschungen" },
   { id: "reroll", label: "Neu auswürfeln" },
 ];
@@ -271,6 +272,7 @@ const RECIPE_CAPTION = {
   forecast: "Setzt jedes Spiel auf das wahrscheinlichste Ergebnis innerhalb der wahrscheinlichsten Tendenz.",
   global: "Setzt auf das absolut wahrscheinlichste Einzelergebnis — oft ein Remis (siehe Methodik, Schritt 2).",
   clubWins: "Setzt jedes Spiel des Vereins auf sein wahrscheinlichstes Ergebnis innerhalb der Siegregion dieses Vereins.",
+  clubLoses: "Setzt jedes Spiel des Vereins auf sein wahrscheinlichstes Ergebnis innerhalb der Niederlagenregion dieses Vereins.",
   surprise: "Überraschung = der aus Modellsicht unwahrscheinlichste Ausgang, mit dessen wahrscheinlichstem Ergebnis.",
   reroll: "Offene Spiele zurück auf simuliert, gespielte werden freigegeben.",
 };
@@ -282,7 +284,7 @@ export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides 
   const [club, setClub] = useState(season.clubs[0]?.clubId);
   const [areaMd, setAreaMd] = useState(matchdays[0]);
 
-  const needsClub = area === "club" || recipe === "clubWins";
+  const needsClub = area === "club" || recipe === "clubWins" || recipe === "clubLoses";
   const needsMd = area === "matchday";
 
   const apply = () => {
