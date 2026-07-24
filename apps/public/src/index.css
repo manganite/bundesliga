@@ -29,6 +29,10 @@
   --radius: 10px;
   --gap: 1rem;
   --max-width: 74rem;
+  /* The one measure for readable body text — the upper end of comfortable
+     (~88 characters). Every flowing-text element consumes this; none carries its
+     own max-width (a source scan enforces that). */
+  --measure-text: 88ch;
 
   color-scheme: light dark;
 }
@@ -237,7 +241,7 @@ h3 { font-size: 1rem; margin: 0 0 0.2rem; }
   color: var(--text-muted);
   font-size: 0.92rem;
   margin: 0 0 1.2rem;
-  max-width: 62ch;
+  max-width: var(--measure-text);
 }
 
 /* --- cards ---------------------------------------------------------------- */
@@ -251,6 +255,10 @@ h3 { font-size: 1rem; margin: 0 0 0.2rem; }
   box-shadow: var(--shadow);
 }
 .card > header { margin-bottom: 0.7rem; }
+/* A pure-text card shrinks so the text edge and the card edge coincide — no dead
+   right-hand space. Card padding is 1rem each side, hence the +2rem. Cards with a
+   table, chart or the Beispielsaison grid keep the full width and never get this. */
+.card.text-only { max-width: calc(var(--measure-text) + 2rem); }
 /* A second line inside a column header — used to weight an opponent column by
    how likely that opponent is to reach the play-off at all. */
 .th-sub {
@@ -264,7 +272,7 @@ h3 { font-size: 1rem; margin: 0 0 0.2rem; }
   margin: 0.7rem 0 0;
   font-size: 0.85rem;
   color: var(--text-muted);
-  max-width: 62ch;
+  max-width: var(--measure-text);
 }
 
 .card-grid {
@@ -396,7 +404,7 @@ figure.chart figcaption {
   margin-top: 0.6rem;
   font-size: 0.85rem;
   color: var(--text-muted);
-  max-width: 62ch;
+  max-width: var(--measure-text);
 }
 .axis-label { font-size: 11px; fill: var(--text-muted); }
 .grid-line { stroke: var(--border); stroke-width: 1; }
@@ -497,8 +505,8 @@ button.primary:disabled { opacity: 0.45; cursor: default; }
 .whatif-result.is-stale { opacity: 0.55; }
 .whatif-result h3 { margin: 0 0 0.4rem; }
 
-/* Methodik narrative steps read as prose, wider than a caption. */
-.methodik-step { margin: 0 0 0.6rem; max-width: 66ch; }
+/* Methodik narrative steps read as prose. Same measure as every other body text. */
+.methodik-step { margin: 0 0 0.6rem; max-width: var(--measure-text); }
 
 /* A real (played) result stands apart from a drawn one in the Beispielsaison. */
 .real-score { font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
@@ -527,3 +535,6 @@ button.primary:disabled { opacity: 0.45; cursor: default; }
 }
 .result-tab .tab-preview { font-weight: 400; font-variant-numeric: tabular-nums; }
 .result-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* „Direkte Duelle" value: two club-tied percentages, compact. */
+.duel-value { font-variant-numeric: tabular-nums; }

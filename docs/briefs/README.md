@@ -20,6 +20,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 8 | [SZENARIEN_UX_BRIEF.md](SZENARIEN_UX_BRIEF.md) | Reine Präsentation plus eine Spezifikationsänderung: §10 verfeinert (analytisch vs. illustrativ). What-if-Politur (Spieltagsgruppierung, Zustände, expliziter Rechnen-Button) und die neue Methodik-Seite „So entsteht die Prognose" mit der Beispielsaison als Exponat. |
 | 9 | [SZENARIEN_TABS_TEXTE_BRIEF.md](SZENARIEN_TABS_TEXTE_BRIEF.md) | Ergebnistabelle in Tabs je Ziel; wörtliche Textrevisionen; eine §8-Inhaltskorrektur in Methodik Schritt 1 (falscher Kausalsatz zu RATING_SIGMA). Reine Präsentation. |
 | 10 | [SCORELINE_KONVENTION_BRIEF.md](SCORELINE_KONVENTION_BRIEF.md) | Eine reine Anzeige-Hilfsfunktion `favouriteScoreline`: das gezeigte „wahrscheinlichste Ergebnis" ist das Modalergebnis innerhalb der wahrscheinlichsten Tendenz. Sonst keine Verhaltensänderung. |
+| 11 | [TEXTMASS_DUELLE_BRIEF.md](TEXTMASS_DUELLE_BRIEF.md) | Reine Präsentation: Textmaß-Token `--measure-text` als einzige Quelle für Fließtextbreite; „Direkte Duelle" mit Tabs je Ziel über die geteilte `Tabs`-Komponente. |
 
 ## Diese Dateien werden nicht bearbeitet
 

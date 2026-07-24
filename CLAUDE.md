@@ -73,6 +73,10 @@ spätere schlägt die frühere:**
     **genau eine** reine Anzeige-Hilfsfunktion auf: `favouriteScoreline`. Das
     angezeigte „wahrscheinlichste Ergebnis" ist ab jetzt das Modalergebnis
     *innerhalb der wahrscheinlichsten Tendenz*, nicht das globale Modalergebnis.
+11. `TEXTMASS_DUELLE_BRIEF.md` — reine Präsentation: ein Textmaß-Token
+    `--measure-text` (~88ch) als einzige Quelle für Fließtextbreite, reine
+    Textkarten ziehen sich darauf zusammen; „Direkte Duelle" bekommt Tabs je Ziel
+    über dieselbe geteilte `Tabs`-Komponente wie die Szenario-Ergebnistabelle.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -325,10 +329,17 @@ construction.
   fährt Testdateien parallel; ein gemeinsames Ausgabeverzeichnis lässt zwei Vite-
   Builds einander mitten im Schreiben überschreiben — ein Wettlauf, der als
   sporadischer Fehlschlag auftaucht, sobald genug Dateien die Harness nutzen.
-- **Die Ergebnistabelle des Was-wäre-wenn ist in Tabs je Ziel gegliedert.** Nur
-  Ziele mit einer Änderung über dem Rauschen bekommen einen Tab; die Vorwahl fällt
-  auf das Ziel mit dem größten |Δ|, damit der Haupteffekt ohne Klick sichtbar ist.
-  ARIA-Rollen `tablist`/`tab`/`tabpanel`.
+- **Tabs sind eine geteilte Komponente (`components/Tabs.jsx`), nicht zwei.** Die
+  Was-wäre-wenn-Ergebnistabelle und „Direkte Duelle" konsumieren sie beide; nur
+  `Tabs.jsx` schreibt die Rollen `tablist`/`tab`/`tabpanel`. Ein Quellwächter
+  verbietet ein zweites `role="tablist"` anderswo. Vorwahl je Ort ist der
+  interessanteste Tab (größter Effekt bzw. brisantestes Duell), damit die
+  Schlagzeile ohne Klick sichtbar ist.
+- **Fließtextbreite kommt aus genau einem Token, `--measure-text` (~88ch).** Kein
+  Fließtext-Element trägt eine eigene `max-width`; ein Quellscan erzwingt das.
+  Reine Textkarten (`<Card textOnly>`) ziehen sich aufs Maß plus Padding zusammen,
+  damit Text- und Kartenrand zusammenfallen — Karten mit Tabelle, Chart oder dem
+  Beispielsaison-Raster behalten die volle Breite.
 - **Kein Satz erklärt einen verlorenen Favoritensieg mit `RATING_SIGMA`.** Die
   Streuung bildet Unsicherheit über die *Stärke* ab, nicht den Spielzufall (§3
   wörtlich). Warum ein Favorit ein Spiel verliert, gehört zur Torziehung

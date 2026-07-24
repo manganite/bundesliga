@@ -11,4 +11,7 @@ export {
   default as Szenarien, FixtureRow, FixedSummary, WhatIfResult, ResultTabs, Explainer,
 } from "../../src/pages/Szenarien.jsx";
 export { default as Methodik, SampleResult, StepEinSpiel } from "../../src/pages/Methodik.jsx";
+export { default as DirekteDuelle } from "../../src/components/DirekteDuelle.jsx";
+export { default as Tabs } from "../../src/components/Tabs.jsx";
+export { Card } from "../../src/components/ui.jsx";
 export { default as App } from "../../src/App.jsx";

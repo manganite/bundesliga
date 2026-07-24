@@ -132,6 +132,7 @@ mit, weil die Trainingsdaten committet sind.
 | Szenarien-UX-Politur + Methodik-Seite (§10 verfeinert) | ✅ mit Tests |
 | Ergebnis-Tabs je Ziel + Textrevisionen | ✅ mit Tests |
 | Wahrscheinlichstes Ergebnis: bedingt auf die Tendenz | ✅ mit Tests |
+| Textmaß-Token + Duell-Tabs (geteilte Tab-Komponente) | ✅ mit Tests |
 | V2b — Historie | ⏳ zurückgestellt (Auslösebedingung im Brief) |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):

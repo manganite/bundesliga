@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
+import DirekteDuelle from "../components/DirekteDuelle.jsx";
 import { currentTable, orderWithinSharedRanks, scheduleStrength, duels, rulesFrom } from "../lib/season.js";
 import Relegation from "../components/Relegation.jsx";
 import { percent, number, integer, signedInt } from "../lib/format.js";
@@ -130,25 +131,7 @@ export default function TabelleUndPrognose({ ctx }) {
 
         <Relegation playoff={playoff} league={league} nameOf={nameOf} />
 
-        <Card
-          title="Direkte Duelle"
-          when={duelList.length > 0}
-          caption="Verbleibende Spiele, in denen beide Klubs mindestens 10 % Chance auf dasselbe Ziel haben."
-        >
-          <table className="data">
-            <tbody>
-              {duelList.map((d) => (
-                <tr key={`${d.fixtureId}-${d.target}`}>
-                  <th scope="row" className="left" style={{ fontWeight: 400 }}>
-                    {nameOf(d.home)} – {nameOf(d.away)}
-                  </th>
-                  <td className="left">{d.targetLabel}</td>
-                  <td>{percent(d.pHome)} / {percent(d.pAway)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Card>
+        <DirekteDuelle duelList={duelList} leagueConfig={leagueConfig} nameOf={nameOf} />
 
         <Card
           title="Restprogramm-Schwere"

@@ -4,10 +4,15 @@ import { percent } from "../lib/format.js";
  * A card. Empty cards HIDE (§10) — `when` is the emptiness test, and a card
  * with nothing to say renders nothing at all rather than an empty box.
  */
-export function Card({ title, subtitle, caption, when = true, children }) {
+/**
+ * @param {boolean} [textOnly]  the card holds only flowing text (no table, chart
+ *   or grid), so it shrinks to the text measure — text edge and card edge then
+ *   coincide instead of leaving dead right-hand space.
+ */
+export function Card({ title, subtitle, caption, when = true, textOnly = false, children }) {
   if (!when) return null;
   return (
-    <section className="card">
+    <section className={textOnly ? "card text-only" : "card"}>
       <header>
         <h3>{title}</h3>
         {subtitle ? <p className="page-intro" style={{ margin: 0 }}>{subtitle}</p> : null}

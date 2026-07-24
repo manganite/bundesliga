@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import FixturePrediction, { favouriteOf } from "../components/FixturePrediction.jsx";
+import Tabs from "../components/Tabs.jsx";
 import { useScenario } from "../hooks/useScenario.js";
 import { targetList, currentTable, predictFixture } from "../lib/season.js";
 import { remainingFixtures, toEngineFixtures } from "../lib/data.js";
@@ -339,38 +340,18 @@ const signedPp = (delta) => `${delta >= 0 ? "+" : "−"}${number(Math.abs(delta)
  * change, so the tab bar already tells the story.
  */
 export function ResultTabs({ tabs, nameOf }) {
+  // Default: the target holding the single largest |Δ| — the headline effect
+  // without a click. Consumes the shared Tabs component (§TEXTMASS_DUELLE).
   const defaultId = tabs
     .slice()
     .sort((a, b) => Math.abs(b.top.delta) - Math.abs(a.top.delta))[0].id;
-  const [selected, setSelected] = useState(null);
-  const activeId = tabs.some((t) => t.id === selected) ? selected : defaultId;
-  const active = tabs.find((t) => t.id === activeId);
 
-  return (
-    <>
-      <div role="tablist" aria-label="Ziele mit Veränderung" className="result-tabs">
-        {tabs.map((t) => (
-          <button
-            key={t.id}
-            type="button"
-            role="tab"
-            id={`whatif-tab-${t.id}`}
-            aria-selected={t.id === activeId}
-            aria-controls={`whatif-panel-${t.id}`}
-            tabIndex={t.id === activeId ? 0 : -1}
-            className={t.id === activeId ? "result-tab is-active" : "result-tab"}
-            onClick={() => setSelected(t.id)}
-          >
-            {t.label} <span className="tab-preview">({t.rows.length} · {signedPp(t.top.delta)})</span>
-          </button>
-        ))}
-      </div>
-      <div
-        role="tabpanel"
-        id={`whatif-panel-${active.id}`}
-        aria-labelledby={`whatif-tab-${active.id}`}
-        className="table-scroll"
-      >
+  const tabItems = tabs.map((t) => ({
+    id: t.id,
+    label: t.label,
+    preview: `(${t.rows.length} · ${signedPp(t.top.delta)})`,
+    content: (
+      <div className="table-scroll">
         <table className="data">
           <thead>
             <tr>
@@ -381,7 +362,7 @@ export function ResultTabs({ tabs, nameOf }) {
             </tr>
           </thead>
           <tbody>
-            {active.rows.map((m) => (
+            {t.rows.map((m) => (
               <tr key={m.clubId}>
                 <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(m.clubId)}</th>
                 <td>{percent(m.baseline, 1)}</td>
@@ -392,8 +373,10 @@ export function ResultTabs({ tabs, nameOf }) {
           </tbody>
         </table>
       </div>
-    </>
-  );
+    ),
+  }));
+
+  return <Tabs tabs={tabItems} defaultId={defaultId} idPrefix="whatif" ariaLabel="Ziele mit Veränderung" />;
 }
 
 // ---------------------------------------------------------------------------
@@ -428,6 +411,7 @@ function WasMussPassieren({ ctx, remaining }) {
   return (
     <Card
       title="Was muss passieren?"
+      textOnly
       caption={
         "Nur noch wenige Spieltage — hier steht, was ein Klub für ein Ziel braucht. Gerechnet wird "
         + "konservativ nach der Spielordnung: Der Vergleich wird bei Punktgleichheit zuungunsten des "

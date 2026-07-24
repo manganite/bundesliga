@@ -134,7 +134,16 @@ export function duels(season, outlook, leagueConfig, theta = 0.1) {
   }
   const found = directDuels(remaining, byTarget, theta);
   const labels = Object.fromEntries(targetList(leagueConfig).map((t) => [t.id, t.label]));
-  return found.map((d) => ({ ...d, targetLabel: labels[d.target] ?? d.target }));
+  // Presentation joins — the matchday (a duel needs its „when" to be useful) and
+  // the heat `min(P_A, P_B)` (a duel is hottest when BOTH clubs are in the race).
+  // Neither touches the §4 metric; they are read off the fixture list here.
+  const matchdayOf = new Map(season.fixtures.map((f) => [f.id, f.matchday]));
+  return found.map((d) => ({
+    ...d,
+    targetLabel: labels[d.target] ?? d.target,
+    matchday: matchdayOf.get(d.fixtureId) ?? null,
+    heat: Math.min(d.pHome, d.pAway),
+  }));
 }
 
 /**

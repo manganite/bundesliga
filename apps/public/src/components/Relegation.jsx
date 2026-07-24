@@ -148,7 +148,7 @@ export default function Relegation({ playoff, league, nameOf }) {
         </div>
       </Card>
 
-      <Card title="Wie diese Zahlen entstehen" when={rows.length > 0}>
+      <Card title="Wie diese Zahlen entstehen" when={rows.length > 0} textOnly>
         <p className="caption">{playoff.approximation}</p>
         <p className="caption">
           Die Relegation ist eine eigene Simulation mit eigenen Läufen

@@ -49,7 +49,7 @@ export default function Methodik({ ctx }) {
 
 function StepStaerke() {
   return (
-    <Card title="1 · Stärke">
+    <Card title="1 · Stärke" textOnly>
       <p className="methodik-step">
         Als Eingabe dienen die Elo-Ratings von <a href="http://clubelo.com/" rel="noreferrer">clubelo.com</a> —
         eine Zahl je Klub für die aktuelle Spielstärke. Wir kennen die wahre Stärke aber nicht exakt:
@@ -84,7 +84,7 @@ export function StepEinSpiel({ season, prematch, params, league }) {
   }, [season]);
 
   return (
-    <Card title="2 · Ein Spiel">
+    <Card title="2 · Ein Spiel" textOnly>
       <p className="methodik-step">
         Aus den beiden Ratings ergeben sich zwei erwartete Torraten; daraus zieht das Modell ein
         Ergebnis (Poisson, mit einer kleinen Korrektur für knappe Ergebnisse nach Dixon-Coles).
@@ -248,7 +248,7 @@ export function SampleResult({ sim, nameOf }) {
 
 function StepVieleSaisons({ runs }) {
   return (
-    <Card title={`4 · ${number(runs ?? 20000, 0)} Saisons`}>
+    <Card title={`4 · ${number(runs ?? 20000, 0)} Saisons`} textOnly>
       <p className="methodik-step">
         Der dritte Schritt wird {number(runs ?? 20000, 0)}-mal wiederholt. Aus dem Anteil der
         Durchläufe, in denen ein Klub ein Ziel erreicht, werden die Prozente aller übrigen Seiten.
