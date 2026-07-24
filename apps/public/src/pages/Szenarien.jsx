@@ -332,7 +332,8 @@ const RECIPES = [
   { id: "clubWins", label: "Verein gewinnt alles" },
   { id: "clubLoses", label: "Verein verliert alles" },
   { id: "surprise", label: "Nur Überraschungen" },
-  { id: "reroll", label: "Neu auswürfeln" },
+  { id: "random", label: "Zufallsergebnis" },
+  { id: "reset", label: "Zurücksetzen" },
 ];
 
 const RECIPE_CAPTION = {
@@ -341,7 +342,8 @@ const RECIPE_CAPTION = {
   clubWins: "Setzt jedes Spiel des Vereins auf sein wahrscheinlichstes Ergebnis innerhalb der Siegregion dieses Vereins.",
   clubLoses: "Setzt jedes Spiel des Vereins auf sein wahrscheinlichstes Ergebnis innerhalb der Niederlagenregion dieses Vereins.",
   surprise: "Überraschung = der aus Modellsicht unwahrscheinlichste Ausgang, mit dessen wahrscheinlichstem Ergebnis.",
-  reroll: "Offene Spiele zurück auf simuliert, gespielte werden freigegeben.",
+  random: "Elo-frei ausgewürfelt: beide Teams ziehen Tore aus derselben neutralen Verteilung — jedes Team gleich stark, reines Chaos.",
+  reset: "Setzt den Bereich zurück auf simuliert: offene Spiele verlieren ihr festgesetztes Ergebnis, gespielte werden freigegeben.",
 };
 
 export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides }) {

@@ -453,8 +453,11 @@ construction.
     **unwahrscheinlichsten** Tendenz (kann das Remis sein), „Verein gewinnt alles"
     = Modalergebnis in der Siegregion *dieses* Klubs, „Verein verliert alles"
     (Nach-Brief-Ergänzung) spiegelbildlich die Niederlagenregion — beide über
-    dieselbe `clubWins`/`clubLoses`-Verzweigung. Ein Spiel ohne eindeutiges
-    Rezeptergebnis bleibt unberührt.
+    dieselbe `clubWins`/`clubLoses`-Verzweigung. „Zurücksetzen" (`reset`, früher
+    „Neu auswürfeln" — irreführend, weil kein Zufall) macht den Bereich wieder
+    simuliert; „Zufallsergebnis" (`random`, Nach-Brief-Ergänzung) würfelt
+    **Elo-frei** je Team aus derselben neutralen Poisson (`rng` injizierbar →
+    rein/testbar). Ein Spiel ohne eindeutiges Rezeptergebnis bleibt unberührt.
   - **Duell-Hervorhebung aus einer Quelle.** `duelTargetsByFixture` (über die
     θ-Liste `duels()`) speist sowohl die Was-wäre-wenn-Liste als auch Spieltage;
     `DuelChip` ist die eine geteilte Komponente (höchstes Ziel im Chip, alle im

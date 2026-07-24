@@ -417,6 +417,23 @@ const PRESET_AREAS = {
   played: (f) => f.gh !== undefined,
 };
 
+// The „Zufallsergebnis" recipe draws goals ELO-FREE: both teams sample from the
+// SAME neutral Poisson, so neither is favoured — a fair, deliberately chaotic
+// coin-flip of a scenario, not the model's forecast. The mean is a plausible
+// per-team goal rate so the scorelines still look like football; the cap keeps a
+// runaway draw bounded.
+const NEUTRAL_GOAL_RATE = 1.4;
+const RANDOM_GOAL_CAP = 10;
+
+/** One Poisson draw from a uniform u ∈ [0,1) via the inverse CDF (no Elo). */
+function poissonFromUniform(lambda, u) {
+  let p = Math.exp(-lambda);
+  let cum = p;
+  let k = 0;
+  while (u > cum && k < RANDOM_GOAL_CAP) { k += 1; p *= lambda / k; cum += p; }
+  return k;
+}
+
 /**
  * Applying a preset RECIPE to an AREA (§PRESETS §2). Pure: given the current
  * overrides it returns the next overrides plus the transparency message. Presets
@@ -428,13 +445,15 @@ const PRESET_AREAS = {
  * @param {Array}  p.fixtures  the season's fixtures
  * @param {object} p.overrides the current override map (carried forward)
  * @param {string} p.area      open | played | matchday | club | duels
- * @param {string} p.recipe    forecast | global | clubWins | clubLoses | surprise | reroll
- * @param {string} [p.club]    the club param (area „club" and recipe „clubWins")
+ * @param {string} p.recipe    forecast | global | clubWins | clubLoses | surprise | random | reset
+ * @param {string} [p.club]    the club param (area „club" and recipe „clubWins"/"clubLoses")
  * @param {number} [p.areaMd]  the matchday (area „matchday")
  * @param {Map}    [p.duelBy]  fixtureId → duel targets (area „duels")
  * @param {(f)=>object|null} p.modelOf  a fixture's { dist, prediction } or null
+ * @param {()=>number} [p.rng] uniform source for „random" (default Math.random);
+ *                             injected so the recipe stays testable/deterministic.
  */
-export function computePreset({ fixtures, overrides, area, recipe, club, areaMd, duelBy, modelOf }) {
+export function computePreset({ fixtures, overrides, area, recipe, club, areaMd, duelBy, modelOf, rng = Math.random }) {
   const inArea = area === "matchday"
     ? (f) => f.matchday === areaMd
     : area === "club"
@@ -447,14 +466,23 @@ export function computePreset({ fixtures, overrides, area, recipe, club, areaMd,
   let fixed = 0; let released = 0; let simulated = 0; let unchanged = 0;
   for (const f of fixtures) {
     if (!inArea(f)) continue;
-    if (recipe === "reroll") {
+    if (recipe === "reset") {
+      // Back to „simulated" for the whole area: open fixtures drop their
+      // override, played ones are released. NOT a random result — the name says
+      // what it does.
       if (f.gh !== undefined) {
-        // A played fixture already released is already simulated — count it as
-        // unchanged instead of re-releasing (accurate message, no needless rewrite).
         if (next[f.id]?.kind === "released") unchanged++;
         else { next[f.id] = { kind: "released" }; released++; }
       } else if (next[f.id]) { delete next[f.id]; simulated++; }
       else unchanged++;
+      continue;
+    }
+    if (recipe === "random") {
+      // Elo-free coin-flip: a concrete random scoreline, both teams equal.
+      const gh = poissonFromUniform(NEUTRAL_GOAL_RATE, rng());
+      const ga = poissonFromUniform(NEUTRAL_GOAL_RATE, rng());
+      next[f.id] = { kind: "fixed", gh, ga };
+      fixed++;
       continue;
     }
     const model = modelOf(f);
