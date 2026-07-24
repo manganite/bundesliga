@@ -332,10 +332,107 @@ export function scenarioFixtures(fixtures, overrides) {
   });
 }
 
+/**
+ * The season as the scenario's TRANSFORMED data state (§SZENARIO_TABELLE §2.1):
+ * a season object whose fixtures carry the overrides — fixed results become
+ * played, released results become open again. `currentTable` on it yields the
+ * scenario's real columns (Sp, Tore, Diff, Pkt), so the final table's left side
+ * reacts to what the user set or released — no engine call, same shape as the
+ * unmodified season.
+ */
+export function scenarioSeason(season, overrides) {
+  if (!overrides || !Object.keys(overrides).length) return season;
+  return {
+    ...season,
+    fixtures: season.fixtures.map((f) => {
+      const o = overrides[f.id];
+      if (o?.kind === "fixed") return { ...f, gh: o.gh, ga: o.ga };
+      if (o?.kind === "released") return { ...f, gh: undefined, ga: undefined };
+      return f;
+    }),
+  };
+}
+
+/**
+ * The season COMPLETED as a projected final table (§SZENARIO_TABELLE §2.1, refined
+ * per user feedback): every fixture carries a result, so `currentTable` yields a
+ * full „Schlusstabelle" rather than a mostly-empty current standing. The result
+ * of each fixture is, in order:
+ *
+ *   - a „fixed" override        → the user's result
+ *   - an already-played match   → its real result
+ *   - everything else (open,
+ *     „released")               → the model's most likely scoreline (the same
+ *                                 „wahrscheinlichstes Ergebnis" shown per fixture)
+ *
+ * So the left columns account for fixed, played AND open games — the open ones per
+ * the forecast. This is a DETERMINISTIC completion (each open game at its single
+ * most likely result); the probabilistic truth stays in the expected-points and
+ * band columns, which come from the simulation over all runs. No engine change:
+ * `predictFixture` is the existing per-match prediction.
+ */
+export function forecastCompletedSeason(season, overrides, prematch, params, league) {
+  const base = scenarioSeason(season, overrides);
+  if (!prematch || !params) return base; // no forecast available → leave as-is
+  return {
+    ...base,
+    fixtures: base.fixtures.map((f) => {
+      if (f.gh !== undefined) return f; // fixed or already played
+      const sl = predictFixture(f, prematch, params, league)?.favourite?.scoreline;
+      return sl ? { ...f, gh: sl[0], ga: sl[1] } : f;
+    }),
+  };
+}
+
+/**
+ * The position-shift indicator for the scenario final table (§SZENARIO_TABELLE
+ * §2.2): per club its move in the EXPECTED-POINTS ordering of the scenario run
+ * versus the paired baseline, plus the expected-points difference. Positive
+ * `posDelta` = climbed the table. Pure ranking over two `points` maps from the
+ * worker; adds no number of its own.
+ */
+export function expectedShiftIndicator(points, basePoints) {
+  if (!points || !basePoints) return new Map();
+  // Deterministic tie-break by clubId: with equal expected points a bare
+  // `expected` comparator returns 0 and the order would fall back to the input
+  // key order — which could differ between the two maps and invent a spurious
+  // ±1 shift. Sorting equal-expected clubs by id makes both orders agree.
+  const order = (p) => Object.keys(p)
+    .sort((a, b) => (p[b].expected - p[a].expected) || (a < b ? -1 : a > b ? 1 : 0))
+    .reduce((m, id, i) => m.set(id, i + 1), new Map());
+  const rankNow = order(points);
+  const rankBase = order(basePoints);
+  const out = new Map();
+  for (const id of rankNow.keys()) {
+    out.set(id, {
+      posDelta: (rankBase.get(id) ?? rankNow.get(id)) - rankNow.get(id),
+      ptsDelta: points[id].expected - (basePoints[id]?.expected ?? points[id].expected),
+    });
+  }
+  return out;
+}
+
 const PRESET_AREAS = {
   open: (f) => f.gh === undefined,
   played: (f) => f.gh !== undefined,
 };
+
+// The „Zufallsergebnis" recipe draws goals ELO-FREE: both teams sample from the
+// SAME neutral Poisson, so neither is favoured — a fair, deliberately chaotic
+// coin-flip of a scenario, not the model's forecast. The mean is a plausible
+// per-team goal rate so the scorelines still look like football; the cap keeps a
+// runaway draw bounded.
+const NEUTRAL_GOAL_RATE = 1.4;
+const RANDOM_GOAL_CAP = 10;
+
+/** One Poisson draw from a uniform u ∈ [0,1) via the inverse CDF (no Elo). */
+function poissonFromUniform(lambda, u) {
+  let p = Math.exp(-lambda);
+  let cum = p;
+  let k = 0;
+  while (u > cum && k < RANDOM_GOAL_CAP) { k += 1; p *= lambda / k; cum += p; }
+  return k;
+}
 
 /**
  * Applying a preset RECIPE to an AREA (§PRESETS §2). Pure: given the current
@@ -344,37 +441,53 @@ const PRESET_AREAS = {
  * rest of the map is carried through untouched (§2.4). A fixture the recipe has
  * no unambiguous result for is left exactly as it was.
  *
+ * The club is now a SEPARATE first-level filter that INTERSECTS the area (a
+ * fixture must be in the area AND involve the club); it is no longer an area of
+ * its own. When `club` is null the filter passes everything. „clubWins"/
+ * „clubLoses" use the same `club` as their win-region param.
+ *
  * @param {object} p
  * @param {Array}  p.fixtures  the season's fixtures
  * @param {object} p.overrides the current override map (carried forward)
- * @param {string} p.area      open | played | matchday | club | duels
- * @param {string} p.recipe    forecast | global | clubWins | clubLoses | surprise | reroll
- * @param {string} [p.club]    the club param (area „club" and recipe „clubWins")
+ * @param {string} p.area      open | played | matchday | duels
+ * @param {string} p.recipe    forecast | global | clubWins | clubLoses | surprise | random | reset
+ * @param {string} [p.club]    the club filter/param, or null for „Alle Vereine"
  * @param {number} [p.areaMd]  the matchday (area „matchday")
  * @param {Map}    [p.duelBy]  fixtureId → duel targets (area „duels")
  * @param {(f)=>object|null} p.modelOf  a fixture's { dist, prediction } or null
+ * @param {()=>number} [p.rng] uniform source for „random" (default Math.random);
+ *                             injected so the recipe stays testable/deterministic.
  */
-export function computePreset({ fixtures, overrides, area, recipe, club, areaMd, duelBy, modelOf }) {
+export function computePreset({ fixtures, overrides, area, recipe, club, areaMd, duelBy, modelOf, rng = Math.random }) {
   const inArea = area === "matchday"
     ? (f) => f.matchday === areaMd
-    : area === "club"
-      ? (f) => f.homeClubId === club || f.awayClubId === club
-      : area === "duels"
-        ? (f) => duelBy?.has(f.id)
-        : (PRESET_AREAS[area] ?? (() => false));
+    : area === "duels"
+      ? (f) => duelBy?.has(f.id)
+      : (PRESET_AREAS[area] ?? (() => false));
+  // The club is an intersecting filter, not an area: null → passes everything.
+  const involvesClub = club ? (f) => f.homeClubId === club || f.awayClubId === club : () => true;
 
   const next = { ...overrides };
   let fixed = 0; let released = 0; let simulated = 0; let unchanged = 0;
   for (const f of fixtures) {
-    if (!inArea(f)) continue;
-    if (recipe === "reroll") {
+    if (!inArea(f) || !involvesClub(f)) continue;
+    if (recipe === "reset") {
+      // Back to „simulated" for the whole area: open fixtures drop their
+      // override, played ones are released. NOT a random result — the name says
+      // what it does.
       if (f.gh !== undefined) {
-        // A played fixture already released is already simulated — count it as
-        // unchanged instead of re-releasing (accurate message, no needless rewrite).
         if (next[f.id]?.kind === "released") unchanged++;
         else { next[f.id] = { kind: "released" }; released++; }
       } else if (next[f.id]) { delete next[f.id]; simulated++; }
       else unchanged++;
+      continue;
+    }
+    if (recipe === "random") {
+      // Elo-free coin-flip: a concrete random scoreline, both teams equal.
+      const gh = poissonFromUniform(NEUTRAL_GOAL_RATE, rng());
+      const ga = poissonFromUniform(NEUTRAL_GOAL_RATE, rng());
+      next[f.id] = { kind: "fixed", gh, ga };
+      fixed++;
       continue;
     }
     const model = modelOf(f);

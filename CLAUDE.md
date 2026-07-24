@@ -101,6 +101,13 @@ spätere schlägt die frühere:**
     `favouriteScoreline` delegiert darauf. Das Freigeben ist eine
     Datenstands-Transformation in der UI-Schicht — kein Engine-Eingriff, die
     Schlüssel bleiben datenstandsunabhängig, CRN gilt unverändert.
+17. `SZENARIO_TABELLE_BRIEF.md` — Szenario-Schlusstabelle über den Veränderungs-
+    Tabs, „Anwenden & rechnen", und eine geteilte `LeagueTable` für drei
+    Konsumenten. **Keine neue Engine-Berechnung**: Realspalten via `rankTable`
+    auf dem transformierten Datenstand, erw. Pkt/Band aus dem Szenariolauf, der
+    Worker reicht `points`/`basePoints` nur durch. Der Positions-Indikator
+    vergleicht gegen die **gepaarte 2 000-Läufe-Basis** (CRN), nie das Artefakt.
+    Läuft vor 2.2.0; das Release umfasst dann Brief 16 + 17.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -446,12 +453,56 @@ construction.
     **unwahrscheinlichsten** Tendenz (kann das Remis sein), „Verein gewinnt alles"
     = Modalergebnis in der Siegregion *dieses* Klubs, „Verein verliert alles"
     (Nach-Brief-Ergänzung) spiegelbildlich die Niederlagenregion — beide über
-    dieselbe `clubWins`/`clubLoses`-Verzweigung. Ein Spiel ohne eindeutiges
-    Rezeptergebnis bleibt unberührt.
+    dieselbe `clubWins`/`clubLoses`-Verzweigung. „Zurücksetzen" (`reset`, früher
+    „Neu auswürfeln" — irreführend, weil kein Zufall) macht den Bereich wieder
+    simuliert; „Zufallsergebnis" (`random`, Nach-Brief-Ergänzung) würfelt
+    **Elo-frei** je Team aus derselben neutralen Poisson (`rng` injizierbar →
+    rein/testbar). Ein Spiel ohne eindeutiges Rezeptergebnis bleibt unberührt.
+    **Auswahlstruktur (Nach-Brief-Umbau):** Verein ist ein eigenes **erstes
+    Menü** („Alle Vereine" + Klubs) und ein *intersektierender Filter* über den
+    Bereich — kein Bereich mehr. Der Bereich kennt daher kein „Verein" mehr
+    (open/played/matchday/duels). `clubWins`/`clubLoses` erscheinen nur bei
+    gewähltem Verein und nutzen genau diesen; ein zweites Vereinsmenü entfällt.
+    `computePreset` bekommt `club` als Filter (null = alle).
   - **Duell-Hervorhebung aus einer Quelle.** `duelTargetsByFixture` (über die
     θ-Liste `duels()`) speist sowohl die Was-wäre-wenn-Liste als auch Spieltage;
     `DuelChip` ist die eine geteilte Komponente (höchstes Ziel im Chip, alle im
     `title`). Keine zweite Duell-Berechnung fürs Markieren.
+- **Brief 17 steht (Szenario-Schlusstabelle · Anwenden & rechnen · LeagueTable).**
+  Vier Stellen, an denen es leicht kaputtgeht:
+  - **Eine `LeagueTable`, drei Konsumenten** (`components/LeagueTable.jsx`):
+    Spieltage (nur Realspalten inkl. Tore/Diff), Tabelle & Prognose (+ erw. Pkt
+    und 10–90-Band), Szenario-Schlusstabelle (+ Indikatorspalte). Zonenstreifen,
+    Legende, geteilte Plätze und die ⚑-Flagge leben **einmal** dort; ein
+    Quellwächter hält den Standings-Header (`>erw. Pkt<`) auf genau eine Stelle.
+    Die Zeilen kommen bereits geordnet herein (Konsument wendet
+    `orderWithinSharedRanks` an); der Zonenstreifen richtet sich nach der
+    **Anzeigeposition**.
+  - **Kein neues Engine-Rechnen.** Realspalten via `currentTable` auf
+    `forecastCompletedSeason(...)`: eine **volle Schlusstabelle** — festgesetzt
+    und gespielt zählen real, offene Spiele werden mit dem wahrscheinlichsten
+    Ergebnis (`predictFixture(...).favourite.scoreline`) aufgefüllt (sonst wäre
+    die Vorsaison-Tabelle fast nur Nullen — Nutzerkorrektur nach dem Brief).
+    Deterministische Vervollständigung; die probabilistische Wahrheit bleibt in
+    erw. Pkt/Band aus dem Szenariolauf. Der Worker reicht `points`/`basePoints`
+    nur **durch**; ein Test zeigt: bei unverändertem Datenstand und gleicher
+    Laufzahl ist `sim.points` bitgleich zu `outlook.points`.
+    `forecastCompletedSeason` setzt auf `scenarioSeason` (fixed → gespielt,
+    released → offen) auf und füllt danach die offenen Spiele.
+  - **Der Indikator ist CRN-ehrlich.** `expectedShiftIndicator(points,
+    basePoints)` vergleicht die Erwartungs-Reihenfolge des Szenariolaufs gegen
+    die **gepaarte 2 000-Läufe-Basis** desselben Laufs — **nie** gegen das
+    20 000er-Artefakt, sonst stünde Stichprobenrauschen als Pfeil in der Tabelle.
+    Vor dem ersten Rechnen: Artefakt-Standardwerte, **keine** Indikatorspalte.
+  - **Vorzeichenfarbe ist hier erlaubt — und nur hier.** Der Positions-Indikator
+    („↑2"/„↓1"/„·" als Text plus Intensität plus `perfColor`) sitzt in
+    `LeagueTable`, weil Aufsteigen für den Klub eindeutig gut ist. Das
+    Delta-Färbeverbot der Wahrscheinlichkeits-Tabs (`Szenarien.jsx` trägt kein
+    `perfColor`/`outcomeColor`) gilt unverändert; der Quellscan bewacht das.
+  - **„Anwenden & rechnen" rechnet, Einzeländerungen nicht.** Der Preset-Button
+    füllt UND startet den Lauf (`onApply` setzt `committed`); eine manuelle
+    Änderung danach berührt nur `overrides`, dimmt und wartet auf „Szenario
+    rechnen" — die No-Autorun-Regel aus dem UX-Brief bleibt.
 - **V2b (Historie) existiert nicht als Aufgabe.** Auslösebedingung (alle drei):
   clubelo-Relaunch live; die einmalige Namensform-Wiederverifikation aller 36 Klubs
   auf der neuen Schnittstelle bestanden; ein eigener V2b-Brief geschrieben. Bis

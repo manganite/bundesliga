@@ -2,15 +2,19 @@ import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import FixturePrediction, { favouriteOf } from "../components/FixturePrediction.jsx";
 import DuelChip, { duelStripeColor } from "../components/DuelChip.jsx";
+import LeagueTable from "../components/LeagueTable.jsx";
 import Tabs from "../components/Tabs.jsx";
 import { useScenario } from "../hooks/useScenario.js";
 import {
   targetList,
   currentTable,
+  orderWithinSharedRanks,
   predictFixture,
   fixtureModel,
   duelTargetsByFixture,
   scenarioFixtures,
+  forecastCompletedSeason,
+  expectedShiftIndicator,
   computePreset,
 } from "../lib/season.js";
 import { remainingFixtures, toEngineFixtures } from "../lib/data.js";
@@ -172,7 +176,11 @@ function WasWaereWenn({ ctx, remaining }) {
         matchdays={matchdays}
         duelBy={duelBy}
         modelOf={modelOf}
-        onApply={(next, msg) => { setOverrides(next); setMessage(msg); }}
+        // „Anwenden & rechnen" (§SZENARIO_TABELLE §1): a preset fills the states
+        // AND starts the run in one click. Manual single edits afterwards still
+        // only touch `overrides`, so they dim and wait for „Szenario rechnen" —
+        // the no-silent-autorun rule from the UX brief is untouched.
+        onApply={(next, msg) => { setOverrides(next); setMessage(msg); setCommitted(next); }}
         overrides={overrides}
       />
       {message ? <p className="preset-message" role="status">{message}</p> : null}
@@ -227,10 +235,69 @@ function WasWaereWenn({ ctx, remaining }) {
         {sim.status === "running" ? <span className="axis-label">rechnet …</span> : null}
       </div>
 
+      {outlook ? <ScenarioTable ctx={ctx} committed={committed} sim={sim} stale={stale} /> : null}
+
       {committed && Object.keys(committed).length
         ? <WhatIfResult sim={sim} targets={targets} nameOf={nameOf} runs={runs} stale={stale} />
         : null}
     </Card>
+  );
+}
+
+/**
+ * The scenario's simulated FINAL table, above the change tabs (§SZENARIO_TABELLE
+ * §2). It is a full „Schlusstabelle": the real columns (Sp, Tore, Diff, Pkt) come
+ * from `currentTable` on the season COMPLETED as a forecast — fixed and played
+ * results count real, open games are filled with their most likely result
+ * (`forecastCompletedSeason`), so the table is not a sea of zeros in the
+ * pre-season. Expected points and the 10–90 band come from the simulation; the
+ * position-shift indicator compares against the PAIRED 2 000-run baseline (CRN),
+ * never the artefact.
+ *
+ * Base semantics (§2.3):
+ *   - before the first run: the canonical-artefact expected points, NO indicator;
+ *   - after a run: the scenario numbers with the indicator and the CRN caption;
+ *   - stale: dimmed together with the tabs.
+ */
+export function ScenarioTable({ ctx, committed, sim, stale }) {
+  const { season, outlook, leagueConfig, nameOf, carried = [], prematch, params, league } = ctx;
+  const zoneTargets = targetList(leagueConfig);
+  const carriedByClub = new Map(carried.map((c) => [c.clubId, c]));
+
+  const hasScenario = committed
+    && Object.keys(committed).length
+    && sim.status === "done"
+    && sim.result?.points;
+
+  const points = hasScenario ? sim.result.points : outlook.points;
+  const indicator = hasScenario
+    ? expectedShiftIndicator(sim.result.points, sim.result.basePoints)
+    : undefined;
+  // Fixed + played + open (open per the forecast) → a full projected table.
+  const completed = forecastCompletedSeason(
+    season, hasScenario ? committed : {}, prematch, params, league,
+  );
+  const ranked = currentTable(completed, leagueConfig);
+  const table = orderWithinSharedRanks(ranked, points);
+
+  const fill = "Die Spalten Sp bis Pkt ergänzen offene Spiele mit ihrem wahrscheinlichsten Einzelergebnis; erw. Pkt und Band mitteln dagegen über alle Läufe, in denen nur die offenen Spiele neu ausgewürfelt werden — gespielte und festgesetzte Ergebnisse liegen in jedem Lauf fest.";
+  const caption = hasScenario
+    ? `Prognostizierte Schlusstabelle des Szenarios. ${fill} Der Pfeil vergleicht die erwarteten Punkte gegen die unveränderte Prognose, gleiche Zufallszahlen.`
+    : `Noch kein Szenario — die Standardprognose als Schlusstabelle. ${fill}`;
+
+  return (
+    <div className={stale && hasScenario ? "whatif-result is-stale" : undefined} style={{ marginTop: "1rem" }}>
+      <Card title="Simulierte Schlusstabelle" caption={caption}>
+        <LeagueTable
+          table={table}
+          nameOf={nameOf}
+          zoneTargets={zoneTargets}
+          points={points}
+          indicator={indicator}
+          carriedByClub={carriedByClub}
+        />
+      </Card>
+    </div>
   );
 }
 
@@ -265,7 +332,8 @@ const RECIPES = [
   { id: "clubWins", label: "Verein gewinnt alles" },
   { id: "clubLoses", label: "Verein verliert alles" },
   { id: "surprise", label: "Nur Überraschungen" },
-  { id: "reroll", label: "Neu auswürfeln" },
+  { id: "random", label: "Zufallsergebnis" },
+  { id: "reset", label: "Zurücksetzen" },
 ];
 
 const RECIPE_CAPTION = {
@@ -274,22 +342,39 @@ const RECIPE_CAPTION = {
   clubWins: "Setzt jedes Spiel des Vereins auf sein wahrscheinlichstes Ergebnis innerhalb der Siegregion dieses Vereins.",
   clubLoses: "Setzt jedes Spiel des Vereins auf sein wahrscheinlichstes Ergebnis innerhalb der Niederlagenregion dieses Vereins.",
   surprise: "Überraschung = der aus Modellsicht unwahrscheinlichste Ausgang, mit dessen wahrscheinlichstem Ergebnis.",
-  reroll: "Offene Spiele zurück auf simuliert, gespielte werden freigegeben.",
+  random: "Elo-frei ausgewürfelt: beide Teams ziehen Tore aus derselben neutralen Verteilung — jedes Team gleich stark, reines Chaos.",
+  reset: "Setzt den Bereich zurück auf simuliert: offene Spiele verlieren ihr festgesetztes Ergebnis, gespielte werden freigegeben.",
 };
+
+const CLUB_ALL = "__all__";
 
 export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides }) {
   const { season, nameOf } = ctx;
+  // Verein is the FIRST menu and an intersecting filter, not an area. „Alle
+  // Vereine" (CLUB_ALL) passes everything; a chosen club scopes the area to its
+  // own matches AND unlocks the „Verein gewinnt/verliert alles" recipes.
+  const [club, setClub] = useState(CLUB_ALL);
   const [area, setArea] = useState("open");
   const [recipe, setRecipe] = useState("forecast");
-  const [club, setClub] = useState(season.clubs[0]?.clubId);
   const [areaMd, setAreaMd] = useState(matchdays[0]);
 
-  const needsClub = area === "club" || recipe === "clubWins" || recipe === "clubLoses";
+  const clubChosen = club !== CLUB_ALL;
   const needsMd = area === "matchday";
+  // „clubWins"/„clubLoses" only make sense for a concrete club (change 1).
+  const recipeOptions = RECIPES.filter((r) => clubChosen || (r.id !== "clubWins" && r.id !== "clubLoses"));
+  const effRecipe = recipeOptions.some((r) => r.id === recipe) ? recipe : "forecast";
+
+  // Switching to „Alle Vereine" while a club-only recipe is selected: fall back,
+  // so the recipe never dangles unavailable.
+  const onClubChange = (v) => {
+    setClub(v);
+    if (v === CLUB_ALL && (recipe === "clubWins" || recipe === "clubLoses")) setRecipe("forecast");
+  };
 
   const apply = () => {
     const { overrides: next, message } = computePreset({
-      fixtures: season.fixtures, overrides, area, recipe, club, areaMd, duelBy, modelOf,
+      fixtures: season.fixtures, overrides, area, recipe: effRecipe,
+      club: clubChosen ? club : null, areaMd, duelBy, modelOf,
     });
     onApply(next, message);
   };
@@ -297,12 +382,18 @@ export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides 
   return (
     <div className="preset-bar">
       <label>
+        Verein{" "}
+        <select value={club} onChange={(e) => onClubChange(e.target.value)}>
+          <option value={CLUB_ALL}>Alle Vereine</option>
+          {season.clubs.map((c) => <option key={c.clubId} value={c.clubId}>{nameOf(c.clubId)}</option>)}
+        </select>
+      </label>
+      <label>
         Bereich{" "}
         <select value={area} onChange={(e) => setArea(e.target.value)}>
           <option value="open">Alle offenen Spiele</option>
           <option value="played">Alle gespielten Spiele</option>
           <option value="matchday">Ein Spieltag</option>
-          <option value="club">Ein Verein</option>
           <option value="duels">Direkte Duelle</option>
         </select>
       </label>
@@ -314,22 +405,14 @@ export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides 
           </select>
         </label>
       ) : null}
-      {needsClub ? (
-        <label>
-          Verein{" "}
-          <select value={club} onChange={(e) => setClub(e.target.value)}>
-            {season.clubs.map((c) => <option key={c.clubId} value={c.clubId}>{nameOf(c.clubId)}</option>)}
-          </select>
-        </label>
-      ) : null}
       <label>
         Rezept{" "}
-        <select value={recipe} onChange={(e) => setRecipe(e.target.value)}>
-          {RECIPES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
+        <select value={effRecipe} onChange={(e) => setRecipe(e.target.value)}>
+          {recipeOptions.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
         </select>
       </label>
-      <button type="button" onClick={apply}>Anwenden</button>
-      <p className="caption preset-recipe-caption">{RECIPE_CAPTION[recipe]}</p>
+      <button type="button" onClick={apply}>Anwenden &amp; rechnen</button>
+      <p className="caption preset-recipe-caption">{RECIPE_CAPTION[effRecipe]}</p>
     </div>
   );
 }

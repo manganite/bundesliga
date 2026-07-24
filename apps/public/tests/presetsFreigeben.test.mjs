@@ -192,21 +192,45 @@ test("applying „forecast“ to all open fixtures reports the count and the unb
   assert.ok(message.endsWith("."), "the message is a full sentence");
 });
 
-test("„reroll“ on the played area frees played fixtures and counts them as freigegeben", () => {
+test("„reset“ on the played area frees played fixtures and counts them as freigegeben", () => {
   // Inject a couple of played fixtures.
   const fixtures = SEASON.fixtures.map((f, i) => (i < 3 ? { ...f, gh: 1, ga: 0 } : f));
   const { overrides, message } = computePreset({
-    fixtures, overrides: {}, area: "played", recipe: "reroll", modelOf,
+    fixtures, overrides: {}, area: "played", recipe: "reset", modelOf,
   });
   assert.equal(Object.values(overrides).filter((o) => o.kind === "released").length, 3);
   assert.match(message, /^3 freigegeben/);
 
   // Applying it a SECOND time re-releases nothing: already-released fixtures count
   // as unchanged, so the message says so and the map is not rewritten.
-  const again = computePreset({ fixtures, overrides, area: "played", recipe: "reroll", modelOf });
+  const again = computePreset({ fixtures, overrides, area: "played", recipe: "reset", modelOf });
   assert.deepEqual(again.overrides, overrides, "already-released fixtures are not rewritten");
   assert.match(again.message, /3 unverändert/);
   assert.doesNotMatch(again.message, /freigegeben/);
+});
+
+test("„random“ is Elo-free and deterministic given an injected rng — both teams draw fairly", () => {
+  // A fixed rng makes the pure function testable; the same rng yields the same
+  // scorelines, and the draw uses NO model (modelOf is never consulted).
+  const fixtures = SEASON.fixtures.filter((f) => f.matchday === 1);
+  const seq = [0.05, 0.95, 0.5, 0.5, 0.99, 0.01]; // deterministic uniforms
+  let i = 0;
+  const rng = () => seq[(i++) % seq.length];
+  let modelCalls = 0;
+  const spyModel = (f) => { modelCalls++; return modelOf(f); };
+  const a = computePreset({ fixtures, overrides: {}, area: "matchday", areaMd: 1, recipe: "random", modelOf: spyModel, rng });
+  assert.equal(modelCalls, 0, "the random recipe must not consult the Elo model");
+  // Every game in the area is fixed to a concrete scoreline.
+  for (const f of fixtures) {
+    const o = a.overrides[f.id];
+    assert.equal(o.kind, "fixed");
+    assert.ok(Number.isInteger(o.gh) && Number.isInteger(o.ga) && o.gh >= 0 && o.ga >= 0);
+  }
+  // Deterministic: same rng sequence → identical result (purity).
+  i = 0;
+  const b = computePreset({ fixtures, overrides: {}, area: "matchday", areaMd: 1, recipe: "random", modelOf, rng: () => seq[(i++) % seq.length] });
+  assert.deepEqual(b.overrides, a.overrides);
+  assert.match(a.message, new RegExp(`^${fixtures.length} festgesetzt`));
 });
 
 test("presets STACK — a second application overwrites only its own area (§2.4)", () => {
@@ -228,15 +252,25 @@ test("presets STACK — a second application overwrites only its own area (§2.4
   for (const id of md2) assert.ok(second[id], `${id} should be set by the second application`);
 });
 
-test("the „club“ area restricts to that club's own matches", () => {
+test("the club filter INTERSECTS the area — only that club's matches within it", () => {
+  // The club is a first-level filter now, not an area. With area „open" and a
+  // chosen club, only that club's OPEN matches are set.
   const club = SEASON.clubs[0].clubId;
   const { overrides } = computePreset({
-    fixtures: SEASON.fixtures, overrides: {}, area: "club", club, recipe: "forecast", modelOf,
+    fixtures: SEASON.fixtures, overrides: {}, area: "open", club, recipe: "forecast", modelOf,
   });
+  assert.ok(Object.keys(overrides).length > 0, "the club has open matches to act on");
   for (const id of Object.keys(overrides)) {
     const f = SEASON.fixtures.find((x) => x.id === id);
     assert.ok(f.homeClubId === club || f.awayClubId === club, `${id} is not a match of ${club}`);
+    assert.equal(f.gh, undefined, `${id} must be an OPEN match (area = open)`);
   }
+});
+
+test("club = null (Alle Vereine) passes every fixture in the area", () => {
+  const withoutClub = computePreset({ fixtures: SEASON.fixtures, overrides: {}, area: "open", club: null, recipe: "forecast", modelOf });
+  const openCount = SEASON.fixtures.filter((f) => f.gh === undefined).length;
+  assert.equal(Object.keys(withoutClub.overrides).length, openCount, "no club filter → the whole area");
 });
 
 test("the „duels“ area restricts to the artefact's θ-duel list — one shared source", () => {
