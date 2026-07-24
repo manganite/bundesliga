@@ -8,6 +8,7 @@ import { harness } from "./harness/build.mjs";
 import {
   currentTable,
   scenarioSeason,
+  forecastCompletedSeason,
   expectedShiftIndicator,
 } from "../src/lib/season.js";
 import { simulateSeason } from "../../../packages/engine/src/simulate.mjs";
@@ -74,6 +75,36 @@ test("a released fixture drops a played result back out of the real table", () =
 test("scenarioSeason without overrides returns the season untouched", () => {
   assert.equal(scenarioSeason(SEASON, {}), SEASON);
   assert.equal(scenarioSeason(SEASON, null), SEASON);
+});
+
+// ---------------------------------------------------------------------------
+//  §2.1 (refined) the FINAL table completes open games from the forecast
+// ---------------------------------------------------------------------------
+
+test("forecastCompletedSeason fills every open game so the table is a full season, not zeros", () => {
+  // Pre-season: nothing played. The completed table must still have all games
+  // played (Sp = 34 for a BL1 club) with plausible points, not a sea of zeros.
+  const completed = forecastCompletedSeason(SEASON, {}, PREMATCH, PARAMS, "bl1");
+  const table = currentTable(completed, CONFIG.leagues.bl1);
+  const gamesPerClub = (SEASON.clubs.length - 1) * 2;
+  for (const r of table) assert.equal(r.played, gamesPerClub, `${r.clubId} should have a complete season`);
+  assert.ok(table.some((r) => r.pts > 0), "a completed season has real points, not all zeros");
+  assert.ok(table[0].pts >= table[table.length - 1].pts, "table is ordered, leader has the most points");
+});
+
+test("forecastCompletedSeason honours fixed and played results over the forecast", () => {
+  const fx = SEASON.fixtures[0];
+  const completed = forecastCompletedSeason(SEASON, { [fx.id]: { kind: "fixed", gh: 5, ga: 0 } }, PREMATCH, PARAMS, "bl1");
+  const done = completed.fixtures.find((f) => f.id === fx.id);
+  assert.deepEqual([done.gh, done.ga], [5, 0], "a fixed result survives the completion");
+  // Every other fixture also has a result now (open ones from the forecast).
+  assert.ok(completed.fixtures.every((f) => f.gh !== undefined), "no fixture is left open in the completion");
+});
+
+test("without a forecast source the completion falls back to the transformed state", () => {
+  // No prematch/params → cannot forecast; must not throw, just leave open games open.
+  const completed = forecastCompletedSeason(SEASON, {}, null, null, "bl1");
+  assert.equal(completed, SEASON);
 });
 
 // ---------------------------------------------------------------------------
@@ -145,8 +176,23 @@ test("before a run the scenario table shows the standard prognosis, WITHOUT the 
   const html = renderToStaticMarkup(React.createElement(ScenarioTable, {
     ctx: ctxFor(), committed: null, sim: { status: "idle", result: null }, stale: false,
   }));
-  assert.match(strip(html), /Noch kein Szenario — Standardprognose/);
+  const text = strip(html);
+  assert.match(text, /Noch kein Szenario/);
+  // The open games are forecast-filled, so the table is a full season — the
+  // caption says so — not a mostly-empty current standing.
+  assert.match(text, /Offene Spiele sind mit dem wahrscheinlichsten Ergebnis ergänzt/);
   assert.doesNotMatch(html, /shift-cell/);
+});
+
+test("the pre-season scenario table is a full projected season, not a sea of zeros", () => {
+  const html = renderToStaticMarkup(React.createElement(ScenarioTable, {
+    ctx: ctxFor(), committed: null, sim: { status: "idle", result: null }, stale: false,
+  }));
+  // Every club has played its full season → the „Sp" cells show 34, not 0.
+  const gamesPerClub = (SEASON.clubs.length - 1) * 2;
+  const played = [...html.matchAll(/<td>(\d+)<\/td>/g)].map((m) => Number(m[1]));
+  assert.ok(played.includes(gamesPerClub), `a club should show ${gamesPerClub} games played`);
+  assert.ok(!played.every((n) => n === 0), "the table must not be all zeros");
 });
 
 test("after a run the scenario table carries the indicator and the CRN caption", () => {
@@ -157,7 +203,7 @@ test("after a run the scenario table carries the indicator and the CRN caption",
   const committed = { [SEASON.fixtures[0].id]: { kind: "fixed", gh: 1, ga: 0 } };
   const sim = { status: "done", result: { points, basePoints } };
   const html = renderToStaticMarkup(React.createElement(ScenarioTable, { ctx: ctxFor(), committed, sim, stale: false }));
-  assert.match(strip(html), /Vergleich gegen die unveränderte Prognose, gleiche Zufallszahlen/);
+  assert.match(strip(html), /gegen die unveränderte Prognose, gleiche Zufallszahlen/);
   assert.match(html, /shift-cell/);
 });
 

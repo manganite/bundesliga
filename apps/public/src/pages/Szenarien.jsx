@@ -13,7 +13,7 @@ import {
   fixtureModel,
   duelTargetsByFixture,
   scenarioFixtures,
-  scenarioSeason,
+  forecastCompletedSeason,
   expectedShiftIndicator,
   computePreset,
 } from "../lib/season.js";
@@ -246,19 +246,21 @@ function WasWaereWenn({ ctx, remaining }) {
 
 /**
  * The scenario's simulated FINAL table, above the change tabs (§SZENARIO_TABELLE
- * §2). Real columns (Sp, Tore, Diff, Pkt) come from `currentTable` on the
- * TRANSFORMED data state — fixed and released fixtures show here; expected points
- * and the 10–90 band come from the scenario run; the position-shift indicator
- * compares against the PAIRED 2 000-run baseline (CRN), never the artefact.
+ * §2). It is a full „Schlusstabelle": the real columns (Sp, Tore, Diff, Pkt) come
+ * from `currentTable` on the season COMPLETED as a forecast — fixed and played
+ * results count real, open games are filled with their most likely result
+ * (`forecastCompletedSeason`), so the table is not a sea of zeros in the
+ * pre-season. Expected points and the 10–90 band come from the simulation; the
+ * position-shift indicator compares against the PAIRED 2 000-run baseline (CRN),
+ * never the artefact.
  *
  * Base semantics (§2.3):
- *   - before the first run: the canonical-artefact defaults, NO indicator,
- *     identical to Tabelle & Prognose — the caption says so;
+ *   - before the first run: the canonical-artefact expected points, NO indicator;
  *   - after a run: the scenario numbers with the indicator and the CRN caption;
  *   - stale: dimmed together with the tabs.
  */
 export function ScenarioTable({ ctx, committed, sim, stale }) {
-  const { season, outlook, leagueConfig, nameOf, carried = [] } = ctx;
+  const { season, outlook, leagueConfig, nameOf, carried = [], prematch, params, league } = ctx;
   const zoneTargets = targetList(leagueConfig);
   const carriedByClub = new Map(carried.map((c) => [c.clubId, c]));
 
@@ -271,27 +273,21 @@ export function ScenarioTable({ ctx, committed, sim, stale }) {
   const indicator = hasScenario
     ? expectedShiftIndicator(sim.result.points, sim.result.basePoints)
     : undefined;
-  const ranked = currentTable(
-    hasScenario ? scenarioSeason(season, committed) : season,
-    leagueConfig,
+  // Fixed + played + open (open per the forecast) → a full projected table.
+  const completed = forecastCompletedSeason(
+    season, hasScenario ? committed : {}, prematch, params, league,
   );
+  const ranked = currentTable(completed, leagueConfig);
   const table = orderWithinSharedRanks(ranked, points);
-  const anyShared = table.some((r) => r.sharedRank);
 
+  const fill = "Offene Spiele sind mit dem wahrscheinlichsten Ergebnis ergänzt; erwartete Punkte und Band stammen aus der Simulation über alle Läufe.";
   const caption = hasScenario
-    ? "Simulierte Schlusstabelle des Szenarios. Vergleich gegen die unveränderte Prognose, gleiche Zufallszahlen."
-    : "Noch kein Szenario — Standardprognose (kanonischer 20 000-Läufe-Lauf), inhaltsgleich mit Tabelle & Prognose."
-      ;
+    ? `Prognostizierte Schlusstabelle des Szenarios. ${fill} Der Pfeil vergleicht die erwarteten Punkte gegen die unveränderte Prognose, gleiche Zufallszahlen.`
+    : `Noch kein Szenario — die Standardprognose als Schlusstabelle. ${fill}`;
 
   return (
     <div className={stale && hasScenario ? "whatif-result is-stale" : undefined} style={{ marginTop: "1rem" }}>
-      <Card
-        title="Simulierte Schlusstabelle"
-        caption={caption
-          + (anyShared
-            ? " Auf geteilten Plätzen (Spielordnung) stehen die Klubs hier nach erwarteten Punkten."
-            : "")}
-      >
+      <Card title="Simulierte Schlusstabelle" caption={caption}>
         <LeagueTable
           table={table}
           nameOf={nameOf}

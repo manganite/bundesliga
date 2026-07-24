@@ -470,11 +470,16 @@ construction.
     `orderWithinSharedRanks` an); der Zonenstreifen richtet sich nach der
     **Anzeigeposition**.
   - **Kein neues Engine-Rechnen.** Realspalten via `currentTable` auf
-    `scenarioSeason(season, overrides)` (transformierter Datenstand: fixed →
-    gespielt, released → wieder offen). erw. Pkt/Band aus dem Szenariolauf; der
-    Worker reicht `points`/`basePoints` nur **durch**. Ein Test zeigt: bei
-    unverändertem Datenstand und gleicher Laufzahl ist `sim.points` bitgleich zu
-    `outlook.points`.
+    `forecastCompletedSeason(...)`: eine **volle Schlusstabelle** — festgesetzt
+    und gespielt zählen real, offene Spiele werden mit dem wahrscheinlichsten
+    Ergebnis (`predictFixture(...).favourite.scoreline`) aufgefüllt (sonst wäre
+    die Vorsaison-Tabelle fast nur Nullen — Nutzerkorrektur nach dem Brief).
+    Deterministische Vervollständigung; die probabilistische Wahrheit bleibt in
+    erw. Pkt/Band aus dem Szenariolauf. Der Worker reicht `points`/`basePoints`
+    nur **durch**; ein Test zeigt: bei unverändertem Datenstand und gleicher
+    Laufzahl ist `sim.points` bitgleich zu `outlook.points`.
+    `forecastCompletedSeason` setzt auf `scenarioSeason` (fixed → gespielt,
+    released → offen) auf und füllt danach die offenen Spiele.
   - **Der Indikator ist CRN-ehrlich.** `expectedShiftIndicator(points,
     basePoints)` vergleicht die Erwartungs-Reihenfolge des Szenariolaufs gegen
     die **gepaarte 2 000-Läufe-Basis** desselben Laufs — **nie** gegen das

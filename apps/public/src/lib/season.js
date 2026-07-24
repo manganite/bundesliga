@@ -354,6 +354,37 @@ export function scenarioSeason(season, overrides) {
 }
 
 /**
+ * The season COMPLETED as a projected final table (§SZENARIO_TABELLE §2.1, refined
+ * per user feedback): every fixture carries a result, so `currentTable` yields a
+ * full „Schlusstabelle" rather than a mostly-empty current standing. The result
+ * of each fixture is, in order:
+ *
+ *   - a „fixed" override        → the user's result
+ *   - an already-played match   → its real result
+ *   - everything else (open,
+ *     „released")               → the model's most likely scoreline (the same
+ *                                 „wahrscheinlichstes Ergebnis" shown per fixture)
+ *
+ * So the left columns account for fixed, played AND open games — the open ones per
+ * the forecast. This is a DETERMINISTIC completion (each open game at its single
+ * most likely result); the probabilistic truth stays in the expected-points and
+ * band columns, which come from the simulation over all runs. No engine change:
+ * `predictFixture` is the existing per-match prediction.
+ */
+export function forecastCompletedSeason(season, overrides, prematch, params, league) {
+  const base = scenarioSeason(season, overrides);
+  if (!prematch || !params) return base; // no forecast available → leave as-is
+  return {
+    ...base,
+    fixtures: base.fixtures.map((f) => {
+      if (f.gh !== undefined) return f; // fixed or already played
+      const sl = predictFixture(f, prematch, params, league)?.favourite?.scoreline;
+      return sl ? { ...f, gh: sl[0], ga: sl[1] } : f;
+    }),
+  };
+}
+
+/**
  * The position-shift indicator for the scenario final table (§SZENARIO_TABELLE
  * §2.2): per club its move in the EXPECTED-POINTS ordering of the scenario run
  * versus the paired baseline, plus the expected-points difference. Positive
