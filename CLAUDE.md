@@ -81,6 +81,14 @@ spätere schlägt die frühere:**
     Nachkommastelle, ein Vorzeichen-Pfad (`pp`/`points`/`signed`) statt
     handgerollter, `rating()` ohne Tausenderpunkt, und die Restprogramm-Schwere
     als Abweichung vom Ligamittel — vor dem 1. Spieltag verborgen.
+13. `UEBERSICHT_HEADER_FOOTER_BRIEF.md` — Präsentation mit zwei Amendments, die
+    **Kontrollen entfernen**: die Läufe-Auswahl im Header entfällt (alle Seiten
+    zeigen das kanonische 20 000er-Artefakt), und das Was-wäre-wenn rechnet fest
+    mit 2 000 Läufen. Dazu Platzierungszonen-Umbau, entzerrtes „Wichtigstes
+    Spiel" mit §10-Toggle, dreizeiliger Footer mit Version+Build-Stempel.
+14. `FARBEN_UNTERTITEL_BRIEF.md` — Addendum zu 13: der Header-Untertitel ist
+    entschieden, und ein Farbsystem als Tokens kommt dazu (Ausgang/Vorzeichen/
+    Zonen), Farbe nie alleiniger Bedeutungsträger.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -322,6 +330,24 @@ construction.
   interaktive Element. Die geteilte Vorhersage-Darstellung (`FixturePrediction`)
   steht an genau einer Stelle — What-if-„Simuliert" und Methodik-Schritt 2 zeigen
   dieselbe Komponente, nie eine zweite Kopie.
+- **Keine Läufe-Auswahl mehr; alle Seiten lesen das kanonische 20 000er-Artefakt.**
+  Der Header-Selector und die tote `useSimulation`/`simWorker`-Kette sind entfernt
+  (Amendment B13 §2.4: real nie genutzt, „eine Simulation je Datenstand" wird ohne
+  ihn wörtlicher). Der Web Worker dient nur noch den Szenarien
+  (`scenarioWorker`/`useScenario`). Das Was-wäre-wenn rechnet fest mit **2 000
+  Läufen** (B=20); die ersten 2 000 sind per Schlüsseldesign ein Präfix der
+  kanonischen 20 000 (`runCount` in keinem Schlüssel, §3), der 3× größere
+  Rauschboden steht in der Caption. Die Beispielsaison bleibt „von 20 000".
+- **Farbe ist ein System aus Tokens, nie Sprenkel.** `--outcome-*` (welcher
+  Ausgang, nie gut/schlecht), `--perf-*` (nur wo mehr=besser objektiv gilt —
+  Leistung vs. Erwartung; **nicht** Szenarien-Deltas oder Wichtigstes Spiel, wo
+  ein „+" auf Abstieg schlecht wäre), `--zone-*` (Tabellenzonen) und `--series-*`
+  (Chart-Kurven). Ein Quellscan verbietet jedes Hex in Komponenten; Farbe steht
+  immer neben dem Text, nie als alleiniges Signal. Die geteilten Komponenten
+  (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
+- **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
+  Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
+  (gepflegt je Release-Brief, aktuell 2.1.0) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein

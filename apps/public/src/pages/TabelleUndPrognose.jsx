@@ -2,11 +2,13 @@ import { useMemo, useState } from "react";
 import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import DirekteDuelle from "../components/DirekteDuelle.jsx";
-import { currentTable, orderWithinSharedRanks, scheduleStrength, duels, rulesFrom } from "../lib/season.js";
+import { currentTable, orderWithinSharedRanks, scheduleStrength, duels, rulesFrom, targetList } from "../lib/season.js";
+import { zoneOfRank, zoneColor, ZONE_TOKEN } from "../lib/zones.js";
 import Relegation from "../components/Relegation.jsx";
 import { percent, number, integer, signedInt, rating } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
 import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
+import { effectiveParams } from "../../../../packages/engine/src/model.mjs";
 
 const HEAT_STEPS = ["--heat-0", "--heat-1", "--heat-2", "--heat-3", "--heat-4", "--heat-5"];
 
@@ -19,7 +21,7 @@ function heatColour(p) {
 }
 
 export default function TabelleUndPrognose({ ctx }) {
-  const { season, outlook, leagueConfig, nameOf, carried = [], league, leagueLabel, playoff } = ctx;
+  const { season, outlook, leagueConfig, nameOf, carried = [], league, leagueLabel, playoff, params } = ctx;
   const carriedByClub = new Map(carried.map((c) => [c.clubId, c]));
   const [expert, setExpert] = useState(false);
 
@@ -36,6 +38,10 @@ export default function TabelleUndPrognose({ ctx }) {
   );
   const rules = rulesFrom(leagueConfig);
   const remaining = remainingFixtures(season.fixtures);
+  // Zones present in this league's targets, in config order — for the stripe
+  // and the legend under the projected table (§FARBEN_UNTERTITEL §2.3).
+  const zoneTargets = targetList(leagueConfig);
+  const legendZones = zoneTargets.filter((t) => ZONE_TOKEN[t.id]);
 
   // The ratings the canonical artefact was computed from. Taking them from the
   // artefact rather than deriving them separately is what keeps this figure and
@@ -54,6 +60,11 @@ export default function TabelleUndPrognose({ ctx }) {
   //     counts are equal for all — the only differences left are the arithmetic
   //     of self-exclusion, not the fixture list. The card appears with the first
   //     played match (§7: nothing to say → say nothing).
+  // The home advantage in Elo points, league-effective and rounded — it makes
+  // the Restprogramm caption concrete and follows the annual refit automatically,
+  // never hard-coded (§UEBERSICHT_HEADER_FOOTER §1).
+  const homeAdv = params?.params ? Math.round(effectiveParams(params.params, { league }).HOME_ADV) : null;
+
   const scheduleRows = useMemo(() => {
     const rows = [...strength.entries()].map(([clubId, s]) => ({ clubId, ...s }));
     if (!rows.length) return { rows: [], informative: false };
@@ -115,11 +126,18 @@ export default function TabelleUndPrognose({ ctx }) {
                 </tr>
               </thead>
               <tbody>
-                {table.map((r) => {
+                {table.map((r, i) => {
                   const pts = outlook?.points?.[r.clubId];
+                  // Zone accent by PROJECTED final position (the display order,
+                  // by expected points within a shared rank) — a left stripe, not
+                  // a fill; the label and rank stay the primary signal.
+                  const zone = zoneOfRank(i + 1, zoneTargets);
                   return (
                     <tr key={r.clubId}>
-                      <td className={r.sharedRank ? "shared-rank" : undefined}>
+                      <td
+                        className={r.sharedRank ? "shared-rank zone-stripe" : "zone-stripe"}
+                        style={zone ? { borderLeftColor: zone.color } : undefined}
+                      >
                         {r.rank}{r.sharedRank ? "." : "."}
                         {r.sharedRank ? <span className="visually-hidden"> geteilter Platz</span> : null}
                       </td>
@@ -145,6 +163,14 @@ export default function TabelleUndPrognose({ ctx }) {
               </tbody>
             </table>
           </div>
+          <div className="zone-legend">
+            {legendZones.map((t) => (
+              <span key={t.id}>
+                <span className="zone-dot" style={{ background: zoneColor(t.id) }} aria-hidden="true" />
+                {t.label}
+              </span>
+            ))}
+          </div>
         </Card>
 
         {outlook ? <Heatmap outlook={outlook} table={table} nameOf={nameOf} /> : null}
@@ -159,7 +185,7 @@ export default function TabelleUndPrognose({ ctx }) {
           caption={
             "Mittleres Gegner-Rating der verbleibenden Spiele, als Abweichung vom Durchschnitt: "
             + "positiv = schwereres Restprogramm. Heim und auswärts getrennt, weil dasselbe "
-            + "Gegner-Rating auswärts schwerer wiegt."
+            + `Gegner-Rating auswärts um rund ${homeAdv} Elo-Punkte schwerer wiegt.`
           }
         >
           <div className="table-scroll">

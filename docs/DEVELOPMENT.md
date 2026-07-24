@@ -134,6 +134,7 @@ mit, weil die Trainingsdaten committet sind.
 | Wahrscheinlichstes Ergebnis: bedingt auf die Tendenz | ✅ mit Tests |
 | Textmaß-Token + Duell-Tabs (geteilte Tab-Komponente) | ✅ mit Tests |
 | Zahlenformat (fester Dezimal, ein Vorzeichen-Pfad, rating) + Restprogramm | ✅ mit Tests |
+| Header/Footer-Umbau, Läufe-Auswahl weg, Farbsystem (Tokens) | ✅ mit Tests |
 | V2b — Historie | ⏳ zurückgestellt (Auslösebedingung im Brief) |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):

@@ -22,6 +22,8 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 10 | [SCORELINE_KONVENTION_BRIEF.md](SCORELINE_KONVENTION_BRIEF.md) | Eine reine Anzeige-Hilfsfunktion `favouriteScoreline`: das gezeigte „wahrscheinlichste Ergebnis" ist das Modalergebnis innerhalb der wahrscheinlichsten Tendenz. Sonst keine Verhaltensänderung. |
 | 11 | [TEXTMASS_DUELLE_BRIEF.md](TEXTMASS_DUELLE_BRIEF.md) | Reine Präsentation: Textmaß-Token `--measure-text` als einzige Quelle für Fließtextbreite; „Direkte Duelle" mit Tabs je Ziel über die geteilte `Tabs`-Komponente. |
 | 12 | [ZAHLENFORMAT_BRIEF.md](ZAHLENFORMAT_BRIEF.md) | Reine Präsentation: feste Nachkommastelle in `percent()`, ein Vorzeichen-Pfad (`pp`/`points`), `rating()` ohne Tausenderpunkt, Restprogramm-Schwere als Abweichung vom Ligamittel (vor dem 1. Spieltag verborgen). |
+| 13 | [UEBERSICHT_HEADER_FOOTER_BRIEF.md](UEBERSICHT_HEADER_FOOTER_BRIEF.md) | Präsentation + zwei Amendments (Läufe-Auswahl weg, Was-wäre-wenn fix 2 000): Platzierungszonen-Umbau, entzerrtes „Wichtigstes Spiel" mit §10-Toggle, dreizeiliger Footer mit Version+Build-Stempel, Provenienz nach Methodik. |
+| 14 | [FARBEN_UNTERTITEL_BRIEF.md](FARBEN_UNTERTITEL_BRIEF.md) | Addendum zu 13: entschiedener Header-Untertitel und ein Farbsystem aus Tokens (Ausgang/Vorzeichen/Zonen), Farbe nie alleiniger Bedeutungsträger. |
 
 ## Diese Dateien werden nicht bearbeitet
 

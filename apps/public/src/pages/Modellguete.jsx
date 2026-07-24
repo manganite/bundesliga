@@ -3,6 +3,8 @@ import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import { currentTable, scoredMatches, scoredMatchesFrozen, ratingAgeEntries, rulesFrom } from "../lib/season.js";
 import { percent, number, integer, signedInt, signed, pp, points } from "../lib/format.js";
+import { outcomeColor, perfColor } from "../lib/colors.js";
+import { tendencyOf } from "../../../../packages/engine/src/model.mjs";
 import { playedFixtures } from "../lib/data.js";
 import {
   qualityByProvenance, ratingFreshness, placementVsExpectation,
@@ -445,8 +447,8 @@ function LeistungVsErwartung({ ctx, scored }) {
                 <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(r.clubId)}</th>
                 <td>{r.actual}</td>
                 <td>{number(r.expected, 1)}</td>
-                <td>{signedInt(Math.round(r.difference))}</td>
-                <td>{signed(r.perMatch, 2)}</td>
+                <td style={{ color: perfColor(r.difference) }}>{signedInt(Math.round(r.difference))}</td>
+                <td style={{ color: perfColor(r.perMatch) }}>{signed(r.perMatch, 2)}</td>
               </tr>
             ))}
           </tbody>
@@ -525,7 +527,9 @@ function SpielZeugnis({ scored, nameOf }) {
       <th scope="row" className="left" style={{ fontWeight: 400 }}>
         {nameOf(s.fixture.homeClubId)} – {nameOf(s.fixture.awayClubId)}
       </th>
-      <td>{s.fixture.gh}:{s.fixture.ga}</td>
+      <td style={{ color: outcomeColor(tendencyOf(s.fixture.gh, s.fixture.ga)), fontWeight: 600 }}>
+        {s.fixture.gh}:{s.fixture.ga}
+      </td>
       <td>{percent(s.prediction[s.actual], 1)}</td>
       <td>{number(s.surprisal, 1)}</td>
     </tr>

@@ -14,4 +14,5 @@ export { default as Methodik, SampleResult, StepEinSpiel } from "../../src/pages
 export { default as DirekteDuelle } from "../../src/components/DirekteDuelle.jsx";
 export { default as Tabs } from "../../src/components/Tabs.jsx";
 export { Card } from "../../src/components/ui.jsx";
+export { default as SiteFooter } from "../../src/components/SiteFooter.jsx";
 export { default as App } from "../../src/App.jsx";

@@ -34,6 +34,34 @@
      own max-width (a source scan enforces that). */
   --measure-text: 88ch;
 
+  /* Colour accents (§FARBEN_UNTERTITEL). Tokens, consumed like --measure-text;
+     no component carries its own outcome/sign/zone hex (a scan enforces that).
+     Colour is never the sole carrier of meaning — text always sits beside it. */
+  /* Outcome: WHICH result, never good/bad. Green / amber / red. */
+  --outcome-home: #0f7b4f;
+  --outcome-draw: #9a6700;
+  --outcome-away: #b3261e;
+  /* Sign, only where „more = better" objectively holds (performance vs. exp.). */
+  --perf-pos: #0f7b4f;
+  --perf-neg: #b3261e;
+  /* Table zone accents — the Bundesliga podium colours. */
+  --zone-champion: #c08a1e;
+  --zone-europe: #1f5fd0;
+  --zone-conference: #2f8f9d;
+  --zone-promotion-playoff: #0f7b4f;
+  --zone-relegation: #9a5b00;
+  --zone-drop: #b3261e;
+  /* Categorical chart-series palette (Verlauf curves) — a data-viz palette,
+     tokenised so no component carries its own hex. */
+  --series-1: #1f5fd0;
+  --series-2: #e0733a;
+  --series-3: #0f7b4f;
+  --series-4: #8b5cd6;
+  --series-5: #c0396b;
+  --series-6: #2f8f9d;
+  --series-7: #a07b1f;
+  --series-8: #4b6a8f;
+
   color-scheme: light dark;
 }
 
@@ -59,6 +87,19 @@
     --heat-3: #2f496f;
     --heat-4: #3c6193;
     --heat-5: #5182c4;
+
+    /* Brighter for contrast on the dark surface (§10: both themes first-class). */
+    --outcome-home: #52c08c;
+    --outcome-draw: #e0a44a;
+    --outcome-away: #f08078;
+    --perf-pos: #52c08c;
+    --perf-neg: #f08078;
+    --zone-champion: #e0b64a;
+    --zone-europe: #7aa7f5;
+    --zone-conference: #5fc0cf;
+    --zone-promotion-playoff: #52c08c;
+    --zone-relegation: #e0a44a;
+    --zone-drop: #f08078;
   }
 }
 
@@ -538,3 +579,64 @@ button.primary:disabled { opacity: 0.45; cursor: default; }
 
 /* „Direkte Duelle" value: two club-tied percentages, compact. */
 .duel-value { font-variant-numeric: tabular-nums; }
+
+/* --- zones (§FARBEN_UNTERTITEL §2.3) -------------------------------------- */
+
+.zone-block { margin: 0 0 0.9rem; }
+.zone-block:last-child { margin-bottom: 0; }
+.zone-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+}
+.zone-dot {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+/* A left-edge accent stripe on a projected-table row — an accent, not a fill;
+   the table stays calm. Text/rank remain the primary signal. */
+td.zone-stripe, th.zone-stripe {
+  border-left: 4px solid transparent;
+}
+.zone-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.9rem;
+  margin: 0.6rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.zone-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+
+/* --- Wichtigstes Spiel: row layout, no horizontal scroll (§2.2) ----------- */
+.impact-list { list-style: none; margin: 0; padding: 0; }
+.impact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.impact-row:last-child { border-bottom: 0; }
+.impact-fixture { font-weight: 500; }
+.impact-md { color: var(--text-muted); font-weight: 400; }
+.impact-effect { font-size: 0.88rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+/* A „Wie gerechnet?" disclosure — the method behind the two visible sentences. */
+.method-disclosure { margin-top: 0.7rem; }
+.method-disclosure > summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.tendency-triple { font-variant-numeric: tabular-nums; }
+
+/* Footer identity line. */
+.footer-identity { font-weight: 500; }
+.footer-build { color: var(--text-muted); font-weight: 400; }

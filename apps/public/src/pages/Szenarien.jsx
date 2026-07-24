@@ -72,10 +72,19 @@ export default function Szenarien({ ctx }) {
 //  Was-wäre-wenn
 // ---------------------------------------------------------------------------
 
+// The what-if runs at a FIXED 2 000 runs (B = 20 batches of 100), no user choice
+// (§UEBERSICHT_HEADER_FOOTER §2.5). The price is named, not hidden: the 2·SE
+// floor grows ≈ 3× against the canonical 20 000, so small far-effects fall under
+// „unverändert" more often. By key design the first 2 000 runs are a prefix of
+// the canonical 20 000 (runCount is in no key, §3), so this is a shorter sample
+// of the same distribution, not a different one.
+const WHATIF_RUNS = 2000;
+const WHATIF_BATCHES = 20;
+
 function WasWaereWenn({ ctx, remaining }) {
   const { season, outlook, leagueConfig, league, nameOf, params, prematch } = ctx;
-  const runs = outlook.runs ?? 20000;
-  const batches = outlook.batches ?? 20;
+  const runs = WHATIF_RUNS;
+  const batches = WHATIF_BATCHES;
 
   // fixtureId -> { gh, ga }. The INPUTS. Editing these never runs anything.
   const [fixed, setFixed] = useState({});
@@ -318,7 +327,8 @@ export function WhatIfResult({ sim, targets, nameOf, runs, stale }) {
       <p className="caption" style={{ marginTop: 0 }}>
         Alle Klubs, deren Chancen sich spürbar ändern — auch ohne eigenes festgesetztes Spiel, denn
         jedes Ergebnis verschiebt zugleich die Rechnung der Konkurrenten. Unterschiede, die auch
-        reiner Zufall erzeugen könnte, sind ausgeblendet (gerechnet mit {number(runs, 0)} Durchläufen).
+        reiner Zufall erzeugen könnte, sind ausgeblendet — gerechnet mit {number(runs, 0)} Durchläufen,
+        kleine Verschiebungen erscheinen dann als „unverändert“.
       </p>
       {tabs.length ? <ResultTabs tabs={tabs} nameOf={nameOf} /> : (
         <p className="caption">

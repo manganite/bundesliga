@@ -1,4 +1,5 @@
 import { percent } from "../lib/format.js";
+import { outcomeColor } from "../lib/colors.js";
 
 // ============================================================================
 //  One fixture's model prediction — favourite tendency with its probability and
@@ -32,7 +33,9 @@ export default function FixturePrediction({ prediction, prefix = "Simuliert" }) 
     <span className="fixture-prediction">
       {prefix ? <strong>{prefix}</strong> : null}
       {prefix ? " — " : null}
-      {fav.label} {percent(fav.probability, 0)}, wahrscheinlichstes Ergebnis {fav.modal[0]}:{fav.modal[1]}
+      {/* Colour encodes WHICH outcome, never good/bad; the label stays beside it. */}
+      <span style={{ color: outcomeColor(fav.tendency), fontWeight: 600 }}>{fav.label}</span>
+      {" "}{percent(fav.probability, 0)}, wahrscheinlichstes Ergebnis {fav.modal[0]}:{fav.modal[1]}
     </span>
   );
 }

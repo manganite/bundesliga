@@ -5,9 +5,9 @@ import { targetList } from "../lib/season.js";
 import { effectiveContenders } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, pp } from "../lib/format.js";
 
-const SERIES_COLOURS = [
-  "var(--accent)", "#e0733a", "#0f7b4f", "#8b5cd6", "#c0396b", "#2f8f9d", "#a07b1f", "#4b6a8f",
-];
+// The curve palette lives in CSS tokens (§FARBEN: no per-case hex in a
+// component). SVG stroke accepts var() directly.
+const SERIES_COLOURS = Array.from({ length: 8 }, (_, i) => `var(--series-${i + 1})`);
 
 /**
  * Verlauf — the frozen curve (V1) and, since V1.2, the comparison against the

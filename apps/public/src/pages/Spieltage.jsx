@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
 import { currentTable, predictFixture, scoredMatches } from "../lib/season.js";
+import { outcomeColor } from "../lib/colors.js";
 import { percent, number, weekdayDate } from "../lib/format.js";
 
 /**
@@ -97,9 +98,15 @@ export default function Spieltage({ ctx }) {
                     </th>
                     <td>{done ? `${f.gh}:${f.ga}` : "–"}</td>
                     <td>
-                      {pred
-                        ? `${percent(pred.homeWin, 0)} / ${percent(pred.draw, 0)} / ${percent(pred.awayWin, 0)}`
-                        : "–"}
+                      {pred ? (
+                        <span className="tendency-triple">
+                          <span style={{ color: outcomeColor("homeWin") }}>{percent(pred.homeWin, 0)}</span>
+                          {" / "}
+                          <span style={{ color: outcomeColor("draw") }}>{percent(pred.draw, 0)}</span>
+                          {" / "}
+                          <span style={{ color: outcomeColor("awayWin") }}>{percent(pred.awayWin, 0)}</span>
+                        </span>
+                      ) : "–"}
                     </td>
                     <td style={{ color: "var(--text-muted)" }}>{weekdayDate(f.kickoff)}</td>
                   </tr>

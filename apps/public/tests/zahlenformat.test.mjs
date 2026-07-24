@@ -68,6 +68,7 @@ function tableCtx(season, league, { fixtures } = {}) {
     outlook: maybe(`data/seasons/${season}/${league}/outlook.json`),
     playoff: maybe(`data/seasons/${season}/playoff.json`),
     leagueConfig: CONFIG.leagues[league],
+    params: PARAMS,
     league,
     leagueLabel: league === "bl1" ? "Bundesliga" : "2. Bundesliga",
     nameOf: (id) => names.get(id) ?? id,
@@ -94,7 +95,7 @@ test("after a played match the card appears, with the new caption and a deviatio
   const text = strip(html);
   assert.match(text, /Restprogramm-Schwere/);
   assert.match(text, /als Abweichung vom Durchschnitt: positiv = schwereres Restprogramm/);
-  assert.match(text, /Heim und auswärts getrennt, weil dasselbe Gegner-Rating auswärts schwerer wiegt/);
+  assert.match(text, /Heim und auswärts getrennt, weil dasselbe Gegner-Rating auswärts um rund \d+ Elo-Punkte schwerer wiegt/);
   assert.match(text, /Abweichung/);
 });
 

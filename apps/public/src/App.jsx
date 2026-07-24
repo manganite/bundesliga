@@ -4,9 +4,7 @@ import {
   carriedRatings, carriedRatingSummary,
 } from "../../../packages/engine/src/dataState.mjs";
 import { LEAGUES, leagueLabel, leagueSeasonLabel } from "../../../packages/engine/src/leagues.mjs";
-import { loadManifest, loadLeagueSeason, clubIndex, currentMatchday, toEngineFixtures } from "./lib/data.js";
-import { useSimulation, DEFAULT_RUNS } from "./hooks/useSimulation.js";
-import SimulationControls from "./components/SimulationControls.jsx";
+import { loadManifest, loadLeagueSeason, clubIndex, currentMatchday } from "./lib/data.js";
 import { seasonLabel } from "./lib/format.js";
 import Uebersicht from "./pages/Uebersicht.jsx";
 import TabelleUndPrognose from "./pages/TabelleUndPrognose.jsx";
@@ -14,6 +12,7 @@ import Spieltage from "./pages/Spieltage.jsx";
 import Teams from "./pages/Teams.jsx";
 import Verlauf from "./pages/Verlauf.jsx";
 import Modellguete from "./pages/Modellguete.jsx";
+import SiteFooter from "./components/SiteFooter.jsx";
 import Szenarien from "./pages/Szenarien.jsx";
 import Methodik from "./pages/Methodik.jsx";
 
@@ -122,7 +121,8 @@ function Shell({ children, league, available = [], onLeague }) {
         <div className="inner">
           <h1>Bundesliga-Simulator</h1>
           <p className="tagline">
-            Wie die Saison ausgehen könnte — als Wahrscheinlichkeiten, mit offengelegtem Modell.
+            Eine Monte-Carlo-Simulation der Bundesliga — rechnet nach jedem Spieltag mit den
+            tatsächlichen Ergebnissen neu. Keine einmalige, starre Prognose.
           </p>
           {/* The switch stays put while the new league loads, so the control the
               reader just used never disappears under them. */}
@@ -170,39 +170,10 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
   const nameOf = useMemo(() => (id) => clubs.get(id)?.name ?? id, [clubs]);
   const leagueConfig = config.leagues[league];
 
-  // --- simulation controls -------------------------------------------------
-  // The committed artefact is the default and the canonical basis. A user who
-  // changes the run count gets their own run, in a worker, for the view only.
-  const canonicalRuns = outlook?.runs ?? DEFAULT_RUNS;
-  const [runs, setRuns] = useState(canonicalRuns);
-  const isCanonical = runs === canonicalRuns;
-
-  const simRequest = useMemo(() => {
-    if (isCanonical || !outlook?.ratings || !params?.params) return null;
-    return {
-      seasonId: `${season.season}-${league}`,
-      league,
-      clubs: season.clubs.map((c) => ({ clubId: c.clubId, rating: outlook.ratings[c.clubId] })),
-      fixtures: toEngineFixtures(season.fixtures),
-      params: params.params,
-      targets: leagueConfig.targets,
-      runs,
-      batches: 20,
-      rules: {
-        pointsForWin: leagueConfig.pointsForWin,
-        pointsForDraw: leagueConfig.pointsForDraw,
-        criteria: leagueConfig.tiebreakCriteria,
-      },
-    };
-  }, [isCanonical, outlook, params, season, league, leagueConfig, runs]);
-
-  const sim = useSimulation(simRequest);
-  // The artefact every page reads. Falls back to the canonical one while a
-  // user-requested run is still going, so nothing ever renders empty.
-  const activeOutlook = (!isCanonical && sim.status === "done" && sim.result)
-    ? { ...sim.result, ratings: outlook.ratings }
-    : outlook;
-
+  // Every page reads the ONE canonical 20 000-run artefact. The run-count
+  // control was removed (§UEBERSICHT_HEADER_FOOTER §2.4): it was never used, and
+  // „eine Simulation je Datenstand" reads more literally without it. The worker
+  // survives only for the Szenarien page.
   const matchday = currentMatchday(season.fixtures);
   const phase = seasonPhase(season.fixtures);
   const phaseLabel = SEASON_PHASE_LABEL[phase];
@@ -210,7 +181,7 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
   const stampWarning = configStampWarning(config, season.season);
   // §8: a forecast partly built on stale inputs must say so. Self-clearing —
   // the line disappears the moment clubelo lists the clubs again.
-  const carried = carriedRatings(activeOutlook);
+  const carried = carriedRatings(outlook);
   const carriedSummary = carriedRatingSummary(carried, nameOf);
 
   const active = PAGES.find((p) => p.id === route) ?? PAGES[0];
@@ -226,7 +197,7 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
 
   const ctx = {
     seasonId, league, leagueLabel: leagueLabel(league), leagueConfig, config, season,
-    outlook: activeOutlook, timeline, timelineLive, prematch, params, playoff,
+    outlook, timeline, timelineLive, prematch, params, playoff,
     clubs, nameOf, matchday, phase, carried,
   };
 
@@ -238,7 +209,8 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
         <div className="inner">
           <h1>Bundesliga-Simulator</h1>
           <p className="tagline">
-            Wie die Saison ausgehen könnte — als Wahrscheinlichkeiten, mit offengelegtem Modell.
+            Eine Monte-Carlo-Simulation der Bundesliga — rechnet nach jedem Spieltag mit den
+            tatsächlichen Ergebnissen neu. Keine einmalige, starre Prognose.
           </p>
 
           <LeagueSwitch league={league} available={available} onLeague={onLeague} />
@@ -261,14 +233,6 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
           {stampWarning ? <p className="banner warn" role="alert">{stampWarning}</p> : null}
           {carriedSummary ? <p className="banner warn" role="status">{carriedSummary}</p> : null}
 
-          <SimulationControls
-            runs={runs}
-            onRuns={setRuns}
-            status={sim.status}
-            canonicalRuns={canonicalRuns}
-            isCanonical={isCanonical}
-          />
-
           <nav className="tabs" aria-label="Seiten">
             {PAGES.map((p) => (
               <a
@@ -288,20 +252,7 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
           <Component ctx={ctx} />
         </main>
 
-        <footer className="footer">
-          <p>
-            Die Prognose verändert sich durch neue Ergebnisse und aktualisierte Ratings.
-            Die Modellparameter bleiben während der Saison unverändert.
-          </p>
-          <p>
-            Ergebnisse und Spielpläne von <a href="https://www.openligadb.de/" rel="noreferrer">OpenLigaDB</a>{" "}
-            unter der <a href="https://opendatacommons.org/licenses/odbl/1-0/" rel="noreferrer">ODbL 1.0</a>;
-            Ratings von <a href="http://clubelo.com/" rel="noreferrer">clubelo.com</a>.
-            {params?.provenance
-              ? ` Modellparameter: ${params.procedureVersion}, gefittet am ${params.provenance.fitDate} über ${params.provenance.fitSeasons}.`
-              : null}
-          </p>
-        </footer>
+        <SiteFooter version={__APP_VERSION__} buildStamp={__BUILD_STAMP__} />
       </div>
     </>
   );

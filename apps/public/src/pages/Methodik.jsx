@@ -37,7 +37,7 @@ export default function Methodik({ ctx }) {
               <Empty>Die Beispielsaison braucht die aktuelle Prognoserechnung; sie liegt noch nicht vor.</Empty>
             </Card>
           )}
-        <StepVieleSaisons runs={outlook?.runs} />
+        <StepVieleSaisons runs={outlook?.runs} params={params} />
       </div>
     </>
   );
@@ -246,7 +246,8 @@ export function SampleResult({ sim, nameOf }) {
 //  4 · 20 000 Saisons
 // ---------------------------------------------------------------------------
 
-function StepVieleSaisons({ runs }) {
+function StepVieleSaisons({ runs, params }) {
+  const prov = params?.provenance;
   return (
     <Card title={`4 · ${number(runs ?? 20000, 0)} Saisons`} textOnly>
       <p className="methodik-step">
@@ -255,6 +256,13 @@ function StepVieleSaisons({ runs }) {
         Die Prognose verändert sich durch neue Ergebnisse und aktualisierte Ratings; die
         Modellparameter bleiben während der Saison unverändert.
       </p>
+      {prov ? (
+        <p className="caption">
+          Die Modellparameter stammen aus der Fitprozedur {params.procedureVersion}, gefittet am{" "}
+          {prov.fitDate} über {prov.fitSeasons} ({prov.fitSeasonCount} Saisons beider Ligen). Sie
+          werden einmal im Jahr neu bestimmt, nicht während der Saison.
+        </p>
+      ) : null}
       <p className="caption">
         Ob die Prozente stimmen, prüft die <a href="#/modellguete">Kalibrierung</a>. Wie sich die
         Wahrscheinlichkeiten über die Saison bewegen, zeigt der <a href="#/verlauf">Verlauf</a>.

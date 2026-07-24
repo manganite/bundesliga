@@ -1,9 +1,9 @@
 {
   "name": "@bundesliga/app",
   "private": true,
-  "version": "0.1.0",
+  "version": "2.1.0",
   "type": "module",
-  "description": "App A — Bundesliga-Simulator. Statische Pages-Seite, Monte-Carlo im Web Worker, kein Backend.",
+  "description": "App A \u2014 Bundesliga-Simulator. Statische Pages-Seite, Monte-Carlo im Web Worker, kein Backend.",
   "scripts": {
     "predev": "node scripts/sync-data.mjs",
     "dev": "vite",

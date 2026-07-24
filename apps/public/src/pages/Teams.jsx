@@ -3,6 +3,7 @@ import { Card, Empty } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import { currentTable, scoredMatches } from "../lib/season.js";
 import { performanceVsExpectation } from "../../../../packages/engine/src/metrics.mjs";
+import { perfColor } from "../lib/colors.js";
 import { percent, number, signed, weekdayDate } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
 import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
@@ -105,7 +106,7 @@ export default function Teams({ ctx }) {
                 <tr><th scope="row" className="left">Punkte erwartet</th><td>{number(perf.expected, 1)}</td></tr>
                 <tr>
                   <th scope="row" className="left">Differenz je Spiel</th>
-                  <td style={{ color: perf.perMatch > 0 ? "var(--good)" : perf.perMatch < 0 ? "var(--bad)" : undefined }}>
+                  <td style={{ color: perfColor(perf.perMatch) }}>
                     {signed(perf.perMatch, 2)}
                   </td>
                 </tr>

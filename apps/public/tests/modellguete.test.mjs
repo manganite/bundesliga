@@ -169,8 +169,14 @@ test("the card ranks fixtures and names WHICH target it is about", () => {
     leagueConfig: upcoming.leagueConfig, nameOf: upcoming.nameOf, limit: 3,
   })));
   assert.match(html, /Wichtigstes kommendes Spiel/);
-  assert.match(html, /größter Einfluss auf/);
+  // New row layout (§2.2): the leading target and the shift are on one line.
   assert.match(html, /Meister|Abstieg/);
+  assert.match(html, /Pp\./);
+  // The visible two-sentence caption carries the honesty core…
+  assert.match(html, /Misst, wie eng ein Spiel mit diesem Zielrennen zusammenhängt/);
+  assert.match(html, /nicht, um wie viele Punkte sich die Anzeige nach dem Spiel ändert/);
+  // …and the method sits behind the „Wie gerechnet?" disclosure.
+  assert.match(html, /Wie gerechnet\?/);
 });
 
 test("THE CAPTION CONSTRAINT: it must not claim to forecast the displayed change", () => {

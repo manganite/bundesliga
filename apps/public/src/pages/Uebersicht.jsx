@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { Card, ProbList, Empty } from "../components/ui.jsx";
 import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
 import { currentTable, targetList, tension, clinched, scoredMatches, rulesFrom } from "../lib/season.js";
+import { ZONE_TOKEN, zoneColor } from "../lib/zones.js";
 import { performanceVsExpectation } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, weekdayDate, signed } from "../lib/format.js";
 import { playedFixtures } from "../lib/data.js";
@@ -32,6 +33,12 @@ export default function Uebersicht({ ctx }) {
 
   const titleTarget = byId.meister ?? byId.aufstieg;
   const dropTarget = byId.abstieg;
+  // Only zones WITHOUT their own card (§UEBERSICHT_HEADER_FOOTER §2.1): the
+  // title race and the drop already have Titelrennen/Abstiegskampf, so listing
+  // their leaders here again would duplicate the neighbouring cards.
+  const zoneCards = targets.filter(
+    (t) => ZONE_TOKEN[t.id] && t.id !== titleTarget?.id && t.id !== dropTarget?.id,
+  );
 
   const titleTension = titleTarget ? tension(outlook, titleTarget) : null;
   const dropTension = dropTarget ? tension(outlook, dropTarget) : null;
@@ -120,25 +127,15 @@ export default function Uebersicht({ ctx }) {
 
         <Card
           title="Platzierungszonen"
+          when={zoneCards.some((t) => ranked(t.id).some((e) => e.value > 0))}
           caption="Platzierungswahrscheinlichkeiten, keine Qualifikationen: wer tatsächlich europäisch spielt, hängt auch von Pokalsiegern ab — Daten, die diese App nicht hat."
         >
-          <div className="table-scroll"><table className="data">
-            <thead>
-              <tr><th scope="col" className="left">Zone</th><th scope="col">Führend</th><th scope="col">Anteil</th></tr>
-            </thead>
-            <tbody>
-              {targets.filter((t) => t.places <= 6).map((t) => {
-                const top = ranked(t.id)[0];
-                return (
-                  <tr key={t.id}>
-                    <th scope="row" className="left">{t.label}</th>
-                    <td className="left">{top && top.value > 0 ? nameOf(top.clubId) : "–"}</td>
-                    <td>{top ? percent(top.value) : "–"}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table></div>
+          {zoneCards.map((t) => (
+            <div key={t.id} className="zone-block">
+              <h4 className="zone-label"><ZoneDot targetId={t.id} /> {t.label}</h4>
+              <ProbList entries={ranked(t.id)} nameOf={nameOf} limit={3} emptyText="Noch offen." />
+            </div>
+          ))}
         </Card>
 
         <WichtigstesSpiel
@@ -252,4 +249,11 @@ export default function Uebersicht({ ctx }) {
       </div>
     </>
   );
+}
+
+/** A small zone-colour accent beside a label. Colour is never the only signal — the label sits right next to it. */
+function ZoneDot({ targetId }) {
+  const c = zoneColor(targetId);
+  if (!c) return null;
+  return <span className="zone-dot" style={{ background: c }} aria-hidden="true" />;
 }
