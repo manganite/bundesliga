@@ -247,6 +247,55 @@ export function predictMatch(eloHome, eloAway, params) {
  * @param {object} dist  a scoreline distribution from buildScorelineDistribution
  * @returns {{tendency:string, pTendency:number, scoreline:[number,number], pScoreline:number}}
  */
+/** Membership test for a named region of the scoreline matrix. */
+const inRegion = (region) => (region === "homeWin"
+  ? (h, a) => h > a
+  : region === "awayWin"
+    ? (h, a) => h < a
+    : (h, a) => h === a);
+
+/**
+ * The modal scoreline WITHIN a named region ("homeWin" / "draw" / "awayWin").
+ *
+ * Ties resolve by the engine's CANONICAL scoreline ordering (by total goals,
+ * then home goals) — first in the ordering wins. No new convention: the ordering
+ * already exists and is protocol-stamped. `favouriteScoreline` is built on this,
+ * and the scenario presets („Verein gewinnt alles", „Nur Überraschungen") use it
+ * for the win region and the least-likely region — one implementation.
+ *
+ * @param {object} dist    a scoreline distribution from buildScorelineDistribution
+ * @param {string} region  "homeWin" | "draw" | "awayWin"
+ * @returns {{scoreline:[number,number], prob:number}}
+ */
+export function regionModal(dist, region) {
+  const N = dist.maxGoals;
+  const belongs = inRegion(region);
+  const { order, cells } = canonicalOrder(N);
+  let scoreline = null;
+  let prob = -1;
+  for (let i = 0; i < order.length; i++) {
+    const [h, a] = cells[i];
+    if (!belongs(h, a)) continue;
+    const p = dist.pmf[order[i]];
+    if (p > prob) { prob = p; scoreline = [h, a]; }
+  }
+  return { scoreline, prob };
+}
+
+/**
+ * The most likely scoreline WITHIN the most likely tendency.
+ *
+ * The global modal scoreline reads as a contradiction next to the favourite
+ * tendency: draws bundle their probability onto few scorelines (mostly 1:1),
+ * wins spread theirs over many (1:0, 2:0, 2:1 …), so „Heimsieg 57 %" can sit
+ * beside a global modal of 1:1. The honest display is the modal scoreline
+ * conditioned on the favourite tendency — computed via `regionModal`, one
+ * implementation.
+ *
+ * The tendency argmax uses the same canonical tie-break, expressed as the order
+ * of each tendency's earliest canonical scoreline: draw (0:0) before home win
+ * (1:0) before away win (0:1).
+ */
 export function favouriteScoreline(dist) {
   const N = dist.maxGoals;
   let homeWin = 0;
@@ -261,33 +310,13 @@ export function favouriteScoreline(dist) {
     }
   }
 
-  // Tendency argmax with the canonical tie-break: the candidates are listed in
-  // the order of their earliest canonical scoreline, and a strict `>` keeps the
-  // first on a tie.
   const masses = [["draw", draw], ["homeWin", homeWin], ["awayWin", awayWin]];
   let tendency = masses[0][0];
   let pTendency = masses[0][1];
   for (const [t, m] of masses) if (m > pTendency) { tendency = t; pTendency = m; }
 
-  const inRegion = tendency === "homeWin"
-    ? (h, a) => h > a
-    : tendency === "awayWin"
-      ? (h, a) => h < a
-      : (h, a) => h === a;
-
-  // Argmax over that region only, walking cells in CANONICAL order so a strict
-  // `>` leaves the first-in-the-ordering winner on any tie.
-  const { order, cells } = canonicalOrder(N);
-  let scoreline = null;
-  let pScoreline = -1;
-  for (let i = 0; i < order.length; i++) {
-    const [h, a] = cells[i];
-    if (!inRegion(h, a)) continue;
-    const p = dist.pmf[order[i]];
-    if (p > pScoreline) { pScoreline = p; scoreline = [h, a]; }
-  }
-
-  return { tendency, pTendency, scoreline, pScoreline };
+  const { scoreline, prob } = regionModal(dist, tendency);
+  return { tendency, pTendency, scoreline, pScoreline: prob };
 }
 
 /** Tendency of an actual scoreline — the label the §4 metrics score against. */

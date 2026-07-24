@@ -31,7 +31,7 @@ const EP = effectiveParams(PARAMS.params, { league: "bl1" });
 const predictFixtureFor = (eh, ea) => predictMatch(eh, ea, EP);
 
 const mod = await harness();
-const { FixturePrediction, FixtureRow, FixedSummary, WhatIfResult, SampleResult, StepEinSpiel, Methodik, Szenarien } = mod;
+const { FixturePrediction, FixtureRow, OverrideSummary, WhatIfResult, SampleResult, StepEinSpiel, Methodik, Szenarien } = mod;
 
 const someOpen = SEASON.fixtures.find((f) => f.gh === undefined);
 const prediction = predictFixture(someOpen, PREMATCH, PARAMS, "bl1");
@@ -43,7 +43,7 @@ const prediction = predictFixture(someOpen, PREMATCH, PARAMS, "bl1");
 test("an open fixture shows its state and prediction — no score input", () => {
   const html = renderToStaticMarkup(React.createElement(FixtureRow, {
     fixture: { id: someOpen.id, homeClubId: someOpen.homeClubId, awayClubId: someOpen.awayClubId },
-    nameOf, prediction, fixed: undefined, onFix: () => {}, onReset: () => {},
+    nameOf, prediction, override: undefined, onFix: () => {}, onRelease: () => {}, onReset: () => {},
   }));
   const text = strip(html);
   assert.match(text, /Simuliert/);
@@ -56,7 +56,7 @@ test("an open fixture shows its state and prediction — no score input", () => 
 test("a fixed fixture shows „Festgesetzt: g:g“ and a reset, no prediction", () => {
   const html = renderToStaticMarkup(React.createElement(FixtureRow, {
     fixture: { id: someOpen.id, homeClubId: someOpen.homeClubId, awayClubId: someOpen.awayClubId },
-    nameOf, prediction, fixed: { gh: 0, ga: 2 }, onFix: () => {}, onReset: () => {},
+    nameOf, prediction, override: { kind: "fixed", gh: 0, ga: 2 }, onFix: () => {}, onRelease: () => {}, onReset: () => {},
   }));
   const text = strip(html);
   assert.match(text, /Festgesetzt: 0:2/);
@@ -68,21 +68,20 @@ test("a fixed fixture shows „Festgesetzt: g:g“ and a reset, no prediction", 
 //  §1.1 the fixed-summary keeps off-matchday fixtures visible
 // ---------------------------------------------------------------------------
 
-test("a fixed fixture appears in the summary even when its matchday is not selected", () => {
-  // Two fixtures on different matchdays, both fixed; the summary lists both.
+test("an override appears in the summary even when its matchday is not selected", () => {
+  // Two fixtures on different matchdays, one fixed one released; both listed.
   const f1 = SEASON.fixtures.find((f) => f.gh === undefined && f.matchday === 1);
   const f2 = SEASON.fixtures.find((f) => f.gh === undefined && f.matchday === 3);
-  const fixed = { [f1.id]: { gh: 2, ga: 1 }, [f2.id]: { gh: 0, ga: 0 } };
-  const html = strip(renderToStaticMarkup(React.createElement(FixedSummary, {
-    fixedList: [
-      { id: f1.id, homeClubId: f1.homeClubId, awayClubId: f1.awayClubId },
-      { id: f2.id, homeClubId: f2.homeClubId, awayClubId: f2.awayClubId },
+  const html = strip(renderToStaticMarkup(React.createElement(OverrideSummary, {
+    overrideList: [
+      { fixture: { id: f1.id, homeClubId: f1.homeClubId, awayClubId: f1.awayClubId }, o: { kind: "fixed", gh: 2, ga: 1 } },
+      { fixture: { id: f2.id, homeClubId: f2.homeClubId, awayClubId: f2.awayClubId }, o: { kind: "released" } },
     ],
-    fixed, nameOf, onClearOne: () => {}, onClearAll: () => {},
+    nameOf, onClearOne: () => {}, onClearAll: () => {},
   })));
-  assert.match(html, /Festgesetzt \(2\)/);
+  assert.match(html, /Im Szenario \(2\)/);
   assert.match(html, new RegExp(`${nameOf(f1.homeClubId)} 2:1`));
-  assert.match(html, new RegExp(`${nameOf(f2.homeClubId)} 0:0`));
+  assert.match(html, new RegExp(`${nameOf(f2.homeClubId)} – ${nameOf(f2.awayClubId)} \\(freigegeben\\)`));
   assert.match(html, /alles zurücksetzen/);
 });
 
@@ -171,7 +170,7 @@ test("Methodik step 2 shows the SAME fixture presentation as the what-if „Simu
   const shared = strip(renderToStaticMarkup(React.createElement(FixturePrediction, { prediction, prefix: null })));
   const inRow = strip(renderToStaticMarkup(React.createElement(FixtureRow, {
     fixture: { id: someOpen.id, homeClubId: someOpen.homeClubId, awayClubId: someOpen.awayClubId },
-    nameOf, prediction, fixed: undefined, onFix: () => {}, onReset: () => {},
+    nameOf, prediction, override: undefined, onFix: () => {}, onRelease: () => {}, onReset: () => {},
   })));
   // The favourite/modal phrasing from the shared component appears verbatim in the row.
   assert.ok(inRow.includes(shared), "the what-if row must render the shared prediction component");

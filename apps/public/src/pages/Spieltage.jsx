@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
-import { currentTable, predictFixture, scoredMatches } from "../lib/season.js";
+import { currentTable, predictFixture, scoredMatches, duelTargetsByFixture } from "../lib/season.js";
+import DuelChip, { duelStripeColor } from "../components/DuelChip.jsx";
 import { outcomeColor } from "../lib/colors.js";
 import { percent, number, weekdayDate } from "../lib/format.js";
 
@@ -15,6 +16,7 @@ import { percent, number, weekdayDate } from "../lib/format.js";
  */
 export default function Spieltage({ ctx }) {
   const { season, outlook, leagueConfig, nameOf, matchday, prematch, params, league, leagueLabel } = ctx;
+  const duelBy = useMemo(() => duelTargetsByFixture(season, outlook, leagueConfig), [season, outlook, leagueConfig]);
   const matchdays = useMemo(
     () => [...new Set(season.fixtures.map((f) => f.matchday))].sort((a, b) => a - b),
     [season],
@@ -75,7 +77,10 @@ export default function Spieltage({ ctx }) {
           limit={9}
         />
 
-        <Card title={`${selected}. Spieltag`}>
+        <Card
+          title={`${selected}. Spieltag`}
+          caption="Hervorgehoben: direkte Duelle (beide Klubs ≥ 10 % auf dasselbe Ziel)."
+        >
           <div className="table-scroll"><table className="data">
             <thead>
               <tr>
@@ -91,10 +96,16 @@ export default function Spieltage({ ctx }) {
                 const pred = done
                   ? scoredHere.find((s) => s.fixture.id === f.id)?.prediction
                   : predictFixture(f, prematch, params, league)?.tendency;
+                const duel = duelBy.get(f.id);
                 return (
-                  <tr key={f.id}>
-                    <th scope="row" className="left" style={{ fontWeight: 400 }}>
+                  <tr key={f.id} className={duel ? "duel-row" : undefined}>
+                    <th
+                      scope="row"
+                      className={duel ? "left zone-stripe" : "left"}
+                      style={{ fontWeight: 400, ...(duel ? { borderLeftColor: duelStripeColor(duel) } : {}) }}
+                    >
                       {nameOf(f.homeClubId)} – {nameOf(f.awayClubId)}
+                      {duel ? <> <DuelChip targets={duel} /></> : null}
                     </th>
                     <td>{done ? `${f.gh}:${f.ga}` : "–"}</td>
                     <td>
