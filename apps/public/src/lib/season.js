@@ -366,8 +366,12 @@ export function computePreset({ fixtures, overrides, area, recipe, club, areaMd,
   for (const f of fixtures) {
     if (!inArea(f)) continue;
     if (recipe === "reroll") {
-      if (f.gh !== undefined) { next[f.id] = { kind: "released" }; released++; }
-      else if (next[f.id]) { delete next[f.id]; simulated++; }
+      if (f.gh !== undefined) {
+        // A played fixture already released is already simulated — count it as
+        // unchanged instead of re-releasing (accurate message, no needless rewrite).
+        if (next[f.id]?.kind === "released") unchanged++;
+        else { next[f.id] = { kind: "released" }; released++; }
+      } else if (next[f.id]) { delete next[f.id]; simulated++; }
       else unchanged++;
       continue;
     }

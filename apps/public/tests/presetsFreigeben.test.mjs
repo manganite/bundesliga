@@ -186,6 +186,13 @@ test("„reroll“ on the played area frees played fixtures and counts them as f
   });
   assert.equal(Object.values(overrides).filter((o) => o.kind === "released").length, 3);
   assert.match(message, /^3 freigegeben/);
+
+  // Applying it a SECOND time re-releases nothing: already-released fixtures count
+  // as unchanged, so the message says so and the map is not rewritten.
+  const again = computePreset({ fixtures, overrides, area: "played", recipe: "reroll", modelOf });
+  assert.deepEqual(again.overrides, overrides, "already-released fixtures are not rewritten");
+  assert.match(again.message, /3 unverändert/);
+  assert.doesNotMatch(again.message, /freigegeben/);
 });
 
 test("presets STACK — a second application overwrites only its own area (§2.4)", () => {

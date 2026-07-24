@@ -153,7 +153,9 @@ function WasWaereWenn({ ctx, remaining }) {
 
   const setOverride = (id, o) => setOverrides((prev) => ({ ...prev, [id]: o }));
   const clearOne = (id) => setOverrides((prev) => { const next = { ...prev }; delete next[id]; return next; });
-  const clearAll = () => { setOverrides({}); setMessage(null); };
+  // „Alles zurücksetzen" räumt wirklich komplett: die Eingaben UND den zuletzt
+  // gerechneten Stand, sonst bliebe das veraltete Ergebnis stehen (§2.4).
+  const clearAll = () => { setOverrides({}); setCommitted(null); setMessage(null); };
   const runScenario = () => setCommitted({ ...overrides });
 
   const targets = targetList(leagueConfig);

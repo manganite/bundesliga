@@ -247,12 +247,18 @@ export function predictMatch(eloHome, eloAway, params) {
  * @param {object} dist  a scoreline distribution from buildScorelineDistribution
  * @returns {{tendency:string, pTendency:number, scoreline:[number,number], pScoreline:number}}
  */
-/** Membership test for a named region of the scoreline matrix. */
-const inRegion = (region) => (region === "homeWin"
-  ? (h, a) => h > a
-  : region === "awayWin"
-    ? (h, a) => h < a
-    : (h, a) => h === a);
+/**
+ * Membership test for a named region of the scoreline matrix. Unknown regions
+ * throw rather than defaulting to the draw — an exported helper must fail fast on
+ * a typo, as the engine does elsewhere on enum-like inputs, not hand back a
+ * plausible-but-wrong modal.
+ */
+const inRegion = (region) => {
+  if (region === "homeWin") return (h, a) => h > a;
+  if (region === "awayWin") return (h, a) => h < a;
+  if (region === "draw") return (h, a) => h === a;
+  throw new Error(`regionModal: unknown region "${region}"`);
+};
 
 /**
  * The modal scoreline WITHIN a named region ("homeWin" / "draw" / "awayWin").

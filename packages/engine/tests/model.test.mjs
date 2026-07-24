@@ -395,7 +395,7 @@ test("regionModal resolves a tie by the canonical ordering", () => {
   assert.equal(r.scoreline.join(":"), "2:0");
 });
 
-test("a region with no mass returns a null scoreline rather than throwing", () => {
+test("a region with no mass returns its earliest canonical cell with prob 0", () => {
   const N = EP.MAX_GOALS;
   const pmf = new Float64Array((N + 1) * (N + 1));
   pmf[0] = 1; // only 0:0, a draw
@@ -404,4 +404,10 @@ test("a region with no mass returns a null scoreline rather than throwing", () =
   // home region's max prob is 0 — the earliest home cell wins with prob 0.
   assert.ok(home.scoreline[0] > home.scoreline[1]);
   assert.equal(home.prob, 0);
+});
+
+test("an unknown region throws rather than defaulting to the draw", () => {
+  const { lamH, lamA } = eloToLambdas(1600, 1600, EP);
+  const dist = buildScorelineDistribution(lamH, lamA, EP);
+  assert.throws(() => regionModal(dist, "homewin"), /unknown region/);
 });
