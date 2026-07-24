@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
-import { currentTable, predictFixture, scoredMatches, duelTargetsByFixture } from "../lib/season.js";
+import { currentTable, predictFixture, scoredMatches, duelTargetsByFixture, targetList } from "../lib/season.js";
 import DuelChip, { duelStripeColor } from "../components/DuelChip.jsx";
+import LeagueTable from "../components/LeagueTable.jsx";
 import { outcomeColor } from "../lib/colors.js";
 import { percent, number, weekdayDate } from "../lib/format.js";
 
@@ -163,30 +164,7 @@ export default function Spieltage({ ctx }) {
         </Card>
 
         <Card title={`Tabelle nach dem ${selected}. Spieltag`}>
-          <div className="table-scroll">
-            <table className="data">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col" className="left">Klub</th>
-                  <th scope="col">Sp</th>
-                  <th scope="col">Diff</th>
-                  <th scope="col">Pkt</th>
-                </tr>
-              </thead>
-              <tbody>
-                {snapshotTable.map((r) => (
-                  <tr key={r.clubId}>
-                    <td className={r.sharedRank ? "shared-rank" : undefined}>{r.rank}.</td>
-                    <th scope="row" className="left" style={{ fontWeight: 500 }}>{nameOf(r.clubId)}</th>
-                    <td>{r.played}</td>
-                    <td>{r.gd > 0 ? `+${r.gd}` : r.gd}</td>
-                    <td><strong>{r.pts}</strong></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <LeagueTable table={snapshotTable} nameOf={nameOf} zoneTargets={targetList(leagueConfig)} />
         </Card>
 
         {fixtures.length === 0 ? <Empty>Für diesen Spieltag liegen keine Spiele vor.</Empty> : null}

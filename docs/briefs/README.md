@@ -26,6 +26,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 14 | [FARBEN_UNTERTITEL_BRIEF.md](FARBEN_UNTERTITEL_BRIEF.md) | Addendum zu 13: entschiedener Header-Untertitel und ein Farbsystem aus Tokens (Ausgang/Vorzeichen/Zonen), Farbe nie alleiniger Bedeutungsträger. |
 | 15 | [ZONEN_LAYOUT_RELEASES_BRIEF.md](ZONEN_LAYOUT_RELEASES_BRIEF.md) | Zonen-Karte `max(Zonenplätze, 3)`, Übersicht als Spaltenlayout, „Wie gerechnet?" als geteilte Komponente und stehende Regel, Version wird Tag + Release, README-Badges. |
 | 16 | [PRESETS_FREIGEBEN_DUELLE_BRIEF.md](PRESETS_FREIGEBEN_DUELLE_BRIEF.md) | Ein neues Primitiv (Freigeben: gespielte Spiele im Was-wäre-wenn), eine Preset-Leiste (Bereich × Rezept, fünf Rezepte, Stapel-Semantik), eine seitenübergreifende Duell-Hervorhebung aus einer Quelle. Genau ein Engine-Helper (`regionModal`); Freigeben ist eine UI-Datenstands-Transformation, kein Engine-Eingriff. |
+| 17 | [SZENARIO_TABELLE_BRIEF.md](SZENARIO_TABELLE_BRIEF.md) | Simulierte Szenario-Schlusstabelle mit Positions-Indikator (CRN gegen die gepaarte 2 000er-Basis), „Anwenden & rechnen", und eine geteilte `LeagueTable` für Spieltage, Tabelle & Prognose und die Szenario-Tabelle. Keine neue Engine-Berechnung; der Worker reicht vorhandene Aggregate durch. Vor Release 2.2.0 (Brief 16 + 17). |
 
 ## Diese Dateien werden nicht bearbeitet
 

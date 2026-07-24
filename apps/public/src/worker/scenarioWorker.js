@@ -65,7 +65,20 @@ function whatIf(payload) {
       };
     }
   }
-  return { probabilities: modified.probabilities, deltas, runs: payload.runs, batches: payload.batches };
+  // Pass the existing per-club aggregates THROUGH — no new engine computation
+  // (§SZENARIO_TABELLE §2.1 / §4): the scenario final table reads expected points
+  // and the 10–90 band from `points` (the modified run), and the position-shift
+  // indicator compares against `basePoints` (the PAIRED 2 000-run baseline, same
+  // random keys = CRN). At an unchanged data state and the same run count these
+  // are bit-identical to the artefact's numbers.
+  return {
+    probabilities: modified.probabilities,
+    deltas,
+    points: modified.points,
+    basePoints: baseline.points,
+    runs: payload.runs,
+    batches: payload.batches,
+  };
 }
 
 self.onmessage = (event) => {

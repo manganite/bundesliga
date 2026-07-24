@@ -2,15 +2,19 @@ import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import FixturePrediction, { favouriteOf } from "../components/FixturePrediction.jsx";
 import DuelChip, { duelStripeColor } from "../components/DuelChip.jsx";
+import LeagueTable from "../components/LeagueTable.jsx";
 import Tabs from "../components/Tabs.jsx";
 import { useScenario } from "../hooks/useScenario.js";
 import {
   targetList,
   currentTable,
+  orderWithinSharedRanks,
   predictFixture,
   fixtureModel,
   duelTargetsByFixture,
   scenarioFixtures,
+  scenarioSeason,
+  expectedShiftIndicator,
   computePreset,
 } from "../lib/season.js";
 import { remainingFixtures, toEngineFixtures } from "../lib/data.js";
@@ -172,7 +176,11 @@ function WasWaereWenn({ ctx, remaining }) {
         matchdays={matchdays}
         duelBy={duelBy}
         modelOf={modelOf}
-        onApply={(next, msg) => { setOverrides(next); setMessage(msg); }}
+        // „Anwenden & rechnen" (§SZENARIO_TABELLE §1): a preset fills the states
+        // AND starts the run in one click. Manual single edits afterwards still
+        // only touch `overrides`, so they dim and wait for „Szenario rechnen" —
+        // the no-silent-autorun rule from the UX brief is untouched.
+        onApply={(next, msg) => { setOverrides(next); setMessage(msg); setCommitted(next); }}
         overrides={overrides}
       />
       {message ? <p className="preset-message" role="status">{message}</p> : null}
@@ -227,10 +235,73 @@ function WasWaereWenn({ ctx, remaining }) {
         {sim.status === "running" ? <span className="axis-label">rechnet …</span> : null}
       </div>
 
+      {outlook ? <ScenarioTable ctx={ctx} committed={committed} sim={sim} stale={stale} /> : null}
+
       {committed && Object.keys(committed).length
         ? <WhatIfResult sim={sim} targets={targets} nameOf={nameOf} runs={runs} stale={stale} />
         : null}
     </Card>
+  );
+}
+
+/**
+ * The scenario's simulated FINAL table, above the change tabs (§SZENARIO_TABELLE
+ * §2). Real columns (Sp, Tore, Diff, Pkt) come from `currentTable` on the
+ * TRANSFORMED data state — fixed and released fixtures show here; expected points
+ * and the 10–90 band come from the scenario run; the position-shift indicator
+ * compares against the PAIRED 2 000-run baseline (CRN), never the artefact.
+ *
+ * Base semantics (§2.3):
+ *   - before the first run: the canonical-artefact defaults, NO indicator,
+ *     identical to Tabelle & Prognose — the caption says so;
+ *   - after a run: the scenario numbers with the indicator and the CRN caption;
+ *   - stale: dimmed together with the tabs.
+ */
+export function ScenarioTable({ ctx, committed, sim, stale }) {
+  const { season, outlook, leagueConfig, nameOf, carried = [] } = ctx;
+  const zoneTargets = targetList(leagueConfig);
+  const carriedByClub = new Map(carried.map((c) => [c.clubId, c]));
+
+  const hasScenario = committed
+    && Object.keys(committed).length
+    && sim.status === "done"
+    && sim.result?.points;
+
+  const points = hasScenario ? sim.result.points : outlook.points;
+  const indicator = hasScenario
+    ? expectedShiftIndicator(sim.result.points, sim.result.basePoints)
+    : undefined;
+  const ranked = currentTable(
+    hasScenario ? scenarioSeason(season, committed) : season,
+    leagueConfig,
+  );
+  const table = orderWithinSharedRanks(ranked, points);
+  const anyShared = table.some((r) => r.sharedRank);
+
+  const caption = hasScenario
+    ? "Simulierte Schlusstabelle des Szenarios. Vergleich gegen die unveränderte Prognose, gleiche Zufallszahlen."
+    : "Noch kein Szenario — Standardprognose (kanonischer 20 000-Läufe-Lauf), inhaltsgleich mit Tabelle & Prognose."
+      ;
+
+  return (
+    <div className={stale && hasScenario ? "whatif-result is-stale" : undefined} style={{ marginTop: "1rem" }}>
+      <Card
+        title="Simulierte Schlusstabelle"
+        caption={caption
+          + (anyShared
+            ? " Auf geteilten Plätzen (Spielordnung) stehen die Klubs hier nach erwarteten Punkten."
+            : "")}
+      >
+        <LeagueTable
+          table={table}
+          nameOf={nameOf}
+          zoneTargets={zoneTargets}
+          points={points}
+          indicator={indicator}
+          carriedByClub={carriedByClub}
+        />
+      </Card>
+    </div>
   );
 }
 
@@ -328,7 +399,7 @@ export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides 
           {RECIPES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
         </select>
       </label>
-      <button type="button" onClick={apply}>Anwenden</button>
+      <button type="button" onClick={apply}>Anwenden &amp; rechnen</button>
       <p className="caption preset-recipe-caption">{RECIPE_CAPTION[recipe]}</p>
     </div>
   );

@@ -7,10 +7,12 @@ export { default as TabelleUndPrognose } from "../../src/pages/TabelleUndPrognos
 export { default as Modellguete } from "../../src/pages/Modellguete.jsx";
 export { default as Uebersicht } from "../../src/pages/Uebersicht.jsx";
 export { default as Verlauf } from "../../src/pages/Verlauf.jsx";
+export { default as Spieltage } from "../../src/pages/Spieltage.jsx";
 export {
-  default as Szenarien, FixtureRow, OverrideSummary, PresetBar, WhatIfResult, ResultTabs, Explainer,
+  default as Szenarien, FixtureRow, OverrideSummary, PresetBar, WhatIfResult, ResultTabs, Explainer, ScenarioTable,
 } from "../../src/pages/Szenarien.jsx";
 export { default as DuelChip, duelChipLabel } from "../../src/components/DuelChip.jsx";
+export { default as LeagueTable } from "../../src/components/LeagueTable.jsx";
 export { default as Methodik, SampleResult, StepEinSpiel } from "../../src/pages/Methodik.jsx";
 export { default as DirekteDuelle } from "../../src/components/DirekteDuelle.jsx";
 export { default as Tabs } from "../../src/components/Tabs.jsx";

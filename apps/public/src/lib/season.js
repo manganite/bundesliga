@@ -332,6 +332,51 @@ export function scenarioFixtures(fixtures, overrides) {
   });
 }
 
+/**
+ * The season as the scenario's TRANSFORMED data state (§SZENARIO_TABELLE §2.1):
+ * a season object whose fixtures carry the overrides — fixed results become
+ * played, released results become open again. `currentTable` on it yields the
+ * scenario's real columns (Sp, Tore, Diff, Pkt), so the final table's left side
+ * reacts to what the user set or released — no engine call, same shape as the
+ * unmodified season.
+ */
+export function scenarioSeason(season, overrides) {
+  if (!overrides || !Object.keys(overrides).length) return season;
+  return {
+    ...season,
+    fixtures: season.fixtures.map((f) => {
+      const o = overrides[f.id];
+      if (o?.kind === "fixed") return { ...f, gh: o.gh, ga: o.ga };
+      if (o?.kind === "released") return { ...f, gh: undefined, ga: undefined };
+      return f;
+    }),
+  };
+}
+
+/**
+ * The position-shift indicator for the scenario final table (§SZENARIO_TABELLE
+ * §2.2): per club its move in the EXPECTED-POINTS ordering of the scenario run
+ * versus the paired baseline, plus the expected-points difference. Positive
+ * `posDelta` = climbed the table. Pure ranking over two `points` maps from the
+ * worker; adds no number of its own.
+ */
+export function expectedShiftIndicator(points, basePoints) {
+  if (!points || !basePoints) return new Map();
+  const order = (p) => Object.keys(p)
+    .sort((a, b) => (p[b].expected - p[a].expected))
+    .reduce((m, id, i) => m.set(id, i + 1), new Map());
+  const rankNow = order(points);
+  const rankBase = order(basePoints);
+  const out = new Map();
+  for (const id of rankNow.keys()) {
+    out.set(id, {
+      posDelta: (rankBase.get(id) ?? rankNow.get(id)) - rankNow.get(id),
+      ptsDelta: points[id].expected - (basePoints[id]?.expected ?? points[id].expected),
+    });
+  }
+  return out;
+}
+
 const PRESET_AREAS = {
   open: (f) => f.gh === undefined,
   played: (f) => f.gh !== undefined,

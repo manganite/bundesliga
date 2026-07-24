@@ -2,12 +2,11 @@ import { useMemo, useState } from "react";
 import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import DirekteDuelle from "../components/DirekteDuelle.jsx";
+import LeagueTable from "../components/LeagueTable.jsx";
 import { currentTable, orderWithinSharedRanks, scheduleStrength, duels, rulesFrom, targetList } from "../lib/season.js";
-import { zoneOfRank, zoneColor, ZONE_TOKEN } from "../lib/zones.js";
 import Relegation from "../components/Relegation.jsx";
-import { percent, number, integer, signedInt, rating } from "../lib/format.js";
+import { percent, integer, signedInt, rating } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
-import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
 import { effectiveParams } from "../../../../packages/engine/src/model.mjs";
 
 const HEAT_STEPS = ["--heat-0", "--heat-1", "--heat-2", "--heat-3", "--heat-4", "--heat-5"];
@@ -41,7 +40,6 @@ export default function TabelleUndPrognose({ ctx }) {
   // Zones present in this league's targets, in config order — for the stripe
   // and the legend under the projected table (§FARBEN_UNTERTITEL §2.3).
   const zoneTargets = targetList(leagueConfig);
-  const legendZones = zoneTargets.filter((t) => ZONE_TOKEN[t.id]);
 
   // The ratings the canonical artefact was computed from. Taking them from the
   // artefact rather than deriving them separately is what keeps this figure and
@@ -111,66 +109,13 @@ export default function TabelleUndPrognose({ ctx }) {
               : "Erwartete Punkte und der Bereich, in dem 80 % der simulierten Saisons enden (10.–90. Perzentil)."
           }
         >
-          <div className="table-scroll">
-            <table className="data">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col" className="left">Klub</th>
-                  <th scope="col">Sp</th>
-                  <th scope="col">Tore</th>
-                  <th scope="col">Diff</th>
-                  <th scope="col">Pkt</th>
-                  {outlook ? <th scope="col">erw. Pkt</th> : null}
-                  {outlook ? <th scope="col">10–90 %</th> : null}
-                </tr>
-              </thead>
-              <tbody>
-                {table.map((r, i) => {
-                  const pts = outlook?.points?.[r.clubId];
-                  // Zone accent by PROJECTED final position (the display order,
-                  // by expected points within a shared rank) — a left stripe, not
-                  // a fill; the label and rank stay the primary signal.
-                  const zone = zoneOfRank(i + 1, zoneTargets);
-                  return (
-                    <tr key={r.clubId}>
-                      <td
-                        className={r.sharedRank ? "shared-rank zone-stripe" : "zone-stripe"}
-                        style={zone ? { borderLeftColor: zone.color } : undefined}
-                      >
-                        {r.rank}{r.sharedRank ? "." : "."}
-                        {r.sharedRank ? <span className="visually-hidden"> geteilter Platz</span> : null}
-                      </td>
-                      <th scope="row" className="left" style={{ fontWeight: 500 }}>
-                        {nameOf(r.clubId)}
-                        {carriedByClub.has(r.clubId) ? (
-                          <span className="carried" title={carriedRatingNote(carriedByClub.get(r.clubId))}>
-                            {" "}⚑<span className="visually-hidden">
-                              {" "}{carriedRatingNote(carriedByClub.get(r.clubId))}
-                            </span>
-                          </span>
-                        ) : null}
-                      </th>
-                      <td>{r.played}</td>
-                      <td>{r.gf}:{r.ga}</td>
-                      <td>{signedInt(r.gd)}</td>
-                      <td><strong>{r.pts}</strong></td>
-                      {outlook ? <td>{number(pts?.expected, 1)}</td> : null}
-                      {outlook ? <td>{pts ? `${integer(pts.p10)}–${integer(pts.p90)}` : "–"}</td> : null}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          <div className="zone-legend">
-            {legendZones.map((t) => (
-              <span key={t.id}>
-                <span className="zone-dot" style={{ background: zoneColor(t.id) }} aria-hidden="true" />
-                {t.label}
-              </span>
-            ))}
-          </div>
+          <LeagueTable
+            table={table}
+            nameOf={nameOf}
+            zoneTargets={zoneTargets}
+            points={outlook?.points}
+            carriedByClub={carriedByClub}
+          />
         </Card>
 
         {outlook ? <Heatmap outlook={outlook} table={table} nameOf={nameOf} /> : null}

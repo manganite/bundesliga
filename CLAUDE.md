@@ -101,6 +101,13 @@ spätere schlägt die frühere:**
     `favouriteScoreline` delegiert darauf. Das Freigeben ist eine
     Datenstands-Transformation in der UI-Schicht — kein Engine-Eingriff, die
     Schlüssel bleiben datenstandsunabhängig, CRN gilt unverändert.
+17. `SZENARIO_TABELLE_BRIEF.md` — Szenario-Schlusstabelle über den Veränderungs-
+    Tabs, „Anwenden & rechnen", und eine geteilte `LeagueTable` für drei
+    Konsumenten. **Keine neue Engine-Berechnung**: Realspalten via `rankTable`
+    auf dem transformierten Datenstand, erw. Pkt/Band aus dem Szenariolauf, der
+    Worker reicht `points`/`basePoints` nur durch. Der Positions-Indikator
+    vergleicht gegen die **gepaarte 2 000-Läufe-Basis** (CRN), nie das Artefakt.
+    Läuft vor 2.2.0; das Release umfasst dann Brief 16 + 17.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -452,6 +459,36 @@ construction.
     θ-Liste `duels()`) speist sowohl die Was-wäre-wenn-Liste als auch Spieltage;
     `DuelChip` ist die eine geteilte Komponente (höchstes Ziel im Chip, alle im
     `title`). Keine zweite Duell-Berechnung fürs Markieren.
+- **Brief 17 steht (Szenario-Schlusstabelle · Anwenden & rechnen · LeagueTable).**
+  Vier Stellen, an denen es leicht kaputtgeht:
+  - **Eine `LeagueTable`, drei Konsumenten** (`components/LeagueTable.jsx`):
+    Spieltage (nur Realspalten inkl. Tore/Diff), Tabelle & Prognose (+ erw. Pkt
+    und 10–90-Band), Szenario-Schlusstabelle (+ Indikatorspalte). Zonenstreifen,
+    Legende, geteilte Plätze und die ⚑-Flagge leben **einmal** dort; ein
+    Quellwächter hält den Standings-Header (`>erw. Pkt<`) auf genau eine Stelle.
+    Die Zeilen kommen bereits geordnet herein (Konsument wendet
+    `orderWithinSharedRanks` an); der Zonenstreifen richtet sich nach der
+    **Anzeigeposition**.
+  - **Kein neues Engine-Rechnen.** Realspalten via `currentTable` auf
+    `scenarioSeason(season, overrides)` (transformierter Datenstand: fixed →
+    gespielt, released → wieder offen). erw. Pkt/Band aus dem Szenariolauf; der
+    Worker reicht `points`/`basePoints` nur **durch**. Ein Test zeigt: bei
+    unverändertem Datenstand und gleicher Laufzahl ist `sim.points` bitgleich zu
+    `outlook.points`.
+  - **Der Indikator ist CRN-ehrlich.** `expectedShiftIndicator(points,
+    basePoints)` vergleicht die Erwartungs-Reihenfolge des Szenariolaufs gegen
+    die **gepaarte 2 000-Läufe-Basis** desselben Laufs — **nie** gegen das
+    20 000er-Artefakt, sonst stünde Stichprobenrauschen als Pfeil in der Tabelle.
+    Vor dem ersten Rechnen: Artefakt-Standardwerte, **keine** Indikatorspalte.
+  - **Vorzeichenfarbe ist hier erlaubt — und nur hier.** Der Positions-Indikator
+    („↑2"/„↓1"/„·" als Text plus Intensität plus `perfColor`) sitzt in
+    `LeagueTable`, weil Aufsteigen für den Klub eindeutig gut ist. Das
+    Delta-Färbeverbot der Wahrscheinlichkeits-Tabs (`Szenarien.jsx` trägt kein
+    `perfColor`/`outcomeColor`) gilt unverändert; der Quellscan bewacht das.
+  - **„Anwenden & rechnen" rechnet, Einzeländerungen nicht.** Der Preset-Button
+    füllt UND startet den Lauf (`onApply` setzt `committed`); eine manuelle
+    Änderung danach berührt nur `overrides`, dimmt und wartet auf „Szenario
+    rechnen" — die No-Autorun-Regel aus dem UX-Brief bleibt.
 - **V2b (Historie) existiert nicht als Aufgabe.** Auslösebedingung (alle drei):
   clubelo-Relaunch live; die einmalige Namensform-Wiederverifikation aller 36 Klubs
   auf der neuen Schnittstelle bestanden; ein eigener V2b-Brief geschrieben. Bis

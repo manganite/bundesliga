@@ -595,6 +595,21 @@ button.primary:disabled { opacity: 0.45; cursor: default; }
 /* „Direkte Duelle" value: two club-tied percentages, compact. */
 .duel-value { font-variant-numeric: tabular-nums; }
 
+/* Scenario final-table position-shift indicator (§SZENARIO_TABELLE §2.2): a
+   narrow column; the arrow + number carry the meaning, the intensity is only a
+   second signal (opacity), colour a third — never the sole carrier. */
+.shift-cell {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: center;
+  width: 2.6em;
+}
+.shift-cell.shift-l0 { opacity: 0.5; }
+.shift-cell.shift-l1 { opacity: 0.7; }
+.shift-cell.shift-l2 { opacity: 0.85; }
+.shift-cell.shift-l3 { opacity: 1; }
+
 /* --- zones (§FARBEN_UNTERTITEL §2.3) -------------------------------------- */
 
 .zone-block { margin: 0 0 0.9rem; }
