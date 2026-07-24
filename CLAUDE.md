@@ -108,6 +108,12 @@ spätere schlägt die frühere:**
     Worker reicht `points`/`basePoints` nur durch. Der Positions-Indikator
     vergleicht gegen die **gepaarte 2 000-Läufe-Basis** (CRN), nie das Artefakt.
     Läuft vor 2.2.0; das Release umfasst dann Brief 16 + 17.
+18. `SZENARIO_TABELLE_ABSCHLUSS_BRIEF.md` — Abschluss von 17: der Positions-
+    Indikator zieht ans **rechte** Tabellenende (Kopf „Δ Platz"), weil er neben
+    der #-Spalte als Rangänderung fehlgelesen wurde; er misst die Verschiebung in
+    der erw.-Punkte-Reihenfolge. Vereinfachter Verankerungssatz. Danach **Release
+    2.2.0** (Bump = Tag + Release im selben Gang, Brief 16 + 17). Keine Engine-/
+    Pipeline-/Datenänderung.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -357,11 +363,13 @@ construction.
   per Test verankerter §4/§8-Wortlaut entfällt — er wandert höchstens hinter den
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
-- **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `package.json`
-  wird je Release-Brief gebumpt (aktuell 2.1.0), dann ein Git-Tag `v<version>`
-  und ein GitHub-Release mit 3–5 Zeilen deutschen Notes aus dem zugehörigen
-  Brief. Ältere Stände werden **nicht** rückwirkend getaggt; die Historie beginnt
-  bei 2.1.0. Die Footer-Version verlinkt auf `…/releases/tag/v<version>`.
+- **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
+  package.json` wird je Release-Brief gebumpt (aktuell **2.2.0**, Release über
+  Brief 16 + 17), dann ein Git-Tag `v<version>` und ein GitHub-Release mit 3–6
+  Zeilen deutschen Notes aus dem zugehörigen Brief. Ältere Stände werden **nicht**
+  rückwirkend getaggt; die Historie beginnt bei 2.1.0. Die Footer-Version
+  (`__APP_VERSION__` aus `apps/public/package.json` via Vite-`define`) verlinkt
+  auf `…/releases/tag/v<version>`.
 - **Die Übersicht ist ein Spaltenlayout (`card-columns`), kein Reihen-Grid.**
   Multi-Column stapelt Karten lückenlos (ein Grid richtet jede Reihe an der
   höchsten Karte aus). Die Leseordnung ist die Quellreihenfolge: Titelrennen →
@@ -384,7 +392,7 @@ construction.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.1.0) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.2.0) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
