@@ -65,19 +65,23 @@ export function historicalFixtures(matches, register) {
 export function historicalPreMatch(league, year, matches, elo) {
   const entries = [...matches]
     .sort((a, b) => (a.matchday - b.matchday) || String(a.date).localeCompare(String(b.date)) || a.id.localeCompare(b.id))
-    .map((m) => ({
-      fixtureId: m.id,
-      kickoff: `${m.date}T00:00:00Z`,
-      homeClubId: m.home,
-      awayClubId: m.away,
-      eloHome: elo[m.id].eloHome,
-      eloAway: elo[m.id].eloAway,
-      rule: "committed training-elo (pre-match, day before kickoff)",
-      provenance: "backfilled",
-      snapshotProvenance: "backfilled",
-      snapshotEffectiveAt: shiftDay(m.date, -1),
-      modelVersion: "training-elo",
-    }));
+    .map((m) => {
+      const e = elo[m.id];
+      if (!e) throw new Error(`historicalPreMatch: no training-elo for fixture ${m.id} — fail closed`);
+      return {
+        fixtureId: m.id,
+        kickoff: `${m.date}T00:00:00Z`,
+        homeClubId: m.home,
+        awayClubId: m.away,
+        eloHome: e.eloHome,
+        eloAway: e.eloAway,
+        rule: "committed training-elo (pre-match, day before kickoff)",
+        provenance: "backfilled",
+        snapshotProvenance: "backfilled",
+        snapshotEffectiveAt: shiftDay(m.date, -1),
+        modelVersion: "training-elo",
+      };
+    });
   return {
     schemaVersion: 1,
     league,
@@ -85,7 +89,8 @@ export function historicalPreMatch(league, year, matches, elo) {
     rule: "committed training-elo, valid the day before kickoff (§V2b.1)",
     entries,
     gaps: [],
-    counts: { contemporaneous: 0, backfilled: entries.length, carriedForward: 0 },
+    // Match the committed schema exactly: the hyphenated „carried-forward" key.
+    counts: { contemporaneous: 0, backfilled: entries.length, "carried-forward": 0 },
   };
 }
 

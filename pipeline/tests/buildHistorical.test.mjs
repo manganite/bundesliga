@@ -61,6 +61,14 @@ test("prematch carries the training-elo verbatim, all backfilled, no timestamps"
   assert.equal(e0.eloHome, elo[e0.fixtureId].eloHome);
   // Determinism: no createdAt / timestamp fields.
   assert.ok(pm.entries.every((e) => !("createdAt" in e)), "no createdAt → deterministic");
+  // The counts key matches the committed schema exactly (hyphenated).
+  assert.ok("carried-forward" in pm.counts, "counts uses the established carried-forward key");
+  assert.ok(!("carriedForward" in pm.counts));
+});
+
+test("historicalPreMatch is fail-closed when a fixture lacks training-elo", () => {
+  const matches = [{ id: "x1", matchday: 1, date: "2015-08-14", home: "A", away: "B", homeGoals: 1, awayGoals: 0 }];
+  assert.throws(() => historicalPreMatch("bl1", 2015, matches, {}), /no training-elo for fixture x1/);
 });
 
 test("historicalConfig sets awayGoalsApply per SEASON, not by cloning the current value", () => {
