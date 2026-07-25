@@ -45,6 +45,14 @@ test("§4.2: the retrospective label appears on an archive Verlauf, not on the l
   assert.doesNotMatch(live, /Retrospektive Modellrechnung/);
 });
 
+test("§4.2: a missing parameter version drops the clause, never shows the word undefined", async () => {
+  const { retrospectiveLabel } = await import("../src/lib/archive.js");
+  assert.match(retrospectiveLabel("track-c-part0-v1"), /\(Parameterversion track-c-part0-v1\)/);
+  const noVersion = retrospectiveLabel(undefined);
+  assert.doesNotMatch(noVersion, /undefined/);
+  assert.match(noVersion, /heutigen Parametern — nicht die damalige Vorhersage/);
+});
+
 test("§4.1: the in-sample note appears on an archive Modellgüte, not on the live one", () => {
   const archive = strip(renderToStaticMarkup(React.createElement(Modellguete, { ctx: ctxFor(2015, "bl1", true) })));
   assert.match(archive, /Trainingsfenster der heutigen Parameter — Rückblicke in diesem Fenster sind keine unabhängige Prüfung des Modells/);

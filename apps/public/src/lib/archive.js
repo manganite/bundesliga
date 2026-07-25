@@ -10,7 +10,7 @@
  * reader can see which model produced it.
  */
 export const retrospectiveLabel = (paramVersion) =>
-  `Retrospektive Modellrechnung mit den heutigen Parametern (Parameterversion ${paramVersion}) — nicht die damalige Vorhersage.`;
+  `Retrospektive Modellrechnung mit den heutigen Parametern${paramVersion ? ` (Parameterversion ${paramVersion})` : ""} — nicht die damalige Vorhersage.`;
 
 /**
  * §4.1 — the in-sample obligation, shown wherever a historical season's model
