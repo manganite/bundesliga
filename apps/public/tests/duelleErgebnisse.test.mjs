@@ -6,6 +6,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
 import { DUEL_PLAYED_NOTE, DUEL_ARCHIVE_CAPTION } from "../src/lib/archive.js";
+import { playedDuels } from "../src/lib/season.js";
 
 // ============================================================================
 //  DUELLE_ERGEBNISSE — the Duelle card shows both worlds: „Anstehend" (remaining,
@@ -77,6 +78,17 @@ test("captions: live gains the played-note; archive caption is unchanged", () =>
   assert.doesNotMatch(archive, /die Prozente sind die von damals/);
 });
 
+test("the caption names only the sections present (no dangling half-sentences)", () => {
+  // Pre-season: pending only → no played-note.
+  const preSeason = strip(render({ pending: [pend("p", 1, 0.5)], played: [] }));
+  assert.match(preSeason, /Verbleibende Spiele/);
+  assert.doesNotMatch(preSeason, /die Prozente sind die von damals/);
+  // Finished non-archive: played only → no „remaining games" line.
+  const finished = strip(render({ pending: [], played: [play("g", 34, 0.5, 2, 1)] }));
+  assert.doesNotMatch(finished, /Verbleibende Spiele/);
+  assert.match(finished, /die Prozente sind die von damals/);
+});
+
 test("integration: an archive season's card renders played duels with results", () => {
   const config = read("data/seasons/2015/config.json");
   const season = read("data/seasons/2015/bl1/season.json");
@@ -95,4 +107,19 @@ test("integration: an archive season's card renders played duels with results", 
   assert.match(html, />Gespielt</);
   assert.match(text, /\d+:\d+/, "played duels carry results");
   assert.doesNotMatch(html, />Anstehend</, "a finished season has nothing pending");
+});
+
+test("playedDuels needs BOTH goals — a partial result is never joined", () => {
+  const season = {
+    fixtures: [
+      { id: "f1", matchday: 1, homeClubId: "A", awayClubId: "B", gh: 2, ga: 1 }, // full
+      { id: "f2", matchday: 1, homeClubId: "C", awayClubId: "D", gh: 0 },          // partial
+    ],
+    clubs: [],
+  };
+  const timeline = { points: [{ matchday: 0, probabilities: { meister: { A: 0.5, B: 0.5, C: 0.5, D: 0.5 } } }] };
+  const out = playedDuels(season, timeline, cfg);
+  assert.equal(out.length, 1, "only the fully-played fixture is a played duel");
+  assert.equal(out[0].fixtureId, "f1");
+  assert.deepEqual(out[0].result, { gh: 2, ga: 1 });
 });

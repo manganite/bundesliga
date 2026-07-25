@@ -195,7 +195,8 @@ export function seasonDuels(ctx, theta = 0.1) {
  */
 export function playedDuels(season, timeline, leagueConfig, theta = 0.1) {
   const resultOf = new Map(
-    season.fixtures.filter((f) => f.gh !== undefined).map((f) => [f.id, { gh: f.gh, ga: f.ga }]),
+    // A result needs BOTH goals — same rule as playedFixtures; never a partial.
+    season.fixtures.filter((f) => f.gh !== undefined && f.ga !== undefined).map((f) => [f.id, { gh: f.gh, ga: f.ga }]),
   );
   return historicalDuels(season, timeline, leagueConfig, theta)
     .filter((d) => resultOf.has(d.fixtureId))

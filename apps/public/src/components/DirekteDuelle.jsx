@@ -104,9 +104,16 @@ export default function DirekteDuelle({ pending = [], played = [], leagueConfig,
     ),
   }));
 
+  // The caption names only the sections that are actually present: no „remaining
+  // games" line pre-nothing-remaining, no played-note when nothing is played.
+  const hasPending = pending.length > 0;
+  const hasPlayed = played.length > 0;
   const caption = isArchive
     ? DUEL_ARCHIVE_CAPTION
-    : `Verbleibende Spiele, in denen beide Klubs mindestens 10 % Chance auf dasselbe Ziel haben. ${DUEL_PLAYED_NOTE}`;
+    : [
+      hasPending ? "Verbleibende Spiele, in denen beide Klubs mindestens 10 % Chance auf dasselbe Ziel haben." : null,
+      hasPlayed ? DUEL_PLAYED_NOTE : null,
+    ].filter(Boolean).join(" ");
 
   return (
     <Card
