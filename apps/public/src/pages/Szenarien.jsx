@@ -49,14 +49,16 @@ export default function Szenarien({ ctx }) {
     );
   }
 
-  if (!remaining.length) {
+  // The only empty state left is a season with NO fixtures at all. A fully
+  // PLAYED season is NOT empty here: the Freigeben primitive (Brief 16) makes
+  // every played game a live control, so an archive season is the purest form of
+  // the tool. The old `remaining.length === 0` guard was a Brief-16 leftover from
+  // when the page only knew open games; it walled off a working path (§FIX).
+  if (!season.fixtures.length) {
     return (
       <>
         <h2>Szenarien — {leagueLabel}</h2>
-        <Empty>
-          Die Saison ist gespielt — es sind keine Spiele mehr offen, mit denen sich etwas
-          durchspielen ließe.
-        </Empty>
+        <Empty>Für diese Saison liegen keine Spieldaten vor.</Empty>
       </>
     );
   }
@@ -73,7 +75,9 @@ export default function Szenarien({ ctx }) {
 
       <div className="stack">
         <WasWaereWenn ctx={ctx} remaining={remaining} />
-        {matchdaysRemaining <= SOLVER_MATCHDAY_THRESHOLD
+        {/* The solver acts on OPEN games; a fully-played season has none, so it
+            stays absent there — not just under the ≤ 5 threshold (§7). */}
+        {remaining.length > 0 && matchdaysRemaining <= SOLVER_MATCHDAY_THRESHOLD
           ? <WasMussPassieren ctx={ctx} remaining={remaining} />
           : null}
       </div>
@@ -113,8 +117,12 @@ function WasWaereWenn({ ctx, remaining }) {
     () => [...new Set(season.fixtures.map((f) => f.matchday))].sort((a, b) => a - b),
     [season],
   );
-  const firstOpen = remaining.length ? Math.min(...remaining.map((f) => f.matchday)) : matchdays[0];
-  const [selectedMd, setSelectedMd] = useState(() => firstOpen);
+  // Preselect the next OPEN matchday; on a fully-played (archive) season there is
+  // none, so land on the LAST matchday — where the season's decisions fell (§FIX).
+  const defaultMd = remaining.length
+    ? Math.min(...remaining.map((f) => f.matchday))
+    : matchdays[matchdays.length - 1];
+  const [selectedMd, setSelectedMd] = useState(() => defaultMd);
   const visibleFixtures = season.fixtures
     .filter((f) => f.matchday === selectedMd)
     .sort((a, b) => String(a.kickoff).localeCompare(String(b.kickoff)));
