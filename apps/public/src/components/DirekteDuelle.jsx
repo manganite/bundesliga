@@ -1,6 +1,7 @@
 import { Card } from "./ui.jsx";
 import Tabs from "./Tabs.jsx";
 import { targetList } from "../lib/season.js";
+import { DUEL_ARCHIVE_CAPTION } from "../lib/archive.js";
 import { percent } from "../lib/format.js";
 
 // ============================================================================
@@ -21,7 +22,7 @@ function DuelValue({ duel }) {
   );
 }
 
-export default function DirekteDuelle({ duelList, leagueConfig, nameOf }) {
+export default function DirekteDuelle({ duelList, leagueConfig, nameOf, isArchive = false }) {
   if (!duelList.length) return null; // §7: a card with nothing to say hides.
 
   // Group by target, keep config order, drop targets with no duel.
@@ -30,15 +31,19 @@ export default function DirekteDuelle({ duelList, leagueConfig, nameOf }) {
     if (!byTarget.has(d.target)) byTarget.set(d.target, []);
     byTarget.get(d.target).push(d);
   }
+  // Live: hottest first (min(P) desc), matchday breaks ties. Archive: the season
+  // reads as a story, so matchday ASCENDING leads, heat is the second key
+  // (§ARCHIV_DUELLE §2.2).
+  const sortRows = isArchive
+    ? (a, b) => (a.matchday ?? 0) - (b.matchday ?? 0) || b.heat - a.heat
+    : (a, b) => b.heat - a.heat || (a.matchday ?? 0) - (b.matchday ?? 0);
   const order = targetList(leagueConfig);
   const groups = order
     .filter((t) => byTarget.has(t.id))
     .map((t) => ({
       id: t.id,
       label: t.label,
-      // Hottest first: a duel is hottest when BOTH clubs are in the race, so by
-      // min(P_A, P_B) descending; matchday ascending breaks ties.
-      rows: byTarget.get(t.id).slice().sort((a, b) => b.heat - a.heat || (a.matchday ?? 0) - (b.matchday ?? 0)),
+      rows: byTarget.get(t.id).slice().sort(sortRows),
     }));
 
   // Default: the target with the single most brisant duel (largest heat) — the
@@ -78,7 +83,9 @@ export default function DirekteDuelle({ duelList, leagueConfig, nameOf }) {
   return (
     <Card
       title="Direkte Duelle"
-      caption="Verbleibende Spiele, in denen beide Klubs mindestens 10 % Chance auf dasselbe Ziel haben."
+      caption={isArchive
+        ? DUEL_ARCHIVE_CAPTION
+        : "Verbleibende Spiele, in denen beide Klubs mindestens 10 % Chance auf dasselbe Ziel haben."}
       method={
         <p className="caption" style={{ marginTop: "0.5rem" }}>
           Ein Tab je Ziel; innerhalb sortiert nach dem kleineren der beiden Werte — ein Duell ist am

@@ -130,6 +130,14 @@ spätere schlägt die frühere:**
     Einziger Leerzustand: keine Fixtures. Spieltags-Vorwahl „nächster offener,
     sonst der **letzte**". Neu: ein **Seitenebenen**-Rendertest (der alte 2014er
     prüfte unter dem Wächter und blieb grün, während die Seite abriegelte).
+21. `ARCHIV_DUELLE_PROMPT.md` — kleiner Fix vor 2.3.0: (a) Bereichsregel — ein
+    Preset-Bereich, der null Spiele träfe, wird nicht angeboten (regelt „offene"
+    im Archiv und „gespielte" vor Spieltag 1); voll gespielt → „Alle Spiele".
+    (b) **Historische Duelle**: `historicalDuels(season, timeline, …)` leitet je
+    Spieltag M über den Timeline-Punkt M−1 aus derselben `directDuels`-θ-Regel ab
+    — eine Implementierung, zwei Datenquellen (live `duels`, archiv
+    `historicalDuels`, gebündelt in `seasonDuels`/`duelTargetsForCtx`). Archiv-
+    Caption verankert; Live-Verhalten unverändert.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.

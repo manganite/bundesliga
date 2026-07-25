@@ -3,6 +3,7 @@ import { Card, Empty } from "../components/ui.jsx";
 import FixturePrediction, { favouriteOf } from "../components/FixturePrediction.jsx";
 import DuelChip, { duelStripeColor } from "../components/DuelChip.jsx";
 import LeagueTable from "../components/LeagueTable.jsx";
+import { DUEL_ARCHIVE_CAPTION } from "../lib/archive.js";
 import Tabs from "../components/Tabs.jsx";
 import { useScenario } from "../hooks/useScenario.js";
 import {
@@ -11,7 +12,7 @@ import {
   orderWithinSharedRanks,
   predictFixture,
   fixtureModel,
-  duelTargetsByFixture,
+  duelTargetsForCtx,
   scenarioFixtures,
   forecastCompletedSeason,
   expectedShiftIndicator,
@@ -127,7 +128,8 @@ function WasWaereWenn({ ctx, remaining }) {
     .filter((f) => f.matchday === selectedMd)
     .sort((a, b) => String(a.kickoff).localeCompare(String(b.kickoff)));
 
-  const duelBy = useMemo(() => duelTargetsByFixture(season, outlook, leagueConfig), [season, outlook, leagueConfig]);
+  // Live: outlook; archive: derived from the frozen timeline (§ARCHIV_DUELLE).
+  const duelBy = useMemo(() => duelTargetsForCtx(ctx), [ctx]);
   const modelOf = (fixture) => fixtureModel(fixture, prematch, params, league);
   const predictionOf = (fixture) => predictFixture(fixture, prematch, params, league);
 
@@ -207,7 +209,9 @@ function WasWaereWenn({ ctx, remaining }) {
       </div>
 
       <p className="caption" style={{ marginBottom: "0.3rem" }}>
-        Hervorgehoben: direkte Duelle (beide Klubs ≥ 10 % auf dasselbe Ziel).
+        {ctx.isArchive
+          ? DUEL_ARCHIVE_CAPTION
+          : "Hervorgehoben: direkte Duelle (beide Klubs ≥ 10 % auf dasselbe Ziel)."}
       </p>
       <div className="table-scroll">
         <table className="data">
@@ -369,7 +373,21 @@ export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides 
   const [areaMd, setAreaMd] = useState(matchdays[0]);
 
   const clubChosen = club !== CLUB_ALL;
-  const needsMd = area === "matchday";
+  // §ARCHIV_DUELLE §1: an area that would match ZERO fixtures in the current data
+  // state is not offered — this handles „alle offenen" in the archive and „alle
+  // gespielten" before matchday 1 uniformly. When ALL games are played, „alle
+  // gespielten Spiele" reads „Alle Spiele".
+  const hasOpen = season.fixtures.some((f) => f.gh === undefined);
+  const hasPlayed = season.fixtures.some((f) => f.gh !== undefined);
+  const allPlayed = hasPlayed && !hasOpen;
+  const areaOptions = [
+    hasOpen && { value: "open", label: "Alle offenen Spiele" },
+    hasPlayed && { value: "played", label: allPlayed ? "Alle Spiele" : "Alle gespielten Spiele" },
+    { value: "matchday", label: "Ein Spieltag" },
+    duelBy?.size ? { value: "duels", label: "Direkte Duelle" } : null,
+  ].filter(Boolean);
+  const effArea = areaOptions.some((o) => o.value === area) ? area : areaOptions[0].value;
+  const needsMd = effArea === "matchday";
   // „clubWins"/„clubLoses" only make sense for a concrete club (change 1).
   const recipeOptions = RECIPES.filter((r) => clubChosen || (r.id !== "clubWins" && r.id !== "clubLoses"));
   const effRecipe = recipeOptions.some((r) => r.id === recipe) ? recipe : "forecast";
@@ -383,7 +401,7 @@ export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides 
 
   const apply = () => {
     const { overrides: next, message } = computePreset({
-      fixtures: season.fixtures, overrides, area, recipe: effRecipe,
+      fixtures: season.fixtures, overrides, area: effArea, recipe: effRecipe,
       club: clubChosen ? club : null, areaMd, duelBy, modelOf,
     });
     onApply(next, message);
@@ -400,11 +418,8 @@ export function PresetBar({ ctx, matchdays, duelBy, modelOf, onApply, overrides 
       </label>
       <label>
         Bereich{" "}
-        <select value={area} onChange={(e) => setArea(e.target.value)}>
-          <option value="open">Alle offenen Spiele</option>
-          <option value="played">Alle gespielten Spiele</option>
-          <option value="matchday">Ein Spieltag</option>
-          <option value="duels">Direkte Duelle</option>
+        <select value={effArea} onChange={(e) => setArea(e.target.value)}>
+          {areaOptions.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
         </select>
       </label>
       {needsMd ? (

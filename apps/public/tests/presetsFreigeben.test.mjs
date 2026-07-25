@@ -334,17 +334,21 @@ test("DuelChip shows the highest-ranked target and names all in its title", () =
 });
 
 test("the duel highlighting is driven from ONE shared source in both places", () => {
-  // Both the what-if list and the Spieltage page read duelTargetsByFixture and
-  // render the shared DuelChip — no second duel computation.
+  // Both the what-if list and the Spieltage page read the shared ctx-aware
+  // selector (which picks the live or archive source) and render the shared
+  // DuelChip — no second duel computation.
   const szen = fs.readFileSync(path.join(REPO, "apps/public/src/pages/Szenarien.jsx"), "utf8");
   const spielt = fs.readFileSync(path.join(REPO, "apps/public/src/pages/Spieltage.jsx"), "utf8");
   for (const [name, src] of [["Szenarien", szen], ["Spieltage", spielt]]) {
-    assert.match(src, /duelTargetsByFixture/, `${name} must read the shared selector`);
+    assert.match(src, /duelTargetsForCtx/, `${name} must read the shared ctx selector`);
     assert.match(src, /DuelChip/, `${name} must render the shared chip`);
   }
-  // The selector itself exists once, in the lib.
+  // The building blocks each exist once, in the lib, and the θ-rule is the one
+  // engine directDuels — live and archive are two data sources, one implementation.
   const lib = fs.readFileSync(path.join(REPO, "apps/public/src/lib/season.js"), "utf8");
-  assert.equal((lib.match(/export function duelTargetsByFixture/g) ?? []).length, 1);
+  assert.equal((lib.match(/export function duelTargetsFromList/g) ?? []).length, 1);
+  assert.equal((lib.match(/export function seasonDuels/g) ?? []).length, 1);
+  assert.equal((lib.match(/directDuels\(/g) ?? []).length, 2, "one call for live, one for archive — same engine fn");
 });
 
 // ---------------------------------------------------------------------------

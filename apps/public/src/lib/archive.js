@@ -19,3 +19,12 @@ export const retrospectiveLabel = (paramVersion) =>
  */
 export const IN_SAMPLE_NOTE =
   "2011/12–2025/26 ist das Trainingsfenster der heutigen Parameter — Rückblicke in diesem Fenster sind keine unabhängige Prüfung des Modells.";
+
+/**
+ * §ARCHIV_DUELLE §2.3 — the duel caption. On an archive season it names the §8
+ * subtlety: the „both ≥ 10 % on the same goal" test rests on the RETROSPECTIVE
+ * model run with today's parameters, not on the assessment made at the time. The
+ * live caption is passed through unchanged.
+ */
+export const DUEL_ARCHIVE_CAPTION =
+  "Spiele, bei denen beide Klubs vor dem Spieltag mindestens 10 % Chance auf dasselbe Ziel hatten — nach der retrospektiven Modellrechnung mit den heutigen Parametern, nicht nach damaliger Einschätzung.";
