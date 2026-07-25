@@ -451,3 +451,116 @@ export function reportDelta(batchDeltas) {
     display: significant ? delta : null, // null renders as „unverändert"
   };
 }
+
+// ---------------------------------------------------------------------------
+// Pure aggregations for the chart build-out (CHART_AUSBAU). No simulation, no
+// artefact, no pipeline touch — both fold values that ALREADY exist.
+// ---------------------------------------------------------------------------
+
+/**
+ * A club's probability spread across the DISJOINT table zones at one point in
+ * time, summing to 1 (§CHART_AUSBAU §2.1). The stacked-area „Zonenverteilung"
+ * reads one of these per matchday.
+ *
+ * The bands are derived from the league's own zone targets, NOT chosen: a zone
+ * nested inside another (Meister ⊂ Platz 1–4) contributes only its OWN share,
+ * so the outer band shows the difference (Platz 2–4 = P(1–4) − P(Meister)); the
+ * middle band („Mittelfeld") is the remainder that makes the total exactly 1.
+ * The broad „Klassenerhalt"-style catch-all is not a partition band and is
+ * dropped. Pure; a test pins the sum to 1 for both leagues.
+ *
+ * @param {Record<string,number>} targetProb  this club's P(target): {meister, …}
+ * @param {Array<{id:string,label:string,from:number,to:number}>} zoneTargets
+ *   the league's `targetList(...)` — id, label and the 1-based rank range.
+ * @returns {Array<{id:string,label:string,value:number,from:number,to:number}>}
+ *   ordered top of the table → bottom; `id` is the source zone (or „mittelfeld")
+ *   so the view can colour by `--zone-*`. Values sum to 1.
+ */
+export function zonePartition(targetProb, zoneTargets) {
+  const clubCount = Math.max(...zoneTargets.map((t) => t.to));
+  // Drop the broad catch-all (Klassenerhalt spans ~15 of 18) — not a band.
+  const decisive = zoneTargets.filter((t) => t.to - t.from + 1 <= clubCount / 2);
+  const strictlyInside = (outer, inner) =>
+    inner.id !== outer.id &&
+    inner.from >= outer.from &&
+    inner.to <= outer.to &&
+    (inner.from !== outer.from || inner.to !== outer.to);
+
+  const bands = [];
+  for (const z of decisive) {
+    const inner = decisive.filter((x) => strictlyInside(z, x));
+    const innerProb = inner.reduce((s, x) => s + (targetProb[x.id] ?? 0), 0);
+    const value = (targetProb[z.id] ?? 0) - innerProb;
+    // The band covers the part of z NOT already taken by a nested zone.
+    const from = inner.length ? Math.max(...inner.map((x) => x.to)) + 1 : z.from;
+    const to = z.to;
+    const label = inner.length ? (from === to ? `Platz ${from}` : `Platz ${from}–${to}`) : z.label;
+    bands.push({ id: z.id, label, value, from, to });
+  }
+
+  // The middle is whatever the decisive zones leave uncovered — the remainder,
+  // so the total is 1 by construction (float tolerance only).
+  const inBand = new Set();
+  for (const b of bands) for (let r = b.from; r <= b.to; r++) inBand.add(r);
+  const uncovered = [];
+  for (let r = 1; r <= clubCount; r++) if (!inBand.has(r)) uncovered.push(r);
+  if (uncovered.length) {
+    const covered = bands.reduce((s, b) => s + b.value, 0);
+    bands.push({
+      id: "mittelfeld",
+      label: "Mittelfeld",
+      value: 1 - covered,
+      from: Math.min(...uncovered),
+      to: Math.max(...uncovered),
+    });
+  }
+
+  bands.sort((a, b) => a.from - b.from);
+  return bands;
+}
+
+/**
+ * A quality metric's cumulative curve plus its per-matchday points
+ * (§CHART_AUSBAU §4.2). Pure aggregation over per-match scores already produced
+ * by `scoredMatches`: for each matchday it folds the metric over ALL matches up
+ * to and including that matchday (the smooth cumulative line) and over that
+ * matchday ALONE (the noisy points the caption warns about).
+ *
+ * The LAST cumulative point equals the metric over the whole set — the „Gesamt"
+ * figure the cards already show — by construction; a test pins that identity.
+ * Whatever the caller has already excluded (carried-forward provenance) stays
+ * excluded here: this function does not re-add anything, it only folds what it
+ * is given.
+ *
+ * @param {Array<{fixture?:{matchday?:number}, matchday?:number}>} scored
+ *   per-match records; the matchday is read from `.fixture.matchday`, else
+ *   `.matchday`. Records without a matchday are skipped.
+ * @param {(scored:Array)=>{value:number|null, n:number}} metric
+ *   one of `accuracy`/`brierScore`/`logLoss` — anything of that shape.
+ * @returns {Array<{matchday:number, cumulative:number|null,
+ *   matchdayValue:number|null, n:number, cumulativeN:number}>} sorted by matchday.
+ */
+export function cumulativeSeries(scored, metric) {
+  const byMd = new Map();
+  for (const s of scored) {
+    const md = s.fixture?.matchday ?? s.matchday;
+    if (md == null) continue;
+    if (!byMd.has(md)) byMd.set(md, []);
+    byMd.get(md).push(s);
+  }
+  const matchdays = [...byMd.keys()].sort((a, b) => a - b);
+  const out = [];
+  let cumulative = [];
+  for (const md of matchdays) {
+    const here = byMd.get(md);
+    cumulative = cumulative.concat(here);
+    out.push({
+      matchday: md,
+      cumulative: metric(cumulative).value,
+      matchdayValue: metric(here).value,
+      n: here.length,
+      cumulativeN: cumulative.length,
+    });
+  }
+  return out;
+}

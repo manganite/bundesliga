@@ -20,6 +20,10 @@ export const ZONE_TOKEN = {
   relegationsplatzAufstieg: "--zone-promotion-playoff",
   relegationsplatzAbstieg: "--zone-relegation",
   abstieg: "--zone-drop",
+  // The neutral middle band of the zone partition (§CHART_AUSBAU §2.1). Not a
+  // real config target, so `zoneOfRank`/legend filters never pick it up; it
+  // exists only to colour the „Mittelfeld" ribbon.
+  mittelfeld: "--zone-mid",
 };
 
 /** The CSS var() string for a target, or null if it has no accent. */

@@ -51,6 +51,8 @@
   --zone-promotion-playoff: #0f7b4f;
   --zone-relegation: #9a5b00;
   --zone-drop: #b3261e;
+  /* Neutral middle band of the zone partition — no valence, just „the rest". */
+  --zone-mid: #8a8f98;
   /* Categorical chart-series palette (Verlauf curves) — a data-viz palette,
      tokenised so no component carries its own hex. */
   --series-1: #1f5fd0;
@@ -100,6 +102,7 @@
     --zone-promotion-playoff: #52c08c;
     --zone-relegation: #e0a44a;
     --zone-drop: #f08078;
+    --zone-mid: #9aa0aa;
   }
 }
 
@@ -479,7 +482,79 @@ figure.chart figcaption {
   max-width: var(--measure-text);
 }
 .axis-label { font-size: 11px; fill: var(--text-muted); }
+.axis-title { font-size: 11px; fill: var(--text-muted); font-weight: 600; }
 .grid-line { stroke: var(--border); stroke-width: 1; }
+.ref-line { stroke: var(--text-muted); stroke-width: 1; stroke-dasharray: 4 3; opacity: 0.7; }
+
+/* Shared chart tooltip (§CHART_AUSBAU §0) — the only writer of .chart-tooltip. */
+.chart-tooltip {
+  font-size: 12px;
+  line-height: 1.35;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.55rem;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 18%);
+  color: var(--text);
+}
+.chart-tooltip .tt-title { margin: 0 0 0.3rem; font-weight: 600; }
+.chart-tooltip ul { list-style: none; margin: 0; padding: 0; }
+.chart-tooltip .tt-rows li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.chart-tooltip .tt-label { flex: 1 1 auto; }
+.chart-tooltip .tt-value { font-variant-numeric: tabular-nums; }
+.chart-tooltip .tt-delta { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.chart-tooltip .tt-swatch {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+.chart-tooltip .tt-context {
+  margin-top: 0.3rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* Shared chart legend (§CHART_AUSBAU §0) — the only writer of .chart-legend. */
+.chart-legend {
+  list-style: none;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+}
+.chart-legend li { display: inline-flex; align-items: center; gap: 0.35rem; }
+.chart-legend li.is-dimmed { opacity: 0.4; }
+.chart-legend .legend-swatch {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+.chart-legend .legend-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  padding: 0.1rem 0.2rem;
+  margin: -0.1rem -0.2rem;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.chart-legend .legend-toggle:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.chart-legend .legend-toggle[aria-pressed="true"] { font-weight: 600; }
 
 .empty {
   color: var(--text-muted);

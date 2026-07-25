@@ -1,9 +1,13 @@
 import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
-import { currentTable, scoredMatches } from "../lib/season.js";
-import { performanceVsExpectation } from "../../../../packages/engine/src/metrics.mjs";
+import ChartLegend from "../components/ChartLegend.jsx";
+import ChartTooltip from "../components/ChartTooltip.jsx";
+import { HitAreas, useActivePoint } from "../components/ChartInteractive.jsx";
+import { currentTable, scoredMatches, targetList } from "../lib/season.js";
+import { performanceVsExpectation, zonePartition } from "../../../../packages/engine/src/metrics.mjs";
 import { perfColor } from "../lib/colors.js";
+import { zoneColor, zoneOfRank } from "../lib/zones.js";
 import { percent, number, signed, weekdayDate } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
 import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
@@ -50,13 +54,16 @@ export default function Teams({ ctx }) {
 
   const positions = outlook?.positionDistribution?.[clubId] ?? null;
 
-  const timelineSeries = useMemo(() => {
+  // The zone partition per matchday for this club (§CHART_AUSBAU §2.1): each
+  // point is the disjoint spread Meister … Abstieg, summing to 1.
+  const zoneSeries = useMemo(() => {
     if (!timeline?.points?.length) return null;
-    const targetId = leagueConfig.targets.meister ? "meister" : Object.keys(leagueConfig.targets)[0];
-    return timeline.points.map((p) => ({
-      matchday: p.matchday,
-      value: p.probabilities?.[targetId]?.[clubId] ?? 0,
-    }));
+    const zones = targetList(leagueConfig);
+    return timeline.points.map((p) => {
+      const prob = {};
+      for (const z of zones) prob[z.id] = p.probabilities?.[z.id]?.[clubId] ?? 0;
+      return { matchday: p.matchday, bands: zonePartition(prob, zones) };
+    });
   }, [timeline, clubId, leagueConfig]);
 
   return (
@@ -83,7 +90,7 @@ export default function Teams({ ctx }) {
           when={Boolean(positions)}
           caption="Verteilung der Endplatzierung über alle simulierten Saisons."
         >
-          {positions ? <PositionBars positions={positions} clubName={nameOf(clubId)} /> : null}
+          {positions ? <PositionBars positions={positions} clubName={nameOf(clubId)} zones={targetList(leagueConfig)} /> : null}
         </Card>
 
         <Card
@@ -117,17 +124,15 @@ export default function Teams({ ctx }) {
         </Card>
 
         <Card
-          title="Titelchance im Saisonverlauf"
-          when={Boolean(timelineSeries)}
-          caption={timeline?.label?.label ?? undefined}
+          title="Zonenverteilung im Saisonverlauf"
+          when={Boolean(zoneSeries)}
+          caption={
+            `${timeline?.label?.label ?? "Eingefrorene Saisonstart-Stärke"}. Wie sich die `
+            + "Wahrscheinlichkeit auf die Tabellenzonen verteilt — die Kurve enthält keine "
+            + "Rating-Aktualisierungen, sie zeigt, was allein die Ergebnisse bewirkt haben."
+          }
         >
-          {timelineSeries ? (
-            <LineChart
-              series={timelineSeries}
-              clubName={nameOf(clubId)}
-              label={timeline.label?.label ?? "Eingefrorene Saisonstart-Stärke"}
-            />
-          ) : null}
+          {zoneSeries ? <ZoneStack series={zoneSeries} clubName={nameOf(clubId)} /> : null}
         </Card>
 
         <Card title="Restprogramm" when={remaining.length > 0}>
@@ -152,85 +157,173 @@ export default function Teams({ ctx }) {
   );
 }
 
-function PositionBars({ positions, clubName }) {
+function mdLabel(md) {
+  return md === 0 ? "vor dem 1. Spieltag" : `${md}. Spieltag`;
+}
+
+// „Wo die Saison endet" (§CHART_AUSBAU §2.2): % axis, bars in each rank's zone
+// colour, a legend, and a per-bar tooltip „Platz 11 · 9,8 %".
+function PositionBars({ positions, clubName, zones }) {
   const n = positions.length;
   const w = 720;
-  const h = 200;
-  const pad = { l: 34, r: 8, t: 8, b: 26 };
+  const h = 220;
+  const pad = { l: 40, r: 8, t: 10, b: 28 };
+  const plotH = h - pad.t - pad.b;
   const bw = (w - pad.l - pad.r) / n;
-  const max = Math.max(...positions, 0.01);
+  // A tidy axis top: the smallest 5 %-multiple above the tallest bar.
+  const rawMax = Math.max(...positions, 0.02);
+  const top = Math.min(1, Math.ceil((rawMax * 100) / 5) * 5 / 100);
+  const y = (v) => pad.t + plotH * (1 - v / top);
+  const cx = (i) => pad.l + i * bw + bw / 2;
+
+  const zoneOf = (i) => zoneOfRank(i + 1, zones);
+  const { active, setActive, onKeyDown } = useActivePoint(n);
+
+  // The distinct zones present, in table order, for the legend (+ Mittelfeld).
+  const legend = [];
+  const seen = new Set();
+  for (let i = 0; i < n; i++) {
+    const z = zoneOf(i);
+    const key = z?.id ?? "mittelfeld";
+    if (seen.has(key)) continue;
+    seen.add(key);
+    legend.push({ key, label: z?.label ?? "Mittelfeld", color: z?.color ?? zoneColor("mittelfeld") });
+  }
+
+  const ticks = [0, top / 2, top];
 
   return (
-    <Chart
-      title={`Endplatzierung von ${clubName}`}
-      ariaLabel={`Balkendiagramm: Wahrscheinlichkeit für jeden Tabellenplatz von 1 bis ${n} für ${clubName}.`}
-      width={w}
-      height={h}
-      table={{
-        columns: ["Platz", "Wahrscheinlichkeit"],
-        rows: positions.map((p, i) => [`Platz ${i + 1}`, percent(p)]),
-      }}
-    >
-      {positions.map((p, i) => {
-        const barH = (p / max) * (h - pad.t - pad.b);
-        return (
+    <>
+      <Chart
+        title={`Endplatzierung von ${clubName}`}
+        ariaLabel={`Balkendiagramm: Wahrscheinlichkeit für jeden Tabellenplatz von 1 bis ${n} für ${clubName}, Balken in der Farbe der jeweiligen Tabellenzone.`}
+        width={w}
+        height={h}
+        table={{
+          columns: ["Platz", "Wahrscheinlichkeit"],
+          rows: positions.map((p, i) => [`Platz ${i + 1}`, percent(p)]),
+        }}
+      >
+        {ticks.map((v) => (
+          <g key={v}>
+            <line x1={pad.l} y1={y(v)} x2={w - pad.r} y2={y(v)} className="grid-line" />
+            <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{percent(v, 0)}</text>
+          </g>
+        ))}
+        <text x={10} y={pad.t + 4} className="axis-title">%</text>
+        {positions.map((p, i) => (
           <rect
             key={i}
             x={pad.l + i * bw + 1}
-            y={h - pad.b - barH}
+            y={y(p)}
             width={Math.max(1, bw - 2)}
-            height={barH}
-            fill="var(--accent)"
-            opacity="0.8"
+            height={pad.t + plotH - y(p)}
+            fill={zoneOf(i)?.color ?? zoneColor("mittelfeld")}
+            opacity={active == null || active === i ? 0.9 : 0.45}
             rx="2"
           />
-        );
-      })}
-      <line x1={pad.l} y1={h - pad.b} x2={w - pad.r} y2={h - pad.b} className="grid-line" />
-      {positions.map((_, i) => (
-        (i === 0 || (i + 1) % 3 === 0) ? (
-          <text key={`t${i}`} x={pad.l + i * bw + bw / 2} y={h - 8} textAnchor="middle" className="axis-label">
-            {i + 1}
-          </text>
-        ) : null
-      ))}
-    </Chart>
+        ))}
+        {positions.map((_, i) => (
+          (i === 0 || (i + 1) % 3 === 0) ? (
+            <text key={`t${i}`} x={cx(i)} y={h - 8} textAnchor="middle" className="axis-label">{i + 1}</text>
+          ) : null
+        ))}
+        <HitAreas
+          centers={positions.map((_, i) => cx(i))}
+          top={pad.t}
+          bottom={pad.t + plotH}
+          active={active}
+          setActive={setActive}
+          onKeyDown={onKeyDown}
+          labelAt={(i) => `Platz ${i + 1}: ${percent(positions[i])}`}
+        />
+        {active != null ? (
+          <ChartTooltip
+            x={cx(active)}
+            width={w}
+            title={`Platz ${active + 1}`}
+            rows={[{ label: zoneOf(active)?.label ?? "Mittelfeld", value: percent(positions[active]), color: zoneOf(active)?.color ?? zoneColor("mittelfeld") }]}
+          />
+        ) : null}
+      </Chart>
+      <ChartLegend items={legend} />
+    </>
   );
 }
 
-function LineChart({ series, clubName, label }) {
+// „Zonenverteilung im Saisonverlauf" (§CHART_AUSBAU §2.1): stacked area of the
+// zone partition per matchday, Meister at the top of the plot to Abstieg at the
+// bottom. Legend + per-matchday tooltip over the shared components.
+function ZoneStack({ series, clubName }) {
   const w = 720;
-  const h = 240;
+  const h = 260;
   const pad = { l: 42, r: 12, t: 12, b: 30 };
+  const plotH = h - pad.t - pad.b;
   const xs = series.map((p) => p.matchday);
   const maxX = Math.max(...xs, 1);
   const x = (md) => pad.l + (md / maxX) * (w - pad.l - pad.r);
-  const y = (v) => h - pad.b - v * (h - pad.t - pad.b);
-  const d = series.map((p, i) => `${i === 0 ? "M" : "L"}${x(p.matchday).toFixed(1)},${y(p.value).toFixed(1)}`).join(" ");
+  const y = (frac) => pad.t + frac * plotH; // frac 0 = top of the plot
+  const centers = series.map((p) => x(p.matchday));
+
+  // Band identity/order is stable across matchdays (partition sorts by rank), so
+  // index k names the same band everywhere; the last point supplies labels.
+  const canon = series[series.length - 1].bands;
+  const cumBefore = (bands, k) => bands.slice(0, k).reduce((s, b) => s + b.value, 0);
+
+  const { active, setActive, onKeyDown } = useActivePoint(series.length);
+
+  const legend = canon.map((b) => ({ key: b.id, label: b.label, color: zoneColor(b.id) }));
 
   return (
-    <Chart
-      title={`Titelchance von ${clubName} im Saisonverlauf`}
-      ariaLabel={
-        `Liniendiagramm der Titelwahrscheinlichkeit von ${clubName} über die Spieltage, `
-        + `von ${percent(series[0]?.value)} vor dem 1. Spieltag auf ${percent(series[series.length - 1]?.value)}.`
-      }
-      width={w}
-      height={h}
-      caption={`${label}. Die Kurve enthält keine Rating-Aktualisierungen — sie zeigt, was allein die Ergebnisse bewirkt haben.`}
-      table={{
-        columns: ["Spieltag", "Wahrscheinlichkeit"],
-        rows: series.map((p) => [p.matchday === 0 ? "vor dem 1." : `${p.matchday}.`, percent(p.value)]),
-      }}
-    >
-      {[0, 0.25, 0.5, 0.75, 1].map((v) => (
-        <g key={v}>
-          <line x1={pad.l} y1={y(v)} x2={w - pad.r} y2={y(v)} className="grid-line" />
-          <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{Math.round(v * 100)} %</text>
-        </g>
-      ))}
-      <path d={d} fill="none" stroke="var(--accent)" strokeWidth="2.5" strokeLinejoin="round" />
-      <text x={w - pad.r} y={h - 8} textAnchor="end" className="axis-label">Spieltag</text>
-    </Chart>
+    <>
+      <Chart
+        title={`Zonenverteilung von ${clubName} im Saisonverlauf`}
+        ariaLabel={`Gestapeltes Flächendiagramm: wie sich die Endplatzierungs-Wahrscheinlichkeit von ${clubName} über die Spieltage auf die Tabellenzonen von Meister bis Abstieg verteilt.`}
+        width={w}
+        height={h}
+        table={{
+          columns: ["Spieltag", ...canon.map((b) => b.label)],
+          rows: series.map((p) => [p.matchday === 0 ? "vor 1." : `${p.matchday}.`, ...p.bands.map((b) => percent(b.value))]),
+        }}
+      >
+        {[0, 0.25, 0.5, 0.75, 1].map((v) => (
+          <g key={v}>
+            <line x1={pad.l} y1={y(v)} x2={w - pad.r} y2={y(v)} className="grid-line" />
+            <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{Math.round(v * 100)} %</text>
+          </g>
+        ))}
+        <text x={10} y={pad.t + 4} className="axis-title">%</text>
+        {canon.map((band, k) => {
+          const dTop = series.map((p) => `${x(p.matchday).toFixed(1)},${y(cumBefore(p.bands, k)).toFixed(1)}`);
+          const dBottom = series.map((p) => `${x(p.matchday).toFixed(1)},${y(cumBefore(p.bands, k) + p.bands[k].value).toFixed(1)}`).reverse();
+          const d = `M${dTop.join(" L")} L${dBottom.join(" L")} Z`;
+          return <path key={band.id} d={d} fill={zoneColor(band.id)} opacity={active == null ? 0.85 : 0.7} stroke="var(--surface)" strokeWidth="0.5" />;
+        })}
+        <text x={w - pad.r} y={h - 8} textAnchor="end" className="axis-label">Spieltag</text>
+        <HitAreas
+          centers={centers}
+          top={pad.t}
+          bottom={pad.t + plotH}
+          active={active}
+          setActive={setActive}
+          onKeyDown={onKeyDown}
+          labelAt={(i) => `${mdLabel(series[i].matchday)}: ${series[i].bands.map((b) => `${b.label} ${percent(b.value)}`).join(", ")}`}
+        />
+        {active != null ? (
+          <ChartTooltip
+            x={centers[active]}
+            width={w}
+            title={mdLabel(series[active].matchday)}
+            rows={series[active].bands.map((b, k) => ({
+              label: b.label,
+              value: percent(b.value),
+              delta: active > 0 ? b.value - series[active - 1].bands[k].value : undefined,
+              color: zoneColor(b.id),
+            }))}
+          />
+        ) : null}
+      </Chart>
+      <ChartLegend items={legend} />
+    </>
   );
 }
