@@ -114,6 +114,15 @@ spätere schlägt die frühere:**
     der erw.-Punkte-Reihenfolge. Vereinfachter Verankerungssatz. Danach **Release
     2.2.0** (Bump = Tag + Release im selben Gang, Brief 16 + 17). Keine Engine-/
     Pipeline-/Datenänderung.
+19. `V2B1_HISTORISCHE_SAISONS_BRIEF.md` — historische Saisons 2011/12–2025/26 als
+    zweite globale Dimension (Saison), gebaut **ausschließlich aus den committeten
+    Fit-Trainingsdaten** + G1-Relegationsdaten. **Null clubelo-Anfragen** — der
+    V2b-Trigger bleibt für pre-2011 (V2b.2) bestehen. Großer, mehrphasiger Brief
+    (Gates → Rekonstruktion/Artefakte → Saison-Dimension → Seitenverhalten →
+    Release 2.3.0); wird in Phasen-PRs ausgeliefert. **Abweichung, dokumentiert:**
+    G1 lieferte über OpenLigaDB nur 2024/25+2025/26 (BL1/BL2); die „nur
+    OpenLigaDB"-Zusage wurde bewusst zu „kein clubelo; OpenLigaDB + zitierte
+    Wikipedia-Saisonseiten" erweitert (Nutzerfreigabe; Beleg je Eintrag).
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -511,10 +520,19 @@ construction.
     füllt UND startet den Lauf (`onApply` setzt `committed`); eine manuelle
     Änderung danach berührt nur `overrides`, dimmt und wartet auf „Szenario
     rechnen" — die No-Autorun-Regel aus dem UX-Brief bleibt.
-- **V2b (Historie) existiert nicht als Aufgabe.** Auslösebedingung (alle drei):
-  clubelo-Relaunch live; die einmalige Namensform-Wiederverifikation aller 36 Klubs
-  auf der neuen Schnittstelle bestanden; ein eigener V2b-Brief geschrieben. Bis
-  dahin: nicht anfangen. Keine clubelo-Historienabrufe für eine 30-Saison-Abdeckung.
+- **V2b.1 (Historie ab 2011/12) ist in Arbeit — ohne clubelo.** Brief 19 baut die
+  Saisons 2011/12–2025/26 **allein aus den committeten Fit-Trainingsdaten**
+  (`data/training/results/` + `data/ratings/training-elo/`, Pre-Match-Elo je Spiel)
+  plus den G1-Relegationsdaten. Der clubelo-Trigger bleibt **unangetastet** und gilt
+  weiter für **V2b.2 (vor 2011)**: clubelo-Relaunch live; Namensform-Wiederverifikation
+  aller 36 Klubs bestanden; eigener V2b.2-Brief. Keine clubelo-Historienabrufe.
+  - **Phase 1 (Gates) gelandet:** Klub-Register `data/clubs.json` (51 Klubs, fail-closed
+    via `pipeline/src/clubRegister.mjs`); Relegationsrecord `data/relegation.json`
+    (15 Saisons ×2 Grenzen, streng validiert via `pipeline/src/relegation.mjs`,
+    OpenLigaDB-verankert für 2024/25+2025/26); G2 in `docs/verification/dfl-spielordnung.md`
+    (Tiebreak-Kette wird Saisonkonfiguration, keine unbelegte Konstanz-Behauptung
+    für 2011–2018). Phasen 2–5 (Rekonstruktion/Artefakte, Saison-Dimension,
+    Seitenverhalten, Release 2.3.0) stehen aus.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
   ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern

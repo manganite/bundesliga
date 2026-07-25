@@ -1,0 +1,668 @@
+{
+  "schemaVersion": 1,
+  "description": "Relegations-Play-offs 2011/12–2025/26 (§V2b.1 G1). Zwei Grenzen je Saison: bl1-bl2 (16. BL gegen 3. der 2.BL) und bl2-3liga (16. der 2.BL gegen 3. der 3.Liga). gh:ga = Ergebnis nach Verlängerung, vor Elfmeterschießen; winner = der Verein in der höheren Liga der Folgesaison.",
+  "source": "OpenLigaDB rel/2024, rel/2025 (BL1/BL2, ODbL) als Anker; übrige Einträge kuratiert aus den dedizierten deutschen Wikipedia-Saisonseiten (Quelle je Eintrag). Die „nur OpenLigaDB\"-Zusage des Briefs wurde bewusst zu „kein clubelo; OpenLigaDB + zitierte Wikipedia-Saisonseiten\" erweitert.",
+  "licence": "Ergebnisdaten: ODbL-nah/öffentliche Aufzeichnung; Namen wie auf der Quelle.",
+  "seasons": {
+    "2011": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "Hertha BSC",
+            "away": "Fortuna Düsseldorf",
+            "gh": 1,
+            "ga": 2
+          },
+          {
+            "home": "Fortuna Düsseldorf",
+            "away": "Hertha BSC",
+            "gh": 2,
+            "ga": 2
+          }
+        ],
+        "aggregate": "3:4",
+        "decidedBy": "regular",
+        "winner": "Fortuna Düsseldorf",
+        "loser": "Hertha BSC",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2011/12"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "SSV Jahn Regensburg",
+            "away": "Karlsruher SC",
+            "gh": 1,
+            "ga": 1
+          },
+          {
+            "home": "Karlsruher SC",
+            "away": "SSV Jahn Regensburg",
+            "gh": 2,
+            "ga": 2
+          }
+        ],
+        "aggregate": "3:3",
+        "decidedBy": "awayGoals",
+        "winner": "SSV Jahn Regensburg",
+        "loser": "Karlsruher SC",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2011/12"
+      }
+    },
+    "2012": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "TSG 1899 Hoffenheim",
+            "away": "1. FC Kaiserslautern",
+            "gh": 3,
+            "ga": 1
+          },
+          {
+            "home": "1. FC Kaiserslautern",
+            "away": "TSG 1899 Hoffenheim",
+            "gh": 1,
+            "ga": 2
+          }
+        ],
+        "aggregate": "5:2",
+        "decidedBy": "regular",
+        "winner": "TSG 1899 Hoffenheim",
+        "loser": "1. FC Kaiserslautern",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2012/13"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "VfL Osnabrück",
+            "away": "Dynamo Dresden",
+            "gh": 1,
+            "ga": 0
+          },
+          {
+            "home": "Dynamo Dresden",
+            "away": "VfL Osnabrück",
+            "gh": 2,
+            "ga": 0
+          }
+        ],
+        "aggregate": "1:2",
+        "decidedBy": "regular",
+        "winner": "Dynamo Dresden",
+        "loser": "VfL Osnabrück",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2012/13"
+      }
+    },
+    "2013": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "Hamburger SV",
+            "away": "SpVgg Greuther Fürth",
+            "gh": 0,
+            "ga": 0
+          },
+          {
+            "home": "SpVgg Greuther Fürth",
+            "away": "Hamburger SV",
+            "gh": 1,
+            "ga": 1
+          }
+        ],
+        "aggregate": "1:1",
+        "decidedBy": "awayGoals",
+        "winner": "Hamburger SV",
+        "loser": "SpVgg Greuther Fürth",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2013/14"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "SV Darmstadt 98",
+            "away": "Arminia Bielefeld",
+            "gh": 1,
+            "ga": 3
+          },
+          {
+            "home": "Arminia Bielefeld",
+            "away": "SV Darmstadt 98",
+            "gh": 2,
+            "ga": 4
+          }
+        ],
+        "aggregate": "5:5",
+        "decidedBy": "awayGoals",
+        "winner": "SV Darmstadt 98",
+        "loser": "Arminia Bielefeld",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2013/14"
+      }
+    },
+    "2014": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "Hamburger SV",
+            "away": "Karlsruher SC",
+            "gh": 1,
+            "ga": 1
+          },
+          {
+            "home": "Karlsruher SC",
+            "away": "Hamburger SV",
+            "gh": 1,
+            "ga": 2
+          }
+        ],
+        "aggregate": "3:2",
+        "decidedBy": "extraTime",
+        "winner": "Hamburger SV",
+        "loser": "Karlsruher SC",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2014/15"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "Holstein Kiel",
+            "away": "TSV 1860 München",
+            "gh": 0,
+            "ga": 0
+          },
+          {
+            "home": "TSV 1860 München",
+            "away": "Holstein Kiel",
+            "gh": 2,
+            "ga": 1
+          }
+        ],
+        "aggregate": "1:2",
+        "decidedBy": "regular",
+        "winner": "TSV 1860 München",
+        "loser": "Holstein Kiel",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2014/15"
+      }
+    },
+    "2015": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "Eintracht Frankfurt",
+            "away": "1. FC Nürnberg",
+            "gh": 1,
+            "ga": 1
+          },
+          {
+            "home": "1. FC Nürnberg",
+            "away": "Eintracht Frankfurt",
+            "gh": 0,
+            "ga": 1
+          }
+        ],
+        "aggregate": "2:1",
+        "decidedBy": "regular",
+        "winner": "Eintracht Frankfurt",
+        "loser": "1. FC Nürnberg",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2015/16"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "Würzburger Kickers",
+            "away": "MSV Duisburg",
+            "gh": 2,
+            "ga": 0
+          },
+          {
+            "home": "MSV Duisburg",
+            "away": "Würzburger Kickers",
+            "gh": 1,
+            "ga": 2
+          }
+        ],
+        "aggregate": "4:1",
+        "decidedBy": "regular",
+        "winner": "Würzburger Kickers",
+        "loser": "MSV Duisburg",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2015/16"
+      }
+    },
+    "2016": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "VfL Wolfsburg",
+            "away": "Eintracht Braunschweig",
+            "gh": 1,
+            "ga": 0
+          },
+          {
+            "home": "Eintracht Braunschweig",
+            "away": "VfL Wolfsburg",
+            "gh": 0,
+            "ga": 1
+          }
+        ],
+        "aggregate": "2:0",
+        "decidedBy": "regular",
+        "winner": "VfL Wolfsburg",
+        "loser": "Eintracht Braunschweig",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2016/17"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "SSV Jahn Regensburg",
+            "away": "TSV 1860 München",
+            "gh": 1,
+            "ga": 1
+          },
+          {
+            "home": "TSV 1860 München",
+            "away": "SSV Jahn Regensburg",
+            "gh": 0,
+            "ga": 2
+          }
+        ],
+        "aggregate": "3:1",
+        "decidedBy": "regular",
+        "winner": "SSV Jahn Regensburg",
+        "loser": "TSV 1860 München",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2016/17"
+      }
+    },
+    "2017": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "VfL Wolfsburg",
+            "away": "Holstein Kiel",
+            "gh": 3,
+            "ga": 1
+          },
+          {
+            "home": "Holstein Kiel",
+            "away": "VfL Wolfsburg",
+            "gh": 0,
+            "ga": 1
+          }
+        ],
+        "aggregate": "4:1",
+        "decidedBy": "regular",
+        "winner": "VfL Wolfsburg",
+        "loser": "Holstein Kiel",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2017/18"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "Karlsruher SC",
+            "away": "FC Erzgebirge Aue",
+            "gh": 0,
+            "ga": 0
+          },
+          {
+            "home": "FC Erzgebirge Aue",
+            "away": "Karlsruher SC",
+            "gh": 3,
+            "ga": 1
+          }
+        ],
+        "aggregate": "1:3",
+        "decidedBy": "regular",
+        "winner": "FC Erzgebirge Aue",
+        "loser": "Karlsruher SC",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2017/18"
+      }
+    },
+    "2018": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "VfB Stuttgart",
+            "away": "1. FC Union Berlin",
+            "gh": 2,
+            "ga": 2
+          },
+          {
+            "home": "1. FC Union Berlin",
+            "away": "VfB Stuttgart",
+            "gh": 0,
+            "ga": 0
+          }
+        ],
+        "aggregate": "2:2",
+        "decidedBy": "awayGoals",
+        "winner": "1. FC Union Berlin",
+        "loser": "VfB Stuttgart",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2018/19"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "SV Wehen Wiesbaden",
+            "away": "FC Ingolstadt 04",
+            "gh": 1,
+            "ga": 2
+          },
+          {
+            "home": "FC Ingolstadt 04",
+            "away": "SV Wehen Wiesbaden",
+            "gh": 2,
+            "ga": 3
+          }
+        ],
+        "aggregate": "4:4",
+        "decidedBy": "awayGoals",
+        "winner": "SV Wehen Wiesbaden",
+        "loser": "FC Ingolstadt 04",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2018/19"
+      }
+    },
+    "2019": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "Werder Bremen",
+            "away": "1. FC Heidenheim",
+            "gh": 0,
+            "ga": 0
+          },
+          {
+            "home": "1. FC Heidenheim",
+            "away": "Werder Bremen",
+            "gh": 2,
+            "ga": 2
+          }
+        ],
+        "aggregate": "2:2",
+        "decidedBy": "awayGoals",
+        "winner": "Werder Bremen",
+        "loser": "1. FC Heidenheim",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2019/20"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "1. FC Nürnberg",
+            "away": "FC Ingolstadt 04",
+            "gh": 2,
+            "ga": 0
+          },
+          {
+            "home": "FC Ingolstadt 04",
+            "away": "1. FC Nürnberg",
+            "gh": 3,
+            "ga": 1
+          }
+        ],
+        "aggregate": "3:3",
+        "decidedBy": "awayGoals",
+        "winner": "1. FC Nürnberg",
+        "loser": "FC Ingolstadt 04",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2019/20"
+      }
+    },
+    "2020": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "1. FC Köln",
+            "away": "Holstein Kiel",
+            "gh": 0,
+            "ga": 1
+          },
+          {
+            "home": "Holstein Kiel",
+            "away": "1. FC Köln",
+            "gh": 1,
+            "ga": 5
+          }
+        ],
+        "aggregate": "5:2",
+        "decidedBy": "regular",
+        "winner": "1. FC Köln",
+        "loser": "Holstein Kiel",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2020/21"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "FC Ingolstadt 04",
+            "away": "VfL Osnabrück",
+            "gh": 3,
+            "ga": 0
+          },
+          {
+            "home": "VfL Osnabrück",
+            "away": "FC Ingolstadt 04",
+            "gh": 3,
+            "ga": 1
+          }
+        ],
+        "aggregate": "4:3",
+        "decidedBy": "regular",
+        "winner": "FC Ingolstadt 04",
+        "loser": "VfL Osnabrück",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2020/21"
+      }
+    },
+    "2021": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "Hertha BSC",
+            "away": "Hamburger SV",
+            "gh": 0,
+            "ga": 1
+          },
+          {
+            "home": "Hamburger SV",
+            "away": "Hertha BSC",
+            "gh": 0,
+            "ga": 2
+          }
+        ],
+        "aggregate": "2:1",
+        "decidedBy": "regular",
+        "winner": "Hertha BSC",
+        "loser": "Hamburger SV",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2021/22"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "1. FC Kaiserslautern",
+            "away": "Dynamo Dresden",
+            "gh": 0,
+            "ga": 0
+          },
+          {
+            "home": "Dynamo Dresden",
+            "away": "1. FC Kaiserslautern",
+            "gh": 0,
+            "ga": 2
+          }
+        ],
+        "aggregate": "2:0",
+        "decidedBy": "regular",
+        "winner": "1. FC Kaiserslautern",
+        "loser": "Dynamo Dresden",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2021/22"
+      }
+    },
+    "2022": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "VfB Stuttgart",
+            "away": "Hamburger SV",
+            "gh": 3,
+            "ga": 0
+          },
+          {
+            "home": "Hamburger SV",
+            "away": "VfB Stuttgart",
+            "gh": 1,
+            "ga": 3
+          }
+        ],
+        "aggregate": "6:1",
+        "decidedBy": "regular",
+        "winner": "VfB Stuttgart",
+        "loser": "Hamburger SV",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2022/23"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "SV Wehen Wiesbaden",
+            "away": "Arminia Bielefeld",
+            "gh": 4,
+            "ga": 0
+          },
+          {
+            "home": "Arminia Bielefeld",
+            "away": "SV Wehen Wiesbaden",
+            "gh": 1,
+            "ga": 2
+          }
+        ],
+        "aggregate": "6:1",
+        "decidedBy": "regular",
+        "winner": "SV Wehen Wiesbaden",
+        "loser": "Arminia Bielefeld",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2022/23"
+      }
+    },
+    "2023": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "VfL Bochum",
+            "away": "Fortuna Düsseldorf",
+            "gh": 0,
+            "ga": 3
+          },
+          {
+            "home": "Fortuna Düsseldorf",
+            "away": "VfL Bochum",
+            "gh": 0,
+            "ga": 3
+          }
+        ],
+        "aggregate": "3:3",
+        "decidedBy": "penalties",
+        "winner": "VfL Bochum",
+        "loser": "Fortuna Düsseldorf",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2023/24"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "SSV Jahn Regensburg",
+            "away": "SV Wehen Wiesbaden",
+            "gh": 2,
+            "ga": 2
+          },
+          {
+            "home": "SV Wehen Wiesbaden",
+            "away": "SSV Jahn Regensburg",
+            "gh": 1,
+            "ga": 2
+          }
+        ],
+        "aggregate": "4:3",
+        "decidedBy": "regular",
+        "winner": "SSV Jahn Regensburg",
+        "loser": "SV Wehen Wiesbaden",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2023/24"
+      }
+    },
+    "2024": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "1. FC Heidenheim",
+            "away": "SV Elversberg",
+            "gh": 2,
+            "ga": 2
+          },
+          {
+            "home": "SV Elversberg",
+            "away": "1. FC Heidenheim",
+            "gh": 1,
+            "ga": 2
+          }
+        ],
+        "aggregate": "4:3",
+        "decidedBy": "regular",
+        "winner": "1. FC Heidenheim",
+        "loser": "SV Elversberg",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2024/25 (bestätigt via OpenLigaDB rel/2024)"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "1. FC Saarbrücken",
+            "away": "Eintracht Braunschweig",
+            "gh": 0,
+            "ga": 2
+          },
+          {
+            "home": "Eintracht Braunschweig",
+            "away": "1. FC Saarbrücken",
+            "gh": 2,
+            "ga": 2
+          }
+        ],
+        "aggregate": "2:4",
+        "decidedBy": "extraTime",
+        "winner": "Eintracht Braunschweig",
+        "loser": "1. FC Saarbrücken",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2024/25"
+      }
+    },
+    "2025": {
+      "bl1-bl2": {
+        "legs": [
+          {
+            "home": "VfL Wolfsburg",
+            "away": "SC Paderborn 07",
+            "gh": 0,
+            "ga": 0
+          },
+          {
+            "home": "SC Paderborn 07",
+            "away": "VfL Wolfsburg",
+            "gh": 2,
+            "ga": 1
+          }
+        ],
+        "aggregate": "1:2",
+        "decidedBy": "extraTime",
+        "winner": "SC Paderborn 07",
+        "loser": "VfL Wolfsburg",
+        "source": "https://de.wikipedia.org/wiki/Fußball-Bundesliga_2025/26 (bestätigt via OpenLigaDB rel/2025)"
+      },
+      "bl2-3liga": {
+        "legs": [
+          {
+            "home": "Rot-Weiss Essen",
+            "away": "SpVgg Greuther Fürth",
+            "gh": 1,
+            "ga": 0
+          },
+          {
+            "home": "SpVgg Greuther Fürth",
+            "away": "Rot-Weiss Essen",
+            "gh": 2,
+            "ga": 0
+          }
+        ],
+        "aggregate": "1:2",
+        "decidedBy": "regular",
+        "winner": "SpVgg Greuther Fürth",
+        "loser": "Rot-Weiss Essen",
+        "source": "https://de.wikipedia.org/wiki/2._Fußball-Bundesliga_2025/26"
+      }
+    }
+  }
+}

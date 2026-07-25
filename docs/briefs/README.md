@@ -28,6 +28,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 16 | [PRESETS_FREIGEBEN_DUELLE_BRIEF.md](PRESETS_FREIGEBEN_DUELLE_BRIEF.md) | Ein neues Primitiv (Freigeben: gespielte Spiele im Was-wäre-wenn), eine Preset-Leiste (Bereich × Rezept, fünf Rezepte, Stapel-Semantik), eine seitenübergreifende Duell-Hervorhebung aus einer Quelle. Genau ein Engine-Helper (`regionModal`); Freigeben ist eine UI-Datenstands-Transformation, kein Engine-Eingriff. |
 | 17 | [SZENARIO_TABELLE_BRIEF.md](SZENARIO_TABELLE_BRIEF.md) | Simulierte Szenario-Schlusstabelle mit Positions-Indikator (CRN gegen die gepaarte 2 000er-Basis), „Anwenden & rechnen", und eine geteilte `LeagueTable` für Spieltage, Tabelle & Prognose und die Szenario-Tabelle. Keine neue Engine-Berechnung; der Worker reicht vorhandene Aggregate durch. Vor Release 2.2.0 (Brief 16 + 17). |
 | 18 | [SZENARIO_TABELLE_ABSCHLUSS_BRIEF.md](SZENARIO_TABELLE_ABSCHLUSS_BRIEF.md) | Abschluss von 17: Positions-Indikator ans rechte Tabellenende (Kopf „Δ Platz"), vereinfachter Verankerungssatz, dann Release 2.2.0 (Bump = Tag + Release, Brief 16 + 17). Keine Engine-/Pipeline-/Datenänderung. |
+| 19 | [V2B1_HISTORISCHE_SAISONS_BRIEF.md](V2B1_HISTORISCHE_SAISONS_BRIEF.md) | Historische Saisons 2011/12–2025/26 als zweite globale Dimension (Saison), nur aus den committeten Fit-Trainingsdaten + G1-Relegationsdaten. Null clubelo. Mehrphasig; Phase 1 (Gates: Klub-Register, Relegationsrecord, Tiebreak-Entscheidung) gelandet. |
 
 ## Diese Dateien werden nicht bearbeitet
 

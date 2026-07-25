@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "description": "Klub-Register für historische Saisons (V2b.1). clubId = Trainings-Kurzname; deckt alle Klubs ab, die 2011/12–2025/26 in BL1/BL2 auftauchen.",
+  "licence": "ODbL 1.0 (Namen aus OpenLigaDB)",
+  "clubCount": 51,
+  "clubs": {
+    "1860 München": {
+      "name": "TSV 1860 München",
+      "shortName": "1860 München",
+      "source": "OpenLigaDB teamId 125 (ODbL)"
+    },
+    "Aachen": {
+      "name": "Alemannia Aachen",
+      "shortName": "Aachen",
+      "source": "OpenLigaDB teamId 23 (ODbL)"
+    },
+    "Aalen": {
+      "name": "VfR Aalen",
+      "shortName": "Aalen",
+      "source": "OpenLigaDB teamId 183 (ODbL)"
+    },
+    "Aue": {
+      "name": "Erzgebirge Aue",
+      "shortName": "Aue",
+      "source": "OpenLigaDB teamId 66 (ODbL)"
+    },
+    "Augsburg": {
+      "name": "FC Augsburg",
+      "shortName": "Augsburg",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Bayern": {
+      "name": "FC Bayern München",
+      "shortName": "Bayern",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Bielefeld": {
+      "name": "DSC Arminia Bielefeld",
+      "shortName": "Bielefeld",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Bochum": {
+      "name": "VfL Bochum",
+      "shortName": "Bochum",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Braunschweig": {
+      "name": "Eintracht Braunschweig",
+      "shortName": "Braunschweig",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Bremen": {
+      "name": "SV Werder Bremen",
+      "shortName": "Bremen",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Cottbus": {
+      "name": "Energie Cottbus",
+      "shortName": "Cottbus",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Darmstadt": {
+      "name": "SV Darmstadt 98",
+      "shortName": "Darmstadt",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Dortmund": {
+      "name": "Borussia Dortmund",
+      "shortName": "Dortmund",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Dresden": {
+      "name": "Dynamo Dresden",
+      "shortName": "Dresden",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Duisburg": {
+      "name": "MSV Duisburg",
+      "shortName": "Duisburg",
+      "source": "OpenLigaDB teamId 107 (ODbL)"
+    },
+    "Düsseldorf": {
+      "name": "Fortuna Düsseldorf",
+      "shortName": "Düsseldorf",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Elversberg": {
+      "name": "SV 07 Elversberg",
+      "shortName": "Elversberg",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Frankfurt": {
+      "name": "Eintracht Frankfurt",
+      "shortName": "Frankfurt",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Freiburg": {
+      "name": "SC Freiburg",
+      "shortName": "Freiburg",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "FSV Frankfurt": {
+      "name": "FSV Frankfurt",
+      "shortName": "FSV Frankfurt",
+      "source": "OpenLigaDB teamId 172 (ODbL)"
+    },
+    "Fürth": {
+      "name": "SpVgg Greuther Fürth",
+      "shortName": "Fürth",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Gladbach": {
+      "name": "Borussia Mönchengladbach",
+      "shortName": "Gladbach",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Hannover": {
+      "name": "Hannover 96",
+      "shortName": "Hannover",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Heidenheim": {
+      "name": "1. FC Heidenheim 1846",
+      "shortName": "Heidenheim",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Hertha": {
+      "name": "Hertha BSC",
+      "shortName": "Hertha",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Hoffenheim": {
+      "name": "TSG Hoffenheim",
+      "shortName": "Hoffenheim",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "HSV": {
+      "name": "Hamburger SV",
+      "shortName": "HSV",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Ingolstadt": {
+      "name": "FC Ingolstadt 04",
+      "shortName": "Ingolstadt",
+      "source": "OpenLigaDB teamId 171 (ODbL)"
+    },
+    "Kaiserslautern": {
+      "name": "1. FC Kaiserslautern",
+      "shortName": "Kaiserslautern",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Karlsruhe": {
+      "name": "Karlsruher SC",
+      "shortName": "Karlsruhe",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Kiel": {
+      "name": "Holstein Kiel",
+      "shortName": "Kiel",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Köln": {
+      "name": "1. FC Köln",
+      "shortName": "Köln",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Leipzig": {
+      "name": "RB Leipzig",
+      "shortName": "Leipzig",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Leverkusen": {
+      "name": "Bayer 04 Leverkusen",
+      "shortName": "Leverkusen",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Magdeburg": {
+      "name": "1. FC Magdeburg",
+      "shortName": "Magdeburg",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Mainz": {
+      "name": "1. FSV Mainz 05",
+      "shortName": "Mainz",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Münster": {
+      "name": "Preußen Münster",
+      "shortName": "Münster",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Nürnberg": {
+      "name": "1. FC Nürnberg",
+      "shortName": "Nürnberg",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Osnabrück": {
+      "name": "VfL Osnabrück",
+      "shortName": "Osnabrück",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Paderborn": {
+      "name": "SC Paderborn 07",
+      "shortName": "Paderborn",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Regensburg": {
+      "name": "Jahn Regensburg",
+      "shortName": "Regensburg",
+      "source": "OpenLigaDB teamId 181 (ODbL)"
+    },
+    "Rostock": {
+      "name": "Hansa Rostock",
+      "shortName": "Rostock",
+      "source": "OpenLigaDB teamId 102 (ODbL)"
+    },
+    "Sandhausen": {
+      "name": "SV Sandhausen",
+      "shortName": "Sandhausen",
+      "source": "OpenLigaDB teamId 119 (ODbL)"
+    },
+    "Schalke": {
+      "name": "FC Schalke 04",
+      "shortName": "Schalke",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "SSV Ulm 1846": {
+      "name": "SSV Ulm 1846",
+      "shortName": "SSV Ulm 1846",
+      "source": "OpenLigaDB teamId 564 (ODbL)"
+    },
+    "St. Pauli": {
+      "name": "FC St. Pauli",
+      "shortName": "St. Pauli",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Stuttgart": {
+      "name": "VfB Stuttgart",
+      "shortName": "Stuttgart",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Union Berlin": {
+      "name": "1. FC Union Berlin",
+      "shortName": "Union Berlin",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Wiesbaden": {
+      "name": "SV Wehen Wiesbaden",
+      "shortName": "Wiesbaden",
+      "source": "OpenLigaDB teamId 174 (ODbL)"
+    },
+    "Wolfsburg": {
+      "name": "VfL Wolfsburg",
+      "shortName": "Wolfsburg",
+      "source": "season files (OpenLigaDB, ODbL)"
+    },
+    "Würzburg": {
+      "name": "Würzburger Kickers",
+      "shortName": "Würzburg",
+      "source": "OpenLigaDB teamId 398 (ODbL)"
+    }
+  }
+}
