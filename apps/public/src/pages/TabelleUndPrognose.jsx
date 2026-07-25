@@ -3,7 +3,7 @@ import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import DirekteDuelle from "../components/DirekteDuelle.jsx";
 import LeagueTable from "../components/LeagueTable.jsx";
-import { currentTable, orderWithinSharedRanks, scheduleStrength, seasonDuels, rulesFrom, targetList } from "../lib/season.js";
+import { currentTable, orderWithinSharedRanks, scheduleStrength, pendingDuels, playedDuels, rulesFrom, targetList } from "../lib/season.js";
 import Relegation from "../components/Relegation.jsx";
 import { percent, integer, signedInt, rating } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
@@ -74,9 +74,14 @@ export default function TabelleUndPrognose({ ctx }) {
     return { rows: withDeviation, informative };
   }, [strength]);
 
-  // Live: the outlook's remaining fixtures; archive: derived per matchday from
-  // the frozen timeline (§ARCHIV_DUELLE) — same directDuels rule, one component.
-  const duelList = useMemo(() => seasonDuels(ctx), [ctx]);
+  // The card shows two worlds (§DUELLE_ERGEBNISSE): „Anstehend" from the outlook
+  // (remaining), „Gespielt" derived per matchday from the timeline (archive:
+  // frozen; live: the live one) with real results joined on.
+  const pending = useMemo(() => pendingDuels(ctx), [ctx]);
+  const played = useMemo(
+    () => playedDuels(season, ctx.isArchive ? ctx.timeline : ctx.timelineLive, leagueConfig),
+    [season, ctx.isArchive, ctx.timeline, ctx.timelineLive, leagueConfig],
+  );
 
   const anyShared = table.some((r) => r.sharedRank);
   const sharedNote = anyShared
@@ -124,7 +129,7 @@ export default function TabelleUndPrognose({ ctx }) {
 
         <Relegation playoff={playoff} league={league} nameOf={nameOf} />
 
-        <DirekteDuelle duelList={duelList} leagueConfig={leagueConfig} nameOf={nameOf} isArchive={ctx.isArchive} />
+        <DirekteDuelle pending={pending} played={played} leagueConfig={leagueConfig} nameOf={nameOf} isArchive={ctx.isArchive} />
 
         <Card
           title="Restprogramm-Schwere"

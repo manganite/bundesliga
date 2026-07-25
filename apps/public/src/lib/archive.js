@@ -28,3 +28,11 @@ export const IN_SAMPLE_NOTE =
  */
 export const DUEL_ARCHIVE_CAPTION =
   "Spiele, bei denen beide Klubs vor dem Spieltag mindestens 10 % Chance auf dasselbe Ziel hatten — nach der retrospektiven Modellrechnung mit den heutigen Parametern, nicht nach damaliger Einschätzung.";
+
+/**
+ * The sentence the LIVE duel caption gains when the card also shows PLAYED duels
+ * (§DUELLE_ERGEBNISSE §2): what was at stake before the matchday, beside how it
+ * ended.
+ */
+export const DUEL_PLAYED_NOTE =
+  "Gespielte Duelle sind nach dem Rechnungsstand vor ihrem jeweiligen Spieltag bestimmt; die Prozente sind die von damals, das Ergebnis das echte.";

@@ -138,6 +138,13 @@ spätere schlägt die frühere:**
     — eine Implementierung, zwei Datenquellen (live `duels`, archiv
     `historicalDuels`, gebündelt in `seasonDuels`/`duelTargetsForCtx`). Archiv-
     Caption verankert; Live-Verhalten unverändert.
+22. `DUELLE_ERGEBNISSE_PROMPT.md` — kleiner Fix vor 2.3.0: die Duelle-Karte zeigt
+    je Ziel-Tab **zwei Abschnitte** — „Anstehend" (aus dem Outlook, min(P)-Sort)
+    und „Gespielt" (`playedDuels`: Timeline-Ableitung + Ergebnis-Join, Heim
+    zuerst). Leere Abschnitte verbergen sich (Vorsaison nur Anstehend, Saisonende
+    nur Gespielt); Tab-Zähler = Summe. Live-Caption um einen Satz ergänzt
+    (Prozente von damals, Ergebnis echt), verankert. Kein Engine-Eingriff — reiner
+    Daten-Join.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.

@@ -74,7 +74,7 @@ const nameOf = (() => { const m = new Map(SEASON.clubs.map((c) => [c.clubId, c.n
 const duelList = duels(SEASON, OUTLOOK, CONFIG.leagues.bl1);
 
 const renderDuelle = (list = duelList) =>
-  renderToStaticMarkup(React.createElement(DirekteDuelle, { duelList: list, leagueConfig: CONFIG.leagues.bl1, nameOf }));
+  renderToStaticMarkup(React.createElement(DirekteDuelle, { pending: list, played: [], leagueConfig: CONFIG.leagues.bl1, nameOf }));
 
 test("the duel tabs use the shared Tabs component — one implementation, not two", () => {
   // Both consumers import the same component; only Tabs.jsx writes the roles.
@@ -127,7 +127,8 @@ test("within a tab, duels sort by min(P) descending then matchday ascending", ()
     { fixtureId: "z", target: "meister", home: "E", away: "F", pHome: 0.5, pAway: 0.5, heat: 0.5, matchday: 12 },
   ];
   const cfg = { ...CONFIG.leagues.bl1, targets: { meister: { places: 1, from: 1, to: 1, label: "Meister" } } };
-  const html = renderToStaticMarkup(React.createElement(DirekteDuelle, { duelList: list, leagueConfig: cfg, nameOf: (id) => id }));
+  // The „Anstehend" (pending) section carries the min(P)-desc, matchday-asc order.
+  const html = renderToStaticMarkup(React.createElement(DirekteDuelle, { pending: list, played: [], leagueConfig: cfg, nameOf: (id) => id }));
   const order = [...strip(html).matchAll(/(\d+)\. Spieltag/g)].map((m) => Number(m[1]));
   // heat 0.5 (md 12 then 20) before heat 0.3 (md 10): [12, 20, 10].
   assert.deepEqual(order, [12, 20, 10]);

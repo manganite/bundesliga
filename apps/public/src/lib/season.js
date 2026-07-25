@@ -185,6 +185,28 @@ export function seasonDuels(ctx, theta = 0.1) {
     : duels(ctx.season, ctx.outlook, ctx.leagueConfig, theta);
 }
 
+/**
+ * The PLAYED duels of the season, with the real result joined on (§DUELLE_
+ * ERGEBNISSE). Derived from the per-matchday timeline like `historicalDuels`, but
+ * kept only for fixtures that have a result, and each carries `result:{gh,ga}`
+ * (home first, matching the row's club order). The timeline is the archive frozen
+ * one or the live one — either way the probabilities are „the ones from before
+ * that matchday".
+ */
+export function playedDuels(season, timeline, leagueConfig, theta = 0.1) {
+  const resultOf = new Map(
+    season.fixtures.filter((f) => f.gh !== undefined).map((f) => [f.id, { gh: f.gh, ga: f.ga }]),
+  );
+  return historicalDuels(season, timeline, leagueConfig, theta)
+    .filter((d) => resultOf.has(d.fixtureId))
+    .map((d) => ({ ...d, result: resultOf.get(d.fixtureId) }));
+}
+
+/** The upcoming (remaining) duels from the outlook — empty on a finished season. */
+export function pendingDuels(ctx, theta = 0.1) {
+  return ctx.isArchive ? [] : duels(ctx.season, ctx.outlook, ctx.leagueConfig, theta);
+}
+
 /** Build the fixtureId → targets map from any duel list (shared by both sources). */
 export function duelTargetsFromList(list, leagueConfig) {
   const rank = new Map(targetList(leagueConfig).map((t, i) => [t.id, i]));
