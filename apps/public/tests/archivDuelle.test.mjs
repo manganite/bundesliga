@@ -85,7 +85,9 @@ test("§1: the pre-season offers no „gespielte“ area (nothing is played yet)
   const html = presetHtml(ctxFor(2026, "bl1", false));
   assert.match(html, /Alle offenen Spiele/);
   assert.doesNotMatch(html, /Alle gespielten Spiele/);
-  assert.doesNotMatch(html, /Alle Spiele</);
+  // The full-play rename must NOT appear pre-season. „Alle Spiele" (contiguous)
+  // is not a substring of „Alle offenen Spiele", so a plain match is the check.
+  assert.doesNotMatch(html, /Alle Spiele/);
 });
 
 test("§1: a mid-season offers both open and played areas", () => {
