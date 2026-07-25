@@ -3,6 +3,7 @@
   "schemaVersion": 1,
   "season": 2020,
   "label": "2020/21",
+  "annotation": "",
   "leagues": {
     "bl1": {
       "clubCount": 18,

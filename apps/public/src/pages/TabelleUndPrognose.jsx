@@ -118,7 +118,10 @@ export default function TabelleUndPrognose({ ctx }) {
           />
         </Card>
 
-        {outlook ? <Heatmap outlook={outlook} table={table} nameOf={nameOf} /> : null}
+        {/* The placement heatmap degenerates to a diagonal once the season is
+            over — every club sits on one position with certainty. §7/§V2b.1 §3:
+            nothing to say, so it hides. */}
+        {outlook && outlook.remainingCount !== 0 ? <Heatmap outlook={outlook} table={table} nameOf={nameOf} /> : null}
 
         <Relegation playoff={playoff} league={league} nameOf={nameOf} />
 

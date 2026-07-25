@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import { targetList } from "../lib/season.js";
+import { retrospectiveLabel } from "../lib/archive.js";
 import { effectiveContenders } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, pp } from "../lib/format.js";
 
@@ -27,7 +28,7 @@ const CURVE_LABEL = {
 };
 
 export default function Verlauf({ ctx }) {
-  const { timeline, timelineLive, leagueConfig, nameOf, leagueLabel } = ctx;
+  const { timeline, timelineLive, leagueConfig, nameOf, leagueLabel, isArchive, params } = ctx;
   const targets = targetList(leagueConfig);
   const [targetId, setTargetId] = useState(targets[0]?.id);
 
@@ -78,6 +79,12 @@ export default function Verlauf({ ctx }) {
         Wie sich die Aussichten im Lauf der Saison verschoben haben — allein durch Ergebnisse,
         bei unveränderter Saisonstart-Stärke.
       </p>
+
+      {/* §V2b.1 §3/§4.2: every historical timeline is labelled a retrospective
+          replay with today's parameters, not the forecast made at the time. */}
+      {isArchive ? (
+        <p className="banner" role="note">{retrospectiveLabel(params?.procedureVersion)}</p>
+      ) : null}
 
       {degraded ? (
         <p className="banner warn">{timeline.label.label}</p>

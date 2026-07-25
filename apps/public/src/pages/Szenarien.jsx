@@ -169,7 +169,7 @@ function WasWaereWenn({ ctx, remaining }) {
 
   return (
     <Card title="Was-wäre-wenn">
-      <Explainer />
+      <Explainer isArchive={ctx.isArchive} />
 
       <PresetBar
         ctx={ctx}
@@ -302,7 +302,7 @@ export function ScenarioTable({ ctx, committed, sim, stale }) {
 }
 
 /** §1.6 + §1 honesty: the three states, and that ratings do not rewind. */
-export function Explainer() {
+export function Explainer({ isArchive = false }) {
   return (
     <>
       <p className="page-intro" style={{ marginBottom: "0.4rem" }}>
@@ -314,9 +314,11 @@ export function Explainer() {
         demselben Zufall — Veränderungen kommen so wirklich von deinen Ergebnissen und nicht vom
         Würfeln.
       </p>
+      {/* §V2b.1 §3: on an archive season the scenario uses the LAST reconstructed
+          ratings of that season — the named approximation gets its archive clause. */}
       <p className="caption" style={{ marginTop: 0 }}>
         Ratings spulen nicht zurück — auch bei geänderten früheren Ergebnissen rechnet die
-        Simulation mit den Ratings des aktuellen Datenstands.
+        Simulation mit den Ratings des aktuellen Datenstands{isArchive ? " (hier: die Ratings vom Saisonende)" : ""}.
       </p>
     </>
   );

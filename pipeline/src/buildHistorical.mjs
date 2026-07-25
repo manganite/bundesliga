@@ -109,6 +109,9 @@ export function historicalConfig(currentConfig, year) {
     schemaVersion: currentConfig.schemaVersion,
     season: year,
     label: seasonLabel(year),
+    // §5 [USER]: an optional per-season note shown in the Saisonbilanz. Empty by
+    // default — content is supplied later; an empty note renders nothing (§7).
+    annotation: "",
     leagues: currentConfig.leagues,
     relegationPlayoff,
   };

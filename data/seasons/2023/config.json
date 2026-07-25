@@ -3,6 +3,7 @@
   "schemaVersion": 1,
   "season": 2023,
   "label": "2023/24",
+  "annotation": "",
   "leagues": {
     "bl1": {
       "clubCount": 18,

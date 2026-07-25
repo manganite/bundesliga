@@ -213,7 +213,7 @@ function LeagueSwitch({ league, available, onLeague }) {
 }
 
 export function Ready({ route, seasonId, league, data, isArchive = false, available, onLeague, seasons, season: seasonSel, newestSeason, onSeason }) {
-  const { meta, config, season, outlook, timeline, timelineLive, prematch, params, playoff } = data;
+  const { meta, config, season, outlook, timeline, timelineLive, prematch, params, playoff, relegation } = data;
 
   const clubs = useMemo(() => clubIndex(season), [season]);
   const nameOf = useMemo(() => (id) => clubs.get(id)?.name ?? id, [clubs]);
@@ -250,7 +250,7 @@ export function Ready({ route, seasonId, league, data, isArchive = false, availa
 
   const ctx = {
     seasonId, league, leagueLabel: leagueLabel(league), leagueConfig, config, season,
-    outlook, timeline, timelineLive, prematch, params, playoff,
+    outlook, timeline, timelineLive, prematch, params, playoff, relegation,
     clubs, nameOf, matchday, phase, carried, isArchive,
   };
 
