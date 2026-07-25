@@ -132,3 +132,33 @@ Tiebreak-Reihenfolge wird — wie §6 es vorsieht — Teil der Saisonkonfigurati
 damit historische Replays nicht blind mit der heutigen Reihenfolge gerechnet
 werden. Die Engine ist bereits so gebaut, dass die Reihenfolge aus der
 Saisonkonfiguration kommt.
+
+## Gate 5 (V2b.1) — auf das Fenster 2011/12–2025/26 geschrumpft. **Aufgelöst über Saisonkonfiguration** (2026-07-25)
+
+Der V2b.1-Brief (G2) verlangt die Prüfung nur noch für 2011/12–2025/26. Befund:
+
+- **2019/20–2025/26:** durch die Primärquelle gedeckt — der Wortlaut § 5 Nr. 3 c)
+  ist zwischen der Fassung *Stand 22.08.2019* und *Stand 06.03.2026*
+  **zeichengleich** (siehe oben). Reihenfolge und In-Saison-Regeln unverändert.
+- **2011/12–2018/19:** aus der Primärquelle (`media.dfl.de`) liegt keine ältere
+  Fassung vor. Eine Aussage „unverändert" lässt sich für diese acht Saisons aus
+  der Primärquelle **nicht belegen** — und wird daher **nicht behauptet**.
+
+**Entscheidung (der §6/Gate-5-vorgesehene Weg, nicht die Behauptung von
+Konstanz):** Die Tiebreak-Kette ist **Saisonkonfiguration**. Jede historische
+`data/seasons/<jahr>/config.json` trägt `tiebreakCriteria` **explizit**; als Wert
+wird die verifizierte heutige Kette (§ 5 Nr. 3, oben wörtlich) eingetragen und
+damit **retrospektiv angewandt** — genau das, was das §11-Retrospektiv-Label an
+jeder historischen Timeline offenlegt („Modellrechnung mit den heutigen
+Parametern … nicht die damalige Vorhersage"). Für 2011/12–2018/19 ist das eine
+dokumentierte retrospektive Wahl, keine Quellenaussage über die damalige Regel.
+
+**Warum das keine reale Abschlusstabelle verfälscht:** Die Einstiegskriterien
+Punkte → Tordifferenz → erzielte Tore, die jede reale BL1/BL2-Abschlusstabelle
+des Fensters tatsächlich entscheiden, sind der langstabile Kern und 2019–2026
+zeichengleich. Der Echtdaten-Ranker-Test hält fest, dass **keine** der geprüften
+Abschlusstabellen Kriterium 3 (direkter Vergleich) oder höher brauchte; eine
+Restunsicherheit über die *Unterreihenfolge* des direkten Vergleichs vor 2019
+kann eine reale Tabelle des Fensters somit nicht bewegen. Sollte je eine
+Primärquelle für 2011–2018 auftauchen, die eine andere Kette zeigt, genügt ein
+Eintrag in der betroffenen Saisonkonfiguration — kein Code.

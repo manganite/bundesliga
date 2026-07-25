@@ -139,7 +139,9 @@ mit, weil die Trainingsdaten committet sind.
 | Szenario-Presets · Freigeben · Duell-Hervorhebung (Brief 16) | ✅ mit Tests |
 | Szenario-Schlusstabelle · Anwenden & rechnen · geteilte LeagueTable (Brief 17) | ✅ mit Tests |
 | Abschluss Brief 17: „Δ Platz" rechts + Release 2.2.0 (Brief 18) | ✅ mit Tests |
-| V2b — Historie | ⏳ zurückgestellt (Auslösebedingung im Brief) |
+| V2b.1 — Historie ab 2011/12 (Brief 19), Phase 1: Gates | ✅ mit Tests |
+| V2b.1 — Phasen 2–5 (Artefakte, Saison-Dimension, Seiten, Release 2.3.0) | ⏳ in Arbeit |
+| V2b.2 — Historie vor 2011 | ⏳ zurückgestellt (clubelo-Trigger im Brief) |
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
 **≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
