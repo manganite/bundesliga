@@ -123,6 +123,13 @@ spätere schlägt die frühere:**
     G1 lieferte über OpenLigaDB nur 2024/25+2025/26 (BL1/BL2); die „nur
     OpenLigaDB"-Zusage wurde bewusst zu „kein clubelo; OpenLigaDB + zitierte
     Wikipedia-Saisonseiten" erweitert (Nutzerfreigabe; Beleg je Eintrag).
+20. `FIX_ARCHIV_SZENARIEN_PROMPT.md` — kleiner Fix vor 2.3.0: der
+    `remaining.length === 0`-Frühausstieg in `Szenarien.jsx` (Brief-16-Altlast)
+    entfällt ersatzlos; eine voll gespielte (Archiv-)Saison rendert die normale
+    Spieltagsliste (alle Spiele **real**, Freigeben/Festsetzen, Presets).
+    Einziger Leerzustand: keine Fixtures. Spieltags-Vorwahl „nächster offener,
+    sonst der **letzte**". Neu: ein **Seitenebenen**-Rendertest (der alte 2014er
+    prüfte unter dem Wächter und blieb grün, während die Seite abriegelte).
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.

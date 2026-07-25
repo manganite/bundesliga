@@ -83,13 +83,15 @@ test("six matchdays remaining is still too early — the boundary is exact", () 
   assert.doesNotMatch(html, /Was muss passieren/);
 });
 
-test("a fully played season offers nothing to play through", () => {
+test("a fully played season STILL offers the what-if (Freigeben makes it work) — §FIX", () => {
+  // The old `remaining.length === 0` guard was removed: a fully-played season is
+  // the purest form of the tool now, not an empty state. The what-if list appears.
   const base = read("data/seasons/2025/bl1/season.json");
   const html = strip(renderPage(ctxFor(2025, "bl1")));
   const anyRemaining = base.fixtures.some((f) => f.gh === undefined);
   if (!anyRemaining) {
-    assert.match(html, /keine Spiele mehr offen/);
-    assert.doesNotMatch(html, /Was-wäre-wenn/);
+    assert.match(html, /Was-wäre-wenn/);
+    assert.doesNotMatch(html, /keine Spiele mehr offen/);
   }
 });
 
