@@ -70,9 +70,21 @@ test("§3: an archive Übersicht is the Saisonbilanz — outcome, relegation, th
   assert.match(text, /setzte sich gegen/);
   // The improbable-moment and biggest-surprise cards.
   assert.match(text, /Unwahrscheinlichster Moment/);
-  assert.match(text, /wurde am Ende Meister/);
+  assert.match(text, /auf den Titel — und war es am Ende/);
   assert.match(text, /Größte Überraschung/);
   assert.match(text, /Bit\./);
+  // The broad „Klassenerhalt" catch-all (rank 1–15) is NOT listed as an outcome.
+  assert.doesNotMatch(text, /Klassenerhalt/);
+});
+
+test("the Saisonbilanz also renders for BL2 (Aufstieg as the title target)", () => {
+  const html = renderToStaticMarkup(React.createElement(Uebersicht, { ctx: ctxFor(2015, "bl2", true) }));
+  const text = strip(html);
+  assert.match(text, /Saisonbilanz — 2\. Bundesliga/);
+  // 2015/16 BL2 champion was SC Freiburg.
+  assert.match(text, /SC Freiburg/);
+  assert.match(text, /auf den Aufstieg/);
+  assert.doesNotMatch(text, /Klassenerhalt/);
 });
 
 test("the live Übersicht is NOT the Saisonbilanz", () => {

@@ -14,12 +14,12 @@ import { percent, number } from "../lib/format.js";
 //  nothing new is computed. Empty inputs render nothing (§7).
 // ============================================================================
 
-/** The champion's lowest title probability across the frozen timeline. */
-function championLow(timeline, championId) {
+/** The champion's lowest title/promotion probability across the frozen timeline. */
+function championLow(timeline, championId, targetId) {
   if (!timeline?.points?.length || !championId) return null;
   let low = null;
   for (const p of timeline.points) {
-    const v = p.probabilities?.meister?.[championId];
+    const v = p.probabilities?.[targetId]?.[championId];
     if (v === undefined) continue;
     if (low === null || v < low.value) low = { matchday: p.matchday, value: v };
   }
@@ -41,13 +41,21 @@ export default function Saisonbilanz({ ctx }) {
   const { season, leagueConfig, nameOf, prematch, params, league, leagueLabel, timeline, relegation, config } = ctx;
   const table = currentTable(season, leagueConfig);
   const champion = table[0];
-  const zones = targetList(leagueConfig).filter((t) => t.from != null);
+  // Only the DECISIVE zones belong in a season balance — not the broad
+  // „Klassenerhalt" catch-all (rank 1–15), which would just list the 15 clubs
+  // that stayed up. Anything spanning more than a third of the table is dropped.
+  const clubCount = table.length;
+  const zones = targetList(leagueConfig)
+    .filter((t) => t.from != null && (t.to - t.from + 1) <= clubCount / 3);
 
   const scored = scoredMatches(season, prematch, params, league);
   const surprise = scored.length
     ? scored.reduce((m, s) => (s.surprisal > m.surprisal ? s : m))
     : null;
-  const low = championLow(timeline, champion?.clubId);
+  // The title target is „Meister" in BL1 and „Aufstieg" in BL2.
+  const titleTargetId = leagueConfig.targets?.meister ? "meister" : "aufstieg";
+  const titleWord = titleTargetId === "meister" ? "den Titel" : "den Aufstieg";
+  const low = championLow(timeline, champion?.clubId, titleTargetId);
   const relLines = relegationLines(relegation, season.season, league);
   const annotation = config?.annotation; // §5 [USER]: empty until content is supplied
 
@@ -105,7 +113,7 @@ export default function Saisonbilanz({ ctx }) {
           {low && champion ? (
             <p className="stat-line">
               <strong>{nameOf(champion.clubId)}</strong> stand nach dem {low.matchday}. Spieltag bei{" "}
-              <strong>{percent(low.value, 1)}</strong> auf den Titel — und wurde am Ende Meister.
+              <strong>{percent(low.value, 1)}</strong> auf {titleWord} — und war es am Ende.
             </p>
           ) : null}
         </Card>
