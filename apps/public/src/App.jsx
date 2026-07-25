@@ -167,7 +167,10 @@ export function SeasonSwitch({ seasons, season, newestSeason, onSeason }) {
     <span className={isArchive ? "season-switch is-archive" : "season-switch"}>
       <label>
         <span className="visually-hidden">Saison wählen</span>
-        <select value={season} onChange={(e) => onSeason(Number(e.target.value))}>
+        {/* Picking the live season sets `null`, not its year: that RESTORES the
+            „follow the newest committed season" default, so the app auto-follows
+            when a new season lands rather than staying pinned to today's year. */}
+        <select value={season} onChange={(e) => { const y = Number(e.target.value); onSeason(y === newestSeason ? null : y); }}>
           {[...seasons].sort((a, b) => b - a).map((s) => (
             <option key={s} value={s}>
               {seasonLabel(s)}{s === newestSeason ? "" : " · Archiv"}

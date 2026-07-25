@@ -22,7 +22,8 @@ const { Ready, SeasonSwitch } = await harness();
 function dataFor(year, league) {
   const maybe = (rel) => (fs.existsSync(path.join(REPO, rel)) ? read(rel) : null);
   return {
-    meta: maybe("data/seasons/2026/meta.json") ?? { dataUpdatedAt: "2026-07-01T00:00:00Z" },
+    // meta.json is GLOBAL (data/meta.json), not per-season — the real payload.
+    meta: read("data/meta.json"),
     config: read(`data/seasons/${year}/config.json`),
     season: read(`data/seasons/${year}/${league}/season.json`),
     outlook: maybe(`data/seasons/${year}/${league}/outlook.json`),
