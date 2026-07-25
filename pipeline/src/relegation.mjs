@@ -37,6 +37,12 @@ export function validateEntry(season, boundary, entry) {
   if (!Array.isArray(entry.legs) || entry.legs.length !== 2) {
     throw new Error(`${where}: expected exactly two legs`);
   }
+  // The aggregate/winner logic below assumes leg 2 is the REVERSE fixture of
+  // leg 1 — verify it, so wrong teams in leg 2 can't pass with a meaningless sum.
+  const [leg1, leg2] = entry.legs;
+  if (leg2.home !== leg1.away || leg2.away !== leg1.home) {
+    throw new Error(`${where}: leg 2 (${leg2.home} vs ${leg2.away}) is not the reverse of leg 1 (${leg1.home} vs ${leg1.away})`);
+  }
   if (!DECIDED_BY.has(entry.decidedBy)) {
     throw new Error(`${where}: unknown decidedBy "${entry.decidedBy}"`);
   }

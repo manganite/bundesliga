@@ -67,6 +67,13 @@ test("validateEntry is fail-closed when the decision method contradicts the scor
   }), /winner does not lead/);
 });
 
+test("validateEntry is fail-closed when leg 2 is not the reverse fixture", () => {
+  assert.throws(() => validateEntry("test", "bl1-bl2", {
+    legs: [{ home: "A", away: "B", gh: 1, ga: 0 }, { home: "A", away: "C", gh: 0, ga: 0 }],
+    aggregate: "1:0", decidedBy: "regular", winner: "A", loser: "B", source: "x",
+  }), /leg 2 .* is not the reverse of leg 1/);
+});
+
 test("every entry cites a source", () => {
   for (const boundaries of Object.values(relegation.seasons)) {
     for (const b of BOUNDARIES) assert.ok(boundaries[b].source, `${b} lacks a source`);

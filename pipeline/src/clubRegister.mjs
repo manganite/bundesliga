@@ -21,8 +21,10 @@ export async function loadClubRegister(dataDir = "data") {
     throw new Error("club register: missing `clubs` map");
   }
   for (const [clubId, entry] of Object.entries(raw.clubs)) {
-    if (!entry?.name || !entry?.shortName) {
-      throw new Error(`club register: entry ${clubId} lacks name/shortName`);
+    // Fail-closed at LOAD, not only in the test suite: every entry needs a name,
+    // a short name and a cited source before it can seed an artefact.
+    if (!entry?.name || !entry?.shortName || !entry?.source) {
+      throw new Error(`club register: entry ${clubId} lacks name/shortName/source`);
     }
   }
   return raw;
