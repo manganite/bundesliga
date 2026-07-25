@@ -145,6 +145,16 @@ spätere schlägt die frühere:**
     nur Gespielt); Tab-Zähler = Summe. Live-Caption um einen Satz ergänzt
     (Prozente von damals, Ergebnis echt), verankert. Kein Engine-Eingriff — reiner
     Daten-Join.
+23. `CHART_AUSBAU_BRIEF.md` — größeres UI-Polishing der Diagramme (Referenz WM-App).
+    **Erlaubte Engine-Ergänzungen, abschließend**: zwei reine, getestete
+    Aggregationen über vorhandene Werte — `zonePartition(targetProb, zones)` (§2.1,
+    disjunkte Zonen-Partition, Summe-1) und `cumulativeSeries(scored, metric)`
+    (§4.2, kumulative Gütereihe, letzter Punkt ≡ Gesamt); keine Simulation,
+    Pipeline oder Artefaktänderung. §0 geteilte Infrastruktur (`ChartTooltip`,
+    `ChartLegend`, `ChartInteractive`) als Ein-Implementierungs-Nachweis;
+    Zonenverteilung statt Titelchance-Linie; Kalibrierung/Güte-Zeitreihen mit
+    Achsen, Legenden, Tooltips. Danach **Release 2.3.0** über V2b.1 + die drei
+    Nachfixe (20–22) + diesen Brief.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -395,12 +405,23 @@ construction.
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
 - **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
-  package.json` wird je Release-Brief gebumpt (aktuell **2.2.0**, Release über
-  Brief 16 + 17), dann ein Git-Tag `v<version>` und ein GitHub-Release mit 3–6
-  Zeilen deutschen Notes aus dem zugehörigen Brief. Ältere Stände werden **nicht**
-  rückwirkend getaggt; die Historie beginnt bei 2.1.0. Die Footer-Version
-  (`__APP_VERSION__` aus `apps/public/package.json` via Vite-`define`) verlinkt
-  auf `…/releases/tag/v<version>`.
+  package.json` wird je Release-Brief gebumpt (aktuell **2.3.0**, Release über
+  V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau), dann ein Git-Tag `v<version>`
+  und ein GitHub-Release mit 3–6 Zeilen deutschen Notes aus dem zugehörigen Brief.
+  Ältere Stände werden **nicht** rückwirkend getaggt; die Historie beginnt bei
+  2.1.0. Die Footer-Version (`__APP_VERSION__` aus `apps/public/package.json` via
+  Vite-`define`) verlinkt auf `…/releases/tag/v<version>`.
+- **Chart-Infrastruktur ist geteilt und einfach-implementiert (CHART_AUSBAU §0).**
+  `ChartTooltip` ist der einzige Schreiber von `.chart-tooltip`, `ChartLegend` der
+  einzige von `.chart-legend`, `ChartInteractive` (`useActivePoint` + `HitAreas`)
+  die einzige Zeiger/Touch/Tastatur-Schicht; ein Quellwächter verbietet zweite
+  Schreiber, ein zweiter verbietet `<Chart>` ohne beschriftete Achse. Die
+  fokussierbaren Hit-Rects tragen ihre Zusammenfassung als `aria-label` (Inhalt
+  ohne Hover) und einen sichtbaren `:focus-visible`-Ring — nie `outline:none`.
+  Neues neutrales Token `--zone-mid` fürs Mittelfeld-Band. Die zwei erlaubten
+  Engine-Aggregationen (`zonePartition`, `cumulativeSeries`) sind rein und
+  getestet; `nonCarriedScored` hält übertragene Ratings aus den Gütekurven wie
+  aus den Gesamtwerten.
 - **Die Übersicht ist ein Spaltenlayout (`card-columns`), kein Reihen-Grid.**
   Multi-Column stapelt Karten lückenlos (ein Grid richtet jede Reihe an der
   höchsten Karte aus). Die Leseordnung ist die Quellreihenfolge: Titelrennen →
@@ -423,7 +444,7 @@ construction.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.2.0) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.3.0) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
@@ -580,7 +601,9 @@ construction.
     Endzustand (`remainingCount === 0`). Annotationsstruktur: `config.annotation`
     (leer = rendert nichts, §5). `relegation.json` wird jetzt synchronisiert und in
     `ctx.relegation` geladen.
-  - Phase 5 (Release 2.3.0) steht aus.
+  - **Release 2.3.0 vereint V2b.1, die drei Nachfixe (FIX_ARCHIV_SZENARIEN,
+    ARCHIV_DUELLE, DUELLE_ERGEBNISSE) und den Chart-Ausbau** in einem Tag +
+    GitHub-Release; die Chart-Arbeit landete danach noch im selben Release.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
   ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern
