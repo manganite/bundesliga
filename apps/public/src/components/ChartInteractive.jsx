@@ -55,7 +55,8 @@ export function HitAreas({ centers, top = 0, bottom, active, setActive, onKeyDow
         role="button"
         aria-label={labelAt(i)}
         aria-pressed={active === i}
-        style={{ cursor: "pointer", outline: "none" }}
+        className="chart-hit"
+        style={{ cursor: "pointer" }}
         onMouseEnter={() => setActive(i)}
         onMouseLeave={() => setActive(null)}
         onFocus={() => setActive(i)}

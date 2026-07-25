@@ -326,6 +326,39 @@ export function scoredMatches(season, prematch, params, league) {
   return out;
 }
 
+/**
+ * The `k` biggest surprises per matchday, for the Verlauf tooltip context
+ * (§CHART_AUSBAU §1): a played fixture whose actual tendency the pre-match model
+ * rated least likely, formatted „Heim g:g Auswärts · s,s bit" (home first). Pure
+ * over a `scoredMatches` list so a constructed matchday can pin it.
+ *
+ * @param {Array} scored  from `scoredMatches` — {fixture:{matchday,homeClubId,awayClubId,gh,ga}, surprisal}
+ * @param {(id:string)=>string} nameOf
+ * @param {number} k
+ * @returns {Map<number,string[]>} matchday → up to k formatted surprise lines.
+ */
+export function matchdaySurprises(scored, nameOf, k = 2) {
+  const byMd = new Map();
+  for (const s of scored) {
+    const md = s.fixture.matchday;
+    if (!byMd.has(md)) byMd.set(md, []);
+    byMd.get(md).push(s);
+  }
+  const out = new Map();
+  for (const [md, list] of byMd) {
+    out.set(md, list
+      .slice()
+      .sort((a, b) => b.surprisal - a.surprisal)
+      .slice(0, k)
+      .map((s) => `${nameOf(s.fixture.homeClubId)} ${s.fixture.gh}:${s.fixture.ga} ${nameOf(s.fixture.awayClubId)} · ${deBit(s.surprisal)}`));
+  }
+  return out;
+}
+
+// One decimal, German decimal comma, with the „bit" unit — kept here so the
+// tooltip string is produced in exactly one place.
+const deBit = (v) => `${(Math.round(v * 10) / 10).toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} bit`;
+
 /** A fixture's prediction, for an unplayed match. */
 export function predictFixture(fixture, prematch, params, league) {
   if (!prematch || !params) return null;

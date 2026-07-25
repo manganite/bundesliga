@@ -1,7 +1,10 @@
 import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
-import { targetList } from "../lib/season.js";
+import ChartLegend from "../components/ChartLegend.jsx";
+import ChartTooltip from "../components/ChartTooltip.jsx";
+import { HitAreas, useActivePoint } from "../components/ChartInteractive.jsx";
+import { targetList, scoredMatches, matchdaySurprises } from "../lib/season.js";
 import { retrospectiveLabel } from "../lib/archive.js";
 import { effectiveContenders } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, pp } from "../lib/format.js";
@@ -28,11 +31,19 @@ const CURVE_LABEL = {
 };
 
 export default function Verlauf({ ctx }) {
-  const { timeline, timelineLive, leagueConfig, nameOf, leagueLabel, isArchive, params } = ctx;
+  const { timeline, timelineLive, leagueConfig, nameOf, leagueLabel, isArchive, params, season, prematch, league } = ctx;
   const targets = targetList(leagueConfig);
   const [targetId, setTargetId] = useState(targets[0]?.id);
 
   const target = targets.find((t) => t.id === targetId) ?? targets[0];
+
+  // The two biggest surprises of each matchday, for the multi-club tooltip
+  // (§CHART_AUSBAU §1): a played fixture whose actual tendency the pre-match
+  // model rated least likely. Empty until a matchday is played.
+  const surprisesByMatchday = useMemo(
+    () => matchdaySurprises(scoredMatches(season, prematch, params, league), nameOf),
+    [season, prematch, params, league, nameOf],
+  );
 
   const series = useMemo(() => {
     if (!timeline?.points?.length || !target) return null;
@@ -100,7 +111,7 @@ export default function Verlauf({ ctx }) {
       <div className="stack">
         <Card title={`${target?.label} im Saisonverlauf`}>
           {series?.length
-            ? <MultiLine series={series} nameOf={nameOf} targetLabel={target.label} label={timeline.label?.label} />
+            ? <MultiLine series={series} nameOf={nameOf} targetLabel={target.label} label={timeline.label?.label} surprisesByMatchday={surprisesByMatchday} />
             : <Empty>Zu diesem Ziel gibt es im Verlauf nichts zu zeigen.</Empty>}
         </Card>
 
@@ -139,91 +150,103 @@ export default function Verlauf({ ctx }) {
   );
 }
 
-/**
- * Push labels apart so none sits on top of another.
- *
- * Greedy from the top: keep the natural position where possible, otherwise
- * nudge down by the minimum gap. Series ending under 0.5 % are dropped — the
- * exact numbers are in the chart's data table, and a pile of illegible names is
- * worse than no label.
- */
-function placeLabels(items, minGap) {
-  const kept = items.filter((i) => i.value >= 0.005).sort((a, b) => a.y - b.y);
-  let last = -Infinity;
-  for (const item of kept) {
-    item.y = Math.max(item.y, last + minGap);
-    last = item.y;
-  }
-  return kept;
-}
-
-function MultiLine({ series, nameOf, targetLabel, label }) {
+// §CHART_AUSBAU §1: the multi-club curve gains a legend (full club names, click
+// to highlight one series and dim the rest), and a per-matchday tooltip that
+// lists every visible club with its value and Δpp plus the two biggest
+// surprises of that matchday. The old truncated end-labels are gone — the
+// legend carries the full names now.
+function MultiLine({ series, nameOf, targetLabel, label, surprisesByMatchday }) {
   const w = 760;
   const h = 320;
-  const pad = { l: 44, r: 150, t: 12, b: 32 };
-  const maxX = Math.max(...series[0].points.map((p) => p.matchday), 1);
+  const pad = { l: 44, r: 14, t: 12, b: 32 };
+  const points = series[0].points;
+  const maxX = Math.max(...points.map((p) => p.matchday), 1);
   const x = (md) => pad.l + (md / maxX) * (w - pad.l - pad.r);
   const y = (v) => h - pad.b - v * (h - pad.t - pad.b);
+  const colourOf = (i) => SERIES_COLOURS[i % SERIES_COLOURS.length];
 
-  const last = series.map((s) => ({
-    clubId: s.clubId,
-    value: s.points[s.points.length - 1].value,
-  }));
+  const [highlight, setHighlight] = useState(null);
+  const { active, setActive, onKeyDown } = useActivePoint(points.length);
+  const centers = points.map((p) => x(p.matchday));
+
+  const last = series.map((s) => ({ clubId: s.clubId, value: s.points[s.points.length - 1].value }));
+  const legendItems = series.map((s, i) => ({ key: s.clubId, label: nameOf(s.clubId), color: colourOf(i) }));
+
+  const tooltipRows = (i) => series
+    .map((s, k) => ({
+      label: nameOf(s.clubId),
+      raw: s.points[i].value,
+      value: percent(s.points[i].value),
+      delta: i > 0 ? s.points[i].value - s.points[i - 1].value : undefined,
+      color: colourOf(k),
+    }))
+    .filter((r) => r.raw >= 0.005 || highlight === null)
+    .sort((a, b) => b.raw - a.raw);
 
   return (
-    <Chart
-      title={`${targetLabel} je Spieltag`}
-      ariaLabel={
-        `Liniendiagramm mit ${series.length} Klubs: Wahrscheinlichkeit für „${targetLabel}“ über die Spieltage. `
-        + `Am Ende führt ${nameOf(last.slice().sort((a, b) => b.value - a.value)[0].clubId)} `
-        + `mit ${percent(Math.max(...last.map((l) => l.value)))}.`
-      }
-      width={w}
-      height={h}
-      caption={`${label ?? "Eingefrorene Saisonstart-Stärke"}. Gezeigt sind die Klubs, die im Verlauf mindestens einmal über 2 % kamen.`}
-      table={{
-        columns: ["Klub", ...series[0].points.map((p) => (p.matchday === 0 ? "vor dem 1." : `${p.matchday}.`))],
-        rows: series.map((s) => [nameOf(s.clubId), ...s.points.map((p) => percent(p.value))]),
-      }}
-    >
-      {[0, 0.25, 0.5, 0.75, 1].map((v) => (
-        <g key={v}>
-          <line x1={pad.l} y1={y(v)} x2={w - pad.r} y2={y(v)} className="grid-line" />
-          <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{Math.round(v * 100)} %</text>
-        </g>
-      ))}
-      {series.map((s, i) => (
-        <path
-          key={s.clubId}
-          d={s.points.map((p, j) => `${j === 0 ? "M" : "L"}${x(p.matchday).toFixed(1)},${y(p.value).toFixed(1)}`).join(" ")}
-          fill="none"
-          stroke={SERIES_COLOURS[i % SERIES_COLOURS.length]}
-          strokeWidth="2.2"
-          strokeLinejoin="round"
+    <>
+      <Chart
+        title={`${targetLabel} je Spieltag`}
+        ariaLabel={
+          `Liniendiagramm mit ${series.length} Klubs: Wahrscheinlichkeit für „${targetLabel}“ über die Spieltage. `
+          + `Am Ende führt ${nameOf(last.slice().sort((a, b) => b.value - a.value)[0].clubId)} `
+          + `mit ${percent(Math.max(...last.map((l) => l.value)))}.`
+        }
+        width={w}
+        height={h}
+        caption={`${label ?? "Eingefrorene Saisonstart-Stärke"}. Gezeigt sind die Klubs, die im Verlauf mindestens einmal über 2 % kamen.`}
+        table={{
+          columns: ["Klub", ...points.map((p) => (p.matchday === 0 ? "vor dem 1." : `${p.matchday}.`))],
+          rows: series.map((s) => [nameOf(s.clubId), ...s.points.map((p) => percent(p.value))]),
+        }}
+      >
+        {[0, 0.25, 0.5, 0.75, 1].map((v) => (
+          <g key={v}>
+            <line x1={pad.l} y1={y(v)} x2={w - pad.r} y2={y(v)} className="grid-line" />
+            <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{Math.round(v * 100)} %</text>
+          </g>
+        ))}
+        <text x={12} y={pad.t + 4} className="axis-title">%</text>
+        {series.map((s, i) => {
+          const dimmed = highlight != null && highlight !== s.clubId;
+          return (
+            <path
+              key={s.clubId}
+              d={s.points.map((p, j) => `${j === 0 ? "M" : "L"}${x(p.matchday).toFixed(1)},${y(p.value).toFixed(1)}`).join(" ")}
+              fill="none"
+              stroke={colourOf(i)}
+              strokeWidth={highlight === s.clubId ? 3.2 : 2.2}
+              strokeLinejoin="round"
+              opacity={dimmed ? 0.18 : 1}
+            />
+          );
+        })}
+        {active != null ? (
+          <line x1={centers[active]} y1={pad.t} x2={centers[active]} y2={h - pad.b} className="grid-line" />
+        ) : null}
+        <text x={w - pad.r} y={h - 8} textAnchor="end" className="axis-label">Spieltag</text>
+        <HitAreas
+          centers={centers}
+          top={pad.t}
+          bottom={h - pad.b}
+          active={active}
+          setActive={setActive}
+          onKeyDown={onKeyDown}
+          labelAt={(i) => `${points[i].matchday === 0 ? "vor dem 1. Spieltag" : `${points[i].matchday}. Spieltag`}: ${tooltipRows(i).slice(0, 4).map((r) => `${r.label} ${r.value}`).join(", ")}`}
         />
-      ))}
-      {/* Labels are de-overlapped: several clubs finish at almost the same
-          value, and stacked text at the same y is unreadable. Series that end
-          below 0.5 % are left unlabelled — they are still in the data table
-          below, which is where the exact numbers belong anyway. */}
-      {placeLabels(series.map((s, i) => ({
-        clubId: s.clubId,
-        colour: SERIES_COLOURS[i % SERIES_COLOURS.length],
-        value: s.points[s.points.length - 1].value,
-        y: y(s.points[s.points.length - 1].value),
-      })), 13).map((l) => (
-        <text
-          key={`lab-${l.clubId}`}
-          x={w - pad.r + 8}
-          y={l.y + 4}
-          className="axis-label"
-          fill={l.colour}
-        >
-          {nameOf(l.clubId).length > 16 ? `${nameOf(l.clubId).slice(0, 15)}…` : nameOf(l.clubId)}
-        </text>
-      ))}
-      <text x={w - pad.r} y={h - 8} textAnchor="end" className="axis-label">Spieltag</text>
-    </Chart>
+        {active != null ? (
+          <ChartTooltip
+            x={centers[active]}
+            width={w}
+            boxWidth={240}
+            title={points[active].matchday === 0 ? "vor dem 1. Spieltag" : `${points[active].matchday}. Spieltag`}
+            rows={tooltipRows(active)}
+            context={surprisesByMatchday.get(points[active].matchday) ?? []}
+          />
+        ) : null}
+      </Chart>
+      <ChartLegend items={legendItems} onToggle={setHighlight} active={highlight} />
+    </>
   );
 }
 
@@ -267,6 +290,7 @@ function TensionLine({ series, floor, targetLabel }) {
           <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{number(v, 0)}</text>
         </g>
       ))}
+      <text x={12} y={pad.t + 4} className="axis-title">Bewerber</text>
       <line x1={pad.l} y1={y(floor)} x2={w - pad.r} y2={y(floor)} stroke="var(--text-muted)" strokeDasharray="4 3" strokeWidth="1.5" />
       <text x={pad.l + 6} y={y(floor) - 6} className="axis-label">
         Minimum {number(floor, 1)} — vollständig entschieden

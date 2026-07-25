@@ -5,6 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
+import { matchdaySurprises } from "../src/lib/season.js";
 
 // ============================================================================
 //  CHART_AUSBAU §0/§2 — shared tooltip/legend infrastructure and the Teams
@@ -17,7 +18,7 @@ const strip = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 const srcOf = (rel) => fs.readFileSync(path.join(REPO, rel), "utf8");
 
 const PARAMS = read("data/season-params.json");
-const { Teams, ChartLegend, ChartTooltip } = await harness();
+const { Teams, Verlauf, ChartLegend, ChartTooltip } = await harness();
 
 function ctxFor(season, league) {
   const config = read(`data/seasons/${season}/config.json`);
@@ -40,6 +41,7 @@ function ctxFor(season, league) {
 }
 
 const renderTeams = (ctx) => renderToStaticMarkup(React.createElement(Teams, { ctx }));
+const renderVerlauf = (ctx) => renderToStaticMarkup(React.createElement(Verlauf, { ctx }));
 
 // ---------------------------------------------------------------------------
 //  §0 · The shared components are the single writers.
@@ -147,4 +149,39 @@ test("the zone bands sum to 1 in the hidden data table row (every matchday total
   // is the engine test, here we assert the table exists with a band column.
   const html = renderTeams(ARCHIVE);
   assert.match(html, /Zonenverteilung von [^<]* im Saisonverlauf — Zahlen zur Grafik/);
+});
+
+// ---------------------------------------------------------------------------
+//  §1 · Verlauf — legend with highlight, per-matchday tooltip with surprises.
+// ---------------------------------------------------------------------------
+
+test("matchdaySurprises: constructed matchday to top-2 by surprisal, home first, bit unit", () => {
+  const scored = [
+    { fixture: { matchday: 7, homeClubId: "A", awayClubId: "B", gh: 0, ga: 1 }, surprisal: 3.24 },
+    { fixture: { matchday: 7, homeClubId: "C", awayClubId: "D", gh: 2, ga: 2 }, surprisal: 1.10 },
+    { fixture: { matchday: 7, homeClubId: "E", awayClubId: "F", gh: 3, ga: 0 }, surprisal: 4.90 },
+    { fixture: { matchday: 8, homeClubId: "G", awayClubId: "H", gh: 1, ga: 0 }, surprisal: 0.4 },
+  ];
+  const m = matchdaySurprises(scored, (id) => id);
+  // Matchday 7: the two biggest, E–F (4.9) before A–B (3.24), C–D dropped.
+  assert.deepEqual(m.get(7), ["E 3:0 F · 4,9 bit", "A 0:1 B · 3,2 bit"]);
+  assert.equal(m.get(8).length, 1);
+});
+
+test("Verlauf multi-club chart: a legend with FULL club names and highlight toggles, no truncated end-labels", () => {
+  const ctx = { ...ctxFor(2015, "bl1"), isArchive: true };
+  const html = renderVerlauf(ctx);
+  assert.match(html, /class="chart-legend"/);
+  // Interactive highlight: legend entries are real toggle buttons.
+  assert.match(html, /<button[^>]*class="legend-toggle"/);
+  // A long club name appears in full (the old end-labels truncated to 15 chars + „…").
+  assert.match(strip(html), /Mönchengladbach/);
+  assert.doesNotMatch(html, /…<\/text>/); // no truncated SVG end-label survives
+});
+
+test("Verlauf: the multi-club chart carries the keyboard hit areas with a matchday summary", () => {
+  const ctx = { ...ctxFor(2015, "bl1"), isArchive: true };
+  const html = renderVerlauf(ctx);
+  assert.match(html, /<rect[^>]*tabindex="0"[^>]*role="button"/);
+  assert.match(html, /aria-label="[^"]*Spieltag[^"]*"/);
 });
