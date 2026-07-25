@@ -628,6 +628,14 @@ button.primary:disabled { opacity: 0.45; cursor: default; }
 
 /* „Direkte Duelle" value: two club-tied percentages, compact. */
 .duel-value { font-variant-numeric: tabular-nums; }
+/* Two sections per duel tab: Anstehend / Gespielt (§DUELLE_ERGEBNISSE). */
+.duel-section + .duel-section { margin-top: 0.9rem; }
+.duel-section-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
 
 /* Saisonbilanz stat lines (§V2b.1 §3) — a single sentence per card. */
 .stat-line { margin: 0; max-width: var(--measure-text); }
