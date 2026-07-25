@@ -3,6 +3,7 @@
   "schemaVersion": 1,
   "season": 2017,
   "label": "2017/18",
+  "annotation": "",
   "leagues": {
     "bl1": {
       "clubCount": 18,

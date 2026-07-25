@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { Card, ProbList, Empty } from "../components/ui.jsx";
 import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
+import Saisonbilanz from "../components/Saisonbilanz.jsx";
 import { currentTable, targetList, tension, clinched, scoredMatches, rulesFrom } from "../lib/season.js";
 import { ZONE_TOKEN, zoneColor } from "../lib/zones.js";
 import { performanceVsExpectation } from "../../../../packages/engine/src/metrics.mjs";
@@ -98,6 +99,11 @@ export default function Uebersicht({ ctx }) {
       </Empty>
     );
   }
+
+  // §V2b.1 §3: for an archive season the Übersicht IS the season balance. The
+  // branch is here — after every hook — so the rules of hooks hold when the
+  // reader switches between a live and an archive season on the same page.
+  if (ctx.isArchive) return <Saisonbilanz ctx={ctx} />;
 
   return (
     <>

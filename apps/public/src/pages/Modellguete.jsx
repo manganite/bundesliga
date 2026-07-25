@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import { currentTable, scoredMatches, scoredMatchesFrozen, ratingAgeEntries, rulesFrom } from "../lib/season.js";
+import { IN_SAMPLE_NOTE } from "../lib/archive.js";
 import { percent, number, integer, signedInt, signed, pp, points } from "../lib/format.js";
 import { outcomeColor, perfColor } from "../lib/colors.js";
 import { tendencyOf } from "../../../../packages/engine/src/model.mjs";
@@ -30,7 +31,7 @@ import {
  * than one that says so. Cards hide (§7); the page keeps one honest sentence.
  */
 export default function Modellguete({ ctx }) {
-  const { season, outlook, timeline, prematch, params, league, leagueLabel, leagueConfig, nameOf } = ctx;
+  const { season, outlook, timeline, prematch, params, league, leagueLabel, leagueConfig, nameOf, isArchive } = ctx;
   const [expert, setExpert] = useState(false);
 
   const played = useMemo(() => playedFixtures(season.fixtures), [season]);
@@ -60,6 +61,10 @@ export default function Modellguete({ ctx }) {
         Wie gut die Vorhersagen dieser Saison waren, gemessen an den Ergebnissen. Jede Zahl
         beruht auf der Prognose <em>vor</em> dem jeweiligen Spiel.
       </p>
+
+      {/* §V2b.1 §4.1: a backward look INSIDE the training window is not an
+          independent test of the model. Shown wherever historical quality is. */}
+      {isArchive ? <p className="banner warn" role="note">{IN_SAMPLE_NOTE}</p> : null}
 
       <div className="stack">
         <Kalibrierung scored={scored} quality={quality} expert={expert} />

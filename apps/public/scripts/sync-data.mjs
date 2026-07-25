@@ -35,6 +35,9 @@ await fs.mkdir(DEST, { recursive: true });
 const copied = [];
 if (await copy("meta.json")) copied.push("meta.json");
 if (await copy("season-params.json")) copied.push("season-params.json");
+// Relegation outcomes (§V2b.1 G1) — season-level, one file, read by the archive
+// season balance. Optional: absent in a slim data dir, the balance just omits it.
+if (await copy("relegation.json")) copied.push("relegation.json");
 
 // Which seasons exist is discovered, never hardcoded (§5.5).
 const seasonsDir = path.join(SRC, "seasons");

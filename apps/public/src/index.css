@@ -629,6 +629,9 @@ button.primary:disabled { opacity: 0.45; cursor: default; }
 /* „Direkte Duelle" value: two club-tied percentages, compact. */
 .duel-value { font-variant-numeric: tabular-nums; }
 
+/* Saisonbilanz stat lines (§V2b.1 §3) — a single sentence per card. */
+.stat-line { margin: 0; max-width: var(--measure-text); }
+
 /* Scenario final-table position-shift indicator (§SZENARIO_TABELLE §2.2): a
    narrow column; the arrow + number carry the meaning, the intensity is only a
    second signal (opacity), colour a third — never the sole carrier. */

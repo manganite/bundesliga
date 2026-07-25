@@ -548,8 +548,17 @@ construction.
     rendern im Archiv nie** — Staleness, Config-Stempel, Carry-forward, „Saison beginnt
     in Kürze" sind hinter `isArchive` ausgeblendet; ein Rendertest zählt sie auf und
     beweist das Gate beidseitig.
-  - Phasen 4–5 (Seitenverhalten der 8 Seiten + Ehrlichkeitssätze + Annotationen,
-    Release 2.3.0) stehen aus.
+  - **Phase 4 (Seitenverhalten + Ehrlichkeit) gelandet:** Übersicht wird im Archiv
+    zur **Saisonbilanz** (`components/Saisonbilanz.jsx`: Ausgang/Zonen, Relegation
+    aus `data/relegation.json`, unwahrscheinlichster Moment = Meister an seinem
+    Titel-Tief, größte Überraschung = Surprisal-Max). Zwei verankerte
+    Ehrlichkeitssätze in `lib/archive.js`: Retrospektiv-Label (Verlauf, §4.2) und
+    In-sample-Pflicht (Modellgüte, §4.1); der Szenarien-Explainer bekommt den
+    Archiv-Halbsatz „(hier: die Ratings vom Saisonende)". Heatmap verbirgt sich im
+    Endzustand (`remainingCount === 0`). Annotationsstruktur: `config.annotation`
+    (leer = rendert nichts, §5). `relegation.json` wird jetzt synchronisiert und in
+    `ctx.relegation` geladen.
+  - Phase 5 (Release 2.3.0) steht aus.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
   ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern
