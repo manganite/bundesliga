@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { Card, Empty } from "../components/ui.jsx";
 import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
-import { currentTable, predictFixture, scoredMatches, duelTargetsByFixture, targetList } from "../lib/season.js";
+import { currentTable, predictFixture, scoredMatches, duelTargetsForCtx, targetList } from "../lib/season.js";
+import { DUEL_ARCHIVE_CAPTION } from "../lib/archive.js";
 import DuelChip, { duelStripeColor } from "../components/DuelChip.jsx";
 import LeagueTable from "../components/LeagueTable.jsx";
 import { outcomeColor } from "../lib/colors.js";
@@ -16,8 +17,9 @@ import { percent, number, weekdayDate } from "../lib/format.js";
  * this page and the Übersicht. It must not appear earlier.
  */
 export default function Spieltage({ ctx }) {
-  const { season, outlook, leagueConfig, nameOf, matchday, prematch, params, league, leagueLabel } = ctx;
-  const duelBy = useMemo(() => duelTargetsByFixture(season, outlook, leagueConfig), [season, outlook, leagueConfig]);
+  const { season, outlook, leagueConfig, nameOf, matchday, prematch, params, league, leagueLabel, isArchive } = ctx;
+  // Duel source is the outlook live, the frozen timeline in the archive (§ARCHIV_DUELLE).
+  const duelBy = useMemo(() => duelTargetsForCtx(ctx), [ctx]);
   const matchdays = useMemo(
     () => [...new Set(season.fixtures.map((f) => f.matchday))].sort((a, b) => a - b),
     [season],
@@ -80,7 +82,7 @@ export default function Spieltage({ ctx }) {
 
         <Card
           title={`${selected}. Spieltag`}
-          caption="Hervorgehoben: direkte Duelle (beide Klubs ≥ 10 % auf dasselbe Ziel)."
+          caption={isArchive ? DUEL_ARCHIVE_CAPTION : "Hervorgehoben: direkte Duelle (beide Klubs ≥ 10 % auf dasselbe Ziel)."}
         >
           <div className="table-scroll"><table className="data">
             <thead>

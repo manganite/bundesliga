@@ -3,7 +3,7 @@ import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import DirekteDuelle from "../components/DirekteDuelle.jsx";
 import LeagueTable from "../components/LeagueTable.jsx";
-import { currentTable, orderWithinSharedRanks, scheduleStrength, duels, rulesFrom, targetList } from "../lib/season.js";
+import { currentTable, orderWithinSharedRanks, scheduleStrength, seasonDuels, rulesFrom, targetList } from "../lib/season.js";
 import Relegation from "../components/Relegation.jsx";
 import { percent, integer, signedInt, rating } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
@@ -74,10 +74,9 @@ export default function TabelleUndPrognose({ ctx }) {
     return { rows: withDeviation, informative };
   }, [strength]);
 
-  const duelList = useMemo(
-    () => duels(season, outlook, leagueConfig),
-    [season, outlook, leagueConfig],
-  );
+  // Live: the outlook's remaining fixtures; archive: derived per matchday from
+  // the frozen timeline (§ARCHIV_DUELLE) — same directDuels rule, one component.
+  const duelList = useMemo(() => seasonDuels(ctx), [ctx]);
 
   const anyShared = table.some((r) => r.sharedRank);
   const sharedNote = anyShared
@@ -125,7 +124,7 @@ export default function TabelleUndPrognose({ ctx }) {
 
         <Relegation playoff={playoff} league={league} nameOf={nameOf} />
 
-        <DirekteDuelle duelList={duelList} leagueConfig={leagueConfig} nameOf={nameOf} />
+        <DirekteDuelle duelList={duelList} leagueConfig={leagueConfig} nameOf={nameOf} isArchive={ctx.isArchive} />
 
         <Card
           title="Restprogramm-Schwere"

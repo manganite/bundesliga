@@ -149,6 +149,55 @@ export function duels(season, outlook, leagueConfig, theta = 0.1) {
 }
 
 /**
+ * The duels of a FINISHED (archive) season, derived from the frozen timeline
+ * (§ARCHIV_DUELLE §2). A thin adapter, NOT a new metric: matchday M's fixtures
+ * are run through the SAME `directDuels` θ-rule as the live path, but with the
+ * probabilities of timeline point M−1 (the forecast BEFORE that matchday; point 0
+ * = season start). The union over all matchdays is the season's „important games".
+ * Output shape is identical to `duels()`, so every consumer works unchanged.
+ */
+export function historicalDuels(season, timeline, leagueConfig, theta = 0.1) {
+  if (!timeline?.points?.length) return [];
+  const byMatchday = new Map(timeline.points.map((p) => [p.matchday, p]));
+  const labels = Object.fromEntries(targetList(leagueConfig).map((t) => [t.id, t.label]));
+  const relevant = targetList(leagueConfig).filter((t) => t.places <= 6); // drop Klassenerhalt
+  const matchdays = [...new Set(season.fixtures.map((f) => f.matchday))].sort((a, b) => a - b);
+  const out = [];
+  for (const md of matchdays) {
+    const point = byMatchday.get(md - 1); // forecast BEFORE matchday md
+    if (!point?.probabilities) continue;
+    const byTarget = {};
+    for (const t of relevant) byTarget[t.id] = point.probabilities[t.id];
+    const fixtures = season.fixtures
+      .filter((f) => f.matchday === md)
+      .map((f) => ({ id: f.id, home: f.homeClubId, away: f.awayClubId }));
+    for (const d of directDuels(fixtures, byTarget, theta)) {
+      out.push({ ...d, targetLabel: labels[d.target] ?? d.target, matchday: md, heat: Math.min(d.pHome, d.pAway) });
+    }
+  }
+  return out;
+}
+
+/** The season's duel list from the right source — live outlook or archive timeline. */
+export function seasonDuels(ctx, theta = 0.1) {
+  return ctx.isArchive
+    ? historicalDuels(ctx.season, ctx.timeline, ctx.leagueConfig, theta)
+    : duels(ctx.season, ctx.outlook, ctx.leagueConfig, theta);
+}
+
+/** Build the fixtureId → targets map from any duel list (shared by both sources). */
+export function duelTargetsFromList(list, leagueConfig) {
+  const rank = new Map(targetList(leagueConfig).map((t, i) => [t.id, i]));
+  const byFixture = new Map();
+  for (const d of list) {
+    if (!byFixture.has(d.fixtureId)) byFixture.set(d.fixtureId, []);
+    byFixture.get(d.fixtureId).push({ target: d.target, label: d.targetLabel, rank: rank.get(d.target) ?? 99 });
+  }
+  for (const arr of byFixture.values()) arr.sort((a, b) => a.rank - b.rank);
+  return byFixture;
+}
+
+/**
  * Clinch and elimination, under the CONSERVATIVE tiebreak rule of §6.
  *
  * Where two clubs can finish level on points the tiebreak is treated as
@@ -619,13 +668,10 @@ export function fixtureImpact(outlook, season, leagueConfig, { matchday = null }
  * first), so a chip can show the top one and name the rest.
  */
 export function duelTargetsByFixture(season, outlook, leagueConfig, theta = 0.1) {
-  const list = duels(season, outlook, leagueConfig, theta);
-  const rank = new Map(targetList(leagueConfig).map((t, i) => [t.id, i]));
-  const byFixture = new Map();
-  for (const d of list) {
-    if (!byFixture.has(d.fixtureId)) byFixture.set(d.fixtureId, []);
-    byFixture.get(d.fixtureId).push({ target: d.target, label: d.targetLabel, rank: rank.get(d.target) ?? 99 });
-  }
-  for (const arr of byFixture.values()) arr.sort((a, b) => a.rank - b.rank);
-  return byFixture;
+  return duelTargetsFromList(duels(season, outlook, leagueConfig, theta), leagueConfig);
+}
+
+/** The fixtureId → targets map from the right duel source for this ctx. */
+export function duelTargetsForCtx(ctx, theta = 0.1) {
+  return duelTargetsFromList(seasonDuels(ctx, theta), ctx.leagueConfig);
 }
