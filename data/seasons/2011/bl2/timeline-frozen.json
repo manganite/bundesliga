@@ -1,0 +1,7675 @@
+{
+  "kind": "frozenTimeline",
+  "league": "bl2",
+  "seasonId": "2011-bl2",
+  "runs": 5000,
+  "ratingBasis": "frozen pre-season ratings — the curve carries no rating updates",
+  "points": [
+    {
+      "matchday": 0,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 0,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1396,
+          "Aachen": 0.089,
+          "Aue": 0.089,
+          "Bochum": 0.2542,
+          "Braunschweig": 0.022,
+          "Cottbus": 0.1668,
+          "Dresden": 0.021,
+          "Duisburg": 0.1384,
+          "Düsseldorf": 0.1914,
+          "Frankfurt": 0.2876,
+          "FSV Frankfurt": 0.0212,
+          "Fürth": 0.2182,
+          "Ingolstadt": 0.048,
+          "Karlsruhe": 0.0288,
+          "Paderborn": 0.039,
+          "Rostock": 0.022,
+          "St. Pauli": 0.1706,
+          "Union Berlin": 0.0532
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0752,
+          "Aachen": 0.0506,
+          "Aue": 0.0518,
+          "Bochum": 0.1084,
+          "Braunschweig": 0.0152,
+          "Cottbus": 0.0774,
+          "Dresden": 0.0168,
+          "Duisburg": 0.0714,
+          "Düsseldorf": 0.079,
+          "Frankfurt": 0.1002,
+          "FSV Frankfurt": 0.0194,
+          "Fürth": 0.0956,
+          "Ingolstadt": 0.037,
+          "Karlsruhe": 0.0246,
+          "Paderborn": 0.0316,
+          "Rostock": 0.02,
+          "St. Pauli": 0.0854,
+          "Union Berlin": 0.0404
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9166,
+          "Aachen": 0.8624,
+          "Aue": 0.8542,
+          "Bochum": 0.9646,
+          "Braunschweig": 0.661,
+          "Cottbus": 0.9284,
+          "Dresden": 0.6574,
+          "Duisburg": 0.9078,
+          "Düsseldorf": 0.9484,
+          "Frankfurt": 0.9684,
+          "FSV Frankfurt": 0.6686,
+          "Fürth": 0.9546,
+          "Ingolstadt": 0.8018,
+          "Karlsruhe": 0.7142,
+          "Paderborn": 0.7832,
+          "Rostock": 0.6584,
+          "St. Pauli": 0.937,
+          "Union Berlin": 0.813
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0318,
+          "Aachen": 0.051,
+          "Aue": 0.0528,
+          "Bochum": 0.0132,
+          "Braunschweig": 0.0994,
+          "Cottbus": 0.027,
+          "Dresden": 0.0996,
+          "Duisburg": 0.0414,
+          "Düsseldorf": 0.0208,
+          "Frankfurt": 0.0158,
+          "FSV Frankfurt": 0.1028,
+          "Fürth": 0.0192,
+          "Ingolstadt": 0.0706,
+          "Karlsruhe": 0.0898,
+          "Paderborn": 0.074,
+          "Rostock": 0.0948,
+          "St. Pauli": 0.0258,
+          "Union Berlin": 0.0702
+        },
+        "abstieg": {
+          "1860 München": 0.0516,
+          "Aachen": 0.0866,
+          "Aue": 0.093,
+          "Bochum": 0.0222,
+          "Braunschweig": 0.2396,
+          "Cottbus": 0.0446,
+          "Dresden": 0.243,
+          "Duisburg": 0.0508,
+          "Düsseldorf": 0.0308,
+          "Frankfurt": 0.0158,
+          "FSV Frankfurt": 0.2286,
+          "Fürth": 0.0262,
+          "Ingolstadt": 0.1276,
+          "Karlsruhe": 0.196,
+          "Paderborn": 0.1428,
+          "Rostock": 0.2468,
+          "St. Pauli": 0.0372,
+          "Union Berlin": 0.1168
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 50.4136,
+          "median": 51,
+          "p10": 35,
+          "p90": 66
+        },
+        "Aachen": {
+          "expected": 46.658,
+          "median": 46,
+          "p10": 31,
+          "p90": 62
+        },
+        "Aue": {
+          "expected": 46.7546,
+          "median": 47,
+          "p10": 30,
+          "p90": 63
+        },
+        "Bochum": {
+          "expected": 55.8596,
+          "median": 56,
+          "p10": 40,
+          "p90": 71
+        },
+        "Braunschweig": {
+          "expected": 38.3262,
+          "median": 38,
+          "p10": 23,
+          "p90": 54
+        },
+        "Cottbus": {
+          "expected": 51.4168,
+          "median": 52,
+          "p10": 36,
+          "p90": 68
+        },
+        "Dresden": {
+          "expected": 38.2036,
+          "median": 38,
+          "p10": 23,
+          "p90": 54
+        },
+        "Duisburg": {
+          "expected": 50.0844,
+          "median": 50,
+          "p10": 34,
+          "p90": 66
+        },
+        "Düsseldorf": {
+          "expected": 52.7366,
+          "median": 53,
+          "p10": 37,
+          "p90": 69
+        },
+        "Frankfurt": {
+          "expected": 56.7132,
+          "median": 57,
+          "p10": 41,
+          "p90": 72
+        },
+        "FSV Frankfurt": {
+          "expected": 38.6602,
+          "median": 38,
+          "p10": 24,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 54.3536,
+          "median": 54,
+          "p10": 38,
+          "p90": 70
+        },
+        "Ingolstadt": {
+          "expected": 43.3474,
+          "median": 43,
+          "p10": 28,
+          "p90": 59
+        },
+        "Karlsruhe": {
+          "expected": 40.1386,
+          "median": 40,
+          "p10": 25,
+          "p90": 56
+        },
+        "Paderborn": {
+          "expected": 42.4158,
+          "median": 42,
+          "p10": 27,
+          "p90": 58
+        },
+        "Rostock": {
+          "expected": 38.294,
+          "median": 38,
+          "p10": 23,
+          "p90": 54
+        },
+        "St. Pauli": {
+          "expected": 51.9024,
+          "median": 52,
+          "p10": 36,
+          "p90": 68
+        },
+        "Union Berlin": {
+          "expected": 44.0686,
+          "median": 44,
+          "p10": 29,
+          "p90": 60
+        }
+      }
+    },
+    {
+      "matchday": 1,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 9,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1132,
+          "Aachen": 0.067,
+          "Aue": 0.103,
+          "Bochum": 0.2296,
+          "Braunschweig": 0.0322,
+          "Cottbus": 0.1908,
+          "Dresden": 0.0154,
+          "Duisburg": 0.108,
+          "Düsseldorf": 0.2124,
+          "Frankfurt": 0.3362,
+          "FSV Frankfurt": 0.022,
+          "Fürth": 0.186,
+          "Ingolstadt": 0.0414,
+          "Karlsruhe": 0.034,
+          "Paderborn": 0.0558,
+          "Rostock": 0.0132,
+          "St. Pauli": 0.1878,
+          "Union Berlin": 0.052
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0678,
+          "Aachen": 0.0454,
+          "Aue": 0.0628,
+          "Bochum": 0.0964,
+          "Braunschweig": 0.0214,
+          "Cottbus": 0.0894,
+          "Dresden": 0.0152,
+          "Duisburg": 0.0602,
+          "Düsseldorf": 0.0988,
+          "Frankfurt": 0.1126,
+          "FSV Frankfurt": 0.0178,
+          "Fürth": 0.0884,
+          "Ingolstadt": 0.0324,
+          "Karlsruhe": 0.0266,
+          "Paderborn": 0.0338,
+          "Rostock": 0.012,
+          "St. Pauli": 0.0842,
+          "Union Berlin": 0.0348
+        },
+        "klassenerhalt": {
+          "1860 München": 0.8964,
+          "Aachen": 0.839,
+          "Aue": 0.8892,
+          "Bochum": 0.9494,
+          "Braunschweig": 0.7094,
+          "Cottbus": 0.9434,
+          "Dresden": 0.6248,
+          "Duisburg": 0.895,
+          "Düsseldorf": 0.9572,
+          "Frankfurt": 0.9812,
+          "FSV Frankfurt": 0.6694,
+          "Fürth": 0.944,
+          "Ingolstadt": 0.7748,
+          "Karlsruhe": 0.7686,
+          "Paderborn": 0.813,
+          "Rostock": 0.6022,
+          "St. Pauli": 0.948,
+          "Union Berlin": 0.795
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0428,
+          "Aachen": 0.06,
+          "Aue": 0.0478,
+          "Bochum": 0.0226,
+          "Braunschweig": 0.0864,
+          "Cottbus": 0.0262,
+          "Dresden": 0.0986,
+          "Duisburg": 0.042,
+          "Düsseldorf": 0.0188,
+          "Frankfurt": 0.0106,
+          "FSV Frankfurt": 0.098,
+          "Fürth": 0.0262,
+          "Ingolstadt": 0.0748,
+          "Karlsruhe": 0.0736,
+          "Paderborn": 0.0724,
+          "Rostock": 0.1044,
+          "St. Pauli": 0.0228,
+          "Union Berlin": 0.072
+        },
+        "abstieg": {
+          "1860 München": 0.0608,
+          "Aachen": 0.101,
+          "Aue": 0.063,
+          "Bochum": 0.028,
+          "Braunschweig": 0.2042,
+          "Cottbus": 0.0304,
+          "Dresden": 0.2766,
+          "Duisburg": 0.063,
+          "Düsseldorf": 0.024,
+          "Frankfurt": 0.0082,
+          "FSV Frankfurt": 0.2326,
+          "Fürth": 0.0298,
+          "Ingolstadt": 0.1504,
+          "Karlsruhe": 0.1578,
+          "Paderborn": 0.1146,
+          "Rostock": 0.2934,
+          "St. Pauli": 0.0292,
+          "Union Berlin": 0.133
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 48.7924,
+          "median": 49,
+          "p10": 33,
+          "p90": 64
+        },
+        "Aachen": {
+          "expected": 45.486,
+          "median": 45,
+          "p10": 30,
+          "p90": 61
+        },
+        "Aue": {
+          "expected": 48.2738,
+          "median": 48,
+          "p10": 33,
+          "p90": 64
+        },
+        "Bochum": {
+          "expected": 54.349,
+          "median": 55,
+          "p10": 39,
+          "p90": 70
+        },
+        "Braunschweig": {
+          "expected": 40.1262,
+          "median": 40,
+          "p10": 25,
+          "p90": 56
+        },
+        "Cottbus": {
+          "expected": 52.8296,
+          "median": 53,
+          "p10": 37,
+          "p90": 69
+        },
+        "Dresden": {
+          "expected": 37.4186,
+          "median": 37,
+          "p10": 23,
+          "p90": 52
+        },
+        "Duisburg": {
+          "expected": 48.6832,
+          "median": 49,
+          "p10": 33,
+          "p90": 64
+        },
+        "Düsseldorf": {
+          "expected": 54.1084,
+          "median": 54,
+          "p10": 38,
+          "p90": 69
+        },
+        "Frankfurt": {
+          "expected": 58.5598,
+          "median": 58,
+          "p10": 44,
+          "p90": 74
+        },
+        "FSV Frankfurt": {
+          "expected": 38.568,
+          "median": 38,
+          "p10": 24,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 52.6212,
+          "median": 53,
+          "p10": 37,
+          "p90": 68
+        },
+        "Ingolstadt": {
+          "expected": 42.5726,
+          "median": 42,
+          "p10": 28,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 42.1406,
+          "median": 42,
+          "p10": 28,
+          "p90": 57
+        },
+        "Paderborn": {
+          "expected": 43.9714,
+          "median": 44,
+          "p10": 29,
+          "p90": 59
+        },
+        "Rostock": {
+          "expected": 36.7572,
+          "median": 36,
+          "p10": 22,
+          "p90": 52
+        },
+        "St. Pauli": {
+          "expected": 53.1662,
+          "median": 53,
+          "p10": 38,
+          "p90": 68
+        },
+        "Union Berlin": {
+          "expected": 43.2954,
+          "median": 43,
+          "p10": 28,
+          "p90": 59
+        }
+      }
+    },
+    {
+      "matchday": 2,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 18,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1196,
+          "Aachen": 0.0524,
+          "Aue": 0.0944,
+          "Bochum": 0.24,
+          "Braunschweig": 0.0364,
+          "Cottbus": 0.2048,
+          "Dresden": 0.0142,
+          "Duisburg": 0.093,
+          "Düsseldorf": 0.2076,
+          "Frankfurt": 0.335,
+          "FSV Frankfurt": 0.0146,
+          "Fürth": 0.2188,
+          "Ingolstadt": 0.0382,
+          "Karlsruhe": 0.0326,
+          "Paderborn": 0.047,
+          "Rostock": 0.0148,
+          "St. Pauli": 0.1948,
+          "Union Berlin": 0.0418
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0616,
+          "Aachen": 0.0326,
+          "Aue": 0.0552,
+          "Bochum": 0.104,
+          "Braunschweig": 0.0258,
+          "Cottbus": 0.0958,
+          "Dresden": 0.0138,
+          "Duisburg": 0.0512,
+          "Düsseldorf": 0.091,
+          "Frankfurt": 0.1106,
+          "FSV Frankfurt": 0.0138,
+          "Fürth": 0.1016,
+          "Ingolstadt": 0.0352,
+          "Karlsruhe": 0.0278,
+          "Paderborn": 0.0376,
+          "Rostock": 0.012,
+          "St. Pauli": 0.0988,
+          "Union Berlin": 0.0316
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9174,
+          "Aachen": 0.8078,
+          "Aue": 0.8894,
+          "Bochum": 0.9694,
+          "Braunschweig": 0.7754,
+          "Cottbus": 0.9578,
+          "Dresden": 0.6206,
+          "Duisburg": 0.8848,
+          "Düsseldorf": 0.9598,
+          "Frankfurt": 0.9786,
+          "FSV Frankfurt": 0.627,
+          "Fürth": 0.964,
+          "Ingolstadt": 0.7686,
+          "Karlsruhe": 0.7326,
+          "Paderborn": 0.82,
+          "Rostock": 0.6082,
+          "St. Pauli": 0.9488,
+          "Union Berlin": 0.7698
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0346,
+          "Aachen": 0.064,
+          "Aue": 0.0452,
+          "Bochum": 0.0134,
+          "Braunschweig": 0.0788,
+          "Cottbus": 0.02,
+          "Dresden": 0.103,
+          "Duisburg": 0.0478,
+          "Düsseldorf": 0.0188,
+          "Frankfurt": 0.0086,
+          "FSV Frankfurt": 0.1004,
+          "Fürth": 0.0162,
+          "Ingolstadt": 0.0808,
+          "Karlsruhe": 0.091,
+          "Paderborn": 0.0688,
+          "Rostock": 0.1052,
+          "St. Pauli": 0.022,
+          "Union Berlin": 0.0814
+        },
+        "abstieg": {
+          "1860 München": 0.048,
+          "Aachen": 0.1282,
+          "Aue": 0.0654,
+          "Bochum": 0.0172,
+          "Braunschweig": 0.1458,
+          "Cottbus": 0.0222,
+          "Dresden": 0.2764,
+          "Duisburg": 0.0674,
+          "Düsseldorf": 0.0214,
+          "Frankfurt": 0.0128,
+          "FSV Frankfurt": 0.2726,
+          "Fürth": 0.0198,
+          "Ingolstadt": 0.1506,
+          "Karlsruhe": 0.1764,
+          "Paderborn": 0.1112,
+          "Rostock": 0.2866,
+          "St. Pauli": 0.0292,
+          "Union Berlin": 0.1488
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 49.7818,
+          "median": 50,
+          "p10": 35,
+          "p90": 65
+        },
+        "Aachen": {
+          "expected": 43.4822,
+          "median": 43,
+          "p10": 28,
+          "p90": 59
+        },
+        "Aue": {
+          "expected": 47.762,
+          "median": 48,
+          "p10": 33,
+          "p90": 63
+        },
+        "Bochum": {
+          "expected": 55.4014,
+          "median": 55,
+          "p10": 40,
+          "p90": 70
+        },
+        "Braunschweig": {
+          "expected": 42.1682,
+          "median": 42,
+          "p10": 28,
+          "p90": 57
+        },
+        "Cottbus": {
+          "expected": 54.1454,
+          "median": 54,
+          "p10": 39,
+          "p90": 69
+        },
+        "Dresden": {
+          "expected": 37.1104,
+          "median": 37,
+          "p10": 23,
+          "p90": 52
+        },
+        "Duisburg": {
+          "expected": 47.2694,
+          "median": 47,
+          "p10": 33,
+          "p90": 62
+        },
+        "Düsseldorf": {
+          "expected": 53.78,
+          "median": 54,
+          "p10": 39,
+          "p90": 69
+        },
+        "Frankfurt": {
+          "expected": 58.0768,
+          "median": 58,
+          "p10": 43,
+          "p90": 73
+        },
+        "FSV Frankfurt": {
+          "expected": 37.4754,
+          "median": 37,
+          "p10": 23,
+          "p90": 52
+        },
+        "Fürth": {
+          "expected": 54.1806,
+          "median": 54,
+          "p10": 39,
+          "p90": 69
+        },
+        "Ingolstadt": {
+          "expected": 42.1982,
+          "median": 42,
+          "p10": 27,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 41.1584,
+          "median": 41,
+          "p10": 27,
+          "p90": 56
+        },
+        "Paderborn": {
+          "expected": 43.845,
+          "median": 43,
+          "p10": 29,
+          "p90": 59
+        },
+        "Rostock": {
+          "expected": 36.6812,
+          "median": 36,
+          "p10": 22,
+          "p90": 51
+        },
+        "St. Pauli": {
+          "expected": 53.2746,
+          "median": 53,
+          "p10": 38,
+          "p90": 68
+        },
+        "Union Berlin": {
+          "expected": 42.0738,
+          "median": 41,
+          "p10": 28,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 3,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 27,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1588,
+          "Aachen": 0.0412,
+          "Aue": 0.0728,
+          "Bochum": 0.2168,
+          "Braunschweig": 0.0228,
+          "Cottbus": 0.1686,
+          "Dresden": 0.012,
+          "Duisburg": 0.0734,
+          "Düsseldorf": 0.2274,
+          "Frankfurt": 0.3666,
+          "FSV Frankfurt": 0.0124,
+          "Fürth": 0.2436,
+          "Ingolstadt": 0.031,
+          "Karlsruhe": 0.0438,
+          "Paderborn": 0.0374,
+          "Rostock": 0.0118,
+          "St. Pauli": 0.22,
+          "Union Berlin": 0.0396
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0826,
+          "Aachen": 0.03,
+          "Aue": 0.0446,
+          "Bochum": 0.1024,
+          "Braunschweig": 0.0232,
+          "Cottbus": 0.0826,
+          "Dresden": 0.0096,
+          "Duisburg": 0.0564,
+          "Düsseldorf": 0.1108,
+          "Frankfurt": 0.1228,
+          "FSV Frankfurt": 0.0118,
+          "Fürth": 0.0992,
+          "Ingolstadt": 0.0204,
+          "Karlsruhe": 0.0296,
+          "Paderborn": 0.0246,
+          "Rostock": 0.014,
+          "St. Pauli": 0.1036,
+          "Union Berlin": 0.0318
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9522,
+          "Aachen": 0.7846,
+          "Aue": 0.865,
+          "Bochum": 0.9678,
+          "Braunschweig": 0.7504,
+          "Cottbus": 0.9484,
+          "Dresden": 0.5906,
+          "Duisburg": 0.869,
+          "Düsseldorf": 0.9722,
+          "Frankfurt": 0.9856,
+          "FSV Frankfurt": 0.6322,
+          "Fürth": 0.972,
+          "Ingolstadt": 0.7428,
+          "Karlsruhe": 0.808,
+          "Paderborn": 0.7908,
+          "Rostock": 0.5974,
+          "St. Pauli": 0.9696,
+          "Union Berlin": 0.8014
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0218,
+          "Aachen": 0.0766,
+          "Aue": 0.0532,
+          "Bochum": 0.0132,
+          "Braunschweig": 0.0884,
+          "Cottbus": 0.022,
+          "Dresden": 0.1076,
+          "Duisburg": 0.054,
+          "Düsseldorf": 0.0138,
+          "Frankfurt": 0.0076,
+          "FSV Frankfurt": 0.1064,
+          "Fürth": 0.0138,
+          "Ingolstadt": 0.0838,
+          "Karlsruhe": 0.0648,
+          "Paderborn": 0.0762,
+          "Rostock": 0.1138,
+          "St. Pauli": 0.0146,
+          "Union Berlin": 0.0684
+        },
+        "abstieg": {
+          "1860 München": 0.026,
+          "Aachen": 0.1388,
+          "Aue": 0.0818,
+          "Bochum": 0.019,
+          "Braunschweig": 0.1612,
+          "Cottbus": 0.0296,
+          "Dresden": 0.3018,
+          "Duisburg": 0.077,
+          "Düsseldorf": 0.014,
+          "Frankfurt": 0.0068,
+          "FSV Frankfurt": 0.2614,
+          "Fürth": 0.0142,
+          "Ingolstadt": 0.1734,
+          "Karlsruhe": 0.1272,
+          "Paderborn": 0.133,
+          "Rostock": 0.2888,
+          "St. Pauli": 0.0158,
+          "Union Berlin": 0.1302
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 52.1144,
+          "median": 52,
+          "p10": 38,
+          "p90": 67
+        },
+        "Aachen": {
+          "expected": 42.5512,
+          "median": 42,
+          "p10": 28,
+          "p90": 57
+        },
+        "Aue": {
+          "expected": 46.105,
+          "median": 46,
+          "p10": 32,
+          "p90": 61
+        },
+        "Bochum": {
+          "expected": 54.6738,
+          "median": 55,
+          "p10": 40,
+          "p90": 70
+        },
+        "Braunschweig": {
+          "expected": 41.1956,
+          "median": 41,
+          "p10": 28,
+          "p90": 56
+        },
+        "Cottbus": {
+          "expected": 52.5398,
+          "median": 53,
+          "p10": 38,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 36.1664,
+          "median": 36,
+          "p10": 23,
+          "p90": 50
+        },
+        "Duisburg": {
+          "expected": 46.344,
+          "median": 46,
+          "p10": 32,
+          "p90": 61
+        },
+        "Düsseldorf": {
+          "expected": 54.928,
+          "median": 55,
+          "p10": 40,
+          "p90": 70
+        },
+        "Frankfurt": {
+          "expected": 59.2374,
+          "median": 59,
+          "p10": 45,
+          "p90": 74
+        },
+        "FSV Frankfurt": {
+          "expected": 37.4718,
+          "median": 37,
+          "p10": 24,
+          "p90": 52
+        },
+        "Fürth": {
+          "expected": 55.1904,
+          "median": 55,
+          "p10": 40,
+          "p90": 70
+        },
+        "Ingolstadt": {
+          "expected": 41.0854,
+          "median": 41,
+          "p10": 27,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 43.2612,
+          "median": 43,
+          "p10": 29,
+          "p90": 58
+        },
+        "Paderborn": {
+          "expected": 42.6208,
+          "median": 42,
+          "p10": 29,
+          "p90": 57
+        },
+        "Rostock": {
+          "expected": 36.6356,
+          "median": 36,
+          "p10": 23,
+          "p90": 51
+        },
+        "St. Pauli": {
+          "expected": 54.6424,
+          "median": 55,
+          "p10": 40,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 43.3198,
+          "median": 43,
+          "p10": 29,
+          "p90": 58
+        }
+      }
+    },
+    {
+      "matchday": 4,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 36,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1784,
+          "Aachen": 0.0282,
+          "Aue": 0.0516,
+          "Bochum": 0.1826,
+          "Braunschweig": 0.0324,
+          "Cottbus": 0.2044,
+          "Dresden": 0.0152,
+          "Duisburg": 0.0628,
+          "Düsseldorf": 0.2318,
+          "Frankfurt": 0.3326,
+          "FSV Frankfurt": 0.0116,
+          "Fürth": 0.2836,
+          "Ingolstadt": 0.0258,
+          "Karlsruhe": 0.0292,
+          "Paderborn": 0.0212,
+          "Rostock": 0.0104,
+          "St. Pauli": 0.263,
+          "Union Berlin": 0.0352
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0976,
+          "Aachen": 0.0252,
+          "Aue": 0.0406,
+          "Bochum": 0.0918,
+          "Braunschweig": 0.0324,
+          "Cottbus": 0.096,
+          "Dresden": 0.0114,
+          "Duisburg": 0.0428,
+          "Düsseldorf": 0.102,
+          "Frankfurt": 0.1236,
+          "FSV Frankfurt": 0.0114,
+          "Fürth": 0.1124,
+          "Ingolstadt": 0.0226,
+          "Karlsruhe": 0.023,
+          "Paderborn": 0.0244,
+          "Rostock": 0.0108,
+          "St. Pauli": 0.1088,
+          "Union Berlin": 0.0232
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9628,
+          "Aachen": 0.7548,
+          "Aue": 0.8408,
+          "Bochum": 0.962,
+          "Braunschweig": 0.8056,
+          "Cottbus": 0.9674,
+          "Dresden": 0.6468,
+          "Duisburg": 0.87,
+          "Düsseldorf": 0.9684,
+          "Frankfurt": 0.9876,
+          "FSV Frankfurt": 0.629,
+          "Fürth": 0.98,
+          "Ingolstadt": 0.7396,
+          "Karlsruhe": 0.758,
+          "Paderborn": 0.7574,
+          "Rostock": 0.6134,
+          "St. Pauli": 0.9762,
+          "Union Berlin": 0.7802
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0168,
+          "Aachen": 0.086,
+          "Aue": 0.0604,
+          "Bochum": 0.0178,
+          "Braunschweig": 0.07,
+          "Cottbus": 0.0154,
+          "Dresden": 0.0972,
+          "Duisburg": 0.0534,
+          "Düsseldorf": 0.0148,
+          "Frankfurt": 0.0066,
+          "FSV Frankfurt": 0.1012,
+          "Fürth": 0.0106,
+          "Ingolstadt": 0.0866,
+          "Karlsruhe": 0.0814,
+          "Paderborn": 0.086,
+          "Rostock": 0.1092,
+          "St. Pauli": 0.0108,
+          "Union Berlin": 0.0758
+        },
+        "abstieg": {
+          "1860 München": 0.0204,
+          "Aachen": 0.1592,
+          "Aue": 0.0988,
+          "Bochum": 0.0202,
+          "Braunschweig": 0.1244,
+          "Cottbus": 0.0172,
+          "Dresden": 0.256,
+          "Duisburg": 0.0766,
+          "Düsseldorf": 0.0168,
+          "Frankfurt": 0.0058,
+          "FSV Frankfurt": 0.2698,
+          "Fürth": 0.0094,
+          "Ingolstadt": 0.1738,
+          "Karlsruhe": 0.1606,
+          "Paderborn": 0.1566,
+          "Rostock": 0.2774,
+          "St. Pauli": 0.013,
+          "Union Berlin": 0.144
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 53.13,
+          "median": 53,
+          "p10": 39,
+          "p90": 67
+        },
+        "Aachen": {
+          "expected": 41.2896,
+          "median": 41,
+          "p10": 28,
+          "p90": 55
+        },
+        "Aue": {
+          "expected": 44.719,
+          "median": 44,
+          "p10": 31,
+          "p90": 59
+        },
+        "Bochum": {
+          "expected": 53.1192,
+          "median": 53,
+          "p10": 39,
+          "p90": 67
+        },
+        "Braunschweig": {
+          "expected": 42.8398,
+          "median": 42,
+          "p10": 30,
+          "p90": 57
+        },
+        "Cottbus": {
+          "expected": 54.4818,
+          "median": 54,
+          "p10": 40,
+          "p90": 69
+        },
+        "Dresden": {
+          "expected": 37.8598,
+          "median": 38,
+          "p10": 24,
+          "p90": 52
+        },
+        "Duisburg": {
+          "expected": 45.8096,
+          "median": 46,
+          "p10": 32,
+          "p90": 60
+        },
+        "Düsseldorf": {
+          "expected": 54.9468,
+          "median": 55,
+          "p10": 41,
+          "p90": 70
+        },
+        "Frankfurt": {
+          "expected": 58.6036,
+          "median": 59,
+          "p10": 44,
+          "p90": 73
+        },
+        "FSV Frankfurt": {
+          "expected": 37.2566,
+          "median": 37,
+          "p10": 24,
+          "p90": 51
+        },
+        "Fürth": {
+          "expected": 56.8482,
+          "median": 57,
+          "p10": 43,
+          "p90": 71
+        },
+        "Ingolstadt": {
+          "expected": 40.899,
+          "median": 41,
+          "p10": 27,
+          "p90": 55
+        },
+        "Karlsruhe": {
+          "expected": 41.4168,
+          "median": 41,
+          "p10": 28,
+          "p90": 56
+        },
+        "Paderborn": {
+          "expected": 41.2506,
+          "median": 41,
+          "p10": 28,
+          "p90": 55
+        },
+        "Rostock": {
+          "expected": 36.7918,
+          "median": 36,
+          "p10": 23,
+          "p90": 51
+        },
+        "St. Pauli": {
+          "expected": 56.29,
+          "median": 56,
+          "p10": 42,
+          "p90": 71
+        },
+        "Union Berlin": {
+          "expected": 42.1224,
+          "median": 42,
+          "p10": 28,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 5,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 45,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1522,
+          "Aachen": 0.021,
+          "Aue": 0.0448,
+          "Bochum": 0.135,
+          "Braunschweig": 0.0276,
+          "Cottbus": 0.215,
+          "Dresden": 0.0078,
+          "Duisburg": 0.0442,
+          "Düsseldorf": 0.2458,
+          "Frankfurt": 0.3824,
+          "FSV Frankfurt": 0.0086,
+          "Fürth": 0.3018,
+          "Ingolstadt": 0.016,
+          "Karlsruhe": 0.0224,
+          "Paderborn": 0.033,
+          "Rostock": 0.008,
+          "St. Pauli": 0.2972,
+          "Union Berlin": 0.0372
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.08,
+          "Aachen": 0.0182,
+          "Aue": 0.036,
+          "Bochum": 0.0826,
+          "Braunschweig": 0.0244,
+          "Cottbus": 0.1098,
+          "Dresden": 0.0092,
+          "Duisburg": 0.0402,
+          "Düsseldorf": 0.1142,
+          "Frankfurt": 0.1244,
+          "FSV Frankfurt": 0.008,
+          "Fürth": 0.1236,
+          "Ingolstadt": 0.0172,
+          "Karlsruhe": 0.0222,
+          "Paderborn": 0.0318,
+          "Rostock": 0.0076,
+          "St. Pauli": 0.1222,
+          "Union Berlin": 0.0284
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9554,
+          "Aachen": 0.7478,
+          "Aue": 0.8474,
+          "Bochum": 0.9506,
+          "Braunschweig": 0.806,
+          "Cottbus": 0.9738,
+          "Dresden": 0.614,
+          "Duisburg": 0.8424,
+          "Düsseldorf": 0.9808,
+          "Frankfurt": 0.9928,
+          "FSV Frankfurt": 0.612,
+          "Fürth": 0.9856,
+          "Ingolstadt": 0.712,
+          "Karlsruhe": 0.7366,
+          "Paderborn": 0.8236,
+          "Rostock": 0.6038,
+          "St. Pauli": 0.9848,
+          "Union Berlin": 0.8306
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0206,
+          "Aachen": 0.0858,
+          "Aue": 0.0594,
+          "Bochum": 0.025,
+          "Braunschweig": 0.0688,
+          "Cottbus": 0.0144,
+          "Dresden": 0.0998,
+          "Duisburg": 0.059,
+          "Düsseldorf": 0.0096,
+          "Frankfurt": 0.0034,
+          "FSV Frankfurt": 0.1004,
+          "Fürth": 0.008,
+          "Ingolstadt": 0.093,
+          "Karlsruhe": 0.0904,
+          "Paderborn": 0.0664,
+          "Rostock": 0.1192,
+          "St. Pauli": 0.0086,
+          "Union Berlin": 0.0682
+        },
+        "abstieg": {
+          "1860 München": 0.024,
+          "Aachen": 0.1664,
+          "Aue": 0.0932,
+          "Bochum": 0.0244,
+          "Braunschweig": 0.1252,
+          "Cottbus": 0.0118,
+          "Dresden": 0.2862,
+          "Duisburg": 0.0986,
+          "Düsseldorf": 0.0096,
+          "Frankfurt": 0.0038,
+          "FSV Frankfurt": 0.2876,
+          "Fürth": 0.0064,
+          "Ingolstadt": 0.195,
+          "Karlsruhe": 0.173,
+          "Paderborn": 0.11,
+          "Rostock": 0.277,
+          "St. Pauli": 0.0066,
+          "Union Berlin": 0.1012
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 51.8998,
+          "median": 52,
+          "p10": 38,
+          "p90": 66
+        },
+        "Aachen": {
+          "expected": 40.7482,
+          "median": 41,
+          "p10": 27,
+          "p90": 54
+        },
+        "Aue": {
+          "expected": 44.5574,
+          "median": 44,
+          "p10": 31,
+          "p90": 59
+        },
+        "Bochum": {
+          "expected": 51.5102,
+          "median": 52,
+          "p10": 38,
+          "p90": 65
+        },
+        "Braunschweig": {
+          "expected": 42.6084,
+          "median": 42,
+          "p10": 29,
+          "p90": 56
+        },
+        "Cottbus": {
+          "expected": 55.3736,
+          "median": 55,
+          "p10": 42,
+          "p90": 69
+        },
+        "Dresden": {
+          "expected": 36.2312,
+          "median": 36,
+          "p10": 23,
+          "p90": 49
+        },
+        "Duisburg": {
+          "expected": 44.517,
+          "median": 44,
+          "p10": 30,
+          "p90": 59
+        },
+        "Düsseldorf": {
+          "expected": 56.0634,
+          "median": 56,
+          "p10": 42,
+          "p90": 70
+        },
+        "Frankfurt": {
+          "expected": 59.937,
+          "median": 60,
+          "p10": 46,
+          "p90": 74
+        },
+        "FSV Frankfurt": {
+          "expected": 36.513,
+          "median": 36,
+          "p10": 24,
+          "p90": 50
+        },
+        "Fürth": {
+          "expected": 57.7328,
+          "median": 58,
+          "p10": 44,
+          "p90": 72
+        },
+        "Ingolstadt": {
+          "expected": 39.7264,
+          "median": 40,
+          "p10": 26,
+          "p90": 54
+        },
+        "Karlsruhe": {
+          "expected": 40.7632,
+          "median": 40,
+          "p10": 27,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 43.325,
+          "median": 43,
+          "p10": 30,
+          "p90": 57
+        },
+        "Rostock": {
+          "expected": 36.4488,
+          "median": 36,
+          "p10": 24,
+          "p90": 50
+        },
+        "St. Pauli": {
+          "expected": 57.9116,
+          "median": 58,
+          "p10": 44,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 43.803,
+          "median": 44,
+          "p10": 30,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 6,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 54,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1672,
+          "Aachen": 0.017,
+          "Aue": 0.0396,
+          "Bochum": 0.1108,
+          "Braunschweig": 0.0382,
+          "Cottbus": 0.2116,
+          "Dresden": 0.0064,
+          "Duisburg": 0.0576,
+          "Düsseldorf": 0.2496,
+          "Frankfurt": 0.3626,
+          "FSV Frankfurt": 0.0106,
+          "Fürth": 0.3746,
+          "Ingolstadt": 0.0192,
+          "Karlsruhe": 0.0146,
+          "Paderborn": 0.034,
+          "Rostock": 0.0052,
+          "St. Pauli": 0.2536,
+          "Union Berlin": 0.0276
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0936,
+          "Aachen": 0.0216,
+          "Aue": 0.0312,
+          "Bochum": 0.075,
+          "Braunschweig": 0.0298,
+          "Cottbus": 0.107,
+          "Dresden": 0.0058,
+          "Duisburg": 0.0432,
+          "Düsseldorf": 0.1132,
+          "Frankfurt": 0.1326,
+          "FSV Frankfurt": 0.0116,
+          "Fürth": 0.123,
+          "Ingolstadt": 0.0218,
+          "Karlsruhe": 0.0142,
+          "Paderborn": 0.029,
+          "Rostock": 0.0068,
+          "St. Pauli": 0.115,
+          "Union Berlin": 0.0256
+        },
+        "klassenerhalt": {
+          "1860 München": 0.964,
+          "Aachen": 0.7474,
+          "Aue": 0.8414,
+          "Bochum": 0.9474,
+          "Braunschweig": 0.8458,
+          "Cottbus": 0.9792,
+          "Dresden": 0.5642,
+          "Duisburg": 0.8738,
+          "Düsseldorf": 0.9828,
+          "Frankfurt": 0.99,
+          "FSV Frankfurt": 0.6542,
+          "Fürth": 0.9936,
+          "Ingolstadt": 0.7566,
+          "Karlsruhe": 0.6904,
+          "Paderborn": 0.821,
+          "Rostock": 0.57,
+          "St. Pauli": 0.9816,
+          "Union Berlin": 0.7966
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0178,
+          "Aachen": 0.0886,
+          "Aue": 0.0658,
+          "Bochum": 0.0262,
+          "Braunschweig": 0.0582,
+          "Cottbus": 0.0096,
+          "Dresden": 0.1174,
+          "Duisburg": 0.054,
+          "Düsseldorf": 0.0088,
+          "Frankfurt": 0.0046,
+          "FSV Frankfurt": 0.1002,
+          "Fürth": 0.0034,
+          "Ingolstadt": 0.0812,
+          "Karlsruhe": 0.092,
+          "Paderborn": 0.0684,
+          "Rostock": 0.1172,
+          "St. Pauli": 0.0094,
+          "Union Berlin": 0.0772
+        },
+        "abstieg": {
+          "1860 München": 0.0182,
+          "Aachen": 0.164,
+          "Aue": 0.0928,
+          "Bochum": 0.0264,
+          "Braunschweig": 0.096,
+          "Cottbus": 0.0112,
+          "Dresden": 0.3184,
+          "Duisburg": 0.0722,
+          "Düsseldorf": 0.0084,
+          "Frankfurt": 0.0054,
+          "FSV Frankfurt": 0.2456,
+          "Fürth": 0.003,
+          "Ingolstadt": 0.1622,
+          "Karlsruhe": 0.2176,
+          "Paderborn": 0.1106,
+          "Rostock": 0.3128,
+          "St. Pauli": 0.009,
+          "Union Berlin": 0.1262
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 52.8946,
+          "median": 53,
+          "p10": 39,
+          "p90": 66
+        },
+        "Aachen": {
+          "expected": 40.5896,
+          "median": 41,
+          "p10": 27,
+          "p90": 54
+        },
+        "Aue": {
+          "expected": 44.2814,
+          "median": 44,
+          "p10": 31,
+          "p90": 58
+        },
+        "Bochum": {
+          "expected": 50.1712,
+          "median": 50,
+          "p10": 37,
+          "p90": 64
+        },
+        "Braunschweig": {
+          "expected": 44.3868,
+          "median": 44,
+          "p10": 32,
+          "p90": 57
+        },
+        "Cottbus": {
+          "expected": 54.9402,
+          "median": 55,
+          "p10": 41,
+          "p90": 69
+        },
+        "Dresden": {
+          "expected": 35.4218,
+          "median": 35,
+          "p10": 23,
+          "p90": 49
+        },
+        "Duisburg": {
+          "expected": 45.7638,
+          "median": 46,
+          "p10": 32,
+          "p90": 59
+        },
+        "Düsseldorf": {
+          "expected": 55.9468,
+          "median": 56,
+          "p10": 42,
+          "p90": 69
+        },
+        "Frankfurt": {
+          "expected": 59.1094,
+          "median": 59,
+          "p10": 46,
+          "p90": 72
+        },
+        "FSV Frankfurt": {
+          "expected": 37.883,
+          "median": 37,
+          "p10": 25,
+          "p90": 51
+        },
+        "Fürth": {
+          "expected": 59.5756,
+          "median": 60,
+          "p10": 46,
+          "p90": 73
+        },
+        "Ingolstadt": {
+          "expected": 40.9994,
+          "median": 41,
+          "p10": 28,
+          "p90": 55
+        },
+        "Karlsruhe": {
+          "expected": 39.0284,
+          "median": 39,
+          "p10": 26,
+          "p90": 53
+        },
+        "Paderborn": {
+          "expected": 43.3714,
+          "median": 43,
+          "p10": 30,
+          "p90": 57
+        },
+        "Rostock": {
+          "expected": 35.5356,
+          "median": 35,
+          "p10": 23,
+          "p90": 48
+        },
+        "St. Pauli": {
+          "expected": 56.0294,
+          "median": 56,
+          "p10": 42,
+          "p90": 70
+        },
+        "Union Berlin": {
+          "expected": 42.9056,
+          "median": 43,
+          "p10": 30,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 7,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 63,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1504,
+          "Aachen": 0.0166,
+          "Aue": 0.0326,
+          "Bochum": 0.0746,
+          "Braunschweig": 0.0344,
+          "Cottbus": 0.2056,
+          "Dresden": 0.0066,
+          "Duisburg": 0.0394,
+          "Düsseldorf": 0.2782,
+          "Frankfurt": 0.3308,
+          "FSV Frankfurt": 0.0068,
+          "Fürth": 0.4346,
+          "Ingolstadt": 0.0132,
+          "Karlsruhe": 0.01,
+          "Paderborn": 0.0282,
+          "Rostock": 0.0036,
+          "St. Pauli": 0.2962,
+          "Union Berlin": 0.0382
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0902,
+          "Aachen": 0.0174,
+          "Aue": 0.026,
+          "Bochum": 0.057,
+          "Braunschweig": 0.0334,
+          "Cottbus": 0.102,
+          "Dresden": 0.0138,
+          "Duisburg": 0.0404,
+          "Düsseldorf": 0.1276,
+          "Frankfurt": 0.1326,
+          "FSV Frankfurt": 0.0108,
+          "Fürth": 0.1358,
+          "Ingolstadt": 0.0142,
+          "Karlsruhe": 0.0106,
+          "Paderborn": 0.0268,
+          "Rostock": 0.0056,
+          "St. Pauli": 0.1208,
+          "Union Berlin": 0.035
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9648,
+          "Aachen": 0.722,
+          "Aue": 0.8386,
+          "Bochum": 0.9212,
+          "Braunschweig": 0.851,
+          "Cottbus": 0.9736,
+          "Dresden": 0.6436,
+          "Duisburg": 0.8674,
+          "Düsseldorf": 0.9878,
+          "Frankfurt": 0.992,
+          "FSV Frankfurt": 0.654,
+          "Fürth": 0.9952,
+          "Ingolstadt": 0.7224,
+          "Karlsruhe": 0.655,
+          "Paderborn": 0.8228,
+          "Rostock": 0.544,
+          "St. Pauli": 0.9892,
+          "Union Berlin": 0.8554
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0182,
+          "Aachen": 0.0972,
+          "Aue": 0.0648,
+          "Bochum": 0.0314,
+          "Braunschweig": 0.0578,
+          "Cottbus": 0.014,
+          "Dresden": 0.1146,
+          "Duisburg": 0.0516,
+          "Düsseldorf": 0.0066,
+          "Frankfurt": 0.0034,
+          "FSV Frankfurt": 0.1058,
+          "Fürth": 0.0022,
+          "Ingolstadt": 0.094,
+          "Karlsruhe": 0.1018,
+          "Paderborn": 0.0636,
+          "Rostock": 0.113,
+          "St. Pauli": 0.0042,
+          "Union Berlin": 0.0558
+        },
+        "abstieg": {
+          "1860 München": 0.017,
+          "Aachen": 0.1808,
+          "Aue": 0.0966,
+          "Bochum": 0.0474,
+          "Braunschweig": 0.0912,
+          "Cottbus": 0.0124,
+          "Dresden": 0.2418,
+          "Duisburg": 0.081,
+          "Düsseldorf": 0.0056,
+          "Frankfurt": 0.0046,
+          "FSV Frankfurt": 0.2402,
+          "Fürth": 0.0026,
+          "Ingolstadt": 0.1836,
+          "Karlsruhe": 0.2432,
+          "Paderborn": 0.1136,
+          "Rostock": 0.343,
+          "St. Pauli": 0.0066,
+          "Union Berlin": 0.0888
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 52.3288,
+          "median": 52,
+          "p10": 39,
+          "p90": 65
+        },
+        "Aachen": {
+          "expected": 39.8846,
+          "median": 40,
+          "p10": 27,
+          "p90": 53
+        },
+        "Aue": {
+          "expected": 43.6322,
+          "median": 44,
+          "p10": 31,
+          "p90": 56
+        },
+        "Bochum": {
+          "expected": 48.2706,
+          "median": 48,
+          "p10": 35,
+          "p90": 61
+        },
+        "Braunschweig": {
+          "expected": 44.1682,
+          "median": 44,
+          "p10": 32,
+          "p90": 57
+        },
+        "Cottbus": {
+          "expected": 54.5852,
+          "median": 55,
+          "p10": 41,
+          "p90": 68
+        },
+        "Dresden": {
+          "expected": 37.5964,
+          "median": 37,
+          "p10": 25,
+          "p90": 50
+        },
+        "Duisburg": {
+          "expected": 44.543,
+          "median": 45,
+          "p10": 32,
+          "p90": 58
+        },
+        "Düsseldorf": {
+          "expected": 57.0252,
+          "median": 57,
+          "p10": 44,
+          "p90": 70
+        },
+        "Frankfurt": {
+          "expected": 58.47,
+          "median": 59,
+          "p10": 45,
+          "p90": 71
+        },
+        "FSV Frankfurt": {
+          "expected": 37.7204,
+          "median": 38,
+          "p10": 25,
+          "p90": 50
+        },
+        "Fürth": {
+          "expected": 61.242,
+          "median": 61,
+          "p10": 48,
+          "p90": 74
+        },
+        "Ingolstadt": {
+          "expected": 39.9962,
+          "median": 40,
+          "p10": 27,
+          "p90": 53
+        },
+        "Karlsruhe": {
+          "expected": 38.135,
+          "median": 38,
+          "p10": 26,
+          "p90": 51
+        },
+        "Paderborn": {
+          "expected": 42.8188,
+          "median": 42,
+          "p10": 30,
+          "p90": 56
+        },
+        "Rostock": {
+          "expected": 34.803,
+          "median": 35,
+          "p10": 23,
+          "p90": 47
+        },
+        "St. Pauli": {
+          "expected": 57.6096,
+          "median": 58,
+          "p10": 45,
+          "p90": 71
+        },
+        "Union Berlin": {
+          "expected": 44.4612,
+          "median": 44,
+          "p10": 32,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 8,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 72,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1662,
+          "Aachen": 0.0104,
+          "Aue": 0.0264,
+          "Bochum": 0.0478,
+          "Braunschweig": 0.0454,
+          "Cottbus": 0.151,
+          "Dresden": 0.0062,
+          "Duisburg": 0.0342,
+          "Düsseldorf": 0.33,
+          "Frankfurt": 0.3538,
+          "FSV Frankfurt": 0.005,
+          "Fürth": 0.4006,
+          "Ingolstadt": 0.0154,
+          "Karlsruhe": 0.0058,
+          "Paderborn": 0.0346,
+          "Rostock": 0.0028,
+          "St. Pauli": 0.333,
+          "Union Berlin": 0.0314
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.1028,
+          "Aachen": 0.0182,
+          "Aue": 0.0242,
+          "Bochum": 0.0408,
+          "Braunschweig": 0.0362,
+          "Cottbus": 0.0906,
+          "Dresden": 0.0068,
+          "Duisburg": 0.032,
+          "Düsseldorf": 0.1264,
+          "Frankfurt": 0.1462,
+          "FSV Frankfurt": 0.0078,
+          "Fürth": 0.1442,
+          "Ingolstadt": 0.0196,
+          "Karlsruhe": 0.0056,
+          "Paderborn": 0.0358,
+          "Rostock": 0.0048,
+          "St. Pauli": 0.1294,
+          "Union Berlin": 0.0286
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9758,
+          "Aachen": 0.7444,
+          "Aue": 0.8122,
+          "Bochum": 0.8978,
+          "Braunschweig": 0.8958,
+          "Cottbus": 0.9732,
+          "Dresden": 0.6046,
+          "Duisburg": 0.8482,
+          "Düsseldorf": 0.995,
+          "Frankfurt": 0.9938,
+          "FSV Frankfurt": 0.6112,
+          "Fürth": 0.9964,
+          "Ingolstadt": 0.7742,
+          "Karlsruhe": 0.618,
+          "Paderborn": 0.8862,
+          "Rostock": 0.5164,
+          "St. Pauli": 0.9942,
+          "Union Berlin": 0.8626
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.013,
+          "Aachen": 0.0906,
+          "Aue": 0.068,
+          "Bochum": 0.0438,
+          "Braunschweig": 0.0494,
+          "Cottbus": 0.013,
+          "Dresden": 0.1112,
+          "Duisburg": 0.0602,
+          "Düsseldorf": 0.0028,
+          "Frankfurt": 0.0034,
+          "FSV Frankfurt": 0.1238,
+          "Fürth": 0.0018,
+          "Ingolstadt": 0.0888,
+          "Karlsruhe": 0.114,
+          "Paderborn": 0.0446,
+          "Rostock": 0.1158,
+          "St. Pauli": 0.0038,
+          "Union Berlin": 0.052
+        },
+        "abstieg": {
+          "1860 München": 0.0112,
+          "Aachen": 0.165,
+          "Aue": 0.1198,
+          "Bochum": 0.0584,
+          "Braunschweig": 0.0548,
+          "Cottbus": 0.0138,
+          "Dresden": 0.2842,
+          "Duisburg": 0.0916,
+          "Düsseldorf": 0.0022,
+          "Frankfurt": 0.0028,
+          "FSV Frankfurt": 0.265,
+          "Fürth": 0.0018,
+          "Ingolstadt": 0.137,
+          "Karlsruhe": 0.268,
+          "Paderborn": 0.0692,
+          "Rostock": 0.3678,
+          "St. Pauli": 0.002,
+          "Union Berlin": 0.0854
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 53.5118,
+          "median": 53,
+          "p10": 41,
+          "p90": 66
+        },
+        "Aachen": {
+          "expected": 39.9862,
+          "median": 40,
+          "p10": 27,
+          "p90": 53
+        },
+        "Aue": {
+          "expected": 42.5124,
+          "median": 42,
+          "p10": 30,
+          "p90": 55
+        },
+        "Bochum": {
+          "expected": 46.2878,
+          "median": 46,
+          "p10": 34,
+          "p90": 59
+        },
+        "Braunschweig": {
+          "expected": 46.012,
+          "median": 46,
+          "p10": 34,
+          "p90": 59
+        },
+        "Cottbus": {
+          "expected": 53.2168,
+          "median": 53,
+          "p10": 41,
+          "p90": 66
+        },
+        "Dresden": {
+          "expected": 36.2156,
+          "median": 36,
+          "p10": 24,
+          "p90": 49
+        },
+        "Duisburg": {
+          "expected": 43.6766,
+          "median": 44,
+          "p10": 31,
+          "p90": 57
+        },
+        "Düsseldorf": {
+          "expected": 58.717,
+          "median": 59,
+          "p10": 46,
+          "p90": 71
+        },
+        "Frankfurt": {
+          "expected": 59.4142,
+          "median": 60,
+          "p10": 47,
+          "p90": 72
+        },
+        "FSV Frankfurt": {
+          "expected": 36.8174,
+          "median": 36,
+          "p10": 25,
+          "p90": 49
+        },
+        "Fürth": {
+          "expected": 60.6106,
+          "median": 61,
+          "p10": 48,
+          "p90": 73
+        },
+        "Ingolstadt": {
+          "expected": 41.1318,
+          "median": 41,
+          "p10": 29,
+          "p90": 54
+        },
+        "Karlsruhe": {
+          "expected": 36.9662,
+          "median": 37,
+          "p10": 24,
+          "p90": 50
+        },
+        "Paderborn": {
+          "expected": 45.2122,
+          "median": 45,
+          "p10": 33,
+          "p90": 58
+        },
+        "Rostock": {
+          "expected": 34.101,
+          "median": 34,
+          "p10": 22,
+          "p90": 47
+        },
+        "St. Pauli": {
+          "expected": 59.0324,
+          "median": 59,
+          "p10": 46,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 44.2956,
+          "median": 44,
+          "p10": 32,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 9,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 81,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1222,
+          "Aachen": 0.005,
+          "Aue": 0.0288,
+          "Bochum": 0.0564,
+          "Braunschweig": 0.039,
+          "Cottbus": 0.1144,
+          "Dresden": 0.0024,
+          "Duisburg": 0.0178,
+          "Düsseldorf": 0.3748,
+          "Frankfurt": 0.4256,
+          "FSV Frankfurt": 0.0042,
+          "Fürth": 0.446,
+          "Ingolstadt": 0.0106,
+          "Karlsruhe": 0.0042,
+          "Paderborn": 0.0462,
+          "Rostock": 0.0014,
+          "St. Pauli": 0.2574,
+          "Union Berlin": 0.0436
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0898,
+          "Aachen": 0.0114,
+          "Aue": 0.0302,
+          "Bochum": 0.056,
+          "Braunschweig": 0.0332,
+          "Cottbus": 0.0788,
+          "Dresden": 0.0042,
+          "Duisburg": 0.024,
+          "Düsseldorf": 0.143,
+          "Frankfurt": 0.1426,
+          "FSV Frankfurt": 0.006,
+          "Fürth": 0.1498,
+          "Ingolstadt": 0.0118,
+          "Karlsruhe": 0.0056,
+          "Paderborn": 0.04,
+          "Rostock": 0.0052,
+          "St. Pauli": 0.1262,
+          "Union Berlin": 0.0422
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9716,
+          "Aachen": 0.7124,
+          "Aue": 0.8642,
+          "Bochum": 0.919,
+          "Braunschweig": 0.907,
+          "Cottbus": 0.9704,
+          "Dresden": 0.568,
+          "Duisburg": 0.8358,
+          "Düsseldorf": 0.9966,
+          "Frankfurt": 0.9984,
+          "FSV Frankfurt": 0.616,
+          "Fürth": 0.9988,
+          "Ingolstadt": 0.7274,
+          "Karlsruhe": 0.6146,
+          "Paderborn": 0.9162,
+          "Rostock": 0.4872,
+          "St. Pauli": 0.9924,
+          "Union Berlin": 0.904
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.015,
+          "Aachen": 0.0926,
+          "Aue": 0.057,
+          "Bochum": 0.0356,
+          "Braunschweig": 0.0464,
+          "Cottbus": 0.0136,
+          "Dresden": 0.12,
+          "Duisburg": 0.0708,
+          "Düsseldorf": 0.002,
+          "Frankfurt": 0.0012,
+          "FSV Frankfurt": 0.1134,
+          "Fürth": 0.0008,
+          "Ingolstadt": 0.0978,
+          "Karlsruhe": 0.1094,
+          "Paderborn": 0.0412,
+          "Rostock": 0.1316,
+          "St. Pauli": 0.0038,
+          "Union Berlin": 0.0478
+        },
+        "abstieg": {
+          "1860 München": 0.0134,
+          "Aachen": 0.195,
+          "Aue": 0.0788,
+          "Bochum": 0.0454,
+          "Braunschweig": 0.0466,
+          "Cottbus": 0.016,
+          "Dresden": 0.312,
+          "Duisburg": 0.0934,
+          "Düsseldorf": 0.0014,
+          "Frankfurt": 0.0004,
+          "FSV Frankfurt": 0.2706,
+          "Fürth": 0.0004,
+          "Ingolstadt": 0.1748,
+          "Karlsruhe": 0.276,
+          "Paderborn": 0.0426,
+          "Rostock": 0.3812,
+          "St. Pauli": 0.0038,
+          "Union Berlin": 0.0482
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 51.9656,
+          "median": 52,
+          "p10": 39,
+          "p90": 64
+        },
+        "Aachen": {
+          "expected": 38.7494,
+          "median": 39,
+          "p10": 26,
+          "p90": 51
+        },
+        "Aue": {
+          "expected": 44.3206,
+          "median": 44,
+          "p10": 32,
+          "p90": 57
+        },
+        "Bochum": {
+          "expected": 47.5724,
+          "median": 48,
+          "p10": 35,
+          "p90": 60
+        },
+        "Braunschweig": {
+          "expected": 45.9104,
+          "median": 46,
+          "p10": 35,
+          "p90": 58
+        },
+        "Cottbus": {
+          "expected": 51.9662,
+          "median": 52,
+          "p10": 39,
+          "p90": 64
+        },
+        "Dresden": {
+          "expected": 35.4228,
+          "median": 35,
+          "p10": 24,
+          "p90": 48
+        },
+        "Duisburg": {
+          "expected": 42.6388,
+          "median": 43,
+          "p10": 30,
+          "p90": 55
+        },
+        "Düsseldorf": {
+          "expected": 60.1072,
+          "median": 60,
+          "p10": 48,
+          "p90": 72
+        },
+        "Frankfurt": {
+          "expected": 61.0502,
+          "median": 61,
+          "p10": 49,
+          "p90": 73
+        },
+        "FSV Frankfurt": {
+          "expected": 36.4388,
+          "median": 36,
+          "p10": 25,
+          "p90": 48
+        },
+        "Fürth": {
+          "expected": 61.9996,
+          "median": 62,
+          "p10": 50,
+          "p90": 74
+        },
+        "Ingolstadt": {
+          "expected": 39.6762,
+          "median": 39,
+          "p10": 28,
+          "p90": 52
+        },
+        "Karlsruhe": {
+          "expected": 36.621,
+          "median": 36,
+          "p10": 25,
+          "p90": 49
+        },
+        "Paderborn": {
+          "expected": 46.6248,
+          "median": 46,
+          "p10": 35,
+          "p90": 59
+        },
+        "Rostock": {
+          "expected": 33.6588,
+          "median": 33,
+          "p10": 22,
+          "p90": 46
+        },
+        "St. Pauli": {
+          "expected": 57.1328,
+          "median": 57,
+          "p10": 45,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 45.9694,
+          "median": 46,
+          "p10": 34,
+          "p90": 59
+        }
+      }
+    },
+    {
+      "matchday": 10,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 90,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0964,
+          "Aachen": 0.0028,
+          "Aue": 0.0338,
+          "Bochum": 0.0684,
+          "Braunschweig": 0.0362,
+          "Cottbus": 0.077,
+          "Dresden": 0.0048,
+          "Duisburg": 0.0136,
+          "Düsseldorf": 0.3358,
+          "Frankfurt": 0.4626,
+          "FSV Frankfurt": 0.0074,
+          "Fürth": 0.4308,
+          "Ingolstadt": 0.0042,
+          "Karlsruhe": 0.0024,
+          "Paderborn": 0.0644,
+          "Rostock": 0.0004,
+          "St. Pauli": 0.3326,
+          "Union Berlin": 0.0264
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0786,
+          "Aachen": 0.0044,
+          "Aue": 0.04,
+          "Bochum": 0.0588,
+          "Braunschweig": 0.0304,
+          "Cottbus": 0.0722,
+          "Dresden": 0.0062,
+          "Duisburg": 0.0176,
+          "Düsseldorf": 0.1526,
+          "Frankfurt": 0.1468,
+          "FSV Frankfurt": 0.0082,
+          "Fürth": 0.1434,
+          "Ingolstadt": 0.0068,
+          "Karlsruhe": 0.0054,
+          "Paderborn": 0.0486,
+          "Rostock": 0.002,
+          "St. Pauli": 0.146,
+          "Union Berlin": 0.032
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9636,
+          "Aachen": 0.6376,
+          "Aue": 0.8926,
+          "Bochum": 0.949,
+          "Braunschweig": 0.907,
+          "Cottbus": 0.9554,
+          "Dresden": 0.6436,
+          "Duisburg": 0.7948,
+          "Düsseldorf": 0.9966,
+          "Frankfurt": 0.9984,
+          "FSV Frankfurt": 0.6976,
+          "Fürth": 0.9984,
+          "Ingolstadt": 0.6764,
+          "Karlsruhe": 0.607,
+          "Paderborn": 0.9434,
+          "Rostock": 0.457,
+          "St. Pauli": 0.9968,
+          "Union Berlin": 0.8848
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0216,
+          "Aachen": 0.1044,
+          "Aue": 0.046,
+          "Bochum": 0.0244,
+          "Braunschweig": 0.0476,
+          "Cottbus": 0.0218,
+          "Dresden": 0.1128,
+          "Duisburg": 0.0796,
+          "Düsseldorf": 0.0022,
+          "Frankfurt": 0.0012,
+          "FSV Frankfurt": 0.1058,
+          "Fürth": 0.001,
+          "Ingolstadt": 0.1114,
+          "Karlsruhe": 0.114,
+          "Paderborn": 0.0298,
+          "Rostock": 0.1248,
+          "St. Pauli": 0.002,
+          "Union Berlin": 0.0496
+        },
+        "abstieg": {
+          "1860 München": 0.0148,
+          "Aachen": 0.258,
+          "Aue": 0.0614,
+          "Bochum": 0.0266,
+          "Braunschweig": 0.0454,
+          "Cottbus": 0.0228,
+          "Dresden": 0.2436,
+          "Duisburg": 0.1256,
+          "Düsseldorf": 0.0012,
+          "Frankfurt": 0.0004,
+          "FSV Frankfurt": 0.1966,
+          "Fürth": 0.0006,
+          "Ingolstadt": 0.2122,
+          "Karlsruhe": 0.279,
+          "Paderborn": 0.0268,
+          "Rostock": 0.4182,
+          "St. Pauli": 0.0012,
+          "Union Berlin": 0.0656
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 50.6176,
+          "median": 50,
+          "p10": 39,
+          "p90": 63
+        },
+        "Aachen": {
+          "expected": 36.8706,
+          "median": 37,
+          "p10": 25,
+          "p90": 49
+        },
+        "Aue": {
+          "expected": 45.5224,
+          "median": 45,
+          "p10": 34,
+          "p90": 58
+        },
+        "Bochum": {
+          "expected": 49.1344,
+          "median": 49,
+          "p10": 37,
+          "p90": 61
+        },
+        "Braunschweig": {
+          "expected": 45.8212,
+          "median": 46,
+          "p10": 35,
+          "p90": 58
+        },
+        "Cottbus": {
+          "expected": 50.3846,
+          "median": 51,
+          "p10": 38,
+          "p90": 62
+        },
+        "Dresden": {
+          "expected": 37.4436,
+          "median": 37,
+          "p10": 26,
+          "p90": 49
+        },
+        "Duisburg": {
+          "expected": 41.0924,
+          "median": 41,
+          "p10": 29,
+          "p90": 53
+        },
+        "Düsseldorf": {
+          "expected": 59.2038,
+          "median": 59,
+          "p10": 47,
+          "p90": 71
+        },
+        "Frankfurt": {
+          "expected": 61.7998,
+          "median": 62,
+          "p10": 50,
+          "p90": 74
+        },
+        "FSV Frankfurt": {
+          "expected": 38.5348,
+          "median": 38,
+          "p10": 27,
+          "p90": 50
+        },
+        "Fürth": {
+          "expected": 61.3122,
+          "median": 61,
+          "p10": 49,
+          "p90": 73
+        },
+        "Ingolstadt": {
+          "expected": 38.4118,
+          "median": 38,
+          "p10": 27,
+          "p90": 51
+        },
+        "Karlsruhe": {
+          "expected": 36.6578,
+          "median": 36,
+          "p10": 25,
+          "p90": 48
+        },
+        "Paderborn": {
+          "expected": 48.4918,
+          "median": 48,
+          "p10": 37,
+          "p90": 60
+        },
+        "Rostock": {
+          "expected": 32.8678,
+          "median": 33,
+          "p10": 22,
+          "p90": 44
+        },
+        "St. Pauli": {
+          "expected": 59.0056,
+          "median": 59,
+          "p10": 47,
+          "p90": 71
+        },
+        "Union Berlin": {
+          "expected": 44.9764,
+          "median": 45,
+          "p10": 34,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 11,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 99,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0572,
+          "Aachen": 0.0016,
+          "Aue": 0.02,
+          "Bochum": 0.042,
+          "Braunschweig": 0.0226,
+          "Cottbus": 0.0926,
+          "Dresden": 0.0032,
+          "Duisburg": 0.01,
+          "Düsseldorf": 0.3916,
+          "Frankfurt": 0.5324,
+          "FSV Frankfurt": 0.004,
+          "Fürth": 0.4728,
+          "Ingolstadt": 0.0018,
+          "Karlsruhe": 0.0014,
+          "Paderborn": 0.067,
+          "Rostock": 0.0012,
+          "St. Pauli": 0.2432,
+          "Union Berlin": 0.0354
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.056,
+          "Aachen": 0.0032,
+          "Aue": 0.0288,
+          "Bochum": 0.0472,
+          "Braunschweig": 0.024,
+          "Cottbus": 0.0856,
+          "Dresden": 0.006,
+          "Duisburg": 0.02,
+          "Düsseldorf": 0.1692,
+          "Frankfurt": 0.1416,
+          "FSV Frankfurt": 0.0058,
+          "Fürth": 0.1458,
+          "Ingolstadt": 0.0054,
+          "Karlsruhe": 0.0024,
+          "Paderborn": 0.07,
+          "Rostock": 0.0014,
+          "St. Pauli": 0.1488,
+          "Union Berlin": 0.0388
+        },
+        "klassenerhalt": {
+          "1860 München": 0.947,
+          "Aachen": 0.6126,
+          "Aue": 0.879,
+          "Bochum": 0.9336,
+          "Braunschweig": 0.8938,
+          "Cottbus": 0.972,
+          "Dresden": 0.6576,
+          "Duisburg": 0.837,
+          "Düsseldorf": 0.9984,
+          "Frankfurt": 0.9998,
+          "FSV Frankfurt": 0.6408,
+          "Fürth": 0.999,
+          "Ingolstadt": 0.6494,
+          "Karlsruhe": 0.5688,
+          "Paderborn": 0.9652,
+          "Rostock": 0.5296,
+          "St. Pauli": 0.9952,
+          "Union Berlin": 0.9212
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.026,
+          "Aachen": 0.1058,
+          "Aue": 0.0518,
+          "Bochum": 0.0318,
+          "Braunschweig": 0.0476,
+          "Cottbus": 0.0146,
+          "Dresden": 0.1096,
+          "Duisburg": 0.0666,
+          "Düsseldorf": 0.0006,
+          "Frankfurt": 0.0002,
+          "FSV Frankfurt": 0.1204,
+          "Fürth": 0.0004,
+          "Ingolstadt": 0.1124,
+          "Karlsruhe": 0.1166,
+          "Paderborn": 0.0194,
+          "Rostock": 0.1344,
+          "St. Pauli": 0.0034,
+          "Union Berlin": 0.0384
+        },
+        "abstieg": {
+          "1860 München": 0.027,
+          "Aachen": 0.2816,
+          "Aue": 0.0692,
+          "Bochum": 0.0346,
+          "Braunschweig": 0.0586,
+          "Cottbus": 0.0134,
+          "Dresden": 0.2328,
+          "Duisburg": 0.0964,
+          "Düsseldorf": 0.001,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.2388,
+          "Fürth": 0.0006,
+          "Ingolstadt": 0.2382,
+          "Karlsruhe": 0.3146,
+          "Paderborn": 0.0154,
+          "Rostock": 0.336,
+          "St. Pauli": 0.0014,
+          "Union Berlin": 0.0404
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 48.6062,
+          "median": 49,
+          "p10": 37,
+          "p90": 60
+        },
+        "Aachen": {
+          "expected": 36.2222,
+          "median": 36,
+          "p10": 25,
+          "p90": 48
+        },
+        "Aue": {
+          "expected": 44.3696,
+          "median": 44,
+          "p10": 33,
+          "p90": 56
+        },
+        "Bochum": {
+          "expected": 47.727,
+          "median": 48,
+          "p10": 36,
+          "p90": 60
+        },
+        "Braunschweig": {
+          "expected": 44.489,
+          "median": 44,
+          "p10": 34,
+          "p90": 56
+        },
+        "Cottbus": {
+          "expected": 51.8994,
+          "median": 52,
+          "p10": 41,
+          "p90": 63
+        },
+        "Dresden": {
+          "expected": 37.3802,
+          "median": 37,
+          "p10": 27,
+          "p90": 48
+        },
+        "Duisburg": {
+          "expected": 42.2362,
+          "median": 42,
+          "p10": 31,
+          "p90": 54
+        },
+        "Düsseldorf": {
+          "expected": 61.1464,
+          "median": 61,
+          "p10": 50,
+          "p90": 72
+        },
+        "Frankfurt": {
+          "expected": 63.7738,
+          "median": 64,
+          "p10": 52,
+          "p90": 75
+        },
+        "FSV Frankfurt": {
+          "expected": 37.1866,
+          "median": 37,
+          "p10": 26,
+          "p90": 49
+        },
+        "Fürth": {
+          "expected": 62.647,
+          "median": 63,
+          "p10": 51,
+          "p90": 74
+        },
+        "Ingolstadt": {
+          "expected": 37.6268,
+          "median": 37,
+          "p10": 27,
+          "p90": 49
+        },
+        "Karlsruhe": {
+          "expected": 35.7018,
+          "median": 35,
+          "p10": 25,
+          "p90": 47
+        },
+        "Paderborn": {
+          "expected": 50.067,
+          "median": 50,
+          "p10": 38,
+          "p90": 62
+        },
+        "Rostock": {
+          "expected": 34.5166,
+          "median": 34,
+          "p10": 24,
+          "p90": 46
+        },
+        "St. Pauli": {
+          "expected": 57.3888,
+          "median": 57,
+          "p10": 46,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 46.654,
+          "median": 46,
+          "p10": 35,
+          "p90": 58
+        }
+      }
+    },
+    {
+      "matchday": 12,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 108,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0432,
+          "Aachen": 0.0026,
+          "Aue": 0.0106,
+          "Bochum": 0.0258,
+          "Braunschweig": 0.0096,
+          "Cottbus": 0.058,
+          "Dresden": 0.0034,
+          "Duisburg": 0.0066,
+          "Düsseldorf": 0.4168,
+          "Frankfurt": 0.563,
+          "FSV Frankfurt": 0.0016,
+          "Fürth": 0.5208,
+          "Ingolstadt": 0.0008,
+          "Karlsruhe": 0.0006,
+          "Paderborn": 0.0558,
+          "Rostock": 0.0008,
+          "St. Pauli": 0.2574,
+          "Union Berlin": 0.0226
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.051,
+          "Aachen": 0.0046,
+          "Aue": 0.0206,
+          "Bochum": 0.0358,
+          "Braunschweig": 0.0154,
+          "Cottbus": 0.0678,
+          "Dresden": 0.007,
+          "Duisburg": 0.0122,
+          "Düsseldorf": 0.1796,
+          "Frankfurt": 0.163,
+          "FSV Frankfurt": 0.0042,
+          "Fürth": 0.1724,
+          "Ingolstadt": 0.0032,
+          "Karlsruhe": 0.0016,
+          "Paderborn": 0.0616,
+          "Rostock": 0.0022,
+          "St. Pauli": 0.1626,
+          "Union Berlin": 0.0352
+        },
+        "klassenerhalt": {
+          "1860 München": 0.948,
+          "Aachen": 0.6768,
+          "Aue": 0.8712,
+          "Bochum": 0.9378,
+          "Braunschweig": 0.8794,
+          "Cottbus": 0.9682,
+          "Dresden": 0.7168,
+          "Duisburg": 0.812,
+          "Düsseldorf": 0.9996,
+          "Frankfurt": 0.9998,
+          "FSV Frankfurt": 0.6128,
+          "Fürth": 1,
+          "Ingolstadt": 0.618,
+          "Karlsruhe": 0.56,
+          "Paderborn": 0.9714,
+          "Rostock": 0.5054,
+          "St. Pauli": 0.9984,
+          "Union Berlin": 0.9244
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0266,
+          "Aachen": 0.1068,
+          "Aue": 0.056,
+          "Bochum": 0.0284,
+          "Braunschweig": 0.0562,
+          "Cottbus": 0.0164,
+          "Dresden": 0.1114,
+          "Duisburg": 0.0706,
+          "Düsseldorf": 0.0004,
+          "Frankfurt": 0.0002,
+          "FSV Frankfurt": 0.1168,
+          "Fürth": 0,
+          "Ingolstadt": 0.1128,
+          "Karlsruhe": 0.1184,
+          "Paderborn": 0.0166,
+          "Rostock": 0.1242,
+          "St. Pauli": 0.001,
+          "Union Berlin": 0.0372
+        },
+        "abstieg": {
+          "1860 München": 0.0254,
+          "Aachen": 0.2164,
+          "Aue": 0.0728,
+          "Bochum": 0.0338,
+          "Braunschweig": 0.0644,
+          "Cottbus": 0.0154,
+          "Dresden": 0.1718,
+          "Duisburg": 0.1174,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.2704,
+          "Fürth": 0,
+          "Ingolstadt": 0.2692,
+          "Karlsruhe": 0.3216,
+          "Paderborn": 0.012,
+          "Rostock": 0.3704,
+          "St. Pauli": 0.0006,
+          "Union Berlin": 0.0384
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 48.0254,
+          "median": 48,
+          "p10": 37,
+          "p90": 60
+        },
+        "Aachen": {
+          "expected": 37.5874,
+          "median": 37,
+          "p10": 26,
+          "p90": 49
+        },
+        "Aue": {
+          "expected": 43.8058,
+          "median": 44,
+          "p10": 33,
+          "p90": 55
+        },
+        "Bochum": {
+          "expected": 47.0246,
+          "median": 47,
+          "p10": 36,
+          "p90": 58
+        },
+        "Braunschweig": {
+          "expected": 43.247,
+          "median": 43,
+          "p10": 33,
+          "p90": 54
+        },
+        "Cottbus": {
+          "expected": 50.4338,
+          "median": 50,
+          "p10": 39,
+          "p90": 62
+        },
+        "Dresden": {
+          "expected": 38.7362,
+          "median": 38,
+          "p10": 28,
+          "p90": 50
+        },
+        "Duisburg": {
+          "expected": 41.1656,
+          "median": 41,
+          "p10": 30,
+          "p90": 52
+        },
+        "Düsseldorf": {
+          "expected": 62.3026,
+          "median": 62,
+          "p10": 51,
+          "p90": 74
+        },
+        "Frankfurt": {
+          "expected": 65.0756,
+          "median": 65,
+          "p10": 54,
+          "p90": 76
+        },
+        "FSV Frankfurt": {
+          "expected": 36.2996,
+          "median": 36,
+          "p10": 26,
+          "p90": 48
+        },
+        "Fürth": {
+          "expected": 64.3256,
+          "median": 64,
+          "p10": 53,
+          "p90": 76
+        },
+        "Ingolstadt": {
+          "expected": 36.6034,
+          "median": 36,
+          "p10": 26,
+          "p90": 48
+        },
+        "Karlsruhe": {
+          "expected": 35.3752,
+          "median": 35,
+          "p10": 25,
+          "p90": 47
+        },
+        "Paderborn": {
+          "expected": 50.031,
+          "median": 50,
+          "p10": 39,
+          "p90": 61
+        },
+        "Rostock": {
+          "expected": 33.866,
+          "median": 34,
+          "p10": 23,
+          "p90": 45
+        },
+        "St. Pauli": {
+          "expected": 58.6312,
+          "median": 59,
+          "p10": 47,
+          "p90": 70
+        },
+        "Union Berlin": {
+          "expected": 46.2478,
+          "median": 46,
+          "p10": 36,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 13,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 117,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0516,
+          "Aachen": 0.0002,
+          "Aue": 0.0076,
+          "Bochum": 0.0298,
+          "Braunschweig": 0.0132,
+          "Cottbus": 0.0478,
+          "Dresden": 0.0024,
+          "Duisburg": 0.002,
+          "Düsseldorf": 0.4888,
+          "Frankfurt": 0.5398,
+          "FSV Frankfurt": 0.0018,
+          "Fürth": 0.428,
+          "Ingolstadt": 0.0012,
+          "Karlsruhe": 0.0002,
+          "Paderborn": 0.0686,
+          "Rostock": 0,
+          "St. Pauli": 0.306,
+          "Union Berlin": 0.011
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0598,
+          "Aachen": 0.0012,
+          "Aue": 0.0152,
+          "Bochum": 0.0448,
+          "Braunschweig": 0.024,
+          "Cottbus": 0.0578,
+          "Dresden": 0.0076,
+          "Duisburg": 0.007,
+          "Düsseldorf": 0.1768,
+          "Frankfurt": 0.1612,
+          "FSV Frankfurt": 0.0014,
+          "Fürth": 0.1696,
+          "Ingolstadt": 0.0022,
+          "Karlsruhe": 0.0002,
+          "Paderborn": 0.0748,
+          "Rostock": 0.0008,
+          "St. Pauli": 0.175,
+          "Union Berlin": 0.0206
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9714,
+          "Aachen": 0.6448,
+          "Aue": 0.8438,
+          "Bochum": 0.955,
+          "Braunschweig": 0.9302,
+          "Cottbus": 0.9674,
+          "Dresden": 0.8002,
+          "Duisburg": 0.783,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.5782,
+          "Fürth": 1,
+          "Ingolstadt": 0.611,
+          "Karlsruhe": 0.5168,
+          "Paderborn": 0.9854,
+          "Rostock": 0.4938,
+          "St. Pauli": 0.9996,
+          "Union Berlin": 0.9194
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0166,
+          "Aachen": 0.1168,
+          "Aue": 0.0754,
+          "Bochum": 0.0274,
+          "Braunschweig": 0.0378,
+          "Cottbus": 0.0194,
+          "Dresden": 0.0786,
+          "Duisburg": 0.0792,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1274,
+          "Fürth": 0,
+          "Ingolstadt": 0.1256,
+          "Karlsruhe": 0.1246,
+          "Paderborn": 0.0092,
+          "Rostock": 0.1206,
+          "St. Pauli": 0.0002,
+          "Union Berlin": 0.0412
+        },
+        "abstieg": {
+          "1860 München": 0.012,
+          "Aachen": 0.2384,
+          "Aue": 0.0808,
+          "Bochum": 0.0176,
+          "Braunschweig": 0.032,
+          "Cottbus": 0.0132,
+          "Dresden": 0.1212,
+          "Duisburg": 0.1378,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.2944,
+          "Fürth": 0,
+          "Ingolstadt": 0.2634,
+          "Karlsruhe": 0.3586,
+          "Paderborn": 0.0054,
+          "Rostock": 0.3856,
+          "St. Pauli": 0.0002,
+          "Union Berlin": 0.0394
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 49.7566,
+          "median": 50,
+          "p10": 39,
+          "p90": 61
+        },
+        "Aachen": {
+          "expected": 36.6334,
+          "median": 37,
+          "p10": 26,
+          "p90": 47
+        },
+        "Aue": {
+          "expected": 42.5554,
+          "median": 42,
+          "p10": 32,
+          "p90": 54
+        },
+        "Bochum": {
+          "expected": 48.3108,
+          "median": 48,
+          "p10": 37,
+          "p90": 59
+        },
+        "Braunschweig": {
+          "expected": 45.3602,
+          "median": 45,
+          "p10": 35,
+          "p90": 56
+        },
+        "Cottbus": {
+          "expected": 49.9572,
+          "median": 50,
+          "p10": 39,
+          "p90": 61
+        },
+        "Dresden": {
+          "expected": 40.3268,
+          "median": 40,
+          "p10": 30,
+          "p90": 51
+        },
+        "Duisburg": {
+          "expected": 39.655,
+          "median": 40,
+          "p10": 29,
+          "p90": 50
+        },
+        "Düsseldorf": {
+          "expected": 63.7882,
+          "median": 64,
+          "p10": 53,
+          "p90": 74
+        },
+        "Frankfurt": {
+          "expected": 64.365,
+          "median": 65,
+          "p10": 53,
+          "p90": 75
+        },
+        "FSV Frankfurt": {
+          "expected": 35.269,
+          "median": 35,
+          "p10": 25,
+          "p90": 46
+        },
+        "Fürth": {
+          "expected": 62.3896,
+          "median": 62,
+          "p10": 52,
+          "p90": 73
+        },
+        "Ingolstadt": {
+          "expected": 36.2082,
+          "median": 36,
+          "p10": 25,
+          "p90": 47
+        },
+        "Karlsruhe": {
+          "expected": 34.2238,
+          "median": 34,
+          "p10": 24,
+          "p90": 45
+        },
+        "Paderborn": {
+          "expected": 51.6394,
+          "median": 52,
+          "p10": 41,
+          "p90": 62
+        },
+        "Rostock": {
+          "expected": 33.391,
+          "median": 33,
+          "p10": 23,
+          "p90": 44
+        },
+        "St. Pauli": {
+          "expected": 60.1954,
+          "median": 60,
+          "p10": 49,
+          "p90": 71
+        },
+        "Union Berlin": {
+          "expected": 44.983,
+          "median": 45,
+          "p10": 35,
+          "p90": 55
+        }
+      }
+    },
+    {
+      "matchday": 14,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 126,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0286,
+          "Aachen": 0.0008,
+          "Aue": 0.0028,
+          "Bochum": 0.0338,
+          "Braunschweig": 0.0074,
+          "Cottbus": 0.0188,
+          "Dresden": 0.0016,
+          "Duisburg": 0.0018,
+          "Düsseldorf": 0.5136,
+          "Frankfurt": 0.6006,
+          "FSV Frankfurt": 0.0002,
+          "Fürth": 0.4108,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0.0004,
+          "Paderborn": 0.0932,
+          "Rostock": 0.0002,
+          "St. Pauli": 0.27,
+          "Union Berlin": 0.0154
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0368,
+          "Aachen": 0.0014,
+          "Aue": 0.0064,
+          "Bochum": 0.0494,
+          "Braunschweig": 0.0156,
+          "Cottbus": 0.0392,
+          "Dresden": 0.0056,
+          "Duisburg": 0.005,
+          "Düsseldorf": 0.183,
+          "Frankfurt": 0.154,
+          "FSV Frankfurt": 0.0004,
+          "Fürth": 0.1894,
+          "Ingolstadt": 0.0008,
+          "Karlsruhe": 0.0018,
+          "Paderborn": 0.0946,
+          "Rostock": 0.001,
+          "St. Pauli": 0.185,
+          "Union Berlin": 0.0306
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9672,
+          "Aachen": 0.6422,
+          "Aue": 0.828,
+          "Bochum": 0.9764,
+          "Braunschweig": 0.9126,
+          "Cottbus": 0.9622,
+          "Dresden": 0.7914,
+          "Duisburg": 0.7848,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.5492,
+          "Fürth": 1,
+          "Ingolstadt": 0.5546,
+          "Karlsruhe": 0.5946,
+          "Paderborn": 0.9958,
+          "Rostock": 0.4938,
+          "St. Pauli": 0.9996,
+          "Union Berlin": 0.9476
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0172,
+          "Aachen": 0.1196,
+          "Aue": 0.067,
+          "Bochum": 0.0116,
+          "Braunschweig": 0.0468,
+          "Cottbus": 0.0184,
+          "Dresden": 0.0852,
+          "Duisburg": 0.0826,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1394,
+          "Fürth": 0,
+          "Ingolstadt": 0.1356,
+          "Karlsruhe": 0.117,
+          "Paderborn": 0.0028,
+          "Rostock": 0.1286,
+          "St. Pauli": 0.0004,
+          "Union Berlin": 0.0278
+        },
+        "abstieg": {
+          "1860 München": 0.0156,
+          "Aachen": 0.2382,
+          "Aue": 0.105,
+          "Bochum": 0.012,
+          "Braunschweig": 0.0406,
+          "Cottbus": 0.0194,
+          "Dresden": 0.1234,
+          "Duisburg": 0.1326,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.3114,
+          "Fürth": 0,
+          "Ingolstadt": 0.3098,
+          "Karlsruhe": 0.2884,
+          "Paderborn": 0.0014,
+          "Rostock": 0.3776,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0246
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 48.3158,
+          "median": 48,
+          "p10": 38,
+          "p90": 59
+        },
+        "Aachen": {
+          "expected": 36.1964,
+          "median": 36,
+          "p10": 26,
+          "p90": 46
+        },
+        "Aue": {
+          "expected": 41.3256,
+          "median": 41,
+          "p10": 31,
+          "p90": 52
+        },
+        "Bochum": {
+          "expected": 49.7944,
+          "median": 50,
+          "p10": 39,
+          "p90": 60
+        },
+        "Braunschweig": {
+          "expected": 43.954,
+          "median": 44,
+          "p10": 34,
+          "p90": 54
+        },
+        "Cottbus": {
+          "expected": 48.2264,
+          "median": 48,
+          "p10": 38,
+          "p90": 58
+        },
+        "Dresden": {
+          "expected": 39.5284,
+          "median": 39,
+          "p10": 30,
+          "p90": 50
+        },
+        "Duisburg": {
+          "expected": 39.5222,
+          "median": 39,
+          "p10": 29,
+          "p90": 50
+        },
+        "Düsseldorf": {
+          "expected": 64.6756,
+          "median": 65,
+          "p10": 54,
+          "p90": 75
+        },
+        "Frankfurt": {
+          "expected": 65.8728,
+          "median": 66,
+          "p10": 55,
+          "p90": 76
+        },
+        "FSV Frankfurt": {
+          "expected": 34.6442,
+          "median": 34,
+          "p10": 25,
+          "p90": 45
+        },
+        "Fürth": {
+          "expected": 62.3732,
+          "median": 62,
+          "p10": 52,
+          "p90": 73
+        },
+        "Ingolstadt": {
+          "expected": 34.9578,
+          "median": 35,
+          "p10": 25,
+          "p90": 45
+        },
+        "Karlsruhe": {
+          "expected": 35.5596,
+          "median": 35,
+          "p10": 26,
+          "p90": 46
+        },
+        "Paderborn": {
+          "expected": 53.6818,
+          "median": 54,
+          "p10": 44,
+          "p90": 64
+        },
+        "Rostock": {
+          "expected": 33.3682,
+          "median": 33,
+          "p10": 24,
+          "p90": 44
+        },
+        "St. Pauli": {
+          "expected": 59.58,
+          "median": 60,
+          "p10": 49,
+          "p90": 70
+        },
+        "Union Berlin": {
+          "expected": 46.7232,
+          "median": 46,
+          "p10": 37,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 15,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 135,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0338,
+          "Aachen": 0.0002,
+          "Aue": 0.0022,
+          "Bochum": 0.016,
+          "Braunschweig": 0.0038,
+          "Cottbus": 0.0288,
+          "Dresden": 0.0008,
+          "Duisburg": 0.001,
+          "Düsseldorf": 0.4664,
+          "Frankfurt": 0.6262,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.4132,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0.0002,
+          "Paderborn": 0.0918,
+          "Rostock": 0,
+          "St. Pauli": 0.3042,
+          "Union Berlin": 0.0114
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0436,
+          "Aachen": 0.0008,
+          "Aue": 0.0062,
+          "Bochum": 0.0246,
+          "Braunschweig": 0.008,
+          "Cottbus": 0.0436,
+          "Dresden": 0.0016,
+          "Duisburg": 0.0048,
+          "Düsseldorf": 0.193,
+          "Frankfurt": 0.1688,
+          "FSV Frankfurt": 0.0008,
+          "Fürth": 0.198,
+          "Ingolstadt": 0.0002,
+          "Karlsruhe": 0.0006,
+          "Paderborn": 0.102,
+          "Rostock": 0.0004,
+          "St. Pauli": 0.1834,
+          "Union Berlin": 0.0196
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9856,
+          "Aachen": 0.6294,
+          "Aue": 0.8966,
+          "Bochum": 0.9674,
+          "Braunschweig": 0.9154,
+          "Cottbus": 0.9816,
+          "Dresden": 0.7658,
+          "Duisburg": 0.8456,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.5334,
+          "Fürth": 0.9998,
+          "Ingolstadt": 0.5188,
+          "Karlsruhe": 0.5528,
+          "Paderborn": 0.999,
+          "Rostock": 0.4512,
+          "St. Pauli": 1,
+          "Union Berlin": 0.9576
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0092,
+          "Aachen": 0.1198,
+          "Aue": 0.0486,
+          "Bochum": 0.0164,
+          "Braunschweig": 0.0444,
+          "Cottbus": 0.009,
+          "Dresden": 0.0986,
+          "Duisburg": 0.0672,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1404,
+          "Fürth": 0.0002,
+          "Ingolstadt": 0.134,
+          "Karlsruhe": 0.1354,
+          "Paderborn": 0.0006,
+          "Rostock": 0.1522,
+          "St. Pauli": 0,
+          "Union Berlin": 0.024
+        },
+        "abstieg": {
+          "1860 München": 0.0052,
+          "Aachen": 0.2508,
+          "Aue": 0.0548,
+          "Bochum": 0.0162,
+          "Braunschweig": 0.0402,
+          "Cottbus": 0.0094,
+          "Dresden": 0.1356,
+          "Duisburg": 0.0872,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.3262,
+          "Fürth": 0,
+          "Ingolstadt": 0.3472,
+          "Karlsruhe": 0.3118,
+          "Paderborn": 0.0004,
+          "Rostock": 0.3966,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0184
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 49.975,
+          "median": 50,
+          "p10": 40,
+          "p90": 60
+        },
+        "Aachen": {
+          "expected": 35.51,
+          "median": 35,
+          "p10": 25,
+          "p90": 46
+        },
+        "Aue": {
+          "expected": 42.9206,
+          "median": 43,
+          "p10": 33,
+          "p90": 53
+        },
+        "Bochum": {
+          "expected": 48.1024,
+          "median": 48,
+          "p10": 38,
+          "p90": 58
+        },
+        "Braunschweig": {
+          "expected": 43.293,
+          "median": 43,
+          "p10": 34,
+          "p90": 53
+        },
+        "Cottbus": {
+          "expected": 49.9502,
+          "median": 50,
+          "p10": 40,
+          "p90": 60
+        },
+        "Dresden": {
+          "expected": 38.3484,
+          "median": 38,
+          "p10": 29,
+          "p90": 48
+        },
+        "Duisburg": {
+          "expected": 40.6562,
+          "median": 41,
+          "p10": 31,
+          "p90": 51
+        },
+        "Düsseldorf": {
+          "expected": 64.1962,
+          "median": 64,
+          "p10": 54,
+          "p90": 74
+        },
+        "Frankfurt": {
+          "expected": 66.9964,
+          "median": 67,
+          "p10": 57,
+          "p90": 77
+        },
+        "FSV Frankfurt": {
+          "expected": 33.9336,
+          "median": 34,
+          "p10": 24,
+          "p90": 44
+        },
+        "Fürth": {
+          "expected": 63.1416,
+          "median": 63,
+          "p10": 53,
+          "p90": 73
+        },
+        "Ingolstadt": {
+          "expected": 33.62,
+          "median": 33,
+          "p10": 24,
+          "p90": 44
+        },
+        "Karlsruhe": {
+          "expected": 34.4678,
+          "median": 34,
+          "p10": 25,
+          "p90": 44
+        },
+        "Paderborn": {
+          "expected": 54.771,
+          "median": 55,
+          "p10": 45,
+          "p90": 65
+        },
+        "Rostock": {
+          "expected": 32.1746,
+          "median": 32,
+          "p10": 23,
+          "p90": 42
+        },
+        "St. Pauli": {
+          "expected": 61.0208,
+          "median": 61,
+          "p10": 51,
+          "p90": 71
+        },
+        "Union Berlin": {
+          "expected": 46.451,
+          "median": 46,
+          "p10": 37,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 16,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 144,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0422,
+          "Aachen": 0.0002,
+          "Aue": 0.0012,
+          "Bochum": 0.0074,
+          "Braunschweig": 0.0054,
+          "Cottbus": 0.0182,
+          "Dresden": 0.0002,
+          "Duisburg": 0.0014,
+          "Düsseldorf": 0.5418,
+          "Frankfurt": 0.5802,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.3528,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0906,
+          "Rostock": 0,
+          "St. Pauli": 0.344,
+          "Union Berlin": 0.0144
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0588,
+          "Aachen": 0.0008,
+          "Aue": 0.0026,
+          "Bochum": 0.0166,
+          "Braunschweig": 0.014,
+          "Cottbus": 0.0282,
+          "Dresden": 0.0012,
+          "Duisburg": 0.0042,
+          "Düsseldorf": 0.184,
+          "Frankfurt": 0.1664,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.208,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0896,
+          "Rostock": 0,
+          "St. Pauli": 0.199,
+          "Union Berlin": 0.0266
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9952,
+          "Aachen": 0.7194,
+          "Aue": 0.8728,
+          "Bochum": 0.9526,
+          "Braunschweig": 0.9518,
+          "Cottbus": 0.9844,
+          "Dresden": 0.7364,
+          "Duisburg": 0.9076,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.52,
+          "Fürth": 1,
+          "Ingolstadt": 0.5274,
+          "Karlsruhe": 0.4804,
+          "Paderborn": 0.9992,
+          "Rostock": 0.3706,
+          "St. Pauli": 1,
+          "Union Berlin": 0.9822
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0032,
+          "Aachen": 0.1094,
+          "Aue": 0.0638,
+          "Bochum": 0.025,
+          "Braunschweig": 0.031,
+          "Cottbus": 0.0104,
+          "Dresden": 0.1078,
+          "Duisburg": 0.0466,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.139,
+          "Fürth": 0,
+          "Ingolstadt": 0.1556,
+          "Karlsruhe": 0.1532,
+          "Paderborn": 0.0006,
+          "Rostock": 0.1436,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0108
+        },
+        "abstieg": {
+          "1860 München": 0.0016,
+          "Aachen": 0.1712,
+          "Aue": 0.0634,
+          "Bochum": 0.0224,
+          "Braunschweig": 0.0172,
+          "Cottbus": 0.0052,
+          "Dresden": 0.1558,
+          "Duisburg": 0.0458,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.341,
+          "Fürth": 0,
+          "Ingolstadt": 0.317,
+          "Karlsruhe": 0.3664,
+          "Paderborn": 0.0002,
+          "Rostock": 0.4858,
+          "St. Pauli": 0,
+          "Union Berlin": 0.007
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 51.4784,
+          "median": 51,
+          "p10": 42,
+          "p90": 61
+        },
+        "Aachen": {
+          "expected": 37.0094,
+          "median": 37,
+          "p10": 28,
+          "p90": 47
+        },
+        "Aue": {
+          "expected": 41.3586,
+          "median": 41,
+          "p10": 32,
+          "p90": 51
+        },
+        "Bochum": {
+          "expected": 46.465,
+          "median": 47,
+          "p10": 37,
+          "p90": 56
+        },
+        "Braunschweig": {
+          "expected": 45.0762,
+          "median": 45,
+          "p10": 36,
+          "p90": 55
+        },
+        "Cottbus": {
+          "expected": 49.3538,
+          "median": 49,
+          "p10": 40,
+          "p90": 59
+        },
+        "Dresden": {
+          "expected": 37.5526,
+          "median": 37,
+          "p10": 28,
+          "p90": 47
+        },
+        "Duisburg": {
+          "expected": 42.3574,
+          "median": 42,
+          "p10": 33,
+          "p90": 52
+        },
+        "Düsseldorf": {
+          "expected": 65.631,
+          "median": 66,
+          "p10": 56,
+          "p90": 75
+        },
+        "Frankfurt": {
+          "expected": 65.8332,
+          "median": 66,
+          "p10": 56,
+          "p90": 75
+        },
+        "FSV Frankfurt": {
+          "expected": 33.5102,
+          "median": 33,
+          "p10": 25,
+          "p90": 43
+        },
+        "Fürth": {
+          "expected": 61.9038,
+          "median": 62,
+          "p10": 52,
+          "p90": 71
+        },
+        "Ingolstadt": {
+          "expected": 33.7096,
+          "median": 33,
+          "p10": 24,
+          "p90": 43
+        },
+        "Karlsruhe": {
+          "expected": 33.0498,
+          "median": 33,
+          "p10": 24,
+          "p90": 42
+        },
+        "Paderborn": {
+          "expected": 54.6414,
+          "median": 54,
+          "p10": 45,
+          "p90": 64
+        },
+        "Rostock": {
+          "expected": 30.6936,
+          "median": 30,
+          "p10": 22,
+          "p90": 40
+        },
+        "St. Pauli": {
+          "expected": 62.1948,
+          "median": 62,
+          "p10": 53,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 48.0282,
+          "median": 48,
+          "p10": 39,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 17,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 153,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0288,
+          "Aachen": 0.0002,
+          "Aue": 0.0002,
+          "Bochum": 0.0066,
+          "Braunschweig": 0.0058,
+          "Cottbus": 0.0072,
+          "Dresden": 0.0002,
+          "Duisburg": 0.0002,
+          "Düsseldorf": 0.6284,
+          "Frankfurt": 0.5854,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.372,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0588,
+          "Rostock": 0,
+          "St. Pauli": 0.2952,
+          "Union Berlin": 0.011
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0516,
+          "Aachen": 0.0002,
+          "Aue": 0.0022,
+          "Bochum": 0.0196,
+          "Braunschweig": 0.0136,
+          "Cottbus": 0.016,
+          "Dresden": 0.0004,
+          "Duisburg": 0.0016,
+          "Düsseldorf": 0.1714,
+          "Frankfurt": 0.1922,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.222,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0766,
+          "Rostock": 0,
+          "St. Pauli": 0.2026,
+          "Union Berlin": 0.03
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9958,
+          "Aachen": 0.7232,
+          "Aue": 0.8618,
+          "Bochum": 0.9818,
+          "Braunschweig": 0.9848,
+          "Cottbus": 0.9834,
+          "Dresden": 0.7502,
+          "Duisburg": 0.8808,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.5288,
+          "Fürth": 1,
+          "Ingolstadt": 0.4728,
+          "Karlsruhe": 0.4796,
+          "Paderborn": 1,
+          "Rostock": 0.3628,
+          "St. Pauli": 1,
+          "Union Berlin": 0.9942
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.003,
+          "Aachen": 0.1096,
+          "Aue": 0.0676,
+          "Bochum": 0.0086,
+          "Braunschweig": 0.0116,
+          "Cottbus": 0.0102,
+          "Dresden": 0.1156,
+          "Duisburg": 0.0566,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.163,
+          "Fürth": 0,
+          "Ingolstadt": 0.1438,
+          "Karlsruhe": 0.1616,
+          "Paderborn": 0,
+          "Rostock": 0.1446,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0042
+        },
+        "abstieg": {
+          "1860 München": 0.0012,
+          "Aachen": 0.1672,
+          "Aue": 0.0706,
+          "Bochum": 0.0096,
+          "Braunschweig": 0.0036,
+          "Cottbus": 0.0064,
+          "Dresden": 0.1342,
+          "Duisburg": 0.0626,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.3082,
+          "Fürth": 0,
+          "Ingolstadt": 0.3834,
+          "Karlsruhe": 0.3588,
+          "Paderborn": 0,
+          "Rostock": 0.4926,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0016
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 51.2506,
+          "median": 51,
+          "p10": 42,
+          "p90": 61
+        },
+        "Aachen": {
+          "expected": 36.3488,
+          "median": 36,
+          "p10": 27,
+          "p90": 45
+        },
+        "Aue": {
+          "expected": 40.3852,
+          "median": 40,
+          "p10": 31,
+          "p90": 49
+        },
+        "Bochum": {
+          "expected": 47.769,
+          "median": 48,
+          "p10": 39,
+          "p90": 57
+        },
+        "Braunschweig": {
+          "expected": 46.9466,
+          "median": 47,
+          "p10": 38,
+          "p90": 56
+        },
+        "Cottbus": {
+          "expected": 47.994,
+          "median": 48,
+          "p10": 39,
+          "p90": 57
+        },
+        "Dresden": {
+          "expected": 36.8966,
+          "median": 37,
+          "p10": 28,
+          "p90": 46
+        },
+        "Duisburg": {
+          "expected": 40.632,
+          "median": 41,
+          "p10": 31,
+          "p90": 50
+        },
+        "Düsseldorf": {
+          "expected": 67.5272,
+          "median": 68,
+          "p10": 58,
+          "p90": 77
+        },
+        "Frankfurt": {
+          "expected": 66.6456,
+          "median": 67,
+          "p10": 58,
+          "p90": 75
+        },
+        "FSV Frankfurt": {
+          "expected": 33.2434,
+          "median": 33,
+          "p10": 25,
+          "p90": 42
+        },
+        "Fürth": {
+          "expected": 63.0442,
+          "median": 63,
+          "p10": 54,
+          "p90": 72
+        },
+        "Ingolstadt": {
+          "expected": 31.8986,
+          "median": 32,
+          "p10": 23,
+          "p90": 41
+        },
+        "Karlsruhe": {
+          "expected": 32.5936,
+          "median": 32,
+          "p10": 24,
+          "p90": 42
+        },
+        "Paderborn": {
+          "expected": 54.386,
+          "median": 54,
+          "p10": 46,
+          "p90": 64
+        },
+        "Rostock": {
+          "expected": 30.139,
+          "median": 30,
+          "p10": 21,
+          "p90": 39
+        },
+        "St. Pauli": {
+          "expected": 61.8072,
+          "median": 62,
+          "p10": 53,
+          "p90": 71
+        },
+        "Union Berlin": {
+          "expected": 49.5948,
+          "median": 49,
+          "p10": 41,
+          "p90": 58
+        }
+      }
+    },
+    {
+      "matchday": 18,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 162,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0378,
+          "Aachen": 0,
+          "Aue": 0.0004,
+          "Bochum": 0.0034,
+          "Braunschweig": 0.006,
+          "Cottbus": 0.0044,
+          "Dresden": 0.0002,
+          "Duisburg": 0.0008,
+          "Düsseldorf": 0.646,
+          "Frankfurt": 0.5748,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.3824,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0802,
+          "Rostock": 0,
+          "St. Pauli": 0.2436,
+          "Union Berlin": 0.02
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0566,
+          "Aachen": 0,
+          "Aue": 0.0008,
+          "Bochum": 0.0114,
+          "Braunschweig": 0.0092,
+          "Cottbus": 0.0116,
+          "Dresden": 0.0012,
+          "Duisburg": 0.0024,
+          "Düsseldorf": 0.1704,
+          "Frankfurt": 0.1884,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.224,
+          "Ingolstadt": 0.0002,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0982,
+          "Rostock": 0,
+          "St. Pauli": 0.1862,
+          "Union Berlin": 0.0394
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9988,
+          "Aachen": 0.7152,
+          "Aue": 0.8644,
+          "Bochum": 0.9804,
+          "Braunschweig": 0.9846,
+          "Cottbus": 0.976,
+          "Dresden": 0.8356,
+          "Duisburg": 0.9288,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.4626,
+          "Fürth": 1,
+          "Ingolstadt": 0.5578,
+          "Karlsruhe": 0.4138,
+          "Paderborn": 1,
+          "Rostock": 0.2832,
+          "St. Pauli": 1,
+          "Union Berlin": 0.9988
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0008,
+          "Aachen": 0.1186,
+          "Aue": 0.0762,
+          "Bochum": 0.0122,
+          "Braunschweig": 0.0122,
+          "Cottbus": 0.0148,
+          "Dresden": 0.087,
+          "Duisburg": 0.0398,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1722,
+          "Fürth": 0,
+          "Ingolstadt": 0.1608,
+          "Karlsruhe": 0.1542,
+          "Paderborn": 0,
+          "Rostock": 0.15,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0012
+        },
+        "abstieg": {
+          "1860 München": 0.0004,
+          "Aachen": 0.1662,
+          "Aue": 0.0594,
+          "Bochum": 0.0074,
+          "Braunschweig": 0.0032,
+          "Cottbus": 0.0092,
+          "Dresden": 0.0774,
+          "Duisburg": 0.0314,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.3652,
+          "Fürth": 0,
+          "Ingolstadt": 0.2814,
+          "Karlsruhe": 0.432,
+          "Paderborn": 0,
+          "Rostock": 0.5668,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 52.3326,
+          "median": 52,
+          "p10": 43,
+          "p90": 61
+        },
+        "Aachen": {
+          "expected": 35.9716,
+          "median": 36,
+          "p10": 27,
+          "p90": 45
+        },
+        "Aue": {
+          "expected": 40.2342,
+          "median": 40,
+          "p10": 32,
+          "p90": 49
+        },
+        "Bochum": {
+          "expected": 46.854,
+          "median": 47,
+          "p10": 38,
+          "p90": 56
+        },
+        "Braunschweig": {
+          "expected": 46.2566,
+          "median": 46,
+          "p10": 38,
+          "p90": 55
+        },
+        "Cottbus": {
+          "expected": 46.3086,
+          "median": 46,
+          "p10": 38,
+          "p90": 55
+        },
+        "Dresden": {
+          "expected": 38.8126,
+          "median": 39,
+          "p10": 31,
+          "p90": 47
+        },
+        "Duisburg": {
+          "expected": 42.144,
+          "median": 42,
+          "p10": 33,
+          "p90": 51
+        },
+        "Düsseldorf": {
+          "expected": 67.4848,
+          "median": 67,
+          "p10": 59,
+          "p90": 76
+        },
+        "Frankfurt": {
+          "expected": 65.9904,
+          "median": 66,
+          "p10": 57,
+          "p90": 75
+        },
+        "FSV Frankfurt": {
+          "expected": 32.2006,
+          "median": 32,
+          "p10": 24,
+          "p90": 41
+        },
+        "Fürth": {
+          "expected": 62.7658,
+          "median": 63,
+          "p10": 54,
+          "p90": 72
+        },
+        "Ingolstadt": {
+          "expected": 33.7188,
+          "median": 33,
+          "p10": 25,
+          "p90": 43
+        },
+        "Karlsruhe": {
+          "expected": 31.3712,
+          "median": 31,
+          "p10": 23,
+          "p90": 40
+        },
+        "Paderborn": {
+          "expected": 55.6664,
+          "median": 55,
+          "p10": 47,
+          "p90": 64
+        },
+        "Rostock": {
+          "expected": 28.8594,
+          "median": 29,
+          "p10": 21,
+          "p90": 37
+        },
+        "St. Pauli": {
+          "expected": 60.3752,
+          "median": 60,
+          "p10": 52,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 51.0346,
+          "median": 51,
+          "p10": 43,
+          "p90": 60
+        }
+      }
+    },
+    {
+      "matchday": 19,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 171,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0522,
+          "Aachen": 0,
+          "Aue": 0.0002,
+          "Bochum": 0.0062,
+          "Braunschweig": 0.0018,
+          "Cottbus": 0.0016,
+          "Dresden": 0,
+          "Duisburg": 0.0002,
+          "Düsseldorf": 0.5408,
+          "Frankfurt": 0.4954,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.4676,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.128,
+          "Rostock": 0,
+          "St. Pauli": 0.2942,
+          "Union Berlin": 0.0118
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0696,
+          "Aachen": 0,
+          "Aue": 0.0008,
+          "Bochum": 0.0154,
+          "Braunschweig": 0.006,
+          "Cottbus": 0.0076,
+          "Dresden": 0.0012,
+          "Duisburg": 0.0014,
+          "Düsseldorf": 0.178,
+          "Frankfurt": 0.1896,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.1942,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.119,
+          "Rostock": 0,
+          "St. Pauli": 0.1918,
+          "Union Berlin": 0.0254
+        },
+        "klassenerhalt": {
+          "1860 München": 0.9998,
+          "Aachen": 0.7306,
+          "Aue": 0.875,
+          "Bochum": 0.9928,
+          "Braunschweig": 0.9884,
+          "Cottbus": 0.9828,
+          "Dresden": 0.8556,
+          "Duisburg": 0.9396,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.4238,
+          "Fürth": 1,
+          "Ingolstadt": 0.5844,
+          "Karlsruhe": 0.352,
+          "Paderborn": 1,
+          "Rostock": 0.2766,
+          "St. Pauli": 1,
+          "Union Berlin": 0.9986
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0002,
+          "Aachen": 0.1252,
+          "Aue": 0.072,
+          "Bochum": 0.0044,
+          "Braunschweig": 0.009,
+          "Cottbus": 0.0098,
+          "Dresden": 0.087,
+          "Duisburg": 0.0368,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1728,
+          "Fürth": 0,
+          "Ingolstadt": 0.1612,
+          "Karlsruhe": 0.1716,
+          "Paderborn": 0,
+          "Rostock": 0.1486,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0014
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1442,
+          "Aue": 0.053,
+          "Bochum": 0.0028,
+          "Braunschweig": 0.0026,
+          "Cottbus": 0.0074,
+          "Dresden": 0.0574,
+          "Duisburg": 0.0236,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.4034,
+          "Fürth": 0,
+          "Ingolstadt": 0.2544,
+          "Karlsruhe": 0.4764,
+          "Paderborn": 0,
+          "Rostock": 0.5748,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 53.9536,
+          "median": 54,
+          "p10": 45,
+          "p90": 62
+        },
+        "Aachen": {
+          "expected": 35.6978,
+          "median": 36,
+          "p10": 27,
+          "p90": 44
+        },
+        "Aue": {
+          "expected": 39.6242,
+          "median": 40,
+          "p10": 31,
+          "p90": 48
+        },
+        "Bochum": {
+          "expected": 48.3312,
+          "median": 48,
+          "p10": 40,
+          "p90": 57
+        },
+        "Braunschweig": {
+          "expected": 45.8524,
+          "median": 46,
+          "p10": 38,
+          "p90": 54
+        },
+        "Cottbus": {
+          "expected": 45.8058,
+          "median": 46,
+          "p10": 37,
+          "p90": 54
+        },
+        "Dresden": {
+          "expected": 38.5384,
+          "median": 38,
+          "p10": 31,
+          "p90": 47
+        },
+        "Duisburg": {
+          "expected": 41.753,
+          "median": 42,
+          "p10": 33,
+          "p90": 50
+        },
+        "Düsseldorf": {
+          "expected": 65.527,
+          "median": 66,
+          "p10": 57,
+          "p90": 74
+        },
+        "Frankfurt": {
+          "expected": 64.5158,
+          "median": 65,
+          "p10": 56,
+          "p90": 73
+        },
+        "FSV Frankfurt": {
+          "expected": 31.0944,
+          "median": 31,
+          "p10": 23,
+          "p90": 39
+        },
+        "Fürth": {
+          "expected": 64.0752,
+          "median": 64,
+          "p10": 55,
+          "p90": 73
+        },
+        "Ingolstadt": {
+          "expected": 33.4994,
+          "median": 33,
+          "p10": 25,
+          "p90": 42
+        },
+        "Karlsruhe": {
+          "expected": 30.1094,
+          "median": 30,
+          "p10": 22,
+          "p90": 38
+        },
+        "Paderborn": {
+          "expected": 57.9054,
+          "median": 58,
+          "p10": 50,
+          "p90": 66
+        },
+        "Rostock": {
+          "expected": 28.2844,
+          "median": 28,
+          "p10": 20,
+          "p90": 37
+        },
+        "St. Pauli": {
+          "expected": 61.888,
+          "median": 62,
+          "p10": 54,
+          "p90": 70
+        },
+        "Union Berlin": {
+          "expected": 50.2106,
+          "median": 50,
+          "p10": 42,
+          "p90": 58
+        }
+      }
+    },
+    {
+      "matchday": 20,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 180,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0782,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0.0076,
+          "Braunschweig": 0.001,
+          "Cottbus": 0.0004,
+          "Dresden": 0.0004,
+          "Duisburg": 0,
+          "Düsseldorf": 0.526,
+          "Frankfurt": 0.5974,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.3624,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.164,
+          "Rostock": 0,
+          "St. Pauli": 0.2542,
+          "Union Berlin": 0.0084
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0858,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0.0162,
+          "Braunschweig": 0.0036,
+          "Cottbus": 0.0016,
+          "Dresden": 0.0008,
+          "Duisburg": 0.0008,
+          "Düsseldorf": 0.1842,
+          "Frankfurt": 0.1594,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.2056,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1458,
+          "Rostock": 0,
+          "St. Pauli": 0.1792,
+          "Union Berlin": 0.017
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.7844,
+          "Aue": 0.8202,
+          "Bochum": 0.9952,
+          "Braunschweig": 0.9844,
+          "Cottbus": 0.964,
+          "Dresden": 0.9098,
+          "Duisburg": 0.8864,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.4986,
+          "Fürth": 1,
+          "Ingolstadt": 0.5312,
+          "Karlsruhe": 0.4174,
+          "Paderborn": 1,
+          "Rostock": 0.2104,
+          "St. Pauli": 1,
+          "Union Berlin": 0.998
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.0964,
+          "Aue": 0.094,
+          "Bochum": 0.0038,
+          "Braunschweig": 0.0128,
+          "Cottbus": 0.0244,
+          "Dresden": 0.061,
+          "Duisburg": 0.0562,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1808,
+          "Fürth": 0,
+          "Ingolstadt": 0.1634,
+          "Karlsruhe": 0.1694,
+          "Paderborn": 0,
+          "Rostock": 0.1364,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0014
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1192,
+          "Aue": 0.0858,
+          "Bochum": 0.001,
+          "Braunschweig": 0.0028,
+          "Cottbus": 0.0116,
+          "Dresden": 0.0292,
+          "Duisburg": 0.0574,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.3206,
+          "Fürth": 0,
+          "Ingolstadt": 0.3054,
+          "Karlsruhe": 0.4132,
+          "Paderborn": 0,
+          "Rostock": 0.6532,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0006
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 55.3838,
+          "median": 55,
+          "p10": 47,
+          "p90": 64
+        },
+        "Aachen": {
+          "expected": 37.105,
+          "median": 37,
+          "p10": 29,
+          "p90": 45
+        },
+        "Aue": {
+          "expected": 38.236,
+          "median": 38,
+          "p10": 31,
+          "p90": 46
+        },
+        "Bochum": {
+          "expected": 49.1616,
+          "median": 49,
+          "p10": 41,
+          "p90": 57
+        },
+        "Braunschweig": {
+          "expected": 45.2422,
+          "median": 45,
+          "p10": 38,
+          "p90": 53
+        },
+        "Cottbus": {
+          "expected": 44.4428,
+          "median": 45,
+          "p10": 36,
+          "p90": 52
+        },
+        "Dresden": {
+          "expected": 40.4698,
+          "median": 40,
+          "p10": 33,
+          "p90": 48
+        },
+        "Duisburg": {
+          "expected": 39.8974,
+          "median": 40,
+          "p10": 32,
+          "p90": 48
+        },
+        "Düsseldorf": {
+          "expected": 65.0524,
+          "median": 65,
+          "p10": 57,
+          "p90": 73
+        },
+        "Frankfurt": {
+          "expected": 65.794,
+          "median": 66,
+          "p10": 58,
+          "p90": 74
+        },
+        "FSV Frankfurt": {
+          "expected": 33.1728,
+          "median": 33,
+          "p10": 26,
+          "p90": 41
+        },
+        "Fürth": {
+          "expected": 62.3174,
+          "median": 62,
+          "p10": 54,
+          "p90": 70
+        },
+        "Ingolstadt": {
+          "expected": 33.1868,
+          "median": 33,
+          "p10": 25,
+          "p90": 41
+        },
+        "Karlsruhe": {
+          "expected": 31.891,
+          "median": 32,
+          "p10": 24,
+          "p90": 40
+        },
+        "Paderborn": {
+          "expected": 59.2776,
+          "median": 59,
+          "p10": 51,
+          "p90": 67
+        },
+        "Rostock": {
+          "expected": 27.6736,
+          "median": 27,
+          "p10": 20,
+          "p90": 35
+        },
+        "St. Pauli": {
+          "expected": 60.7378,
+          "median": 61,
+          "p10": 53,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 49.0092,
+          "median": 49,
+          "p10": 41,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 21,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 189,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.07,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0.0022,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.4984,
+          "Frankfurt": 0.5564,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.4212,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.12,
+          "Rostock": 0,
+          "St. Pauli": 0.3222,
+          "Union Berlin": 0.0096
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0806,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0.0062,
+          "Braunschweig": 0.0024,
+          "Cottbus": 0.0016,
+          "Dresden": 0,
+          "Duisburg": 0.0002,
+          "Düsseldorf": 0.1852,
+          "Frankfurt": 0.191,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.2054,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1126,
+          "Rostock": 0,
+          "St. Pauli": 0.198,
+          "Union Berlin": 0.0168
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.7924,
+          "Aue": 0.8088,
+          "Bochum": 0.9942,
+          "Braunschweig": 0.9874,
+          "Cottbus": 0.9698,
+          "Dresden": 0.887,
+          "Duisburg": 0.8614,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.4866,
+          "Fürth": 1,
+          "Ingolstadt": 0.5242,
+          "Karlsruhe": 0.4004,
+          "Paderborn": 1,
+          "Rostock": 0.2884,
+          "St. Pauli": 1,
+          "Union Berlin": 0.9994
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.0878,
+          "Aue": 0.0954,
+          "Bochum": 0.0046,
+          "Braunschweig": 0.0094,
+          "Cottbus": 0.0182,
+          "Dresden": 0.0656,
+          "Duisburg": 0.0734,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1716,
+          "Fürth": 0,
+          "Ingolstadt": 0.1542,
+          "Karlsruhe": 0.1656,
+          "Paderborn": 0,
+          "Rostock": 0.1536,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0006
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1198,
+          "Aue": 0.0958,
+          "Bochum": 0.0012,
+          "Braunschweig": 0.0032,
+          "Cottbus": 0.012,
+          "Dresden": 0.0474,
+          "Duisburg": 0.0652,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.3418,
+          "Fürth": 0,
+          "Ingolstadt": 0.3216,
+          "Karlsruhe": 0.434,
+          "Paderborn": 0,
+          "Rostock": 0.558,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 55.322,
+          "median": 55,
+          "p10": 48,
+          "p90": 63
+        },
+        "Aachen": {
+          "expected": 36.9678,
+          "median": 37,
+          "p10": 29,
+          "p90": 44
+        },
+        "Aue": {
+          "expected": 37.758,
+          "median": 38,
+          "p10": 30,
+          "p90": 45
+        },
+        "Bochum": {
+          "expected": 48.0978,
+          "median": 48,
+          "p10": 41,
+          "p90": 55
+        },
+        "Braunschweig": {
+          "expected": 44.775,
+          "median": 44,
+          "p10": 38,
+          "p90": 52
+        },
+        "Cottbus": {
+          "expected": 43.9098,
+          "median": 44,
+          "p10": 36,
+          "p90": 51
+        },
+        "Dresden": {
+          "expected": 39.4732,
+          "median": 39,
+          "p10": 32,
+          "p90": 47
+        },
+        "Duisburg": {
+          "expected": 38.4732,
+          "median": 38,
+          "p10": 31,
+          "p90": 46
+        },
+        "Düsseldorf": {
+          "expected": 64.6058,
+          "median": 65,
+          "p10": 57,
+          "p90": 72
+        },
+        "Frankfurt": {
+          "expected": 65.3872,
+          "median": 66,
+          "p10": 58,
+          "p90": 73
+        },
+        "FSV Frankfurt": {
+          "expected": 32.6908,
+          "median": 33,
+          "p10": 25,
+          "p90": 40
+        },
+        "Fürth": {
+          "expected": 63.3374,
+          "median": 63,
+          "p10": 56,
+          "p90": 71
+        },
+        "Ingolstadt": {
+          "expected": 32.8682,
+          "median": 33,
+          "p10": 25,
+          "p90": 40
+        },
+        "Karlsruhe": {
+          "expected": 31.5616,
+          "median": 31,
+          "p10": 24,
+          "p90": 39
+        },
+        "Paderborn": {
+          "expected": 58.308,
+          "median": 58,
+          "p10": 51,
+          "p90": 66
+        },
+        "Rostock": {
+          "expected": 29.3514,
+          "median": 29,
+          "p10": 22,
+          "p90": 37
+        },
+        "St. Pauli": {
+          "expected": 62.3174,
+          "median": 62,
+          "p10": 55,
+          "p90": 70
+        },
+        "Union Berlin": {
+          "expected": 50.1728,
+          "median": 50,
+          "p10": 43,
+          "p90": 58
+        }
+      }
+    },
+    {
+      "matchday": 22,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 198,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0808,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0.002,
+          "Braunschweig": 0.0002,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.403,
+          "Frankfurt": 0.6214,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.3848,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0934,
+          "Rostock": 0,
+          "St. Pauli": 0.4106,
+          "Union Berlin": 0.0038
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0904,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0.0094,
+          "Braunschweig": 0.0012,
+          "Cottbus": 0,
+          "Dresden": 0.0002,
+          "Duisburg": 0,
+          "Düsseldorf": 0.2048,
+          "Frankfurt": 0.1764,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.2104,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.097,
+          "Rostock": 0,
+          "St. Pauli": 0.2024,
+          "Union Berlin": 0.0078
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.7616,
+          "Aue": 0.7926,
+          "Bochum": 0.9988,
+          "Braunschweig": 0.9934,
+          "Cottbus": 0.9596,
+          "Dresden": 0.9064,
+          "Duisburg": 0.8152,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.44,
+          "Fürth": 1,
+          "Ingolstadt": 0.5108,
+          "Karlsruhe": 0.5366,
+          "Paderborn": 1,
+          "Rostock": 0.2852,
+          "St. Pauli": 1,
+          "Union Berlin": 0.9998
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.106,
+          "Aue": 0.098,
+          "Bochum": 0.0008,
+          "Braunschweig": 0.0046,
+          "Cottbus": 0.0236,
+          "Dresden": 0.0566,
+          "Duisburg": 0.0902,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1688,
+          "Fürth": 0,
+          "Ingolstadt": 0.1602,
+          "Karlsruhe": 0.1536,
+          "Paderborn": 0,
+          "Rostock": 0.1374,
+          "St. Pauli": 0,
+          "Union Berlin": 0.0002
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1324,
+          "Aue": 0.1094,
+          "Bochum": 0.0004,
+          "Braunschweig": 0.002,
+          "Cottbus": 0.0168,
+          "Dresden": 0.037,
+          "Duisburg": 0.0946,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.3912,
+          "Fürth": 0,
+          "Ingolstadt": 0.329,
+          "Karlsruhe": 0.3098,
+          "Paderborn": 0,
+          "Rostock": 0.5774,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 56.7316,
+          "median": 57,
+          "p10": 50,
+          "p90": 64
+        },
+        "Aachen": {
+          "expected": 36.1452,
+          "median": 36,
+          "p10": 29,
+          "p90": 43
+        },
+        "Aue": {
+          "expected": 36.9842,
+          "median": 37,
+          "p10": 30,
+          "p90": 44
+        },
+        "Bochum": {
+          "expected": 49.0644,
+          "median": 49,
+          "p10": 42,
+          "p90": 56
+        },
+        "Braunschweig": {
+          "expected": 44.6806,
+          "median": 44,
+          "p10": 38,
+          "p90": 52
+        },
+        "Cottbus": {
+          "expected": 42.4318,
+          "median": 42,
+          "p10": 35,
+          "p90": 50
+        },
+        "Dresden": {
+          "expected": 39.472,
+          "median": 39,
+          "p10": 33,
+          "p90": 47
+        },
+        "Duisburg": {
+          "expected": 37.09,
+          "median": 37,
+          "p10": 30,
+          "p90": 44
+        },
+        "Düsseldorf": {
+          "expected": 63.4694,
+          "median": 63,
+          "p10": 56,
+          "p90": 71
+        },
+        "Frankfurt": {
+          "expected": 66.2518,
+          "median": 66,
+          "p10": 59,
+          "p90": 73
+        },
+        "FSV Frankfurt": {
+          "expected": 31.9844,
+          "median": 32,
+          "p10": 25,
+          "p90": 39
+        },
+        "Fürth": {
+          "expected": 62.9256,
+          "median": 63,
+          "p10": 56,
+          "p90": 70
+        },
+        "Ingolstadt": {
+          "expected": 32.6954,
+          "median": 33,
+          "p10": 26,
+          "p90": 40
+        },
+        "Karlsruhe": {
+          "expected": 33.3376,
+          "median": 33,
+          "p10": 26,
+          "p90": 40
+        },
+        "Paderborn": {
+          "expected": 57.8056,
+          "median": 58,
+          "p10": 51,
+          "p90": 65
+        },
+        "Rostock": {
+          "expected": 29.3498,
+          "median": 29,
+          "p10": 23,
+          "p90": 36
+        },
+        "St. Pauli": {
+          "expected": 63.8056,
+          "median": 64,
+          "p10": 57,
+          "p90": 71
+        },
+        "Union Berlin": {
+          "expected": 49.2578,
+          "median": 49,
+          "p10": 42,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 23,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 207,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.1206,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0.0004,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.3524,
+          "Frankfurt": 0.5178,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.5176,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1404,
+          "Rostock": 0,
+          "St. Pauli": 0.3504,
+          "Union Berlin": 0.0004
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.1136,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0.002,
+          "Braunschweig": 0.001,
+          "Cottbus": 0.0004,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.2058,
+          "Frankfurt": 0.1898,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.1714,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1206,
+          "Rostock": 0,
+          "St. Pauli": 0.1928,
+          "Union Berlin": 0.0026
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.7678,
+          "Aue": 0.7402,
+          "Bochum": 0.9966,
+          "Braunschweig": 0.9952,
+          "Cottbus": 0.9814,
+          "Dresden": 0.9648,
+          "Duisburg": 0.7382,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.5498,
+          "Fürth": 1,
+          "Ingolstadt": 0.6236,
+          "Karlsruhe": 0.4352,
+          "Paderborn": 1,
+          "Rostock": 0.2082,
+          "St. Pauli": 1,
+          "Union Berlin": 0.999
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1094,
+          "Aue": 0.1176,
+          "Bochum": 0.0028,
+          "Braunschweig": 0.004,
+          "Cottbus": 0.0118,
+          "Dresden": 0.0238,
+          "Duisburg": 0.1216,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1656,
+          "Fürth": 0,
+          "Ingolstadt": 0.1504,
+          "Karlsruhe": 0.1744,
+          "Paderborn": 0,
+          "Rostock": 0.1176,
+          "St. Pauli": 0,
+          "Union Berlin": 0.001
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1228,
+          "Aue": 0.1422,
+          "Bochum": 0.0006,
+          "Braunschweig": 0.0008,
+          "Cottbus": 0.0068,
+          "Dresden": 0.0114,
+          "Duisburg": 0.1402,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.2846,
+          "Fürth": 0,
+          "Ingolstadt": 0.226,
+          "Karlsruhe": 0.3904,
+          "Paderborn": 0,
+          "Rostock": 0.6742,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 58.3248,
+          "median": 58,
+          "p10": 52,
+          "p90": 65
+        },
+        "Aachen": {
+          "expected": 36.2352,
+          "median": 36,
+          "p10": 29,
+          "p90": 43
+        },
+        "Aue": {
+          "expected": 35.9976,
+          "median": 36,
+          "p10": 29,
+          "p90": 43
+        },
+        "Bochum": {
+          "expected": 47.8026,
+          "median": 48,
+          "p10": 41,
+          "p90": 55
+        },
+        "Braunschweig": {
+          "expected": 44.7628,
+          "median": 45,
+          "p10": 38,
+          "p90": 51
+        },
+        "Cottbus": {
+          "expected": 43.7018,
+          "median": 44,
+          "p10": 37,
+          "p90": 50
+        },
+        "Dresden": {
+          "expected": 41.2274,
+          "median": 41,
+          "p10": 35,
+          "p90": 48
+        },
+        "Duisburg": {
+          "expected": 35.5292,
+          "median": 35,
+          "p10": 29,
+          "p90": 43
+        },
+        "Düsseldorf": {
+          "expected": 62.7294,
+          "median": 63,
+          "p10": 56,
+          "p90": 70
+        },
+        "Frankfurt": {
+          "expected": 64.728,
+          "median": 65,
+          "p10": 58,
+          "p90": 72
+        },
+        "FSV Frankfurt": {
+          "expected": 33.515,
+          "median": 33,
+          "p10": 27,
+          "p90": 40
+        },
+        "Fürth": {
+          "expected": 64.456,
+          "median": 65,
+          "p10": 58,
+          "p90": 71
+        },
+        "Ingolstadt": {
+          "expected": 34.2816,
+          "median": 34,
+          "p10": 28,
+          "p90": 41
+        },
+        "Karlsruhe": {
+          "expected": 32.0492,
+          "median": 32,
+          "p10": 26,
+          "p90": 39
+        },
+        "Paderborn": {
+          "expected": 59.519,
+          "median": 59,
+          "p10": 53,
+          "p90": 66
+        },
+        "Rostock": {
+          "expected": 28.115,
+          "median": 28,
+          "p10": 22,
+          "p90": 35
+        },
+        "St. Pauli": {
+          "expected": 63.0182,
+          "median": 63,
+          "p10": 56,
+          "p90": 70
+        },
+        "Union Berlin": {
+          "expected": 47.983,
+          "median": 48,
+          "p10": 41,
+          "p90": 55
+        }
+      }
+    },
+    {
+      "matchday": 24,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 216,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0584,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.4056,
+          "Frankfurt": 0.5378,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.5756,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1662,
+          "Rostock": 0,
+          "St. Pauli": 0.2558,
+          "Union Berlin": 0.0006
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0718,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.0004,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.2044,
+          "Frankfurt": 0.1956,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.1708,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1648,
+          "Rostock": 0,
+          "St. Pauli": 0.1906,
+          "Union Berlin": 0.0016
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.7308,
+          "Aue": 0.8634,
+          "Bochum": 0.9958,
+          "Braunschweig": 0.9998,
+          "Cottbus": 0.9864,
+          "Dresden": 0.9948,
+          "Duisburg": 0.7068,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.5294,
+          "Fürth": 1,
+          "Ingolstadt": 0.6596,
+          "Karlsruhe": 0.3796,
+          "Paderborn": 1,
+          "Rostock": 0.1536,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1286,
+          "Aue": 0.078,
+          "Bochum": 0.0032,
+          "Braunschweig": 0.0002,
+          "Cottbus": 0.0084,
+          "Dresden": 0.0036,
+          "Duisburg": 0.1454,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1792,
+          "Fürth": 0,
+          "Ingolstadt": 0.152,
+          "Karlsruhe": 0.1814,
+          "Paderborn": 0,
+          "Rostock": 0.12,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1406,
+          "Aue": 0.0586,
+          "Bochum": 0.001,
+          "Braunschweig": 0,
+          "Cottbus": 0.0052,
+          "Dresden": 0.0016,
+          "Duisburg": 0.1478,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.2914,
+          "Fürth": 0,
+          "Ingolstadt": 0.1884,
+          "Karlsruhe": 0.439,
+          "Paderborn": 0,
+          "Rostock": 0.7264,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 57.7246,
+          "median": 58,
+          "p10": 51,
+          "p90": 64
+        },
+        "Aachen": {
+          "expected": 34.6962,
+          "median": 35,
+          "p10": 28,
+          "p90": 41
+        },
+        "Aue": {
+          "expected": 37.2534,
+          "median": 37,
+          "p10": 31,
+          "p90": 44
+        },
+        "Bochum": {
+          "expected": 45.9842,
+          "median": 46,
+          "p10": 40,
+          "p90": 52
+        },
+        "Braunschweig": {
+          "expected": 46.2716,
+          "median": 46,
+          "p10": 40,
+          "p90": 52
+        },
+        "Cottbus": {
+          "expected": 42.6504,
+          "median": 43,
+          "p10": 36,
+          "p90": 49
+        },
+        "Dresden": {
+          "expected": 43.3468,
+          "median": 43,
+          "p10": 37,
+          "p90": 50
+        },
+        "Duisburg": {
+          "expected": 34.1032,
+          "median": 34,
+          "p10": 28,
+          "p90": 40
+        },
+        "Düsseldorf": {
+          "expected": 64.1966,
+          "median": 64,
+          "p10": 58,
+          "p90": 70
+        },
+        "Frankfurt": {
+          "expected": 65.8858,
+          "median": 66,
+          "p10": 60,
+          "p90": 72
+        },
+        "FSV Frankfurt": {
+          "expected": 32.4438,
+          "median": 32,
+          "p10": 26,
+          "p90": 39
+        },
+        "Fürth": {
+          "expected": 66.1582,
+          "median": 66,
+          "p10": 60,
+          "p90": 73
+        },
+        "Ingolstadt": {
+          "expected": 33.7856,
+          "median": 34,
+          "p10": 28,
+          "p90": 40
+        },
+        "Karlsruhe": {
+          "expected": 30.8486,
+          "median": 31,
+          "p10": 25,
+          "p90": 37
+        },
+        "Paderborn": {
+          "expected": 61.5336,
+          "median": 61,
+          "p10": 55,
+          "p90": 68
+        },
+        "Rostock": {
+          "expected": 26.8308,
+          "median": 27,
+          "p10": 21,
+          "p90": 33
+        },
+        "St. Pauli": {
+          "expected": 62.7396,
+          "median": 63,
+          "p10": 56,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 47.8232,
+          "median": 48,
+          "p10": 42,
+          "p90": 54
+        }
+      }
+    },
+    {
+      "matchday": 25,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 225,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.019,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.4072,
+          "Frankfurt": 0.6048,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.601,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1094,
+          "Rostock": 0,
+          "St. Pauli": 0.2586,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0336,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.0002,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.237,
+          "Frankfurt": 0.1982,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.1948,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1282,
+          "Rostock": 0,
+          "St. Pauli": 0.208,
+          "Union Berlin": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.678,
+          "Aue": 0.8482,
+          "Bochum": 0.9978,
+          "Braunschweig": 1,
+          "Cottbus": 0.9862,
+          "Dresden": 0.9982,
+          "Duisburg": 0.6986,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.708,
+          "Fürth": 1,
+          "Ingolstadt": 0.6558,
+          "Karlsruhe": 0.3232,
+          "Paderborn": 1,
+          "Rostock": 0.106,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1486,
+          "Aue": 0.0872,
+          "Bochum": 0.002,
+          "Braunschweig": 0,
+          "Cottbus": 0.0114,
+          "Dresden": 0.0014,
+          "Duisburg": 0.1588,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.157,
+          "Fürth": 0,
+          "Ingolstadt": 0.1608,
+          "Karlsruhe": 0.1796,
+          "Paderborn": 0,
+          "Rostock": 0.0932,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1734,
+          "Aue": 0.0646,
+          "Bochum": 0.0002,
+          "Braunschweig": 0,
+          "Cottbus": 0.0024,
+          "Dresden": 0.0004,
+          "Duisburg": 0.1426,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.135,
+          "Fürth": 0,
+          "Ingolstadt": 0.1834,
+          "Karlsruhe": 0.4972,
+          "Paderborn": 0,
+          "Rostock": 0.8008,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 56.3454,
+          "median": 56,
+          "p10": 51,
+          "p90": 62
+        },
+        "Aachen": {
+          "expected": 33.5668,
+          "median": 33,
+          "p10": 28,
+          "p90": 40
+        },
+        "Aue": {
+          "expected": 36.3314,
+          "median": 36,
+          "p10": 31,
+          "p90": 42
+        },
+        "Bochum": {
+          "expected": 45.25,
+          "median": 45,
+          "p10": 39,
+          "p90": 51
+        },
+        "Braunschweig": {
+          "expected": 46.3402,
+          "median": 46,
+          "p10": 41,
+          "p90": 52
+        },
+        "Cottbus": {
+          "expected": 41.6692,
+          "median": 42,
+          "p10": 36,
+          "p90": 47
+        },
+        "Dresden": {
+          "expected": 42.9486,
+          "median": 43,
+          "p10": 37,
+          "p90": 49
+        },
+        "Duisburg": {
+          "expected": 33.6034,
+          "median": 34,
+          "p10": 28,
+          "p90": 40
+        },
+        "Düsseldorf": {
+          "expected": 65.393,
+          "median": 65,
+          "p10": 59,
+          "p90": 71
+        },
+        "Frankfurt": {
+          "expected": 67.265,
+          "median": 67,
+          "p10": 61,
+          "p90": 73
+        },
+        "FSV Frankfurt": {
+          "expected": 34.3558,
+          "median": 34,
+          "p10": 29,
+          "p90": 40
+        },
+        "Fürth": {
+          "expected": 67.293,
+          "median": 67,
+          "p10": 61,
+          "p90": 73
+        },
+        "Ingolstadt": {
+          "expected": 33.5316,
+          "median": 33,
+          "p10": 28,
+          "p90": 39
+        },
+        "Karlsruhe": {
+          "expected": 30.07,
+          "median": 30,
+          "p10": 25,
+          "p90": 36
+        },
+        "Paderborn": {
+          "expected": 61.3178,
+          "median": 61,
+          "p10": 55,
+          "p90": 67
+        },
+        "Rostock": {
+          "expected": 25.8702,
+          "median": 26,
+          "p10": 20,
+          "p90": 32
+        },
+        "St. Pauli": {
+          "expected": 63.8782,
+          "median": 64,
+          "p10": 58,
+          "p90": 70
+        },
+        "Union Berlin": {
+          "expected": 47.3408,
+          "median": 47,
+          "p10": 42,
+          "p90": 53
+        }
+      }
+    },
+    {
+      "matchday": 26,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 234,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0026,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.3518,
+          "Frankfurt": 0.6866,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.762,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0482,
+          "Rostock": 0,
+          "St. Pauli": 0.1488,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0142,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.3162,
+          "Frankfurt": 0.1996,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.1484,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1062,
+          "Rostock": 0,
+          "St. Pauli": 0.2146,
+          "Union Berlin": 0.0008
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.5276,
+          "Aue": 0.9172,
+          "Bochum": 0.997,
+          "Braunschweig": 1,
+          "Cottbus": 0.9814,
+          "Dresden": 0.9966,
+          "Duisburg": 0.808,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.6956,
+          "Fürth": 1,
+          "Ingolstadt": 0.769,
+          "Karlsruhe": 0.231,
+          "Paderborn": 1,
+          "Rostock": 0.0766,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.2158,
+          "Aue": 0.0588,
+          "Bochum": 0.0028,
+          "Braunschweig": 0,
+          "Cottbus": 0.0148,
+          "Dresden": 0.0032,
+          "Duisburg": 0.1214,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1754,
+          "Fürth": 0,
+          "Ingolstadt": 0.1294,
+          "Karlsruhe": 0.1898,
+          "Paderborn": 0,
+          "Rostock": 0.0886,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.2566,
+          "Aue": 0.024,
+          "Bochum": 0.0002,
+          "Braunschweig": 0,
+          "Cottbus": 0.0038,
+          "Dresden": 0.0002,
+          "Duisburg": 0.0706,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.129,
+          "Fürth": 0,
+          "Ingolstadt": 0.1016,
+          "Karlsruhe": 0.5792,
+          "Paderborn": 0,
+          "Rostock": 0.8348,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 54.8654,
+          "median": 55,
+          "p10": 49,
+          "p90": 60
+        },
+        "Aachen": {
+          "expected": 31.9986,
+          "median": 32,
+          "p10": 27,
+          "p90": 37
+        },
+        "Aue": {
+          "expected": 37.704,
+          "median": 38,
+          "p10": 32,
+          "p90": 43
+        },
+        "Bochum": {
+          "expected": 43.975,
+          "median": 44,
+          "p10": 38,
+          "p90": 50
+        },
+        "Braunschweig": {
+          "expected": 45.983,
+          "median": 46,
+          "p10": 41,
+          "p90": 51
+        },
+        "Cottbus": {
+          "expected": 41.02,
+          "median": 41,
+          "p10": 36,
+          "p90": 47
+        },
+        "Dresden": {
+          "expected": 42.3148,
+          "median": 42,
+          "p10": 37,
+          "p90": 48
+        },
+        "Duisburg": {
+          "expected": 35.1548,
+          "median": 35,
+          "p10": 30,
+          "p90": 41
+        },
+        "Düsseldorf": {
+          "expected": 65.235,
+          "median": 65,
+          "p10": 60,
+          "p90": 71
+        },
+        "Frankfurt": {
+          "expected": 68.2506,
+          "median": 68,
+          "p10": 63,
+          "p90": 74
+        },
+        "FSV Frankfurt": {
+          "expected": 34.2014,
+          "median": 34,
+          "p10": 29,
+          "p90": 40
+        },
+        "Fürth": {
+          "expected": 69.0836,
+          "median": 69,
+          "p10": 64,
+          "p90": 75
+        },
+        "Ingolstadt": {
+          "expected": 34.9062,
+          "median": 35,
+          "p10": 30,
+          "p90": 40
+        },
+        "Karlsruhe": {
+          "expected": 29.336,
+          "median": 29,
+          "p10": 24,
+          "p90": 35
+        },
+        "Paderborn": {
+          "expected": 60.1262,
+          "median": 60,
+          "p10": 55,
+          "p90": 66
+        },
+        "Rostock": {
+          "expected": 25.7098,
+          "median": 25,
+          "p10": 21,
+          "p90": 31
+        },
+        "St. Pauli": {
+          "expected": 62.663,
+          "median": 63,
+          "p10": 57,
+          "p90": 68
+        },
+        "Union Berlin": {
+          "expected": 49.2146,
+          "median": 49,
+          "p10": 44,
+          "p90": 55
+        }
+      }
+    },
+    {
+      "matchday": 27,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 243,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0034,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.2202,
+          "Frankfurt": 0.8226,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.8478,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.016,
+          "Rostock": 0,
+          "St. Pauli": 0.09,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0216,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.4062,
+          "Frankfurt": 0.1376,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.1118,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0748,
+          "Rostock": 0,
+          "St. Pauli": 0.248,
+          "Union Berlin": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.316,
+          "Aue": 0.9696,
+          "Bochum": 0.9928,
+          "Braunschweig": 1,
+          "Cottbus": 0.9868,
+          "Dresden": 0.992,
+          "Duisburg": 0.8798,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.8354,
+          "Fürth": 1,
+          "Ingolstadt": 0.8882,
+          "Karlsruhe": 0.1226,
+          "Paderborn": 1,
+          "Rostock": 0.0168,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.3512,
+          "Aue": 0.0252,
+          "Bochum": 0.0066,
+          "Braunschweig": 0,
+          "Cottbus": 0.0114,
+          "Dresden": 0.0078,
+          "Duisburg": 0.097,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1328,
+          "Fürth": 0,
+          "Ingolstadt": 0.0864,
+          "Karlsruhe": 0.2274,
+          "Paderborn": 0,
+          "Rostock": 0.0542,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.3328,
+          "Aue": 0.0052,
+          "Bochum": 0.0006,
+          "Braunschweig": 0,
+          "Cottbus": 0.0018,
+          "Dresden": 0.0002,
+          "Duisburg": 0.0232,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.0318,
+          "Fürth": 0,
+          "Ingolstadt": 0.0254,
+          "Karlsruhe": 0.65,
+          "Paderborn": 0,
+          "Rostock": 0.929,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 56.2208,
+          "median": 56,
+          "p10": 51,
+          "p90": 61
+        },
+        "Aachen": {
+          "expected": 30.5136,
+          "median": 30,
+          "p10": 26,
+          "p90": 36
+        },
+        "Aue": {
+          "expected": 39.238,
+          "median": 39,
+          "p10": 34,
+          "p90": 44
+        },
+        "Bochum": {
+          "expected": 42.1092,
+          "median": 42,
+          "p10": 37,
+          "p90": 47
+        },
+        "Braunschweig": {
+          "expected": 46.1228,
+          "median": 46,
+          "p10": 41,
+          "p90": 51
+        },
+        "Cottbus": {
+          "expected": 40.9888,
+          "median": 41,
+          "p10": 36,
+          "p90": 46
+        },
+        "Dresden": {
+          "expected": 41.0988,
+          "median": 41,
+          "p10": 36,
+          "p90": 46
+        },
+        "Duisburg": {
+          "expected": 36.8058,
+          "median": 37,
+          "p10": 32,
+          "p90": 42
+        },
+        "Düsseldorf": {
+          "expected": 64.2678,
+          "median": 64,
+          "p10": 59,
+          "p90": 69
+        },
+        "Frankfurt": {
+          "expected": 69.6864,
+          "median": 70,
+          "p10": 65,
+          "p90": 75
+        },
+        "FSV Frankfurt": {
+          "expected": 35.8266,
+          "median": 36,
+          "p10": 31,
+          "p90": 41
+        },
+        "Fürth": {
+          "expected": 70.3092,
+          "median": 70,
+          "p10": 65,
+          "p90": 75
+        },
+        "Ingolstadt": {
+          "expected": 37.018,
+          "median": 37,
+          "p10": 32,
+          "p90": 42
+        },
+        "Karlsruhe": {
+          "expected": 28.5534,
+          "median": 28,
+          "p10": 24,
+          "p90": 34
+        },
+        "Paderborn": {
+          "expected": 58.8494,
+          "median": 59,
+          "p10": 54,
+          "p90": 64
+        },
+        "Rostock": {
+          "expected": 24.3058,
+          "median": 24,
+          "p10": 20,
+          "p90": 29
+        },
+        "St. Pauli": {
+          "expected": 62.015,
+          "median": 62,
+          "p10": 57,
+          "p90": 67
+        },
+        "Union Berlin": {
+          "expected": 48.0392,
+          "median": 48,
+          "p10": 43,
+          "p90": 53
+        }
+      }
+    },
+    {
+      "matchday": 28,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 252,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.141,
+          "Frankfurt": 0.9398,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.8602,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0056,
+          "Rostock": 0,
+          "St. Pauli": 0.0534,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0086,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.4974,
+          "Frankfurt": 0.0498,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.1066,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.081,
+          "Rostock": 0,
+          "St. Pauli": 0.2566,
+          "Union Berlin": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.1578,
+          "Aue": 0.9748,
+          "Bochum": 0.9914,
+          "Braunschweig": 1,
+          "Cottbus": 0.9884,
+          "Dresden": 0.9996,
+          "Duisburg": 0.9058,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.8612,
+          "Fürth": 1,
+          "Ingolstadt": 0.8934,
+          "Karlsruhe": 0.178,
+          "Paderborn": 1,
+          "Rostock": 0.0496,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.2746,
+          "Aue": 0.023,
+          "Bochum": 0.007,
+          "Braunschweig": 0,
+          "Cottbus": 0.0102,
+          "Dresden": 0.0004,
+          "Duisburg": 0.0718,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1026,
+          "Fürth": 0,
+          "Ingolstadt": 0.083,
+          "Karlsruhe": 0.3256,
+          "Paderborn": 0,
+          "Rostock": 0.1018,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.5676,
+          "Aue": 0.0022,
+          "Bochum": 0.0016,
+          "Braunschweig": 0,
+          "Cottbus": 0.0014,
+          "Dresden": 0,
+          "Duisburg": 0.0224,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.0362,
+          "Fürth": 0,
+          "Ingolstadt": 0.0236,
+          "Karlsruhe": 0.4964,
+          "Paderborn": 0,
+          "Rostock": 0.8486,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 54.446,
+          "median": 54,
+          "p10": 50,
+          "p90": 59
+        },
+        "Aachen": {
+          "expected": 28.7172,
+          "median": 29,
+          "p10": 24,
+          "p90": 33
+        },
+        "Aue": {
+          "expected": 38.9552,
+          "median": 39,
+          "p10": 35,
+          "p90": 44
+        },
+        "Bochum": {
+          "expected": 40.891,
+          "median": 41,
+          "p10": 36,
+          "p90": 46
+        },
+        "Braunschweig": {
+          "expected": 45.7172,
+          "median": 46,
+          "p10": 41,
+          "p90": 50
+        },
+        "Cottbus": {
+          "expected": 40.0274,
+          "median": 40,
+          "p10": 35,
+          "p90": 44
+        },
+        "Dresden": {
+          "expected": 43.1236,
+          "median": 43,
+          "p10": 39,
+          "p90": 48
+        },
+        "Duisburg": {
+          "expected": 36.4828,
+          "median": 36,
+          "p10": 32,
+          "p90": 41
+        },
+        "Düsseldorf": {
+          "expected": 63.7432,
+          "median": 64,
+          "p10": 59,
+          "p90": 68
+        },
+        "Frankfurt": {
+          "expected": 71.0636,
+          "median": 71,
+          "p10": 66,
+          "p90": 76
+        },
+        "FSV Frankfurt": {
+          "expected": 35.9592,
+          "median": 36,
+          "p10": 32,
+          "p90": 41
+        },
+        "Fürth": {
+          "expected": 69.8354,
+          "median": 70,
+          "p10": 65,
+          "p90": 74
+        },
+        "Ingolstadt": {
+          "expected": 36.6798,
+          "median": 37,
+          "p10": 32,
+          "p90": 41
+        },
+        "Karlsruhe": {
+          "expected": 30.0324,
+          "median": 30,
+          "p10": 26,
+          "p90": 35
+        },
+        "Paderborn": {
+          "expected": 58.5678,
+          "median": 58,
+          "p10": 54,
+          "p90": 63
+        },
+        "Rostock": {
+          "expected": 26.425,
+          "median": 26,
+          "p10": 22,
+          "p90": 31
+        },
+        "St. Pauli": {
+          "expected": 61.7994,
+          "median": 62,
+          "p10": 57,
+          "p90": 67
+        },
+        "Union Berlin": {
+          "expected": 46.8036,
+          "median": 47,
+          "p10": 42,
+          "p90": 52
+        }
+      }
+    },
+    {
+      "matchday": 29,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 261,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.054,
+          "Frankfurt": 0.949,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.9664,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0016,
+          "Rostock": 0,
+          "St. Pauli": 0.029,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0068,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.4924,
+          "Frankfurt": 0.045,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.0278,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.088,
+          "Rostock": 0,
+          "St. Pauli": 0.34,
+          "Union Berlin": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.093,
+          "Aue": 0.9618,
+          "Bochum": 0.9914,
+          "Braunschweig": 1,
+          "Cottbus": 0.9734,
+          "Dresden": 1,
+          "Duisburg": 0.9726,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.8622,
+          "Fürth": 1,
+          "Ingolstadt": 0.9032,
+          "Karlsruhe": 0.1696,
+          "Paderborn": 1,
+          "Rostock": 0.0728,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.2482,
+          "Aue": 0.0322,
+          "Bochum": 0.008,
+          "Braunschweig": 0,
+          "Cottbus": 0.0218,
+          "Dresden": 0,
+          "Duisburg": 0.0232,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1038,
+          "Fürth": 0,
+          "Ingolstadt": 0.0782,
+          "Karlsruhe": 0.31,
+          "Paderborn": 0,
+          "Rostock": 0.1746,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.6588,
+          "Aue": 0.006,
+          "Bochum": 0.0006,
+          "Braunschweig": 0,
+          "Cottbus": 0.0048,
+          "Dresden": 0,
+          "Duisburg": 0.0042,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.034,
+          "Fürth": 0,
+          "Ingolstadt": 0.0186,
+          "Karlsruhe": 0.5204,
+          "Paderborn": 0,
+          "Rostock": 0.7526,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 54.0762,
+          "median": 54,
+          "p10": 50,
+          "p90": 58
+        },
+        "Aachen": {
+          "expected": 28.487,
+          "median": 29,
+          "p10": 24,
+          "p90": 32
+        },
+        "Aue": {
+          "expected": 37.8112,
+          "median": 38,
+          "p10": 34,
+          "p90": 42
+        },
+        "Bochum": {
+          "expected": 39.8704,
+          "median": 40,
+          "p10": 36,
+          "p90": 44
+        },
+        "Braunschweig": {
+          "expected": 45.5516,
+          "median": 45,
+          "p10": 42,
+          "p90": 50
+        },
+        "Cottbus": {
+          "expected": 38.9064,
+          "median": 39,
+          "p10": 35,
+          "p90": 43
+        },
+        "Dresden": {
+          "expected": 42.6274,
+          "median": 42,
+          "p10": 39,
+          "p90": 47
+        },
+        "Duisburg": {
+          "expected": 38.0922,
+          "median": 38,
+          "p10": 34,
+          "p90": 42
+        },
+        "Düsseldorf": {
+          "expected": 62.0552,
+          "median": 62,
+          "p10": 58,
+          "p90": 66
+        },
+        "Frankfurt": {
+          "expected": 69.6356,
+          "median": 70,
+          "p10": 65,
+          "p90": 74
+        },
+        "FSV Frankfurt": {
+          "expected": 35.843,
+          "median": 36,
+          "p10": 32,
+          "p90": 40
+        },
+        "Fürth": {
+          "expected": 71.0792,
+          "median": 71,
+          "p10": 67,
+          "p90": 75
+        },
+        "Ingolstadt": {
+          "expected": 36.1556,
+          "median": 36,
+          "p10": 32,
+          "p90": 40
+        },
+        "Karlsruhe": {
+          "expected": 30.3434,
+          "median": 30,
+          "p10": 26,
+          "p90": 34
+        },
+        "Paderborn": {
+          "expected": 58.211,
+          "median": 58,
+          "p10": 54,
+          "p90": 62
+        },
+        "Rostock": {
+          "expected": 28.3046,
+          "median": 28,
+          "p10": 24,
+          "p90": 32
+        },
+        "St. Pauli": {
+          "expected": 61.224,
+          "median": 61,
+          "p10": 57,
+          "p90": 65
+        },
+        "Union Berlin": {
+          "expected": 48.305,
+          "median": 48,
+          "p10": 44,
+          "p90": 52
+        }
+      }
+    },
+    {
+      "matchday": 30,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 270,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.0836,
+          "Frankfurt": 0.9068,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.9562,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0068,
+          "Rostock": 0,
+          "St. Pauli": 0.0466,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0034,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.4506,
+          "Frankfurt": 0.0782,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.0338,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1042,
+          "Rostock": 0,
+          "St. Pauli": 0.3298,
+          "Union Berlin": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.1912,
+          "Aue": 0.8644,
+          "Bochum": 0.977,
+          "Braunschweig": 1,
+          "Cottbus": 0.9328,
+          "Dresden": 1,
+          "Duisburg": 0.9308,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.7628,
+          "Fürth": 1,
+          "Ingolstadt": 0.9012,
+          "Karlsruhe": 0.26,
+          "Paderborn": 1,
+          "Rostock": 0.1798,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1832,
+          "Aue": 0.0966,
+          "Bochum": 0.0184,
+          "Braunschweig": 0,
+          "Cottbus": 0.0466,
+          "Dresden": 0,
+          "Duisburg": 0.051,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.1376,
+          "Fürth": 0,
+          "Ingolstadt": 0.0684,
+          "Karlsruhe": 0.2276,
+          "Paderborn": 0,
+          "Rostock": 0.1706,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.6256,
+          "Aue": 0.039,
+          "Bochum": 0.0046,
+          "Braunschweig": 0,
+          "Cottbus": 0.0206,
+          "Dresden": 0,
+          "Duisburg": 0.0182,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.0996,
+          "Fürth": 0,
+          "Ingolstadt": 0.0304,
+          "Karlsruhe": 0.5124,
+          "Paderborn": 0,
+          "Rostock": 0.6496,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 55.384,
+          "median": 55,
+          "p10": 52,
+          "p90": 59
+        },
+        "Aachen": {
+          "expected": 30.1762,
+          "median": 30,
+          "p10": 26,
+          "p90": 34
+        },
+        "Aue": {
+          "expected": 36.0288,
+          "median": 36,
+          "p10": 32,
+          "p90": 40
+        },
+        "Bochum": {
+          "expected": 38.5038,
+          "median": 39,
+          "p10": 35,
+          "p90": 42
+        },
+        "Braunschweig": {
+          "expected": 45.411,
+          "median": 45,
+          "p10": 42,
+          "p90": 49
+        },
+        "Cottbus": {
+          "expected": 37.0486,
+          "median": 37,
+          "p10": 33,
+          "p90": 41
+        },
+        "Dresden": {
+          "expected": 41.4762,
+          "median": 41,
+          "p10": 38,
+          "p90": 45
+        },
+        "Duisburg": {
+          "expected": 36.9254,
+          "median": 37,
+          "p10": 33,
+          "p90": 41
+        },
+        "Düsseldorf": {
+          "expected": 63.1476,
+          "median": 63,
+          "p10": 60,
+          "p90": 67
+        },
+        "Frankfurt": {
+          "expected": 68.7354,
+          "median": 69,
+          "p10": 65,
+          "p90": 72
+        },
+        "FSV Frankfurt": {
+          "expected": 34.9688,
+          "median": 35,
+          "p10": 31,
+          "p90": 39
+        },
+        "Fürth": {
+          "expected": 70.4598,
+          "median": 71,
+          "p10": 67,
+          "p90": 74
+        },
+        "Ingolstadt": {
+          "expected": 36.3512,
+          "median": 36,
+          "p10": 33,
+          "p90": 40
+        },
+        "Karlsruhe": {
+          "expected": 31.695,
+          "median": 31,
+          "p10": 28,
+          "p90": 35
+        },
+        "Paderborn": {
+          "expected": 60.0836,
+          "median": 60,
+          "p10": 56,
+          "p90": 64
+        },
+        "Rostock": {
+          "expected": 30.5452,
+          "median": 30,
+          "p10": 27,
+          "p90": 34
+        },
+        "St. Pauli": {
+          "expected": 62.5082,
+          "median": 63,
+          "p10": 59,
+          "p90": 66
+        },
+        "Union Berlin": {
+          "expected": 47.3504,
+          "median": 47,
+          "p10": 44,
+          "p90": 51
+        }
+      }
+    },
+    {
+      "matchday": 31,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 279,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.0024,
+          "Frankfurt": 0.9932,
+          "FSV Frankfurt": 0,
+          "Fürth": 1,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.0044,
+          "Rostock": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0014,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.3576,
+          "Frankfurt": 0.0068,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.3204,
+          "Rostock": 0,
+          "St. Pauli": 0.3138,
+          "Union Berlin": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0.072,
+          "Aue": 0.8724,
+          "Bochum": 0.9874,
+          "Braunschweig": 1,
+          "Cottbus": 0.9314,
+          "Dresden": 1,
+          "Duisburg": 0.9974,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.9856,
+          "Fürth": 1,
+          "Ingolstadt": 0.9962,
+          "Karlsruhe": 0.1136,
+          "Paderborn": 1,
+          "Rostock": 0.044,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.2624,
+          "Aue": 0.1082,
+          "Bochum": 0.0124,
+          "Braunschweig": 0,
+          "Cottbus": 0.0596,
+          "Dresden": 0,
+          "Duisburg": 0.0026,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.0142,
+          "Fürth": 0,
+          "Ingolstadt": 0.0038,
+          "Karlsruhe": 0.3656,
+          "Paderborn": 0,
+          "Rostock": 0.1712,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.6656,
+          "Aue": 0.0194,
+          "Bochum": 0.0002,
+          "Braunschweig": 0,
+          "Cottbus": 0.009,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.0002,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0.5208,
+          "Paderborn": 0,
+          "Rostock": 0.7848,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 55.3924,
+          "median": 55,
+          "p10": 52,
+          "p90": 58
+        },
+        "Aachen": {
+          "expected": 29.0442,
+          "median": 29,
+          "p10": 26,
+          "p90": 32
+        },
+        "Aue": {
+          "expected": 35.2014,
+          "median": 35,
+          "p10": 32,
+          "p90": 38
+        },
+        "Bochum": {
+          "expected": 37.6926,
+          "median": 37,
+          "p10": 34,
+          "p90": 40
+        },
+        "Braunschweig": {
+          "expected": 44.3536,
+          "median": 44,
+          "p10": 41,
+          "p90": 47
+        },
+        "Cottbus": {
+          "expected": 35.6738,
+          "median": 35,
+          "p10": 32,
+          "p90": 38
+        },
+        "Dresden": {
+          "expected": 43.2986,
+          "median": 43,
+          "p10": 40,
+          "p90": 46
+        },
+        "Duisburg": {
+          "expected": 38.3426,
+          "median": 38,
+          "p10": 35,
+          "p90": 41
+        },
+        "Düsseldorf": {
+          "expected": 61.5676,
+          "median": 61,
+          "p10": 58,
+          "p90": 64
+        },
+        "Frankfurt": {
+          "expected": 69.892,
+          "median": 70,
+          "p10": 67,
+          "p90": 74
+        },
+        "FSV Frankfurt": {
+          "expected": 36.722,
+          "median": 37,
+          "p10": 34,
+          "p90": 40
+        },
+        "Fürth": {
+          "expected": 71.853,
+          "median": 72,
+          "p10": 68,
+          "p90": 76
+        },
+        "Ingolstadt": {
+          "expected": 37.6824,
+          "median": 38,
+          "p10": 35,
+          "p90": 41
+        },
+        "Karlsruhe": {
+          "expected": 30.6366,
+          "median": 31,
+          "p10": 28,
+          "p90": 34
+        },
+        "Paderborn": {
+          "expected": 61.8334,
+          "median": 62,
+          "p10": 59,
+          "p90": 65
+        },
+        "Rostock": {
+          "expected": 28.9986,
+          "median": 29,
+          "p10": 26,
+          "p90": 32
+        },
+        "St. Pauli": {
+          "expected": 61.297,
+          "median": 62,
+          "p10": 58,
+          "p90": 65
+        },
+        "Union Berlin": {
+          "expected": 48.6146,
+          "median": 48,
+          "p10": 46,
+          "p90": 52
+        }
+      }
+    },
+    {
+      "matchday": 32,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 288,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0,
+          "Fürth": 1,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0,
+          "Rostock": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.5202,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1154,
+          "Rostock": 0,
+          "St. Pauli": 0.3644,
+          "Union Berlin": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0,
+          "Aue": 0.8062,
+          "Bochum": 0.9954,
+          "Braunschweig": 1,
+          "Cottbus": 0.9372,
+          "Dresden": 1,
+          "Duisburg": 1,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0.9958,
+          "Fürth": 1,
+          "Ingolstadt": 0.9922,
+          "Karlsruhe": 0.2636,
+          "Paderborn": 1,
+          "Rostock": 0.0096,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.1004,
+          "Aue": 0.1856,
+          "Bochum": 0.0046,
+          "Braunschweig": 0,
+          "Cottbus": 0.0618,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0.0042,
+          "Fürth": 0,
+          "Ingolstadt": 0.0078,
+          "Karlsruhe": 0.5676,
+          "Paderborn": 0,
+          "Rostock": 0.068,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.8996,
+          "Aue": 0.0082,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0.001,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0.1688,
+          "Paderborn": 0,
+          "Rostock": 0.9224,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 56.6736,
+          "median": 57,
+          "p10": 54,
+          "p90": 60
+        },
+        "Aachen": {
+          "expected": 27.8258,
+          "median": 28,
+          "p10": 25,
+          "p90": 31
+        },
+        "Aue": {
+          "expected": 34.364,
+          "median": 35,
+          "p10": 32,
+          "p90": 38
+        },
+        "Bochum": {
+          "expected": 37.4698,
+          "median": 37,
+          "p10": 35,
+          "p90": 40
+        },
+        "Braunschweig": {
+          "expected": 44.1732,
+          "median": 44,
+          "p10": 42,
+          "p90": 46
+        },
+        "Cottbus": {
+          "expected": 35.191,
+          "median": 35,
+          "p10": 33,
+          "p90": 38
+        },
+        "Dresden": {
+          "expected": 43.3374,
+          "median": 44,
+          "p10": 41,
+          "p90": 45
+        },
+        "Duisburg": {
+          "expected": 37.767,
+          "median": 38,
+          "p10": 35,
+          "p90": 41
+        },
+        "Düsseldorf": {
+          "expected": 62.7832,
+          "median": 63,
+          "p10": 60,
+          "p90": 66
+        },
+        "Frankfurt": {
+          "expected": 71.3534,
+          "median": 71,
+          "p10": 69,
+          "p90": 74
+        },
+        "FSV Frankfurt": {
+          "expected": 36.6338,
+          "median": 37,
+          "p10": 34,
+          "p90": 40
+        },
+        "Fürth": {
+          "expected": 71.2514,
+          "median": 71,
+          "p10": 69,
+          "p90": 74
+        },
+        "Ingolstadt": {
+          "expected": 36.649,
+          "median": 37,
+          "p10": 34,
+          "p90": 40
+        },
+        "Karlsruhe": {
+          "expected": 32.1268,
+          "median": 32,
+          "p10": 30,
+          "p90": 34
+        },
+        "Paderborn": {
+          "expected": 60.6144,
+          "median": 61,
+          "p10": 58,
+          "p90": 64
+        },
+        "Rostock": {
+          "expected": 28.1748,
+          "median": 28,
+          "p10": 26,
+          "p90": 30
+        },
+        "St. Pauli": {
+          "expected": 62.3842,
+          "median": 62,
+          "p10": 60,
+          "p90": 65
+        },
+        "Union Berlin": {
+          "expected": 47.643,
+          "median": 48,
+          "p10": 45,
+          "p90": 51
+        }
+      }
+    },
+    {
+      "matchday": 33,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 297,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0,
+          "Fürth": 1,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0,
+          "Rostock": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0.6558,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0.1948,
+          "Rostock": 0,
+          "St. Pauli": 0.1494,
+          "Union Berlin": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0,
+          "Aue": 0.87,
+          "Bochum": 1,
+          "Braunschweig": 1,
+          "Cottbus": 0.9542,
+          "Dresden": 1,
+          "Duisburg": 1,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 1,
+          "Fürth": 1,
+          "Ingolstadt": 1,
+          "Karlsruhe": 0.1758,
+          "Paderborn": 1,
+          "Rostock": 0,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0.202,
+          "Aue": 0.13,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0.0458,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0.6222,
+          "Paderborn": 0,
+          "Rostock": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 0.798,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0.202,
+          "Paderborn": 0,
+          "Rostock": 1,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 58.6504,
+          "median": 58,
+          "p10": 57,
+          "p90": 60
+        },
+        "Aachen": {
+          "expected": 29.0972,
+          "median": 29,
+          "p10": 28,
+          "p90": 31
+        },
+        "Aue": {
+          "expected": 33.3056,
+          "median": 33,
+          "p10": 32,
+          "p90": 35
+        },
+        "Bochum": {
+          "expected": 38.4304,
+          "median": 38,
+          "p10": 37,
+          "p90": 40
+        },
+        "Braunschweig": {
+          "expected": 43.4222,
+          "median": 43,
+          "p10": 42,
+          "p90": 45
+        },
+        "Cottbus": {
+          "expected": 33.7872,
+          "median": 35,
+          "p10": 32,
+          "p90": 35
+        },
+        "Dresden": {
+          "expected": 45.1756,
+          "median": 45,
+          "p10": 44,
+          "p90": 47
+        },
+        "Duisburg": {
+          "expected": 39.1124,
+          "median": 39,
+          "p10": 38,
+          "p90": 41
+        },
+        "Düsseldorf": {
+          "expected": 62.6362,
+          "median": 62,
+          "p10": 61,
+          "p90": 64
+        },
+        "Frankfurt": {
+          "expected": 69.6356,
+          "median": 69,
+          "p10": 68,
+          "p90": 71
+        },
+        "FSV Frankfurt": {
+          "expected": 35.5632,
+          "median": 35,
+          "p10": 34,
+          "p90": 37
+        },
+        "Fürth": {
+          "expected": 70.6466,
+          "median": 70,
+          "p10": 69,
+          "p90": 72
+        },
+        "Ingolstadt": {
+          "expected": 38.3226,
+          "median": 38,
+          "p10": 37,
+          "p90": 40
+        },
+        "Karlsruhe": {
+          "expected": 31.101,
+          "median": 31,
+          "p10": 30,
+          "p90": 33
+        },
+        "Paderborn": {
+          "expected": 61.9304,
+          "median": 61,
+          "p10": 61,
+          "p90": 64
+        },
+        "Rostock": {
+          "expected": 27.1012,
+          "median": 27,
+          "p10": 26,
+          "p90": 29
+        },
+        "St. Pauli": {
+          "expected": 60.8238,
+          "median": 62,
+          "p10": 59,
+          "p90": 62
+        },
+        "Union Berlin": {
+          "expected": 48.9634,
+          "median": 48,
+          "p10": 48,
+          "p90": 51
+        }
+      }
+    },
+    {
+      "matchday": 34,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 306,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 0,
+          "Fürth": 1,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0,
+          "Rostock": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 1,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0,
+          "Rostock": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 1,
+          "Aachen": 0,
+          "Aue": 1,
+          "Bochum": 1,
+          "Braunschweig": 1,
+          "Cottbus": 1,
+          "Dresden": 1,
+          "Duisburg": 1,
+          "Düsseldorf": 1,
+          "Frankfurt": 1,
+          "FSV Frankfurt": 1,
+          "Fürth": 1,
+          "Ingolstadt": 1,
+          "Karlsruhe": 0,
+          "Paderborn": 1,
+          "Rostock": 0,
+          "St. Pauli": 1,
+          "Union Berlin": 1
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0,
+          "Aachen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 1,
+          "Paderborn": 0,
+          "Rostock": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aachen": 1,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Cottbus": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Düsseldorf": 0,
+          "Frankfurt": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Ingolstadt": 0,
+          "Karlsruhe": 0,
+          "Paderborn": 0,
+          "Rostock": 1,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 57,
+          "median": 57,
+          "p10": 57,
+          "p90": 57
+        },
+        "Aachen": {
+          "expected": 31,
+          "median": 31,
+          "p10": 31,
+          "p90": 31
+        },
+        "Aue": {
+          "expected": 35,
+          "median": 35,
+          "p10": 35,
+          "p90": 35
+        },
+        "Bochum": {
+          "expected": 37,
+          "median": 37,
+          "p10": 37,
+          "p90": 37
+        },
+        "Braunschweig": {
+          "expected": 45,
+          "median": 45,
+          "p10": 45,
+          "p90": 45
+        },
+        "Cottbus": {
+          "expected": 35,
+          "median": 35,
+          "p10": 35,
+          "p90": 35
+        },
+        "Dresden": {
+          "expected": 45,
+          "median": 45,
+          "p10": 45,
+          "p90": 45
+        },
+        "Duisburg": {
+          "expected": 39,
+          "median": 39,
+          "p10": 39,
+          "p90": 39
+        },
+        "Düsseldorf": {
+          "expected": 62,
+          "median": 62,
+          "p10": 62,
+          "p90": 62
+        },
+        "Frankfurt": {
+          "expected": 68,
+          "median": 68,
+          "p10": 68,
+          "p90": 68
+        },
+        "FSV Frankfurt": {
+          "expected": 35,
+          "median": 35,
+          "p10": 35,
+          "p90": 35
+        },
+        "Fürth": {
+          "expected": 70,
+          "median": 70,
+          "p10": 70,
+          "p90": 70
+        },
+        "Ingolstadt": {
+          "expected": 37,
+          "median": 37,
+          "p10": 37,
+          "p90": 37
+        },
+        "Karlsruhe": {
+          "expected": 33,
+          "median": 33,
+          "p10": 33,
+          "p90": 33
+        },
+        "Paderborn": {
+          "expected": 61,
+          "median": 61,
+          "p10": 61,
+          "p90": 61
+        },
+        "Rostock": {
+          "expected": 27,
+          "median": 27,
+          "p10": 27,
+          "p90": 27
+        },
+        "St. Pauli": {
+          "expected": 62,
+          "median": 62,
+          "p10": 62,
+          "p90": 62
+        },
+        "Union Berlin": {
+          "expected": 48,
+          "median": 48,
+          "p10": 48,
+          "p90": 48
+        }
+      }
+    }
+  ],
+  "computed": 35
+}
