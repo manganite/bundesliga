@@ -1,7 +1,10 @@
 import { useMemo, useState } from "react";
 import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
-import { currentTable, scoredMatches, scoredMatchesFrozen, ratingAgeEntries, rulesFrom } from "../lib/season.js";
+import ChartLegend from "../components/ChartLegend.jsx";
+import ChartTooltip from "../components/ChartTooltip.jsx";
+import { HitAreas, useActivePoint } from "../components/ChartInteractive.jsx";
+import { currentTable, scoredMatches, scoredMatchesFrozen, ratingAgeEntries, rulesFrom, nonCarriedScored } from "../lib/season.js";
 import { IN_SAMPLE_NOTE } from "../lib/archive.js";
 import { percent, number, integer, signedInt, signed, pp, points } from "../lib/format.js";
 import { outcomeColor, perfColor } from "../lib/colors.js";
@@ -13,7 +16,7 @@ import {
 } from "../../../../packages/engine/src/modelQuality.mjs";
 import {
   accuracy, brierScore, logLoss, calibration, calibrationSentence, performanceVsExpectation,
-  RANDOM_BASELINE,
+  cumulativeSeries, RANDOM_BASELINE,
 } from "../../../../packages/engine/src/metrics.mjs";
 
 /**
@@ -68,7 +71,8 @@ export default function Modellguete({ ctx }) {
 
       <div className="stack">
         <Kalibrierung scored={scored} quality={quality} expert={expert} />
-        <TreffsicherheitUeberZeit scored={scored} season={season} />
+        <TreffsicherheitUeberZeit scored={scored} />
+        <BrierLogLossUeberZeit scored={scored} />
         <LiveVsEingefroren
           scored={scored}
           frozen={scoredMatchesFrozen(season, timeline, params, league)}
@@ -162,35 +166,87 @@ function Kalibrierung({ scored, quality, expert }) {
           <text x={x(1) - 24} y={height - 8} className="axis-label">100 %</text>
         </Chart>
       ) : (
-        <Chart
-          title="Kalibrierung als Balken"
-          ariaLabel={
-            `Balkendiagramm mit ${cal.buckets.length} Klassen. Je Klasse steht der hellere Balken für die `
-            + "gesagte Wahrscheinlichkeit und der dunklere für den tatsächlich eingetretenen Anteil. "
-            + "Gleich hohe Balken bedeuten eine gut kalibrierte Vorhersage."
-          }
-          width={width}
-          height={height}
-          caption="Je Klasse: links gesagt, rechts eingetreten. Gleich hoch heißt gut kalibriert."
-          table={calTable(cal)}
-        >
-          {cal.buckets.map((b, i) => {
-            const slot = plotW / cal.buckets.length;
-            const bx = pad.left + i * slot;
-            const w = slot / 2 - 3;
-            return (
-              <g key={b.from} opacity={b.reliable ? 1 : 0.4}>
-                <rect x={bx + 2} y={y(b.meanPredicted)} width={w} height={y(0) - y(b.meanPredicted)} fill="var(--heat-2)" />
-                <rect x={bx + 4 + w} y={y(b.observedFrequency)} width={w} height={y(0) - y(b.observedFrequency)} fill="var(--accent)" />
-                <text x={bx + slot / 2} y={height - 8} textAnchor="middle" className="axis-label">
-                  {Math.round(b.from * 100)}
-                </text>
-              </g>
-            );
-          })}
-        </Chart>
+        <KalibrierungBalken cal={cal} width={width} height={height} pad={pad} plotW={plotW} y={y} />
       )}
     </Card>
+  );
+}
+
+// §CHART_AUSBAU §3: the calibration bars gain a % Y-axis, a legend for the two
+// series („gesagt"/„eingetreten"), and a per-class tooltip (range, n, both
+// values, the difference in percentage points). Anchored leitsatz and sample above
+// are untouched.
+function KalibrierungBalken({ cal, width, height, pad, plotW, y }) {
+  const slot = plotW / cal.buckets.length;
+  const bw = slot / 2 - 3;
+  const centre = (i) => pad.left + i * slot + slot / 2;
+  const { active, setActive, onKeyDown } = useActivePoint(cal.buckets.length);
+
+  return (
+    <>
+      <Chart
+        title="Kalibrierung als Balken"
+        ariaLabel={
+          `Balkendiagramm mit ${cal.buckets.length} Klassen. Je Klasse steht der hellere Balken für die `
+          + "gesagte Wahrscheinlichkeit und der dunklere für den tatsächlich eingetretenen Anteil. "
+          + "Gleich hohe Balken bedeuten eine gut kalibrierte Vorhersage."
+        }
+        width={width}
+        height={height}
+        caption="Je Klasse: links gesagt, rechts eingetreten. Gleich hoch heißt gut kalibriert."
+        table={calTable(cal)}
+      >
+        {[0, 0.25, 0.5, 0.75, 1].map((v) => (
+          <g key={v}>
+            <line x1={pad.left} y1={y(v)} x2={width - pad.right} y2={y(v)} className="grid-line" />
+            <text x={pad.left - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{Math.round(v * 100)} %</text>
+          </g>
+        ))}
+        <text x={10} y={pad.top + 4} className="axis-title">%</text>
+        {cal.buckets.map((b, i) => {
+          const bx = pad.left + i * slot;
+          return (
+            <g key={b.from} opacity={b.reliable ? (active == null || active === i ? 1 : 0.5) : 0.4}>
+              <rect x={bx + 2} y={y(b.meanPredicted)} width={bw} height={y(0) - y(b.meanPredicted)} fill="var(--heat-2)" />
+              <rect x={bx + 4 + bw} y={y(b.observedFrequency)} width={bw} height={y(0) - y(b.observedFrequency)} fill="var(--accent)" />
+              <text x={bx + slot / 2} y={height - 8} textAnchor="middle" className="axis-label">
+                {Math.round(b.from * 100)}
+              </text>
+            </g>
+          );
+        })}
+        <HitAreas
+          centers={cal.buckets.map((_, i) => centre(i))}
+          top={pad.top}
+          bottom={y(0)}
+          active={active}
+          setActive={setActive}
+          onKeyDown={onKeyDown}
+          labelAt={(i) => `${Math.round(cal.buckets[i].from * 100)}–${Math.round(cal.buckets[i].to * 100)} %: gesagt ${percent(cal.buckets[i].meanPredicted, 1)}, eingetreten ${percent(cal.buckets[i].observedFrequency, 1)}, n ${cal.buckets[i].n}`}
+        />
+        {active != null ? (
+          <ChartTooltip
+            x={centre(active)}
+            width={width}
+            title={`${Math.round(cal.buckets[active].from * 100)}–${Math.round(cal.buckets[active].to * 100)} %`}
+            rows={[
+              { label: "gesagt", value: percent(cal.buckets[active].meanPredicted, 1), color: "var(--heat-2)" },
+              { label: "eingetreten", value: percent(cal.buckets[active].observedFrequency, 1), color: "var(--accent)" },
+            ]}
+            context={[
+              `n = ${cal.buckets[active].n}${cal.buckets[active].reliable ? "" : " (zu wenig, blass)"}`,
+              `Differenz ${points(Math.abs(cal.buckets[active].observedFrequency - cal.buckets[active].meanPredicted))}`,
+            ]}
+          />
+        ) : null}
+      </Chart>
+      <ChartLegend
+        items={[
+          { key: "gesagt", label: "gesagt", color: "var(--heat-2)" },
+          { key: "eingetreten", label: "eingetreten", color: "var(--accent)" },
+        ]}
+      />
+    </>
   );
 }
 
@@ -209,40 +265,9 @@ const calTable = (cal) => ({
 //  Treffsicherheit über die Zeit — §8: the direction differs per chart.
 // ---------------------------------------------------------------------------
 
-function TreffsicherheitUeberZeit({ scored, season }) {
-  const byMatchday = useMemo(() => {
-    const md = new Map(season.fixtures.map((f) => [f.id, f.matchday]));
-    const grouped = new Map();
-    for (const s of scored) {
-      const m = md.get(s.fixture.id);
-      if (!grouped.has(m)) grouped.set(m, []);
-      grouped.get(m).push(s);
-    }
-    const days = [...grouped.keys()].sort((a, b) => a - b);
-    const running = [];
-    let acc = [];
-    for (const d of days) {
-      acc = acc.concat(grouped.get(d));
-      running.push({
-        matchday: d,
-        accuracy: accuracy(acc).value,
-        logLoss: logLoss(acc).value,
-        brier: brierScore(acc).value,
-        n: acc.length,
-      });
-    }
-    return running;
-  }, [scored, season]);
-
-  if (byMatchday.length < 2) return null;
-
-  const width = 520;
-  const height = 220;
-  const pad = { left: 44, right: 12, top: 12, bottom: 30 };
-  const plotW = width - pad.left - pad.right;
-  const plotH = height - pad.top - pad.bottom;
-  const x = (i) => pad.left + (i / Math.max(1, byMatchday.length - 1)) * plotW;
-  const yAcc = (v) => pad.top + (1 - v) * plotH;
+function TreffsicherheitUeberZeit({ scored }) {
+  const series = useMemo(() => cumulativeSeries(nonCarriedScored(scored), accuracy), [scored]);
+  if (series.length < 2) return null;
 
   return (
     <Card
@@ -256,38 +281,158 @@ function TreffsicherheitUeberZeit({ scored, season }) {
         + "nicht dasselbe und werden hier nicht zusammengeworfen."
       }
     >
-      <Chart
+      <GuetereiheChart
         title="Treffsicherheit je Spieltag, laufend"
         ariaLabel={
-          `Liniendiagramm über ${byMatchday.length} Spieltage. Die Linie ist der laufende Anteil `
-          + `richtig vorhergesagter Ausgänge; die waagerechte Linie bei ${percent(RANDOM_BASELINE.accuracy, 0)} `
-          + "markiert blindes Raten. Die Zahlen stehen in der Tabelle darunter."
+          `Liniendiagramm über ${series.length} Spieltage. Die durchgezogene Linie ist der laufende Anteil `
+          + `richtig vorhergesagter Ausgänge, die blassen Punkte der Wert des einzelnen Spieltags; die waagerechte `
+          + `Linie bei ${percent(RANDOM_BASELINE.accuracy, 0)} markiert blindes Raten. Die Zahlen stehen in der Tabelle darunter.`
         }
-        width={width}
-        height={height}
-        caption="Höher ist besser. Die waagerechte Linie ist der Zufallswert von einem Drittel."
-        table={{
-          columns: ["Spieltag", "Treffsicherheit", "Log-Loss", "Brier", "Spiele"],
-          rows: byMatchday.map((r) => [
-            String(r.matchday), percent(r.accuracy, 1), number(r.logLoss, 3), number(r.brier, 3), String(r.n),
-          ]),
-        }}
-      >
-        <line
-          x1={pad.left} y1={yAcc(RANDOM_BASELINE.accuracy)}
-          x2={pad.left + plotW} y2={yAcc(RANDOM_BASELINE.accuracy)}
-          className="grid-line" strokeDasharray="4 3"
-        />
-        <polyline
-          fill="none"
-          stroke="var(--accent)"
-          strokeWidth="2"
-          points={byMatchday.map((r, i) => `${x(i)},${yAcc(r.accuracy)}`).join(" ")}
-        />
-        <text x={pad.left - 6} y={yAcc(RANDOM_BASELINE.accuracy) + 4} textAnchor="end" className="axis-label">33 %</text>
-        <text x={pad.left - 6} y={yAcc(1) + 4} textAnchor="end" className="axis-label">100 %</text>
-      </Chart>
+        caption="Höher ist besser. Die blassen Punkte sind der einzelne Spieltag (verrauscht); die gestrichelte Linie ist der Zufallswert von einem Drittel."
+        series={series}
+        yMax={1}
+        yFmt={(v) => percent(v, 1)}
+        yTicks={[0, 0.25, 0.5, 0.75, 1]}
+        reference={{ value: RANDOM_BASELINE.accuracy, label: `Zufall ${percent(RANDOM_BASELINE.accuracy, 0)}` }}
+        valueName="Treffsicherheit"
+        unit="%"
+      />
     </Card>
+  );
+}
+
+// §CHART_AUSBAU §4.2 — Brier and Log-Loss over time, two mini-charts on WM
+// footing: cumulative curve, pale per-matchday points, a labelled random
+// reference. Lower is better. The last cumulative point equals the season figure
+// by construction (`cumulativeSeries`).
+function BrierLogLossUeberZeit({ scored }) {
+  const curves = useMemo(() => {
+    const s = nonCarriedScored(scored);
+    return { brier: cumulativeSeries(s, brierScore), logLoss: cumulativeSeries(s, logLoss) };
+  }, [scored]);
+  if (curves.brier.length < 2) return null;
+
+  const yMaxFor = (series, ref) => {
+    const hi = Math.max(ref, ...series.flatMap((p) => [p.cumulative ?? 0, p.matchdayValue ?? 0]));
+    return Math.ceil(hi * 1.1 * 10) / 10;
+  };
+  const brierMax = yMaxFor(curves.brier, RANDOM_BASELINE.brier);
+  const logMax = yMaxFor(curves.logLoss, RANDOM_BASELINE.logLoss);
+
+  return (
+    <Card
+      title="Brier & Log-Loss über die Zeit"
+      caption="Zwei strengere Gütemaße als die reine Treffsicherheit — sie bewerten die ganze Wahrscheinlichkeitsverteilung, nicht nur den wahrscheinlichsten Ausgang. Bei beiden gilt: niedriger ist besser."
+      method={
+        <p className="caption" style={{ marginTop: "0.5rem" }}>
+          Kumulativ heißt: jeder Punkt fasst alle Spiele bis zu diesem Spieltag zusammen; der letzte
+          Punkt ist damit exakt der Gesamtwert der Saison. Die blassen Punkte sind der einzelne
+          Spieltag und schwanken stark. Übertragene ältere Ratings zählen hier nicht mit — wie bei
+          den Gesamtwerten. Zufallswerte (gleichverteilter Drittel-Tipp): Brier {number(RANDOM_BASELINE.brier, 3)},
+          Log-Loss {number(RANDOM_BASELINE.logLoss, 3)}.
+        </p>
+      }
+    >
+      <div className="chart-pair">
+        <GuetereiheChart
+          title="Brier je Spieltag, laufend"
+          ariaLabel={`Liniendiagramm des laufenden Brier-Scores über ${curves.brier.length} Spieltage; niedriger ist besser, die gestrichelte Linie bei ${number(RANDOM_BASELINE.brier, 3)} ist der Zufallswert.`}
+          caption={`Brier — niedriger ist besser. Gesamt: ${number(curves.brier.at(-1).cumulative, 3)}.`}
+          series={curves.brier}
+          yMax={brierMax}
+          yFmt={(v) => number(v, 3)}
+          yTicks={[0, brierMax / 2, brierMax]}
+          reference={{ value: RANDOM_BASELINE.brier, label: `Zufall ${number(RANDOM_BASELINE.brier, 2)}` }}
+          valueName="Brier"
+          unit="Brier"
+        />
+        <GuetereiheChart
+          title="Log-Loss je Spieltag, laufend"
+          ariaLabel={`Liniendiagramm des laufenden Log-Loss über ${curves.logLoss.length} Spieltage; niedriger ist besser, die gestrichelte Linie bei ${number(RANDOM_BASELINE.logLoss, 3)} ist der Zufallswert.`}
+          caption={`Log-Loss — niedriger ist besser. Gesamt: ${number(curves.logLoss.at(-1).cumulative, 3)}.`}
+          series={curves.logLoss}
+          yMax={logMax}
+          yFmt={(v) => number(v, 3)}
+          yTicks={[0, logMax / 2, logMax]}
+          reference={{ value: RANDOM_BASELINE.logLoss, label: `Zufall ${number(RANDOM_BASELINE.logLoss, 2)}` }}
+          valueName="Log-Loss"
+          unit="Log-Loss"
+        />
+      </div>
+    </Card>
+  );
+}
+
+// The shared mini-chart behind §4.1/§4.2: a cumulative line, pale per-matchday
+// points, a labelled dashed reference, and the shared tooltip. One drawing, three
+// metrics.
+function GuetereiheChart({ title, ariaLabel, caption, series, yMax, yFmt, yTicks, reference, valueName, unit, width = 520, height = 200 }) {
+  const pad = { left: 46, right: 12, top: 12, bottom: 30 };
+  const plotW = width - pad.left - pad.right;
+  const plotH = height - pad.top - pad.bottom;
+  const n = series.length;
+  const x = (i) => pad.left + (n <= 1 ? 0.5 : i / (n - 1)) * plotW;
+  const y = (v) => pad.top + (1 - Math.max(0, Math.min(1, v / yMax))) * plotH;
+  const { active, setActive, onKeyDown } = useActivePoint(n);
+  const centers = series.map((_, i) => x(i));
+
+  return (
+    <Chart
+      title={title}
+      ariaLabel={ariaLabel}
+      width={width}
+      height={height}
+      caption={caption}
+      table={{
+        columns: ["Spieltag", `${valueName} kumulativ`, "nur dieser Spieltag", "Spiele"],
+        rows: series.map((p) => [String(p.matchday), yFmt(p.cumulative), yFmt(p.matchdayValue), String(p.n)]),
+      }}
+    >
+      {yTicks.map((v) => (
+        <g key={v}>
+          <line x1={pad.left} y1={y(v)} x2={width - pad.right} y2={y(v)} className="grid-line" />
+          <text x={pad.left - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{yFmt(v)}</text>
+        </g>
+      ))}
+      <text x={10} y={pad.top + 4} className="axis-title">{unit}</text>
+      {reference ? (
+        <>
+          <line x1={pad.left} y1={y(reference.value)} x2={width - pad.right} y2={y(reference.value)} className="ref-line" />
+          <text x={width - pad.right} y={y(reference.value) - 4} textAnchor="end" className="axis-label">{reference.label}</text>
+        </>
+      ) : null}
+      {series.map((p, i) => (
+        <circle key={`pt-${p.matchday}`} cx={x(i)} cy={y(p.matchdayValue)} r="2.5" fill="var(--accent)" opacity="0.3" />
+      ))}
+      <polyline
+        fill="none"
+        stroke="var(--accent)"
+        strokeWidth="2"
+        points={series.map((p, i) => `${x(i)},${y(p.cumulative)}`).join(" ")}
+      />
+      <text x={width - pad.right} y={height - 8} textAnchor="end" className="axis-label">Spieltag</text>
+      <HitAreas
+        centers={centers}
+        top={pad.top}
+        bottom={pad.top + plotH}
+        active={active}
+        setActive={setActive}
+        onKeyDown={onKeyDown}
+        labelAt={(i) => `${series[i].matchday}. Spieltag: ${valueName} kumulativ ${yFmt(series[i].cumulative)}, dieser Spieltag ${yFmt(series[i].matchdayValue)}, ${series[i].n} Spiele`}
+      />
+      {active != null ? (
+        <ChartTooltip
+          x={centers[active]}
+          width={width}
+          title={`${series[active].matchday}. Spieltag`}
+          rows={[
+            { label: `${valueName} kumulativ`, value: yFmt(series[active].cumulative), color: "var(--accent)" },
+            { label: "nur dieser Spieltag", value: yFmt(series[active].matchdayValue) },
+          ]}
+          context={[`${series[active].n} Spiele bis hier`]}
+        />
+      ) : null}
+    </Chart>
   );
 }
 

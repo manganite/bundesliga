@@ -5,7 +5,8 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
-import { matchdaySurprises } from "../src/lib/season.js";
+import { matchdaySurprises, nonCarriedScored } from "../src/lib/season.js";
+import { brierScore } from "../../../packages/engine/src/metrics.mjs";
 
 // ============================================================================
 //  CHART_AUSBAU §0/§2 — shared tooltip/legend infrastructure and the Teams
@@ -18,7 +19,7 @@ const strip = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 const srcOf = (rel) => fs.readFileSync(path.join(REPO, rel), "utf8");
 
 const PARAMS = read("data/season-params.json");
-const { Teams, Verlauf, ChartLegend, ChartTooltip } = await harness();
+const { Teams, Verlauf, Modellguete, ChartLegend, ChartTooltip } = await harness();
 
 function ctxFor(season, league) {
   const config = read(`data/seasons/${season}/config.json`);
@@ -184,4 +185,55 @@ test("Verlauf: the multi-club chart carries the keyboard hit areas with a matchd
   const html = renderVerlauf(ctx);
   assert.match(html, /<rect[^>]*tabindex="0"[^>]*role="button"/);
   assert.match(html, /aria-label="[^"]*Spieltag[^"]*"/);
+});
+
+// ---------------------------------------------------------------------------
+//  §3 · Kalibrierung — % axis, legend, per-class tooltip fallback.
+//  §4 · Güte-Zeitreihen — cumulative + matchday points, last point ≡ Gesamt.
+// ---------------------------------------------------------------------------
+
+const MODELL = { ...ctxFor(2015, "bl1"), isArchive: true };
+const renderModell = (ctx) => renderToStaticMarkup(React.createElement(Modellguete, { ctx }));
+
+test("Kalibrierung bars: % Y-axis, a legend for gesagt/eingetreten, per-class hit summary", () => {
+  const html = renderModell(MODELL);
+  assert.match(html, /class="chart-legend"/);
+  assert.match(strip(html), /gesagt\s+eingetreten/);
+  assert.match(html, /class="axis-title"/);
+  // The per-class keyboard summary carries both series and n (the tooltip content).
+  assert.match(html, /aria-label="[^"]*gesagt[^"]*eingetreten[^"]*n [0-9]/);
+});
+
+test("Treffsicherheit über die Zeit: cumulative line PLUS pale matchday points and a labelled random reference", () => {
+  const html = renderModell(MODELL);
+  assert.match(html, /Treffsicherheit über die Zeit/);
+  assert.match(html, /<polyline/); // the cumulative line
+  assert.match(html, /<circle[^>]*opacity="0.3"/); // the pale per-matchday points
+  assert.match(html, /class="ref-line"/);
+  assert.match(strip(html), /Zufall 33 %/);
+});
+
+test("Brier and Log-Loss card renders both cumulative curves with a stated Gesamt and the lower-is-better direction", () => {
+  const html = renderModell(MODELL);
+  assert.match(html, /Brier &amp; Log-Loss über die Zeit/);
+  assert.match(strip(html), /niedriger ist besser/);
+  // Both mini-charts state their season figure; the identity last-point ≡ Gesamt
+  // is pinned exactly in the engine test (chartAggregations).
+  assert.match(strip(html), /Brier — niedriger ist besser\. Gesamt: \d,\d\d\d/);
+  assert.match(strip(html), /Log-Loss — niedriger ist besser\. Gesamt: \d,\d\d\d/);
+  // Carried-forward stays out of the curves (stated in the method text).
+  assert.match(strip(html), /Übertragene ältere Ratings zählen hier nicht mit/);
+});
+
+test("nonCarriedScored drops carried-forward entries from the curves (Bestandsmechanik)", () => {
+  const scored = [
+    { fixture: { matchday: 1 }, provenance: "contemporaneous", prediction: { homeWin: 0.5, draw: 0.3, awayWin: 0.2 }, actual: "homeWin" },
+    { fixture: { matchday: 1 }, provenance: "carried-forward", prediction: { homeWin: 0.4, draw: 0.3, awayWin: 0.3 }, actual: "draw" },
+    { fixture: { matchday: 2 }, provenance: "backfilled", prediction: { homeWin: 0.6, draw: 0.25, awayWin: 0.15 }, actual: "awayWin" },
+  ];
+  const kept = nonCarriedScored(scored);
+  assert.equal(kept.length, 2);
+  assert.ok(!kept.some((s) => s.provenance === "carried-forward"));
+  // The curve figure over the kept set differs from the full set — proof the drop matters.
+  assert.notEqual(brierScore(kept).value, brierScore(scored).value);
 });

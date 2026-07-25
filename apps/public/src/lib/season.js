@@ -359,6 +359,14 @@ export function matchdaySurprises(scored, nameOf, k = 2) {
 // tooltip string is produced in exactly one place.
 const deBit = (v) => `${(Math.round(v * 10) / 10).toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} bit`;
 
+/**
+ * The scored matches that belong in a quality CURVE or headline figure
+ * (§CHART_AUSBAU §4.2): carried-forward ratings are a retrospective stand-in and
+ * stay out, exactly as they stay out of the pooled figures (§5.3). Empty of
+ * carried-forward in every committed season today; guarded and tested anyway.
+ */
+export const nonCarriedScored = (scored) => scored.filter((s) => s.provenance !== "carried-forward");
+
 /** A fixture's prediction, for an unplayed match. */
 export function predictFixture(fixture, prematch, params, league) {
   if (!prematch || !params) return null;
