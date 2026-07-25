@@ -47,6 +47,13 @@ export default function App() {
   // unqualified visit means, never because the manifest happens to list it first.
   const [league, setLeague] = useState("bl1");
   const [available, setAvailable] = useState([]);
+  // The SEASON is the second global dimension (§V2b.1 §2). `null` follows the
+  // newest committed season — the default an unqualified visit means; a chosen
+  // value pins an archive season. Like the league, it is user state, survives a
+  // page change, and decides what every number below means.
+  const [season, setSeason] = useState(null);
+  const [seasons, setSeasons] = useState([]);
+  const [newestSeason, setNewestSeason] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -57,30 +64,36 @@ export default function App() {
           if (!cancelled) setState({ status: "empty" });
           return;
         }
-        // The newest committed season. Never hardcoded (§5.5).
+        // The newest committed season is the live one. Never hardcoded (§5.5).
         const newest = manifest.seasons[manifest.seasons.length - 1];
-        const present = LEAGUES.filter((l) => newest.leagues.some((e) => e.league === l));
-        // A league with no committed data is not offered at all. Offering a
-        // toggle that leads to an empty page would be worse than no toggle.
+        const allSeasons = manifest.seasons.map((s) => s.season);
+        const selectedSeason = season ?? newest.season;
+        const entry = manifest.seasons.find((s) => s.season === selectedSeason) ?? newest;
+        const present = LEAGUES.filter((l) => entry.leagues.some((e) => e.league === l));
+        // A league with no committed data for this season is not offered at all.
         const chosen = present.includes(league) ? league : present[0];
         if (!chosen) { if (!cancelled) setState({ status: "empty" }); return; }
-        if (!cancelled) setAvailable(present);
+        if (!cancelled) { setAvailable(present); setSeasons(allSeasons); setNewestSeason(newest.season); }
         if (chosen !== league) { if (!cancelled) setLeague(chosen); return; }
-        // Deliberately NOT keeping the previous league's data on screen while the
-        // new one loads: that would put one league's numbers under the other
-        // league's heading for a moment, which is the exact confusion the
-        // labelling exists to prevent.
+        // Deliberately NOT keeping the previous data on screen while the new one
+        // loads: that would put one season/league's numbers under the other's
+        // heading for a moment, the exact confusion the labelling prevents.
         if (!cancelled) setState({ status: "loading" });
-        const data = await loadLeagueSeason(newest.season, chosen);
-        if (!cancelled) setState({ status: "ready", seasonId: newest.season, league: chosen, data });
+        const data = await loadLeagueSeason(selectedSeason, chosen);
+        // An ARCHIVE season is any committed season that is not the live one.
+        const isArchive = selectedSeason !== newest.season;
+        if (!cancelled) setState({ status: "ready", seasonId: selectedSeason, league: chosen, data, isArchive });
       } catch (e) {
         if (!cancelled) setState({ status: "error", error: e.message });
       }
     })();
     return () => { cancelled = true; };
-  }, [league]);
+  }, [league, season]);
 
-  const shellProps = { league, available, onLeague: setLeague };
+  const shellProps = {
+    league, available, onLeague: setLeague,
+    seasons, season: season ?? newestSeason, newestSeason, onSeason: setSeason,
+  };
 
   if (state.status === "loading") {
     return <Shell {...shellProps}><p className="empty">Daten werden geladen …</p></Shell>;
@@ -109,11 +122,15 @@ export default function App() {
       {...state}
       available={available}
       onLeague={setLeague}
+      seasons={seasons}
+      season={season ?? newestSeason}
+      newestSeason={newestSeason}
+      onSeason={setSeason}
     />
   );
 }
 
-function Shell({ children, league, available = [], onLeague }) {
+function Shell({ children, league, available = [], onLeague, seasons = [], season, newestSeason, onSeason }) {
   return (
     <>
       <a className="skip-link" href="#inhalt">Zum Inhalt springen</a>
@@ -124,13 +141,45 @@ function Shell({ children, league, available = [], onLeague }) {
             Eine Monte-Carlo-Simulation der Bundesliga — rechnet nach jedem Spieltag mit den
             tatsächlichen Ergebnissen neu. Keine einmalige, starre Prognose.
           </p>
-          {/* The switch stays put while the new league loads, so the control the
+          {/* The switches stay put while the new data loads, so the control the
               reader just used never disappears under them. */}
-          {onLeague ? <LeagueSwitch league={league} available={available} onLeague={onLeague} /> : null}
+          <div className="header-switches">
+            {onSeason ? <SeasonSwitch seasons={seasons} season={season} newestSeason={newestSeason} onSeason={onSeason} /> : null}
+            {onLeague ? <LeagueSwitch league={league} available={available} onLeague={onLeague} /> : null}
+          </div>
         </div>
       </header>
       <div className="shell"><main id="inhalt">{children}</main></div>
     </>
+  );
+}
+
+/**
+ * The season selector — the second global dimension (§V2b.1 §2). A dropdown, not
+ * radios: the window spans 16 seasons, far too many for a radio row. The default
+ * is always the live season; an archive season is marked „· Archiv" so the reader
+ * never mistakes a replay for the current forecast.
+ */
+export function SeasonSwitch({ seasons, season, newestSeason, onSeason }) {
+  if (!seasons || seasons.length < 2) return null;
+  const isArchive = season !== newestSeason;
+  return (
+    <span className={isArchive ? "season-switch is-archive" : "season-switch"}>
+      <label>
+        <span className="visually-hidden">Saison wählen</span>
+        {/* Picking the live season sets `null`, not its year: that RESTORES the
+            „follow the newest committed season" default, so the app auto-follows
+            when a new season lands rather than staying pinned to today's year. */}
+        <select value={season} onChange={(e) => { const y = Number(e.target.value); onSeason(y === newestSeason ? null : y); }}>
+          {[...seasons].sort((a, b) => b - a).map((s) => (
+            <option key={s} value={s}>
+              {seasonLabel(s)}{s === newestSeason ? "" : " · Archiv"}
+            </option>
+          ))}
+        </select>
+      </label>
+      {isArchive ? <span className="archive-badge" title="Abgeschlossene Saison — Retrospektive">Archiv</span> : null}
+    </span>
   );
 }
 
@@ -163,7 +212,7 @@ function LeagueSwitch({ league, available, onLeague }) {
   );
 }
 
-function Ready({ route, seasonId, league, data, available, onLeague }) {
+export function Ready({ route, seasonId, league, data, isArchive = false, available, onLeague, seasons, season: seasonSel, newestSeason, onSeason }) {
   const { meta, config, season, outlook, timeline, timelineLive, prematch, params, playoff } = data;
 
   const clubs = useMemo(() => clubIndex(season), [season]);
@@ -177,12 +226,16 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
   const matchday = currentMatchday(season.fixtures);
   const phase = seasonPhase(season.fixtures);
   const phaseLabel = SEASON_PHASE_LABEL[phase];
-  const staleness = stalenessWarning(season.fixtures, new Date(), config.staleness?.graceHours ?? 6);
-  const stampWarning = configStampWarning(config, season.season);
+  // §V2b.1 §2.3: an ARCHIVE season is a finished replay — the live-only elements
+  // (results-overdue staleness, config-stamp mismatch, carry-forward, and the
+  // „season starts soon" label) must NEVER render. They are all tied to „now" or
+  // to the live data stand and would fire spuriously on a season from years ago.
+  const staleness = isArchive ? null : stalenessWarning(season.fixtures, new Date(), config.staleness?.graceHours ?? 6);
+  const stampWarning = isArchive ? null : configStampWarning(config, season.season);
   // §8: a forecast partly built on stale inputs must say so. Self-clearing —
   // the line disappears the moment clubelo lists the clubs again.
-  const carried = carriedRatings(outlook);
-  const carriedSummary = carriedRatingSummary(carried, nameOf);
+  const carried = isArchive ? [] : carriedRatings(outlook);
+  const carriedSummary = isArchive ? null : carriedRatingSummary(carried, nameOf);
 
   const active = PAGES.find((p) => p.id === route) ?? PAGES[0];
   const { Component } = active;
@@ -198,7 +251,7 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
   const ctx = {
     seasonId, league, leagueLabel: leagueLabel(league), leagueConfig, config, season,
     outlook, timeline, timelineLive, prematch, params, playoff,
-    clubs, nameOf, matchday, phase, carried,
+    clubs, nameOf, matchday, phase, carried, isArchive,
   };
 
   return (
@@ -213,18 +266,23 @@ function Ready({ route, seasonId, league, data, available, onLeague }) {
             tatsächlichen Ergebnissen neu. Keine einmalige, starre Prognose.
           </p>
 
-          <LeagueSwitch league={league} available={available} onLeague={onLeague} />
+          <div className="header-switches">
+            <SeasonSwitch seasons={seasons} season={seasonSel} newestSeason={newestSeason} onSeason={onSeason} />
+            <LeagueSwitch league={league} available={available} onLeague={onLeague} />
+          </div>
 
-          {/* Not one entry among many in the meta row: the league decides what
-              every number below means, so it is the heading. */}
-          <h2 className="league-heading">{heading}</h2>
+          {/* Not one entry among many in the meta row: the season and league
+              decide what every number below means, so they are the heading. */}
+          <h2 className="league-heading">
+            {heading}{isArchive ? <span className="archive-tag"> · Archiv</span> : null}
+          </h2>
 
           <div className="meta-row">
             <span>{phase === "preSeason" ? "vor dem 1. Spieltag" : `${matchday}. Spieltag`}</span>
-            {/* §5.1: stated neutrally. The app derives NO workflow-health claim
-                from this timestamp — an old value is normal in an international
-                break and all off-season. */}
-            <span>{formatDataUpdatedAt(meta?.dataUpdatedAt)}</span>
+            {/* The global „Datenstand" describes the LIVE season only; for an
+                archive it would be misleading, so it is replaced by the season's
+                state. §5.1: stated neutrally, no workflow-health claim. */}
+            <span>{isArchive ? "Abgeschlossene Saison" : formatDataUpdatedAt(meta?.dataUpdatedAt)}</span>
             <a href={REPO} rel="noreferrer">Quellcode und Methodik</a>
           </div>
 

@@ -179,12 +179,46 @@ body {
 /* The league toggle and the heading it controls.
    The heading is deliberately as loud as the site title: everything below it
    means something different per league, and a screenshot carries no toggle. */
+/* Season selector + league toggle sit side by side above the heading. */
+.header-switches {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin: 0.9rem 0 0;
+}
+.season-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.season-switch select {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+/* An archive season is marked so a replay is never mistaken for the live forecast. */
+.season-switch.is-archive select { border-color: var(--zone-relegation); }
+.archive-badge {
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--zone-relegation) 18%, transparent);
+  color: var(--zone-relegation);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.archive-tag { color: var(--zone-relegation); font-weight: 600; }
+
 .league-switch {
   display: flex;
   gap: 0.35rem;
   border: 0;
   padding: 0;
-  margin: 0.9rem 0 0;
+  margin: 0;
 }
 .league-switch label {
   display: inline-flex;

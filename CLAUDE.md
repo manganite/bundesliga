@@ -540,7 +540,16 @@ construction.
     2025/26 bleibt der Live-Pipeline-Stand (bessere Provenienz). Champions-Guard-Test
     prüft jede committete Saison gegen den echten Meister. Regeneration ist bitgleich
     (2015 zeigte beim Voll-Batch keinen Diff). **Nur committen, nie im Cron.**
-  - Phasen 3–5 (Saison-Dimension in der App, Seitenverhalten, Release 2.3.0) stehen aus.
+  - **Phase 3 (Saison-Dimension) gelandet:** Die Saison ist die zweite globale
+    Dimension in `App.jsx` (State `season`, `null` = neueste; Wähler `SeasonSwitch`
+    als Dropdown neben dem Liga-Toggle). Eine Archiv-Saison (≠ neueste) trägt die
+    Markierung („· Archiv" am Wähler und in der Überschrift, „Abgeschlossene Saison"
+    statt Datenstand); `ctx.isArchive` steht den Seiten zur Verfügung. **Live-Elemente
+    rendern im Archiv nie** — Staleness, Config-Stempel, Carry-forward, „Saison beginnt
+    in Kürze" sind hinter `isArchive` ausgeblendet; ein Rendertest zählt sie auf und
+    beweist das Gate beidseitig.
+  - Phasen 4–5 (Seitenverhalten der 8 Seiten + Ehrlichkeitssätze + Annotationen,
+    Release 2.3.0) stehen aus.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
   ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern
