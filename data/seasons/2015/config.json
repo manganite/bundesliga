@@ -1,5 +1,5 @@
 {
-  "_comment": "Historische Saison (V2b.1). Regeln/Ziele/Tiebreak aus der aktuellen Konfiguration übernommen (G2, docs/verification/dfl-spielordnung.md).",
+  "_comment": "Historische Saison (V2b.1). Regeln/Ziele/Tiebreak aus der aktuellen Konfiguration übernommen (G2, docs/verification/dfl-spielordnung.md); awayGoalsApply saisonspezifisch.",
   "schemaVersion": 1,
   "season": 2015,
   "label": "2015/16",
@@ -136,7 +136,7 @@
     "_awayGoalsComment": "Two explicit fields, never a single ambiguous cutoff. The SpOL does not set this itself: it plays the Relegationsspiele 'entsprechend den Bestimmungen der UEFA-Clubwettbewerbe', so the boundary follows UEFA's abolition. Verified — docs/verification/dfl-spielordnung.md §4.5.",
     "lastSeasonWithAwayGoals": "2020/21",
     "firstSeasonWithout": "2021/22",
-    "awayGoalsApply": false,
+    "awayGoalsApply": true,
     "_homeOrderComment": "DFL SpOL §5 Nr. 4, verbatim: 'Das Heimrecht im Rückspiel besitzt der Club, der gemäß dem Spielplan der abgelaufenen Spielzeit weniger spielfreie Tage vor dem Hinspiel hatte. Bei gleicher Anzahl spielfreier Tage entscheidet das Los.' The engine derives the order per hypothetical pairing from the dates below; it is never a season constant. Where the rule ties and the lot has not been drawn, both orders are simulated at 50/50.",
     "homeOrderRule": "fewerRestDaysBeforeFirstLegHostsSecondLeg",
     "playoffDates": null,

@@ -91,13 +91,21 @@ export function historicalPreMatch(league, year, matches, elo) {
 
 /** The season-level config, cloned from the current config (G2: tiebreak carried). */
 export function historicalConfig(currentConfig, year) {
+  const po = currentConfig.relegationPlayoff;
+  // The away-goals rule is SEASON-specific: it applied through the last season
+  // named in the config and was abolished the season after (UEFA boundary,
+  // docs/verification/dfl-spielordnung.md §4.5). Cloning the current value blindly
+  // would mark a 2015 play-off as away-goals-free, which is wrong.
+  const relegationPlayoff = po?.exists
+    ? { ...po, awayGoalsApply: year <= Number(String(po.lastSeasonWithAwayGoals).slice(0, 4)) }
+    : po;
   return {
-    _comment: `Historische Saison (V2b.1). Regeln/Ziele/Tiebreak aus der aktuellen Konfiguration übernommen (G2, docs/verification/dfl-spielordnung.md).`,
+    _comment: `Historische Saison (V2b.1). Regeln/Ziele/Tiebreak aus der aktuellen Konfiguration übernommen (G2, docs/verification/dfl-spielordnung.md); awayGoalsApply saisonspezifisch.`,
     schemaVersion: currentConfig.schemaVersion,
     season: year,
     label: seasonLabel(year),
     leagues: currentConfig.leagues,
-    relegationPlayoff: currentConfig.relegationPlayoff,
+    relegationPlayoff,
   };
 }
 

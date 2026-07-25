@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { buildHistoricalLeague, historicalFixtures, historicalPreMatch, loadTraining } from "../src/buildHistorical.mjs";
+import { buildHistoricalLeague, historicalConfig, historicalPreMatch, loadTraining } from "../src/buildHistorical.mjs";
 
 // ============================================================================
 //  Historical artefacts (§V2b.1 §1). The acceptance criterion is DETERMINISM:
@@ -61,6 +61,15 @@ test("prematch carries the training-elo verbatim, all backfilled, no timestamps"
   assert.equal(e0.eloHome, elo[e0.fixtureId].eloHome);
   // Determinism: no createdAt / timestamp fields.
   assert.ok(pm.entries.every((e) => !("createdAt" in e)), "no createdAt → deterministic");
+});
+
+test("historicalConfig sets awayGoalsApply per SEASON, not by cloning the current value", () => {
+  const last = Number(String(config.relegationPlayoff.lastSeasonWithAwayGoals).slice(0, 4)); // 2020
+  assert.equal(historicalConfig(config, 2015).relegationPlayoff.awayGoalsApply, true, "2015 ≤ 2020 → applies");
+  assert.equal(historicalConfig(config, last).relegationPlayoff.awayGoalsApply, true, "the boundary season still applies");
+  assert.equal(historicalConfig(config, last + 1).relegationPlayoff.awayGoalsApply, false, "the season after → abolished");
+  assert.equal(historicalConfig(config, 2015).season, 2015);
+  assert.equal(historicalConfig(config, 2015).label, "2015/16");
 });
 
 test("the frozen timeline uses pre-season ratings and has a pre-season point (md 0)", () => {
