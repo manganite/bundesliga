@@ -1,0 +1,7675 @@
+{
+  "kind": "frozenTimeline",
+  "league": "bl2",
+  "seasonId": "2016-bl2",
+  "runs": 5000,
+  "ratingBasis": "frozen pre-season ratings — the curve carries no rating updates",
+  "points": [
+    {
+      "matchday": 0,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 0,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0372,
+          "Aue": 0.0318,
+          "Bielefeld": 0.0598,
+          "Bochum": 0.12,
+          "Braunschweig": 0.085,
+          "Dresden": 0.0264,
+          "Düsseldorf": 0.035,
+          "Fürth": 0.0554,
+          "Hannover": 0.282,
+          "Heidenheim": 0.083,
+          "Kaiserslautern": 0.1392,
+          "Karlsruhe": 0.1312,
+          "Nürnberg": 0.2832,
+          "Sandhausen": 0.0324,
+          "St. Pauli": 0.0894,
+          "Stuttgart": 0.3438,
+          "Union Berlin": 0.1378,
+          "Würzburg": 0.0274
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0248,
+          "Aue": 0.0198,
+          "Bielefeld": 0.0424,
+          "Bochum": 0.0716,
+          "Braunschweig": 0.054,
+          "Dresden": 0.0222,
+          "Düsseldorf": 0.0256,
+          "Fürth": 0.0394,
+          "Hannover": 0.107,
+          "Heidenheim": 0.0466,
+          "Kaiserslautern": 0.0742,
+          "Karlsruhe": 0.072,
+          "Nürnberg": 0.1082,
+          "Sandhausen": 0.0246,
+          "St. Pauli": 0.0574,
+          "Stuttgart": 0.117,
+          "Union Berlin": 0.0716,
+          "Würzburg": 0.0216
+        },
+        "klassenerhalt": {
+          "1860 München": 0.7272,
+          "Aue": 0.6902,
+          "Bielefeld": 0.8224,
+          "Bochum": 0.8984,
+          "Braunschweig": 0.8666,
+          "Dresden": 0.701,
+          "Düsseldorf": 0.7376,
+          "Fürth": 0.7998,
+          "Hannover": 0.9662,
+          "Heidenheim": 0.853,
+          "Kaiserslautern": 0.9088,
+          "Karlsruhe": 0.9162,
+          "Nürnberg": 0.974,
+          "Sandhausen": 0.7058,
+          "St. Pauli": 0.8596,
+          "Stuttgart": 0.9796,
+          "Union Berlin": 0.9034,
+          "Würzburg": 0.6902
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0844,
+          "Aue": 0.094,
+          "Bielefeld": 0.056,
+          "Bochum": 0.0374,
+          "Braunschweig": 0.0498,
+          "Dresden": 0.0882,
+          "Düsseldorf": 0.0844,
+          "Fürth": 0.0704,
+          "Hannover": 0.0138,
+          "Heidenheim": 0.0554,
+          "Kaiserslautern": 0.0342,
+          "Karlsruhe": 0.036,
+          "Nürnberg": 0.0118,
+          "Sandhausen": 0.0888,
+          "St. Pauli": 0.0532,
+          "Stuttgart": 0.0098,
+          "Union Berlin": 0.0402,
+          "Würzburg": 0.0922
+        },
+        "abstieg": {
+          "1860 München": 0.1884,
+          "Aue": 0.2158,
+          "Bielefeld": 0.1216,
+          "Bochum": 0.0642,
+          "Braunschweig": 0.0836,
+          "Dresden": 0.2108,
+          "Düsseldorf": 0.178,
+          "Fürth": 0.1298,
+          "Hannover": 0.02,
+          "Heidenheim": 0.0916,
+          "Kaiserslautern": 0.057,
+          "Karlsruhe": 0.0478,
+          "Nürnberg": 0.0142,
+          "Sandhausen": 0.2054,
+          "St. Pauli": 0.0872,
+          "Stuttgart": 0.0106,
+          "Union Berlin": 0.0564,
+          "Würzburg": 0.2176
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 40.9214,
+          "median": 41,
+          "p10": 26,
+          "p90": 57
+        },
+        "Aue": {
+          "expected": 39.6952,
+          "median": 39,
+          "p10": 25,
+          "p90": 55
+        },
+        "Bielefeld": {
+          "expected": 44.43,
+          "median": 44,
+          "p10": 29,
+          "p90": 60
+        },
+        "Bochum": {
+          "expected": 49.257,
+          "median": 49,
+          "p10": 33,
+          "p90": 65
+        },
+        "Braunschweig": {
+          "expected": 46.875,
+          "median": 47,
+          "p10": 31,
+          "p90": 62
+        },
+        "Dresden": {
+          "expected": 39.7502,
+          "median": 39,
+          "p10": 24,
+          "p90": 55
+        },
+        "Düsseldorf": {
+          "expected": 40.9668,
+          "median": 41,
+          "p10": 26,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 43.7598,
+          "median": 44,
+          "p10": 28,
+          "p90": 60
+        },
+        "Hannover": {
+          "expected": 56.5036,
+          "median": 57,
+          "p10": 41,
+          "p90": 72
+        },
+        "Heidenheim": {
+          "expected": 46.2256,
+          "median": 46,
+          "p10": 31,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 50.0112,
+          "median": 50,
+          "p10": 34,
+          "p90": 66
+        },
+        "Karlsruhe": {
+          "expected": 49.9134,
+          "median": 50,
+          "p10": 34,
+          "p90": 66
+        },
+        "Nürnberg": {
+          "expected": 56.5554,
+          "median": 56,
+          "p10": 41,
+          "p90": 72
+        },
+        "Sandhausen": {
+          "expected": 40.2116,
+          "median": 40,
+          "p10": 25,
+          "p90": 56
+        },
+        "St. Pauli": {
+          "expected": 46.7878,
+          "median": 47,
+          "p10": 31,
+          "p90": 63
+        },
+        "Stuttgart": {
+          "expected": 58.9438,
+          "median": 59,
+          "p10": 43,
+          "p90": 75
+        },
+        "Union Berlin": {
+          "expected": 49.6848,
+          "median": 50,
+          "p10": 34,
+          "p90": 66
+        },
+        "Würzburg": {
+          "expected": 39.6504,
+          "median": 39,
+          "p10": 25,
+          "p90": 55
+        }
+      }
+    },
+    {
+      "matchday": 1,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 9,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0274,
+          "Aue": 0.0278,
+          "Bielefeld": 0.054,
+          "Bochum": 0.1366,
+          "Braunschweig": 0.1008,
+          "Dresden": 0.0256,
+          "Düsseldorf": 0.035,
+          "Fürth": 0.061,
+          "Hannover": 0.3264,
+          "Heidenheim": 0.088,
+          "Kaiserslautern": 0.1028,
+          "Karlsruhe": 0.1218,
+          "Nürnberg": 0.2634,
+          "Sandhausen": 0.0252,
+          "St. Pauli": 0.074,
+          "Stuttgart": 0.4022,
+          "Union Berlin": 0.1064,
+          "Würzburg": 0.0216
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0248,
+          "Aue": 0.0198,
+          "Bielefeld": 0.0404,
+          "Bochum": 0.0726,
+          "Braunschweig": 0.0536,
+          "Dresden": 0.0196,
+          "Düsseldorf": 0.0266,
+          "Fürth": 0.05,
+          "Hannover": 0.1176,
+          "Heidenheim": 0.057,
+          "Kaiserslautern": 0.0616,
+          "Karlsruhe": 0.0704,
+          "Nürnberg": 0.108,
+          "Sandhausen": 0.0194,
+          "St. Pauli": 0.0516,
+          "Stuttgart": 0.1168,
+          "Union Berlin": 0.0682,
+          "Würzburg": 0.022
+        },
+        "klassenerhalt": {
+          "1860 München": 0.7108,
+          "Aue": 0.6722,
+          "Bielefeld": 0.8026,
+          "Bochum": 0.9204,
+          "Braunschweig": 0.8908,
+          "Dresden": 0.6988,
+          "Düsseldorf": 0.7266,
+          "Fürth": 0.8412,
+          "Hannover": 0.978,
+          "Heidenheim": 0.8762,
+          "Kaiserslautern": 0.8876,
+          "Karlsruhe": 0.91,
+          "Nürnberg": 0.9686,
+          "Sandhausen": 0.7048,
+          "St. Pauli": 0.855,
+          "Stuttgart": 0.985,
+          "Union Berlin": 0.9042,
+          "Würzburg": 0.6672
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0854,
+          "Aue": 0.0978,
+          "Bielefeld": 0.0704,
+          "Bochum": 0.0296,
+          "Braunschweig": 0.0488,
+          "Dresden": 0.091,
+          "Düsseldorf": 0.0852,
+          "Fürth": 0.0594,
+          "Hannover": 0.0114,
+          "Heidenheim": 0.0446,
+          "Kaiserslautern": 0.041,
+          "Karlsruhe": 0.0368,
+          "Nürnberg": 0.0148,
+          "Sandhausen": 0.087,
+          "St. Pauli": 0.0548,
+          "Stuttgart": 0.0076,
+          "Union Berlin": 0.0352,
+          "Würzburg": 0.0992
+        },
+        "abstieg": {
+          "1860 München": 0.2038,
+          "Aue": 0.23,
+          "Bielefeld": 0.127,
+          "Bochum": 0.05,
+          "Braunschweig": 0.0604,
+          "Dresden": 0.2102,
+          "Düsseldorf": 0.1882,
+          "Fürth": 0.0994,
+          "Hannover": 0.0106,
+          "Heidenheim": 0.0792,
+          "Kaiserslautern": 0.0714,
+          "Karlsruhe": 0.0532,
+          "Nürnberg": 0.0166,
+          "Sandhausen": 0.2082,
+          "St. Pauli": 0.0902,
+          "Stuttgart": 0.0074,
+          "Union Berlin": 0.0606,
+          "Würzburg": 0.2336
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 39.993,
+          "median": 40,
+          "p10": 25,
+          "p90": 56
+        },
+        "Aue": {
+          "expected": 38.6798,
+          "median": 38,
+          "p10": 24,
+          "p90": 54
+        },
+        "Bielefeld": {
+          "expected": 43.9774,
+          "median": 44,
+          "p10": 29,
+          "p90": 60
+        },
+        "Bochum": {
+          "expected": 50.5066,
+          "median": 50,
+          "p10": 35,
+          "p90": 66
+        },
+        "Braunschweig": {
+          "expected": 47.9538,
+          "median": 48,
+          "p10": 33,
+          "p90": 64
+        },
+        "Dresden": {
+          "expected": 39.6718,
+          "median": 39,
+          "p10": 25,
+          "p90": 55
+        },
+        "Düsseldorf": {
+          "expected": 40.7738,
+          "median": 40,
+          "p10": 26,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 45.2468,
+          "median": 45,
+          "p10": 30,
+          "p90": 60
+        },
+        "Hannover": {
+          "expected": 58.11,
+          "median": 58,
+          "p10": 43,
+          "p90": 74
+        },
+        "Heidenheim": {
+          "expected": 47.3614,
+          "median": 47,
+          "p10": 32,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 48.2668,
+          "median": 48,
+          "p10": 33,
+          "p90": 64
+        },
+        "Karlsruhe": {
+          "expected": 49.6312,
+          "median": 50,
+          "p10": 34,
+          "p90": 65
+        },
+        "Nürnberg": {
+          "expected": 55.9214,
+          "median": 56,
+          "p10": 40,
+          "p90": 71
+        },
+        "Sandhausen": {
+          "expected": 39.4824,
+          "median": 39,
+          "p10": 25,
+          "p90": 54
+        },
+        "St. Pauli": {
+          "expected": 46.0808,
+          "median": 46,
+          "p10": 31,
+          "p90": 62
+        },
+        "Stuttgart": {
+          "expected": 60.3318,
+          "median": 61,
+          "p10": 44,
+          "p90": 76
+        },
+        "Union Berlin": {
+          "expected": 48.7388,
+          "median": 49,
+          "p10": 33,
+          "p90": 64
+        },
+        "Würzburg": {
+          "expected": 38.7088,
+          "median": 38,
+          "p10": 24,
+          "p90": 54
+        }
+      }
+    },
+    {
+      "matchday": 2,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 18,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0444,
+          "Aue": 0.027,
+          "Bielefeld": 0.0444,
+          "Bochum": 0.1368,
+          "Braunschweig": 0.1174,
+          "Dresden": 0.0232,
+          "Düsseldorf": 0.0446,
+          "Fürth": 0.0566,
+          "Hannover": 0.3926,
+          "Heidenheim": 0.0952,
+          "Kaiserslautern": 0.09,
+          "Karlsruhe": 0.1148,
+          "Nürnberg": 0.244,
+          "Sandhausen": 0.0236,
+          "St. Pauli": 0.06,
+          "Stuttgart": 0.3644,
+          "Union Berlin": 0.1008,
+          "Würzburg": 0.0202
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.027,
+          "Aue": 0.025,
+          "Bielefeld": 0.0336,
+          "Bochum": 0.0816,
+          "Braunschweig": 0.0706,
+          "Dresden": 0.0206,
+          "Düsseldorf": 0.03,
+          "Fürth": 0.0444,
+          "Hannover": 0.1218,
+          "Heidenheim": 0.056,
+          "Kaiserslautern": 0.0614,
+          "Karlsruhe": 0.0684,
+          "Nürnberg": 0.1078,
+          "Sandhausen": 0.0202,
+          "St. Pauli": 0.046,
+          "Stuttgart": 0.1074,
+          "Union Berlin": 0.0608,
+          "Würzburg": 0.0174
+        },
+        "klassenerhalt": {
+          "1860 München": 0.75,
+          "Aue": 0.7056,
+          "Bielefeld": 0.7954,
+          "Bochum": 0.9212,
+          "Braunschweig": 0.917,
+          "Dresden": 0.6902,
+          "Düsseldorf": 0.778,
+          "Fürth": 0.8204,
+          "Hannover": 0.9864,
+          "Heidenheim": 0.8796,
+          "Kaiserslautern": 0.8786,
+          "Karlsruhe": 0.9096,
+          "Nürnberg": 0.9626,
+          "Sandhausen": 0.6676,
+          "St. Pauli": 0.8162,
+          "Stuttgart": 0.9818,
+          "Union Berlin": 0.886,
+          "Würzburg": 0.6538
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.079,
+          "Aue": 0.0894,
+          "Bielefeld": 0.071,
+          "Bochum": 0.0328,
+          "Braunschweig": 0.0348,
+          "Dresden": 0.0926,
+          "Düsseldorf": 0.0728,
+          "Fürth": 0.062,
+          "Hannover": 0.0054,
+          "Heidenheim": 0.0448,
+          "Kaiserslautern": 0.0458,
+          "Karlsruhe": 0.0392,
+          "Nürnberg": 0.0174,
+          "Sandhausen": 0.094,
+          "St. Pauli": 0.0646,
+          "Stuttgart": 0.0096,
+          "Union Berlin": 0.0398,
+          "Würzburg": 0.105
+        },
+        "abstieg": {
+          "1860 München": 0.171,
+          "Aue": 0.205,
+          "Bielefeld": 0.1336,
+          "Bochum": 0.046,
+          "Braunschweig": 0.0482,
+          "Dresden": 0.2172,
+          "Düsseldorf": 0.1492,
+          "Fürth": 0.1176,
+          "Hannover": 0.0082,
+          "Heidenheim": 0.0756,
+          "Kaiserslautern": 0.0756,
+          "Karlsruhe": 0.0512,
+          "Nürnberg": 0.02,
+          "Sandhausen": 0.2384,
+          "St. Pauli": 0.1192,
+          "Stuttgart": 0.0086,
+          "Union Berlin": 0.0742,
+          "Würzburg": 0.2412
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 41.5628,
+          "median": 41,
+          "p10": 27,
+          "p90": 57
+        },
+        "Aue": {
+          "expected": 40.0576,
+          "median": 40,
+          "p10": 26,
+          "p90": 55
+        },
+        "Bielefeld": {
+          "expected": 42.9434,
+          "median": 43,
+          "p10": 28,
+          "p90": 58
+        },
+        "Bochum": {
+          "expected": 50.3952,
+          "median": 50,
+          "p10": 35,
+          "p90": 66
+        },
+        "Braunschweig": {
+          "expected": 49.6738,
+          "median": 50,
+          "p10": 35,
+          "p90": 64
+        },
+        "Dresden": {
+          "expected": 39.5742,
+          "median": 39,
+          "p10": 25,
+          "p90": 54
+        },
+        "Düsseldorf": {
+          "expected": 42.727,
+          "median": 42,
+          "p10": 28,
+          "p90": 58
+        },
+        "Fürth": {
+          "expected": 44.483,
+          "median": 44,
+          "p10": 29,
+          "p90": 60
+        },
+        "Hannover": {
+          "expected": 59.341,
+          "median": 60,
+          "p10": 44,
+          "p90": 74
+        },
+        "Heidenheim": {
+          "expected": 47.3416,
+          "median": 47,
+          "p10": 32,
+          "p90": 63
+        },
+        "Kaiserslautern": {
+          "expected": 47.5876,
+          "median": 48,
+          "p10": 32,
+          "p90": 63
+        },
+        "Karlsruhe": {
+          "expected": 49.037,
+          "median": 49,
+          "p10": 34,
+          "p90": 64
+        },
+        "Nürnberg": {
+          "expected": 54.7746,
+          "median": 55,
+          "p10": 40,
+          "p90": 70
+        },
+        "Sandhausen": {
+          "expected": 38.817,
+          "median": 39,
+          "p10": 24,
+          "p90": 54
+        },
+        "St. Pauli": {
+          "expected": 44.389,
+          "median": 44,
+          "p10": 30,
+          "p90": 60
+        },
+        "Stuttgart": {
+          "expected": 58.6742,
+          "median": 59,
+          "p10": 44,
+          "p90": 74
+        },
+        "Union Berlin": {
+          "expected": 47.7748,
+          "median": 48,
+          "p10": 33,
+          "p90": 63
+        },
+        "Würzburg": {
+          "expected": 38.497,
+          "median": 38,
+          "p10": 24,
+          "p90": 53
+        }
+      }
+    },
+    {
+      "matchday": 3,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 27,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.033,
+          "Aue": 0.026,
+          "Bielefeld": 0.04,
+          "Bochum": 0.134,
+          "Braunschweig": 0.1758,
+          "Dresden": 0.0356,
+          "Düsseldorf": 0.0422,
+          "Fürth": 0.0712,
+          "Hannover": 0.3826,
+          "Heidenheim": 0.0652,
+          "Kaiserslautern": 0.0854,
+          "Karlsruhe": 0.1014,
+          "Nürnberg": 0.212,
+          "Sandhausen": 0.0176,
+          "St. Pauli": 0.0416,
+          "Stuttgart": 0.4128,
+          "Union Berlin": 0.0946,
+          "Würzburg": 0.029
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0276,
+          "Aue": 0.0228,
+          "Bielefeld": 0.0296,
+          "Bochum": 0.0766,
+          "Braunschweig": 0.0806,
+          "Dresden": 0.0284,
+          "Düsseldorf": 0.035,
+          "Fürth": 0.0462,
+          "Hannover": 0.1156,
+          "Heidenheim": 0.0526,
+          "Kaiserslautern": 0.0552,
+          "Karlsruhe": 0.0668,
+          "Nürnberg": 0.1072,
+          "Sandhausen": 0.015,
+          "St. Pauli": 0.0336,
+          "Stuttgart": 0.1238,
+          "Union Berlin": 0.059,
+          "Würzburg": 0.0244
+        },
+        "klassenerhalt": {
+          "1860 München": 0.7332,
+          "Aue": 0.693,
+          "Bielefeld": 0.7822,
+          "Bochum": 0.9194,
+          "Braunschweig": 0.9416,
+          "Dresden": 0.7466,
+          "Düsseldorf": 0.7896,
+          "Fürth": 0.8472,
+          "Hannover": 0.9816,
+          "Heidenheim": 0.8372,
+          "Kaiserslautern": 0.8756,
+          "Karlsruhe": 0.8898,
+          "Nürnberg": 0.9562,
+          "Sandhausen": 0.6212,
+          "St. Pauli": 0.8012,
+          "Stuttgart": 0.9872,
+          "Union Berlin": 0.8836,
+          "Würzburg": 0.7136
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0834,
+          "Aue": 0.0914,
+          "Bielefeld": 0.0704,
+          "Bochum": 0.0332,
+          "Braunschweig": 0.0238,
+          "Dresden": 0.08,
+          "Düsseldorf": 0.073,
+          "Fürth": 0.0564,
+          "Hannover": 0.0098,
+          "Heidenheim": 0.0606,
+          "Kaiserslautern": 0.0486,
+          "Karlsruhe": 0.0396,
+          "Nürnberg": 0.02,
+          "Sandhausen": 0.1004,
+          "St. Pauli": 0.072,
+          "Stuttgart": 0.0062,
+          "Union Berlin": 0.0468,
+          "Würzburg": 0.0844
+        },
+        "abstieg": {
+          "1860 München": 0.1834,
+          "Aue": 0.2156,
+          "Bielefeld": 0.1474,
+          "Bochum": 0.0474,
+          "Braunschweig": 0.0346,
+          "Dresden": 0.1734,
+          "Düsseldorf": 0.1374,
+          "Fürth": 0.0964,
+          "Hannover": 0.0086,
+          "Heidenheim": 0.1022,
+          "Kaiserslautern": 0.0758,
+          "Karlsruhe": 0.0706,
+          "Nürnberg": 0.0238,
+          "Sandhausen": 0.2784,
+          "St. Pauli": 0.1268,
+          "Stuttgart": 0.0066,
+          "Union Berlin": 0.0696,
+          "Würzburg": 0.202
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 40.9842,
+          "median": 41,
+          "p10": 27,
+          "p90": 56
+        },
+        "Aue": {
+          "expected": 39.49,
+          "median": 39,
+          "p10": 25,
+          "p90": 54
+        },
+        "Bielefeld": {
+          "expected": 42.4128,
+          "median": 42,
+          "p10": 28,
+          "p90": 57
+        },
+        "Bochum": {
+          "expected": 50.0088,
+          "median": 50,
+          "p10": 35,
+          "p90": 65
+        },
+        "Braunschweig": {
+          "expected": 51.6914,
+          "median": 52,
+          "p10": 37,
+          "p90": 66
+        },
+        "Dresden": {
+          "expected": 41.4254,
+          "median": 41,
+          "p10": 27,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 42.8986,
+          "median": 43,
+          "p10": 29,
+          "p90": 57
+        },
+        "Fürth": {
+          "expected": 45.7584,
+          "median": 45,
+          "p10": 31,
+          "p90": 61
+        },
+        "Hannover": {
+          "expected": 58.8956,
+          "median": 59,
+          "p10": 44,
+          "p90": 74
+        },
+        "Heidenheim": {
+          "expected": 45.5204,
+          "median": 45,
+          "p10": 31,
+          "p90": 60
+        },
+        "Kaiserslautern": {
+          "expected": 46.8482,
+          "median": 47,
+          "p10": 32,
+          "p90": 62
+        },
+        "Karlsruhe": {
+          "expected": 47.9166,
+          "median": 48,
+          "p10": 33,
+          "p90": 63
+        },
+        "Nürnberg": {
+          "expected": 53.62,
+          "median": 54,
+          "p10": 39,
+          "p90": 68
+        },
+        "Sandhausen": {
+          "expected": 37.5486,
+          "median": 37,
+          "p10": 24,
+          "p90": 52
+        },
+        "St. Pauli": {
+          "expected": 43.1874,
+          "median": 43,
+          "p10": 29,
+          "p90": 57
+        },
+        "Stuttgart": {
+          "expected": 59.984,
+          "median": 60,
+          "p10": 45,
+          "p90": 74
+        },
+        "Union Berlin": {
+          "expected": 47.4326,
+          "median": 48,
+          "p10": 33,
+          "p90": 62
+        },
+        "Würzburg": {
+          "expected": 40.4698,
+          "median": 40,
+          "p10": 26,
+          "p90": 55
+        }
+      }
+    },
+    {
+      "matchday": 4,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 36,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.053,
+          "Aue": 0.0206,
+          "Bielefeld": 0.0336,
+          "Bochum": 0.1152,
+          "Braunschweig": 0.2158,
+          "Dresden": 0.0452,
+          "Düsseldorf": 0.0418,
+          "Fürth": 0.0726,
+          "Hannover": 0.3358,
+          "Heidenheim": 0.099,
+          "Kaiserslautern": 0.0746,
+          "Karlsruhe": 0.0928,
+          "Nürnberg": 0.1744,
+          "Sandhausen": 0.0244,
+          "St. Pauli": 0.0624,
+          "Stuttgart": 0.3702,
+          "Union Berlin": 0.1308,
+          "Würzburg": 0.0378
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0342,
+          "Aue": 0.014,
+          "Bielefeld": 0.0278,
+          "Bochum": 0.0712,
+          "Braunschweig": 0.09,
+          "Dresden": 0.0336,
+          "Düsseldorf": 0.0322,
+          "Fürth": 0.0508,
+          "Hannover": 0.1106,
+          "Heidenheim": 0.0656,
+          "Kaiserslautern": 0.0446,
+          "Karlsruhe": 0.0604,
+          "Nürnberg": 0.0896,
+          "Sandhausen": 0.022,
+          "St. Pauli": 0.0472,
+          "Stuttgart": 0.1096,
+          "Union Berlin": 0.0682,
+          "Würzburg": 0.0284
+        },
+        "klassenerhalt": {
+          "1860 München": 0.792,
+          "Aue": 0.609,
+          "Bielefeld": 0.7366,
+          "Bochum": 0.8934,
+          "Braunschweig": 0.9572,
+          "Dresden": 0.792,
+          "Düsseldorf": 0.7562,
+          "Fürth": 0.8468,
+          "Hannover": 0.9802,
+          "Heidenheim": 0.88,
+          "Kaiserslautern": 0.834,
+          "Karlsruhe": 0.8672,
+          "Nürnberg": 0.9316,
+          "Sandhausen": 0.664,
+          "St. Pauli": 0.8166,
+          "Stuttgart": 0.9798,
+          "Union Berlin": 0.9024,
+          "Würzburg": 0.761
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0652,
+          "Aue": 0.0984,
+          "Bielefeld": 0.0768,
+          "Bochum": 0.0438,
+          "Braunschweig": 0.0202,
+          "Dresden": 0.0752,
+          "Düsseldorf": 0.0792,
+          "Fürth": 0.058,
+          "Hannover": 0.008,
+          "Heidenheim": 0.045,
+          "Kaiserslautern": 0.0566,
+          "Karlsruhe": 0.052,
+          "Nürnberg": 0.031,
+          "Sandhausen": 0.0948,
+          "St. Pauli": 0.0628,
+          "Stuttgart": 0.0106,
+          "Union Berlin": 0.0416,
+          "Würzburg": 0.0808
+        },
+        "abstieg": {
+          "1860 München": 0.1428,
+          "Aue": 0.2926,
+          "Bielefeld": 0.1866,
+          "Bochum": 0.0628,
+          "Braunschweig": 0.0226,
+          "Dresden": 0.1328,
+          "Düsseldorf": 0.1646,
+          "Fürth": 0.0952,
+          "Hannover": 0.0118,
+          "Heidenheim": 0.075,
+          "Kaiserslautern": 0.1094,
+          "Karlsruhe": 0.0808,
+          "Nürnberg": 0.0374,
+          "Sandhausen": 0.2412,
+          "St. Pauli": 0.1206,
+          "Stuttgart": 0.0096,
+          "Union Berlin": 0.056,
+          "Würzburg": 0.1582
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 43.6276,
+          "median": 43,
+          "p10": 30,
+          "p90": 58
+        },
+        "Aue": {
+          "expected": 37.8942,
+          "median": 37,
+          "p10": 24,
+          "p90": 52
+        },
+        "Bielefeld": {
+          "expected": 41.2846,
+          "median": 41,
+          "p10": 27,
+          "p90": 55
+        },
+        "Bochum": {
+          "expected": 48.7712,
+          "median": 49,
+          "p10": 34,
+          "p90": 63
+        },
+        "Braunschweig": {
+          "expected": 53.052,
+          "median": 53,
+          "p10": 39,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 43.4974,
+          "median": 43,
+          "p10": 30,
+          "p90": 57
+        },
+        "Düsseldorf": {
+          "expected": 42.3846,
+          "median": 42,
+          "p10": 28,
+          "p90": 57
+        },
+        "Fürth": {
+          "expected": 45.7588,
+          "median": 45,
+          "p10": 32,
+          "p90": 60
+        },
+        "Hannover": {
+          "expected": 56.8864,
+          "median": 57,
+          "p10": 43,
+          "p90": 71
+        },
+        "Heidenheim": {
+          "expected": 47.7708,
+          "median": 48,
+          "p10": 34,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 45.2816,
+          "median": 45,
+          "p10": 31,
+          "p90": 60
+        },
+        "Karlsruhe": {
+          "expected": 47.0012,
+          "median": 47,
+          "p10": 33,
+          "p90": 62
+        },
+        "Nürnberg": {
+          "expected": 51.5068,
+          "median": 52,
+          "p10": 37,
+          "p90": 65
+        },
+        "Sandhausen": {
+          "expected": 39.3384,
+          "median": 39,
+          "p10": 26,
+          "p90": 54
+        },
+        "St. Pauli": {
+          "expected": 44.501,
+          "median": 44,
+          "p10": 30,
+          "p90": 59
+        },
+        "Stuttgart": {
+          "expected": 57.8816,
+          "median": 58,
+          "p10": 44,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 48.8226,
+          "median": 49,
+          "p10": 35,
+          "p90": 63
+        },
+        "Würzburg": {
+          "expected": 42.0998,
+          "median": 42,
+          "p10": 29,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 5,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 45,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0348,
+          "Aue": 0.021,
+          "Bielefeld": 0.0362,
+          "Bochum": 0.1466,
+          "Braunschweig": 0.2546,
+          "Dresden": 0.0328,
+          "Düsseldorf": 0.0304,
+          "Fürth": 0.049,
+          "Hannover": 0.3144,
+          "Heidenheim": 0.1166,
+          "Kaiserslautern": 0.053,
+          "Karlsruhe": 0.0814,
+          "Nürnberg": 0.1384,
+          "Sandhausen": 0.015,
+          "St. Pauli": 0.0622,
+          "Stuttgart": 0.411,
+          "Union Berlin": 0.1528,
+          "Würzburg": 0.0498
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0336,
+          "Aue": 0.0224,
+          "Bielefeld": 0.0298,
+          "Bochum": 0.079,
+          "Braunschweig": 0.095,
+          "Dresden": 0.0284,
+          "Düsseldorf": 0.0274,
+          "Fürth": 0.039,
+          "Hannover": 0.1116,
+          "Heidenheim": 0.069,
+          "Kaiserslautern": 0.0398,
+          "Karlsruhe": 0.0512,
+          "Nürnberg": 0.0802,
+          "Sandhausen": 0.0158,
+          "St. Pauli": 0.04,
+          "Stuttgart": 0.1242,
+          "Union Berlin": 0.0764,
+          "Würzburg": 0.0372
+        },
+        "klassenerhalt": {
+          "1860 München": 0.763,
+          "Aue": 0.688,
+          "Bielefeld": 0.735,
+          "Bochum": 0.927,
+          "Braunschweig": 0.9674,
+          "Dresden": 0.7388,
+          "Düsseldorf": 0.7224,
+          "Fürth": 0.7992,
+          "Hannover": 0.9784,
+          "Heidenheim": 0.916,
+          "Kaiserslautern": 0.8052,
+          "Karlsruhe": 0.864,
+          "Nürnberg": 0.9228,
+          "Sandhausen": 0.615,
+          "St. Pauli": 0.8274,
+          "Stuttgart": 0.9894,
+          "Union Berlin": 0.928,
+          "Würzburg": 0.813
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.079,
+          "Aue": 0.0856,
+          "Bielefeld": 0.0824,
+          "Bochum": 0.0302,
+          "Braunschweig": 0.0154,
+          "Dresden": 0.0882,
+          "Düsseldorf": 0.0874,
+          "Fürth": 0.0756,
+          "Hannover": 0.0096,
+          "Heidenheim": 0.0382,
+          "Kaiserslautern": 0.0664,
+          "Karlsruhe": 0.0504,
+          "Nürnberg": 0.0308,
+          "Sandhausen": 0.0962,
+          "St. Pauli": 0.0612,
+          "Stuttgart": 0.0056,
+          "Union Berlin": 0.033,
+          "Würzburg": 0.0648
+        },
+        "abstieg": {
+          "1860 München": 0.158,
+          "Aue": 0.2264,
+          "Bielefeld": 0.1826,
+          "Bochum": 0.0428,
+          "Braunschweig": 0.0172,
+          "Dresden": 0.173,
+          "Düsseldorf": 0.1902,
+          "Fürth": 0.1252,
+          "Hannover": 0.012,
+          "Heidenheim": 0.0458,
+          "Kaiserslautern": 0.1284,
+          "Karlsruhe": 0.0856,
+          "Nürnberg": 0.0464,
+          "Sandhausen": 0.2888,
+          "St. Pauli": 0.1114,
+          "Stuttgart": 0.005,
+          "Union Berlin": 0.039,
+          "Würzburg": 0.1222
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 42.292,
+          "median": 42,
+          "p10": 29,
+          "p90": 56
+        },
+        "Aue": {
+          "expected": 39.6794,
+          "median": 39,
+          "p10": 26,
+          "p90": 53
+        },
+        "Bielefeld": {
+          "expected": 41.2184,
+          "median": 41,
+          "p10": 28,
+          "p90": 56
+        },
+        "Bochum": {
+          "expected": 50.5136,
+          "median": 50,
+          "p10": 37,
+          "p90": 64
+        },
+        "Braunschweig": {
+          "expected": 54.4506,
+          "median": 54,
+          "p10": 41,
+          "p90": 68
+        },
+        "Dresden": {
+          "expected": 41.9442,
+          "median": 42,
+          "p10": 29,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 41.1156,
+          "median": 41,
+          "p10": 28,
+          "p90": 55
+        },
+        "Fürth": {
+          "expected": 43.8888,
+          "median": 43,
+          "p10": 31,
+          "p90": 58
+        },
+        "Hannover": {
+          "expected": 56.2878,
+          "median": 56,
+          "p10": 42,
+          "p90": 70
+        },
+        "Heidenheim": {
+          "expected": 49.1032,
+          "median": 49,
+          "p10": 35,
+          "p90": 63
+        },
+        "Kaiserslautern": {
+          "expected": 44.0536,
+          "median": 44,
+          "p10": 30,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 46.6146,
+          "median": 47,
+          "p10": 33,
+          "p90": 60
+        },
+        "Nürnberg": {
+          "expected": 50.0706,
+          "median": 50,
+          "p10": 36,
+          "p90": 64
+        },
+        "Sandhausen": {
+          "expected": 37.8578,
+          "median": 38,
+          "p10": 25,
+          "p90": 51
+        },
+        "St. Pauli": {
+          "expected": 44.821,
+          "median": 45,
+          "p10": 31,
+          "p90": 59
+        },
+        "Stuttgart": {
+          "expected": 59.425,
+          "median": 59,
+          "p10": 46,
+          "p90": 73
+        },
+        "Union Berlin": {
+          "expected": 50.3802,
+          "median": 50,
+          "p10": 36,
+          "p90": 64
+        },
+        "Würzburg": {
+          "expected": 43.864,
+          "median": 43,
+          "p10": 31,
+          "p90": 58
+        }
+      }
+    },
+    {
+      "matchday": 6,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 54,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.037,
+          "Aue": 0.0202,
+          "Bielefeld": 0.0304,
+          "Bochum": 0.1058,
+          "Braunschweig": 0.213,
+          "Dresden": 0.0268,
+          "Düsseldorf": 0.0416,
+          "Fürth": 0.0766,
+          "Hannover": 0.3564,
+          "Heidenheim": 0.1072,
+          "Kaiserslautern": 0.0604,
+          "Karlsruhe": 0.0654,
+          "Nürnberg": 0.1072,
+          "Sandhausen": 0.014,
+          "St. Pauli": 0.05,
+          "Stuttgart": 0.472,
+          "Union Berlin": 0.1792,
+          "Würzburg": 0.0368
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0296,
+          "Aue": 0.0168,
+          "Bielefeld": 0.0232,
+          "Bochum": 0.0728,
+          "Braunschweig": 0.104,
+          "Dresden": 0.0238,
+          "Düsseldorf": 0.0408,
+          "Fürth": 0.0456,
+          "Hannover": 0.1174,
+          "Heidenheim": 0.0674,
+          "Kaiserslautern": 0.0458,
+          "Karlsruhe": 0.0496,
+          "Nürnberg": 0.066,
+          "Sandhausen": 0.0136,
+          "St. Pauli": 0.041,
+          "Stuttgart": 0.1224,
+          "Union Berlin": 0.086,
+          "Würzburg": 0.0342
+        },
+        "klassenerhalt": {
+          "1860 München": 0.759,
+          "Aue": 0.6524,
+          "Bielefeld": 0.715,
+          "Bochum": 0.9076,
+          "Braunschweig": 0.963,
+          "Dresden": 0.7222,
+          "Düsseldorf": 0.7954,
+          "Fürth": 0.8624,
+          "Hannover": 0.9844,
+          "Heidenheim": 0.9084,
+          "Kaiserslautern": 0.8496,
+          "Karlsruhe": 0.8454,
+          "Nürnberg": 0.9052,
+          "Sandhausen": 0.6012,
+          "St. Pauli": 0.8098,
+          "Stuttgart": 0.9914,
+          "Union Berlin": 0.9496,
+          "Würzburg": 0.778
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.076,
+          "Aue": 0.1084,
+          "Bielefeld": 0.0838,
+          "Bochum": 0.0346,
+          "Braunschweig": 0.017,
+          "Dresden": 0.0864,
+          "Düsseldorf": 0.0702,
+          "Fürth": 0.0498,
+          "Hannover": 0.007,
+          "Heidenheim": 0.0412,
+          "Kaiserslautern": 0.0564,
+          "Karlsruhe": 0.056,
+          "Nürnberg": 0.0388,
+          "Sandhausen": 0.1036,
+          "St. Pauli": 0.068,
+          "Stuttgart": 0.0042,
+          "Union Berlin": 0.0216,
+          "Würzburg": 0.077
+        },
+        "abstieg": {
+          "1860 München": 0.165,
+          "Aue": 0.2392,
+          "Bielefeld": 0.2012,
+          "Bochum": 0.0578,
+          "Braunschweig": 0.02,
+          "Dresden": 0.1914,
+          "Düsseldorf": 0.1344,
+          "Fürth": 0.0878,
+          "Hannover": 0.0086,
+          "Heidenheim": 0.0504,
+          "Kaiserslautern": 0.094,
+          "Karlsruhe": 0.0986,
+          "Nürnberg": 0.056,
+          "Sandhausen": 0.2952,
+          "St. Pauli": 0.1222,
+          "Stuttgart": 0.0044,
+          "Union Berlin": 0.0288,
+          "Würzburg": 0.145
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 42.1024,
+          "median": 42,
+          "p10": 29,
+          "p90": 56
+        },
+        "Aue": {
+          "expected": 39.0102,
+          "median": 39,
+          "p10": 26,
+          "p90": 52
+        },
+        "Bielefeld": {
+          "expected": 40.5428,
+          "median": 40,
+          "p10": 27,
+          "p90": 54
+        },
+        "Bochum": {
+          "expected": 48.8434,
+          "median": 49,
+          "p10": 36,
+          "p90": 62
+        },
+        "Braunschweig": {
+          "expected": 53.5424,
+          "median": 53,
+          "p10": 40,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 41.1474,
+          "median": 41,
+          "p10": 28,
+          "p90": 55
+        },
+        "Düsseldorf": {
+          "expected": 43.2684,
+          "median": 43,
+          "p10": 30,
+          "p90": 57
+        },
+        "Fürth": {
+          "expected": 46.3554,
+          "median": 46,
+          "p10": 33,
+          "p90": 60
+        },
+        "Hannover": {
+          "expected": 57.6296,
+          "median": 58,
+          "p10": 44,
+          "p90": 72
+        },
+        "Heidenheim": {
+          "expected": 48.5208,
+          "median": 48,
+          "p10": 35,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 45.3368,
+          "median": 45,
+          "p10": 32,
+          "p90": 59
+        },
+        "Karlsruhe": {
+          "expected": 45.6074,
+          "median": 46,
+          "p10": 32,
+          "p90": 59
+        },
+        "Nürnberg": {
+          "expected": 48.2724,
+          "median": 49,
+          "p10": 35,
+          "p90": 62
+        },
+        "Sandhausen": {
+          "expected": 37.636,
+          "median": 37,
+          "p10": 25,
+          "p90": 51
+        },
+        "St. Pauli": {
+          "expected": 43.7916,
+          "median": 44,
+          "p10": 31,
+          "p90": 58
+        },
+        "Stuttgart": {
+          "expected": 60.6622,
+          "median": 61,
+          "p10": 47,
+          "p90": 74
+        },
+        "Union Berlin": {
+          "expected": 51.7806,
+          "median": 52,
+          "p10": 38,
+          "p90": 65
+        },
+        "Würzburg": {
+          "expected": 42.763,
+          "median": 43,
+          "p10": 30,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 7,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 63,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0254,
+          "Aue": 0.0154,
+          "Bielefeld": 0.0198,
+          "Bochum": 0.094,
+          "Braunschweig": 0.252,
+          "Dresden": 0.024,
+          "Düsseldorf": 0.0278,
+          "Fürth": 0.0544,
+          "Hannover": 0.3998,
+          "Heidenheim": 0.127,
+          "Kaiserslautern": 0.0412,
+          "Karlsruhe": 0.068,
+          "Nürnberg": 0.1212,
+          "Sandhausen": 0.01,
+          "St. Pauli": 0.0394,
+          "Stuttgart": 0.441,
+          "Union Berlin": 0.2054,
+          "Würzburg": 0.0342
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0252,
+          "Aue": 0.0134,
+          "Bielefeld": 0.0198,
+          "Bochum": 0.066,
+          "Braunschweig": 0.1162,
+          "Dresden": 0.019,
+          "Düsseldorf": 0.026,
+          "Fürth": 0.0442,
+          "Hannover": 0.1266,
+          "Heidenheim": 0.0814,
+          "Kaiserslautern": 0.0378,
+          "Karlsruhe": 0.0548,
+          "Nürnberg": 0.0762,
+          "Sandhausen": 0.0122,
+          "St. Pauli": 0.0316,
+          "Stuttgart": 0.1212,
+          "Union Berlin": 0.1024,
+          "Würzburg": 0.026
+        },
+        "klassenerhalt": {
+          "1860 München": 0.744,
+          "Aue": 0.6418,
+          "Bielefeld": 0.6906,
+          "Bochum": 0.909,
+          "Braunschweig": 0.98,
+          "Dresden": 0.7128,
+          "Düsseldorf": 0.7576,
+          "Fürth": 0.853,
+          "Hannover": 0.9918,
+          "Heidenheim": 0.9364,
+          "Kaiserslautern": 0.8146,
+          "Karlsruhe": 0.8716,
+          "Nürnberg": 0.9314,
+          "Sandhausen": 0.613,
+          "St. Pauli": 0.8,
+          "Stuttgart": 0.9924,
+          "Union Berlin": 0.9686,
+          "Würzburg": 0.7914
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0846,
+          "Aue": 0.1006,
+          "Bielefeld": 0.0898,
+          "Bochum": 0.0384,
+          "Braunschweig": 0.0128,
+          "Dresden": 0.095,
+          "Düsseldorf": 0.0818,
+          "Fürth": 0.0568,
+          "Hannover": 0.0048,
+          "Heidenheim": 0.0258,
+          "Kaiserslautern": 0.0636,
+          "Karlsruhe": 0.0488,
+          "Nürnberg": 0.0308,
+          "Sandhausen": 0.106,
+          "St. Pauli": 0.0696,
+          "Stuttgart": 0.0042,
+          "Union Berlin": 0.0154,
+          "Würzburg": 0.0712
+        },
+        "abstieg": {
+          "1860 München": 0.1714,
+          "Aue": 0.2576,
+          "Bielefeld": 0.2196,
+          "Bochum": 0.0526,
+          "Braunschweig": 0.0072,
+          "Dresden": 0.1922,
+          "Düsseldorf": 0.1606,
+          "Fürth": 0.0902,
+          "Hannover": 0.0034,
+          "Heidenheim": 0.0378,
+          "Kaiserslautern": 0.1218,
+          "Karlsruhe": 0.0796,
+          "Nürnberg": 0.0378,
+          "Sandhausen": 0.281,
+          "St. Pauli": 0.1304,
+          "Stuttgart": 0.0034,
+          "Union Berlin": 0.016,
+          "Würzburg": 0.1374
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 41.3114,
+          "median": 41,
+          "p10": 29,
+          "p90": 54
+        },
+        "Aue": {
+          "expected": 38.3656,
+          "median": 38,
+          "p10": 26,
+          "p90": 51
+        },
+        "Bielefeld": {
+          "expected": 39.51,
+          "median": 39,
+          "p10": 27,
+          "p90": 53
+        },
+        "Bochum": {
+          "expected": 48.6222,
+          "median": 49,
+          "p10": 35,
+          "p90": 62
+        },
+        "Braunschweig": {
+          "expected": 55.0358,
+          "median": 55,
+          "p10": 42,
+          "p90": 68
+        },
+        "Dresden": {
+          "expected": 40.5594,
+          "median": 40,
+          "p10": 28,
+          "p90": 54
+        },
+        "Düsseldorf": {
+          "expected": 41.8562,
+          "median": 42,
+          "p10": 29,
+          "p90": 55
+        },
+        "Fürth": {
+          "expected": 45.4512,
+          "median": 45,
+          "p10": 32,
+          "p90": 59
+        },
+        "Hannover": {
+          "expected": 58.7968,
+          "median": 59,
+          "p10": 46,
+          "p90": 72
+        },
+        "Heidenheim": {
+          "expected": 50.155,
+          "median": 50,
+          "p10": 37,
+          "p90": 63
+        },
+        "Kaiserslautern": {
+          "expected": 43.8184,
+          "median": 44,
+          "p10": 31,
+          "p90": 57
+        },
+        "Karlsruhe": {
+          "expected": 46.3294,
+          "median": 46,
+          "p10": 33,
+          "p90": 59
+        },
+        "Nürnberg": {
+          "expected": 49.8934,
+          "median": 50,
+          "p10": 37,
+          "p90": 63
+        },
+        "Sandhausen": {
+          "expected": 37.6876,
+          "median": 37,
+          "p10": 25,
+          "p90": 50
+        },
+        "St. Pauli": {
+          "expected": 42.8926,
+          "median": 43,
+          "p10": 30,
+          "p90": 56
+        },
+        "Stuttgart": {
+          "expected": 59.988,
+          "median": 60,
+          "p10": 47,
+          "p90": 73
+        },
+        "Union Berlin": {
+          "expected": 53.3938,
+          "median": 53,
+          "p10": 41,
+          "p90": 67
+        },
+        "Würzburg": {
+          "expected": 42.4354,
+          "median": 42,
+          "p10": 30,
+          "p90": 55
+        }
+      }
+    },
+    {
+      "matchday": 8,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 72,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0146,
+          "Aue": 0.0084,
+          "Bielefeld": 0.0182,
+          "Bochum": 0.1198,
+          "Braunschweig": 0.2386,
+          "Dresden": 0.016,
+          "Düsseldorf": 0.0252,
+          "Fürth": 0.0414,
+          "Hannover": 0.4384,
+          "Heidenheim": 0.105,
+          "Kaiserslautern": 0.0324,
+          "Karlsruhe": 0.068,
+          "Nürnberg": 0.1428,
+          "Sandhausen": 0.0134,
+          "St. Pauli": 0.0254,
+          "Stuttgart": 0.4766,
+          "Union Berlin": 0.179,
+          "Würzburg": 0.0368
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.018,
+          "Aue": 0.0076,
+          "Bielefeld": 0.0174,
+          "Bochum": 0.076,
+          "Braunschweig": 0.1086,
+          "Dresden": 0.0176,
+          "Düsseldorf": 0.0222,
+          "Fürth": 0.0394,
+          "Hannover": 0.1308,
+          "Heidenheim": 0.0804,
+          "Kaiserslautern": 0.0338,
+          "Karlsruhe": 0.0476,
+          "Nürnberg": 0.093,
+          "Sandhausen": 0.0166,
+          "St. Pauli": 0.0248,
+          "Stuttgart": 0.1446,
+          "Union Berlin": 0.09,
+          "Würzburg": 0.0316
+        },
+        "klassenerhalt": {
+          "1860 München": 0.7042,
+          "Aue": 0.5862,
+          "Bielefeld": 0.7026,
+          "Bochum": 0.9368,
+          "Braunschweig": 0.9808,
+          "Dresden": 0.6794,
+          "Düsseldorf": 0.7712,
+          "Fürth": 0.8312,
+          "Hannover": 0.9948,
+          "Heidenheim": 0.9356,
+          "Kaiserslautern": 0.8138,
+          "Karlsruhe": 0.8768,
+          "Nürnberg": 0.9474,
+          "Sandhausen": 0.6792,
+          "St. Pauli": 0.7622,
+          "Stuttgart": 0.995,
+          "Union Berlin": 0.9648,
+          "Würzburg": 0.838
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0922,
+          "Aue": 0.1146,
+          "Bielefeld": 0.0876,
+          "Bochum": 0.0278,
+          "Braunschweig": 0.012,
+          "Dresden": 0.091,
+          "Düsseldorf": 0.0798,
+          "Fürth": 0.067,
+          "Hannover": 0.003,
+          "Heidenheim": 0.0288,
+          "Kaiserslautern": 0.0684,
+          "Karlsruhe": 0.0438,
+          "Nürnberg": 0.0222,
+          "Sandhausen": 0.0928,
+          "St. Pauli": 0.0836,
+          "Stuttgart": 0.0024,
+          "Union Berlin": 0.0162,
+          "Würzburg": 0.0668
+        },
+        "abstieg": {
+          "1860 München": 0.2036,
+          "Aue": 0.2992,
+          "Bielefeld": 0.2098,
+          "Bochum": 0.0354,
+          "Braunschweig": 0.0072,
+          "Dresden": 0.2296,
+          "Düsseldorf": 0.149,
+          "Fürth": 0.1018,
+          "Hannover": 0.0022,
+          "Heidenheim": 0.0356,
+          "Kaiserslautern": 0.1178,
+          "Karlsruhe": 0.0794,
+          "Nürnberg": 0.0304,
+          "Sandhausen": 0.228,
+          "St. Pauli": 0.1542,
+          "Stuttgart": 0.0026,
+          "Union Berlin": 0.019,
+          "Würzburg": 0.0952
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 39.948,
+          "median": 40,
+          "p10": 28,
+          "p90": 52
+        },
+        "Aue": {
+          "expected": 36.8764,
+          "median": 37,
+          "p10": 25,
+          "p90": 49
+        },
+        "Bielefeld": {
+          "expected": 39.5476,
+          "median": 39,
+          "p10": 27,
+          "p90": 52
+        },
+        "Bochum": {
+          "expected": 50.157,
+          "median": 50,
+          "p10": 37,
+          "p90": 63
+        },
+        "Braunschweig": {
+          "expected": 54.7974,
+          "median": 55,
+          "p10": 42,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 39.3794,
+          "median": 39,
+          "p10": 27,
+          "p90": 52
+        },
+        "Düsseldorf": {
+          "expected": 41.798,
+          "median": 42,
+          "p10": 30,
+          "p90": 55
+        },
+        "Fürth": {
+          "expected": 44.4248,
+          "median": 44,
+          "p10": 32,
+          "p90": 57
+        },
+        "Hannover": {
+          "expected": 60.066,
+          "median": 60,
+          "p10": 48,
+          "p90": 72
+        },
+        "Heidenheim": {
+          "expected": 49.7524,
+          "median": 50,
+          "p10": 37,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 43.41,
+          "median": 43,
+          "p10": 31,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 45.9156,
+          "median": 46,
+          "p10": 33,
+          "p90": 59
+        },
+        "Nürnberg": {
+          "expected": 51.0408,
+          "median": 51,
+          "p10": 38,
+          "p90": 64
+        },
+        "Sandhausen": {
+          "expected": 39.097,
+          "median": 39,
+          "p10": 27,
+          "p90": 52
+        },
+        "St. Pauli": {
+          "expected": 41.7504,
+          "median": 42,
+          "p10": 29,
+          "p90": 55
+        },
+        "Stuttgart": {
+          "expected": 61.1204,
+          "median": 61,
+          "p10": 48,
+          "p90": 73
+        },
+        "Union Berlin": {
+          "expected": 52.192,
+          "median": 52,
+          "p10": 39,
+          "p90": 65
+        },
+        "Würzburg": {
+          "expected": 44.155,
+          "median": 44,
+          "p10": 32,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 9,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 81,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0118,
+          "Aue": 0.0116,
+          "Bielefeld": 0.0084,
+          "Bochum": 0.1018,
+          "Braunschweig": 0.2816,
+          "Dresden": 0.019,
+          "Düsseldorf": 0.0354,
+          "Fürth": 0.0282,
+          "Hannover": 0.4012,
+          "Heidenheim": 0.1476,
+          "Kaiserslautern": 0.025,
+          "Karlsruhe": 0.0404,
+          "Nürnberg": 0.1868,
+          "Sandhausen": 0.015,
+          "St. Pauli": 0.0134,
+          "Stuttgart": 0.4034,
+          "Union Berlin": 0.22,
+          "Würzburg": 0.0494
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0122,
+          "Aue": 0.0132,
+          "Bielefeld": 0.0124,
+          "Bochum": 0.0728,
+          "Braunschweig": 0.1194,
+          "Dresden": 0.0246,
+          "Düsseldorf": 0.0284,
+          "Fürth": 0.0244,
+          "Hannover": 0.127,
+          "Heidenheim": 0.087,
+          "Kaiserslautern": 0.0248,
+          "Karlsruhe": 0.0354,
+          "Nürnberg": 0.0978,
+          "Sandhausen": 0.0146,
+          "St. Pauli": 0.0174,
+          "Stuttgart": 0.1286,
+          "Union Berlin": 0.1112,
+          "Würzburg": 0.0488
+        },
+        "klassenerhalt": {
+          "1860 München": 0.643,
+          "Aue": 0.674,
+          "Bielefeld": 0.6372,
+          "Bochum": 0.9294,
+          "Braunschweig": 0.9868,
+          "Dresden": 0.74,
+          "Düsseldorf": 0.8174,
+          "Fürth": 0.8002,
+          "Hannover": 0.9928,
+          "Heidenheim": 0.96,
+          "Kaiserslautern": 0.7682,
+          "Karlsruhe": 0.8346,
+          "Nürnberg": 0.9662,
+          "Sandhausen": 0.687,
+          "St. Pauli": 0.703,
+          "Stuttgart": 0.994,
+          "Union Berlin": 0.9758,
+          "Würzburg": 0.8904
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1008,
+          "Aue": 0.0908,
+          "Bielefeld": 0.0962,
+          "Bochum": 0.0294,
+          "Braunschweig": 0.0068,
+          "Dresden": 0.0872,
+          "Düsseldorf": 0.0746,
+          "Fürth": 0.0726,
+          "Hannover": 0.0038,
+          "Heidenheim": 0.0204,
+          "Kaiserslautern": 0.078,
+          "Karlsruhe": 0.0652,
+          "Nürnberg": 0.0166,
+          "Sandhausen": 0.0986,
+          "St. Pauli": 0.0944,
+          "Stuttgart": 0.0026,
+          "Union Berlin": 0.0156,
+          "Würzburg": 0.0464
+        },
+        "abstieg": {
+          "1860 München": 0.2562,
+          "Aue": 0.2352,
+          "Bielefeld": 0.2666,
+          "Bochum": 0.0412,
+          "Braunschweig": 0.0064,
+          "Dresden": 0.1728,
+          "Düsseldorf": 0.108,
+          "Fürth": 0.1272,
+          "Hannover": 0.0034,
+          "Heidenheim": 0.0196,
+          "Kaiserslautern": 0.1538,
+          "Karlsruhe": 0.1002,
+          "Nürnberg": 0.0172,
+          "Sandhausen": 0.2144,
+          "St. Pauli": 0.2026,
+          "Stuttgart": 0.0034,
+          "Union Berlin": 0.0086,
+          "Würzburg": 0.0632
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 38.5168,
+          "median": 38,
+          "p10": 27,
+          "p90": 51
+        },
+        "Aue": {
+          "expected": 38.863,
+          "median": 39,
+          "p10": 27,
+          "p90": 51
+        },
+        "Bielefeld": {
+          "expected": 37.8346,
+          "median": 38,
+          "p10": 25,
+          "p90": 50
+        },
+        "Bochum": {
+          "expected": 49.314,
+          "median": 49,
+          "p10": 37,
+          "p90": 62
+        },
+        "Braunschweig": {
+          "expected": 56.1476,
+          "median": 56,
+          "p10": 44,
+          "p90": 69
+        },
+        "Dresden": {
+          "expected": 41.339,
+          "median": 41,
+          "p10": 29,
+          "p90": 54
+        },
+        "Düsseldorf": {
+          "expected": 43.372,
+          "median": 43,
+          "p10": 32,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 43.1478,
+          "median": 43,
+          "p10": 31,
+          "p90": 55
+        },
+        "Hannover": {
+          "expected": 58.8434,
+          "median": 59,
+          "p10": 46,
+          "p90": 71
+        },
+        "Heidenheim": {
+          "expected": 51.4156,
+          "median": 51,
+          "p10": 39,
+          "p90": 64
+        },
+        "Kaiserslautern": {
+          "expected": 41.8762,
+          "median": 42,
+          "p10": 30,
+          "p90": 55
+        },
+        "Karlsruhe": {
+          "expected": 44.4538,
+          "median": 44,
+          "p10": 32,
+          "p90": 57
+        },
+        "Nürnberg": {
+          "expected": 52.7388,
+          "median": 53,
+          "p10": 40,
+          "p90": 66
+        },
+        "Sandhausen": {
+          "expected": 39.4338,
+          "median": 39,
+          "p10": 28,
+          "p90": 52
+        },
+        "St. Pauli": {
+          "expected": 39.8656,
+          "median": 40,
+          "p10": 28,
+          "p90": 52
+        },
+        "Stuttgart": {
+          "expected": 59.3548,
+          "median": 59,
+          "p10": 47,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 54.2214,
+          "median": 54,
+          "p10": 42,
+          "p90": 66
+        },
+        "Würzburg": {
+          "expected": 46.135,
+          "median": 46,
+          "p10": 34,
+          "p90": 58
+        }
+      }
+    },
+    {
+      "matchday": 10,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 90,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0054,
+          "Aue": 0.0074,
+          "Bielefeld": 0.0052,
+          "Bochum": 0.0708,
+          "Braunschweig": 0.3212,
+          "Dresden": 0.0166,
+          "Düsseldorf": 0.041,
+          "Fürth": 0.0202,
+          "Hannover": 0.338,
+          "Heidenheim": 0.1186,
+          "Kaiserslautern": 0.0284,
+          "Karlsruhe": 0.0484,
+          "Nürnberg": 0.214,
+          "Sandhausen": 0.0182,
+          "St. Pauli": 0.0094,
+          "Stuttgart": 0.4418,
+          "Union Berlin": 0.2556,
+          "Würzburg": 0.0398
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0092,
+          "Aue": 0.008,
+          "Bielefeld": 0.0058,
+          "Bochum": 0.055,
+          "Braunschweig": 0.1298,
+          "Dresden": 0.0212,
+          "Düsseldorf": 0.035,
+          "Fürth": 0.0222,
+          "Hannover": 0.127,
+          "Heidenheim": 0.082,
+          "Kaiserslautern": 0.0334,
+          "Karlsruhe": 0.0442,
+          "Nürnberg": 0.1146,
+          "Sandhausen": 0.014,
+          "St. Pauli": 0.0132,
+          "Stuttgart": 0.1338,
+          "Union Berlin": 0.1156,
+          "Würzburg": 0.036
+        },
+        "klassenerhalt": {
+          "1860 München": 0.6208,
+          "Aue": 0.6038,
+          "Bielefeld": 0.5672,
+          "Bochum": 0.92,
+          "Braunschweig": 0.9938,
+          "Dresden": 0.7654,
+          "Düsseldorf": 0.8712,
+          "Fürth": 0.7774,
+          "Hannover": 0.9918,
+          "Heidenheim": 0.9584,
+          "Kaiserslautern": 0.8266,
+          "Karlsruhe": 0.8842,
+          "Nürnberg": 0.9788,
+          "Sandhausen": 0.74,
+          "St. Pauli": 0.6564,
+          "Stuttgart": 0.9948,
+          "Union Berlin": 0.9874,
+          "Würzburg": 0.862
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1134,
+          "Aue": 0.1184,
+          "Bielefeld": 0.1148,
+          "Bochum": 0.0368,
+          "Braunschweig": 0.0038,
+          "Dresden": 0.081,
+          "Düsseldorf": 0.0508,
+          "Fürth": 0.08,
+          "Hannover": 0.0042,
+          "Heidenheim": 0.0202,
+          "Kaiserslautern": 0.0644,
+          "Karlsruhe": 0.049,
+          "Nürnberg": 0.01,
+          "Sandhausen": 0.0912,
+          "St. Pauli": 0.0978,
+          "Stuttgart": 0.0024,
+          "Union Berlin": 0.0068,
+          "Würzburg": 0.055
+        },
+        "abstieg": {
+          "1860 München": 0.2658,
+          "Aue": 0.2778,
+          "Bielefeld": 0.318,
+          "Bochum": 0.0432,
+          "Braunschweig": 0.0024,
+          "Dresden": 0.1536,
+          "Düsseldorf": 0.078,
+          "Fürth": 0.1426,
+          "Hannover": 0.004,
+          "Heidenheim": 0.0214,
+          "Kaiserslautern": 0.109,
+          "Karlsruhe": 0.0668,
+          "Nürnberg": 0.0112,
+          "Sandhausen": 0.1688,
+          "St. Pauli": 0.2458,
+          "Stuttgart": 0.0028,
+          "Union Berlin": 0.0058,
+          "Würzburg": 0.083
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 37.7544,
+          "median": 38,
+          "p10": 26,
+          "p90": 49
+        },
+        "Aue": {
+          "expected": 37.62,
+          "median": 37,
+          "p10": 26,
+          "p90": 49
+        },
+        "Bielefeld": {
+          "expected": 36.349,
+          "median": 36,
+          "p10": 25,
+          "p90": 48
+        },
+        "Bochum": {
+          "expected": 48.0226,
+          "median": 48,
+          "p10": 36,
+          "p90": 60
+        },
+        "Braunschweig": {
+          "expected": 57.5846,
+          "median": 57,
+          "p10": 46,
+          "p90": 70
+        },
+        "Dresden": {
+          "expected": 41.5366,
+          "median": 41,
+          "p10": 30,
+          "p90": 53
+        },
+        "Düsseldorf": {
+          "expected": 44.9914,
+          "median": 45,
+          "p10": 34,
+          "p90": 57
+        },
+        "Fürth": {
+          "expected": 42.1156,
+          "median": 42,
+          "p10": 31,
+          "p90": 54
+        },
+        "Hannover": {
+          "expected": 57.4976,
+          "median": 58,
+          "p10": 46,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 50.8698,
+          "median": 51,
+          "p10": 39,
+          "p90": 63
+        },
+        "Kaiserslautern": {
+          "expected": 43.6198,
+          "median": 44,
+          "p10": 32,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 46.179,
+          "median": 46,
+          "p10": 34,
+          "p90": 58
+        },
+        "Nürnberg": {
+          "expected": 54.156,
+          "median": 54,
+          "p10": 42,
+          "p90": 66
+        },
+        "Sandhausen": {
+          "expected": 40.7244,
+          "median": 40,
+          "p10": 29,
+          "p90": 53
+        },
+        "St. Pauli": {
+          "expected": 38.615,
+          "median": 38,
+          "p10": 27,
+          "p90": 51
+        },
+        "Stuttgart": {
+          "expected": 60.2874,
+          "median": 60,
+          "p10": 49,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 55.462,
+          "median": 55,
+          "p10": 44,
+          "p90": 67
+        },
+        "Würzburg": {
+          "expected": 44.7754,
+          "median": 44,
+          "p10": 33,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 11,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 99,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0092,
+          "Aue": 0.0052,
+          "Bielefeld": 0.0072,
+          "Bochum": 0.0852,
+          "Braunschweig": 0.275,
+          "Dresden": 0.0242,
+          "Düsseldorf": 0.06,
+          "Fürth": 0.0144,
+          "Hannover": 0.3862,
+          "Heidenheim": 0.0956,
+          "Kaiserslautern": 0.0398,
+          "Karlsruhe": 0.0382,
+          "Nürnberg": 0.1984,
+          "Sandhausen": 0.008,
+          "St. Pauli": 0.0088,
+          "Stuttgart": 0.513,
+          "Union Berlin": 0.201,
+          "Würzburg": 0.0306
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0152,
+          "Aue": 0.0052,
+          "Bielefeld": 0.0102,
+          "Bochum": 0.069,
+          "Braunschweig": 0.1174,
+          "Dresden": 0.0236,
+          "Düsseldorf": 0.0506,
+          "Fürth": 0.0142,
+          "Hannover": 0.1368,
+          "Heidenheim": 0.0718,
+          "Kaiserslautern": 0.0394,
+          "Karlsruhe": 0.0396,
+          "Nürnberg": 0.1106,
+          "Sandhausen": 0.0136,
+          "St. Pauli": 0.0112,
+          "Stuttgart": 0.1336,
+          "Union Berlin": 0.1096,
+          "Würzburg": 0.0284
+        },
+        "klassenerhalt": {
+          "1860 München": 0.6736,
+          "Aue": 0.5448,
+          "Bielefeld": 0.6304,
+          "Bochum": 0.9368,
+          "Braunschweig": 0.9906,
+          "Dresden": 0.8038,
+          "Düsseldorf": 0.9114,
+          "Fürth": 0.7094,
+          "Hannover": 0.9938,
+          "Heidenheim": 0.945,
+          "Kaiserslautern": 0.8686,
+          "Karlsruhe": 0.8558,
+          "Nürnberg": 0.9768,
+          "Sandhausen": 0.709,
+          "St. Pauli": 0.6302,
+          "Stuttgart": 0.9968,
+          "Union Berlin": 0.98,
+          "Würzburg": 0.8432
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.099,
+          "Aue": 0.1124,
+          "Bielefeld": 0.1146,
+          "Bochum": 0.031,
+          "Braunschweig": 0.0064,
+          "Dresden": 0.0748,
+          "Düsseldorf": 0.0396,
+          "Fürth": 0.0914,
+          "Hannover": 0.0038,
+          "Heidenheim": 0.0258,
+          "Kaiserslautern": 0.0536,
+          "Karlsruhe": 0.06,
+          "Nürnberg": 0.0136,
+          "Sandhausen": 0.0916,
+          "St. Pauli": 0.1096,
+          "Stuttgart": 0.0022,
+          "Union Berlin": 0.0096,
+          "Würzburg": 0.061
+        },
+        "abstieg": {
+          "1860 München": 0.2274,
+          "Aue": 0.3428,
+          "Bielefeld": 0.255,
+          "Bochum": 0.0322,
+          "Braunschweig": 0.003,
+          "Dresden": 0.1214,
+          "Düsseldorf": 0.049,
+          "Fürth": 0.1992,
+          "Hannover": 0.0024,
+          "Heidenheim": 0.0292,
+          "Kaiserslautern": 0.0778,
+          "Karlsruhe": 0.0842,
+          "Nürnberg": 0.0096,
+          "Sandhausen": 0.1994,
+          "St. Pauli": 0.2602,
+          "Stuttgart": 0.001,
+          "Union Berlin": 0.0104,
+          "Würzburg": 0.0958
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 39.1884,
+          "median": 39,
+          "p10": 28,
+          "p90": 51
+        },
+        "Aue": {
+          "expected": 36.4734,
+          "median": 36,
+          "p10": 25,
+          "p90": 48
+        },
+        "Bielefeld": {
+          "expected": 38.188,
+          "median": 38,
+          "p10": 27,
+          "p90": 50
+        },
+        "Bochum": {
+          "expected": 49.3366,
+          "median": 49,
+          "p10": 38,
+          "p90": 61
+        },
+        "Braunschweig": {
+          "expected": 56.2084,
+          "median": 56,
+          "p10": 45,
+          "p90": 68
+        },
+        "Dresden": {
+          "expected": 42.9814,
+          "median": 43,
+          "p10": 32,
+          "p90": 55
+        },
+        "Düsseldorf": {
+          "expected": 47.2234,
+          "median": 47,
+          "p10": 36,
+          "p90": 59
+        },
+        "Fürth": {
+          "expected": 40.4202,
+          "median": 40,
+          "p10": 29,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 58.4964,
+          "median": 59,
+          "p10": 47,
+          "p90": 70
+        },
+        "Heidenheim": {
+          "expected": 49.453,
+          "median": 49,
+          "p10": 38,
+          "p90": 61
+        },
+        "Kaiserslautern": {
+          "expected": 45.2706,
+          "median": 45,
+          "p10": 34,
+          "p90": 57
+        },
+        "Karlsruhe": {
+          "expected": 44.9424,
+          "median": 45,
+          "p10": 34,
+          "p90": 57
+        },
+        "Nürnberg": {
+          "expected": 53.5424,
+          "median": 54,
+          "p10": 42,
+          "p90": 65
+        },
+        "Sandhausen": {
+          "expected": 39.7466,
+          "median": 40,
+          "p10": 29,
+          "p90": 51
+        },
+        "St. Pauli": {
+          "expected": 38.358,
+          "median": 38,
+          "p10": 27,
+          "p90": 51
+        },
+        "Stuttgart": {
+          "expected": 61.7482,
+          "median": 62,
+          "p10": 50,
+          "p90": 73
+        },
+        "Union Berlin": {
+          "expected": 53.7824,
+          "median": 54,
+          "p10": 42,
+          "p90": 65
+        },
+        "Würzburg": {
+          "expected": 44.1588,
+          "median": 44,
+          "p10": 33,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 12,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 108,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0058,
+          "Aue": 0.0034,
+          "Bielefeld": 0.0034,
+          "Bochum": 0.0648,
+          "Braunschweig": 0.273,
+          "Dresden": 0.031,
+          "Düsseldorf": 0.0372,
+          "Fürth": 0.0154,
+          "Hannover": 0.3628,
+          "Heidenheim": 0.1176,
+          "Kaiserslautern": 0.0512,
+          "Karlsruhe": 0.0266,
+          "Nürnberg": 0.2278,
+          "Sandhausen": 0.0146,
+          "St. Pauli": 0.0028,
+          "Stuttgart": 0.5712,
+          "Union Berlin": 0.1576,
+          "Würzburg": 0.0338
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0084,
+          "Aue": 0.0052,
+          "Bielefeld": 0.0068,
+          "Bochum": 0.0566,
+          "Braunschweig": 0.1186,
+          "Dresden": 0.0322,
+          "Düsseldorf": 0.0332,
+          "Fürth": 0.0158,
+          "Hannover": 0.149,
+          "Heidenheim": 0.086,
+          "Kaiserslautern": 0.0412,
+          "Karlsruhe": 0.0242,
+          "Nürnberg": 0.137,
+          "Sandhausen": 0.0142,
+          "St. Pauli": 0.0076,
+          "Stuttgart": 0.1244,
+          "Union Berlin": 0.1026,
+          "Würzburg": 0.037
+        },
+        "klassenerhalt": {
+          "1860 München": 0.6096,
+          "Aue": 0.4996,
+          "Bielefeld": 0.5764,
+          "Bochum": 0.9282,
+          "Braunschweig": 0.9896,
+          "Dresden": 0.8652,
+          "Düsseldorf": 0.883,
+          "Fürth": 0.7678,
+          "Hannover": 0.9946,
+          "Heidenheim": 0.9642,
+          "Kaiserslautern": 0.893,
+          "Karlsruhe": 0.8364,
+          "Nürnberg": 0.9872,
+          "Sandhausen": 0.7494,
+          "St. Pauli": 0.5852,
+          "Stuttgart": 0.999,
+          "Union Berlin": 0.9764,
+          "Würzburg": 0.8952
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1234,
+          "Aue": 0.116,
+          "Bielefeld": 0.119,
+          "Bochum": 0.0344,
+          "Braunschweig": 0.006,
+          "Dresden": 0.0578,
+          "Düsseldorf": 0.054,
+          "Fürth": 0.0856,
+          "Hannover": 0.0036,
+          "Heidenheim": 0.0182,
+          "Kaiserslautern": 0.0514,
+          "Karlsruhe": 0.063,
+          "Nürnberg": 0.0072,
+          "Sandhausen": 0.086,
+          "St. Pauli": 0.1146,
+          "Stuttgart": 0.0008,
+          "Union Berlin": 0.0126,
+          "Würzburg": 0.0464
+        },
+        "abstieg": {
+          "1860 München": 0.267,
+          "Aue": 0.3844,
+          "Bielefeld": 0.3046,
+          "Bochum": 0.0374,
+          "Braunschweig": 0.0044,
+          "Dresden": 0.077,
+          "Düsseldorf": 0.063,
+          "Fürth": 0.1466,
+          "Hannover": 0.0018,
+          "Heidenheim": 0.0176,
+          "Kaiserslautern": 0.0556,
+          "Karlsruhe": 0.1006,
+          "Nürnberg": 0.0056,
+          "Sandhausen": 0.1646,
+          "St. Pauli": 0.3002,
+          "Stuttgart": 0.0002,
+          "Union Berlin": 0.011,
+          "Würzburg": 0.0584
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 37.8096,
+          "median": 38,
+          "p10": 27,
+          "p90": 49
+        },
+        "Aue": {
+          "expected": 35.3686,
+          "median": 35,
+          "p10": 25,
+          "p90": 47
+        },
+        "Bielefeld": {
+          "expected": 36.8714,
+          "median": 37,
+          "p10": 26,
+          "p90": 48
+        },
+        "Bochum": {
+          "expected": 48.2732,
+          "median": 48,
+          "p10": 37,
+          "p90": 59
+        },
+        "Braunschweig": {
+          "expected": 55.9188,
+          "median": 56,
+          "p10": 45,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 44.855,
+          "median": 45,
+          "p10": 34,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 45.307,
+          "median": 45,
+          "p10": 35,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 42.1798,
+          "median": 42,
+          "p10": 31,
+          "p90": 53
+        },
+        "Hannover": {
+          "expected": 58.0202,
+          "median": 58,
+          "p10": 47,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 51.214,
+          "median": 51,
+          "p10": 40,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 46.64,
+          "median": 47,
+          "p10": 35,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 43.777,
+          "median": 44,
+          "p10": 33,
+          "p90": 55
+        },
+        "Nürnberg": {
+          "expected": 55.0676,
+          "median": 55,
+          "p10": 44,
+          "p90": 66
+        },
+        "Sandhausen": {
+          "expected": 41.0116,
+          "median": 41,
+          "p10": 30,
+          "p90": 52
+        },
+        "St. Pauli": {
+          "expected": 37.0064,
+          "median": 37,
+          "p10": 26,
+          "p90": 48
+        },
+        "Stuttgart": {
+          "expected": 62.9014,
+          "median": 63,
+          "p10": 52,
+          "p90": 74
+        },
+        "Union Berlin": {
+          "expected": 52.561,
+          "median": 53,
+          "p10": 41,
+          "p90": 64
+        },
+        "Würzburg": {
+          "expected": 45.8334,
+          "median": 46,
+          "p10": 35,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 13,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 117,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.004,
+          "Aue": 0.0008,
+          "Bielefeld": 0.0062,
+          "Bochum": 0.0554,
+          "Braunschweig": 0.2654,
+          "Dresden": 0.0394,
+          "Düsseldorf": 0.0554,
+          "Fürth": 0.009,
+          "Hannover": 0.4266,
+          "Heidenheim": 0.1042,
+          "Kaiserslautern": 0.0344,
+          "Karlsruhe": 0.0122,
+          "Nürnberg": 0.198,
+          "Sandhausen": 0.019,
+          "St. Pauli": 0.0014,
+          "Stuttgart": 0.5754,
+          "Union Berlin": 0.1512,
+          "Würzburg": 0.042
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0086,
+          "Aue": 0.0026,
+          "Bielefeld": 0.0062,
+          "Bochum": 0.0504,
+          "Braunschweig": 0.133,
+          "Dresden": 0.0404,
+          "Düsseldorf": 0.0478,
+          "Fürth": 0.0124,
+          "Hannover": 0.15,
+          "Heidenheim": 0.07,
+          "Kaiserslautern": 0.0412,
+          "Karlsruhe": 0.0154,
+          "Nürnberg": 0.1234,
+          "Sandhausen": 0.0258,
+          "St. Pauli": 0.0024,
+          "Stuttgart": 0.1234,
+          "Union Berlin": 0.1066,
+          "Würzburg": 0.0404
+        },
+        "klassenerhalt": {
+          "1860 München": 0.6096,
+          "Aue": 0.4506,
+          "Bielefeld": 0.6312,
+          "Bochum": 0.925,
+          "Braunschweig": 0.9938,
+          "Dresden": 0.9036,
+          "Düsseldorf": 0.9312,
+          "Fürth": 0.7278,
+          "Hannover": 0.9978,
+          "Heidenheim": 0.9604,
+          "Kaiserslautern": 0.9028,
+          "Karlsruhe": 0.7788,
+          "Nürnberg": 0.9852,
+          "Sandhausen": 0.8368,
+          "St. Pauli": 0.4912,
+          "Stuttgart": 0.9994,
+          "Union Berlin": 0.9766,
+          "Würzburg": 0.8982
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1254,
+          "Aue": 0.1286,
+          "Bielefeld": 0.1162,
+          "Bochum": 0.0364,
+          "Braunschweig": 0.0038,
+          "Dresden": 0.0488,
+          "Düsseldorf": 0.0354,
+          "Fürth": 0.0932,
+          "Hannover": 0.0018,
+          "Heidenheim": 0.0186,
+          "Kaiserslautern": 0.047,
+          "Karlsruhe": 0.0804,
+          "Nürnberg": 0.0064,
+          "Sandhausen": 0.0664,
+          "St. Pauli": 0.1268,
+          "Stuttgart": 0.0004,
+          "Union Berlin": 0.0132,
+          "Würzburg": 0.0512
+        },
+        "abstieg": {
+          "1860 München": 0.265,
+          "Aue": 0.4208,
+          "Bielefeld": 0.2526,
+          "Bochum": 0.0386,
+          "Braunschweig": 0.0024,
+          "Dresden": 0.0476,
+          "Düsseldorf": 0.0334,
+          "Fürth": 0.179,
+          "Hannover": 0.0004,
+          "Heidenheim": 0.021,
+          "Kaiserslautern": 0.0502,
+          "Karlsruhe": 0.1408,
+          "Nürnberg": 0.0084,
+          "Sandhausen": 0.0968,
+          "St. Pauli": 0.382,
+          "Stuttgart": 0.0002,
+          "Union Berlin": 0.0102,
+          "Würzburg": 0.0506
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 37.6868,
+          "median": 37,
+          "p10": 27,
+          "p90": 48
+        },
+        "Aue": {
+          "expected": 34.6064,
+          "median": 34,
+          "p10": 24,
+          "p90": 45
+        },
+        "Bielefeld": {
+          "expected": 38.4096,
+          "median": 38,
+          "p10": 28,
+          "p90": 49
+        },
+        "Bochum": {
+          "expected": 47.6292,
+          "median": 47,
+          "p10": 37,
+          "p90": 58
+        },
+        "Braunschweig": {
+          "expected": 55.9228,
+          "median": 56,
+          "p10": 45,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 46.2952,
+          "median": 46,
+          "p10": 36,
+          "p90": 57
+        },
+        "Düsseldorf": {
+          "expected": 47.3558,
+          "median": 47,
+          "p10": 37,
+          "p90": 58
+        },
+        "Fürth": {
+          "expected": 40.9336,
+          "median": 41,
+          "p10": 30,
+          "p90": 51
+        },
+        "Hannover": {
+          "expected": 59.155,
+          "median": 59,
+          "p10": 49,
+          "p90": 70
+        },
+        "Heidenheim": {
+          "expected": 49.9368,
+          "median": 50,
+          "p10": 39,
+          "p90": 61
+        },
+        "Kaiserslautern": {
+          "expected": 46.2628,
+          "median": 46,
+          "p10": 36,
+          "p90": 57
+        },
+        "Karlsruhe": {
+          "expected": 41.7564,
+          "median": 42,
+          "p10": 31,
+          "p90": 52
+        },
+        "Nürnberg": {
+          "expected": 53.8818,
+          "median": 54,
+          "p10": 43,
+          "p90": 64
+        },
+        "Sandhausen": {
+          "expected": 43.1596,
+          "median": 43,
+          "p10": 33,
+          "p90": 53
+        },
+        "St. Pauli": {
+          "expected": 35.1462,
+          "median": 35,
+          "p10": 24,
+          "p90": 46
+        },
+        "Stuttgart": {
+          "expected": 62.5268,
+          "median": 63,
+          "p10": 52,
+          "p90": 73
+        },
+        "Union Berlin": {
+          "expected": 52.2628,
+          "median": 52,
+          "p10": 42,
+          "p90": 63
+        },
+        "Würzburg": {
+          "expected": 45.9528,
+          "median": 46,
+          "p10": 36,
+          "p90": 57
+        }
+      }
+    },
+    {
+      "matchday": 14,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 126,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0028,
+          "Aue": 0.001,
+          "Bielefeld": 0.0038,
+          "Bochum": 0.0438,
+          "Braunschweig": 0.2954,
+          "Dresden": 0.033,
+          "Düsseldorf": 0.0486,
+          "Fürth": 0.0104,
+          "Hannover": 0.4044,
+          "Heidenheim": 0.1278,
+          "Kaiserslautern": 0.0314,
+          "Karlsruhe": 0.0088,
+          "Nürnberg": 0.1398,
+          "Sandhausen": 0.0126,
+          "St. Pauli": 0.0002,
+          "Stuttgart": 0.6354,
+          "Union Berlin": 0.1718,
+          "Würzburg": 0.029
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.004,
+          "Aue": 0.0028,
+          "Bielefeld": 0.006,
+          "Bochum": 0.0476,
+          "Braunschweig": 0.15,
+          "Dresden": 0.0372,
+          "Düsseldorf": 0.0466,
+          "Fürth": 0.0144,
+          "Hannover": 0.1382,
+          "Heidenheim": 0.0864,
+          "Kaiserslautern": 0.0374,
+          "Karlsruhe": 0.0152,
+          "Nürnberg": 0.1138,
+          "Sandhausen": 0.0196,
+          "St. Pauli": 0.0018,
+          "Stuttgart": 0.1204,
+          "Union Berlin": 0.1276,
+          "Würzburg": 0.031
+        },
+        "klassenerhalt": {
+          "1860 München": 0.5832,
+          "Aue": 0.453,
+          "Bielefeld": 0.5976,
+          "Bochum": 0.922,
+          "Braunschweig": 0.9984,
+          "Dresden": 0.9134,
+          "Düsseldorf": 0.9368,
+          "Fürth": 0.7944,
+          "Hannover": 0.9978,
+          "Heidenheim": 0.9814,
+          "Kaiserslautern": 0.9046,
+          "Karlsruhe": 0.7892,
+          "Nürnberg": 0.982,
+          "Sandhausen": 0.817,
+          "St. Pauli": 0.44,
+          "Stuttgart": 1,
+          "Union Berlin": 0.991,
+          "Würzburg": 0.8982
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.121,
+          "Aue": 0.1382,
+          "Bielefeld": 0.1228,
+          "Bochum": 0.038,
+          "Braunschweig": 0.0006,
+          "Dresden": 0.0434,
+          "Düsseldorf": 0.0344,
+          "Fürth": 0.085,
+          "Hannover": 0.0016,
+          "Heidenheim": 0.0116,
+          "Kaiserslautern": 0.044,
+          "Karlsruhe": 0.0844,
+          "Nürnberg": 0.0092,
+          "Sandhausen": 0.08,
+          "St. Pauli": 0.1342,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0056,
+          "Würzburg": 0.046
+        },
+        "abstieg": {
+          "1860 München": 0.2958,
+          "Aue": 0.4088,
+          "Bielefeld": 0.2796,
+          "Bochum": 0.04,
+          "Braunschweig": 0.001,
+          "Dresden": 0.0432,
+          "Düsseldorf": 0.0288,
+          "Fürth": 0.1206,
+          "Hannover": 0.0006,
+          "Heidenheim": 0.007,
+          "Kaiserslautern": 0.0514,
+          "Karlsruhe": 0.1264,
+          "Nürnberg": 0.0088,
+          "Sandhausen": 0.103,
+          "St. Pauli": 0.4258,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0034,
+          "Würzburg": 0.0558
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 36.5578,
+          "median": 37,
+          "p10": 27,
+          "p90": 47
+        },
+        "Aue": {
+          "expected": 34.6304,
+          "median": 34,
+          "p10": 25,
+          "p90": 45
+        },
+        "Bielefeld": {
+          "expected": 37.2812,
+          "median": 37,
+          "p10": 27,
+          "p90": 48
+        },
+        "Bochum": {
+          "expected": 47.089,
+          "median": 47,
+          "p10": 37,
+          "p90": 58
+        },
+        "Braunschweig": {
+          "expected": 56.9696,
+          "median": 57,
+          "p10": 47,
+          "p90": 68
+        },
+        "Dresden": {
+          "expected": 46.175,
+          "median": 46,
+          "p10": 36,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 47.3154,
+          "median": 47,
+          "p10": 37,
+          "p90": 58
+        },
+        "Fürth": {
+          "expected": 42.2382,
+          "median": 42,
+          "p10": 32,
+          "p90": 53
+        },
+        "Hannover": {
+          "expected": 58.5564,
+          "median": 59,
+          "p10": 48,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 51.5124,
+          "median": 51,
+          "p10": 41,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 45.7364,
+          "median": 46,
+          "p10": 36,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 41.6576,
+          "median": 41,
+          "p10": 31,
+          "p90": 52
+        },
+        "Nürnberg": {
+          "expected": 52.6254,
+          "median": 53,
+          "p10": 42,
+          "p90": 63
+        },
+        "Sandhausen": {
+          "expected": 42.1804,
+          "median": 42,
+          "p10": 32,
+          "p90": 52
+        },
+        "St. Pauli": {
+          "expected": 34.0186,
+          "median": 34,
+          "p10": 24,
+          "p90": 44
+        },
+        "Stuttgart": {
+          "expected": 63.6632,
+          "median": 64,
+          "p10": 53,
+          "p90": 74
+        },
+        "Union Berlin": {
+          "expected": 53.6932,
+          "median": 54,
+          "p10": 43,
+          "p90": 64
+        },
+        "Würzburg": {
+          "expected": 45.3706,
+          "median": 45,
+          "p10": 36,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 15,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 135,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0014,
+          "Aue": 0,
+          "Bielefeld": 0.0024,
+          "Bochum": 0.0274,
+          "Braunschweig": 0.2472,
+          "Dresden": 0.023,
+          "Düsseldorf": 0.0458,
+          "Fürth": 0.0206,
+          "Hannover": 0.4388,
+          "Heidenheim": 0.0952,
+          "Kaiserslautern": 0.0254,
+          "Karlsruhe": 0.0044,
+          "Nürnberg": 0.096,
+          "Sandhausen": 0.0172,
+          "St. Pauli": 0.0004,
+          "Stuttgart": 0.7132,
+          "Union Berlin": 0.2184,
+          "Würzburg": 0.0232
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.005,
+          "Aue": 0.0008,
+          "Bielefeld": 0.006,
+          "Bochum": 0.0326,
+          "Braunschweig": 0.1612,
+          "Dresden": 0.0276,
+          "Düsseldorf": 0.0436,
+          "Fürth": 0.0228,
+          "Hannover": 0.17,
+          "Heidenheim": 0.0824,
+          "Kaiserslautern": 0.0328,
+          "Karlsruhe": 0.0072,
+          "Nürnberg": 0.0894,
+          "Sandhausen": 0.0294,
+          "St. Pauli": 0.001,
+          "Stuttgart": 0.1172,
+          "Union Berlin": 0.1418,
+          "Würzburg": 0.0292
+        },
+        "klassenerhalt": {
+          "1860 München": 0.6344,
+          "Aue": 0.3758,
+          "Bielefeld": 0.6712,
+          "Bochum": 0.8952,
+          "Braunschweig": 0.9964,
+          "Dresden": 0.8958,
+          "Düsseldorf": 0.9388,
+          "Fürth": 0.8684,
+          "Hannover": 0.9986,
+          "Heidenheim": 0.9702,
+          "Kaiserslautern": 0.899,
+          "Karlsruhe": 0.716,
+          "Nürnberg": 0.9752,
+          "Sandhausen": 0.8778,
+          "St. Pauli": 0.3978,
+          "Stuttgart": 1,
+          "Union Berlin": 0.9958,
+          "Würzburg": 0.8936
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.127,
+          "Aue": 0.13,
+          "Bielefeld": 0.1162,
+          "Bochum": 0.0498,
+          "Braunschweig": 0.0024,
+          "Dresden": 0.0492,
+          "Düsseldorf": 0.034,
+          "Fürth": 0.0612,
+          "Hannover": 0.0008,
+          "Heidenheim": 0.0186,
+          "Kaiserslautern": 0.0504,
+          "Karlsruhe": 0.1002,
+          "Nürnberg": 0.011,
+          "Sandhausen": 0.0582,
+          "St. Pauli": 0.1308,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0034,
+          "Würzburg": 0.0568
+        },
+        "abstieg": {
+          "1860 München": 0.2386,
+          "Aue": 0.4942,
+          "Bielefeld": 0.2126,
+          "Bochum": 0.055,
+          "Braunschweig": 0.0012,
+          "Dresden": 0.055,
+          "Düsseldorf": 0.0272,
+          "Fürth": 0.0704,
+          "Hannover": 0.0006,
+          "Heidenheim": 0.0112,
+          "Kaiserslautern": 0.0506,
+          "Karlsruhe": 0.1838,
+          "Nürnberg": 0.0138,
+          "Sandhausen": 0.064,
+          "St. Pauli": 0.4714,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0008,
+          "Würzburg": 0.0496
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 38.04,
+          "median": 38,
+          "p10": 29,
+          "p90": 48
+        },
+        "Aue": {
+          "expected": 33.4598,
+          "median": 33,
+          "p10": 24,
+          "p90": 43
+        },
+        "Bielefeld": {
+          "expected": 38.9786,
+          "median": 39,
+          "p10": 29,
+          "p90": 49
+        },
+        "Bochum": {
+          "expected": 45.5486,
+          "median": 46,
+          "p10": 36,
+          "p90": 56
+        },
+        "Braunschweig": {
+          "expected": 56.0668,
+          "median": 56,
+          "p10": 46,
+          "p90": 66
+        },
+        "Dresden": {
+          "expected": 44.8872,
+          "median": 45,
+          "p10": 35,
+          "p90": 55
+        },
+        "Düsseldorf": {
+          "expected": 47.1452,
+          "median": 47,
+          "p10": 38,
+          "p90": 57
+        },
+        "Fürth": {
+          "expected": 44.4264,
+          "median": 44,
+          "p10": 35,
+          "p90": 54
+        },
+        "Hannover": {
+          "expected": 59.586,
+          "median": 60,
+          "p10": 50,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 50.468,
+          "median": 50,
+          "p10": 41,
+          "p90": 60
+        },
+        "Kaiserslautern": {
+          "expected": 45.5216,
+          "median": 46,
+          "p10": 36,
+          "p90": 55
+        },
+        "Karlsruhe": {
+          "expected": 39.8104,
+          "median": 40,
+          "p10": 30,
+          "p90": 50
+        },
+        "Nürnberg": {
+          "expected": 50.6314,
+          "median": 51,
+          "p10": 41,
+          "p90": 61
+        },
+        "Sandhausen": {
+          "expected": 44.288,
+          "median": 44,
+          "p10": 35,
+          "p90": 54
+        },
+        "St. Pauli": {
+          "expected": 33.471,
+          "median": 33,
+          "p10": 24,
+          "p90": 43
+        },
+        "Stuttgart": {
+          "expected": 65.2262,
+          "median": 65,
+          "p10": 55,
+          "p90": 75
+        },
+        "Union Berlin": {
+          "expected": 55.0814,
+          "median": 55,
+          "p10": 45,
+          "p90": 65
+        },
+        "Würzburg": {
+          "expected": 44.8782,
+          "median": 45,
+          "p10": 36,
+          "p90": 55
+        }
+      }
+    },
+    {
+      "matchday": 16,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 144,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0008,
+          "Aue": 0,
+          "Bielefeld": 0.0016,
+          "Bochum": 0.0306,
+          "Braunschweig": 0.2894,
+          "Dresden": 0.016,
+          "Düsseldorf": 0.023,
+          "Fürth": 0.0094,
+          "Hannover": 0.5408,
+          "Heidenheim": 0.1176,
+          "Kaiserslautern": 0.0162,
+          "Karlsruhe": 0.001,
+          "Nürnberg": 0.11,
+          "Sandhausen": 0.0142,
+          "St. Pauli": 0,
+          "Stuttgart": 0.6558,
+          "Union Berlin": 0.1572,
+          "Würzburg": 0.0164
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0042,
+          "Aue": 0.002,
+          "Bielefeld": 0.0048,
+          "Bochum": 0.0392,
+          "Braunschweig": 0.1732,
+          "Dresden": 0.026,
+          "Düsseldorf": 0.0378,
+          "Fürth": 0.0136,
+          "Hannover": 0.1566,
+          "Heidenheim": 0.101,
+          "Kaiserslautern": 0.0272,
+          "Karlsruhe": 0.0056,
+          "Nürnberg": 0.1162,
+          "Sandhausen": 0.0188,
+          "St. Pauli": 0.0012,
+          "Stuttgart": 0.1258,
+          "Union Berlin": 0.1226,
+          "Würzburg": 0.0242
+        },
+        "klassenerhalt": {
+          "1860 München": 0.5926,
+          "Aue": 0.3896,
+          "Bielefeld": 0.6144,
+          "Bochum": 0.9328,
+          "Braunschweig": 0.9992,
+          "Dresden": 0.8984,
+          "Düsseldorf": 0.9238,
+          "Fürth": 0.8236,
+          "Hannover": 1,
+          "Heidenheim": 0.9898,
+          "Kaiserslautern": 0.8946,
+          "Karlsruhe": 0.6994,
+          "Nürnberg": 0.9852,
+          "Sandhausen": 0.8732,
+          "St. Pauli": 0.4844,
+          "Stuttgart": 1,
+          "Union Berlin": 0.993,
+          "Würzburg": 0.906
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1308,
+          "Aue": 0.1272,
+          "Bielefeld": 0.1288,
+          "Bochum": 0.0352,
+          "Braunschweig": 0.0004,
+          "Dresden": 0.0502,
+          "Düsseldorf": 0.04,
+          "Fürth": 0.072,
+          "Hannover": 0,
+          "Heidenheim": 0.006,
+          "Kaiserslautern": 0.0526,
+          "Karlsruhe": 0.1066,
+          "Nürnberg": 0.007,
+          "Sandhausen": 0.0626,
+          "St. Pauli": 0.1278,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0046,
+          "Würzburg": 0.0482
+        },
+        "abstieg": {
+          "1860 München": 0.2766,
+          "Aue": 0.4832,
+          "Bielefeld": 0.2568,
+          "Bochum": 0.032,
+          "Braunschweig": 0.0004,
+          "Dresden": 0.0514,
+          "Düsseldorf": 0.0362,
+          "Fürth": 0.1044,
+          "Hannover": 0,
+          "Heidenheim": 0.0042,
+          "Kaiserslautern": 0.0528,
+          "Karlsruhe": 0.194,
+          "Nürnberg": 0.0078,
+          "Sandhausen": 0.0642,
+          "St. Pauli": 0.3878,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0024,
+          "Würzburg": 0.0458
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 37.0748,
+          "median": 37,
+          "p10": 28,
+          "p90": 46
+        },
+        "Aue": {
+          "expected": 33.7668,
+          "median": 34,
+          "p10": 25,
+          "p90": 43
+        },
+        "Bielefeld": {
+          "expected": 37.7476,
+          "median": 38,
+          "p10": 28,
+          "p90": 47
+        },
+        "Bochum": {
+          "expected": 46.9542,
+          "median": 47,
+          "p10": 37,
+          "p90": 56
+        },
+        "Braunschweig": {
+          "expected": 57.5718,
+          "median": 57,
+          "p10": 48,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 44.7442,
+          "median": 44,
+          "p10": 36,
+          "p90": 54
+        },
+        "Düsseldorf": {
+          "expected": 45.9862,
+          "median": 46,
+          "p10": 37,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 42.6746,
+          "median": 42,
+          "p10": 33,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 61.522,
+          "median": 62,
+          "p10": 52,
+          "p90": 71
+        },
+        "Heidenheim": {
+          "expected": 52.0578,
+          "median": 52,
+          "p10": 43,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 44.6802,
+          "median": 45,
+          "p10": 35,
+          "p90": 54
+        },
+        "Karlsruhe": {
+          "expected": 39.1768,
+          "median": 39,
+          "p10": 30,
+          "p90": 49
+        },
+        "Nürnberg": {
+          "expected": 52.0938,
+          "median": 52,
+          "p10": 43,
+          "p90": 62
+        },
+        "Sandhausen": {
+          "expected": 43.47,
+          "median": 43,
+          "p10": 35,
+          "p90": 53
+        },
+        "St. Pauli": {
+          "expected": 35.153,
+          "median": 35,
+          "p10": 26,
+          "p90": 45
+        },
+        "Stuttgart": {
+          "expected": 63.6164,
+          "median": 64,
+          "p10": 54,
+          "p90": 73
+        },
+        "Union Berlin": {
+          "expected": 53.8378,
+          "median": 54,
+          "p10": 45,
+          "p90": 63
+        },
+        "Würzburg": {
+          "expected": 44.744,
+          "median": 44,
+          "p10": 36,
+          "p90": 54
+        }
+      }
+    },
+    {
+      "matchday": 17,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 153,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0016,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0262,
+          "Braunschweig": 0.3078,
+          "Dresden": 0.03,
+          "Düsseldorf": 0.0234,
+          "Fürth": 0.0076,
+          "Hannover": 0.5204,
+          "Heidenheim": 0.1228,
+          "Kaiserslautern": 0.0122,
+          "Karlsruhe": 0.0012,
+          "Nürnberg": 0.1612,
+          "Sandhausen": 0.0166,
+          "St. Pauli": 0.0002,
+          "Stuttgart": 0.5924,
+          "Union Berlin": 0.144,
+          "Würzburg": 0.0324
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0014,
+          "Aue": 0.0006,
+          "Bielefeld": 0.0016,
+          "Bochum": 0.0388,
+          "Braunschweig": 0.1616,
+          "Dresden": 0.0378,
+          "Düsseldorf": 0.0298,
+          "Fürth": 0.014,
+          "Hannover": 0.1546,
+          "Heidenheim": 0.0964,
+          "Kaiserslautern": 0.0218,
+          "Karlsruhe": 0.0034,
+          "Nürnberg": 0.122,
+          "Sandhausen": 0.0202,
+          "St. Pauli": 0.0014,
+          "Stuttgart": 0.1408,
+          "Union Berlin": 0.1198,
+          "Würzburg": 0.034
+        },
+        "klassenerhalt": {
+          "1860 München": 0.5648,
+          "Aue": 0.3564,
+          "Bielefeld": 0.5498,
+          "Bochum": 0.9442,
+          "Braunschweig": 0.9998,
+          "Dresden": 0.951,
+          "Düsseldorf": 0.9324,
+          "Fürth": 0.8326,
+          "Hannover": 0.9998,
+          "Heidenheim": 0.9922,
+          "Kaiserslautern": 0.8798,
+          "Karlsruhe": 0.6834,
+          "Nürnberg": 0.9928,
+          "Sandhausen": 0.8938,
+          "St. Pauli": 0.4762,
+          "Stuttgart": 0.9998,
+          "Union Berlin": 0.9932,
+          "Würzburg": 0.958
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1416,
+          "Aue": 0.1352,
+          "Bielefeld": 0.133,
+          "Bochum": 0.0288,
+          "Braunschweig": 0.0002,
+          "Dresden": 0.032,
+          "Düsseldorf": 0.0406,
+          "Fürth": 0.0736,
+          "Hannover": 0.0002,
+          "Heidenheim": 0.0064,
+          "Kaiserslautern": 0.0566,
+          "Karlsruhe": 0.1188,
+          "Nürnberg": 0.0038,
+          "Sandhausen": 0.0568,
+          "St. Pauli": 0.1424,
+          "Stuttgart": 0.0002,
+          "Union Berlin": 0.0048,
+          "Würzburg": 0.025
+        },
+        "abstieg": {
+          "1860 München": 0.2936,
+          "Aue": 0.5084,
+          "Bielefeld": 0.3172,
+          "Bochum": 0.027,
+          "Braunschweig": 0,
+          "Dresden": 0.017,
+          "Düsseldorf": 0.027,
+          "Fürth": 0.0938,
+          "Hannover": 0,
+          "Heidenheim": 0.0014,
+          "Kaiserslautern": 0.0636,
+          "Karlsruhe": 0.1978,
+          "Nürnberg": 0.0034,
+          "Sandhausen": 0.0494,
+          "St. Pauli": 0.3814,
+          "Stuttgart": 0,
+          "Union Berlin": 0.002,
+          "Würzburg": 0.017
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 36.4202,
+          "median": 36,
+          "p10": 28,
+          "p90": 46
+        },
+        "Aue": {
+          "expected": 32.9914,
+          "median": 33,
+          "p10": 24,
+          "p90": 42
+        },
+        "Bielefeld": {
+          "expected": 36.0474,
+          "median": 36,
+          "p10": 27,
+          "p90": 45
+        },
+        "Bochum": {
+          "expected": 46.704,
+          "median": 47,
+          "p10": 38,
+          "p90": 56
+        },
+        "Braunschweig": {
+          "expected": 57.372,
+          "median": 57,
+          "p10": 48,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 46.6948,
+          "median": 46,
+          "p10": 38,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 45.6014,
+          "median": 45,
+          "p10": 37,
+          "p90": 55
+        },
+        "Fürth": {
+          "expected": 42.815,
+          "median": 43,
+          "p10": 34,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 60.6238,
+          "median": 61,
+          "p10": 51,
+          "p90": 70
+        },
+        "Heidenheim": {
+          "expected": 51.8002,
+          "median": 52,
+          "p10": 43,
+          "p90": 61
+        },
+        "Kaiserslautern": {
+          "expected": 43.6002,
+          "median": 44,
+          "p10": 35,
+          "p90": 53
+        },
+        "Karlsruhe": {
+          "expected": 38.6114,
+          "median": 39,
+          "p10": 30,
+          "p90": 48
+        },
+        "Nürnberg": {
+          "expected": 53.3332,
+          "median": 54,
+          "p10": 44,
+          "p90": 63
+        },
+        "Sandhausen": {
+          "expected": 44.0802,
+          "median": 44,
+          "p10": 35,
+          "p90": 53
+        },
+        "St. Pauli": {
+          "expected": 34.7392,
+          "median": 35,
+          "p10": 25,
+          "p90": 44
+        },
+        "Stuttgart": {
+          "expected": 61.8662,
+          "median": 62,
+          "p10": 53,
+          "p90": 71
+        },
+        "Union Berlin": {
+          "expected": 53.0814,
+          "median": 53,
+          "p10": 44,
+          "p90": 62
+        },
+        "Würzburg": {
+          "expected": 46.7706,
+          "median": 47,
+          "p10": 38,
+          "p90": 56
+        }
+      }
+    },
+    {
+      "matchday": 18,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 162,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0006,
+          "Aue": 0.0002,
+          "Bielefeld": 0,
+          "Bochum": 0.0158,
+          "Braunschweig": 0.2734,
+          "Dresden": 0.0456,
+          "Düsseldorf": 0.0094,
+          "Fürth": 0.0036,
+          "Hannover": 0.5892,
+          "Heidenheim": 0.0738,
+          "Kaiserslautern": 0.0048,
+          "Karlsruhe": 0.0016,
+          "Nürnberg": 0.0896,
+          "Sandhausen": 0.0224,
+          "St. Pauli": 0,
+          "Stuttgart": 0.659,
+          "Union Berlin": 0.189,
+          "Würzburg": 0.022
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.003,
+          "Aue": 0.0004,
+          "Bielefeld": 0.0002,
+          "Bochum": 0.0284,
+          "Braunschweig": 0.1802,
+          "Dresden": 0.0586,
+          "Düsseldorf": 0.0174,
+          "Fürth": 0.006,
+          "Hannover": 0.1568,
+          "Heidenheim": 0.0766,
+          "Kaiserslautern": 0.0106,
+          "Karlsruhe": 0.0034,
+          "Nürnberg": 0.1054,
+          "Sandhausen": 0.0376,
+          "St. Pauli": 0.0002,
+          "Stuttgart": 0.1452,
+          "Union Berlin": 0.1398,
+          "Würzburg": 0.0302
+        },
+        "klassenerhalt": {
+          "1860 München": 0.6518,
+          "Aue": 0.4322,
+          "Bielefeld": 0.4636,
+          "Bochum": 0.9264,
+          "Braunschweig": 0.9998,
+          "Dresden": 0.9838,
+          "Düsseldorf": 0.905,
+          "Fürth": 0.7924,
+          "Hannover": 1,
+          "Heidenheim": 0.9848,
+          "Kaiserslautern": 0.849,
+          "Karlsruhe": 0.7508,
+          "Nürnberg": 0.9872,
+          "Sandhausen": 0.9466,
+          "St. Pauli": 0.3778,
+          "Stuttgart": 1,
+          "Union Berlin": 0.9974,
+          "Würzburg": 0.9514
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1298,
+          "Aue": 0.1418,
+          "Bielefeld": 0.1446,
+          "Bochum": 0.0362,
+          "Braunschweig": 0.0002,
+          "Dresden": 0.012,
+          "Düsseldorf": 0.0502,
+          "Fürth": 0.0882,
+          "Hannover": 0,
+          "Heidenheim": 0.0106,
+          "Kaiserslautern": 0.07,
+          "Karlsruhe": 0.0942,
+          "Nürnberg": 0.009,
+          "Sandhausen": 0.031,
+          "St. Pauli": 0.1502,
+          "Stuttgart": 0,
+          "Union Berlin": 0.002,
+          "Würzburg": 0.03
+        },
+        "abstieg": {
+          "1860 München": 0.2184,
+          "Aue": 0.426,
+          "Bielefeld": 0.3918,
+          "Bochum": 0.0374,
+          "Braunschweig": 0,
+          "Dresden": 0.0042,
+          "Düsseldorf": 0.0448,
+          "Fürth": 0.1194,
+          "Hannover": 0,
+          "Heidenheim": 0.0046,
+          "Kaiserslautern": 0.081,
+          "Karlsruhe": 0.155,
+          "Nürnberg": 0.0038,
+          "Sandhausen": 0.0224,
+          "St. Pauli": 0.472,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0006,
+          "Würzburg": 0.0186
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 38.2334,
+          "median": 38,
+          "p10": 30,
+          "p90": 47
+        },
+        "Aue": {
+          "expected": 34.7712,
+          "median": 34,
+          "p10": 26,
+          "p90": 43
+        },
+        "Bielefeld": {
+          "expected": 34.9482,
+          "median": 35,
+          "p10": 26,
+          "p90": 44
+        },
+        "Bochum": {
+          "expected": 45.4812,
+          "median": 45,
+          "p10": 37,
+          "p90": 54
+        },
+        "Braunschweig": {
+          "expected": 56.9174,
+          "median": 57,
+          "p10": 48,
+          "p90": 66
+        },
+        "Dresden": {
+          "expected": 48.9356,
+          "median": 49,
+          "p10": 41,
+          "p90": 58
+        },
+        "Düsseldorf": {
+          "expected": 44.2118,
+          "median": 44,
+          "p10": 36,
+          "p90": 53
+        },
+        "Fürth": {
+          "expected": 41.5076,
+          "median": 41,
+          "p10": 33,
+          "p90": 50
+        },
+        "Hannover": {
+          "expected": 61.7984,
+          "median": 62,
+          "p10": 53,
+          "p90": 70
+        },
+        "Heidenheim": {
+          "expected": 50.2702,
+          "median": 50,
+          "p10": 42,
+          "p90": 59
+        },
+        "Kaiserslautern": {
+          "expected": 42.5512,
+          "median": 43,
+          "p10": 34,
+          "p90": 52
+        },
+        "Karlsruhe": {
+          "expected": 40.0418,
+          "median": 40,
+          "p10": 31,
+          "p90": 49
+        },
+        "Nürnberg": {
+          "expected": 51.4558,
+          "median": 52,
+          "p10": 42,
+          "p90": 60
+        },
+        "Sandhausen": {
+          "expected": 45.9652,
+          "median": 46,
+          "p10": 37,
+          "p90": 55
+        },
+        "St. Pauli": {
+          "expected": 33.4062,
+          "median": 33,
+          "p10": 25,
+          "p90": 42
+        },
+        "Stuttgart": {
+          "expected": 63.162,
+          "median": 63,
+          "p10": 54,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 54.6136,
+          "median": 54,
+          "p10": 46,
+          "p90": 64
+        },
+        "Würzburg": {
+          "expected": 46.2608,
+          "median": 46,
+          "p10": 38,
+          "p90": 55
+        }
+      }
+    },
+    {
+      "matchday": 19,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 171,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0006,
+          "Aue": 0,
+          "Bielefeld": 0.0004,
+          "Bochum": 0.0154,
+          "Braunschweig": 0.2236,
+          "Dresden": 0.0384,
+          "Düsseldorf": 0.0058,
+          "Fürth": 0.0054,
+          "Hannover": 0.54,
+          "Heidenheim": 0.061,
+          "Kaiserslautern": 0.0088,
+          "Karlsruhe": 0.0022,
+          "Nürnberg": 0.14,
+          "Sandhausen": 0.0256,
+          "St. Pauli": 0,
+          "Stuttgart": 0.739,
+          "Union Berlin": 0.1792,
+          "Würzburg": 0.0146
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0006,
+          "Aue": 0.0002,
+          "Bielefeld": 0.0022,
+          "Bochum": 0.0254,
+          "Braunschweig": 0.164,
+          "Dresden": 0.0552,
+          "Düsseldorf": 0.0152,
+          "Fürth": 0.0144,
+          "Hannover": 0.168,
+          "Heidenheim": 0.0646,
+          "Kaiserslautern": 0.0176,
+          "Karlsruhe": 0.0046,
+          "Nürnberg": 0.1368,
+          "Sandhausen": 0.0424,
+          "St. Pauli": 0.0002,
+          "Stuttgart": 0.1124,
+          "Union Berlin": 0.1484,
+          "Würzburg": 0.0278
+        },
+        "klassenerhalt": {
+          "1860 München": 0.5654,
+          "Aue": 0.3278,
+          "Bielefeld": 0.533,
+          "Bochum": 0.9096,
+          "Braunschweig": 0.9994,
+          "Dresden": 0.9814,
+          "Düsseldorf": 0.8764,
+          "Fürth": 0.8516,
+          "Hannover": 1,
+          "Heidenheim": 0.9832,
+          "Kaiserslautern": 0.8862,
+          "Karlsruhe": 0.7318,
+          "Nürnberg": 0.994,
+          "Sandhausen": 0.9722,
+          "St. Pauli": 0.4534,
+          "Stuttgart": 1,
+          "Union Berlin": 0.9976,
+          "Würzburg": 0.937
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.15,
+          "Aue": 0.133,
+          "Bielefeld": 0.145,
+          "Bochum": 0.0448,
+          "Braunschweig": 0.0006,
+          "Dresden": 0.0122,
+          "Düsseldorf": 0.0582,
+          "Fürth": 0.0748,
+          "Hannover": 0,
+          "Heidenheim": 0.0124,
+          "Kaiserslautern": 0.056,
+          "Karlsruhe": 0.1022,
+          "Nürnberg": 0.0044,
+          "Sandhausen": 0.0184,
+          "St. Pauli": 0.1502,
+          "Stuttgart": 0,
+          "Union Berlin": 0.002,
+          "Würzburg": 0.0358
+        },
+        "abstieg": {
+          "1860 München": 0.2846,
+          "Aue": 0.5392,
+          "Bielefeld": 0.322,
+          "Bochum": 0.0456,
+          "Braunschweig": 0,
+          "Dresden": 0.0064,
+          "Düsseldorf": 0.0654,
+          "Fürth": 0.0736,
+          "Hannover": 0,
+          "Heidenheim": 0.0044,
+          "Kaiserslautern": 0.0578,
+          "Karlsruhe": 0.166,
+          "Nürnberg": 0.0016,
+          "Sandhausen": 0.0094,
+          "St. Pauli": 0.3964,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0004,
+          "Würzburg": 0.0272
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 37.005,
+          "median": 37,
+          "p10": 29,
+          "p90": 45
+        },
+        "Aue": {
+          "expected": 33.5226,
+          "median": 33,
+          "p10": 26,
+          "p90": 42
+        },
+        "Bielefeld": {
+          "expected": 36.5626,
+          "median": 36,
+          "p10": 28,
+          "p90": 45
+        },
+        "Bochum": {
+          "expected": 44.988,
+          "median": 45,
+          "p10": 37,
+          "p90": 53
+        },
+        "Braunschweig": {
+          "expected": 55.2566,
+          "median": 55,
+          "p10": 47,
+          "p90": 64
+        },
+        "Dresden": {
+          "expected": 48.7574,
+          "median": 48,
+          "p10": 41,
+          "p90": 57
+        },
+        "Düsseldorf": {
+          "expected": 43.4176,
+          "median": 43,
+          "p10": 35,
+          "p90": 52
+        },
+        "Fürth": {
+          "expected": 43.1118,
+          "median": 43,
+          "p10": 35,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 60.3496,
+          "median": 60,
+          "p10": 52,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 49.047,
+          "median": 49,
+          "p10": 41,
+          "p90": 58
+        },
+        "Kaiserslautern": {
+          "expected": 43.9388,
+          "median": 44,
+          "p10": 36,
+          "p90": 53
+        },
+        "Karlsruhe": {
+          "expected": 39.806,
+          "median": 40,
+          "p10": 32,
+          "p90": 48
+        },
+        "Nürnberg": {
+          "expected": 53.0402,
+          "median": 53,
+          "p10": 44,
+          "p90": 61
+        },
+        "Sandhausen": {
+          "expected": 47.169,
+          "median": 47,
+          "p10": 39,
+          "p90": 55
+        },
+        "St. Pauli": {
+          "expected": 35.2394,
+          "median": 35,
+          "p10": 27,
+          "p90": 44
+        },
+        "Stuttgart": {
+          "expected": 64.108,
+          "median": 64,
+          "p10": 55,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 54.059,
+          "median": 54,
+          "p10": 46,
+          "p90": 62
+        },
+        "Würzburg": {
+          "expected": 45.3138,
+          "median": 45,
+          "p10": 37,
+          "p90": 53
+        }
+      }
+    },
+    {
+      "matchday": 20,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 180,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0008,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.002,
+          "Braunschweig": 0.2112,
+          "Dresden": 0.0224,
+          "Düsseldorf": 0.0038,
+          "Fürth": 0.0034,
+          "Hannover": 0.5856,
+          "Heidenheim": 0.0718,
+          "Kaiserslautern": 0.0044,
+          "Karlsruhe": 0.0004,
+          "Nürnberg": 0.092,
+          "Sandhausen": 0.018,
+          "St. Pauli": 0,
+          "Stuttgart": 0.778,
+          "Union Berlin": 0.1992,
+          "Würzburg": 0.007
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0022,
+          "Aue": 0.0004,
+          "Bielefeld": 0.0006,
+          "Bochum": 0.0124,
+          "Braunschweig": 0.1852,
+          "Dresden": 0.0388,
+          "Düsseldorf": 0.0096,
+          "Fürth": 0.0086,
+          "Hannover": 0.1692,
+          "Heidenheim": 0.0888,
+          "Kaiserslautern": 0.013,
+          "Karlsruhe": 0.0012,
+          "Nürnberg": 0.1134,
+          "Sandhausen": 0.0436,
+          "St. Pauli": 0.0004,
+          "Stuttgart": 0.1112,
+          "Union Berlin": 0.1884,
+          "Würzburg": 0.013
+        },
+        "klassenerhalt": {
+          "1860 München": 0.683,
+          "Aue": 0.3074,
+          "Bielefeld": 0.4404,
+          "Bochum": 0.9002,
+          "Braunschweig": 1,
+          "Dresden": 0.9732,
+          "Düsseldorf": 0.8734,
+          "Fürth": 0.8694,
+          "Hannover": 0.9998,
+          "Heidenheim": 0.9954,
+          "Kaiserslautern": 0.8784,
+          "Karlsruhe": 0.663,
+          "Nürnberg": 0.9922,
+          "Sandhausen": 0.9674,
+          "St. Pauli": 0.5406,
+          "Stuttgart": 1,
+          "Union Berlin": 0.9994,
+          "Würzburg": 0.9168
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1282,
+          "Aue": 0.1304,
+          "Bielefeld": 0.1546,
+          "Bochum": 0.0464,
+          "Braunschweig": 0,
+          "Dresden": 0.018,
+          "Düsseldorf": 0.0632,
+          "Fürth": 0.0606,
+          "Hannover": 0.0002,
+          "Heidenheim": 0.0034,
+          "Kaiserslautern": 0.0562,
+          "Karlsruhe": 0.1272,
+          "Nürnberg": 0.0048,
+          "Sandhausen": 0.0222,
+          "St. Pauli": 0.141,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0004,
+          "Würzburg": 0.0432
+        },
+        "abstieg": {
+          "1860 München": 0.1888,
+          "Aue": 0.5622,
+          "Bielefeld": 0.405,
+          "Bochum": 0.0534,
+          "Braunschweig": 0,
+          "Dresden": 0.0088,
+          "Düsseldorf": 0.0634,
+          "Fürth": 0.07,
+          "Hannover": 0,
+          "Heidenheim": 0.0012,
+          "Kaiserslautern": 0.0654,
+          "Karlsruhe": 0.2098,
+          "Nürnberg": 0.003,
+          "Sandhausen": 0.0104,
+          "St. Pauli": 0.3184,
+          "Stuttgart": 0,
+          "Union Berlin": 0.0002,
+          "Würzburg": 0.04
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 38.75,
+          "median": 39,
+          "p10": 31,
+          "p90": 47
+        },
+        "Aue": {
+          "expected": 33.2426,
+          "median": 33,
+          "p10": 26,
+          "p90": 41
+        },
+        "Bielefeld": {
+          "expected": 35.181,
+          "median": 35,
+          "p10": 27,
+          "p90": 43
+        },
+        "Bochum": {
+          "expected": 43.9906,
+          "median": 44,
+          "p10": 36,
+          "p90": 52
+        },
+        "Braunschweig": {
+          "expected": 55.5258,
+          "median": 56,
+          "p10": 47,
+          "p90": 64
+        },
+        "Dresden": {
+          "expected": 47.6204,
+          "median": 47,
+          "p10": 40,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 43.059,
+          "median": 43,
+          "p10": 35,
+          "p90": 51
+        },
+        "Fürth": {
+          "expected": 43.0792,
+          "median": 43,
+          "p10": 35,
+          "p90": 51
+        },
+        "Hannover": {
+          "expected": 61.3428,
+          "median": 62,
+          "p10": 53,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 50.9226,
+          "median": 51,
+          "p10": 43,
+          "p90": 59
+        },
+        "Kaiserslautern": {
+          "expected": 43.3726,
+          "median": 43,
+          "p10": 35,
+          "p90": 51
+        },
+        "Karlsruhe": {
+          "expected": 38.4422,
+          "median": 38,
+          "p10": 31,
+          "p90": 47
+        },
+        "Nürnberg": {
+          "expected": 51.9656,
+          "median": 52,
+          "p10": 44,
+          "p90": 60
+        },
+        "Sandhausen": {
+          "expected": 46.572,
+          "median": 46,
+          "p10": 39,
+          "p90": 55
+        },
+        "St. Pauli": {
+          "expected": 36.6016,
+          "median": 37,
+          "p10": 29,
+          "p90": 45
+        },
+        "Stuttgart": {
+          "expected": 65.0034,
+          "median": 65,
+          "p10": 57,
+          "p90": 73
+        },
+        "Union Berlin": {
+          "expected": 55.2346,
+          "median": 55,
+          "p10": 47,
+          "p90": 63
+        },
+        "Würzburg": {
+          "expected": 44.0436,
+          "median": 44,
+          "p10": 37,
+          "p90": 52
+        }
+      }
+    },
+    {
+      "matchday": 21,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 189,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0.0008,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0044,
+          "Braunschweig": 0.1462,
+          "Dresden": 0.0096,
+          "Düsseldorf": 0.0014,
+          "Fürth": 0.0026,
+          "Hannover": 0.644,
+          "Heidenheim": 0.0364,
+          "Kaiserslautern": 0.0038,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0406,
+          "Sandhausen": 0.0106,
+          "St. Pauli": 0,
+          "Stuttgart": 0.8446,
+          "Union Berlin": 0.2532,
+          "Würzburg": 0.0018
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0028,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.014,
+          "Braunschweig": 0.1856,
+          "Dresden": 0.0232,
+          "Düsseldorf": 0.0068,
+          "Fürth": 0.012,
+          "Hannover": 0.1878,
+          "Heidenheim": 0.0826,
+          "Kaiserslautern": 0.0182,
+          "Karlsruhe": 0.0006,
+          "Nürnberg": 0.0868,
+          "Sandhausen": 0.025,
+          "St. Pauli": 0.0002,
+          "Stuttgart": 0.0946,
+          "Union Berlin": 0.2506,
+          "Würzburg": 0.0092
+        },
+        "klassenerhalt": {
+          "1860 München": 0.7908,
+          "Aue": 0.2848,
+          "Bielefeld": 0.412,
+          "Bochum": 0.9368,
+          "Braunschweig": 0.9998,
+          "Dresden": 0.97,
+          "Düsseldorf": 0.8518,
+          "Fürth": 0.915,
+          "Hannover": 1,
+          "Heidenheim": 0.993,
+          "Kaiserslautern": 0.9288,
+          "Karlsruhe": 0.5626,
+          "Nürnberg": 0.99,
+          "Sandhausen": 0.9576,
+          "St. Pauli": 0.5184,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.8886
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.099,
+          "Aue": 0.1274,
+          "Bielefeld": 0.1604,
+          "Bochum": 0.0378,
+          "Braunschweig": 0.0002,
+          "Dresden": 0.0192,
+          "Düsseldorf": 0.073,
+          "Fürth": 0.0474,
+          "Hannover": 0,
+          "Heidenheim": 0.0044,
+          "Kaiserslautern": 0.0382,
+          "Karlsruhe": 0.1446,
+          "Nürnberg": 0.0066,
+          "Sandhausen": 0.0264,
+          "St. Pauli": 0.1556,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.0598
+        },
+        "abstieg": {
+          "1860 München": 0.1102,
+          "Aue": 0.5878,
+          "Bielefeld": 0.4276,
+          "Bochum": 0.0254,
+          "Braunschweig": 0,
+          "Dresden": 0.0108,
+          "Düsseldorf": 0.0752,
+          "Fürth": 0.0376,
+          "Hannover": 0,
+          "Heidenheim": 0.0026,
+          "Kaiserslautern": 0.033,
+          "Karlsruhe": 0.2928,
+          "Nürnberg": 0.0034,
+          "Sandhausen": 0.016,
+          "St. Pauli": 0.326,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.0516
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 40.573,
+          "median": 40,
+          "p10": 33,
+          "p90": 48
+        },
+        "Aue": {
+          "expected": 33.0046,
+          "median": 33,
+          "p10": 26,
+          "p90": 41
+        },
+        "Bielefeld": {
+          "expected": 34.8632,
+          "median": 35,
+          "p10": 27,
+          "p90": 42
+        },
+        "Bochum": {
+          "expected": 45.0996,
+          "median": 45,
+          "p10": 38,
+          "p90": 53
+        },
+        "Braunschweig": {
+          "expected": 54.7052,
+          "median": 55,
+          "p10": 47,
+          "p90": 62
+        },
+        "Dresden": {
+          "expected": 46.7434,
+          "median": 47,
+          "p10": 40,
+          "p90": 54
+        },
+        "Düsseldorf": {
+          "expected": 42.076,
+          "median": 42,
+          "p10": 35,
+          "p90": 49
+        },
+        "Fürth": {
+          "expected": 44.3612,
+          "median": 44,
+          "p10": 37,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 62.6868,
+          "median": 63,
+          "p10": 55,
+          "p90": 70
+        },
+        "Heidenheim": {
+          "expected": 49.7116,
+          "median": 50,
+          "p10": 42,
+          "p90": 57
+        },
+        "Kaiserslautern": {
+          "expected": 44.5384,
+          "median": 44,
+          "p10": 37,
+          "p90": 52
+        },
+        "Karlsruhe": {
+          "expected": 36.8266,
+          "median": 37,
+          "p10": 29,
+          "p90": 44
+        },
+        "Nürnberg": {
+          "expected": 50.3524,
+          "median": 50,
+          "p10": 43,
+          "p90": 58
+        },
+        "Sandhausen": {
+          "expected": 45.625,
+          "median": 45,
+          "p10": 38,
+          "p90": 53
+        },
+        "St. Pauli": {
+          "expected": 36.2888,
+          "median": 36,
+          "p10": 29,
+          "p90": 44
+        },
+        "Stuttgart": {
+          "expected": 66.5336,
+          "median": 67,
+          "p10": 59,
+          "p90": 74
+        },
+        "Union Berlin": {
+          "expected": 57.2326,
+          "median": 57,
+          "p10": 50,
+          "p90": 65
+        },
+        "Würzburg": {
+          "expected": 43.086,
+          "median": 43,
+          "p10": 36,
+          "p90": 51
+        }
+      }
+    },
+    {
+      "matchday": 22,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 198,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0068,
+          "Braunschweig": 0.1818,
+          "Dresden": 0.0118,
+          "Düsseldorf": 0.0004,
+          "Fürth": 0.0006,
+          "Hannover": 0.5786,
+          "Heidenheim": 0.0228,
+          "Kaiserslautern": 0.001,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0156,
+          "Sandhausen": 0.0034,
+          "St. Pauli": 0,
+          "Stuttgart": 0.8808,
+          "Union Berlin": 0.2956,
+          "Würzburg": 0.0008
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0004,
+          "Aue": 0,
+          "Bielefeld": 0.0002,
+          "Bochum": 0.026,
+          "Braunschweig": 0.2242,
+          "Dresden": 0.0402,
+          "Düsseldorf": 0.0028,
+          "Fürth": 0.0082,
+          "Hannover": 0.2124,
+          "Heidenheim": 0.0574,
+          "Kaiserslautern": 0.0054,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.042,
+          "Sandhausen": 0.012,
+          "St. Pauli": 0.001,
+          "Stuttgart": 0.0778,
+          "Union Berlin": 0.2856,
+          "Würzburg": 0.0044
+        },
+        "klassenerhalt": {
+          "1860 München": 0.7654,
+          "Aue": 0.2054,
+          "Bielefeld": 0.4412,
+          "Bochum": 0.9768,
+          "Braunschweig": 1,
+          "Dresden": 0.9918,
+          "Düsseldorf": 0.8504,
+          "Fürth": 0.9246,
+          "Hannover": 1,
+          "Heidenheim": 0.9948,
+          "Kaiserslautern": 0.9168,
+          "Karlsruhe": 0.452,
+          "Nürnberg": 0.9866,
+          "Sandhausen": 0.9426,
+          "St. Pauli": 0.6546,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.897
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.113,
+          "Aue": 0.121,
+          "Bielefeld": 0.1558,
+          "Bochum": 0.013,
+          "Braunschweig": 0,
+          "Dresden": 0.0054,
+          "Düsseldorf": 0.0802,
+          "Fürth": 0.0426,
+          "Hannover": 0,
+          "Heidenheim": 0.0038,
+          "Kaiserslautern": 0.0456,
+          "Karlsruhe": 0.1744,
+          "Nürnberg": 0.009,
+          "Sandhausen": 0.0366,
+          "St. Pauli": 0.1396,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.06
+        },
+        "abstieg": {
+          "1860 München": 0.1216,
+          "Aue": 0.6736,
+          "Bielefeld": 0.403,
+          "Bochum": 0.0102,
+          "Braunschweig": 0,
+          "Dresden": 0.0028,
+          "Düsseldorf": 0.0694,
+          "Fürth": 0.0328,
+          "Hannover": 0,
+          "Heidenheim": 0.0014,
+          "Kaiserslautern": 0.0376,
+          "Karlsruhe": 0.3736,
+          "Nürnberg": 0.0044,
+          "Sandhausen": 0.0208,
+          "St. Pauli": 0.2058,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.043
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 39.6104,
+          "median": 39,
+          "p10": 33,
+          "p90": 47
+        },
+        "Aue": {
+          "expected": 31.6222,
+          "median": 31,
+          "p10": 25,
+          "p90": 39
+        },
+        "Bielefeld": {
+          "expected": 35.0348,
+          "median": 35,
+          "p10": 28,
+          "p90": 42
+        },
+        "Bochum": {
+          "expected": 47.1822,
+          "median": 47,
+          "p10": 40,
+          "p90": 55
+        },
+        "Braunschweig": {
+          "expected": 56.2934,
+          "median": 56,
+          "p10": 49,
+          "p90": 63
+        },
+        "Dresden": {
+          "expected": 48.5432,
+          "median": 48,
+          "p10": 42,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 41.6358,
+          "median": 41,
+          "p10": 35,
+          "p90": 49
+        },
+        "Fürth": {
+          "expected": 44.0536,
+          "median": 44,
+          "p10": 37,
+          "p90": 51
+        },
+        "Hannover": {
+          "expected": 61.9638,
+          "median": 62,
+          "p10": 55,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 49.192,
+          "median": 49,
+          "p10": 42,
+          "p90": 56
+        },
+        "Kaiserslautern": {
+          "expected": 43.6422,
+          "median": 44,
+          "p10": 36,
+          "p90": 51
+        },
+        "Karlsruhe": {
+          "expected": 35.3718,
+          "median": 35,
+          "p10": 28,
+          "p90": 43
+        },
+        "Nürnberg": {
+          "expected": 48.699,
+          "median": 49,
+          "p10": 41,
+          "p90": 56
+        },
+        "Sandhausen": {
+          "expected": 44.2664,
+          "median": 44,
+          "p10": 37,
+          "p90": 51
+        },
+        "St. Pauli": {
+          "expected": 37.7696,
+          "median": 38,
+          "p10": 31,
+          "p90": 45
+        },
+        "Stuttgart": {
+          "expected": 67.7222,
+          "median": 68,
+          "p10": 60,
+          "p90": 75
+        },
+        "Union Berlin": {
+          "expected": 58.5212,
+          "median": 58,
+          "p10": 52,
+          "p90": 66
+        },
+        "Würzburg": {
+          "expected": 42.522,
+          "median": 42,
+          "p10": 36,
+          "p90": 50
+        }
+      }
+    },
+    {
+      "matchday": 23,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 207,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0016,
+          "Braunschweig": 0.1816,
+          "Dresden": 0.012,
+          "Düsseldorf": 0.0014,
+          "Fürth": 0.0024,
+          "Hannover": 0.4916,
+          "Heidenheim": 0.0178,
+          "Kaiserslautern": 0.0006,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0056,
+          "Sandhausen": 0.003,
+          "St. Pauli": 0,
+          "Stuttgart": 0.8866,
+          "Union Berlin": 0.3952,
+          "Würzburg": 0.0006
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0.0002,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.012,
+          "Braunschweig": 0.2298,
+          "Dresden": 0.032,
+          "Düsseldorf": 0.0064,
+          "Fürth": 0.0132,
+          "Hannover": 0.254,
+          "Heidenheim": 0.0466,
+          "Kaiserslautern": 0.0052,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0196,
+          "Sandhausen": 0.0092,
+          "St. Pauli": 0.0006,
+          "Stuttgart": 0.0808,
+          "Union Berlin": 0.2882,
+          "Würzburg": 0.0022
+        },
+        "klassenerhalt": {
+          "1860 München": 0.664,
+          "Aue": 0.1704,
+          "Bielefeld": 0.3412,
+          "Bochum": 0.9558,
+          "Braunschweig": 1,
+          "Dresden": 0.9922,
+          "Düsseldorf": 0.9194,
+          "Fürth": 0.9618,
+          "Hannover": 1,
+          "Heidenheim": 0.9956,
+          "Kaiserslautern": 0.902,
+          "Karlsruhe": 0.5688,
+          "Nürnberg": 0.9772,
+          "Sandhausen": 0.9424,
+          "St. Pauli": 0.7502,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.859
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1502,
+          "Aue": 0.1152,
+          "Bielefeld": 0.1696,
+          "Bochum": 0.028,
+          "Braunschweig": 0,
+          "Dresden": 0.007,
+          "Düsseldorf": 0.0456,
+          "Fürth": 0.027,
+          "Hannover": 0,
+          "Heidenheim": 0.0036,
+          "Kaiserslautern": 0.0482,
+          "Karlsruhe": 0.1624,
+          "Nürnberg": 0.0144,
+          "Sandhausen": 0.0368,
+          "St. Pauli": 0.1164,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.0756
+        },
+        "abstieg": {
+          "1860 München": 0.1858,
+          "Aue": 0.7144,
+          "Bielefeld": 0.4892,
+          "Bochum": 0.0162,
+          "Braunschweig": 0,
+          "Dresden": 0.0008,
+          "Düsseldorf": 0.035,
+          "Fürth": 0.0112,
+          "Hannover": 0,
+          "Heidenheim": 0.0008,
+          "Kaiserslautern": 0.0498,
+          "Karlsruhe": 0.2688,
+          "Nürnberg": 0.0084,
+          "Sandhausen": 0.0208,
+          "St. Pauli": 0.1334,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.0654
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 38.2798,
+          "median": 38,
+          "p10": 32,
+          "p90": 45
+        },
+        "Aue": {
+          "expected": 31.4902,
+          "median": 31,
+          "p10": 25,
+          "p90": 38
+        },
+        "Bielefeld": {
+          "expected": 34.2886,
+          "median": 34,
+          "p10": 28,
+          "p90": 41
+        },
+        "Bochum": {
+          "expected": 45.5466,
+          "median": 46,
+          "p10": 39,
+          "p90": 52
+        },
+        "Braunschweig": {
+          "expected": 56.1902,
+          "median": 56,
+          "p10": 49,
+          "p90": 63
+        },
+        "Dresden": {
+          "expected": 48.183,
+          "median": 48,
+          "p10": 42,
+          "p90": 55
+        },
+        "Düsseldorf": {
+          "expected": 43.6778,
+          "median": 44,
+          "p10": 37,
+          "p90": 50
+        },
+        "Fürth": {
+          "expected": 45.7574,
+          "median": 46,
+          "p10": 39,
+          "p90": 53
+        },
+        "Hannover": {
+          "expected": 60.572,
+          "median": 61,
+          "p10": 54,
+          "p90": 67
+        },
+        "Heidenheim": {
+          "expected": 48.4884,
+          "median": 48,
+          "p10": 42,
+          "p90": 55
+        },
+        "Kaiserslautern": {
+          "expected": 43.0498,
+          "median": 43,
+          "p10": 36,
+          "p90": 50
+        },
+        "Karlsruhe": {
+          "expected": 37.2116,
+          "median": 37,
+          "p10": 30,
+          "p90": 44
+        },
+        "Nürnberg": {
+          "expected": 47.048,
+          "median": 47,
+          "p10": 40,
+          "p90": 54
+        },
+        "Sandhausen": {
+          "expected": 44.1616,
+          "median": 44,
+          "p10": 37,
+          "p90": 51
+        },
+        "St. Pauli": {
+          "expected": 39.297,
+          "median": 39,
+          "p10": 33,
+          "p90": 46
+        },
+        "Stuttgart": {
+          "expected": 67.3054,
+          "median": 67,
+          "p10": 61,
+          "p90": 74
+        },
+        "Union Berlin": {
+          "expected": 59.6172,
+          "median": 60,
+          "p10": 53,
+          "p90": 66
+        },
+        "Würzburg": {
+          "expected": 41.7036,
+          "median": 41,
+          "p10": 35,
+          "p90": 48
+        }
+      }
+    },
+    {
+      "matchday": 24,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 216,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0004,
+          "Braunschweig": 0.1996,
+          "Dresden": 0.0112,
+          "Düsseldorf": 0,
+          "Fürth": 0.0002,
+          "Hannover": 0.488,
+          "Heidenheim": 0.01,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0056,
+          "Sandhausen": 0.0004,
+          "St. Pauli": 0,
+          "Stuttgart": 0.8282,
+          "Union Berlin": 0.4564,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0046,
+          "Braunschweig": 0.237,
+          "Dresden": 0.0318,
+          "Düsseldorf": 0.0004,
+          "Fürth": 0.0054,
+          "Hannover": 0.273,
+          "Heidenheim": 0.0248,
+          "Kaiserslautern": 0.0014,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0164,
+          "Sandhausen": 0.0014,
+          "St. Pauli": 0,
+          "Stuttgart": 0.1214,
+          "Union Berlin": 0.2822,
+          "Würzburg": 0.0002
+        },
+        "klassenerhalt": {
+          "1860 München": 0.6602,
+          "Aue": 0.2788,
+          "Bielefeld": 0.3206,
+          "Bochum": 0.968,
+          "Braunschweig": 1,
+          "Dresden": 0.9998,
+          "Düsseldorf": 0.9066,
+          "Fürth": 0.9762,
+          "Hannover": 1,
+          "Heidenheim": 0.9978,
+          "Kaiserslautern": 0.9122,
+          "Karlsruhe": 0.5012,
+          "Nürnberg": 0.9932,
+          "Sandhausen": 0.9578,
+          "St. Pauli": 0.698,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.8296
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1356,
+          "Aue": 0.14,
+          "Bielefeld": 0.1606,
+          "Bochum": 0.0208,
+          "Braunschweig": 0,
+          "Dresden": 0.0002,
+          "Düsseldorf": 0.0492,
+          "Fürth": 0.018,
+          "Hannover": 0,
+          "Heidenheim": 0.0018,
+          "Kaiserslautern": 0.0488,
+          "Karlsruhe": 0.1762,
+          "Nürnberg": 0.0048,
+          "Sandhausen": 0.027,
+          "St. Pauli": 0.1362,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.0808
+        },
+        "abstieg": {
+          "1860 München": 0.2042,
+          "Aue": 0.5812,
+          "Bielefeld": 0.5188,
+          "Bochum": 0.0112,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0442,
+          "Fürth": 0.0058,
+          "Hannover": 0,
+          "Heidenheim": 0.0004,
+          "Kaiserslautern": 0.039,
+          "Karlsruhe": 0.3226,
+          "Nürnberg": 0.002,
+          "Sandhausen": 0.0152,
+          "St. Pauli": 0.1658,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.0896
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 37.4836,
+          "median": 37,
+          "p10": 31,
+          "p90": 44
+        },
+        "Aue": {
+          "expected": 33.2228,
+          "median": 33,
+          "p10": 27,
+          "p90": 40
+        },
+        "Bielefeld": {
+          "expected": 33.3944,
+          "median": 33,
+          "p10": 27,
+          "p90": 40
+        },
+        "Bochum": {
+          "expected": 45.5026,
+          "median": 46,
+          "p10": 39,
+          "p90": 52
+        },
+        "Braunschweig": {
+          "expected": 57.686,
+          "median": 58,
+          "p10": 51,
+          "p90": 64
+        },
+        "Dresden": {
+          "expected": 49.901,
+          "median": 50,
+          "p10": 44,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 42.3758,
+          "median": 42,
+          "p10": 36,
+          "p90": 49
+        },
+        "Fürth": {
+          "expected": 45.4926,
+          "median": 45,
+          "p10": 39,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 61.5732,
+          "median": 62,
+          "p10": 55,
+          "p90": 68
+        },
+        "Heidenheim": {
+          "expected": 48.4832,
+          "median": 48,
+          "p10": 42,
+          "p90": 55
+        },
+        "Kaiserslautern": {
+          "expected": 42.4856,
+          "median": 42,
+          "p10": 36,
+          "p90": 49
+        },
+        "Karlsruhe": {
+          "expected": 35.7542,
+          "median": 36,
+          "p10": 30,
+          "p90": 42
+        },
+        "Nürnberg": {
+          "expected": 48.277,
+          "median": 48,
+          "p10": 42,
+          "p90": 55
+        },
+        "Sandhausen": {
+          "expected": 43.7258,
+          "median": 43,
+          "p10": 38,
+          "p90": 50
+        },
+        "St. Pauli": {
+          "expected": 37.9062,
+          "median": 38,
+          "p10": 32,
+          "p90": 44
+        },
+        "Stuttgart": {
+          "expected": 66.2774,
+          "median": 66,
+          "p10": 60,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 61.2616,
+          "median": 61,
+          "p10": 55,
+          "p90": 67
+        },
+        "Würzburg": {
+          "expected": 40.2454,
+          "median": 40,
+          "p10": 34,
+          "p90": 46
+        }
+      }
+    },
+    {
+      "matchday": 25,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 225,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.2504,
+          "Dresden": 0.0126,
+          "Düsseldorf": 0,
+          "Fürth": 0.001,
+          "Hannover": 0.4282,
+          "Heidenheim": 0.0016,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0002,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.7398,
+          "Union Berlin": 0.5662,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0018,
+          "Braunschweig": 0.2484,
+          "Dresden": 0.045,
+          "Düsseldorf": 0.0012,
+          "Fürth": 0.0064,
+          "Hannover": 0.2734,
+          "Heidenheim": 0.008,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.005,
+          "Sandhausen": 0.0002,
+          "St. Pauli": 0,
+          "Stuttgart": 0.1712,
+          "Union Berlin": 0.2394,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0.7592,
+          "Aue": 0.2668,
+          "Bielefeld": 0.4318,
+          "Bochum": 0.965,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 0.969,
+          "Fürth": 0.9964,
+          "Hannover": 1,
+          "Heidenheim": 0.996,
+          "Kaiserslautern": 0.879,
+          "Karlsruhe": 0.3372,
+          "Nürnberg": 0.9894,
+          "Sandhausen": 0.9448,
+          "St. Pauli": 0.6922,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.7732
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.117,
+          "Aue": 0.1454,
+          "Bielefeld": 0.1878,
+          "Bochum": 0.0236,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0204,
+          "Fürth": 0.0024,
+          "Hannover": 0,
+          "Heidenheim": 0.0034,
+          "Kaiserslautern": 0.0578,
+          "Karlsruhe": 0.165,
+          "Nürnberg": 0.0066,
+          "Sandhausen": 0.0342,
+          "St. Pauli": 0.131,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1054
+        },
+        "abstieg": {
+          "1860 München": 0.1238,
+          "Aue": 0.5878,
+          "Bielefeld": 0.3804,
+          "Bochum": 0.0114,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0106,
+          "Fürth": 0.0012,
+          "Hannover": 0,
+          "Heidenheim": 0.0006,
+          "Kaiserslautern": 0.0632,
+          "Karlsruhe": 0.4978,
+          "Nürnberg": 0.004,
+          "Sandhausen": 0.021,
+          "St. Pauli": 0.1768,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1214
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 38.8852,
+          "median": 39,
+          "p10": 33,
+          "p90": 45
+        },
+        "Aue": {
+          "expected": 33.3194,
+          "median": 33,
+          "p10": 28,
+          "p90": 39
+        },
+        "Bielefeld": {
+          "expected": 34.9984,
+          "median": 35,
+          "p10": 29,
+          "p90": 41
+        },
+        "Bochum": {
+          "expected": 44.7886,
+          "median": 45,
+          "p10": 39,
+          "p90": 51
+        },
+        "Braunschweig": {
+          "expected": 59.0764,
+          "median": 59,
+          "p10": 53,
+          "p90": 65
+        },
+        "Dresden": {
+          "expected": 51.3222,
+          "median": 51,
+          "p10": 46,
+          "p90": 57
+        },
+        "Düsseldorf": {
+          "expected": 44.3596,
+          "median": 44,
+          "p10": 39,
+          "p90": 50
+        },
+        "Fürth": {
+          "expected": 47.5118,
+          "median": 47,
+          "p10": 42,
+          "p90": 53
+        },
+        "Hannover": {
+          "expected": 61.146,
+          "median": 61,
+          "p10": 55,
+          "p90": 67
+        },
+        "Heidenheim": {
+          "expected": 47.2332,
+          "median": 47,
+          "p10": 41,
+          "p90": 53
+        },
+        "Kaiserslautern": {
+          "expected": 41.0796,
+          "median": 41,
+          "p10": 35,
+          "p90": 47
+        },
+        "Karlsruhe": {
+          "expected": 33.9852,
+          "median": 34,
+          "p10": 28,
+          "p90": 40
+        },
+        "Nürnberg": {
+          "expected": 46.835,
+          "median": 47,
+          "p10": 41,
+          "p90": 53
+        },
+        "Sandhausen": {
+          "expected": 42.516,
+          "median": 42,
+          "p10": 37,
+          "p90": 48
+        },
+        "St. Pauli": {
+          "expected": 37.6366,
+          "median": 38,
+          "p10": 32,
+          "p90": 44
+        },
+        "Stuttgart": {
+          "expected": 64.8034,
+          "median": 65,
+          "p10": 59,
+          "p90": 71
+        },
+        "Union Berlin": {
+          "expected": 62.877,
+          "median": 63,
+          "p10": 57,
+          "p90": 69
+        },
+        "Würzburg": {
+          "expected": 39.0182,
+          "median": 39,
+          "p10": 34,
+          "p90": 45
+        }
+      }
+    },
+    {
+      "matchday": 26,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 234,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.3702,
+          "Dresden": 0.0118,
+          "Düsseldorf": 0,
+          "Fürth": 0.0008,
+          "Hannover": 0.5134,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0004,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.6506,
+          "Union Berlin": 0.4528,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.2562,
+          "Dresden": 0.03,
+          "Düsseldorf": 0.0004,
+          "Fürth": 0.0056,
+          "Hannover": 0.2406,
+          "Heidenheim": 0.0014,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0032,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.2018,
+          "Union Berlin": 0.2608,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0.8886,
+          "Aue": 0.3806,
+          "Bielefeld": 0.406,
+          "Bochum": 0.9722,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 0.9596,
+          "Fürth": 0.9998,
+          "Hannover": 1,
+          "Heidenheim": 0.9946,
+          "Kaiserslautern": 0.8284,
+          "Karlsruhe": 0.255,
+          "Nürnberg": 0.997,
+          "Sandhausen": 0.949,
+          "St. Pauli": 0.5908,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.7784
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.0672,
+          "Aue": 0.1792,
+          "Bielefeld": 0.186,
+          "Bochum": 0.0194,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0254,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0.004,
+          "Kaiserslautern": 0.0748,
+          "Karlsruhe": 0.1428,
+          "Nürnberg": 0.0024,
+          "Sandhausen": 0.0328,
+          "St. Pauli": 0.1538,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1122
+        },
+        "abstieg": {
+          "1860 München": 0.0442,
+          "Aue": 0.4402,
+          "Bielefeld": 0.408,
+          "Bochum": 0.0084,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.015,
+          "Fürth": 0.0002,
+          "Hannover": 0,
+          "Heidenheim": 0.0014,
+          "Kaiserslautern": 0.0968,
+          "Karlsruhe": 0.6022,
+          "Nürnberg": 0.0006,
+          "Sandhausen": 0.0182,
+          "St. Pauli": 0.2554,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1094
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 40.7604,
+          "median": 41,
+          "p10": 35,
+          "p90": 46
+        },
+        "Aue": {
+          "expected": 34.9454,
+          "median": 35,
+          "p10": 30,
+          "p90": 40
+        },
+        "Bielefeld": {
+          "expected": 34.671,
+          "median": 35,
+          "p10": 29,
+          "p90": 40
+        },
+        "Bochum": {
+          "expected": 44.2488,
+          "median": 44,
+          "p10": 39,
+          "p90": 50
+        },
+        "Braunschweig": {
+          "expected": 60.9558,
+          "median": 61,
+          "p10": 55,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 51.7368,
+          "median": 52,
+          "p10": 47,
+          "p90": 57
+        },
+        "Düsseldorf": {
+          "expected": 42.7832,
+          "median": 43,
+          "p10": 38,
+          "p90": 48
+        },
+        "Fürth": {
+          "expected": 49.3414,
+          "median": 49,
+          "p10": 44,
+          "p90": 55
+        },
+        "Hannover": {
+          "expected": 62.2464,
+          "median": 62,
+          "p10": 57,
+          "p90": 68
+        },
+        "Heidenheim": {
+          "expected": 45.7802,
+          "median": 46,
+          "p10": 40,
+          "p90": 51
+        },
+        "Kaiserslautern": {
+          "expected": 39.6844,
+          "median": 40,
+          "p10": 34,
+          "p90": 45
+        },
+        "Karlsruhe": {
+          "expected": 32.9206,
+          "median": 33,
+          "p10": 28,
+          "p90": 38
+        },
+        "Nürnberg": {
+          "expected": 48.0796,
+          "median": 48,
+          "p10": 43,
+          "p90": 54
+        },
+        "Sandhausen": {
+          "expected": 42.1666,
+          "median": 42,
+          "p10": 37,
+          "p90": 48
+        },
+        "St. Pauli": {
+          "expected": 36.1916,
+          "median": 36,
+          "p10": 31,
+          "p90": 42
+        },
+        "Stuttgart": {
+          "expected": 63.5876,
+          "median": 64,
+          "p10": 58,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 61.8588,
+          "median": 62,
+          "p10": 56,
+          "p90": 67
+        },
+        "Würzburg": {
+          "expected": 38.6806,
+          "median": 38,
+          "p10": 34,
+          "p90": 44
+        }
+      }
+    },
+    {
+      "matchday": 27,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 243,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.3738,
+          "Dresden": 0.0188,
+          "Düsseldorf": 0,
+          "Fürth": 0.0002,
+          "Hannover": 0.6738,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.632,
+          "Union Berlin": 0.3014,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0002,
+          "Braunschweig": 0.2724,
+          "Dresden": 0.0504,
+          "Düsseldorf": 0,
+          "Fürth": 0.0052,
+          "Hannover": 0.2018,
+          "Heidenheim": 0.0002,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0.0004,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.2134,
+          "Union Berlin": 0.256,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0.889,
+          "Aue": 0.5662,
+          "Bielefeld": 0.4896,
+          "Bochum": 0.9734,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 0.9322,
+          "Fürth": 1,
+          "Hannover": 1,
+          "Heidenheim": 0.9902,
+          "Kaiserslautern": 0.8034,
+          "Karlsruhe": 0.1382,
+          "Nürnberg": 0.996,
+          "Sandhausen": 0.9624,
+          "St. Pauli": 0.4862,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.7732
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.072,
+          "Aue": 0.1692,
+          "Bielefeld": 0.1782,
+          "Bochum": 0.0156,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0412,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0.0066,
+          "Kaiserslautern": 0.0866,
+          "Karlsruhe": 0.11,
+          "Nürnberg": 0.003,
+          "Sandhausen": 0.0236,
+          "St. Pauli": 0.1754,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1186
+        },
+        "abstieg": {
+          "1860 München": 0.039,
+          "Aue": 0.2646,
+          "Bielefeld": 0.3322,
+          "Bochum": 0.011,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0266,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0.0032,
+          "Kaiserslautern": 0.11,
+          "Karlsruhe": 0.7518,
+          "Nürnberg": 0.001,
+          "Sandhausen": 0.014,
+          "St. Pauli": 0.3384,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1082
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 40.7422,
+          "median": 41,
+          "p10": 36,
+          "p90": 46
+        },
+        "Aue": {
+          "expected": 37.0792,
+          "median": 37,
+          "p10": 32,
+          "p90": 42
+        },
+        "Bielefeld": {
+          "expected": 36.011,
+          "median": 36,
+          "p10": 31,
+          "p90": 41
+        },
+        "Bochum": {
+          "expected": 43.82,
+          "median": 44,
+          "p10": 39,
+          "p90": 49
+        },
+        "Braunschweig": {
+          "expected": 60.8026,
+          "median": 61,
+          "p10": 56,
+          "p90": 66
+        },
+        "Dresden": {
+          "expected": 53.2774,
+          "median": 53,
+          "p10": 49,
+          "p90": 58
+        },
+        "Düsseldorf": {
+          "expected": 41.6386,
+          "median": 42,
+          "p10": 37,
+          "p90": 47
+        },
+        "Fürth": {
+          "expected": 48.9438,
+          "median": 49,
+          "p10": 44,
+          "p90": 54
+        },
+        "Hannover": {
+          "expected": 63.6622,
+          "median": 64,
+          "p10": 59,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 44.3534,
+          "median": 44,
+          "p10": 39,
+          "p90": 49
+        },
+        "Kaiserslautern": {
+          "expected": 39.2936,
+          "median": 39,
+          "p10": 34,
+          "p90": 45
+        },
+        "Karlsruhe": {
+          "expected": 32.0352,
+          "median": 32,
+          "p10": 27,
+          "p90": 37
+        },
+        "Nürnberg": {
+          "expected": 46.8732,
+          "median": 47,
+          "p10": 42,
+          "p90": 52
+        },
+        "Sandhausen": {
+          "expected": 42.2516,
+          "median": 42,
+          "p10": 38,
+          "p90": 47
+        },
+        "St. Pauli": {
+          "expected": 35.617,
+          "median": 36,
+          "p10": 31,
+          "p90": 41
+        },
+        "Stuttgart": {
+          "expected": 62.8816,
+          "median": 63,
+          "p10": 58,
+          "p90": 68
+        },
+        "Union Berlin": {
+          "expected": 59.943,
+          "median": 60,
+          "p10": 55,
+          "p90": 65
+        },
+        "Würzburg": {
+          "expected": 38.724,
+          "median": 38,
+          "p10": 34,
+          "p90": 44
+        }
+      }
+    },
+    {
+      "matchday": 28,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 252,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.4438,
+          "Dresden": 0.0046,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.6002,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.7196,
+          "Union Berlin": 0.2318,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.2924,
+          "Dresden": 0.0214,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.2564,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.188,
+          "Union Berlin": 0.2418,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0.7714,
+          "Aue": 0.6394,
+          "Bielefeld": 0.5996,
+          "Bochum": 0.9598,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 0.9096,
+          "Fürth": 0.9998,
+          "Hannover": 1,
+          "Heidenheim": 0.987,
+          "Kaiserslautern": 0.8532,
+          "Karlsruhe": 0.0546,
+          "Nürnberg": 0.9902,
+          "Sandhausen": 0.8896,
+          "St. Pauli": 0.6298,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.716
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1188,
+          "Aue": 0.1576,
+          "Bielefeld": 0.1638,
+          "Bochum": 0.0278,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0492,
+          "Fürth": 0.0002,
+          "Hannover": 0,
+          "Heidenheim": 0.01,
+          "Kaiserslautern": 0.0796,
+          "Karlsruhe": 0.0516,
+          "Nürnberg": 0.007,
+          "Sandhausen": 0.0646,
+          "St. Pauli": 0.1426,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1272
+        },
+        "abstieg": {
+          "1860 München": 0.1098,
+          "Aue": 0.203,
+          "Bielefeld": 0.2366,
+          "Bochum": 0.0124,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0412,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0.003,
+          "Kaiserslautern": 0.0672,
+          "Karlsruhe": 0.8938,
+          "Nürnberg": 0.0028,
+          "Sandhausen": 0.0458,
+          "St. Pauli": 0.2276,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1568
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 39.4732,
+          "median": 39,
+          "p10": 35,
+          "p90": 44
+        },
+        "Aue": {
+          "expected": 38.5316,
+          "median": 38,
+          "p10": 34,
+          "p90": 43
+        },
+        "Bielefeld": {
+          "expected": 37.7532,
+          "median": 38,
+          "p10": 33,
+          "p90": 42
+        },
+        "Bochum": {
+          "expected": 43.364,
+          "median": 43,
+          "p10": 39,
+          "p90": 48
+        },
+        "Braunschweig": {
+          "expected": 61.9774,
+          "median": 62,
+          "p10": 58,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 52.4576,
+          "median": 52,
+          "p10": 48,
+          "p90": 57
+        },
+        "Düsseldorf": {
+          "expected": 41.3596,
+          "median": 41,
+          "p10": 37,
+          "p90": 46
+        },
+        "Fürth": {
+          "expected": 47.7888,
+          "median": 48,
+          "p10": 43,
+          "p90": 53
+        },
+        "Hannover": {
+          "expected": 63.1332,
+          "median": 63,
+          "p10": 58,
+          "p90": 68
+        },
+        "Heidenheim": {
+          "expected": 43.8874,
+          "median": 44,
+          "p10": 39,
+          "p90": 49
+        },
+        "Kaiserslautern": {
+          "expected": 40.5856,
+          "median": 40,
+          "p10": 36,
+          "p90": 45
+        },
+        "Karlsruhe": {
+          "expected": 31.1474,
+          "median": 31,
+          "p10": 26,
+          "p90": 36
+        },
+        "Nürnberg": {
+          "expected": 45.281,
+          "median": 45,
+          "p10": 41,
+          "p90": 50
+        },
+        "Sandhausen": {
+          "expected": 40.6592,
+          "median": 41,
+          "p10": 36,
+          "p90": 45
+        },
+        "St. Pauli": {
+          "expected": 37.6116,
+          "median": 38,
+          "p10": 33,
+          "p90": 42
+        },
+        "Stuttgart": {
+          "expected": 64.1344,
+          "median": 64,
+          "p10": 60,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 59.5128,
+          "median": 59,
+          "p10": 55,
+          "p90": 64
+        },
+        "Würzburg": {
+          "expected": 38.6388,
+          "median": 38,
+          "p10": 34,
+          "p90": 43
+        }
+      }
+    },
+    {
+      "matchday": 29,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 261,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.2548,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.6626,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.7948,
+          "Union Berlin": 0.2878,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.307,
+          "Dresden": 0.0048,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.2426,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.1512,
+          "Union Berlin": 0.2944,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0.7748,
+          "Aue": 0.5836,
+          "Bielefeld": 0.4994,
+          "Bochum": 0.991,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 0.9274,
+          "Fürth": 1,
+          "Hannover": 1,
+          "Heidenheim": 0.9998,
+          "Kaiserslautern": 0.8132,
+          "Karlsruhe": 0.0104,
+          "Nürnberg": 0.9988,
+          "Sandhausen": 0.9278,
+          "St. Pauli": 0.7896,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.6842
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1284,
+          "Aue": 0.1782,
+          "Bielefeld": 0.1892,
+          "Bochum": 0.0076,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0508,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0.0002,
+          "Kaiserslautern": 0.1008,
+          "Karlsruhe": 0.023,
+          "Nürnberg": 0.0012,
+          "Sandhausen": 0.0524,
+          "St. Pauli": 0.1162,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.152
+        },
+        "abstieg": {
+          "1860 München": 0.0968,
+          "Aue": 0.2382,
+          "Bielefeld": 0.3114,
+          "Bochum": 0.0014,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0218,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0.086,
+          "Karlsruhe": 0.9666,
+          "Nürnberg": 0,
+          "Sandhausen": 0.0198,
+          "St. Pauli": 0.0942,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1638
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 38.9384,
+          "median": 39,
+          "p10": 35,
+          "p90": 43
+        },
+        "Aue": {
+          "expected": 37.755,
+          "median": 38,
+          "p10": 34,
+          "p90": 42
+        },
+        "Bielefeld": {
+          "expected": 36.6216,
+          "median": 37,
+          "p10": 33,
+          "p90": 41
+        },
+        "Bochum": {
+          "expected": 44.747,
+          "median": 45,
+          "p10": 41,
+          "p90": 49
+        },
+        "Braunschweig": {
+          "expected": 61.0034,
+          "median": 61,
+          "p10": 57,
+          "p90": 65
+        },
+        "Dresden": {
+          "expected": 51.9094,
+          "median": 52,
+          "p10": 48,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 41.0772,
+          "median": 41,
+          "p10": 37,
+          "p90": 45
+        },
+        "Fürth": {
+          "expected": 46.6988,
+          "median": 47,
+          "p10": 43,
+          "p90": 51
+        },
+        "Hannover": {
+          "expected": 64.2858,
+          "median": 64,
+          "p10": 60,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 45.7092,
+          "median": 46,
+          "p10": 42,
+          "p90": 50
+        },
+        "Kaiserslautern": {
+          "expected": 39.3932,
+          "median": 39,
+          "p10": 35,
+          "p90": 44
+        },
+        "Karlsruhe": {
+          "expected": 29.5028,
+          "median": 29,
+          "p10": 25,
+          "p90": 34
+        },
+        "Nürnberg": {
+          "expected": 46.0972,
+          "median": 46,
+          "p10": 42,
+          "p90": 50
+        },
+        "Sandhausen": {
+          "expected": 40.5866,
+          "median": 40,
+          "p10": 36,
+          "p90": 45
+        },
+        "St. Pauli": {
+          "expected": 38.8814,
+          "median": 39,
+          "p10": 35,
+          "p90": 43
+        },
+        "Stuttgart": {
+          "expected": 65.5048,
+          "median": 66,
+          "p10": 61,
+          "p90": 70
+        },
+        "Union Berlin": {
+          "expected": 61.067,
+          "median": 61,
+          "p10": 57,
+          "p90": 65
+        },
+        "Würzburg": {
+          "expected": 37.748,
+          "median": 38,
+          "p10": 34,
+          "p90": 42
+        }
+      }
+    },
+    {
+      "matchday": 30,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 270,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.39,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.5578,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.9042,
+          "Union Berlin": 0.148,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.347,
+          "Dresden": 0.0004,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.3126,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.0856,
+          "Union Berlin": 0.2544,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0.6718,
+          "Aue": 0.5558,
+          "Bielefeld": 0.4386,
+          "Bochum": 0.98,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 0.863,
+          "Fürth": 1,
+          "Hannover": 1,
+          "Heidenheim": 1,
+          "Kaiserslautern": 0.9088,
+          "Karlsruhe": 0,
+          "Nürnberg": 1,
+          "Sandhausen": 0.9966,
+          "St. Pauli": 0.9368,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.6486
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1858,
+          "Aue": 0.2042,
+          "Bielefeld": 0.2118,
+          "Bochum": 0.0176,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0894,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0.06,
+          "Karlsruhe": 0.0008,
+          "Nürnberg": 0,
+          "Sandhausen": 0.0034,
+          "St. Pauli": 0.045,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.182
+        },
+        "abstieg": {
+          "1860 München": 0.1424,
+          "Aue": 0.24,
+          "Bielefeld": 0.3496,
+          "Bochum": 0.0024,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0476,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0.0312,
+          "Karlsruhe": 0.9992,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0.0182,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.1694
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 38.03,
+          "median": 38,
+          "p10": 34,
+          "p90": 42
+        },
+        "Aue": {
+          "expected": 37.6908,
+          "median": 37,
+          "p10": 34,
+          "p90": 42
+        },
+        "Bielefeld": {
+          "expected": 36.4136,
+          "median": 36,
+          "p10": 33,
+          "p90": 40
+        },
+        "Bochum": {
+          "expected": 43.4826,
+          "median": 44,
+          "p10": 40,
+          "p90": 47
+        },
+        "Braunschweig": {
+          "expected": 62.5434,
+          "median": 62,
+          "p10": 59,
+          "p90": 66
+        },
+        "Dresden": {
+          "expected": 50.7332,
+          "median": 50,
+          "p10": 47,
+          "p90": 55
+        },
+        "Düsseldorf": {
+          "expected": 39.7248,
+          "median": 39,
+          "p10": 36,
+          "p90": 43
+        },
+        "Fürth": {
+          "expected": 48.0804,
+          "median": 48,
+          "p10": 44,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 63.6206,
+          "median": 64,
+          "p10": 60,
+          "p90": 67
+        },
+        "Heidenheim": {
+          "expected": 45.1774,
+          "median": 45,
+          "p10": 41,
+          "p90": 49
+        },
+        "Kaiserslautern": {
+          "expected": 40.5948,
+          "median": 41,
+          "p10": 37,
+          "p90": 44
+        },
+        "Karlsruhe": {
+          "expected": 28.022,
+          "median": 28,
+          "p10": 24,
+          "p90": 32
+        },
+        "Nürnberg": {
+          "expected": 45.4188,
+          "median": 46,
+          "p10": 42,
+          "p90": 49
+        },
+        "Sandhausen": {
+          "expected": 42.3764,
+          "median": 42,
+          "p10": 39,
+          "p90": 46
+        },
+        "St. Pauli": {
+          "expected": 40.5488,
+          "median": 41,
+          "p10": 37,
+          "p90": 44
+        },
+        "Stuttgart": {
+          "expected": 66.7288,
+          "median": 67,
+          "p10": 63,
+          "p90": 70
+        },
+        "Union Berlin": {
+          "expected": 60.0774,
+          "median": 60,
+          "p10": 56,
+          "p90": 64
+        },
+        "Würzburg": {
+          "expected": 37.5412,
+          "median": 37,
+          "p10": 34,
+          "p90": 41
+        }
+      }
+    },
+    {
+      "matchday": 31,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 279,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.4408,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.4804,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.9512,
+          "Union Berlin": 0.1276,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.3344,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.3922,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.0462,
+          "Union Berlin": 0.2272,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0.47,
+          "Aue": 0.8382,
+          "Bielefeld": 0.3526,
+          "Bochum": 1,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 0.8398,
+          "Fürth": 1,
+          "Hannover": 1,
+          "Heidenheim": 1,
+          "Kaiserslautern": 0.9936,
+          "Karlsruhe": 0,
+          "Nürnberg": 1,
+          "Sandhausen": 0.9962,
+          "St. Pauli": 0.9978,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.5118
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.2538,
+          "Aue": 0.119,
+          "Bielefeld": 0.2488,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.1056,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0.006,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0.0036,
+          "St. Pauli": 0.0022,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.261
+        },
+        "abstieg": {
+          "1860 München": 0.2762,
+          "Aue": 0.0428,
+          "Bielefeld": 0.3986,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0546,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0.0004,
+          "Karlsruhe": 1,
+          "Nürnberg": 0,
+          "Sandhausen": 0.0002,
+          "St. Pauli": 0,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.2272
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 36.573,
+          "median": 36,
+          "p10": 34,
+          "p90": 40
+        },
+        "Aue": {
+          "expected": 39.121,
+          "median": 39,
+          "p10": 36,
+          "p90": 42
+        },
+        "Bielefeld": {
+          "expected": 35.8564,
+          "median": 36,
+          "p10": 33,
+          "p90": 39
+        },
+        "Bochum": {
+          "expected": 44.699,
+          "median": 44,
+          "p10": 41,
+          "p90": 47
+        },
+        "Braunschweig": {
+          "expected": 64.1698,
+          "median": 64,
+          "p10": 61,
+          "p90": 67
+        },
+        "Dresden": {
+          "expected": 49.8512,
+          "median": 50,
+          "p10": 47,
+          "p90": 53
+        },
+        "Düsseldorf": {
+          "expected": 38.934,
+          "median": 39,
+          "p10": 36,
+          "p90": 42
+        },
+        "Fürth": {
+          "expected": 47.8544,
+          "median": 48,
+          "p10": 45,
+          "p90": 51
+        },
+        "Hannover": {
+          "expected": 64.5846,
+          "median": 64,
+          "p10": 61,
+          "p90": 67
+        },
+        "Heidenheim": {
+          "expected": 44.0388,
+          "median": 44,
+          "p10": 41,
+          "p90": 47
+        },
+        "Kaiserslautern": {
+          "expected": 42.4708,
+          "median": 42,
+          "p10": 39,
+          "p90": 45
+        },
+        "Karlsruhe": {
+          "expected": 26.4834,
+          "median": 26,
+          "p10": 23,
+          "p90": 29
+        },
+        "Nürnberg": {
+          "expected": 43.9666,
+          "median": 44,
+          "p10": 41,
+          "p90": 48
+        },
+        "Sandhausen": {
+          "expected": 41.4396,
+          "median": 41,
+          "p10": 38,
+          "p90": 45
+        },
+        "St. Pauli": {
+          "expected": 41.9424,
+          "median": 42,
+          "p10": 39,
+          "p90": 45
+        },
+        "Stuttgart": {
+          "expected": 68.4156,
+          "median": 69,
+          "p10": 66,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 61.2974,
+          "median": 61,
+          "p10": 58,
+          "p90": 64
+        },
+        "Würzburg": {
+          "expected": 36.4302,
+          "median": 36,
+          "p10": 34,
+          "p90": 39
+        }
+      }
+    },
+    {
+      "matchday": 32,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 288,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.472,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.5512,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.9758,
+          "Union Berlin": 0.001,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.5108,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.4346,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0.0242,
+          "Union Berlin": 0.0304,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0.767,
+          "Aue": 0.7044,
+          "Bielefeld": 0.303,
+          "Bochum": 1,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 0.8178,
+          "Fürth": 1,
+          "Hannover": 1,
+          "Heidenheim": 1,
+          "Kaiserslautern": 0.986,
+          "Karlsruhe": 0,
+          "Nürnberg": 1,
+          "Sandhausen": 0.9928,
+          "St. Pauli": 1,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.429
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.1636,
+          "Aue": 0.1988,
+          "Bielefeld": 0.2108,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.1422,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0.0134,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0.0066,
+          "St. Pauli": 0,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.2646
+        },
+        "abstieg": {
+          "1860 München": 0.0694,
+          "Aue": 0.0968,
+          "Bielefeld": 0.4862,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.04,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0.0006,
+          "Karlsruhe": 1,
+          "Nürnberg": 0,
+          "Sandhausen": 0.0006,
+          "St. Pauli": 0,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.3064
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 38.3732,
+          "median": 39,
+          "p10": 36,
+          "p90": 42
+        },
+        "Aue": {
+          "expected": 38.4322,
+          "median": 39,
+          "p10": 36,
+          "p90": 42
+        },
+        "Bielefeld": {
+          "expected": 35.8144,
+          "median": 36,
+          "p10": 33,
+          "p90": 39
+        },
+        "Bochum": {
+          "expected": 44.0206,
+          "median": 44,
+          "p10": 41,
+          "p90": 47
+        },
+        "Braunschweig": {
+          "expected": 65.709,
+          "median": 66,
+          "p10": 63,
+          "p90": 69
+        },
+        "Dresden": {
+          "expected": 48.2958,
+          "median": 49,
+          "p10": 46,
+          "p90": 50
+        },
+        "Düsseldorf": {
+          "expected": 38.3582,
+          "median": 39,
+          "p10": 36,
+          "p90": 40
+        },
+        "Fürth": {
+          "expected": 46.5198,
+          "median": 47,
+          "p10": 44,
+          "p90": 50
+        },
+        "Hannover": {
+          "expected": 66.1106,
+          "median": 66,
+          "p10": 63,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 42.7928,
+          "median": 43,
+          "p10": 40,
+          "p90": 46
+        },
+        "Kaiserslautern": {
+          "expected": 40.8556,
+          "median": 41,
+          "p10": 38,
+          "p90": 44
+        },
+        "Karlsruhe": {
+          "expected": 28.13,
+          "median": 28,
+          "p10": 26,
+          "p90": 31
+        },
+        "Nürnberg": {
+          "expected": 45.3354,
+          "median": 45,
+          "p10": 43,
+          "p90": 48
+        },
+        "Sandhausen": {
+          "expected": 40.2746,
+          "median": 40,
+          "p10": 38,
+          "p90": 42
+        },
+        "St. Pauli": {
+          "expected": 43.7828,
+          "median": 44,
+          "p10": 41,
+          "p90": 47
+        },
+        "Stuttgart": {
+          "expected": 69.3662,
+          "median": 69,
+          "p10": 67,
+          "p90": 72
+        },
+        "Union Berlin": {
+          "expected": 59.9798,
+          "median": 60,
+          "p10": 57,
+          "p90": 63
+        },
+        "Würzburg": {
+          "expected": 36.2374,
+          "median": 37,
+          "p10": 34,
+          "p90": 38
+        }
+      }
+    },
+    {
+      "matchday": 33,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 297,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.0086,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.9914,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 1,
+          "Union Berlin": 0,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.9914,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0.0086,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0.3196,
+          "Aue": 0.9726,
+          "Bielefeld": 0.6936,
+          "Bochum": 1,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 0.9986,
+          "Fürth": 1,
+          "Hannover": 1,
+          "Heidenheim": 1,
+          "Kaiserslautern": 0.9664,
+          "Karlsruhe": 0,
+          "Nürnberg": 1,
+          "Sandhausen": 1,
+          "St. Pauli": 1,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0.0492
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 0.5788,
+          "Aue": 0.0274,
+          "Bielefeld": 0.2744,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0.0014,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0.0336,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.0844
+        },
+        "abstieg": {
+          "1860 München": 0.1016,
+          "Aue": 0,
+          "Bielefeld": 0.032,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 1,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0.8664
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 37.0602,
+          "median": 37,
+          "p10": 36,
+          "p90": 39
+        },
+        "Aue": {
+          "expected": 40.1108,
+          "median": 40,
+          "p10": 39,
+          "p90": 42
+        },
+        "Bielefeld": {
+          "expected": 37.3148,
+          "median": 37,
+          "p10": 36,
+          "p90": 39
+        },
+        "Bochum": {
+          "expected": 45.6282,
+          "median": 45,
+          "p10": 44,
+          "p90": 47
+        },
+        "Braunschweig": {
+          "expected": 64.4606,
+          "median": 64,
+          "p10": 63,
+          "p90": 66
+        },
+        "Dresden": {
+          "expected": 50.4222,
+          "median": 50,
+          "p10": 49,
+          "p90": 52
+        },
+        "Düsseldorf": {
+          "expected": 40.6226,
+          "median": 40,
+          "p10": 39,
+          "p90": 42
+        },
+        "Fürth": {
+          "expected": 46.4082,
+          "median": 46,
+          "p10": 45,
+          "p90": 48
+        },
+        "Hannover": {
+          "expected": 67.633,
+          "median": 67,
+          "p10": 66,
+          "p90": 69
+        },
+        "Heidenheim": {
+          "expected": 44.6944,
+          "median": 44,
+          "p10": 43,
+          "p90": 46
+        },
+        "Kaiserslautern": {
+          "expected": 39.374,
+          "median": 39,
+          "p10": 38,
+          "p90": 41
+        },
+        "Karlsruhe": {
+          "expected": 26.2776,
+          "median": 26,
+          "p10": 25,
+          "p90": 28
+        },
+        "Nürnberg": {
+          "expected": 43.3602,
+          "median": 43,
+          "p10": 42,
+          "p90": 45
+        },
+        "Sandhausen": {
+          "expected": 42.1104,
+          "median": 42,
+          "p10": 41,
+          "p90": 44
+        },
+        "St. Pauli": {
+          "expected": 43.114,
+          "median": 43,
+          "p10": 42,
+          "p90": 45
+        },
+        "Stuttgart": {
+          "expected": 68.0886,
+          "median": 69,
+          "p10": 66,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 58.3158,
+          "median": 58,
+          "p10": 57,
+          "p90": 60
+        },
+        "Würzburg": {
+          "expected": 34.6924,
+          "median": 34,
+          "p10": 34,
+          "p90": 37
+        }
+      }
+    },
+    {
+      "matchday": 34,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 306,
+      "probabilities": {
+        "aufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 1,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 1,
+          "Union Berlin": 0,
+          "Würzburg": 0
+        },
+        "relegationsplatzAufstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 1,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0
+        },
+        "klassenerhalt": {
+          "1860 München": 0,
+          "Aue": 1,
+          "Bielefeld": 1,
+          "Bochum": 1,
+          "Braunschweig": 1,
+          "Dresden": 1,
+          "Düsseldorf": 1,
+          "Fürth": 1,
+          "Hannover": 1,
+          "Heidenheim": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 0,
+          "Nürnberg": 1,
+          "Sandhausen": 1,
+          "St. Pauli": 1,
+          "Stuttgart": 1,
+          "Union Berlin": 1,
+          "Würzburg": 0
+        },
+        "relegationsplatzAbstieg": {
+          "1860 München": 1,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 0
+        },
+        "abstieg": {
+          "1860 München": 0,
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Dresden": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 1,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Stuttgart": 0,
+          "Union Berlin": 0,
+          "Würzburg": 1
+        }
+      },
+      "points": {
+        "1860 München": {
+          "expected": 36,
+          "median": 36,
+          "p10": 36,
+          "p90": 36
+        },
+        "Aue": {
+          "expected": 39,
+          "median": 39,
+          "p10": 39,
+          "p90": 39
+        },
+        "Bielefeld": {
+          "expected": 37,
+          "median": 37,
+          "p10": 37,
+          "p90": 37
+        },
+        "Bochum": {
+          "expected": 44,
+          "median": 44,
+          "p10": 44,
+          "p90": 44
+        },
+        "Braunschweig": {
+          "expected": 66,
+          "median": 66,
+          "p10": 66,
+          "p90": 66
+        },
+        "Dresden": {
+          "expected": 50,
+          "median": 50,
+          "p10": 50,
+          "p90": 50
+        },
+        "Düsseldorf": {
+          "expected": 42,
+          "median": 42,
+          "p10": 42,
+          "p90": 42
+        },
+        "Fürth": {
+          "expected": 45,
+          "median": 45,
+          "p10": 45,
+          "p90": 45
+        },
+        "Hannover": {
+          "expected": 67,
+          "median": 67,
+          "p10": 67,
+          "p90": 67
+        },
+        "Heidenheim": {
+          "expected": 46,
+          "median": 46,
+          "p10": 46,
+          "p90": 46
+        },
+        "Kaiserslautern": {
+          "expected": 41,
+          "median": 41,
+          "p10": 41,
+          "p90": 41
+        },
+        "Karlsruhe": {
+          "expected": 25,
+          "median": 25,
+          "p10": 25,
+          "p90": 25
+        },
+        "Nürnberg": {
+          "expected": 42,
+          "median": 42,
+          "p10": 42,
+          "p90": 42
+        },
+        "Sandhausen": {
+          "expected": 42,
+          "median": 42,
+          "p10": 42,
+          "p90": 42
+        },
+        "St. Pauli": {
+          "expected": 45,
+          "median": 45,
+          "p10": 45,
+          "p90": 45
+        },
+        "Stuttgart": {
+          "expected": 69,
+          "median": 69,
+          "p10": 69,
+          "p90": 69
+        },
+        "Union Berlin": {
+          "expected": 60,
+          "median": 60,
+          "p10": 60,
+          "p90": 60
+        },
+        "Würzburg": {
+          "expected": 34,
+          "median": 34,
+          "p10": 34,
+          "p90": 34
+        }
+      }
+    }
+  ],
+  "computed": 35
+}

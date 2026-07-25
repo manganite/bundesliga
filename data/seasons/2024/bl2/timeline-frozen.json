@@ -1,0 +1,7675 @@
+{
+  "kind": "frozenTimeline",
+  "league": "bl2",
+  "seasonId": "2024-bl2",
+  "runs": 5000,
+  "ratingBasis": "frozen pre-season ratings — the curve carries no rating updates",
+  "points": [
+    {
+      "matchday": 0,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 0,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0256,
+          "Darmstadt": 0.1014,
+          "Düsseldorf": 0.3276,
+          "Elversberg": 0.0194,
+          "Fürth": 0.0784,
+          "Hannover": 0.1172,
+          "Hertha": 0.1482,
+          "HSV": 0.263,
+          "Kaiserslautern": 0.0446,
+          "Karlsruhe": 0.1838,
+          "Köln": 0.3498,
+          "Magdeburg": 0.0262,
+          "Münster": 0.02,
+          "Nürnberg": 0.0224,
+          "Paderborn": 0.1224,
+          "Regensburg": 0.0202,
+          "Schalke": 0.1132,
+          "SSV Ulm 1846": 0.0166
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.02,
+          "Darmstadt": 0.0634,
+          "Düsseldorf": 0.1188,
+          "Elversberg": 0.0178,
+          "Fürth": 0.0532,
+          "Hannover": 0.0692,
+          "Hertha": 0.0832,
+          "HSV": 0.1112,
+          "Kaiserslautern": 0.0328,
+          "Karlsruhe": 0.0916,
+          "Köln": 0.1154,
+          "Magdeburg": 0.0242,
+          "Münster": 0.0168,
+          "Nürnberg": 0.0226,
+          "Paderborn": 0.0658,
+          "Regensburg": 0.017,
+          "Schalke": 0.0608,
+          "SSV Ulm 1846": 0.0162
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.7006,
+          "Darmstadt": 0.8992,
+          "Düsseldorf": 0.9856,
+          "Elversberg": 0.681,
+          "Fürth": 0.8684,
+          "Hannover": 0.915,
+          "Hertha": 0.9298,
+          "HSV": 0.9716,
+          "Kaiserslautern": 0.7872,
+          "Karlsruhe": 0.9472,
+          "Köln": 0.984,
+          "Magdeburg": 0.7512,
+          "Münster": 0.6708,
+          "Nürnberg": 0.7196,
+          "Paderborn": 0.9162,
+          "Regensburg": 0.6838,
+          "Schalke": 0.9124,
+          "SSV Ulm 1846": 0.6764
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.096,
+          "Darmstadt": 0.043,
+          "Düsseldorf": 0.0074,
+          "Elversberg": 0.0982,
+          "Fürth": 0.0492,
+          "Hannover": 0.0376,
+          "Hertha": 0.0302,
+          "HSV": 0.013,
+          "Kaiserslautern": 0.0718,
+          "Karlsruhe": 0.0248,
+          "Köln": 0.0076,
+          "Magdeburg": 0.0782,
+          "Münster": 0.0938,
+          "Nürnberg": 0.0858,
+          "Paderborn": 0.0326,
+          "Regensburg": 0.1016,
+          "Schalke": 0.036,
+          "SSV Ulm 1846": 0.0932
+        },
+        "abstieg": {
+          "Braunschweig": 0.2034,
+          "Darmstadt": 0.0578,
+          "Düsseldorf": 0.007,
+          "Elversberg": 0.2208,
+          "Fürth": 0.0824,
+          "Hannover": 0.0474,
+          "Hertha": 0.04,
+          "HSV": 0.0154,
+          "Kaiserslautern": 0.141,
+          "Karlsruhe": 0.028,
+          "Köln": 0.0084,
+          "Magdeburg": 0.1706,
+          "Münster": 0.2354,
+          "Nürnberg": 0.1946,
+          "Paderborn": 0.0512,
+          "Regensburg": 0.2146,
+          "Schalke": 0.0516,
+          "SSV Ulm 1846": 0.2304
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 39.369,
+          "median": 39,
+          "p10": 24,
+          "p90": 55
+        },
+        "Darmstadt": {
+          "expected": 48.715,
+          "median": 49,
+          "p10": 33,
+          "p90": 65
+        },
+        "Düsseldorf": {
+          "expected": 58.9552,
+          "median": 59,
+          "p10": 44,
+          "p90": 74
+        },
+        "Elversberg": {
+          "expected": 38.7458,
+          "median": 38,
+          "p10": 24,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 46.7544,
+          "median": 46,
+          "p10": 31,
+          "p90": 63
+        },
+        "Hannover": {
+          "expected": 49.6164,
+          "median": 50,
+          "p10": 34,
+          "p90": 65
+        },
+        "Hertha": {
+          "expected": 51.492,
+          "median": 52,
+          "p10": 36,
+          "p90": 67
+        },
+        "HSV": {
+          "expected": 56.5042,
+          "median": 57,
+          "p10": 40,
+          "p90": 72
+        },
+        "Kaiserslautern": {
+          "expected": 42.5806,
+          "median": 42,
+          "p10": 27,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 53.2148,
+          "median": 53,
+          "p10": 38,
+          "p90": 69
+        },
+        "Köln": {
+          "expected": 59.4558,
+          "median": 60,
+          "p10": 44,
+          "p90": 75
+        },
+        "Magdeburg": {
+          "expected": 41.026,
+          "median": 41,
+          "p10": 26,
+          "p90": 56
+        },
+        "Münster": {
+          "expected": 38.3496,
+          "median": 38,
+          "p10": 24,
+          "p90": 54
+        },
+        "Nürnberg": {
+          "expected": 39.8392,
+          "median": 40,
+          "p10": 25,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 49.9416,
+          "median": 50,
+          "p10": 34,
+          "p90": 66
+        },
+        "Regensburg": {
+          "expected": 38.714,
+          "median": 38,
+          "p10": 24,
+          "p90": 54
+        },
+        "Schalke": {
+          "expected": 49.2278,
+          "median": 49,
+          "p10": 34,
+          "p90": 65
+        },
+        "SSV Ulm 1846": {
+          "expected": 38.1934,
+          "median": 38,
+          "p10": 24,
+          "p90": 53
+        }
+      }
+    },
+    {
+      "matchday": 1,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 9,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.014,
+          "Darmstadt": 0.0828,
+          "Düsseldorf": 0.3678,
+          "Elversberg": 0.0146,
+          "Fürth": 0.0868,
+          "Hannover": 0.1286,
+          "Hertha": 0.1126,
+          "HSV": 0.304,
+          "Kaiserslautern": 0.047,
+          "Karlsruhe": 0.1954,
+          "Köln": 0.2956,
+          "Magdeburg": 0.0196,
+          "Münster": 0.0126,
+          "Nürnberg": 0.0198,
+          "Paderborn": 0.1488,
+          "Regensburg": 0.0116,
+          "Schalke": 0.1274,
+          "SSV Ulm 1846": 0.011
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.015,
+          "Darmstadt": 0.0576,
+          "Düsseldorf": 0.127,
+          "Elversberg": 0.0146,
+          "Fürth": 0.0616,
+          "Hannover": 0.0716,
+          "Hertha": 0.0686,
+          "HSV": 0.1098,
+          "Kaiserslautern": 0.0358,
+          "Karlsruhe": 0.0936,
+          "Köln": 0.1114,
+          "Magdeburg": 0.0194,
+          "Münster": 0.017,
+          "Nürnberg": 0.02,
+          "Paderborn": 0.0782,
+          "Regensburg": 0.0152,
+          "Schalke": 0.0712,
+          "SSV Ulm 1846": 0.0124
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.6808,
+          "Darmstadt": 0.895,
+          "Düsseldorf": 0.9882,
+          "Elversberg": 0.6936,
+          "Fürth": 0.8954,
+          "Hannover": 0.9238,
+          "Hertha": 0.9236,
+          "HSV": 0.9816,
+          "Kaiserslautern": 0.838,
+          "Karlsruhe": 0.9614,
+          "Köln": 0.9794,
+          "Magdeburg": 0.7344,
+          "Münster": 0.6552,
+          "Nürnberg": 0.7024,
+          "Paderborn": 0.9402,
+          "Regensburg": 0.6522,
+          "Schalke": 0.9258,
+          "SSV Ulm 1846": 0.629
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.0976,
+          "Darmstadt": 0.045,
+          "Düsseldorf": 0.0054,
+          "Elversberg": 0.1006,
+          "Fürth": 0.041,
+          "Hannover": 0.0328,
+          "Hertha": 0.0312,
+          "HSV": 0.0094,
+          "Kaiserslautern": 0.0656,
+          "Karlsruhe": 0.0194,
+          "Köln": 0.0102,
+          "Magdeburg": 0.0882,
+          "Münster": 0.103,
+          "Nürnberg": 0.0898,
+          "Paderborn": 0.0272,
+          "Regensburg": 0.0976,
+          "Schalke": 0.0322,
+          "SSV Ulm 1846": 0.1038
+        },
+        "abstieg": {
+          "Braunschweig": 0.2216,
+          "Darmstadt": 0.06,
+          "Düsseldorf": 0.0064,
+          "Elversberg": 0.2058,
+          "Fürth": 0.0636,
+          "Hannover": 0.0434,
+          "Hertha": 0.0452,
+          "HSV": 0.009,
+          "Kaiserslautern": 0.0964,
+          "Karlsruhe": 0.0192,
+          "Köln": 0.0104,
+          "Magdeburg": 0.1774,
+          "Münster": 0.2418,
+          "Nürnberg": 0.2078,
+          "Paderborn": 0.0326,
+          "Regensburg": 0.2502,
+          "Schalke": 0.042,
+          "SSV Ulm 1846": 0.2672
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 38.4456,
+          "median": 38,
+          "p10": 24,
+          "p90": 54
+        },
+        "Darmstadt": {
+          "expected": 47.6672,
+          "median": 47,
+          "p10": 33,
+          "p90": 63
+        },
+        "Düsseldorf": {
+          "expected": 60.2644,
+          "median": 60,
+          "p10": 45,
+          "p90": 75
+        },
+        "Elversberg": {
+          "expected": 38.8458,
+          "median": 38,
+          "p10": 24,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 47.9342,
+          "median": 48,
+          "p10": 32,
+          "p90": 64
+        },
+        "Hannover": {
+          "expected": 50.4128,
+          "median": 50,
+          "p10": 35,
+          "p90": 66
+        },
+        "Hertha": {
+          "expected": 49.9218,
+          "median": 50,
+          "p10": 35,
+          "p90": 65
+        },
+        "HSV": {
+          "expected": 58.2436,
+          "median": 58,
+          "p10": 43,
+          "p90": 74
+        },
+        "Kaiserslautern": {
+          "expected": 44.2176,
+          "median": 44,
+          "p10": 29,
+          "p90": 59
+        },
+        "Karlsruhe": {
+          "expected": 54.2968,
+          "median": 54,
+          "p10": 39,
+          "p90": 70
+        },
+        "Köln": {
+          "expected": 58.0026,
+          "median": 58,
+          "p10": 43,
+          "p90": 73
+        },
+        "Magdeburg": {
+          "expected": 40.1288,
+          "median": 40,
+          "p10": 26,
+          "p90": 55
+        },
+        "Münster": {
+          "expected": 37.6068,
+          "median": 37,
+          "p10": 23,
+          "p90": 53
+        },
+        "Nürnberg": {
+          "expected": 39.2748,
+          "median": 39,
+          "p10": 24,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 52.008,
+          "median": 52,
+          "p10": 36,
+          "p90": 68
+        },
+        "Regensburg": {
+          "expected": 37.3956,
+          "median": 37,
+          "p10": 23,
+          "p90": 52
+        },
+        "Schalke": {
+          "expected": 50.5072,
+          "median": 50,
+          "p10": 35,
+          "p90": 66
+        },
+        "SSV Ulm 1846": {
+          "expected": 36.8046,
+          "median": 36,
+          "p10": 23,
+          "p90": 52
+        }
+      }
+    },
+    {
+      "matchday": 2,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 18,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0112,
+          "Darmstadt": 0.0742,
+          "Düsseldorf": 0.3586,
+          "Elversberg": 0.0158,
+          "Fürth": 0.085,
+          "Hannover": 0.1166,
+          "Hertha": 0.1186,
+          "HSV": 0.297,
+          "Kaiserslautern": 0.0422,
+          "Karlsruhe": 0.198,
+          "Köln": 0.2868,
+          "Magdeburg": 0.0326,
+          "Münster": 0.0154,
+          "Nürnberg": 0.0264,
+          "Paderborn": 0.1858,
+          "Regensburg": 0.02,
+          "Schalke": 0.1012,
+          "SSV Ulm 1846": 0.0146
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0132,
+          "Darmstadt": 0.0492,
+          "Düsseldorf": 0.1178,
+          "Elversberg": 0.0172,
+          "Fürth": 0.0548,
+          "Hannover": 0.075,
+          "Hertha": 0.068,
+          "HSV": 0.1158,
+          "Kaiserslautern": 0.0314,
+          "Karlsruhe": 0.0978,
+          "Köln": 0.1136,
+          "Magdeburg": 0.029,
+          "Münster": 0.0118,
+          "Nürnberg": 0.021,
+          "Paderborn": 0.088,
+          "Regensburg": 0.0176,
+          "Schalke": 0.0678,
+          "SSV Ulm 1846": 0.011
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.6226,
+          "Darmstadt": 0.8786,
+          "Düsseldorf": 0.9858,
+          "Elversberg": 0.692,
+          "Fürth": 0.8996,
+          "Hannover": 0.92,
+          "Hertha": 0.9186,
+          "HSV": 0.977,
+          "Kaiserslautern": 0.8228,
+          "Karlsruhe": 0.9672,
+          "Köln": 0.9798,
+          "Magdeburg": 0.784,
+          "Münster": 0.6292,
+          "Nürnberg": 0.757,
+          "Paderborn": 0.9618,
+          "Regensburg": 0.694,
+          "Schalke": 0.9134,
+          "SSV Ulm 1846": 0.5966
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1078,
+          "Darmstadt": 0.05,
+          "Düsseldorf": 0.007,
+          "Elversberg": 0.0952,
+          "Fürth": 0.0432,
+          "Hannover": 0.0374,
+          "Hertha": 0.0304,
+          "HSV": 0.0128,
+          "Kaiserslautern": 0.0652,
+          "Karlsruhe": 0.017,
+          "Köln": 0.0096,
+          "Magdeburg": 0.0812,
+          "Münster": 0.1102,
+          "Nürnberg": 0.0852,
+          "Paderborn": 0.0182,
+          "Regensburg": 0.0944,
+          "Schalke": 0.0352,
+          "SSV Ulm 1846": 0.1
+        },
+        "abstieg": {
+          "Braunschweig": 0.2696,
+          "Darmstadt": 0.0714,
+          "Düsseldorf": 0.0072,
+          "Elversberg": 0.2128,
+          "Fürth": 0.0572,
+          "Hannover": 0.0426,
+          "Hertha": 0.051,
+          "HSV": 0.0102,
+          "Kaiserslautern": 0.112,
+          "Karlsruhe": 0.0158,
+          "Köln": 0.0106,
+          "Magdeburg": 0.1348,
+          "Münster": 0.2606,
+          "Nürnberg": 0.1578,
+          "Paderborn": 0.02,
+          "Regensburg": 0.2116,
+          "Schalke": 0.0514,
+          "SSV Ulm 1846": 0.3034
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 36.9728,
+          "median": 37,
+          "p10": 23,
+          "p90": 52
+        },
+        "Darmstadt": {
+          "expected": 46.4194,
+          "median": 46,
+          "p10": 32,
+          "p90": 62
+        },
+        "Düsseldorf": {
+          "expected": 59.4668,
+          "median": 60,
+          "p10": 45,
+          "p90": 74
+        },
+        "Elversberg": {
+          "expected": 38.7086,
+          "median": 38,
+          "p10": 25,
+          "p90": 53
+        },
+        "Fürth": {
+          "expected": 47.5486,
+          "median": 47,
+          "p10": 33,
+          "p90": 63
+        },
+        "Hannover": {
+          "expected": 49.9606,
+          "median": 50,
+          "p10": 35,
+          "p90": 65
+        },
+        "Hertha": {
+          "expected": 49.684,
+          "median": 50,
+          "p10": 35,
+          "p90": 65
+        },
+        "HSV": {
+          "expected": 57.6742,
+          "median": 58,
+          "p10": 43,
+          "p90": 72
+        },
+        "Kaiserslautern": {
+          "expected": 43.5896,
+          "median": 43,
+          "p10": 29,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 54.2148,
+          "median": 54,
+          "p10": 39,
+          "p90": 69
+        },
+        "Köln": {
+          "expected": 57.2692,
+          "median": 57,
+          "p10": 42,
+          "p90": 72
+        },
+        "Magdeburg": {
+          "expected": 42.116,
+          "median": 42,
+          "p10": 28,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 37.087,
+          "median": 36,
+          "p10": 23,
+          "p90": 52
+        },
+        "Nürnberg": {
+          "expected": 40.8868,
+          "median": 40,
+          "p10": 27,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 53.4786,
+          "median": 53,
+          "p10": 38,
+          "p90": 68
+        },
+        "Regensburg": {
+          "expected": 39.114,
+          "median": 39,
+          "p10": 25,
+          "p90": 54
+        },
+        "Schalke": {
+          "expected": 49.0292,
+          "median": 49,
+          "p10": 34,
+          "p90": 64
+        },
+        "SSV Ulm 1846": {
+          "expected": 36.06,
+          "median": 35,
+          "p10": 22,
+          "p90": 51
+        }
+      }
+    },
+    {
+      "matchday": 3,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 27,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0088,
+          "Darmstadt": 0.0544,
+          "Düsseldorf": 0.3984,
+          "Elversberg": 0.0126,
+          "Fürth": 0.0734,
+          "Hannover": 0.1322,
+          "Hertha": 0.1322,
+          "HSV": 0.239,
+          "Kaiserslautern": 0.059,
+          "Karlsruhe": 0.2208,
+          "Köln": 0.3338,
+          "Magdeburg": 0.0286,
+          "Münster": 0.0084,
+          "Nürnberg": 0.025,
+          "Paderborn": 0.1612,
+          "Regensburg": 0.015,
+          "Schalke": 0.091,
+          "SSV Ulm 1846": 0.0062
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0118,
+          "Darmstadt": 0.0416,
+          "Düsseldorf": 0.1238,
+          "Elversberg": 0.0138,
+          "Fürth": 0.0546,
+          "Hannover": 0.0774,
+          "Hertha": 0.0688,
+          "HSV": 0.1044,
+          "Kaiserslautern": 0.0406,
+          "Karlsruhe": 0.11,
+          "Köln": 0.1148,
+          "Magdeburg": 0.0252,
+          "Münster": 0.0104,
+          "Nürnberg": 0.0206,
+          "Paderborn": 0.0944,
+          "Regensburg": 0.015,
+          "Schalke": 0.0652,
+          "SSV Ulm 1846": 0.0076
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.6122,
+          "Darmstadt": 0.8714,
+          "Düsseldorf": 0.9894,
+          "Elversberg": 0.6708,
+          "Fürth": 0.8942,
+          "Hannover": 0.9526,
+          "Hertha": 0.9434,
+          "HSV": 0.9788,
+          "Kaiserslautern": 0.8654,
+          "Karlsruhe": 0.9774,
+          "Köln": 0.985,
+          "Magdeburg": 0.7942,
+          "Münster": 0.5932,
+          "Nürnberg": 0.7598,
+          "Paderborn": 0.9576,
+          "Regensburg": 0.6742,
+          "Schalke": 0.9146,
+          "SSV Ulm 1846": 0.5658
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.106,
+          "Darmstadt": 0.0534,
+          "Düsseldorf": 0.0064,
+          "Elversberg": 0.0968,
+          "Fürth": 0.0474,
+          "Hannover": 0.021,
+          "Hertha": 0.027,
+          "HSV": 0.0078,
+          "Kaiserslautern": 0.0602,
+          "Karlsruhe": 0.0116,
+          "Köln": 0.008,
+          "Magdeburg": 0.0784,
+          "Münster": 0.1198,
+          "Nürnberg": 0.0788,
+          "Paderborn": 0.0206,
+          "Regensburg": 0.1024,
+          "Schalke": 0.0368,
+          "SSV Ulm 1846": 0.1176
+        },
+        "abstieg": {
+          "Braunschweig": 0.2818,
+          "Darmstadt": 0.0752,
+          "Düsseldorf": 0.0042,
+          "Elversberg": 0.2324,
+          "Fürth": 0.0584,
+          "Hannover": 0.0264,
+          "Hertha": 0.0296,
+          "HSV": 0.0134,
+          "Kaiserslautern": 0.0744,
+          "Karlsruhe": 0.011,
+          "Köln": 0.007,
+          "Magdeburg": 0.1274,
+          "Münster": 0.287,
+          "Nürnberg": 0.1614,
+          "Paderborn": 0.0218,
+          "Regensburg": 0.2234,
+          "Schalke": 0.0486,
+          "SSV Ulm 1846": 0.3166
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 36.5044,
+          "median": 36,
+          "p10": 22,
+          "p90": 51
+        },
+        "Darmstadt": {
+          "expected": 45.592,
+          "median": 45,
+          "p10": 31,
+          "p90": 60
+        },
+        "Düsseldorf": {
+          "expected": 60.7144,
+          "median": 61,
+          "p10": 46,
+          "p90": 75
+        },
+        "Elversberg": {
+          "expected": 37.7428,
+          "median": 38,
+          "p10": 23,
+          "p90": 52
+        },
+        "Fürth": {
+          "expected": 47.248,
+          "median": 47,
+          "p10": 33,
+          "p90": 61
+        },
+        "Hannover": {
+          "expected": 51.4132,
+          "median": 51,
+          "p10": 37,
+          "p90": 66
+        },
+        "Hertha": {
+          "expected": 51.0162,
+          "median": 51,
+          "p10": 36,
+          "p90": 66
+        },
+        "HSV": {
+          "expected": 55.975,
+          "median": 56,
+          "p10": 41,
+          "p90": 70
+        },
+        "Kaiserslautern": {
+          "expected": 45.4738,
+          "median": 45,
+          "p10": 31,
+          "p90": 60
+        },
+        "Karlsruhe": {
+          "expected": 55.5358,
+          "median": 55,
+          "p10": 41,
+          "p90": 70
+        },
+        "Köln": {
+          "expected": 58.2718,
+          "median": 59,
+          "p10": 43,
+          "p90": 73
+        },
+        "Magdeburg": {
+          "expected": 41.9804,
+          "median": 42,
+          "p10": 28,
+          "p90": 56
+        },
+        "Münster": {
+          "expected": 35.6802,
+          "median": 35,
+          "p10": 22,
+          "p90": 50
+        },
+        "Nürnberg": {
+          "expected": 41.0074,
+          "median": 41,
+          "p10": 27,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 52.9488,
+          "median": 53,
+          "p10": 39,
+          "p90": 67
+        },
+        "Regensburg": {
+          "expected": 38.21,
+          "median": 38,
+          "p10": 24,
+          "p90": 53
+        },
+        "Schalke": {
+          "expected": 48.6652,
+          "median": 49,
+          "p10": 34,
+          "p90": 63
+        },
+        "SSV Ulm 1846": {
+          "expected": 34.671,
+          "median": 34,
+          "p10": 21,
+          "p90": 49
+        }
+      }
+    },
+    {
+      "matchday": 4,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 36,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.008,
+          "Darmstadt": 0.04,
+          "Düsseldorf": 0.422,
+          "Elversberg": 0.0156,
+          "Fürth": 0.077,
+          "Hannover": 0.109,
+          "Hertha": 0.1416,
+          "HSV": 0.26,
+          "Kaiserslautern": 0.0384,
+          "Karlsruhe": 0.2484,
+          "Köln": 0.3566,
+          "Magdeburg": 0.0364,
+          "Münster": 0.0052,
+          "Nürnberg": 0.0148,
+          "Paderborn": 0.1454,
+          "Regensburg": 0.0076,
+          "Schalke": 0.069,
+          "SSV Ulm 1846": 0.005
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0068,
+          "Darmstadt": 0.0304,
+          "Düsseldorf": 0.134,
+          "Elversberg": 0.0198,
+          "Fürth": 0.0574,
+          "Hannover": 0.0736,
+          "Hertha": 0.0898,
+          "HSV": 0.1138,
+          "Kaiserslautern": 0.0342,
+          "Karlsruhe": 0.1018,
+          "Köln": 0.13,
+          "Magdeburg": 0.0314,
+          "Münster": 0.007,
+          "Nürnberg": 0.0162,
+          "Paderborn": 0.0814,
+          "Regensburg": 0.0108,
+          "Schalke": 0.0528,
+          "SSV Ulm 1846": 0.0088
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.5706,
+          "Darmstadt": 0.8472,
+          "Düsseldorf": 0.9954,
+          "Elversberg": 0.7394,
+          "Fürth": 0.9286,
+          "Hannover": 0.9518,
+          "Hertha": 0.9582,
+          "HSV": 0.984,
+          "Kaiserslautern": 0.8524,
+          "Karlsruhe": 0.9774,
+          "Köln": 0.9934,
+          "Magdeburg": 0.8472,
+          "Münster": 0.5764,
+          "Nürnberg": 0.715,
+          "Paderborn": 0.9602,
+          "Regensburg": 0.6346,
+          "Schalke": 0.907,
+          "SSV Ulm 1846": 0.5612
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1174,
+          "Darmstadt": 0.0624,
+          "Düsseldorf": 0.0034,
+          "Elversberg": 0.0906,
+          "Fürth": 0.0324,
+          "Hannover": 0.0218,
+          "Hertha": 0.022,
+          "HSV": 0.0092,
+          "Kaiserslautern": 0.0612,
+          "Karlsruhe": 0.0142,
+          "Köln": 0.0036,
+          "Magdeburg": 0.063,
+          "Münster": 0.121,
+          "Nürnberg": 0.0906,
+          "Paderborn": 0.0196,
+          "Regensburg": 0.1066,
+          "Schalke": 0.0398,
+          "SSV Ulm 1846": 0.1212
+        },
+        "abstieg": {
+          "Braunschweig": 0.312,
+          "Darmstadt": 0.0904,
+          "Düsseldorf": 0.0012,
+          "Elversberg": 0.17,
+          "Fürth": 0.039,
+          "Hannover": 0.0264,
+          "Hertha": 0.0198,
+          "HSV": 0.0068,
+          "Kaiserslautern": 0.0864,
+          "Karlsruhe": 0.0084,
+          "Köln": 0.003,
+          "Magdeburg": 0.0898,
+          "Münster": 0.3026,
+          "Nürnberg": 0.1944,
+          "Paderborn": 0.0202,
+          "Regensburg": 0.2588,
+          "Schalke": 0.0532,
+          "SSV Ulm 1846": 0.3176
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 35.1312,
+          "median": 35,
+          "p10": 21,
+          "p90": 49
+        },
+        "Darmstadt": {
+          "expected": 44.2052,
+          "median": 44,
+          "p10": 30,
+          "p90": 58
+        },
+        "Düsseldorf": {
+          "expected": 61.9154,
+          "median": 62,
+          "p10": 47,
+          "p90": 76
+        },
+        "Elversberg": {
+          "expected": 39.6836,
+          "median": 39,
+          "p10": 26,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 48.5436,
+          "median": 48,
+          "p10": 35,
+          "p90": 62
+        },
+        "Hannover": {
+          "expected": 50.786,
+          "median": 51,
+          "p10": 37,
+          "p90": 65
+        },
+        "Hertha": {
+          "expected": 52.2908,
+          "median": 52,
+          "p10": 38,
+          "p90": 67
+        },
+        "HSV": {
+          "expected": 56.8836,
+          "median": 57,
+          "p10": 42,
+          "p90": 71
+        },
+        "Kaiserslautern": {
+          "expected": 44.3024,
+          "median": 44,
+          "p10": 30,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 56.4848,
+          "median": 56,
+          "p10": 42,
+          "p90": 71
+        },
+        "Köln": {
+          "expected": 59.9412,
+          "median": 60,
+          "p10": 46,
+          "p90": 74
+        },
+        "Magdeburg": {
+          "expected": 43.782,
+          "median": 43,
+          "p10": 30,
+          "p90": 58
+        },
+        "Münster": {
+          "expected": 35.154,
+          "median": 35,
+          "p10": 22,
+          "p90": 49
+        },
+        "Nürnberg": {
+          "expected": 39.1538,
+          "median": 39,
+          "p10": 26,
+          "p90": 53
+        },
+        "Paderborn": {
+          "expected": 52.2476,
+          "median": 52,
+          "p10": 38,
+          "p90": 66
+        },
+        "Regensburg": {
+          "expected": 37.0134,
+          "median": 37,
+          "p10": 23,
+          "p90": 51
+        },
+        "Schalke": {
+          "expected": 47.4368,
+          "median": 47,
+          "p10": 33,
+          "p90": 62
+        },
+        "SSV Ulm 1846": {
+          "expected": 34.956,
+          "median": 35,
+          "p10": 21,
+          "p90": 49
+        }
+      }
+    },
+    {
+      "matchday": 5,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 45,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0044,
+          "Darmstadt": 0.0304,
+          "Düsseldorf": 0.4888,
+          "Elversberg": 0.0128,
+          "Fürth": 0.064,
+          "Hannover": 0.1308,
+          "Hertha": 0.1048,
+          "HSV": 0.2962,
+          "Kaiserslautern": 0.027,
+          "Karlsruhe": 0.279,
+          "Köln": 0.2918,
+          "Magdeburg": 0.0464,
+          "Münster": 0.0028,
+          "Nürnberg": 0.0174,
+          "Paderborn": 0.1382,
+          "Regensburg": 0.0068,
+          "Schalke": 0.0538,
+          "SSV Ulm 1846": 0.0046
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0038,
+          "Darmstadt": 0.033,
+          "Düsseldorf": 0.1288,
+          "Elversberg": 0.0142,
+          "Fürth": 0.0552,
+          "Hannover": 0.0838,
+          "Hertha": 0.0742,
+          "HSV": 0.1174,
+          "Kaiserslautern": 0.0284,
+          "Karlsruhe": 0.1402,
+          "Köln": 0.1284,
+          "Magdeburg": 0.0422,
+          "Münster": 0.005,
+          "Nürnberg": 0.0176,
+          "Paderborn": 0.0766,
+          "Regensburg": 0.0072,
+          "Schalke": 0.0414,
+          "SSV Ulm 1846": 0.0026
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.5712,
+          "Darmstadt": 0.8352,
+          "Düsseldorf": 0.9968,
+          "Elversberg": 0.7334,
+          "Fürth": 0.9194,
+          "Hannover": 0.9646,
+          "Hertha": 0.9518,
+          "HSV": 0.9904,
+          "Kaiserslautern": 0.8344,
+          "Karlsruhe": 0.9896,
+          "Köln": 0.9874,
+          "Magdeburg": 0.8998,
+          "Münster": 0.5656,
+          "Nürnberg": 0.784,
+          "Paderborn": 0.961,
+          "Regensburg": 0.6076,
+          "Schalke": 0.896,
+          "SSV Ulm 1846": 0.5118
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1136,
+          "Darmstadt": 0.0676,
+          "Düsseldorf": 0.0012,
+          "Elversberg": 0.0942,
+          "Fürth": 0.0366,
+          "Hannover": 0.0168,
+          "Hertha": 0.0252,
+          "HSV": 0.0054,
+          "Kaiserslautern": 0.0644,
+          "Karlsruhe": 0.0058,
+          "Köln": 0.0064,
+          "Magdeburg": 0.047,
+          "Münster": 0.12,
+          "Nürnberg": 0.087,
+          "Paderborn": 0.0218,
+          "Regensburg": 0.1164,
+          "Schalke": 0.0458,
+          "SSV Ulm 1846": 0.1248
+        },
+        "abstieg": {
+          "Braunschweig": 0.3152,
+          "Darmstadt": 0.0972,
+          "Düsseldorf": 0.002,
+          "Elversberg": 0.1724,
+          "Fürth": 0.044,
+          "Hannover": 0.0186,
+          "Hertha": 0.023,
+          "HSV": 0.0042,
+          "Kaiserslautern": 0.1012,
+          "Karlsruhe": 0.0046,
+          "Köln": 0.0062,
+          "Magdeburg": 0.0532,
+          "Münster": 0.3144,
+          "Nürnberg": 0.129,
+          "Paderborn": 0.0172,
+          "Regensburg": 0.276,
+          "Schalke": 0.0582,
+          "SSV Ulm 1846": 0.3634
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 35.111,
+          "median": 35,
+          "p10": 22,
+          "p90": 49
+        },
+        "Darmstadt": {
+          "expected": 43.5074,
+          "median": 43,
+          "p10": 30,
+          "p90": 58
+        },
+        "Düsseldorf": {
+          "expected": 63.6716,
+          "median": 64,
+          "p10": 50,
+          "p90": 77
+        },
+        "Elversberg": {
+          "expected": 39.3784,
+          "median": 39,
+          "p10": 26,
+          "p90": 53
+        },
+        "Fürth": {
+          "expected": 47.5902,
+          "median": 48,
+          "p10": 34,
+          "p90": 61
+        },
+        "Hannover": {
+          "expected": 52.0444,
+          "median": 52,
+          "p10": 38,
+          "p90": 66
+        },
+        "Hertha": {
+          "expected": 50.693,
+          "median": 51,
+          "p10": 37,
+          "p90": 65
+        },
+        "HSV": {
+          "expected": 58.1706,
+          "median": 58,
+          "p10": 44,
+          "p90": 72
+        },
+        "Kaiserslautern": {
+          "expected": 43.0806,
+          "median": 43,
+          "p10": 30,
+          "p90": 57
+        },
+        "Karlsruhe": {
+          "expected": 58.1862,
+          "median": 58,
+          "p10": 44,
+          "p90": 72
+        },
+        "Köln": {
+          "expected": 57.7726,
+          "median": 58,
+          "p10": 44,
+          "p90": 71
+        },
+        "Magdeburg": {
+          "expected": 46.2894,
+          "median": 46,
+          "p10": 33,
+          "p90": 60
+        },
+        "Münster": {
+          "expected": 34.8422,
+          "median": 35,
+          "p10": 22,
+          "p90": 48
+        },
+        "Nürnberg": {
+          "expected": 41.1586,
+          "median": 41,
+          "p10": 28,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 51.7356,
+          "median": 52,
+          "p10": 38,
+          "p90": 66
+        },
+        "Regensburg": {
+          "expected": 36.158,
+          "median": 36,
+          "p10": 23,
+          "p90": 50
+        },
+        "Schalke": {
+          "expected": 46.207,
+          "median": 46,
+          "p10": 33,
+          "p90": 60
+        },
+        "SSV Ulm 1846": {
+          "expected": 33.4354,
+          "median": 33,
+          "p10": 21,
+          "p90": 47
+        }
+      }
+    },
+    {
+      "matchday": 6,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 54,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0066,
+          "Darmstadt": 0.0428,
+          "Düsseldorf": 0.4772,
+          "Elversberg": 0.0124,
+          "Fürth": 0.0566,
+          "Hannover": 0.108,
+          "Hertha": 0.1462,
+          "HSV": 0.2794,
+          "Kaiserslautern": 0.0264,
+          "Karlsruhe": 0.2718,
+          "Köln": 0.2922,
+          "Magdeburg": 0.0462,
+          "Münster": 0.0064,
+          "Nürnberg": 0.0134,
+          "Paderborn": 0.1668,
+          "Regensburg": 0.0032,
+          "Schalke": 0.0384,
+          "SSV Ulm 1846": 0.006
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0094,
+          "Darmstadt": 0.0376,
+          "Düsseldorf": 0.1274,
+          "Elversberg": 0.0106,
+          "Fürth": 0.0472,
+          "Hannover": 0.0804,
+          "Hertha": 0.0934,
+          "HSV": 0.122,
+          "Kaiserslautern": 0.0262,
+          "Karlsruhe": 0.1204,
+          "Köln": 0.1264,
+          "Magdeburg": 0.0366,
+          "Münster": 0.0076,
+          "Nürnberg": 0.0176,
+          "Paderborn": 0.0928,
+          "Regensburg": 0.005,
+          "Schalke": 0.0334,
+          "SSV Ulm 1846": 0.006
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.6294,
+          "Darmstadt": 0.8694,
+          "Düsseldorf": 0.9964,
+          "Elversberg": 0.6812,
+          "Fürth": 0.9096,
+          "Hannover": 0.9524,
+          "Hertha": 0.963,
+          "HSV": 0.9872,
+          "Kaiserslautern": 0.8292,
+          "Karlsruhe": 0.989,
+          "Köln": 0.9904,
+          "Magdeburg": 0.8894,
+          "Münster": 0.6114,
+          "Nürnberg": 0.7366,
+          "Paderborn": 0.9724,
+          "Regensburg": 0.5368,
+          "Schalke": 0.8634,
+          "SSV Ulm 1846": 0.5928
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1036,
+          "Darmstadt": 0.058,
+          "Düsseldorf": 0.0022,
+          "Elversberg": 0.1028,
+          "Fürth": 0.0424,
+          "Hannover": 0.023,
+          "Hertha": 0.0194,
+          "HSV": 0.0072,
+          "Kaiserslautern": 0.0648,
+          "Karlsruhe": 0.007,
+          "Köln": 0.0064,
+          "Magdeburg": 0.0474,
+          "Münster": 0.1148,
+          "Nürnberg": 0.0932,
+          "Paderborn": 0.013,
+          "Regensburg": 0.118,
+          "Schalke": 0.057,
+          "SSV Ulm 1846": 0.1198
+        },
+        "abstieg": {
+          "Braunschweig": 0.267,
+          "Darmstadt": 0.0726,
+          "Düsseldorf": 0.0014,
+          "Elversberg": 0.216,
+          "Fürth": 0.048,
+          "Hannover": 0.0246,
+          "Hertha": 0.0176,
+          "HSV": 0.0056,
+          "Kaiserslautern": 0.106,
+          "Karlsruhe": 0.004,
+          "Köln": 0.0032,
+          "Magdeburg": 0.0632,
+          "Münster": 0.2738,
+          "Nürnberg": 0.1702,
+          "Paderborn": 0.0146,
+          "Regensburg": 0.3452,
+          "Schalke": 0.0796,
+          "SSV Ulm 1846": 0.2874
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 36.9336,
+          "median": 37,
+          "p10": 24,
+          "p90": 50
+        },
+        "Darmstadt": {
+          "expected": 45.0922,
+          "median": 45,
+          "p10": 32,
+          "p90": 59
+        },
+        "Düsseldorf": {
+          "expected": 62.9256,
+          "median": 63,
+          "p10": 49,
+          "p90": 76
+        },
+        "Elversberg": {
+          "expected": 37.9518,
+          "median": 37,
+          "p10": 25,
+          "p90": 51
+        },
+        "Fürth": {
+          "expected": 46.697,
+          "median": 47,
+          "p10": 33,
+          "p90": 60
+        },
+        "Hannover": {
+          "expected": 50.7954,
+          "median": 51,
+          "p10": 38,
+          "p90": 64
+        },
+        "Hertha": {
+          "expected": 52.511,
+          "median": 52,
+          "p10": 39,
+          "p90": 66
+        },
+        "HSV": {
+          "expected": 57.1986,
+          "median": 57,
+          "p10": 43,
+          "p90": 71
+        },
+        "Kaiserslautern": {
+          "expected": 43.0824,
+          "median": 43,
+          "p10": 30,
+          "p90": 57
+        },
+        "Karlsruhe": {
+          "expected": 57.3392,
+          "median": 57,
+          "p10": 44,
+          "p90": 71
+        },
+        "Köln": {
+          "expected": 57.6446,
+          "median": 58,
+          "p10": 44,
+          "p90": 71
+        },
+        "Magdeburg": {
+          "expected": 45.5692,
+          "median": 45,
+          "p10": 33,
+          "p90": 59
+        },
+        "Münster": {
+          "expected": 36.475,
+          "median": 36,
+          "p10": 24,
+          "p90": 50
+        },
+        "Nürnberg": {
+          "expected": 40.1058,
+          "median": 40,
+          "p10": 27,
+          "p90": 54
+        },
+        "Paderborn": {
+          "expected": 53.4012,
+          "median": 53,
+          "p10": 40,
+          "p90": 67
+        },
+        "Regensburg": {
+          "expected": 34.6378,
+          "median": 34,
+          "p10": 22,
+          "p90": 48
+        },
+        "Schalke": {
+          "expected": 44.49,
+          "median": 44,
+          "p10": 31,
+          "p90": 58
+        },
+        "SSV Ulm 1846": {
+          "expected": 35.5628,
+          "median": 35,
+          "p10": 23,
+          "p90": 49
+        }
+      }
+    },
+    {
+      "matchday": 7,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 63,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.006,
+          "Darmstadt": 0.0308,
+          "Düsseldorf": 0.5516,
+          "Elversberg": 0.0146,
+          "Fürth": 0.0362,
+          "Hannover": 0.13,
+          "Hertha": 0.1112,
+          "HSV": 0.2498,
+          "Kaiserslautern": 0.0214,
+          "Karlsruhe": 0.2778,
+          "Köln": 0.2664,
+          "Magdeburg": 0.0654,
+          "Münster": 0.0058,
+          "Nürnberg": 0.0112,
+          "Paderborn": 0.1584,
+          "Regensburg": 0.0034,
+          "Schalke": 0.0538,
+          "SSV Ulm 1846": 0.0062
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0044,
+          "Darmstadt": 0.0296,
+          "Düsseldorf": 0.1296,
+          "Elversberg": 0.0142,
+          "Fürth": 0.0394,
+          "Hannover": 0.0864,
+          "Hertha": 0.067,
+          "HSV": 0.1272,
+          "Kaiserslautern": 0.0256,
+          "Karlsruhe": 0.1274,
+          "Köln": 0.128,
+          "Magdeburg": 0.0462,
+          "Münster": 0.007,
+          "Nürnberg": 0.0148,
+          "Paderborn": 0.0964,
+          "Regensburg": 0.0046,
+          "Schalke": 0.043,
+          "SSV Ulm 1846": 0.0092
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.5818,
+          "Darmstadt": 0.8368,
+          "Düsseldorf": 0.9984,
+          "Elversberg": 0.7704,
+          "Fürth": 0.884,
+          "Hannover": 0.9638,
+          "Hertha": 0.9544,
+          "HSV": 0.9904,
+          "Kaiserslautern": 0.8282,
+          "Karlsruhe": 0.9884,
+          "Köln": 0.9892,
+          "Magdeburg": 0.925,
+          "Münster": 0.5786,
+          "Nürnberg": 0.7092,
+          "Paderborn": 0.974,
+          "Regensburg": 0.5032,
+          "Schalke": 0.8924,
+          "SSV Ulm 1846": 0.6318
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1142,
+          "Darmstadt": 0.0602,
+          "Düsseldorf": 0.0008,
+          "Elversberg": 0.086,
+          "Fürth": 0.0498,
+          "Hannover": 0.018,
+          "Hertha": 0.0214,
+          "HSV": 0.0056,
+          "Kaiserslautern": 0.0638,
+          "Karlsruhe": 0.0064,
+          "Köln": 0.0056,
+          "Magdeburg": 0.035,
+          "Münster": 0.1266,
+          "Nürnberg": 0.1,
+          "Paderborn": 0.0138,
+          "Regensburg": 0.1288,
+          "Schalke": 0.0492,
+          "SSV Ulm 1846": 0.1148
+        },
+        "abstieg": {
+          "Braunschweig": 0.304,
+          "Darmstadt": 0.103,
+          "Düsseldorf": 0.0008,
+          "Elversberg": 0.1436,
+          "Fürth": 0.0662,
+          "Hannover": 0.0182,
+          "Hertha": 0.0242,
+          "HSV": 0.004,
+          "Kaiserslautern": 0.108,
+          "Karlsruhe": 0.0052,
+          "Köln": 0.0052,
+          "Magdeburg": 0.04,
+          "Münster": 0.2948,
+          "Nürnberg": 0.1908,
+          "Paderborn": 0.0122,
+          "Regensburg": 0.368,
+          "Schalke": 0.0584,
+          "SSV Ulm 1846": 0.2534
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 35.7072,
+          "median": 35,
+          "p10": 23,
+          "p90": 48
+        },
+        "Darmstadt": {
+          "expected": 43.4412,
+          "median": 43,
+          "p10": 30,
+          "p90": 57
+        },
+        "Düsseldorf": {
+          "expected": 64.6442,
+          "median": 65,
+          "p10": 52,
+          "p90": 77
+        },
+        "Elversberg": {
+          "expected": 40.285,
+          "median": 40,
+          "p10": 28,
+          "p90": 53
+        },
+        "Fürth": {
+          "expected": 45.0674,
+          "median": 45,
+          "p10": 32,
+          "p90": 58
+        },
+        "Hannover": {
+          "expected": 51.8376,
+          "median": 52,
+          "p10": 39,
+          "p90": 65
+        },
+        "Hertha": {
+          "expected": 50.526,
+          "median": 50,
+          "p10": 37,
+          "p90": 64
+        },
+        "HSV": {
+          "expected": 56.512,
+          "median": 57,
+          "p10": 43,
+          "p90": 70
+        },
+        "Kaiserslautern": {
+          "expected": 42.6488,
+          "median": 43,
+          "p10": 30,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 57.4924,
+          "median": 57,
+          "p10": 44,
+          "p90": 71
+        },
+        "Köln": {
+          "expected": 56.5938,
+          "median": 57,
+          "p10": 43,
+          "p90": 70
+        },
+        "Magdeburg": {
+          "expected": 47.5466,
+          "median": 47,
+          "p10": 35,
+          "p90": 60
+        },
+        "Münster": {
+          "expected": 35.5624,
+          "median": 35,
+          "p10": 23,
+          "p90": 49
+        },
+        "Nürnberg": {
+          "expected": 39.106,
+          "median": 39,
+          "p10": 27,
+          "p90": 52
+        },
+        "Paderborn": {
+          "expected": 53.3564,
+          "median": 53,
+          "p10": 40,
+          "p90": 67
+        },
+        "Regensburg": {
+          "expected": 34.2738,
+          "median": 34,
+          "p10": 22,
+          "p90": 47
+        },
+        "Schalke": {
+          "expected": 46.3094,
+          "median": 46,
+          "p10": 33,
+          "p90": 60
+        },
+        "SSV Ulm 1846": {
+          "expected": 36.806,
+          "median": 37,
+          "p10": 24,
+          "p90": 50
+        }
+      }
+    },
+    {
+      "matchday": 8,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 72,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0052,
+          "Darmstadt": 0.0224,
+          "Düsseldorf": 0.4928,
+          "Elversberg": 0.0194,
+          "Fürth": 0.0348,
+          "Hannover": 0.0968,
+          "Hertha": 0.1062,
+          "HSV": 0.3362,
+          "Kaiserslautern": 0.0144,
+          "Karlsruhe": 0.258,
+          "Köln": 0.2992,
+          "Magdeburg": 0.0562,
+          "Münster": 0.0056,
+          "Nürnberg": 0.0114,
+          "Paderborn": 0.1926,
+          "Regensburg": 0.0022,
+          "Schalke": 0.0418,
+          "SSV Ulm 1846": 0.0048
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0096,
+          "Darmstadt": 0.0266,
+          "Düsseldorf": 0.139,
+          "Elversberg": 0.0188,
+          "Fürth": 0.0358,
+          "Hannover": 0.0746,
+          "Hertha": 0.0742,
+          "HSV": 0.1364,
+          "Kaiserslautern": 0.016,
+          "Karlsruhe": 0.1226,
+          "Köln": 0.134,
+          "Magdeburg": 0.0436,
+          "Münster": 0.0044,
+          "Nürnberg": 0.016,
+          "Paderborn": 0.1024,
+          "Regensburg": 0.003,
+          "Schalke": 0.0386,
+          "SSV Ulm 1846": 0.0044
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.6414,
+          "Darmstadt": 0.8416,
+          "Düsseldorf": 0.9986,
+          "Elversberg": 0.8128,
+          "Fürth": 0.8878,
+          "Hannover": 0.9556,
+          "Hertha": 0.9562,
+          "HSV": 0.993,
+          "Kaiserslautern": 0.8012,
+          "Karlsruhe": 0.9878,
+          "Köln": 0.9908,
+          "Magdeburg": 0.9266,
+          "Münster": 0.5204,
+          "Nürnberg": 0.7512,
+          "Paderborn": 0.9846,
+          "Regensburg": 0.4648,
+          "Schalke": 0.8932,
+          "SSV Ulm 1846": 0.5924
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1126,
+          "Darmstadt": 0.0628,
+          "Düsseldorf": 0.0008,
+          "Elversberg": 0.0794,
+          "Fürth": 0.0486,
+          "Hannover": 0.0236,
+          "Hertha": 0.0244,
+          "HSV": 0.0042,
+          "Kaiserslautern": 0.0724,
+          "Karlsruhe": 0.008,
+          "Köln": 0.0048,
+          "Magdeburg": 0.0328,
+          "Münster": 0.1274,
+          "Nürnberg": 0.092,
+          "Paderborn": 0.009,
+          "Regensburg": 0.1242,
+          "Schalke": 0.0456,
+          "SSV Ulm 1846": 0.1274
+        },
+        "abstieg": {
+          "Braunschweig": 0.246,
+          "Darmstadt": 0.0956,
+          "Düsseldorf": 0.0006,
+          "Elversberg": 0.1078,
+          "Fürth": 0.0636,
+          "Hannover": 0.0208,
+          "Hertha": 0.0194,
+          "HSV": 0.0028,
+          "Kaiserslautern": 0.1264,
+          "Karlsruhe": 0.0042,
+          "Köln": 0.0044,
+          "Magdeburg": 0.0406,
+          "Münster": 0.3522,
+          "Nürnberg": 0.1568,
+          "Paderborn": 0.0064,
+          "Regensburg": 0.411,
+          "Schalke": 0.0612,
+          "SSV Ulm 1846": 0.2802
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 37.327,
+          "median": 37,
+          "p10": 25,
+          "p90": 50
+        },
+        "Darmstadt": {
+          "expected": 43.2716,
+          "median": 43,
+          "p10": 30,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 63.0308,
+          "median": 63,
+          "p10": 51,
+          "p90": 75
+        },
+        "Elversberg": {
+          "expected": 41.8848,
+          "median": 42,
+          "p10": 30,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 44.991,
+          "median": 45,
+          "p10": 33,
+          "p90": 57
+        },
+        "Hannover": {
+          "expected": 50.4122,
+          "median": 50,
+          "p10": 38,
+          "p90": 63
+        },
+        "Hertha": {
+          "expected": 50.454,
+          "median": 50,
+          "p10": 38,
+          "p90": 64
+        },
+        "HSV": {
+          "expected": 58.7208,
+          "median": 59,
+          "p10": 46,
+          "p90": 71
+        },
+        "Kaiserslautern": {
+          "expected": 41.3322,
+          "median": 41,
+          "p10": 29,
+          "p90": 54
+        },
+        "Karlsruhe": {
+          "expected": 56.7538,
+          "median": 57,
+          "p10": 44,
+          "p90": 69
+        },
+        "Köln": {
+          "expected": 57.6172,
+          "median": 58,
+          "p10": 45,
+          "p90": 70
+        },
+        "Magdeburg": {
+          "expected": 47.255,
+          "median": 47,
+          "p10": 35,
+          "p90": 60
+        },
+        "Münster": {
+          "expected": 34.2554,
+          "median": 34,
+          "p10": 22,
+          "p90": 47
+        },
+        "Nürnberg": {
+          "expected": 40.2426,
+          "median": 40,
+          "p10": 28,
+          "p90": 53
+        },
+        "Paderborn": {
+          "expected": 54.535,
+          "median": 55,
+          "p10": 42,
+          "p90": 67
+        },
+        "Regensburg": {
+          "expected": 33.3276,
+          "median": 33,
+          "p10": 21,
+          "p90": 46
+        },
+        "Schalke": {
+          "expected": 45.552,
+          "median": 46,
+          "p10": 33,
+          "p90": 59
+        },
+        "SSV Ulm 1846": {
+          "expected": 35.9498,
+          "median": 35,
+          "p10": 24,
+          "p90": 48
+        }
+      }
+    },
+    {
+      "matchday": 9,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 81,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0042,
+          "Darmstadt": 0.0292,
+          "Düsseldorf": 0.5612,
+          "Elversberg": 0.0178,
+          "Fürth": 0.022,
+          "Hannover": 0.1204,
+          "Hertha": 0.1114,
+          "HSV": 0.3672,
+          "Kaiserslautern": 0.0194,
+          "Karlsruhe": 0.2952,
+          "Köln": 0.2254,
+          "Magdeburg": 0.0438,
+          "Münster": 0.0008,
+          "Nürnberg": 0.017,
+          "Paderborn": 0.1328,
+          "Regensburg": 0.0012,
+          "Schalke": 0.0276,
+          "SSV Ulm 1846": 0.0034
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0052,
+          "Darmstadt": 0.0344,
+          "Düsseldorf": 0.1256,
+          "Elversberg": 0.0202,
+          "Fürth": 0.0232,
+          "Hannover": 0.0824,
+          "Hertha": 0.0788,
+          "HSV": 0.1436,
+          "Kaiserslautern": 0.0242,
+          "Karlsruhe": 0.1358,
+          "Köln": 0.1338,
+          "Magdeburg": 0.0416,
+          "Münster": 0.0036,
+          "Nürnberg": 0.019,
+          "Paderborn": 0.0894,
+          "Regensburg": 0.0012,
+          "Schalke": 0.033,
+          "SSV Ulm 1846": 0.005
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.6134,
+          "Darmstadt": 0.8878,
+          "Düsseldorf": 0.999,
+          "Elversberg": 0.8138,
+          "Fürth": 0.8516,
+          "Hannover": 0.9698,
+          "Hertha": 0.9672,
+          "HSV": 0.9956,
+          "Kaiserslautern": 0.8488,
+          "Karlsruhe": 0.9948,
+          "Köln": 0.9854,
+          "Magdeburg": 0.9172,
+          "Münster": 0.498,
+          "Nürnberg": 0.8342,
+          "Paderborn": 0.9756,
+          "Regensburg": 0.4078,
+          "Schalke": 0.8772,
+          "SSV Ulm 1846": 0.5628
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1208,
+          "Darmstadt": 0.0516,
+          "Düsseldorf": 0.0006,
+          "Elversberg": 0.0788,
+          "Fürth": 0.0676,
+          "Hannover": 0.015,
+          "Hertha": 0.0176,
+          "HSV": 0.0036,
+          "Kaiserslautern": 0.0652,
+          "Karlsruhe": 0.0038,
+          "Köln": 0.0076,
+          "Magdeburg": 0.0408,
+          "Münster": 0.1326,
+          "Nürnberg": 0.0732,
+          "Paderborn": 0.0142,
+          "Regensburg": 0.1252,
+          "Schalke": 0.0566,
+          "SSV Ulm 1846": 0.1252
+        },
+        "abstieg": {
+          "Braunschweig": 0.2658,
+          "Darmstadt": 0.0606,
+          "Düsseldorf": 0.0004,
+          "Elversberg": 0.1074,
+          "Fürth": 0.0808,
+          "Hannover": 0.0152,
+          "Hertha": 0.0152,
+          "HSV": 0.0008,
+          "Kaiserslautern": 0.086,
+          "Karlsruhe": 0.0014,
+          "Köln": 0.007,
+          "Magdeburg": 0.042,
+          "Münster": 0.3694,
+          "Nürnberg": 0.0926,
+          "Paderborn": 0.0102,
+          "Regensburg": 0.467,
+          "Schalke": 0.0662,
+          "SSV Ulm 1846": 0.312
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 36.5574,
+          "median": 36,
+          "p10": 25,
+          "p90": 49
+        },
+        "Darmstadt": {
+          "expected": 45.097,
+          "median": 45,
+          "p10": 33,
+          "p90": 58
+        },
+        "Düsseldorf": {
+          "expected": 64.4086,
+          "median": 65,
+          "p10": 52,
+          "p90": 76
+        },
+        "Elversberg": {
+          "expected": 41.75,
+          "median": 41,
+          "p10": 30,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 43.223,
+          "median": 43,
+          "p10": 31,
+          "p90": 56
+        },
+        "Hannover": {
+          "expected": 51.671,
+          "median": 52,
+          "p10": 39,
+          "p90": 64
+        },
+        "Hertha": {
+          "expected": 51.613,
+          "median": 52,
+          "p10": 39,
+          "p90": 64
+        },
+        "HSV": {
+          "expected": 59.682,
+          "median": 60,
+          "p10": 47,
+          "p90": 72
+        },
+        "Kaiserslautern": {
+          "expected": 42.869,
+          "median": 43,
+          "p10": 31,
+          "p90": 55
+        },
+        "Karlsruhe": {
+          "expected": 58.3706,
+          "median": 58,
+          "p10": 46,
+          "p90": 71
+        },
+        "Köln": {
+          "expected": 56.048,
+          "median": 56,
+          "p10": 44,
+          "p90": 68
+        },
+        "Magdeburg": {
+          "expected": 46.796,
+          "median": 47,
+          "p10": 35,
+          "p90": 59
+        },
+        "Münster": {
+          "expected": 33.6254,
+          "median": 33,
+          "p10": 22,
+          "p90": 46
+        },
+        "Nürnberg": {
+          "expected": 42.3126,
+          "median": 42,
+          "p10": 31,
+          "p90": 54
+        },
+        "Paderborn": {
+          "expected": 52.545,
+          "median": 52,
+          "p10": 40,
+          "p90": 65
+        },
+        "Regensburg": {
+          "expected": 32.0114,
+          "median": 31,
+          "p10": 20,
+          "p90": 44
+        },
+        "Schalke": {
+          "expected": 44.6282,
+          "median": 45,
+          "p10": 32,
+          "p90": 57
+        },
+        "SSV Ulm 1846": {
+          "expected": 35.046,
+          "median": 35,
+          "p10": 23,
+          "p90": 47
+        }
+      }
+    },
+    {
+      "matchday": 10,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 90,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0026,
+          "Darmstadt": 0.027,
+          "Düsseldorf": 0.494,
+          "Elversberg": 0.0236,
+          "Fürth": 0.0366,
+          "Hannover": 0.1564,
+          "Hertha": 0.146,
+          "HSV": 0.3364,
+          "Kaiserslautern": 0.031,
+          "Karlsruhe": 0.2674,
+          "Köln": 0.193,
+          "Magdeburg": 0.0368,
+          "Münster": 0.001,
+          "Nürnberg": 0.0262,
+          "Paderborn": 0.195,
+          "Regensburg": 0.0002,
+          "Schalke": 0.0226,
+          "SSV Ulm 1846": 0.0042
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0042,
+          "Darmstadt": 0.0284,
+          "Düsseldorf": 0.1248,
+          "Elversberg": 0.0188,
+          "Fürth": 0.0332,
+          "Hannover": 0.1028,
+          "Hertha": 0.1024,
+          "HSV": 0.1256,
+          "Kaiserslautern": 0.0332,
+          "Karlsruhe": 0.1246,
+          "Köln": 0.113,
+          "Magdeburg": 0.0262,
+          "Münster": 0.003,
+          "Nürnberg": 0.0226,
+          "Paderborn": 0.1082,
+          "Regensburg": 0.0008,
+          "Schalke": 0.0246,
+          "SSV Ulm 1846": 0.0036
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.5798,
+          "Darmstadt": 0.8694,
+          "Düsseldorf": 0.9984,
+          "Elversberg": 0.8548,
+          "Fürth": 0.896,
+          "Hannover": 0.9816,
+          "Hertha": 0.98,
+          "HSV": 0.9946,
+          "Kaiserslautern": 0.893,
+          "Karlsruhe": 0.9912,
+          "Köln": 0.9864,
+          "Magdeburg": 0.8884,
+          "Münster": 0.485,
+          "Nürnberg": 0.8626,
+          "Paderborn": 0.985,
+          "Regensburg": 0.3566,
+          "Schalke": 0.8444,
+          "SSV Ulm 1846": 0.5528
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1354,
+          "Darmstadt": 0.055,
+          "Düsseldorf": 0.0012,
+          "Elversberg": 0.071,
+          "Fürth": 0.0522,
+          "Hannover": 0.0122,
+          "Hertha": 0.0104,
+          "HSV": 0.003,
+          "Kaiserslautern": 0.0514,
+          "Karlsruhe": 0.006,
+          "Köln": 0.0064,
+          "Magdeburg": 0.0554,
+          "Münster": 0.1318,
+          "Nürnberg": 0.0674,
+          "Paderborn": 0.0092,
+          "Regensburg": 0.1322,
+          "Schalke": 0.0638,
+          "SSV Ulm 1846": 0.136
+        },
+        "abstieg": {
+          "Braunschweig": 0.2848,
+          "Darmstadt": 0.0756,
+          "Düsseldorf": 0.0004,
+          "Elversberg": 0.0742,
+          "Fürth": 0.0518,
+          "Hannover": 0.0062,
+          "Hertha": 0.0096,
+          "HSV": 0.0024,
+          "Kaiserslautern": 0.0556,
+          "Karlsruhe": 0.0028,
+          "Köln": 0.0072,
+          "Magdeburg": 0.0562,
+          "Münster": 0.3832,
+          "Nürnberg": 0.07,
+          "Paderborn": 0.0058,
+          "Regensburg": 0.5112,
+          "Schalke": 0.0918,
+          "SSV Ulm 1846": 0.3112
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 35.9268,
+          "median": 36,
+          "p10": 25,
+          "p90": 48
+        },
+        "Darmstadt": {
+          "expected": 44.12,
+          "median": 44,
+          "p10": 32,
+          "p90": 56
+        },
+        "Düsseldorf": {
+          "expected": 62.2822,
+          "median": 63,
+          "p10": 50,
+          "p90": 74
+        },
+        "Elversberg": {
+          "expected": 43.2632,
+          "median": 43,
+          "p10": 32,
+          "p90": 55
+        },
+        "Fürth": {
+          "expected": 45.289,
+          "median": 45,
+          "p10": 34,
+          "p90": 57
+        },
+        "Hannover": {
+          "expected": 53.3334,
+          "median": 53,
+          "p10": 41,
+          "p90": 65
+        },
+        "Hertha": {
+          "expected": 53.3132,
+          "median": 53,
+          "p10": 42,
+          "p90": 65
+        },
+        "HSV": {
+          "expected": 58.2806,
+          "median": 58,
+          "p10": 46,
+          "p90": 70
+        },
+        "Kaiserslautern": {
+          "expected": 45.1856,
+          "median": 45,
+          "p10": 34,
+          "p90": 57
+        },
+        "Karlsruhe": {
+          "expected": 56.8326,
+          "median": 57,
+          "p10": 45,
+          "p90": 69
+        },
+        "Köln": {
+          "expected": 54.4168,
+          "median": 55,
+          "p10": 42,
+          "p90": 66
+        },
+        "Magdeburg": {
+          "expected": 45.1348,
+          "median": 45,
+          "p10": 34,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 33.4494,
+          "median": 33,
+          "p10": 22,
+          "p90": 45
+        },
+        "Nürnberg": {
+          "expected": 43.7526,
+          "median": 44,
+          "p10": 32,
+          "p90": 56
+        },
+        "Paderborn": {
+          "expected": 54.7156,
+          "median": 55,
+          "p10": 43,
+          "p90": 67
+        },
+        "Regensburg": {
+          "expected": 31.1834,
+          "median": 31,
+          "p10": 20,
+          "p90": 43
+        },
+        "Schalke": {
+          "expected": 42.96,
+          "median": 43,
+          "p10": 31,
+          "p90": 55
+        },
+        "SSV Ulm 1846": {
+          "expected": 35.1624,
+          "median": 35,
+          "p10": 24,
+          "p90": 47
+        }
+      }
+    },
+    {
+      "matchday": 11,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 99,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.003,
+          "Darmstadt": 0.0496,
+          "Düsseldorf": 0.4392,
+          "Elversberg": 0.016,
+          "Fürth": 0.0304,
+          "Hannover": 0.225,
+          "Hertha": 0.1366,
+          "HSV": 0.3012,
+          "Kaiserslautern": 0.0284,
+          "Karlsruhe": 0.2334,
+          "Köln": 0.26,
+          "Magdeburg": 0.0338,
+          "Münster": 0.0018,
+          "Nürnberg": 0.0256,
+          "Paderborn": 0.1946,
+          "Regensburg": 0.0014,
+          "Schalke": 0.017,
+          "SSV Ulm 1846": 0.003
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0038,
+          "Darmstadt": 0.0392,
+          "Düsseldorf": 0.1334,
+          "Elversberg": 0.0172,
+          "Fürth": 0.0248,
+          "Hannover": 0.1084,
+          "Hertha": 0.089,
+          "HSV": 0.1234,
+          "Kaiserslautern": 0.0306,
+          "Karlsruhe": 0.1176,
+          "Köln": 0.1186,
+          "Magdeburg": 0.0354,
+          "Münster": 0.004,
+          "Nürnberg": 0.0248,
+          "Paderborn": 0.103,
+          "Regensburg": 0.0006,
+          "Schalke": 0.0226,
+          "SSV Ulm 1846": 0.0036
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.5668,
+          "Darmstadt": 0.914,
+          "Düsseldorf": 0.9976,
+          "Elversberg": 0.8276,
+          "Fürth": 0.8508,
+          "Hannover": 0.9906,
+          "Hertha": 0.9724,
+          "HSV": 0.9918,
+          "Kaiserslautern": 0.8788,
+          "Karlsruhe": 0.9858,
+          "Köln": 0.9896,
+          "Magdeburg": 0.8812,
+          "Münster": 0.5426,
+          "Nürnberg": 0.8672,
+          "Paderborn": 0.9886,
+          "Regensburg": 0.3934,
+          "Schalke": 0.8252,
+          "SSV Ulm 1846": 0.536
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1328,
+          "Darmstadt": 0.039,
+          "Düsseldorf": 0.0016,
+          "Elversberg": 0.0748,
+          "Fürth": 0.0654,
+          "Hannover": 0.0066,
+          "Hertha": 0.0144,
+          "HSV": 0.0068,
+          "Kaiserslautern": 0.0582,
+          "Karlsruhe": 0.009,
+          "Köln": 0.0062,
+          "Magdeburg": 0.0512,
+          "Münster": 0.1338,
+          "Nürnberg": 0.0686,
+          "Paderborn": 0.0054,
+          "Regensburg": 0.132,
+          "Schalke": 0.0752,
+          "SSV Ulm 1846": 0.119
+        },
+        "abstieg": {
+          "Braunschweig": 0.3004,
+          "Darmstadt": 0.047,
+          "Düsseldorf": 0.0008,
+          "Elversberg": 0.0976,
+          "Fürth": 0.0838,
+          "Hannover": 0.0028,
+          "Hertha": 0.0132,
+          "HSV": 0.0014,
+          "Kaiserslautern": 0.063,
+          "Karlsruhe": 0.0052,
+          "Köln": 0.0042,
+          "Magdeburg": 0.0676,
+          "Münster": 0.3236,
+          "Nürnberg": 0.0642,
+          "Paderborn": 0.006,
+          "Regensburg": 0.4746,
+          "Schalke": 0.0996,
+          "SSV Ulm 1846": 0.345
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 36.253,
+          "median": 36,
+          "p10": 25,
+          "p90": 48
+        },
+        "Darmstadt": {
+          "expected": 46.0296,
+          "median": 46,
+          "p10": 35,
+          "p90": 58
+        },
+        "Düsseldorf": {
+          "expected": 60.3152,
+          "median": 61,
+          "p10": 49,
+          "p90": 72
+        },
+        "Elversberg": {
+          "expected": 42.386,
+          "median": 42,
+          "p10": 31,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 43.5128,
+          "median": 43,
+          "p10": 32,
+          "p90": 55
+        },
+        "Hannover": {
+          "expected": 55.2212,
+          "median": 55,
+          "p10": 44,
+          "p90": 67
+        },
+        "Hertha": {
+          "expected": 51.8576,
+          "median": 52,
+          "p10": 40,
+          "p90": 63
+        },
+        "HSV": {
+          "expected": 56.754,
+          "median": 57,
+          "p10": 45,
+          "p90": 68
+        },
+        "Kaiserslautern": {
+          "expected": 44.6716,
+          "median": 44,
+          "p10": 34,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 55.4098,
+          "median": 55,
+          "p10": 44,
+          "p90": 67
+        },
+        "Köln": {
+          "expected": 55.7872,
+          "median": 56,
+          "p10": 44,
+          "p90": 67
+        },
+        "Magdeburg": {
+          "expected": 45.0704,
+          "median": 45,
+          "p10": 33,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 35.5742,
+          "median": 35,
+          "p10": 25,
+          "p90": 47
+        },
+        "Nürnberg": {
+          "expected": 43.8748,
+          "median": 43,
+          "p10": 33,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 54.0986,
+          "median": 54,
+          "p10": 43,
+          "p90": 66
+        },
+        "Regensburg": {
+          "expected": 32.6736,
+          "median": 32,
+          "p10": 22,
+          "p90": 44
+        },
+        "Schalke": {
+          "expected": 42.2812,
+          "median": 42,
+          "p10": 31,
+          "p90": 54
+        },
+        "SSV Ulm 1846": {
+          "expected": 35.0406,
+          "median": 35,
+          "p10": 24,
+          "p90": 46
+        }
+      }
+    },
+    {
+      "matchday": 12,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 108,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.006,
+          "Darmstadt": 0.0704,
+          "Düsseldorf": 0.4312,
+          "Elversberg": 0.023,
+          "Fürth": 0.02,
+          "Hannover": 0.1942,
+          "Hertha": 0.1186,
+          "HSV": 0.2576,
+          "Kaiserslautern": 0.0336,
+          "Karlsruhe": 0.2208,
+          "Köln": 0.3342,
+          "Magdeburg": 0.0326,
+          "Münster": 0.002,
+          "Nürnberg": 0.0262,
+          "Paderborn": 0.2032,
+          "Regensburg": 0.0006,
+          "Schalke": 0.0234,
+          "SSV Ulm 1846": 0.0024
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0068,
+          "Darmstadt": 0.0502,
+          "Düsseldorf": 0.1384,
+          "Elversberg": 0.0256,
+          "Fürth": 0.018,
+          "Hannover": 0.098,
+          "Hertha": 0.0806,
+          "HSV": 0.1204,
+          "Kaiserslautern": 0.0282,
+          "Karlsruhe": 0.1128,
+          "Köln": 0.1312,
+          "Magdeburg": 0.0272,
+          "Münster": 0.0032,
+          "Nürnberg": 0.021,
+          "Paderborn": 0.1082,
+          "Regensburg": 0.0018,
+          "Schalke": 0.0246,
+          "SSV Ulm 1846": 0.0038
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.63,
+          "Darmstadt": 0.9324,
+          "Düsseldorf": 0.9984,
+          "Elversberg": 0.8658,
+          "Fürth": 0.826,
+          "Hannover": 0.9864,
+          "Hertha": 0.9656,
+          "HSV": 0.9896,
+          "Kaiserslautern": 0.878,
+          "Karlsruhe": 0.9858,
+          "Köln": 0.9938,
+          "Magdeburg": 0.877,
+          "Münster": 0.537,
+          "Nürnberg": 0.856,
+          "Paderborn": 0.9864,
+          "Regensburg": 0.336,
+          "Schalke": 0.8586,
+          "SSV Ulm 1846": 0.4972
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1254,
+          "Darmstadt": 0.0316,
+          "Düsseldorf": 0.001,
+          "Elversberg": 0.0644,
+          "Fürth": 0.0734,
+          "Hannover": 0.0102,
+          "Hertha": 0.0168,
+          "HSV": 0.0058,
+          "Kaiserslautern": 0.0628,
+          "Karlsruhe": 0.0092,
+          "Köln": 0.0032,
+          "Magdeburg": 0.06,
+          "Münster": 0.1294,
+          "Nürnberg": 0.067,
+          "Paderborn": 0.0076,
+          "Regensburg": 0.1254,
+          "Schalke": 0.0682,
+          "SSV Ulm 1846": 0.1386
+        },
+        "abstieg": {
+          "Braunschweig": 0.2446,
+          "Darmstadt": 0.036,
+          "Düsseldorf": 0.0006,
+          "Elversberg": 0.0698,
+          "Fürth": 0.1006,
+          "Hannover": 0.0034,
+          "Hertha": 0.0176,
+          "HSV": 0.0046,
+          "Kaiserslautern": 0.0592,
+          "Karlsruhe": 0.005,
+          "Köln": 0.003,
+          "Magdeburg": 0.063,
+          "Münster": 0.3336,
+          "Nürnberg": 0.077,
+          "Paderborn": 0.006,
+          "Regensburg": 0.5386,
+          "Schalke": 0.0732,
+          "SSV Ulm 1846": 0.3642
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 37.8396,
+          "median": 38,
+          "p10": 27,
+          "p90": 49
+        },
+        "Darmstadt": {
+          "expected": 47.6904,
+          "median": 48,
+          "p10": 37,
+          "p90": 59
+        },
+        "Düsseldorf": {
+          "expected": 59.6846,
+          "median": 60,
+          "p10": 49,
+          "p90": 70
+        },
+        "Elversberg": {
+          "expected": 43.9612,
+          "median": 44,
+          "p10": 33,
+          "p90": 55
+        },
+        "Fürth": {
+          "expected": 42.6004,
+          "median": 43,
+          "p10": 32,
+          "p90": 54
+        },
+        "Hannover": {
+          "expected": 53.689,
+          "median": 54,
+          "p10": 43,
+          "p90": 65
+        },
+        "Hertha": {
+          "expected": 50.7472,
+          "median": 51,
+          "p10": 39,
+          "p90": 62
+        },
+        "HSV": {
+          "expected": 55.2576,
+          "median": 55,
+          "p10": 44,
+          "p90": 67
+        },
+        "Kaiserslautern": {
+          "expected": 44.5306,
+          "median": 44,
+          "p10": 34,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 54.3138,
+          "median": 54,
+          "p10": 43,
+          "p90": 65
+        },
+        "Köln": {
+          "expected": 57.1816,
+          "median": 57,
+          "p10": 46,
+          "p90": 68
+        },
+        "Magdeburg": {
+          "expected": 44.4938,
+          "median": 44,
+          "p10": 34,
+          "p90": 55
+        },
+        "Münster": {
+          "expected": 35.5772,
+          "median": 35,
+          "p10": 25,
+          "p90": 47
+        },
+        "Nürnberg": {
+          "expected": 43.3868,
+          "median": 43,
+          "p10": 33,
+          "p90": 54
+        },
+        "Paderborn": {
+          "expected": 54.064,
+          "median": 54,
+          "p10": 43,
+          "p90": 65
+        },
+        "Regensburg": {
+          "expected": 31.7442,
+          "median": 31,
+          "p10": 21,
+          "p90": 43
+        },
+        "Schalke": {
+          "expected": 43.5792,
+          "median": 44,
+          "p10": 33,
+          "p90": 54
+        },
+        "SSV Ulm 1846": {
+          "expected": 34.742,
+          "median": 34,
+          "p10": 24,
+          "p90": 46
+        }
+      }
+    },
+    {
+      "matchday": 13,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 117,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0026,
+          "Darmstadt": 0.0902,
+          "Düsseldorf": 0.3442,
+          "Elversberg": 0.0432,
+          "Fürth": 0.014,
+          "Hannover": 0.1482,
+          "Hertha": 0.0958,
+          "HSV": 0.238,
+          "Kaiserslautern": 0.04,
+          "Karlsruhe": 0.2706,
+          "Köln": 0.387,
+          "Magdeburg": 0.0372,
+          "Münster": 0.0016,
+          "Nürnberg": 0.016,
+          "Paderborn": 0.2444,
+          "Regensburg": 0.0004,
+          "Schalke": 0.0248,
+          "SSV Ulm 1846": 0.0018
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0032,
+          "Darmstadt": 0.0574,
+          "Düsseldorf": 0.1302,
+          "Elversberg": 0.0322,
+          "Fürth": 0.0144,
+          "Hannover": 0.0822,
+          "Hertha": 0.0718,
+          "HSV": 0.1188,
+          "Kaiserslautern": 0.0312,
+          "Karlsruhe": 0.1288,
+          "Köln": 0.1292,
+          "Magdeburg": 0.0328,
+          "Münster": 0.001,
+          "Nürnberg": 0.019,
+          "Paderborn": 0.118,
+          "Regensburg": 0.0002,
+          "Schalke": 0.0278,
+          "SSV Ulm 1846": 0.0018
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.5954,
+          "Darmstadt": 0.9618,
+          "Düsseldorf": 0.9974,
+          "Elversberg": 0.935,
+          "Fürth": 0.7898,
+          "Hannover": 0.9808,
+          "Hertha": 0.9612,
+          "HSV": 0.9888,
+          "Kaiserslautern": 0.914,
+          "Karlsruhe": 0.9946,
+          "Köln": 0.9972,
+          "Magdeburg": 0.9238,
+          "Münster": 0.483,
+          "Nürnberg": 0.838,
+          "Paderborn": 0.9922,
+          "Regensburg": 0.2614,
+          "Schalke": 0.8698,
+          "SSV Ulm 1846": 0.5158
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1484,
+          "Darmstadt": 0.021,
+          "Düsseldorf": 0.0016,
+          "Elversberg": 0.0366,
+          "Fürth": 0.0882,
+          "Hannover": 0.0134,
+          "Hertha": 0.0218,
+          "HSV": 0.007,
+          "Kaiserslautern": 0.0458,
+          "Karlsruhe": 0.0036,
+          "Köln": 0.0016,
+          "Magdeburg": 0.0426,
+          "Münster": 0.1518,
+          "Nürnberg": 0.0772,
+          "Paderborn": 0.0052,
+          "Regensburg": 0.125,
+          "Schalke": 0.0648,
+          "SSV Ulm 1846": 0.1444
+        },
+        "abstieg": {
+          "Braunschweig": 0.2562,
+          "Darmstadt": 0.0172,
+          "Düsseldorf": 0.001,
+          "Elversberg": 0.0284,
+          "Fürth": 0.122,
+          "Hannover": 0.0058,
+          "Hertha": 0.017,
+          "HSV": 0.0042,
+          "Kaiserslautern": 0.0402,
+          "Karlsruhe": 0.0018,
+          "Köln": 0.0012,
+          "Magdeburg": 0.0336,
+          "Münster": 0.3652,
+          "Nürnberg": 0.0848,
+          "Paderborn": 0.0026,
+          "Regensburg": 0.6136,
+          "Schalke": 0.0654,
+          "SSV Ulm 1846": 0.3398
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 36.9946,
+          "median": 37,
+          "p10": 27,
+          "p90": 47
+        },
+        "Darmstadt": {
+          "expected": 49.3422,
+          "median": 49,
+          "p10": 39,
+          "p90": 60
+        },
+        "Düsseldorf": {
+          "expected": 57.5128,
+          "median": 58,
+          "p10": 47,
+          "p90": 68
+        },
+        "Elversberg": {
+          "expected": 46.3344,
+          "median": 46,
+          "p10": 36,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 41.4286,
+          "median": 41,
+          "p10": 31,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 52.1232,
+          "median": 52,
+          "p10": 41,
+          "p90": 63
+        },
+        "Hertha": {
+          "expected": 49.672,
+          "median": 50,
+          "p10": 39,
+          "p90": 61
+        },
+        "HSV": {
+          "expected": 54.5854,
+          "median": 55,
+          "p10": 44,
+          "p90": 65
+        },
+        "Kaiserslautern": {
+          "expected": 45.7568,
+          "median": 45,
+          "p10": 35,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 55.989,
+          "median": 56,
+          "p10": 45,
+          "p90": 67
+        },
+        "Köln": {
+          "expected": 58.113,
+          "median": 58,
+          "p10": 47,
+          "p90": 69
+        },
+        "Magdeburg": {
+          "expected": 46.0624,
+          "median": 46,
+          "p10": 36,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 34.6694,
+          "median": 34,
+          "p10": 25,
+          "p90": 45
+        },
+        "Nürnberg": {
+          "expected": 42.6472,
+          "median": 42,
+          "p10": 32,
+          "p90": 53
+        },
+        "Paderborn": {
+          "expected": 55.2176,
+          "median": 55,
+          "p10": 44,
+          "p90": 66
+        },
+        "Regensburg": {
+          "expected": 30.2342,
+          "median": 30,
+          "p10": 20,
+          "p90": 41
+        },
+        "Schalke": {
+          "expected": 43.6086,
+          "median": 43,
+          "p10": 33,
+          "p90": 55
+        },
+        "SSV Ulm 1846": {
+          "expected": 34.9682,
+          "median": 35,
+          "p10": 25,
+          "p90": 45
+        }
+      }
+    },
+    {
+      "matchday": 14,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 126,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0012,
+          "Darmstadt": 0.0668,
+          "Düsseldorf": 0.3104,
+          "Elversberg": 0.0322,
+          "Fürth": 0.0102,
+          "Hannover": 0.144,
+          "Hertha": 0.117,
+          "HSV": 0.3036,
+          "Kaiserslautern": 0.0566,
+          "Karlsruhe": 0.2362,
+          "Köln": 0.3394,
+          "Magdeburg": 0.0296,
+          "Münster": 0.0016,
+          "Nürnberg": 0.0168,
+          "Paderborn": 0.3164,
+          "Regensburg": 0.0004,
+          "Schalke": 0.0162,
+          "SSV Ulm 1846": 0.0014
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.004,
+          "Darmstadt": 0.0462,
+          "Düsseldorf": 0.1314,
+          "Elversberg": 0.0286,
+          "Fürth": 0.0122,
+          "Hannover": 0.089,
+          "Hertha": 0.0868,
+          "HSV": 0.127,
+          "Kaiserslautern": 0.0426,
+          "Karlsruhe": 0.109,
+          "Köln": 0.1392,
+          "Magdeburg": 0.0268,
+          "Münster": 0.0022,
+          "Nürnberg": 0.0172,
+          "Paderborn": 0.1204,
+          "Regensburg": 0.0006,
+          "Schalke": 0.015,
+          "SSV Ulm 1846": 0.0018
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.566,
+          "Darmstadt": 0.9568,
+          "Düsseldorf": 0.9964,
+          "Elversberg": 0.9154,
+          "Fürth": 0.7976,
+          "Hannover": 0.9856,
+          "Hertha": 0.9784,
+          "HSV": 0.9956,
+          "Kaiserslautern": 0.9546,
+          "Karlsruhe": 0.9922,
+          "Köln": 0.9968,
+          "Magdeburg": 0.9058,
+          "Münster": 0.5204,
+          "Nürnberg": 0.8442,
+          "Paderborn": 0.9974,
+          "Regensburg": 0.262,
+          "Schalke": 0.8202,
+          "SSV Ulm 1846": 0.5146
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1446,
+          "Darmstadt": 0.023,
+          "Düsseldorf": 0.0022,
+          "Elversberg": 0.048,
+          "Fürth": 0.0928,
+          "Hannover": 0.0106,
+          "Hertha": 0.0144,
+          "HSV": 0.0024,
+          "Kaiserslautern": 0.0248,
+          "Karlsruhe": 0.0044,
+          "Köln": 0.0026,
+          "Magdeburg": 0.0522,
+          "Münster": 0.1486,
+          "Nürnberg": 0.0792,
+          "Paderborn": 0.002,
+          "Regensburg": 0.1244,
+          "Schalke": 0.0812,
+          "SSV Ulm 1846": 0.1426
+        },
+        "abstieg": {
+          "Braunschweig": 0.2894,
+          "Darmstadt": 0.0202,
+          "Düsseldorf": 0.0014,
+          "Elversberg": 0.0366,
+          "Fürth": 0.1096,
+          "Hannover": 0.0038,
+          "Hertha": 0.0072,
+          "HSV": 0.002,
+          "Kaiserslautern": 0.0206,
+          "Karlsruhe": 0.0034,
+          "Köln": 0.0006,
+          "Magdeburg": 0.042,
+          "Münster": 0.331,
+          "Nürnberg": 0.0766,
+          "Paderborn": 0.0006,
+          "Regensburg": 0.6136,
+          "Schalke": 0.0986,
+          "SSV Ulm 1846": 0.3428
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 36.2082,
+          "median": 36,
+          "p10": 26,
+          "p90": 47
+        },
+        "Darmstadt": {
+          "expected": 48.3398,
+          "median": 48,
+          "p10": 38,
+          "p90": 59
+        },
+        "Düsseldorf": {
+          "expected": 56.7936,
+          "median": 57,
+          "p10": 47,
+          "p90": 67
+        },
+        "Elversberg": {
+          "expected": 45.1324,
+          "median": 45,
+          "p10": 35,
+          "p90": 55
+        },
+        "Fürth": {
+          "expected": 41.0584,
+          "median": 41,
+          "p10": 31,
+          "p90": 51
+        },
+        "Hannover": {
+          "expected": 52.1168,
+          "median": 52,
+          "p10": 42,
+          "p90": 63
+        },
+        "Hertha": {
+          "expected": 51.1964,
+          "median": 51,
+          "p10": 41,
+          "p90": 61
+        },
+        "HSV": {
+          "expected": 56.0574,
+          "median": 56,
+          "p10": 45,
+          "p90": 67
+        },
+        "Kaiserslautern": {
+          "expected": 47.6596,
+          "median": 47,
+          "p10": 38,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 54.8174,
+          "median": 55,
+          "p10": 44,
+          "p90": 65
+        },
+        "Köln": {
+          "expected": 57.2154,
+          "median": 57,
+          "p10": 47,
+          "p90": 67
+        },
+        "Magdeburg": {
+          "expected": 45.0586,
+          "median": 45,
+          "p10": 35,
+          "p90": 55
+        },
+        "Münster": {
+          "expected": 34.9088,
+          "median": 34,
+          "p10": 25,
+          "p90": 45
+        },
+        "Nürnberg": {
+          "expected": 42.668,
+          "median": 42,
+          "p10": 33,
+          "p90": 53
+        },
+        "Paderborn": {
+          "expected": 56.8648,
+          "median": 57,
+          "p10": 46,
+          "p90": 67
+        },
+        "Regensburg": {
+          "expected": 30.0834,
+          "median": 30,
+          "p10": 20,
+          "p90": 40
+        },
+        "Schalke": {
+          "expected": 41.5896,
+          "median": 41,
+          "p10": 31,
+          "p90": 52
+        },
+        "SSV Ulm 1846": {
+          "expected": 34.6488,
+          "median": 34,
+          "p10": 25,
+          "p90": 45
+        }
+      }
+    },
+    {
+      "matchday": 15,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 135,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0018,
+          "Darmstadt": 0.067,
+          "Düsseldorf": 0.3606,
+          "Elversberg": 0.0442,
+          "Fürth": 0.0122,
+          "Hannover": 0.1678,
+          "Hertha": 0.0956,
+          "HSV": 0.2726,
+          "Kaiserslautern": 0.0862,
+          "Karlsruhe": 0.1714,
+          "Köln": 0.4054,
+          "Magdeburg": 0.0458,
+          "Münster": 0.0002,
+          "Nürnberg": 0.011,
+          "Paderborn": 0.2364,
+          "Regensburg": 0,
+          "Schalke": 0.0214,
+          "SSV Ulm 1846": 0.0004
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.001,
+          "Darmstadt": 0.0556,
+          "Düsseldorf": 0.1308,
+          "Elversberg": 0.0316,
+          "Fürth": 0.0176,
+          "Hannover": 0.101,
+          "Hertha": 0.0654,
+          "HSV": 0.121,
+          "Kaiserslautern": 0.0582,
+          "Karlsruhe": 0.0996,
+          "Köln": 0.1344,
+          "Magdeburg": 0.0324,
+          "Münster": 0.0018,
+          "Nürnberg": 0.0134,
+          "Paderborn": 0.1148,
+          "Regensburg": 0.0002,
+          "Schalke": 0.0204,
+          "SSV Ulm 1846": 0.0008
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.5406,
+          "Darmstadt": 0.9684,
+          "Düsseldorf": 0.9988,
+          "Elversberg": 0.9518,
+          "Fürth": 0.8562,
+          "Hannover": 0.9902,
+          "Hertha": 0.9796,
+          "HSV": 0.9968,
+          "Kaiserslautern": 0.9804,
+          "Karlsruhe": 0.9904,
+          "Köln": 0.9988,
+          "Magdeburg": 0.9446,
+          "Münster": 0.4462,
+          "Nürnberg": 0.8214,
+          "Paderborn": 0.9958,
+          "Regensburg": 0.2062,
+          "Schalke": 0.8866,
+          "SSV Ulm 1846": 0.4472
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1704,
+          "Darmstadt": 0.0192,
+          "Düsseldorf": 0.001,
+          "Elversberg": 0.0314,
+          "Fürth": 0.074,
+          "Hannover": 0.007,
+          "Hertha": 0.0118,
+          "HSV": 0.0024,
+          "Kaiserslautern": 0.0138,
+          "Karlsruhe": 0.0064,
+          "Köln": 0.0008,
+          "Magdeburg": 0.037,
+          "Münster": 0.1624,
+          "Nürnberg": 0.0892,
+          "Paderborn": 0.0032,
+          "Regensburg": 0.1396,
+          "Schalke": 0.0592,
+          "SSV Ulm 1846": 0.1712
+        },
+        "abstieg": {
+          "Braunschweig": 0.289,
+          "Darmstadt": 0.0124,
+          "Düsseldorf": 0.0002,
+          "Elversberg": 0.0168,
+          "Fürth": 0.0698,
+          "Hannover": 0.0028,
+          "Hertha": 0.0086,
+          "HSV": 0.0008,
+          "Kaiserslautern": 0.0058,
+          "Karlsruhe": 0.0032,
+          "Köln": 0.0004,
+          "Magdeburg": 0.0184,
+          "Münster": 0.3914,
+          "Nürnberg": 0.0894,
+          "Paderborn": 0.001,
+          "Regensburg": 0.6542,
+          "Schalke": 0.0542,
+          "SSV Ulm 1846": 0.3816
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 35.8098,
+          "median": 36,
+          "p10": 26,
+          "p90": 46
+        },
+        "Darmstadt": {
+          "expected": 48.4076,
+          "median": 48,
+          "p10": 39,
+          "p90": 58
+        },
+        "Düsseldorf": {
+          "expected": 57.5114,
+          "median": 58,
+          "p10": 48,
+          "p90": 67
+        },
+        "Elversberg": {
+          "expected": 46.5818,
+          "median": 46,
+          "p10": 37,
+          "p90": 57
+        },
+        "Fürth": {
+          "expected": 42.518,
+          "median": 42,
+          "p10": 33,
+          "p90": 53
+        },
+        "Hannover": {
+          "expected": 53.1602,
+          "median": 53,
+          "p10": 43,
+          "p90": 63
+        },
+        "Hertha": {
+          "expected": 50.1164,
+          "median": 50,
+          "p10": 40,
+          "p90": 60
+        },
+        "HSV": {
+          "expected": 55.43,
+          "median": 56,
+          "p10": 45,
+          "p90": 65
+        },
+        "Kaiserslautern": {
+          "expected": 49.6654,
+          "median": 49,
+          "p10": 40,
+          "p90": 60
+        },
+        "Karlsruhe": {
+          "expected": 53.2168,
+          "median": 53,
+          "p10": 43,
+          "p90": 63
+        },
+        "Köln": {
+          "expected": 58.3778,
+          "median": 59,
+          "p10": 49,
+          "p90": 68
+        },
+        "Magdeburg": {
+          "expected": 46.6894,
+          "median": 46,
+          "p10": 37,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 33.552,
+          "median": 33,
+          "p10": 24,
+          "p90": 43
+        },
+        "Nürnberg": {
+          "expected": 41.326,
+          "median": 41,
+          "p10": 32,
+          "p90": 51
+        },
+        "Paderborn": {
+          "expected": 55.0222,
+          "median": 55,
+          "p10": 45,
+          "p90": 65
+        },
+        "Regensburg": {
+          "expected": 29.0926,
+          "median": 29,
+          "p10": 20,
+          "p90": 39
+        },
+        "Schalke": {
+          "expected": 43.6922,
+          "median": 44,
+          "p10": 34,
+          "p90": 54
+        },
+        "SSV Ulm 1846": {
+          "expected": 33.5686,
+          "median": 33,
+          "p10": 24,
+          "p90": 43
+        }
+      }
+    },
+    {
+      "matchday": 16,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 144,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0.0004,
+          "Darmstadt": 0.0878,
+          "Düsseldorf": 0.3622,
+          "Elversberg": 0.058,
+          "Fürth": 0.0162,
+          "Hannover": 0.1384,
+          "Hertha": 0.0624,
+          "HSV": 0.2442,
+          "Kaiserslautern": 0.0596,
+          "Karlsruhe": 0.2062,
+          "Köln": 0.4668,
+          "Magdeburg": 0.0406,
+          "Münster": 0.0008,
+          "Nürnberg": 0.007,
+          "Paderborn": 0.2338,
+          "Regensburg": 0,
+          "Schalke": 0.015,
+          "SSV Ulm 1846": 0.0006
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.001,
+          "Darmstadt": 0.062,
+          "Düsseldorf": 0.1348,
+          "Elversberg": 0.0494,
+          "Fürth": 0.0204,
+          "Hannover": 0.0918,
+          "Hertha": 0.051,
+          "HSV": 0.1292,
+          "Kaiserslautern": 0.0452,
+          "Karlsruhe": 0.105,
+          "Köln": 0.1334,
+          "Magdeburg": 0.0306,
+          "Münster": 0.002,
+          "Nürnberg": 0.0086,
+          "Paderborn": 0.1196,
+          "Regensburg": 0,
+          "Schalke": 0.0152,
+          "SSV Ulm 1846": 0.0008
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.4392,
+          "Darmstadt": 0.979,
+          "Düsseldorf": 0.9992,
+          "Elversberg": 0.975,
+          "Fürth": 0.9044,
+          "Hannover": 0.9918,
+          "Hertha": 0.9654,
+          "HSV": 0.9958,
+          "Kaiserslautern": 0.9696,
+          "Karlsruhe": 0.9948,
+          "Köln": 0.9992,
+          "Magdeburg": 0.9528,
+          "Münster": 0.5428,
+          "Nürnberg": 0.7996,
+          "Paderborn": 0.9954,
+          "Regensburg": 0.1706,
+          "Schalke": 0.8818,
+          "SSV Ulm 1846": 0.4436
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.18,
+          "Darmstadt": 0.013,
+          "Düsseldorf": 0.0008,
+          "Elversberg": 0.018,
+          "Fürth": 0.0552,
+          "Hannover": 0.0062,
+          "Hertha": 0.0228,
+          "HSV": 0.0034,
+          "Kaiserslautern": 0.0216,
+          "Karlsruhe": 0.0036,
+          "Köln": 0.0006,
+          "Magdeburg": 0.031,
+          "Münster": 0.177,
+          "Nürnberg": 0.1008,
+          "Paderborn": 0.0032,
+          "Regensburg": 0.114,
+          "Schalke": 0.0648,
+          "SSV Ulm 1846": 0.184
+        },
+        "abstieg": {
+          "Braunschweig": 0.3808,
+          "Darmstadt": 0.008,
+          "Düsseldorf": 0,
+          "Elversberg": 0.007,
+          "Fürth": 0.0404,
+          "Hannover": 0.002,
+          "Hertha": 0.0118,
+          "HSV": 0.0008,
+          "Kaiserslautern": 0.0088,
+          "Karlsruhe": 0.0016,
+          "Köln": 0.0002,
+          "Magdeburg": 0.0162,
+          "Münster": 0.2802,
+          "Nürnberg": 0.0996,
+          "Paderborn": 0.0014,
+          "Regensburg": 0.7154,
+          "Schalke": 0.0534,
+          "SSV Ulm 1846": 0.3724
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 34.1798,
+          "median": 34,
+          "p10": 25,
+          "p90": 43
+        },
+        "Darmstadt": {
+          "expected": 49.5916,
+          "median": 49,
+          "p10": 40,
+          "p90": 59
+        },
+        "Düsseldorf": {
+          "expected": 57.1496,
+          "median": 57,
+          "p10": 48,
+          "p90": 66
+        },
+        "Elversberg": {
+          "expected": 48.367,
+          "median": 48,
+          "p10": 39,
+          "p90": 58
+        },
+        "Fürth": {
+          "expected": 44.0344,
+          "median": 44,
+          "p10": 35,
+          "p90": 54
+        },
+        "Hannover": {
+          "expected": 52.0616,
+          "median": 52,
+          "p10": 43,
+          "p90": 61
+        },
+        "Hertha": {
+          "expected": 48.1332,
+          "median": 48,
+          "p10": 38,
+          "p90": 58
+        },
+        "HSV": {
+          "expected": 54.732,
+          "median": 55,
+          "p10": 45,
+          "p90": 64
+        },
+        "Kaiserslautern": {
+          "expected": 48.422,
+          "median": 48,
+          "p10": 39,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 53.9692,
+          "median": 54,
+          "p10": 44,
+          "p90": 63
+        },
+        "Köln": {
+          "expected": 59.3068,
+          "median": 59,
+          "p10": 50,
+          "p90": 69
+        },
+        "Magdeburg": {
+          "expected": 46.5212,
+          "median": 46,
+          "p10": 37,
+          "p90": 56
+        },
+        "Münster": {
+          "expected": 35.6948,
+          "median": 35,
+          "p10": 27,
+          "p90": 45
+        },
+        "Nürnberg": {
+          "expected": 40.7638,
+          "median": 40,
+          "p10": 31,
+          "p90": 50
+        },
+        "Paderborn": {
+          "expected": 54.6838,
+          "median": 55,
+          "p10": 45,
+          "p90": 64
+        },
+        "Regensburg": {
+          "expected": 28.4048,
+          "median": 28,
+          "p10": 20,
+          "p90": 38
+        },
+        "Schalke": {
+          "expected": 43.2914,
+          "median": 43,
+          "p10": 34,
+          "p90": 53
+        },
+        "SSV Ulm 1846": {
+          "expected": 33.7984,
+          "median": 33,
+          "p10": 25,
+          "p90": 43
+        }
+      }
+    },
+    {
+      "matchday": 17,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 153,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0658,
+          "Düsseldorf": 0.2474,
+          "Elversberg": 0.041,
+          "Fürth": 0.0122,
+          "Hannover": 0.1248,
+          "Hertha": 0.0562,
+          "HSV": 0.3032,
+          "Kaiserslautern": 0.039,
+          "Karlsruhe": 0.2822,
+          "Köln": 0.5558,
+          "Magdeburg": 0.062,
+          "Münster": 0.0004,
+          "Nürnberg": 0.0098,
+          "Paderborn": 0.1794,
+          "Regensburg": 0,
+          "Schalke": 0.0204,
+          "SSV Ulm 1846": 0.0004
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.001,
+          "Darmstadt": 0.0562,
+          "Düsseldorf": 0.1332,
+          "Elversberg": 0.0368,
+          "Fürth": 0.0142,
+          "Hannover": 0.0868,
+          "Hertha": 0.0478,
+          "HSV": 0.1406,
+          "Kaiserslautern": 0.0362,
+          "Karlsruhe": 0.1274,
+          "Köln": 0.1256,
+          "Magdeburg": 0.05,
+          "Münster": 0.0012,
+          "Nürnberg": 0.0098,
+          "Paderborn": 0.1034,
+          "Regensburg": 0.0002,
+          "Schalke": 0.0286,
+          "SSV Ulm 1846": 0.001
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.3484,
+          "Darmstadt": 0.9754,
+          "Düsseldorf": 0.9976,
+          "Elversberg": 0.9658,
+          "Fürth": 0.877,
+          "Hannover": 0.9912,
+          "Hertha": 0.962,
+          "HSV": 0.9978,
+          "Kaiserslautern": 0.9684,
+          "Karlsruhe": 0.9978,
+          "Köln": 0.9996,
+          "Magdeburg": 0.9792,
+          "Münster": 0.5212,
+          "Nürnberg": 0.8558,
+          "Paderborn": 0.994,
+          "Regensburg": 0.2214,
+          "Schalke": 0.9276,
+          "SSV Ulm 1846": 0.4198
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1756,
+          "Darmstadt": 0.0154,
+          "Düsseldorf": 0.0016,
+          "Elversberg": 0.0266,
+          "Fürth": 0.0702,
+          "Hannover": 0.0066,
+          "Hertha": 0.0234,
+          "HSV": 0.0012,
+          "Kaiserslautern": 0.02,
+          "Karlsruhe": 0.0018,
+          "Köln": 0.0002,
+          "Magdeburg": 0.0156,
+          "Münster": 0.18,
+          "Nürnberg": 0.0816,
+          "Paderborn": 0.0048,
+          "Regensburg": 0.1416,
+          "Schalke": 0.0418,
+          "SSV Ulm 1846": 0.192
+        },
+        "abstieg": {
+          "Braunschweig": 0.476,
+          "Darmstadt": 0.0092,
+          "Düsseldorf": 0.0008,
+          "Elversberg": 0.0076,
+          "Fürth": 0.0528,
+          "Hannover": 0.0022,
+          "Hertha": 0.0146,
+          "HSV": 0.001,
+          "Kaiserslautern": 0.0116,
+          "Karlsruhe": 0.0004,
+          "Köln": 0.0002,
+          "Magdeburg": 0.0052,
+          "Münster": 0.2988,
+          "Nürnberg": 0.0626,
+          "Paderborn": 0.0012,
+          "Regensburg": 0.637,
+          "Schalke": 0.0306,
+          "SSV Ulm 1846": 0.3882
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 32.6474,
+          "median": 32,
+          "p10": 24,
+          "p90": 42
+        },
+        "Darmstadt": {
+          "expected": 48.5676,
+          "median": 49,
+          "p10": 40,
+          "p90": 58
+        },
+        "Düsseldorf": {
+          "expected": 54.9568,
+          "median": 55,
+          "p10": 46,
+          "p90": 64
+        },
+        "Elversberg": {
+          "expected": 47.1116,
+          "median": 47,
+          "p10": 38,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 43.1526,
+          "median": 43,
+          "p10": 34,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 51.6488,
+          "median": 52,
+          "p10": 42,
+          "p90": 61
+        },
+        "Hertha": {
+          "expected": 47.9952,
+          "median": 48,
+          "p10": 39,
+          "p90": 57
+        },
+        "HSV": {
+          "expected": 55.8712,
+          "median": 56,
+          "p10": 47,
+          "p90": 65
+        },
+        "Kaiserslautern": {
+          "expected": 47.4108,
+          "median": 47,
+          "p10": 39,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 55.797,
+          "median": 56,
+          "p10": 46,
+          "p90": 65
+        },
+        "Köln": {
+          "expected": 60.6774,
+          "median": 61,
+          "p10": 52,
+          "p90": 70
+        },
+        "Magdeburg": {
+          "expected": 48.6244,
+          "median": 48,
+          "p10": 40,
+          "p90": 58
+        },
+        "Münster": {
+          "expected": 35.1524,
+          "median": 35,
+          "p10": 27,
+          "p90": 44
+        },
+        "Nürnberg": {
+          "expected": 42.1168,
+          "median": 42,
+          "p10": 33,
+          "p90": 51
+        },
+        "Paderborn": {
+          "expected": 53.1766,
+          "median": 53,
+          "p10": 44,
+          "p90": 63
+        },
+        "Regensburg": {
+          "expected": 29.9396,
+          "median": 29,
+          "p10": 21,
+          "p90": 39
+        },
+        "Schalke": {
+          "expected": 44.958,
+          "median": 45,
+          "p10": 36,
+          "p90": 54
+        },
+        "SSV Ulm 1846": {
+          "expected": 33.477,
+          "median": 33,
+          "p10": 25,
+          "p90": 42
+        }
+      }
+    },
+    {
+      "matchday": 18,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 162,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.061,
+          "Düsseldorf": 0.2288,
+          "Elversberg": 0.0234,
+          "Fürth": 0.0074,
+          "Hannover": 0.1752,
+          "Hertha": 0.0758,
+          "HSV": 0.3988,
+          "Kaiserslautern": 0.057,
+          "Karlsruhe": 0.2116,
+          "Köln": 0.5096,
+          "Magdeburg": 0.099,
+          "Münster": 0.001,
+          "Nürnberg": 0.0142,
+          "Paderborn": 0.1172,
+          "Regensburg": 0,
+          "Schalke": 0.02,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0.0002,
+          "Darmstadt": 0.0514,
+          "Düsseldorf": 0.126,
+          "Elversberg": 0.0274,
+          "Fürth": 0.01,
+          "Hannover": 0.0992,
+          "Hertha": 0.0612,
+          "HSV": 0.1348,
+          "Kaiserslautern": 0.0512,
+          "Karlsruhe": 0.1198,
+          "Köln": 0.1308,
+          "Magdeburg": 0.0618,
+          "Münster": 0.0008,
+          "Nürnberg": 0.017,
+          "Paderborn": 0.0892,
+          "Regensburg": 0,
+          "Schalke": 0.0192,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.3394,
+          "Darmstadt": 0.9802,
+          "Düsseldorf": 0.9974,
+          "Elversberg": 0.9554,
+          "Fürth": 0.8402,
+          "Hannover": 0.9958,
+          "Hertha": 0.9802,
+          "HSV": 0.999,
+          "Kaiserslautern": 0.9832,
+          "Karlsruhe": 0.998,
+          "Köln": 1,
+          "Magdeburg": 0.9912,
+          "Münster": 0.6076,
+          "Nürnberg": 0.9128,
+          "Paderborn": 0.9938,
+          "Regensburg": 0.1524,
+          "Schalke": 0.9242,
+          "SSV Ulm 1846": 0.3492
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.197,
+          "Darmstadt": 0.013,
+          "Düsseldorf": 0.0016,
+          "Elversberg": 0.0308,
+          "Fürth": 0.0928,
+          "Hannover": 0.0034,
+          "Hertha": 0.0152,
+          "HSV": 0.001,
+          "Kaiserslautern": 0.0144,
+          "Karlsruhe": 0.0016,
+          "Köln": 0,
+          "Magdeburg": 0.0068,
+          "Münster": 0.1748,
+          "Nürnberg": 0.0586,
+          "Paderborn": 0.0042,
+          "Regensburg": 0.136,
+          "Schalke": 0.0492,
+          "SSV Ulm 1846": 0.1996
+        },
+        "abstieg": {
+          "Braunschweig": 0.4636,
+          "Darmstadt": 0.0068,
+          "Düsseldorf": 0.001,
+          "Elversberg": 0.0138,
+          "Fürth": 0.067,
+          "Hannover": 0.0008,
+          "Hertha": 0.0046,
+          "HSV": 0,
+          "Kaiserslautern": 0.0024,
+          "Karlsruhe": 0.0004,
+          "Köln": 0,
+          "Magdeburg": 0.002,
+          "Münster": 0.2176,
+          "Nürnberg": 0.0286,
+          "Paderborn": 0.002,
+          "Regensburg": 0.7116,
+          "Schalke": 0.0266,
+          "SSV Ulm 1846": 0.4512
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 32.7122,
+          "median": 32,
+          "p10": 24,
+          "p90": 41
+        },
+        "Darmstadt": {
+          "expected": 48.377,
+          "median": 48,
+          "p10": 40,
+          "p90": 57
+        },
+        "Düsseldorf": {
+          "expected": 54.367,
+          "median": 55,
+          "p10": 46,
+          "p90": 63
+        },
+        "Elversberg": {
+          "expected": 45.8266,
+          "median": 46,
+          "p10": 38,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 41.762,
+          "median": 42,
+          "p10": 33,
+          "p90": 51
+        },
+        "Hannover": {
+          "expected": 53.0736,
+          "median": 53,
+          "p10": 44,
+          "p90": 62
+        },
+        "Hertha": {
+          "expected": 49.571,
+          "median": 49,
+          "p10": 41,
+          "p90": 58
+        },
+        "HSV": {
+          "expected": 57.3294,
+          "median": 57,
+          "p10": 49,
+          "p90": 66
+        },
+        "Kaiserslautern": {
+          "expected": 48.6514,
+          "median": 48,
+          "p10": 40,
+          "p90": 57
+        },
+        "Karlsruhe": {
+          "expected": 54.1986,
+          "median": 54,
+          "p10": 46,
+          "p90": 63
+        },
+        "Köln": {
+          "expected": 59.4326,
+          "median": 60,
+          "p10": 50,
+          "p90": 68
+        },
+        "Magdeburg": {
+          "expected": 50.3806,
+          "median": 50,
+          "p10": 42,
+          "p90": 59
+        },
+        "Münster": {
+          "expected": 36.661,
+          "median": 36,
+          "p10": 28,
+          "p90": 45
+        },
+        "Nürnberg": {
+          "expected": 44.067,
+          "median": 44,
+          "p10": 36,
+          "p90": 53
+        },
+        "Paderborn": {
+          "expected": 51.5574,
+          "median": 51,
+          "p10": 43,
+          "p90": 60
+        },
+        "Regensburg": {
+          "expected": 28.7874,
+          "median": 29,
+          "p10": 20,
+          "p90": 37
+        },
+        "Schalke": {
+          "expected": 44.6016,
+          "median": 44,
+          "p10": 36,
+          "p90": 53
+        },
+        "SSV Ulm 1846": {
+          "expected": 32.3232,
+          "median": 32,
+          "p10": 24,
+          "p90": 41
+        }
+      }
+    },
+    {
+      "matchday": 19,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 171,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0272,
+          "Düsseldorf": 0.2832,
+          "Elversberg": 0.0146,
+          "Fürth": 0.0016,
+          "Hannover": 0.1178,
+          "Hertha": 0.0436,
+          "HSV": 0.4936,
+          "Kaiserslautern": 0.0832,
+          "Karlsruhe": 0.1444,
+          "Köln": 0.5298,
+          "Magdeburg": 0.07,
+          "Münster": 0,
+          "Nürnberg": 0.0078,
+          "Paderborn": 0.1658,
+          "Regensburg": 0,
+          "Schalke": 0.0172,
+          "SSV Ulm 1846": 0.0002
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0316,
+          "Düsseldorf": 0.1502,
+          "Elversberg": 0.018,
+          "Fürth": 0.002,
+          "Hannover": 0.0912,
+          "Hertha": 0.0482,
+          "HSV": 0.143,
+          "Kaiserslautern": 0.0638,
+          "Karlsruhe": 0.1014,
+          "Köln": 0.1498,
+          "Magdeburg": 0.0586,
+          "Münster": 0.0006,
+          "Nürnberg": 0.0116,
+          "Paderborn": 0.1028,
+          "Regensburg": 0,
+          "Schalke": 0.0264,
+          "SSV Ulm 1846": 0.0008
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.3222,
+          "Darmstadt": 0.9674,
+          "Düsseldorf": 0.9988,
+          "Elversberg": 0.9464,
+          "Fürth": 0.789,
+          "Hannover": 0.997,
+          "Hertha": 0.9772,
+          "HSV": 1,
+          "Kaiserslautern": 0.9954,
+          "Karlsruhe": 0.9958,
+          "Köln": 1,
+          "Magdeburg": 0.9964,
+          "Münster": 0.6192,
+          "Nürnberg": 0.904,
+          "Paderborn": 0.9964,
+          "Regensburg": 0.1062,
+          "Schalke": 0.9578,
+          "SSV Ulm 1846": 0.4308
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1904,
+          "Darmstadt": 0.0208,
+          "Düsseldorf": 0.001,
+          "Elversberg": 0.0382,
+          "Fürth": 0.1086,
+          "Hannover": 0.002,
+          "Hertha": 0.0166,
+          "HSV": 0,
+          "Kaiserslautern": 0.0032,
+          "Karlsruhe": 0.0034,
+          "Köln": 0,
+          "Magdeburg": 0.0026,
+          "Münster": 0.183,
+          "Nürnberg": 0.0624,
+          "Paderborn": 0.0028,
+          "Regensburg": 0.1154,
+          "Schalke": 0.0264,
+          "SSV Ulm 1846": 0.2232
+        },
+        "abstieg": {
+          "Braunschweig": 0.4874,
+          "Darmstadt": 0.0118,
+          "Düsseldorf": 0.0002,
+          "Elversberg": 0.0154,
+          "Fürth": 0.1024,
+          "Hannover": 0.001,
+          "Hertha": 0.0062,
+          "HSV": 0,
+          "Kaiserslautern": 0.0014,
+          "Karlsruhe": 0.0008,
+          "Köln": 0,
+          "Magdeburg": 0.001,
+          "Münster": 0.1978,
+          "Nürnberg": 0.0336,
+          "Paderborn": 0.0008,
+          "Regensburg": 0.7784,
+          "Schalke": 0.0158,
+          "SSV Ulm 1846": 0.346
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 32.5076,
+          "median": 32,
+          "p10": 25,
+          "p90": 41
+        },
+        "Darmstadt": {
+          "expected": 46.783,
+          "median": 47,
+          "p10": 38,
+          "p90": 55
+        },
+        "Düsseldorf": {
+          "expected": 55.9568,
+          "median": 56,
+          "p10": 48,
+          "p90": 64
+        },
+        "Elversberg": {
+          "expected": 45.0368,
+          "median": 45,
+          "p10": 37,
+          "p90": 53
+        },
+        "Fürth": {
+          "expected": 39.8612,
+          "median": 40,
+          "p10": 32,
+          "p90": 48
+        },
+        "Hannover": {
+          "expected": 52.0464,
+          "median": 52,
+          "p10": 44,
+          "p90": 60
+        },
+        "Hertha": {
+          "expected": 48.3984,
+          "median": 48,
+          "p10": 40,
+          "p90": 57
+        },
+        "HSV": {
+          "expected": 59.086,
+          "median": 59,
+          "p10": 51,
+          "p90": 67
+        },
+        "Kaiserslautern": {
+          "expected": 50.6464,
+          "median": 50,
+          "p10": 42,
+          "p90": 59
+        },
+        "Karlsruhe": {
+          "expected": 52.8808,
+          "median": 53,
+          "p10": 44,
+          "p90": 61
+        },
+        "Köln": {
+          "expected": 60.1668,
+          "median": 60,
+          "p10": 52,
+          "p90": 69
+        },
+        "Magdeburg": {
+          "expected": 49.819,
+          "median": 50,
+          "p10": 42,
+          "p90": 58
+        },
+        "Münster": {
+          "expected": 36.852,
+          "median": 37,
+          "p10": 29,
+          "p90": 45
+        },
+        "Nürnberg": {
+          "expected": 43.2222,
+          "median": 43,
+          "p10": 35,
+          "p90": 52
+        },
+        "Paderborn": {
+          "expected": 53.4336,
+          "median": 53,
+          "p10": 45,
+          "p90": 62
+        },
+        "Regensburg": {
+          "expected": 27.7372,
+          "median": 27,
+          "p10": 20,
+          "p90": 36
+        },
+        "Schalke": {
+          "expected": 45.6922,
+          "median": 46,
+          "p10": 38,
+          "p90": 54
+        },
+        "SSV Ulm 1846": {
+          "expected": 33.8346,
+          "median": 34,
+          "p10": 26,
+          "p90": 42
+        }
+      }
+    },
+    {
+      "matchday": 20,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 180,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0156,
+          "Düsseldorf": 0.3244,
+          "Elversberg": 0.0128,
+          "Fürth": 0.0028,
+          "Hannover": 0.1136,
+          "Hertha": 0.021,
+          "HSV": 0.4556,
+          "Kaiserslautern": 0.0952,
+          "Karlsruhe": 0.1084,
+          "Köln": 0.6184,
+          "Magdeburg": 0.11,
+          "Münster": 0,
+          "Nürnberg": 0.015,
+          "Paderborn": 0.0994,
+          "Regensburg": 0,
+          "Schalke": 0.0078,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0248,
+          "Düsseldorf": 0.167,
+          "Elversberg": 0.014,
+          "Fürth": 0.0048,
+          "Hannover": 0.0866,
+          "Hertha": 0.0252,
+          "HSV": 0.1526,
+          "Kaiserslautern": 0.087,
+          "Karlsruhe": 0.0998,
+          "Köln": 0.135,
+          "Magdeburg": 0.0858,
+          "Münster": 0.0002,
+          "Nürnberg": 0.0128,
+          "Paderborn": 0.0932,
+          "Regensburg": 0,
+          "Schalke": 0.0112,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.2592,
+          "Darmstadt": 0.956,
+          "Düsseldorf": 0.9998,
+          "Elversberg": 0.956,
+          "Fürth": 0.8706,
+          "Hannover": 0.997,
+          "Hertha": 0.9686,
+          "HSV": 1,
+          "Kaiserslautern": 0.9992,
+          "Karlsruhe": 0.9968,
+          "Köln": 1,
+          "Magdeburg": 0.9992,
+          "Münster": 0.561,
+          "Nürnberg": 0.9498,
+          "Paderborn": 0.9974,
+          "Regensburg": 0.157,
+          "Schalke": 0.9324,
+          "SSV Ulm 1846": 0.4
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.2012,
+          "Darmstadt": 0.028,
+          "Düsseldorf": 0.0002,
+          "Elversberg": 0.0334,
+          "Fürth": 0.0816,
+          "Hannover": 0.0028,
+          "Hertha": 0.0222,
+          "HSV": 0,
+          "Kaiserslautern": 0.0004,
+          "Karlsruhe": 0.0018,
+          "Köln": 0,
+          "Magdeburg": 0.0008,
+          "Münster": 0.1952,
+          "Nürnberg": 0.0352,
+          "Paderborn": 0.002,
+          "Regensburg": 0.1378,
+          "Schalke": 0.0436,
+          "SSV Ulm 1846": 0.2138
+        },
+        "abstieg": {
+          "Braunschweig": 0.5396,
+          "Darmstadt": 0.016,
+          "Düsseldorf": 0,
+          "Elversberg": 0.0106,
+          "Fürth": 0.0478,
+          "Hannover": 0.0002,
+          "Hertha": 0.0092,
+          "HSV": 0,
+          "Kaiserslautern": 0.0004,
+          "Karlsruhe": 0.0014,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.2438,
+          "Nürnberg": 0.015,
+          "Paderborn": 0.0006,
+          "Regensburg": 0.7052,
+          "Schalke": 0.024,
+          "SSV Ulm 1846": 0.3862
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 31.5164,
+          "median": 31,
+          "p10": 24,
+          "p90": 39
+        },
+        "Darmstadt": {
+          "expected": 45.3106,
+          "median": 45,
+          "p10": 37,
+          "p90": 54
+        },
+        "Düsseldorf": {
+          "expected": 56.8774,
+          "median": 57,
+          "p10": 49,
+          "p90": 65
+        },
+        "Elversberg": {
+          "expected": 44.9806,
+          "median": 45,
+          "p10": 37,
+          "p90": 53
+        },
+        "Fürth": {
+          "expected": 41.8916,
+          "median": 42,
+          "p10": 34,
+          "p90": 50
+        },
+        "Hannover": {
+          "expected": 52.1154,
+          "median": 52,
+          "p10": 44,
+          "p90": 60
+        },
+        "Hertha": {
+          "expected": 46.6218,
+          "median": 47,
+          "p10": 39,
+          "p90": 55
+        },
+        "HSV": {
+          "expected": 58.5074,
+          "median": 58,
+          "p10": 51,
+          "p90": 67
+        },
+        "Kaiserslautern": {
+          "expected": 52.0424,
+          "median": 52,
+          "p10": 44,
+          "p90": 60
+        },
+        "Karlsruhe": {
+          "expected": 52.2976,
+          "median": 52,
+          "p10": 44,
+          "p90": 60
+        },
+        "Köln": {
+          "expected": 61.5022,
+          "median": 62,
+          "p10": 53,
+          "p90": 69
+        },
+        "Magdeburg": {
+          "expected": 51.823,
+          "median": 52,
+          "p10": 44,
+          "p90": 60
+        },
+        "Münster": {
+          "expected": 35.729,
+          "median": 36,
+          "p10": 28,
+          "p90": 43
+        },
+        "Nürnberg": {
+          "expected": 44.6626,
+          "median": 44,
+          "p10": 37,
+          "p90": 53
+        },
+        "Paderborn": {
+          "expected": 51.899,
+          "median": 52,
+          "p10": 44,
+          "p90": 60
+        },
+        "Regensburg": {
+          "expected": 29.4406,
+          "median": 29,
+          "p10": 22,
+          "p90": 37
+        },
+        "Schalke": {
+          "expected": 43.7116,
+          "median": 44,
+          "p10": 36,
+          "p90": 52
+        },
+        "SSV Ulm 1846": {
+          "expected": 33.1838,
+          "median": 33,
+          "p10": 25,
+          "p90": 41
+        }
+      }
+    },
+    {
+      "matchday": 21,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 189,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0038,
+          "Düsseldorf": 0.2806,
+          "Elversberg": 0.019,
+          "Fürth": 0.0024,
+          "Hannover": 0.0778,
+          "Hertha": 0.0052,
+          "HSV": 0.5276,
+          "Kaiserslautern": 0.1464,
+          "Karlsruhe": 0.0516,
+          "Köln": 0.6856,
+          "Magdeburg": 0.0516,
+          "Münster": 0,
+          "Nürnberg": 0.0146,
+          "Paderborn": 0.1314,
+          "Regensburg": 0,
+          "Schalke": 0.0024,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0088,
+          "Düsseldorf": 0.1774,
+          "Elversberg": 0.0266,
+          "Fürth": 0.006,
+          "Hannover": 0.0892,
+          "Hertha": 0.0162,
+          "HSV": 0.1568,
+          "Kaiserslautern": 0.1234,
+          "Karlsruhe": 0.0612,
+          "Köln": 0.1288,
+          "Magdeburg": 0.064,
+          "Münster": 0,
+          "Nürnberg": 0.024,
+          "Paderborn": 0.1108,
+          "Regensburg": 0,
+          "Schalke": 0.0068,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.3942,
+          "Darmstadt": 0.9254,
+          "Düsseldorf": 0.9998,
+          "Elversberg": 0.986,
+          "Fürth": 0.9236,
+          "Hannover": 0.998,
+          "Hertha": 0.9576,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 0.994,
+          "Köln": 1,
+          "Magdeburg": 0.9992,
+          "Münster": 0.4904,
+          "Nürnberg": 0.9828,
+          "Paderborn": 0.9994,
+          "Regensburg": 0.103,
+          "Schalke": 0.9294,
+          "SSV Ulm 1846": 0.3172
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.2302,
+          "Darmstadt": 0.0478,
+          "Düsseldorf": 0.0002,
+          "Elversberg": 0.0118,
+          "Fürth": 0.055,
+          "Hannover": 0.0018,
+          "Hertha": 0.0306,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0.0052,
+          "Köln": 0,
+          "Magdeburg": 0.0008,
+          "Münster": 0.2178,
+          "Nürnberg": 0.0142,
+          "Paderborn": 0.0006,
+          "Regensburg": 0.1254,
+          "Schalke": 0.0486,
+          "SSV Ulm 1846": 0.21
+        },
+        "abstieg": {
+          "Braunschweig": 0.3756,
+          "Darmstadt": 0.0268,
+          "Düsseldorf": 0,
+          "Elversberg": 0.0022,
+          "Fürth": 0.0214,
+          "Hannover": 0.0002,
+          "Hertha": 0.0118,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0.0008,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.2918,
+          "Nürnberg": 0.003,
+          "Paderborn": 0,
+          "Regensburg": 0.7716,
+          "Schalke": 0.022,
+          "SSV Ulm 1846": 0.4728
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 33.717,
+          "median": 34,
+          "p10": 26,
+          "p90": 41
+        },
+        "Darmstadt": {
+          "expected": 43.4252,
+          "median": 43,
+          "p10": 36,
+          "p90": 51
+        },
+        "Düsseldorf": {
+          "expected": 56.5384,
+          "median": 57,
+          "p10": 49,
+          "p90": 64
+        },
+        "Elversberg": {
+          "expected": 46.9704,
+          "median": 47,
+          "p10": 40,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 43.131,
+          "median": 43,
+          "p10": 36,
+          "p90": 51
+        },
+        "Hannover": {
+          "expected": 51.6834,
+          "median": 52,
+          "p10": 44,
+          "p90": 60
+        },
+        "Hertha": {
+          "expected": 44.9518,
+          "median": 45,
+          "p10": 37,
+          "p90": 53
+        },
+        "HSV": {
+          "expected": 59.7882,
+          "median": 60,
+          "p10": 52,
+          "p90": 67
+        },
+        "Kaiserslautern": {
+          "expected": 54.1134,
+          "median": 54,
+          "p10": 47,
+          "p90": 62
+        },
+        "Karlsruhe": {
+          "expected": 50.3556,
+          "median": 50,
+          "p10": 42,
+          "p90": 58
+        },
+        "Köln": {
+          "expected": 62.6954,
+          "median": 63,
+          "p10": 55,
+          "p90": 70
+        },
+        "Magdeburg": {
+          "expected": 50.2562,
+          "median": 50,
+          "p10": 43,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 34.6872,
+          "median": 35,
+          "p10": 28,
+          "p90": 42
+        },
+        "Nürnberg": {
+          "expected": 46.659,
+          "median": 46,
+          "p10": 39,
+          "p90": 54
+        },
+        "Paderborn": {
+          "expected": 53.3356,
+          "median": 53,
+          "p10": 46,
+          "p90": 61
+        },
+        "Regensburg": {
+          "expected": 28.3298,
+          "median": 28,
+          "p10": 21,
+          "p90": 35
+        },
+        "Schalke": {
+          "expected": 42.886,
+          "median": 43,
+          "p10": 36,
+          "p90": 50
+        },
+        "SSV Ulm 1846": {
+          "expected": 31.9764,
+          "median": 32,
+          "p10": 25,
+          "p90": 39
+        }
+      }
+    },
+    {
+      "matchday": 22,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 198,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0008,
+          "Düsseldorf": 0.3538,
+          "Elversberg": 0.0264,
+          "Fürth": 0.0002,
+          "Hannover": 0.0656,
+          "Hertha": 0.0014,
+          "HSV": 0.4964,
+          "Kaiserslautern": 0.139,
+          "Karlsruhe": 0.0302,
+          "Köln": 0.5914,
+          "Magdeburg": 0.0934,
+          "Münster": 0,
+          "Nürnberg": 0.0204,
+          "Paderborn": 0.177,
+          "Regensburg": 0,
+          "Schalke": 0.004,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0036,
+          "Düsseldorf": 0.1712,
+          "Elversberg": 0.039,
+          "Fürth": 0.0008,
+          "Hannover": 0.0732,
+          "Hertha": 0.0062,
+          "HSV": 0.1674,
+          "Kaiserslautern": 0.1052,
+          "Karlsruhe": 0.0436,
+          "Köln": 0.1476,
+          "Magdeburg": 0.0866,
+          "Münster": 0,
+          "Nürnberg": 0.0284,
+          "Paderborn": 0.119,
+          "Regensburg": 0,
+          "Schalke": 0.0082,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.5136,
+          "Darmstadt": 0.9242,
+          "Düsseldorf": 1,
+          "Elversberg": 0.9966,
+          "Fürth": 0.8958,
+          "Hannover": 0.9988,
+          "Hertha": 0.948,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 0.9938,
+          "Köln": 1,
+          "Magdeburg": 0.9998,
+          "Münster": 0.4334,
+          "Nürnberg": 0.9916,
+          "Paderborn": 1,
+          "Regensburg": 0.1012,
+          "Schalke": 0.9588,
+          "SSV Ulm 1846": 0.2444
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.2384,
+          "Darmstadt": 0.0502,
+          "Düsseldorf": 0,
+          "Elversberg": 0.003,
+          "Fürth": 0.0746,
+          "Hannover": 0.001,
+          "Hertha": 0.0352,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0.0052,
+          "Köln": 0,
+          "Magdeburg": 0.0002,
+          "Münster": 0.2346,
+          "Nürnberg": 0.0074,
+          "Paderborn": 0,
+          "Regensburg": 0.123,
+          "Schalke": 0.031,
+          "SSV Ulm 1846": 0.1962
+        },
+        "abstieg": {
+          "Braunschweig": 0.248,
+          "Darmstadt": 0.0256,
+          "Düsseldorf": 0,
+          "Elversberg": 0.0004,
+          "Fürth": 0.0296,
+          "Hannover": 0.0002,
+          "Hertha": 0.0168,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0.001,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.332,
+          "Nürnberg": 0.001,
+          "Paderborn": 0,
+          "Regensburg": 0.7758,
+          "Schalke": 0.0102,
+          "SSV Ulm 1846": 0.5594
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 35.4178,
+          "median": 35,
+          "p10": 29,
+          "p90": 42
+        },
+        "Darmstadt": {
+          "expected": 42.2086,
+          "median": 42,
+          "p10": 35,
+          "p90": 49
+        },
+        "Düsseldorf": {
+          "expected": 57.5672,
+          "median": 58,
+          "p10": 50,
+          "p90": 65
+        },
+        "Elversberg": {
+          "expected": 48.6504,
+          "median": 48,
+          "p10": 42,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 41.6472,
+          "median": 42,
+          "p10": 35,
+          "p90": 49
+        },
+        "Hannover": {
+          "expected": 51.3404,
+          "median": 51,
+          "p10": 44,
+          "p90": 59
+        },
+        "Hertha": {
+          "expected": 44.0342,
+          "median": 44,
+          "p10": 37,
+          "p90": 51
+        },
+        "HSV": {
+          "expected": 59.0748,
+          "median": 59,
+          "p10": 52,
+          "p90": 66
+        },
+        "Kaiserslautern": {
+          "expected": 53.7612,
+          "median": 54,
+          "p10": 47,
+          "p90": 61
+        },
+        "Karlsruhe": {
+          "expected": 48.9652,
+          "median": 49,
+          "p10": 42,
+          "p90": 56
+        },
+        "Köln": {
+          "expected": 60.9538,
+          "median": 61,
+          "p10": 54,
+          "p90": 68
+        },
+        "Magdeburg": {
+          "expected": 52.1342,
+          "median": 52,
+          "p10": 45,
+          "p90": 59
+        },
+        "Münster": {
+          "expected": 33.87,
+          "median": 34,
+          "p10": 27,
+          "p90": 41
+        },
+        "Nürnberg": {
+          "expected": 47.9622,
+          "median": 48,
+          "p10": 41,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 54.4294,
+          "median": 54,
+          "p10": 47,
+          "p90": 62
+        },
+        "Regensburg": {
+          "expected": 28.4682,
+          "median": 28,
+          "p10": 22,
+          "p90": 36
+        },
+        "Schalke": {
+          "expected": 44.3906,
+          "median": 44,
+          "p10": 37,
+          "p90": 52
+        },
+        "SSV Ulm 1846": {
+          "expected": 30.8214,
+          "median": 31,
+          "p10": 24,
+          "p90": 38
+        }
+      }
+    },
+    {
+      "matchday": 23,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 207,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0018,
+          "Düsseldorf": 0.3534,
+          "Elversberg": 0.0246,
+          "Fürth": 0.0018,
+          "Hannover": 0.052,
+          "Hertha": 0.0002,
+          "HSV": 0.5932,
+          "Kaiserslautern": 0.0976,
+          "Karlsruhe": 0.0396,
+          "Köln": 0.569,
+          "Magdeburg": 0.0722,
+          "Münster": 0,
+          "Nürnberg": 0.023,
+          "Paderborn": 0.1704,
+          "Regensburg": 0,
+          "Schalke": 0.0012,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.005,
+          "Düsseldorf": 0.1908,
+          "Elversberg": 0.0346,
+          "Fürth": 0.0036,
+          "Hannover": 0.0662,
+          "Hertha": 0.002,
+          "HSV": 0.1514,
+          "Kaiserslautern": 0.0936,
+          "Karlsruhe": 0.0552,
+          "Köln": 0.1562,
+          "Magdeburg": 0.083,
+          "Münster": 0,
+          "Nürnberg": 0.0326,
+          "Paderborn": 0.1222,
+          "Regensburg": 0,
+          "Schalke": 0.0036,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.4294,
+          "Darmstadt": 0.962,
+          "Düsseldorf": 1,
+          "Elversberg": 0.997,
+          "Fürth": 0.9486,
+          "Hannover": 0.9992,
+          "Hertha": 0.9364,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 0.9984,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.5454,
+          "Nürnberg": 0.9968,
+          "Paderborn": 1,
+          "Regensburg": 0.049,
+          "Schalke": 0.9486,
+          "SSV Ulm 1846": 0.1892
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.2716,
+          "Darmstadt": 0.031,
+          "Düsseldorf": 0,
+          "Elversberg": 0.0028,
+          "Fürth": 0.0416,
+          "Hannover": 0.0006,
+          "Hertha": 0.0446,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0.0016,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.256,
+          "Nürnberg": 0.0028,
+          "Paderborn": 0,
+          "Regensburg": 0.1044,
+          "Schalke": 0.0376,
+          "SSV Ulm 1846": 0.2054
+        },
+        "abstieg": {
+          "Braunschweig": 0.299,
+          "Darmstadt": 0.007,
+          "Düsseldorf": 0,
+          "Elversberg": 0.0002,
+          "Fürth": 0.0098,
+          "Hannover": 0.0002,
+          "Hertha": 0.019,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.1986,
+          "Nürnberg": 0.0004,
+          "Paderborn": 0,
+          "Regensburg": 0.8466,
+          "Schalke": 0.0138,
+          "SSV Ulm 1846": 0.6054
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 34.3718,
+          "median": 34,
+          "p10": 28,
+          "p90": 41
+        },
+        "Darmstadt": {
+          "expected": 43.6406,
+          "median": 44,
+          "p10": 37,
+          "p90": 51
+        },
+        "Düsseldorf": {
+          "expected": 57.5094,
+          "median": 58,
+          "p10": 51,
+          "p90": 64
+        },
+        "Elversberg": {
+          "expected": 48.5426,
+          "median": 48,
+          "p10": 42,
+          "p90": 55
+        },
+        "Fürth": {
+          "expected": 43.0426,
+          "median": 43,
+          "p10": 36,
+          "p90": 50
+        },
+        "Hannover": {
+          "expected": 50.9388,
+          "median": 51,
+          "p10": 44,
+          "p90": 58
+        },
+        "Hertha": {
+          "expected": 42.8724,
+          "median": 43,
+          "p10": 36,
+          "p90": 50
+        },
+        "HSV": {
+          "expected": 60.0678,
+          "median": 60,
+          "p10": 53,
+          "p90": 67
+        },
+        "Kaiserslautern": {
+          "expected": 52.8906,
+          "median": 53,
+          "p10": 46,
+          "p90": 60
+        },
+        "Karlsruhe": {
+          "expected": 50.1208,
+          "median": 50,
+          "p10": 43,
+          "p90": 57
+        },
+        "Köln": {
+          "expected": 60.3186,
+          "median": 60,
+          "p10": 53,
+          "p90": 67
+        },
+        "Magdeburg": {
+          "expected": 51.3698,
+          "median": 51,
+          "p10": 45,
+          "p90": 58
+        },
+        "Münster": {
+          "expected": 35.363,
+          "median": 35,
+          "p10": 29,
+          "p90": 42
+        },
+        "Nürnberg": {
+          "expected": 48.1402,
+          "median": 48,
+          "p10": 42,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 54.2308,
+          "median": 54,
+          "p10": 47,
+          "p90": 61
+        },
+        "Regensburg": {
+          "expected": 27.2684,
+          "median": 27,
+          "p10": 21,
+          "p90": 34
+        },
+        "Schalke": {
+          "expected": 43.2116,
+          "median": 43,
+          "p10": 36,
+          "p90": 50
+        },
+        "SSV Ulm 1846": {
+          "expected": 30.146,
+          "median": 30,
+          "p10": 24,
+          "p90": 37
+        }
+      }
+    },
+    {
+      "matchday": 24,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 216,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0004,
+          "Düsseldorf": 0.249,
+          "Elversberg": 0.0404,
+          "Fürth": 0.0024,
+          "Hannover": 0.0876,
+          "Hertha": 0.0002,
+          "HSV": 0.5242,
+          "Kaiserslautern": 0.147,
+          "Karlsruhe": 0.069,
+          "Köln": 0.5012,
+          "Magdeburg": 0.1094,
+          "Münster": 0,
+          "Nürnberg": 0.0114,
+          "Paderborn": 0.2558,
+          "Regensburg": 0,
+          "Schalke": 0.002,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0012,
+          "Düsseldorf": 0.1536,
+          "Elversberg": 0.0518,
+          "Fürth": 0.0046,
+          "Hannover": 0.0816,
+          "Hertha": 0.0008,
+          "HSV": 0.144,
+          "Kaiserslautern": 0.103,
+          "Karlsruhe": 0.0674,
+          "Köln": 0.1466,
+          "Magdeburg": 0.098,
+          "Münster": 0,
+          "Nürnberg": 0.0116,
+          "Paderborn": 0.1314,
+          "Regensburg": 0,
+          "Schalke": 0.0044,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.4176,
+          "Darmstadt": 0.949,
+          "Düsseldorf": 0.9998,
+          "Elversberg": 1,
+          "Fürth": 0.987,
+          "Hannover": 1,
+          "Hertha": 0.9186,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 0.9998,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.5126,
+          "Nürnberg": 0.9974,
+          "Paderborn": 1,
+          "Regensburg": 0.0364,
+          "Schalke": 0.9842,
+          "SSV Ulm 1846": 0.1976
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.311,
+          "Darmstadt": 0.0394,
+          "Düsseldorf": 0.0002,
+          "Elversberg": 0,
+          "Fürth": 0.0122,
+          "Hannover": 0,
+          "Hertha": 0.061,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0.0002,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.2578,
+          "Nürnberg": 0.0026,
+          "Paderborn": 0,
+          "Regensburg": 0.0824,
+          "Schalke": 0.0126,
+          "SSV Ulm 1846": 0.2206
+        },
+        "abstieg": {
+          "Braunschweig": 0.2714,
+          "Darmstadt": 0.0116,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0008,
+          "Hannover": 0,
+          "Hertha": 0.0204,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.2296,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.8812,
+          "Schalke": 0.0032,
+          "SSV Ulm 1846": 0.5818
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 33.8598,
+          "median": 34,
+          "p10": 28,
+          "p90": 40
+        },
+        "Darmstadt": {
+          "expected": 42.0698,
+          "median": 42,
+          "p10": 36,
+          "p90": 48
+        },
+        "Düsseldorf": {
+          "expected": 55.6702,
+          "median": 56,
+          "p10": 49,
+          "p90": 62
+        },
+        "Elversberg": {
+          "expected": 50.242,
+          "median": 50,
+          "p10": 44,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 45.1112,
+          "median": 45,
+          "p10": 39,
+          "p90": 52
+        },
+        "Hannover": {
+          "expected": 52.467,
+          "median": 52,
+          "p10": 46,
+          "p90": 59
+        },
+        "Hertha": {
+          "expected": 41.4742,
+          "median": 41,
+          "p10": 35,
+          "p90": 48
+        },
+        "HSV": {
+          "expected": 58.7738,
+          "median": 59,
+          "p10": 52,
+          "p90": 65
+        },
+        "Kaiserslautern": {
+          "expected": 54.1778,
+          "median": 54,
+          "p10": 48,
+          "p90": 61
+        },
+        "Karlsruhe": {
+          "expected": 51.6062,
+          "median": 52,
+          "p10": 45,
+          "p90": 58
+        },
+        "Köln": {
+          "expected": 59.0484,
+          "median": 59,
+          "p10": 53,
+          "p90": 65
+        },
+        "Magdeburg": {
+          "expected": 52.9686,
+          "median": 53,
+          "p10": 47,
+          "p90": 59
+        },
+        "Münster": {
+          "expected": 34.4594,
+          "median": 34,
+          "p10": 28,
+          "p90": 41
+        },
+        "Nürnberg": {
+          "expected": 46.84,
+          "median": 47,
+          "p10": 41,
+          "p90": 53
+        },
+        "Paderborn": {
+          "expected": 55.7832,
+          "median": 56,
+          "p10": 49,
+          "p90": 62
+        },
+        "Regensburg": {
+          "expected": 26.1666,
+          "median": 26,
+          "p10": 20,
+          "p90": 32
+        },
+        "Schalke": {
+          "expected": 44.4228,
+          "median": 44,
+          "p10": 38,
+          "p90": 51
+        },
+        "SSV Ulm 1846": {
+          "expected": 30.0952,
+          "median": 30,
+          "p10": 24,
+          "p90": 36
+        }
+      }
+    },
+    {
+      "matchday": 25,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 225,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.001,
+          "Düsseldorf": 0.1604,
+          "Elversberg": 0.0352,
+          "Fürth": 0.001,
+          "Hannover": 0.0546,
+          "Hertha": 0,
+          "HSV": 0.6598,
+          "Kaiserslautern": 0.1112,
+          "Karlsruhe": 0.0304,
+          "Köln": 0.6058,
+          "Magdeburg": 0.1076,
+          "Münster": 0,
+          "Nürnberg": 0.0182,
+          "Paderborn": 0.212,
+          "Regensburg": 0,
+          "Schalke": 0.0028,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0032,
+          "Düsseldorf": 0.1384,
+          "Elversberg": 0.046,
+          "Fürth": 0.003,
+          "Hannover": 0.0676,
+          "Hertha": 0,
+          "HSV": 0.1468,
+          "Kaiserslautern": 0.1034,
+          "Karlsruhe": 0.0432,
+          "Köln": 0.1548,
+          "Magdeburg": 0.1008,
+          "Münster": 0,
+          "Nürnberg": 0.028,
+          "Paderborn": 0.1552,
+          "Regensburg": 0,
+          "Schalke": 0.0096,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.4754,
+          "Darmstadt": 0.9856,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 0.9924,
+          "Hannover": 1,
+          "Hertha": 0.906,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 0.9998,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.4442,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0.0354,
+          "Schalke": 0.9974,
+          "SSV Ulm 1846": 0.1638
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.3048,
+          "Darmstadt": 0.0116,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.007,
+          "Hannover": 0,
+          "Hertha": 0.0666,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0.0002,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.296,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.0842,
+          "Schalke": 0.0022,
+          "SSV Ulm 1846": 0.2274
+        },
+        "abstieg": {
+          "Braunschweig": 0.2198,
+          "Darmstadt": 0.0028,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0006,
+          "Hannover": 0,
+          "Hertha": 0.0274,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.2598,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.8804,
+          "Schalke": 0.0004,
+          "SSV Ulm 1846": 0.6088
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 33.8122,
+          "median": 34,
+          "p10": 28,
+          "p90": 40
+        },
+        "Darmstadt": {
+          "expected": 43.762,
+          "median": 44,
+          "p10": 38,
+          "p90": 50
+        },
+        "Düsseldorf": {
+          "expected": 54.4096,
+          "median": 54,
+          "p10": 49,
+          "p90": 60
+        },
+        "Elversberg": {
+          "expected": 50.107,
+          "median": 50,
+          "p10": 45,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 44.4472,
+          "median": 44,
+          "p10": 38,
+          "p90": 50
+        },
+        "Hannover": {
+          "expected": 51.5862,
+          "median": 52,
+          "p10": 46,
+          "p90": 58
+        },
+        "Hertha": {
+          "expected": 39.843,
+          "median": 40,
+          "p10": 34,
+          "p90": 46
+        },
+        "HSV": {
+          "expected": 60.1732,
+          "median": 60,
+          "p10": 54,
+          "p90": 66
+        },
+        "Kaiserslautern": {
+          "expected": 53.5242,
+          "median": 53,
+          "p10": 48,
+          "p90": 59
+        },
+        "Karlsruhe": {
+          "expected": 50.4616,
+          "median": 50,
+          "p10": 44,
+          "p90": 56
+        },
+        "Köln": {
+          "expected": 60.1924,
+          "median": 60,
+          "p10": 54,
+          "p90": 66
+        },
+        "Magdeburg": {
+          "expected": 52.9668,
+          "median": 53,
+          "p10": 47,
+          "p90": 59
+        },
+        "Münster": {
+          "expected": 33.014,
+          "median": 33,
+          "p10": 28,
+          "p90": 39
+        },
+        "Nürnberg": {
+          "expected": 48.6114,
+          "median": 48,
+          "p10": 43,
+          "p90": 55
+        },
+        "Paderborn": {
+          "expected": 55.3334,
+          "median": 55,
+          "p10": 49,
+          "p90": 61
+        },
+        "Regensburg": {
+          "expected": 25.919,
+          "median": 26,
+          "p10": 20,
+          "p90": 32
+        },
+        "Schalke": {
+          "expected": 46.3434,
+          "median": 46,
+          "p10": 40,
+          "p90": 52
+        },
+        "SSV Ulm 1846": {
+          "expected": 29.1034,
+          "median": 29,
+          "p10": 23,
+          "p90": 35
+        }
+      }
+    },
+    {
+      "matchday": 26,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 234,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0002,
+          "Düsseldorf": 0.1444,
+          "Elversberg": 0.009,
+          "Fürth": 0.0002,
+          "Hannover": 0.0752,
+          "Hertha": 0,
+          "HSV": 0.7482,
+          "Kaiserslautern": 0.0512,
+          "Karlsruhe": 0.01,
+          "Köln": 0.6694,
+          "Magdeburg": 0.0436,
+          "Münster": 0,
+          "Nürnberg": 0.0218,
+          "Paderborn": 0.2264,
+          "Regensburg": 0,
+          "Schalke": 0.0004,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0.0004,
+          "Düsseldorf": 0.1932,
+          "Elversberg": 0.0242,
+          "Fürth": 0.0004,
+          "Hannover": 0.0986,
+          "Hertha": 0,
+          "HSV": 0.1356,
+          "Kaiserslautern": 0.0622,
+          "Karlsruhe": 0.0254,
+          "Köln": 0.1562,
+          "Magdeburg": 0.0734,
+          "Münster": 0,
+          "Nürnberg": 0.0334,
+          "Paderborn": 0.1952,
+          "Regensburg": 0,
+          "Schalke": 0.0018,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.3194,
+          "Darmstadt": 0.9824,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 0.987,
+          "Hannover": 1,
+          "Hertha": 0.9666,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 1,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.6,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0.0142,
+          "Schalke": 0.996,
+          "SSV Ulm 1846": 0.1344
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.3832,
+          "Darmstadt": 0.015,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0122,
+          "Hannover": 0,
+          "Hertha": 0.027,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.2532,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.066,
+          "Schalke": 0.0038,
+          "SSV Ulm 1846": 0.2396
+        },
+        "abstieg": {
+          "Braunschweig": 0.2974,
+          "Darmstadt": 0.0026,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0008,
+          "Hannover": 0,
+          "Hertha": 0.0064,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.1468,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.9198,
+          "Schalke": 0.0002,
+          "SSV Ulm 1846": 0.626
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 32.6606,
+          "median": 32,
+          "p10": 27,
+          "p90": 38
+        },
+        "Darmstadt": {
+          "expected": 42.9016,
+          "median": 43,
+          "p10": 37,
+          "p90": 48
+        },
+        "Düsseldorf": {
+          "expected": 55.346,
+          "median": 55,
+          "p10": 50,
+          "p90": 61
+        },
+        "Elversberg": {
+          "expected": 48.606,
+          "median": 48,
+          "p10": 44,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 42.9806,
+          "median": 43,
+          "p10": 38,
+          "p90": 49
+        },
+        "Hannover": {
+          "expected": 53.423,
+          "median": 53,
+          "p10": 48,
+          "p90": 59
+        },
+        "Hertha": {
+          "expected": 41.3694,
+          "median": 41,
+          "p10": 36,
+          "p90": 47
+        },
+        "HSV": {
+          "expected": 61.5526,
+          "median": 62,
+          "p10": 56,
+          "p90": 67
+        },
+        "Kaiserslautern": {
+          "expected": 52.462,
+          "median": 52,
+          "p10": 47,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 49.4554,
+          "median": 50,
+          "p10": 44,
+          "p90": 55
+        },
+        "Köln": {
+          "expected": 61.407,
+          "median": 61,
+          "p10": 56,
+          "p90": 67
+        },
+        "Magdeburg": {
+          "expected": 51.905,
+          "median": 52,
+          "p10": 47,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 34.7616,
+          "median": 35,
+          "p10": 30,
+          "p90": 40
+        },
+        "Nürnberg": {
+          "expected": 50.2516,
+          "median": 50,
+          "p10": 45,
+          "p90": 56
+        },
+        "Paderborn": {
+          "expected": 56.499,
+          "median": 56,
+          "p10": 51,
+          "p90": 62
+        },
+        "Regensburg": {
+          "expected": 25.2038,
+          "median": 25,
+          "p10": 20,
+          "p90": 30
+        },
+        "Schalke": {
+          "expected": 44.7478,
+          "median": 45,
+          "p10": 39,
+          "p90": 50
+        },
+        "SSV Ulm 1846": {
+          "expected": 29.2928,
+          "median": 29,
+          "p10": 24,
+          "p90": 35
+        }
+      }
+    },
+    {
+      "matchday": 27,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 243,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.0718,
+          "Elversberg": 0.0078,
+          "Fürth": 0,
+          "Hannover": 0.0488,
+          "Hertha": 0,
+          "HSV": 0.7398,
+          "Kaiserslautern": 0.096,
+          "Karlsruhe": 0.0026,
+          "Köln": 0.8404,
+          "Magdeburg": 0.0368,
+          "Münster": 0,
+          "Nürnberg": 0.0102,
+          "Paderborn": 0.1458,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.144,
+          "Elversberg": 0.0298,
+          "Fürth": 0,
+          "Hannover": 0.0888,
+          "Hertha": 0,
+          "HSV": 0.1514,
+          "Kaiserslautern": 0.1394,
+          "Karlsruhe": 0.0144,
+          "Köln": 0.0896,
+          "Magdeburg": 0.0998,
+          "Münster": 0,
+          "Nürnberg": 0.0232,
+          "Paderborn": 0.219,
+          "Regensburg": 0,
+          "Schalke": 0.0006,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.2636,
+          "Darmstadt": 0.97,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 0.987,
+          "Hannover": 1,
+          "Hertha": 0.9846,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 1,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.5332,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0.027,
+          "Schalke": 0.997,
+          "SSV Ulm 1846": 0.2376
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.3414,
+          "Darmstadt": 0.024,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0106,
+          "Hannover": 0,
+          "Hertha": 0.0134,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.2702,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.0756,
+          "Schalke": 0.0028,
+          "SSV Ulm 1846": 0.262
+        },
+        "abstieg": {
+          "Braunschweig": 0.395,
+          "Darmstadt": 0.006,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0024,
+          "Hannover": 0,
+          "Hertha": 0.002,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.1966,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.8974,
+          "Schalke": 0.0002,
+          "SSV Ulm 1846": 0.5004
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 32.3696,
+          "median": 32,
+          "p10": 28,
+          "p90": 37
+        },
+        "Darmstadt": {
+          "expected": 41.3636,
+          "median": 41,
+          "p10": 36,
+          "p90": 47
+        },
+        "Düsseldorf": {
+          "expected": 53.6014,
+          "median": 54,
+          "p10": 48,
+          "p90": 59
+        },
+        "Elversberg": {
+          "expected": 48.9384,
+          "median": 49,
+          "p10": 44,
+          "p90": 54
+        },
+        "Fürth": {
+          "expected": 42.4754,
+          "median": 42,
+          "p10": 38,
+          "p90": 47
+        },
+        "Hannover": {
+          "expected": 52.6718,
+          "median": 53,
+          "p10": 48,
+          "p90": 58
+        },
+        "Hertha": {
+          "expected": 42.7716,
+          "median": 43,
+          "p10": 38,
+          "p90": 48
+        },
+        "HSV": {
+          "expected": 60.6418,
+          "median": 61,
+          "p10": 56,
+          "p90": 65
+        },
+        "Kaiserslautern": {
+          "expected": 54.4348,
+          "median": 54,
+          "p10": 50,
+          "p90": 59
+        },
+        "Karlsruhe": {
+          "expected": 48.2744,
+          "median": 48,
+          "p10": 43,
+          "p90": 53
+        },
+        "Köln": {
+          "expected": 62.9212,
+          "median": 63,
+          "p10": 58,
+          "p90": 68
+        },
+        "Magdeburg": {
+          "expected": 52.0024,
+          "median": 52,
+          "p10": 47,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 34.156,
+          "median": 34,
+          "p10": 30,
+          "p90": 39
+        },
+        "Nürnberg": {
+          "expected": 48.964,
+          "median": 49,
+          "p10": 44,
+          "p90": 54
+        },
+        "Paderborn": {
+          "expected": 55.2952,
+          "median": 55,
+          "p10": 50,
+          "p90": 61
+        },
+        "Regensburg": {
+          "expected": 26.7766,
+          "median": 27,
+          "p10": 22,
+          "p90": 32
+        },
+        "Schalke": {
+          "expected": 44.4566,
+          "median": 44,
+          "p10": 40,
+          "p90": 50
+        },
+        "SSV Ulm 1846": {
+          "expected": 31.0638,
+          "median": 31,
+          "p10": 26,
+          "p90": 36
+        }
+      }
+    },
+    {
+      "matchday": 28,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 252,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.0934,
+          "Elversberg": 0.011,
+          "Fürth": 0,
+          "Hannover": 0.0234,
+          "Hertha": 0,
+          "HSV": 0.8892,
+          "Kaiserslautern": 0.054,
+          "Karlsruhe": 0.005,
+          "Köln": 0.7824,
+          "Magdeburg": 0.062,
+          "Münster": 0,
+          "Nürnberg": 0.0024,
+          "Paderborn": 0.0772,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.2062,
+          "Elversberg": 0.0562,
+          "Fürth": 0,
+          "Hannover": 0.064,
+          "Hertha": 0.0004,
+          "HSV": 0.076,
+          "Kaiserslautern": 0.1068,
+          "Karlsruhe": 0.0204,
+          "Köln": 0.1206,
+          "Magdeburg": 0.1564,
+          "Münster": 0,
+          "Nürnberg": 0.0098,
+          "Paderborn": 0.1824,
+          "Regensburg": 0,
+          "Schalke": 0.0008,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.4544,
+          "Darmstadt": 0.9912,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 0.9816,
+          "Hannover": 1,
+          "Hertha": 0.9982,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 1,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.4208,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0.0072,
+          "Schalke": 0.999,
+          "SSV Ulm 1846": 0.1476
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.3784,
+          "Darmstadt": 0.0086,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0168,
+          "Hannover": 0,
+          "Hertha": 0.0016,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.3358,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.0294,
+          "Schalke": 0.001,
+          "SSV Ulm 1846": 0.2284
+        },
+        "abstieg": {
+          "Braunschweig": 0.1672,
+          "Darmstadt": 0.0002,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0016,
+          "Hannover": 0,
+          "Hertha": 0.0002,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.2434,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.9634,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0.624
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 34.2334,
+          "median": 34,
+          "p10": 30,
+          "p90": 39
+        },
+        "Darmstadt": {
+          "expected": 42.7276,
+          "median": 43,
+          "p10": 38,
+          "p90": 47
+        },
+        "Düsseldorf": {
+          "expected": 54.4992,
+          "median": 55,
+          "p10": 50,
+          "p90": 59
+        },
+        "Elversberg": {
+          "expected": 50.3254,
+          "median": 50,
+          "p10": 46,
+          "p90": 55
+        },
+        "Fürth": {
+          "expected": 41.357,
+          "median": 41,
+          "p10": 37,
+          "p90": 46
+        },
+        "Hannover": {
+          "expected": 51.6256,
+          "median": 52,
+          "p10": 47,
+          "p90": 56
+        },
+        "Hertha": {
+          "expected": 44.8428,
+          "median": 45,
+          "p10": 40,
+          "p90": 50
+        },
+        "HSV": {
+          "expected": 61.9124,
+          "median": 62,
+          "p10": 57,
+          "p90": 67
+        },
+        "Kaiserslautern": {
+          "expected": 53.2786,
+          "median": 53,
+          "p10": 49,
+          "p90": 58
+        },
+        "Karlsruhe": {
+          "expected": 49.6494,
+          "median": 50,
+          "p10": 45,
+          "p90": 54
+        },
+        "Köln": {
+          "expected": 61.1338,
+          "median": 61,
+          "p10": 57,
+          "p90": 66
+        },
+        "Magdeburg": {
+          "expected": 53.4294,
+          "median": 53,
+          "p10": 49,
+          "p90": 58
+        },
+        "Münster": {
+          "expected": 33.5192,
+          "median": 33,
+          "p10": 29,
+          "p90": 38
+        },
+        "Nürnberg": {
+          "expected": 47.8452,
+          "median": 48,
+          "p10": 44,
+          "p90": 52
+        },
+        "Paderborn": {
+          "expected": 53.7866,
+          "median": 54,
+          "p10": 49,
+          "p90": 58
+        },
+        "Regensburg": {
+          "expected": 25.5332,
+          "median": 25,
+          "p10": 21,
+          "p90": 30
+        },
+        "Schalke": {
+          "expected": 45.5758,
+          "median": 46,
+          "p10": 41,
+          "p90": 50
+        },
+        "SSV Ulm 1846": {
+          "expected": 30.1278,
+          "median": 30,
+          "p10": 26,
+          "p90": 35
+        }
+      }
+    },
+    {
+      "matchday": 29,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 261,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.236,
+          "Elversberg": 0.0438,
+          "Fürth": 0,
+          "Hannover": 0.0056,
+          "Hertha": 0,
+          "HSV": 0.7994,
+          "Kaiserslautern": 0.0212,
+          "Karlsruhe": 0.0026,
+          "Köln": 0.807,
+          "Magdeburg": 0.0372,
+          "Münster": 0,
+          "Nürnberg": 0.0078,
+          "Paderborn": 0.0394,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.3004,
+          "Elversberg": 0.1144,
+          "Fürth": 0,
+          "Hannover": 0.021,
+          "Hertha": 0,
+          "HSV": 0.1444,
+          "Kaiserslautern": 0.0504,
+          "Karlsruhe": 0.013,
+          "Köln": 0.1222,
+          "Magdeburg": 0.0892,
+          "Münster": 0,
+          "Nürnberg": 0.0294,
+          "Paderborn": 0.1156,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.6328,
+          "Darmstadt": 0.9884,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 0.973,
+          "Hannover": 1,
+          "Hertha": 0.9956,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 1,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.2654,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0.0076,
+          "Schalke": 0.9986,
+          "SSV Ulm 1846": 0.1386
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.282,
+          "Darmstadt": 0.0112,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0262,
+          "Hannover": 0,
+          "Hertha": 0.004,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.3682,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.0276,
+          "Schalke": 0.0014,
+          "SSV Ulm 1846": 0.2794
+        },
+        "abstieg": {
+          "Braunschweig": 0.0852,
+          "Darmstadt": 0.0004,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0008,
+          "Hannover": 0,
+          "Hertha": 0.0004,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.3664,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.9648,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0.582
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 36.4316,
+          "median": 36,
+          "p10": 33,
+          "p90": 41
+        },
+        "Darmstadt": {
+          "expected": 42.566,
+          "median": 43,
+          "p10": 38,
+          "p90": 47
+        },
+        "Düsseldorf": {
+          "expected": 56.121,
+          "median": 56,
+          "p10": 52,
+          "p90": 60
+        },
+        "Elversberg": {
+          "expected": 52.4456,
+          "median": 52,
+          "p10": 48,
+          "p90": 57
+        },
+        "Fürth": {
+          "expected": 41.1922,
+          "median": 41,
+          "p10": 37,
+          "p90": 45
+        },
+        "Hannover": {
+          "expected": 49.6774,
+          "median": 50,
+          "p10": 46,
+          "p90": 54
+        },
+        "Hertha": {
+          "expected": 44.2594,
+          "median": 44,
+          "p10": 40,
+          "p90": 49
+        },
+        "HSV": {
+          "expected": 59.9366,
+          "median": 60,
+          "p10": 56,
+          "p90": 64
+        },
+        "Kaiserslautern": {
+          "expected": 51.5876,
+          "median": 51,
+          "p10": 48,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 49.0242,
+          "median": 49,
+          "p10": 45,
+          "p90": 53
+        },
+        "Köln": {
+          "expected": 60.5076,
+          "median": 61,
+          "p10": 56,
+          "p90": 64
+        },
+        "Magdeburg": {
+          "expected": 52.0614,
+          "median": 52,
+          "p10": 48,
+          "p90": 56
+        },
+        "Münster": {
+          "expected": 33.503,
+          "median": 33,
+          "p10": 29,
+          "p90": 38
+        },
+        "Nürnberg": {
+          "expected": 49.7716,
+          "median": 50,
+          "p10": 46,
+          "p90": 54
+        },
+        "Paderborn": {
+          "expected": 52.4662,
+          "median": 52,
+          "p10": 49,
+          "p90": 57
+        },
+        "Regensburg": {
+          "expected": 27.3722,
+          "median": 27,
+          "p10": 23,
+          "p90": 32
+        },
+        "Schalke": {
+          "expected": 44.0274,
+          "median": 44,
+          "p10": 40,
+          "p90": 48
+        },
+        "SSV Ulm 1846": {
+          "expected": 31.6676,
+          "median": 32,
+          "p10": 28,
+          "p90": 36
+        }
+      }
+    },
+    {
+      "matchday": 30,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 270,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.1172,
+          "Elversberg": 0.0268,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0.8364,
+          "Kaiserslautern": 0.0038,
+          "Karlsruhe": 0.0024,
+          "Köln": 0.9018,
+          "Magdeburg": 0.0498,
+          "Münster": 0,
+          "Nürnberg": 0.0006,
+          "Paderborn": 0.0612,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.28,
+          "Elversberg": 0.112,
+          "Fürth": 0,
+          "Hannover": 0.004,
+          "Hertha": 0,
+          "HSV": 0.1138,
+          "Kaiserslautern": 0.0168,
+          "Karlsruhe": 0.0162,
+          "Köln": 0.0718,
+          "Magdeburg": 0.1754,
+          "Münster": 0,
+          "Nürnberg": 0.0052,
+          "Paderborn": 0.2048,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.8692,
+          "Darmstadt": 1,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 0.9682,
+          "Hannover": 1,
+          "Hertha": 0.9994,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 1,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.123,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0,
+          "Schalke": 0.9994,
+          "SSV Ulm 1846": 0.0408
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1246,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.031,
+          "Hannover": 0,
+          "Hertha": 0.0006,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.5166,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.0098,
+          "Schalke": 0.0006,
+          "SSV Ulm 1846": 0.3168
+        },
+        "abstieg": {
+          "Braunschweig": 0.0062,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0008,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.3604,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.9902,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0.6424
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 38.0316,
+          "median": 38,
+          "p10": 34,
+          "p90": 42
+        },
+        "Darmstadt": {
+          "expected": 44.0452,
+          "median": 44,
+          "p10": 40,
+          "p90": 48
+        },
+        "Düsseldorf": {
+          "expected": 55.2764,
+          "median": 55,
+          "p10": 52,
+          "p90": 58
+        },
+        "Elversberg": {
+          "expected": 52.4978,
+          "median": 52,
+          "p10": 49,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 40.1478,
+          "median": 40,
+          "p10": 36,
+          "p90": 44
+        },
+        "Hannover": {
+          "expected": 48.5128,
+          "median": 48,
+          "p10": 45,
+          "p90": 52
+        },
+        "Hertha": {
+          "expected": 45.7322,
+          "median": 46,
+          "p10": 42,
+          "p90": 49
+        },
+        "HSV": {
+          "expected": 59.669,
+          "median": 60,
+          "p10": 56,
+          "p90": 63
+        },
+        "Kaiserslautern": {
+          "expected": 50.4148,
+          "median": 50,
+          "p10": 47,
+          "p90": 54
+        },
+        "Karlsruhe": {
+          "expected": 50.1508,
+          "median": 50,
+          "p10": 47,
+          "p90": 54
+        },
+        "Köln": {
+          "expected": 61.3858,
+          "median": 61,
+          "p10": 58,
+          "p90": 64
+        },
+        "Magdeburg": {
+          "expected": 53.4894,
+          "median": 53,
+          "p10": 50,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 32.7196,
+          "median": 32,
+          "p10": 29,
+          "p90": 36
+        },
+        "Nürnberg": {
+          "expected": 48.4546,
+          "median": 48,
+          "p10": 45,
+          "p90": 52
+        },
+        "Paderborn": {
+          "expected": 54.0056,
+          "median": 54,
+          "p10": 51,
+          "p90": 58
+        },
+        "Regensburg": {
+          "expected": 26.2322,
+          "median": 26,
+          "p10": 23,
+          "p90": 30
+        },
+        "Schalke": {
+          "expected": 43.6918,
+          "median": 44,
+          "p10": 40,
+          "p90": 47
+        },
+        "SSV Ulm 1846": {
+          "expected": 30.5128,
+          "median": 30,
+          "p10": 27,
+          "p90": 34
+        }
+      }
+    },
+    {
+      "matchday": 31,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 279,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.1036,
+          "Elversberg": 0.0402,
+          "Fürth": 0,
+          "Hannover": 0.0004,
+          "Hertha": 0,
+          "HSV": 0.7864,
+          "Kaiserslautern": 0.0218,
+          "Karlsruhe": 0.0112,
+          "Köln": 0.9038,
+          "Magdeburg": 0.0774,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0.0552,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.2294,
+          "Elversberg": 0.1096,
+          "Fürth": 0,
+          "Hannover": 0.0116,
+          "Hertha": 0,
+          "HSV": 0.129,
+          "Kaiserslautern": 0.0416,
+          "Karlsruhe": 0.06,
+          "Köln": 0.0614,
+          "Magdeburg": 0.2044,
+          "Münster": 0,
+          "Nürnberg": 0.0026,
+          "Paderborn": 0.1504,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.8764,
+          "Darmstadt": 1,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 0.9398,
+          "Hannover": 1,
+          "Hertha": 1,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 1,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.0906,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0,
+          "Schalke": 0.9994,
+          "SSV Ulm 1846": 0.0938
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1176,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0578,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.3402,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.0008,
+          "Schalke": 0.0006,
+          "SSV Ulm 1846": 0.483
+        },
+        "abstieg": {
+          "Braunschweig": 0.006,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.0024,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.5692,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0.9992,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0.4232
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 37.792,
+          "median": 38,
+          "p10": 35,
+          "p90": 41
+        },
+        "Darmstadt": {
+          "expected": 43.5536,
+          "median": 43,
+          "p10": 40,
+          "p90": 46
+        },
+        "Düsseldorf": {
+          "expected": 54.2356,
+          "median": 54,
+          "p10": 51,
+          "p90": 58
+        },
+        "Elversberg": {
+          "expected": 52.5536,
+          "median": 52,
+          "p10": 50,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 38.43,
+          "median": 38,
+          "p10": 35,
+          "p90": 42
+        },
+        "Hannover": {
+          "expected": 50.2796,
+          "median": 50,
+          "p10": 47,
+          "p90": 53
+        },
+        "Hertha": {
+          "expected": 44.8164,
+          "median": 45,
+          "p10": 41,
+          "p90": 49
+        },
+        "HSV": {
+          "expected": 57.9102,
+          "median": 58,
+          "p10": 55,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 52.0532,
+          "median": 52,
+          "p10": 49,
+          "p90": 55
+        },
+        "Karlsruhe": {
+          "expected": 52.0796,
+          "median": 52,
+          "p10": 49,
+          "p90": 56
+        },
+        "Köln": {
+          "expected": 59.9246,
+          "median": 60,
+          "p10": 57,
+          "p90": 63
+        },
+        "Magdeburg": {
+          "expected": 53.5946,
+          "median": 53,
+          "p10": 51,
+          "p90": 57
+        },
+        "Münster": {
+          "expected": 32.4734,
+          "median": 32,
+          "p10": 30,
+          "p90": 36
+        },
+        "Nürnberg": {
+          "expected": 48.8236,
+          "median": 49,
+          "p10": 46,
+          "p90": 52
+        },
+        "Paderborn": {
+          "expected": 53.1928,
+          "median": 53,
+          "p10": 50,
+          "p90": 56
+        },
+        "Regensburg": {
+          "expected": 25.646,
+          "median": 26,
+          "p10": 23,
+          "p90": 29
+        },
+        "Schalke": {
+          "expected": 42.3104,
+          "median": 42,
+          "p10": 39,
+          "p90": 45
+        },
+        "SSV Ulm 1846": {
+          "expected": 32.5508,
+          "median": 32,
+          "p10": 30,
+          "p90": 36
+        }
+      }
+    },
+    {
+      "matchday": 32,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 288,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.0168,
+          "Elversberg": 0.0756,
+          "Fürth": 0,
+          "Hannover": 0.001,
+          "Hertha": 0,
+          "HSV": 0.9638,
+          "Kaiserslautern": 0.009,
+          "Karlsruhe": 0,
+          "Köln": 0.8356,
+          "Magdeburg": 0.0078,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0.0904,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.1316,
+          "Elversberg": 0.289,
+          "Fürth": 0,
+          "Hannover": 0.0174,
+          "Hertha": 0,
+          "HSV": 0.034,
+          "Kaiserslautern": 0.0286,
+          "Karlsruhe": 0.0056,
+          "Köln": 0.1058,
+          "Magdeburg": 0.0772,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0.3108,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.866,
+          "Darmstadt": 1,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 0.8482,
+          "Hannover": 1,
+          "Hertha": 1,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 1,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.2628,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0,
+          "Schalke": 0.9992,
+          "SSV Ulm 1846": 0.0238
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.1296,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.1478,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.5288,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Schalke": 0.0008,
+          "SSV Ulm 1846": 0.193
+        },
+        "abstieg": {
+          "Braunschweig": 0.0044,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.004,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.2084,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 1,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0.7832
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 37.7786,
+          "median": 38,
+          "p10": 35,
+          "p90": 41
+        },
+        "Darmstadt": {
+          "expected": 42.2236,
+          "median": 42,
+          "p10": 40,
+          "p90": 45
+        },
+        "Düsseldorf": {
+          "expected": 53.5082,
+          "median": 54,
+          "p10": 51,
+          "p90": 56
+        },
+        "Elversberg": {
+          "expected": 54.4116,
+          "median": 55,
+          "p10": 52,
+          "p90": 56
+        },
+        "Fürth": {
+          "expected": 37.3566,
+          "median": 38,
+          "p10": 35,
+          "p90": 41
+        },
+        "Hannover": {
+          "expected": 51.806,
+          "median": 52,
+          "p10": 49,
+          "p90": 55
+        },
+        "Hertha": {
+          "expected": 46.12,
+          "median": 46,
+          "p10": 43,
+          "p90": 49
+        },
+        "HSV": {
+          "expected": 59.5438,
+          "median": 60,
+          "p10": 57,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 52.0748,
+          "median": 52,
+          "p10": 50,
+          "p90": 54
+        },
+        "Karlsruhe": {
+          "expected": 51.278,
+          "median": 51,
+          "p10": 49,
+          "p90": 54
+        },
+        "Köln": {
+          "expected": 58.8198,
+          "median": 59,
+          "p10": 56,
+          "p90": 61
+        },
+        "Magdeburg": {
+          "expected": 52.0042,
+          "median": 51,
+          "p10": 50,
+          "p90": 54
+        },
+        "Münster": {
+          "expected": 34.3796,
+          "median": 35,
+          "p10": 32,
+          "p90": 38
+        },
+        "Nürnberg": {
+          "expected": 47.1644,
+          "median": 47,
+          "p10": 45,
+          "p90": 49
+        },
+        "Paderborn": {
+          "expected": 54.8968,
+          "median": 55,
+          "p10": 52,
+          "p90": 58
+        },
+        "Regensburg": {
+          "expected": 26.0216,
+          "median": 25,
+          "p10": 24,
+          "p90": 28
+        },
+        "Schalke": {
+          "expected": 40.8184,
+          "median": 41,
+          "p10": 38,
+          "p90": 44
+        },
+        "SSV Ulm 1846": {
+          "expected": 31.2802,
+          "median": 32,
+          "p10": 29,
+          "p90": 33
+        }
+      }
+    },
+    {
+      "matchday": 33,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 297,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0.0344,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0.9242,
+          "Magdeburg": 0,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0.0414,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.1144,
+          "Elversberg": 0.4726,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0.024,
+          "Karlsruhe": 0,
+          "Köln": 0.0666,
+          "Magdeburg": 0,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0.3224,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0.494,
+          "Darmstadt": 1,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 0.8678,
+          "Hannover": 1,
+          "Hertha": 1,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 1,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 0.6382,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0,
+          "Schalke": 1,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 0.506,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0.1322,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0.3618,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "abstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 1,
+          "Schalke": 0,
+          "SSV Ulm 1846": 1
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 36.5368,
+          "median": 36,
+          "p10": 35,
+          "p90": 38
+        },
+        "Darmstadt": {
+          "expected": 40.8518,
+          "median": 42,
+          "p10": 39,
+          "p90": 42
+        },
+        "Düsseldorf": {
+          "expected": 54.7052,
+          "median": 54,
+          "p10": 53,
+          "p90": 56
+        },
+        "Elversberg": {
+          "expected": 55.888,
+          "median": 55,
+          "p10": 55,
+          "p90": 58
+        },
+        "Fürth": {
+          "expected": 37.2822,
+          "median": 37,
+          "p10": 36,
+          "p90": 39
+        },
+        "Hannover": {
+          "expected": 51.1298,
+          "median": 51,
+          "p10": 50,
+          "p90": 53
+        },
+        "Hertha": {
+          "expected": 44.6176,
+          "median": 44,
+          "p10": 43,
+          "p90": 46
+        },
+        "HSV": {
+          "expected": 60.4496,
+          "median": 60,
+          "p10": 59,
+          "p90": 62
+        },
+        "Kaiserslautern": {
+          "expected": 53.7454,
+          "median": 53,
+          "p10": 53,
+          "p90": 56
+        },
+        "Karlsruhe": {
+          "expected": 50.6434,
+          "median": 50,
+          "p10": 49,
+          "p90": 52
+        },
+        "Köln": {
+          "expected": 60.0276,
+          "median": 61,
+          "p10": 58,
+          "p90": 61
+        },
+        "Magdeburg": {
+          "expected": 51.0386,
+          "median": 51,
+          "p10": 50,
+          "p90": 53
+        },
+        "Münster": {
+          "expected": 36.1892,
+          "median": 36,
+          "p10": 35,
+          "p90": 38
+        },
+        "Nürnberg": {
+          "expected": 46.2104,
+          "median": 46,
+          "p10": 45,
+          "p90": 48
+        },
+        "Paderborn": {
+          "expected": 56.0998,
+          "median": 56,
+          "p10": 55,
+          "p90": 58
+        },
+        "Regensburg": {
+          "expected": 25.8942,
+          "median": 25,
+          "p10": 25,
+          "p90": 28
+        },
+        "Schalke": {
+          "expected": 39.869,
+          "median": 41,
+          "p10": 38,
+          "p90": 41
+        },
+        "SSV Ulm 1846": {
+          "expected": 30.5492,
+          "median": 30,
+          "p10": 29,
+          "p90": 32
+        }
+      }
+    },
+    {
+      "matchday": 34,
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 306,
+      "probabilities": {
+        "aufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 1,
+          "Magdeburg": 0,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAufstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 1,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "klassenerhalt": {
+          "Braunschweig": 0,
+          "Darmstadt": 1,
+          "Düsseldorf": 1,
+          "Elversberg": 1,
+          "Fürth": 1,
+          "Hannover": 1,
+          "Hertha": 1,
+          "HSV": 1,
+          "Kaiserslautern": 1,
+          "Karlsruhe": 1,
+          "Köln": 1,
+          "Magdeburg": 1,
+          "Münster": 1,
+          "Nürnberg": 1,
+          "Paderborn": 1,
+          "Regensburg": 0,
+          "Schalke": 1,
+          "SSV Ulm 1846": 0
+        },
+        "relegationsplatzAbstieg": {
+          "Braunschweig": 1,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Schalke": 0,
+          "SSV Ulm 1846": 0
+        },
+        "abstieg": {
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Elversberg": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Hertha": 0,
+          "HSV": 0,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Münster": 0,
+          "Nürnberg": 0,
+          "Paderborn": 0,
+          "Regensburg": 1,
+          "Schalke": 0,
+          "SSV Ulm 1846": 1
+        }
+      },
+      "points": {
+        "Braunschweig": {
+          "expected": 35,
+          "median": 35,
+          "p10": 35,
+          "p90": 35
+        },
+        "Darmstadt": {
+          "expected": 42,
+          "median": 42,
+          "p10": 42,
+          "p90": 42
+        },
+        "Düsseldorf": {
+          "expected": 53,
+          "median": 53,
+          "p10": 53,
+          "p90": 53
+        },
+        "Elversberg": {
+          "expected": 58,
+          "median": 58,
+          "p10": 58,
+          "p90": 58
+        },
+        "Fürth": {
+          "expected": 39,
+          "median": 39,
+          "p10": 39,
+          "p90": 39
+        },
+        "Hannover": {
+          "expected": 51,
+          "median": 51,
+          "p10": 51,
+          "p90": 51
+        },
+        "Hertha": {
+          "expected": 44,
+          "median": 44,
+          "p10": 44,
+          "p90": 44
+        },
+        "HSV": {
+          "expected": 59,
+          "median": 59,
+          "p10": 59,
+          "p90": 59
+        },
+        "Kaiserslautern": {
+          "expected": 53,
+          "median": 53,
+          "p10": 53,
+          "p90": 53
+        },
+        "Karlsruhe": {
+          "expected": 52,
+          "median": 52,
+          "p10": 52,
+          "p90": 52
+        },
+        "Köln": {
+          "expected": 61,
+          "median": 61,
+          "p10": 61,
+          "p90": 61
+        },
+        "Magdeburg": {
+          "expected": 53,
+          "median": 53,
+          "p10": 53,
+          "p90": 53
+        },
+        "Münster": {
+          "expected": 36,
+          "median": 36,
+          "p10": 36,
+          "p90": 36
+        },
+        "Nürnberg": {
+          "expected": 48,
+          "median": 48,
+          "p10": 48,
+          "p90": 48
+        },
+        "Paderborn": {
+          "expected": 55,
+          "median": 55,
+          "p10": 55,
+          "p90": 55
+        },
+        "Regensburg": {
+          "expected": 25,
+          "median": 25,
+          "p10": 25,
+          "p90": 25
+        },
+        "Schalke": {
+          "expected": 38,
+          "median": 38,
+          "p10": 38,
+          "p90": 38
+        },
+        "SSV Ulm 1846": {
+          "expected": 30,
+          "median": 30,
+          "p10": 30,
+          "p90": 30
+        }
+      }
+    }
+  ],
+  "computed": 35
+}

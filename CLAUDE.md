@@ -531,8 +531,16 @@ construction.
     (15 Saisons ×2 Grenzen, streng validiert via `pipeline/src/relegation.mjs`,
     OpenLigaDB-verankert für 2024/25+2025/26); G2 in `docs/verification/dfl-spielordnung.md`
     (Tiebreak-Kette wird Saisonkonfiguration, keine unbelegte Konstanz-Behauptung
-    für 2011–2018). Phasen 2–5 (Rekonstruktion/Artefakte, Saison-Dimension,
-    Seitenverhalten, Release 2.3.0) stehen aus.
+    für 2011–2018).
+  - **Phase 2 (Rekonstruktion + Artefakte) gelandet:** `pipeline/src/reconstruct.mjs`
+    (Treppenfunktion, Matchday-Label statt Kalender), `pipeline/src/buildHistorical.mjs`
+    (+ CLI) erzeugt den vollen Dateisatz je Saison aus Training + Rekonstruktion,
+    deterministisch, `buildCurrentOutlook`/`buildFrozenTimeline` wiederverwendet.
+    **Historien-Artefakte 2011/12–2023/24 committet** (`data/seasons/2011..2024`);
+    2025/26 bleibt der Live-Pipeline-Stand (bessere Provenienz). Champions-Guard-Test
+    prüft jede committete Saison gegen den echten Meister. Regeneration ist bitgleich
+    (2015 zeigte beim Voll-Batch keinen Diff). **Nur committen, nie im Cron.**
+  - Phasen 3–5 (Saison-Dimension in der App, Seitenverhalten, Release 2.3.0) stehen aus.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
   ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern
