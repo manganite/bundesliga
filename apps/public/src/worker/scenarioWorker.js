@@ -81,14 +81,22 @@ function whatIf(payload) {
   };
 }
 
-self.onmessage = (event) => {
-  const { id, kind, payload } = event.data;
+/**
+ * The message handler as a pure function, so the interaction-test layer can
+ * drive the SAME logic synchronously without a real Worker (§Codex §1). The
+ * worker shell below stays a one-liner around it.
+ */
+export function handleMessage({ id, kind, payload }) {
   try {
-    const result = kind === "sample"
-      ? drawSeasonRun(payload)
-      : whatIf(payload);
-    self.postMessage({ id, ok: true, result });
+    const result = kind === "sample" ? drawSeasonRun(payload) : whatIf(payload);
+    return { id, ok: true, result };
   } catch (e) {
-    self.postMessage({ id, ok: false, error: e.message });
+    return { id, ok: false, error: e.message };
   }
-};
+}
+
+// Guarded: importing this module in Node (the test harness) has no `self`; in a
+// real Worker it wires the shell up.
+if (typeof self !== "undefined") {
+  self.onmessage = (event) => self.postMessage(handleMessage(event.data));
+}

@@ -19,6 +19,7 @@ export { default as LeagueTable } from "../../src/components/LeagueTable.jsx";
 export { default as Methodik, SampleResult, StepEinSpiel } from "../../src/pages/Methodik.jsx";
 export { default as DirekteDuelle } from "../../src/components/DirekteDuelle.jsx";
 export { default as Tabs } from "../../src/components/Tabs.jsx";
+export { default as Disclosure } from "../../src/components/Disclosure.jsx";
 export { Card } from "../../src/components/ui.jsx";
 export { default as SiteFooter } from "../../src/components/SiteFooter.jsx";
 export { default as App, Ready, SeasonSwitch } from "../../src/App.jsx";
