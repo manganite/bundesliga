@@ -1602,6 +1602,15 @@
       "contentHash": "e5e2a362db1b66bd",
       "correctionOf": null,
       "clubs": 32
+    },
+    {
+      "snapshotId": "clubelo-2026-07-26-42e07cce97c4c5f6",
+      "source": "clubelo",
+      "observedAt": "2026-07-26T00:59:07.363Z",
+      "effectiveAt": "2026-07-26",
+      "contentHash": "42e07cce97c4c5f6",
+      "correctionOf": null,
+      "clubs": 32
     }
   ]
 }
