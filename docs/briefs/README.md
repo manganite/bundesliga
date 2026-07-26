@@ -29,6 +29,16 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 17 | [SZENARIO_TABELLE_BRIEF.md](SZENARIO_TABELLE_BRIEF.md) | Simulierte Szenario-Schlusstabelle mit Positions-Indikator (CRN gegen die gepaarte 2 000er-Basis), „Anwenden & rechnen", und eine geteilte `LeagueTable` für Spieltage, Tabelle & Prognose und die Szenario-Tabelle. Keine neue Engine-Berechnung; der Worker reicht vorhandene Aggregate durch. Vor Release 2.2.0 (Brief 16 + 17). |
 | 18 | [SZENARIO_TABELLE_ABSCHLUSS_BRIEF.md](SZENARIO_TABELLE_ABSCHLUSS_BRIEF.md) | Abschluss von 17: Positions-Indikator ans rechte Tabellenende (Kopf „Δ Platz"), vereinfachter Verankerungssatz, dann Release 2.2.0 (Bump = Tag + Release, Brief 16 + 17). Keine Engine-/Pipeline-/Datenänderung. |
 | 19 | [V2B1_HISTORISCHE_SAISONS_BRIEF.md](V2B1_HISTORISCHE_SAISONS_BRIEF.md) | Historische Saisons 2011/12–2025/26 als zweite globale Dimension (Saison), nur aus den committeten Fit-Trainingsdaten + G1-Relegationsdaten. Null clubelo. Mehrphasig; Phase 1 (Gates: Klub-Register, Relegationsrecord, Tiebreak-Entscheidung) gelandet. |
+| 20 | [FIX_ARCHIV_SZENARIEN_PROMPT.md](FIX_ARCHIV_SZENARIEN_PROMPT.md) | Fix vor 2.3.0: der `remaining.length === 0`-Frühausstieg in `Szenarien.jsx` entfällt; eine voll gespielte Archiv-Saison rendert die normale Spieltagsliste (alle Spiele real, Freigeben/Festsetzen, Presets). Neuer Seitenebenen-Rendertest. |
+| 21 | [ARCHIV_DUELLE_PROMPT.md](ARCHIV_DUELLE_PROMPT.md) | Fix vor 2.3.0: Bereichsregel (ein Preset-Bereich ohne Treffer wird nicht angeboten) + historische Duelle (`historicalDuels` über den Timeline-Punkt M−1, eine Implementierung/zwei Datenquellen). |
+| 22 | [DUELLE_ERGEBNISSE_PROMPT.md](DUELLE_ERGEBNISSE_PROMPT.md) | Fix vor 2.3.0: die Duelle-Karte zeigt je Ziel-Tab „Anstehend" und „Gespielt" (mit Endergebnis, Heim zuerst); leere Abschnitte verbergen sich, Tab-Zähler = Summe. Reiner Daten-Join. |
+| 23 | [CHART_AUSBAU_BRIEF.md](CHART_AUSBAU_BRIEF.md) | Diagramm-Ausbau (Referenz WM-App): geteilte `ChartTooltip`/`ChartLegend`/`ChartInteractive`, Zonenverteilung statt Titelchance-Linie, Kalibrierung/Güte-Zeitreihen mit Achsen/Legenden/Tooltips. Zwei erlaubte reine Engine-Aggregationen (`zonePartition`, `cumulativeSeries`). Danach Release 2.3.0. |
+| 24 | [CODEX_REVIEW_FIXES_BRIEF.md](CODEX_REVIEW_FIXES_BRIEF.md) | Codex-Review-Fixes: jsdom-Interaktions-Testschicht, datensatzgebundener Remount-Key, ARIA-Tabs-Tastatur, `getOptionalJson`-Fail-loud, README-Kausalfix + repo-weiter Scan, Doku-Zustand nur in CLAUDE.md. Danach Release 2.3.2. |
+
+**Stehende Regel:** Ein neuer Brief bekommt seinen Ketteneintrag in
+[../../CLAUDE.md](../../CLAUDE.md) **und** seine Zeile in diesem Index im selben
+Commit — sonst endet der Index dort, wo die letzte Doku-Runde aufhörte (genau das
+war ein Codex-Befund: der Index stand bei Brief 19, vier Spezifikationen fehlten).
 
 ## Diese Dateien werden nicht bearbeitet
 

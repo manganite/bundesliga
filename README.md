@@ -14,10 +14,10 @@ offengelegtem Modell.
 
 ## Was die App zeigt
 
-**Übersicht** — der Stand der Saison in sechs Karten: Titelrennen,
-Abstiegskampf, Platzierungszonen, der letzte Spieltag, der Spannungsindex und
-was bereits entschieden ist. Karten, die nichts zu sagen haben, blenden sich
-aus.
+**Übersicht** — der Stand der Saison in Karten: Titelrennen, das wichtigste
+kommende Spiel, Abstiegskampf, Spannungsindex, Platzierungszonen, der letzte
+Spieltag und was bereits entschieden ist. Karten, die nichts zu sagen haben,
+blenden sich aus.
 
 **Tabelle & Prognose** — die aktuelle Tabelle neben dem simulierten Saisonende,
 mit erwarteten Punkten und dem Bereich, in dem 80 % der simulierten Saisons
@@ -36,6 +36,22 @@ Punkte geholt hat als erwartet.
 Kurven verwenden durchgehend die Stärke vom Saisonstart und zeigen deshalb
 ausschließlich, was die Ergebnisse bewirkt haben.
 
+**Modellgüte** — wie gut die Vorhersagen dieser Saison waren, gemessen an den
+Ergebnissen: Kalibrierung, Treffsicherheit und Brier/Log-Loss über die Zeit, und
+was das Modell an Rating-Herkunft (aktuell, rekonstruiert, übertragen) getrennt
+ausweist.
+
+**Szenarien** — die einzige Seite mit Werkzeugen zum Eingreifen: Ergebnisse
+festsetzen oder freigeben und sehen, wie sich die Prognose verschiebt, eine
+Beispielsaison durchspielen, und – gegen Saisonende – „Was muss passieren?".
+
+**Methodik** — Schritt für Schritt, wie aus den Ratings eine Saisonprognose wird,
+mit dem konkreten nächsten Spiel als Beispiel.
+
+Zwischen den **Saisons** wird oben umgeschaltet: neben der laufenden Saison
+liegen die abgeschlossenen ab 2011/12 im Archiv, jede als rückblickende Rechnung
+mit den heutigen Parametern gekennzeichnet.
+
 Die Prognose verändert sich durch neue Ergebnisse und aktualisierte Ratings. Die
 Modellparameter bleiben während der Saison unverändert.
 
@@ -46,8 +62,11 @@ Ergebnisse, gespeist aus den Elo-Ratings von clubelo. Daraus wird die Saison
 zehntausendfach durchgespielt; gezählt wird, wie oft welcher Klub wo landet.
 
 Dass niemand die wahre Stärke eines Klubs kennt, steckt als `RATING_SIGMA` im
-Modell: jeder Lauf zieht für jeden Klub eine eigene hypothetische Stärke. Ein
-Favorit gewinnt deshalb nicht in jedem Lauf.
+Modell: jeder Lauf zieht für jeden Klub eine eigene hypothetische Stärke. Diese
+Streuung bildet die Unsicherheit über die *Stärke* ab, nicht den Zufall des
+einzelnen Spiels. Dass ein Favorit nicht jedes Spiel gewinnt, entsteht erst bei
+der Torziehung — aus den Stärken zieht das Modell je Spiel ein Ergebnis
+(Poisson), und dabei fällt jedes Ergebnis einzeln.
 
 Was sich davon belegen lässt und was ausdrücklich nicht, steht in
 [docs/MODEL_EVIDENCE.md](docs/MODEL_EVIDENCE.md). Die Fitprozedur selbst liegt

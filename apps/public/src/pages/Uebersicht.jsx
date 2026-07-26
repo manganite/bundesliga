@@ -109,7 +109,7 @@ export default function Uebersicht({ ctx }) {
     <>
       <h2>Übersicht — {leagueLabel}</h2>
       <p className="page-intro">
-        Der Stand der Saison in sechs Karten. Alle Wahrscheinlichkeiten stammen aus einer
+        Der Stand der Saison in Karten. Alle Wahrscheinlichkeiten stammen aus einer
         einzigen Simulation dieses Datenstands, damit keine zwei Seiten für dieselbe Zahl
         etwas Verschiedenes sagen.
       </p>

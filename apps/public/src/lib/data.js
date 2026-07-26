@@ -19,11 +19,28 @@ async function getJson(rel) {
   return res.json();
 }
 
-async function getJsonOrNull(rel) {
+/**
+ * Load a file that MAY legitimately be absent, and only then (§Codex §4).
+ *
+ * ONLY HTTP 404 becomes `null` — a missing artefact or an empty pre-season file
+ * is a real state the UI handles. Everything else — a network failure, a 5xx, a
+ * truncated or malformed JSON body — THROWS, so it reaches the visible
+ * fail-loud error state instead of masquerading as „gibt es noch nicht". Fail
+ * loud is the project line; the swallow-everything helper was the exception.
+ */
+export async function getOptionalJson(rel) {
+  let res;
   try {
-    return await getJson(rel);
-  } catch {
-    return null;
+    res = await fetch(`${BASE}${rel}`, { cache: "no-cache" });
+  } catch (e) {
+    throw new Error(`${rel}: Netzwerkfehler (${e.message})`);
+  }
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`${rel}: HTTP ${res.status}`);
+  try {
+    return await res.json();
+  } catch (e) {
+    throw new Error(`${rel}: ungültiges JSON (${e.message})`);
   }
 }
 
@@ -45,17 +62,17 @@ export async function loadManifest() {
  */
 export async function loadLeagueSeason(season, league) {
   const [meta, config, seasonData, outlook, timeline, timelineLive, prematch, params, playoff, relegation] = await Promise.all([
-    getJsonOrNull("meta.json"),
+    getOptionalJson("meta.json"),
     getJson(`seasons/${season}/config.json`),
     getJson(`seasons/${season}/${league}/season.json`),
-    getJsonOrNull(`seasons/${season}/${league}/outlook.json`),
-    getJsonOrNull(`seasons/${season}/${league}/timeline-frozen.json`),
-    getJsonOrNull(`seasons/${season}/${league}/timeline-live.json`),
-    getJsonOrNull(`seasons/${season}/${league}/prematch.json`),
-    getJsonOrNull("season-params.json"),
-    getJsonOrNull(`seasons/${season}/playoff.json`),
+    getOptionalJson(`seasons/${season}/${league}/outlook.json`),
+    getOptionalJson(`seasons/${season}/${league}/timeline-frozen.json`),
+    getOptionalJson(`seasons/${season}/${league}/timeline-live.json`),
+    getOptionalJson(`seasons/${season}/${league}/prematch.json`),
+    getOptionalJson("season-params.json"),
+    getOptionalJson(`seasons/${season}/playoff.json`),
     // Season-level, one file for all seasons (§V2b.1 G1). Optional.
-    getJsonOrNull("relegation.json"),
+    getOptionalJson("relegation.json"),
   ]);
   return { meta, config, season: seasonData, outlook, timeline, timelineLive, prematch, params, playoff, relegation };
 }

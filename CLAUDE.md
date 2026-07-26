@@ -155,6 +155,15 @@ spätere schlägt die frühere:**
     Zonenverteilung statt Titelchance-Linie; Kalibrierung/Güte-Zeitreihen mit
     Achsen, Legenden, Tooltips. Danach **Release 2.3.0** über V2b.1 + die drei
     Nachfixe (20–22) + diesen Brief.
+24. `CODEX_REVIEW_FIXES_BRIEF.md` — sechs Befunde eines unabhängigen Codex-Reviews
+    (Quelle in `docs/reviews/2026-07-26-codex.md`). §1 **Interaktions-Testschicht**
+    (jsdom + `react-dom/client` + echte Events, ergänzt die SSR-Harness) als
+    Enabler; §2 **Remount-Key** `key={seasonId}-{league}` bindet Seiten-Lokalzustand
+    an den Datensatz (Hoch); §3 **Tabs** voll tastaturbedienbar (ARIA-Muster);
+    §4 `getOptionalJson` **fail-loud** (nur 404 → null, sonst sichtbarer
+    Fehlerzustand); §5 README-Kausalfix + **repo-weiter** RATING_SIGMA-Scan mit
+    Selbsttest; §6 Doku-Zustand nur in CLAUDE.md, Brief-Index vervollständigt,
+    Übersichtstext zahlenfrei. Danach **Release 2.3.2**.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -342,6 +351,32 @@ construction.
   nicht auseinanderlaufen kann. Ein zweiter Schritt prüft, dass es **genau sechs**
   Skips sind. Ändern sich die Trainingsdaten-Lizenzlage oder die Testzahl, gehört
   diese Zahl zusammen mit `docs/DEVELOPMENT.md` angepasst.
+- **Codex-Review-Fixes stehen (2.3.2).** Vier Stellen, an denen es leicht wieder
+  kaputtgeht:
+  - **Zwei Testharnesses, klare Rollen.** Die SSR-Harness
+    (`tests/harness/build.mjs`, `renderToStaticMarkup`) prüft Markup; die neue
+    **Interaktionsschicht** (`tests/harness/interact.mjs`, jsdom +
+    `react-dom/client` + echte Events + `React.act`) prüft Zustandswechsel,
+    Fokus, Worker. Sie importiert React **vor** dem Vite-Build, weil `build()`
+    `NODE_ENV=production` setzt und Reacts Prod-Build `act` weglässt. Der
+    Szenario-Worker wird über sein exportiertes `handleMessage` synchron
+    getrieben — jsdom hat keinen `Worker`.
+  - **Seiten-Lokalzustand ist an den Datensatz gebunden.** `App.jsx` rendert die
+    Seite mit `key={seasonId}-{league}`; ein Kontextwechsel **remountet** und
+    verwirft Klubwahl, Spieltag, Verlauf-Ziel, Spiel-Zeugnis und alle
+    Szenario-Overrides. Wer den Key entfernt, lässt ein 2014er-Szenario unter
+    2026/27 weiterleben.
+  - **`getOptionalJson` ist fail-loud.** Nur HTTP 404 → `null`; Netzfehler, 5xx
+    und ungültiges JSON werfen und erreichen den sichtbaren Fehlerzustand. Ein
+    beschädigtes `outlook.json` darf nie wieder als „Simulation liegt noch nicht
+    vor" erscheinen. `getJson` (Pflichtdateien) wirft ohnehin.
+  - **Der RATING_SIGMA-Kausalscan ist repo-weit.** `tests/causalScan.test.mjs`
+    verbietet „Favorit … darum/weil … RATING_SIGMA/Streuung" in App-Quellen +
+    README + Top-Level-`docs/` (nicht in den Briefen/Reviews/CLAUDE.md, die das
+    falsche Muster als Protokoll zitieren) und testet sich selbst gegen einen
+    konstruierten Verstoß. **Projektzustand lebt nur hier** in „Aktueller
+    Zustand"; `DEVELOPMENT.md` verweist, hält keine eigene Statusliste. Neuer
+    Brief = Ketteneintrag **und** `docs/briefs/README.md`-Zeile im selben Commit.
 - **V1.2 steht.** Modellgüte-Seite, Live-Rating-Timeline mit der Frozen/Live-
   Gegenüberstellung, und „Wichtigstes kommendes Spiel" auf Übersicht und Spieltage.
   Vier Stellen, an denen das leicht kaputtgeht:
@@ -405,10 +440,11 @@ construction.
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
 - **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
-  package.json` wird je Release-Brief gebumpt (aktuell **2.3.1**, Release über
+  package.json` wird je Release-Brief gebumpt (aktuell **2.3.2**, Release über
   V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau; 2.3.1 = Achsentitel-Fix +
-  Verlauf-Auswahl invertiert), dann ein Git-Tag `v<version>` und ein GitHub-
-  Release mit 2–6 Zeilen deutschen Notes aus dem zugehörigen Brief bzw. Fix.
+  Verlauf-Auswahl invertiert; 2.3.2 = Codex-Review-Fixes), dann ein Git-Tag
+  `v<version>` und ein GitHub-Release mit 2–6 Zeilen deutschen Notes aus dem
+  zugehörigen Brief bzw. Fix.
   **Jede deployte, nutzersichtbare Änderung erhöht mindestens die Patch-Version
   im selben PR; reine Doku-/CI-Änderungen nicht.** Damit ist „Footer behauptet
   X, deployt ist X+ε" strukturell ausgeschlossen, nicht fallweise entschieden.
@@ -448,7 +484,7 @@ construction.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.3.1) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.3.2) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
