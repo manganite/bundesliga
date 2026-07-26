@@ -89,7 +89,7 @@ test("Disclosure: clicking the summary opens and closes the native <details>", a
 const PARAMS = read("data/season-params.json");
 function dataFor(season, league) {
   return {
-    meta: maybe("meta.json") ?? {},
+    meta: maybe("data/meta.json") ?? {},
     config: read(`data/seasons/${season}/config.json`),
     season: read(`data/seasons/${season}/${league}/season.json`),
     outlook: maybe(`data/seasons/${season}/${league}/outlook.json`),
@@ -98,7 +98,7 @@ function dataFor(season, league) {
     prematch: maybe(`data/seasons/${season}/${league}/prematch.json`),
     params: PARAMS,
     playoff: maybe(`data/seasons/${season}/playoff.json`),
-    relegation: maybe("relegation.json"),
+    relegation: maybe("data/relegation.json"),
   };
 }
 
