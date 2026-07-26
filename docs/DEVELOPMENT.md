@@ -138,11 +138,11 @@ Die Pipeline schreibt **nichts**, solange eine Prüfung scheitert: sie endet mit
 Exit-Code 1 und unverändertem `data/`. Das ist das vorgesehene Verhalten, kein
 Defekt.
 
-Der geplante Workflow läuft derzeit mit einem befristeten
-`--carry-forward-until` (Stand: 2026-08-14), weil clubelo vier Klubs seit dem
-03.07.2026 nicht fortführt; die genauen Termine und die harte 42-Tage-Decke
-stehen in [../CLAUDE.md](../CLAUDE.md) unter „Aktueller Zustand". Ohne den
-Schalter — und nach seinem Ablauf — scheitert ein fehlender Klub weiterhin
+Führt clubelo einen Klub nicht fort, läuft der geplante Workflow mit einem
+**befristeten** `--carry-forward-until`. Welche Klubs derzeit betroffen sind, das
+Ablaufdatum und die harte 42-Tage-Decke stehen in [../CLAUDE.md](../CLAUDE.md)
+unter „Aktueller Zustand" — hier steht bewusst kein Datum, das driften würde.
+Ohne den Schalter und nach seinem Ablauf scheitert ein fehlender Klub
 fail-closed; der Schalter ist ein befristeter Ausnahmezustand, kein Automatismus.
 
 Eine abgeschlossene Saison lässt sich vollständig neu aufbauen; der geplante
