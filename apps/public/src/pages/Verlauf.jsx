@@ -4,7 +4,7 @@ import Chart from "../components/Chart.jsx";
 import ChartLegend from "../components/ChartLegend.jsx";
 import ChartTooltip from "../components/ChartTooltip.jsx";
 import { HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
-import { targetList, scoredMatches, matchdaySurprises } from "../lib/season.js";
+import { targetList, scoredMatches, matchdaySurprises, verlaufSeries } from "../lib/season.js";
 import { retrospectiveLabel } from "../lib/archive.js";
 import { effectiveContenders } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, pp } from "../lib/format.js";
@@ -12,6 +12,8 @@ import { percent, number, pp } from "../lib/format.js";
 // The curve palette lives in CSS tokens (§FARBEN: no per-case hex in a
 // component). SVG stroke accepts var() directly.
 const SERIES_COLOURS = Array.from({ length: 8 }, (_, i) => `var(--series-${i + 1})`);
+// The chart shows at most this many clubs — one per series colour.
+const MAX_SERIES = SERIES_COLOURS.length;
 
 /**
  * Verlauf — the frozen curve (V1) and, since V1.2, the comparison against the
@@ -45,23 +47,21 @@ export default function Verlauf({ ctx }) {
     [season, prematch, params, league, nameOf],
   );
 
+  // A broad „safe" target (Klassenerhalt spans most of the table): reaching it
+  // is the norm, so the story is the RISK of missing it. For such a target the
+  // series are selected and ranked by the COMPLEMENT (1 − P) — otherwise every
+  // shown club sits flat near 100 % (Bayern was never in danger, nobody cares).
+  const clubCount = season?.clubs?.length ?? 18;
+  const invert = target ? target.places > clubCount / 2 : false;
+
+  const selectionNote = invert
+    ? `Gezeigt sind die Klubs, die im Verlauf mindestens einmal ≥ 2 % Risiko hatten, „${target?.label}“ zu verpassen — die übrigen waren nie ernsthaft gefährdet. Höchstens acht, nach dem höchsten Risiko im Verlauf.`
+    : "Gezeigt sind die Klubs, die im Verlauf mindestens einmal über 2 % kamen — höchstens acht, nach ihrem höchsten Wert im Verlauf.";
+
   const series = useMemo(() => {
     if (!timeline?.points?.length || !target) return null;
-    const clubs = Object.keys(timeline.points[0].probabilities?.[target.id] ?? {});
-    const byClub = clubs.map((clubId) => ({
-      clubId,
-      points: timeline.points.map((p) => ({
-        matchday: p.matchday,
-        value: p.probabilities?.[target.id]?.[clubId] ?? 0,
-      })),
-    }));
-    // Only clubs the curve ever says anything about, most prominent first.
-    return byClub
-      .map((s) => ({ ...s, peak: Math.max(...s.points.map((p) => p.value)) }))
-      .filter((s) => s.peak > 0.02)
-      .sort((a, b) => b.peak - a.peak)
-      .slice(0, 8);
-  }, [timeline, target]);
+    return verlaufSeries(timeline.points, target.id, invert, MAX_SERIES);
+  }, [timeline, target, invert]);
 
   const tensionSeries = useMemo(() => {
     if (!timeline?.points?.length || !target) return null;
@@ -111,7 +111,7 @@ export default function Verlauf({ ctx }) {
       <div className="stack">
         <Card title={`${target?.label} im Saisonverlauf`}>
           {series?.length
-            ? <MultiLine series={series} nameOf={nameOf} targetLabel={target.label} label={timeline.label?.label} surprisesByMatchday={surprisesByMatchday} />
+            ? <MultiLine series={series} nameOf={nameOf} targetLabel={target.label} label={timeline.label?.label} surprisesByMatchday={surprisesByMatchday} selectionNote={selectionNote} />
             : <Empty>Zu diesem Ziel gibt es im Verlauf nichts zu zeigen.</Empty>}
         </Card>
 
@@ -155,7 +155,7 @@ export default function Verlauf({ ctx }) {
 // lists every visible club with its value and Δpp plus the two biggest
 // surprises of that matchday. The old truncated end-labels are gone — the
 // legend carries the full names now.
-function MultiLine({ series, nameOf, targetLabel, label, surprisesByMatchday }) {
+function MultiLine({ series, nameOf, targetLabel, label, surprisesByMatchday, selectionNote }) {
   const w = 760;
   const h = 320;
   const pad = { l: 52, r: 14, t: 12, b: 32 };
@@ -194,7 +194,7 @@ function MultiLine({ series, nameOf, targetLabel, label, surprisesByMatchday }) 
         }
         width={w}
         height={h}
-        caption={`${label ?? "Eingefrorene Saisonstart-Stärke"}. Gezeigt sind die Klubs, die im Verlauf mindestens einmal über 2 % kamen.`}
+        caption={`${label ?? "Eingefrorene Saisonstart-Stärke"}. ${selectionNote}`}
         table={{
           columns: ["Klub", ...points.map((p) => (p.matchday === 0 ? "vor dem 1." : `${p.matchday}.`))],
           rows: series.map((s) => [nameOf(s.clubId), ...s.points.map((p) => percent(p.value))]),

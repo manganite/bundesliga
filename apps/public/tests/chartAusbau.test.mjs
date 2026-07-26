@@ -5,7 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
-import { matchdaySurprises, nonCarriedScored } from "../src/lib/season.js";
+import { matchdaySurprises, nonCarriedScored, verlaufSeries } from "../src/lib/season.js";
 import { brierScore } from "../../../packages/engine/src/metrics.mjs";
 
 // ============================================================================
@@ -194,6 +194,49 @@ test("Verlauf: the multi-club chart carries the keyboard hit areas with a matchd
   const html = renderVerlauf(ctx);
   assert.match(html, /<rect[^>]*tabindex="0"[^>]*role="button"/);
   assert.match(html, /aria-label="[^"]*Spieltag[^"]*"/);
+});
+
+// The selection rule: prominence = P (normal) or 1 − P (inverted, „safe" target).
+const timelinePoints = (byClub) => {
+  const mds = byClub[Object.keys(byClub)[0]].length;
+  return Array.from({ length: mds }, (_, i) => ({
+    matchday: i,
+    probabilities: { t: Object.fromEntries(Object.entries(byClub).map(([c, vs]) => [c, vs[i]])) },
+  }));
+};
+
+test("verlaufSeries (normal): ranked by PEAK, so a faded club outranks a currently-higher one that never peaked", () => {
+  const pts = timelinePoints({
+    Faded: [0.8, 0.4, 0.1], // peak 0.8, now low — but its story is the fade
+    Steady: [0.15, 0.15, 0.15], // higher CURRENT than Faded, lower peak
+    Never: [0.0, 0.01, 0.015], // never ≥2 %: filler only
+  });
+  assert.deepEqual(verlaufSeries(pts, "t", false, 8).map((s) => s.clubId), ["Faded", "Steady", "Never"]);
+  // Cap below the field size keeps the highest PEAK, not the highest current.
+  assert.deepEqual(verlaufSeries(pts, "t", false, 1).map((s) => s.clubId), ["Faded"]);
+});
+
+test("verlaufSeries (inverted): an always-safe club is NOT shown; the endangered one is", () => {
+  const pts = timelinePoints({
+    Safe: [1, 1, 1], // P(Klassenerhalt)=1 → risk 0, never qualifies
+    Danger: [0.9, 0.7, 0.9], // risk dipped to 0.3 → qualifies
+  });
+  // Normal logic would pick „Safe" first (highest P); inverted picks „Danger".
+  assert.deepEqual(verlaufSeries(pts, "t", true, 1).map((s) => s.clubId), ["Danger"]);
+  const both = verlaufSeries(pts, "t", true, 8);
+  assert.equal(both[0].clubId, "Danger");
+  assert.ok(both[0].qualifies && !both[1].qualifies);
+});
+
+test("Verlauf Klassenerhalt: the caption inverts to the risk of MISSING it", () => {
+  // Render with Klassenerhalt selected by making it the first target.
+  const base = ctxFor(2015, "bl1");
+  const cfg = base.config;
+  const kls = cfg.leagues.bl1.targets.klassenerhalt;
+  const leagueConfig = { ...cfg.leagues.bl1, targets: { klassenerhalt: kls, ...cfg.leagues.bl1.targets } };
+  const html = renderVerlauf({ ...base, leagueConfig, isArchive: true });
+  assert.match(strip(html), /Risiko hatten, .*Klassenerhalt.* zu verpassen/);
+  assert.match(strip(html), /nie ernsthaft gefährdet/);
 });
 
 // ---------------------------------------------------------------------------
