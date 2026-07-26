@@ -55,8 +55,8 @@ export default function Verlauf({ ctx }) {
   const invert = target ? target.places > clubCount / 2 : false;
 
   const selectionNote = invert
-    ? `Gezeigt sind die Klubs, die im Verlauf mindestens einmal ≥ 2 % Risiko hatten, „${target?.label}“ zu verpassen — die übrigen waren nie ernsthaft gefährdet. Höchstens acht, nach dem höchsten Risiko im Verlauf.`
-    : "Gezeigt sind die Klubs, die im Verlauf mindestens einmal über 2 % kamen — höchstens acht, nach ihrem höchsten Wert im Verlauf.";
+    ? `Höchstens acht Klubs, gereiht nach dem höchsten Risiko im Verlauf, „${target?.label}“ zu verpassen — zuerst die, die dabei mindestens einmal ≥ 2 % erreichten, danach bei Bedarf aufgefüllt.`
+    : "Höchstens acht Klubs, gereiht nach ihrem höchsten Wert im Verlauf — zuerst die, die dabei mindestens einmal über 2 % kamen, danach bei Bedarf aufgefüllt.";
 
   const series = useMemo(() => {
     if (!timeline?.points?.length || !target) return null;

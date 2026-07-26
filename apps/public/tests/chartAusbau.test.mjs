@@ -235,8 +235,8 @@ test("Verlauf Klassenerhalt: the caption inverts to the risk of MISSING it", () 
   const kls = cfg.leagues.bl1.targets.klassenerhalt;
   const leagueConfig = { ...cfg.leagues.bl1, targets: { klassenerhalt: kls, ...cfg.leagues.bl1.targets } };
   const html = renderVerlauf({ ...base, leagueConfig, isArchive: true });
-  assert.match(strip(html), /Risiko hatten, .*Klassenerhalt.* zu verpassen/);
-  assert.match(strip(html), /nie ernsthaft gefährdet/);
+  assert.match(strip(html), /höchsten Risiko im Verlauf, .*Klassenerhalt.* zu verpassen/);
+  assert.match(strip(html), /mindestens einmal ≥ 2 % erreichten/);
 });
 
 // ---------------------------------------------------------------------------
