@@ -405,9 +405,13 @@ construction.
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
 - **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
-  package.json` wird je Release-Brief gebumpt (aktuell **2.3.0**, Release über
-  V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau), dann ein Git-Tag `v<version>`
-  und ein GitHub-Release mit 3–6 Zeilen deutschen Notes aus dem zugehörigen Brief.
+  package.json` wird je Release-Brief gebumpt (aktuell **2.3.1**, Release über
+  V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau; 2.3.1 = Achsentitel-Fix +
+  Verlauf-Auswahl invertiert), dann ein Git-Tag `v<version>` und ein GitHub-
+  Release mit 2–6 Zeilen deutschen Notes aus dem zugehörigen Brief bzw. Fix.
+  **Jede deployte, nutzersichtbare Änderung erhöht mindestens die Patch-Version
+  im selben PR; reine Doku-/CI-Änderungen nicht.** Damit ist „Footer behauptet
+  X, deployt ist X+ε" strukturell ausgeschlossen, nicht fallweise entschieden.
   Ältere Stände werden **nicht** rückwirkend getaggt; die Historie beginnt bei
   2.1.0. Die Footer-Version (`__APP_VERSION__` aus `apps/public/package.json` via
   Vite-`define`) verlinkt auf `…/releases/tag/v<version>`.
@@ -444,7 +448,7 @@ construction.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.3.0) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.3.1) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
