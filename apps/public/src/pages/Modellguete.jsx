@@ -3,7 +3,7 @@ import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import ChartLegend from "../components/ChartLegend.jsx";
 import ChartTooltip from "../components/ChartTooltip.jsx";
-import { HitAreas, useActivePoint } from "../components/ChartInteractive.jsx";
+import { HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
 import { currentTable, scoredMatches, scoredMatchesFrozen, ratingAgeEntries, rulesFrom, nonCarriedScored } from "../lib/season.js";
 import { IN_SAMPLE_NOTE } from "../lib/archive.js";
 import { percent, number, integer, signedInt, signed, pp, points } from "../lib/format.js";
@@ -108,7 +108,7 @@ function Kalibrierung({ scored, quality, expert }) {
 
   const width = 520;
   const height = 240;
-  const pad = { left: 44, right: 12, top: 12, bottom: 34 };
+  const pad = { left: 54, right: 12, top: 12, bottom: 34 };
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
   const x = (v) => pad.left + v * plotW;
@@ -202,7 +202,7 @@ function KalibrierungBalken({ cal, width, height, pad, plotW, y }) {
             <text x={pad.left - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{Math.round(v * 100)} %</text>
           </g>
         ))}
-        <text x={10} y={pad.top + 4} className="axis-title">%</text>
+        <YAxisTitle label="%" top={pad.top} bottom={y(0)} />
         {cal.buckets.map((b, i) => {
           const bx = pad.left + i * slot;
           return (
@@ -292,6 +292,7 @@ function TreffsicherheitUeberZeit({ scored }) {
         series={series}
         yMax={1}
         yFmt={(v) => percent(v, 1)}
+        tickFmt={(v) => percent(v, 0)}
         yTicks={[0, 0.25, 0.5, 0.75, 1]}
         reference={{ value: RANDOM_BASELINE.accuracy, label: `Zufall ${percent(RANDOM_BASELINE.accuracy, 0)}` }}
         valueName="Treffsicherheit"
@@ -366,8 +367,9 @@ function BrierLogLossUeberZeit({ scored }) {
 // The shared mini-chart behind §4.1/§4.2: a cumulative line, pale per-matchday
 // points, a labelled dashed reference, and the shared tooltip. One drawing, three
 // metrics.
-function GuetereiheChart({ title, ariaLabel, caption, series, yMax, yFmt, yTicks, reference, valueName, unit, width = 520, height = 200 }) {
-  const pad = { left: 46, right: 12, top: 12, bottom: 30 };
+function GuetereiheChart({ title, ariaLabel, caption, series, yMax, yFmt, yTicks, tickFmt, reference, valueName, unit, width = 520, height = 200 }) {
+  const fmtTick = tickFmt ?? yFmt;
+  const pad = { left: 58, right: 12, top: 12, bottom: 30 };
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
   const n = series.length;
@@ -391,10 +393,11 @@ function GuetereiheChart({ title, ariaLabel, caption, series, yMax, yFmt, yTicks
       {yTicks.map((v) => (
         <g key={v}>
           <line x1={pad.left} y1={y(v)} x2={width - pad.right} y2={y(v)} className="grid-line" />
-          <text x={pad.left - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{yFmt(v)}</text>
+          <text x={pad.left - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{fmtTick(v)}</text>
         </g>
       ))}
-      <text x={10} y={pad.top + 4} className="axis-title">{unit}</text>
+      <YAxisTitle label={unit} top={pad.top} bottom={pad.top + plotH} />
+
       {reference ? (
         <>
           <line x1={pad.left} y1={y(reference.value)} x2={width - pad.right} y2={y(reference.value)} className="ref-line" />

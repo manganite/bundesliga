@@ -12,6 +12,25 @@ import { useState } from "react";
  * sees on hover reaches a screen-reader user on focus — colour and hover are
  * never the only carriers.
  */
+/**
+ * The Y-axis unit label, rotated vertically in the left margin (§CHART_AUSBAU
+ * §0). Horizontal placement collided with the topmost tick („1%0 %"); the
+ * conventional vertical label centred on the axis clears both the scale and the
+ * data. Callers give the axis a left padding of ~52+ so the ticks sit right of
+ * this label.
+ *
+ * @param {string} label  the unit („%", „Brier", „Bewerber", …)
+ * @param {number} top  the plot's top edge in SVG units.
+ * @param {number} bottom  the plot's bottom edge in SVG units.
+ * @param {number} [x=13]  screen-x of the label (near the left edge).
+ */
+export function YAxisTitle({ label, top, bottom, x = 13 }) {
+  const cy = (top + bottom) / 2;
+  return (
+    <text x={-cy} y={x} transform="rotate(-90)" textAnchor="middle" className="axis-title">{label}</text>
+  );
+}
+
 export function useActivePoint(count) {
   const [active, setActive] = useState(null);
   const onKeyDown = (e) => {
@@ -36,7 +55,8 @@ export function useActivePoint(count) {
  * closes it.
  *
  * @param {number[]} centers  x-centre of each slot, in SVG units, ascending.
- * @param {number} top,bottom vertical span of the hit area.
+ * @param {number} top  top edge of the hit area, in SVG units.
+ * @param {number} bottom  bottom edge of the hit area, in SVG units.
  * @param {(i:number)=>string} labelAt  the aria-label for slot i.
  */
 export function HitAreas({ centers, top = 0, bottom, active, setActive, onKeyDown, labelAt }) {

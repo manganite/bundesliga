@@ -3,7 +3,7 @@ import { Card, Empty } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import ChartLegend from "../components/ChartLegend.jsx";
 import ChartTooltip from "../components/ChartTooltip.jsx";
-import { HitAreas, useActivePoint } from "../components/ChartInteractive.jsx";
+import { HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
 import { targetList, scoredMatches, matchdaySurprises } from "../lib/season.js";
 import { retrospectiveLabel } from "../lib/archive.js";
 import { effectiveContenders } from "../../../../packages/engine/src/metrics.mjs";
@@ -158,7 +158,7 @@ export default function Verlauf({ ctx }) {
 function MultiLine({ series, nameOf, targetLabel, label, surprisesByMatchday }) {
   const w = 760;
   const h = 320;
-  const pad = { l: 44, r: 14, t: 12, b: 32 };
+  const pad = { l: 52, r: 14, t: 12, b: 32 };
   const points = series[0].points;
   const maxX = Math.max(...points.map((p) => p.matchday), 1);
   const x = (md) => pad.l + (md / maxX) * (w - pad.l - pad.r);
@@ -206,7 +206,7 @@ function MultiLine({ series, nameOf, targetLabel, label, surprisesByMatchday }) 
             <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{Math.round(v * 100)} %</text>
           </g>
         ))}
-        <text x={12} y={pad.t + 4} className="axis-title">%</text>
+        <YAxisTitle label="%" top={pad.t} bottom={h - pad.b} />
         {series.map((s, i) => {
           const dimmed = highlight != null && highlight !== s.clubId;
           return (
@@ -264,7 +264,7 @@ function TensionLine({ series, floor, targetLabel }) {
 
   const w = 760;
   const h = 220;
-  const pad = { l: 44, r: 12, t: 12, b: 32 };
+  const pad = { l: 52, r: 12, t: 12, b: 32 };
   const maxX = Math.max(...usable.map((p) => p.matchday), 1);
   const maxY = Math.max(...usable.map((p) => p.value), floor + 1);
   const x = (md) => pad.l + (md / maxX) * (w - pad.l - pad.r);
@@ -290,7 +290,7 @@ function TensionLine({ series, floor, targetLabel }) {
           <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{number(v, 0)}</text>
         </g>
       ))}
-      <text x={12} y={pad.t + 4} className="axis-title">Bewerber</text>
+      <YAxisTitle label="Bewerber" top={pad.t} bottom={h - pad.b} />
       <line x1={pad.l} y1={y(floor)} x2={w - pad.r} y2={y(floor)} stroke="var(--text-muted)" strokeDasharray="4 3" strokeWidth="1.5" />
       <text x={pad.l + 6} y={y(floor) - 6} className="axis-label">
         Minimum {number(floor, 1)} — vollständig entschieden
