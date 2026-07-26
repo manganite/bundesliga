@@ -20,8 +20,9 @@ import { useState } from "react";
  * this label.
  *
  * @param {string} label  the unit („%", „Brier", „Bewerber", …)
- * @param {number} top,bottom  the plot's vertical span in SVG units.
- * @param {number} x  screen-x of the label (near the left edge).
+ * @param {number} top  the plot's top edge in SVG units.
+ * @param {number} bottom  the plot's bottom edge in SVG units.
+ * @param {number} [x=13]  screen-x of the label (near the left edge).
  */
 export function YAxisTitle({ label, top, bottom, x = 13 }) {
   const cy = (top + bottom) / 2;
@@ -54,7 +55,8 @@ export function useActivePoint(count) {
  * closes it.
  *
  * @param {number[]} centers  x-centre of each slot, in SVG units, ascending.
- * @param {number} top,bottom vertical span of the hit area.
+ * @param {number} top  top edge of the hit area, in SVG units.
+ * @param {number} bottom  bottom edge of the hit area, in SVG units.
  * @param {(i:number)=>string} labelAt  the aria-label for slot i.
  */
 export function HitAreas({ centers, top = 0, bottom, active, setActive, onKeyDown, labelAt }) {
