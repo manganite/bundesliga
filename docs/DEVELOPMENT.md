@@ -98,55 +98,17 @@ mit, weil die Trainingsdaten committet sind.
 
 ## Zustand
 
-| Baustein | Zustand |
-|---|---|
-| Verifikationen vor dem Bau | 5 von 7 Gates geschlossen; Gate 3 (clubelo) mit Erlaubnis abgeschlossen |
-| `packages/engine` — RNG, Inverse-CDF-Sampling | ✅ mit Tests |
-| `packages/engine` — Poisson + Dixon-Coles | ✅ mit Tests |
-| `packages/engine` — DFL-Ranker | ✅ mit Tests, gegen 22 echte Saisons |
-| `packages/engine` — Metriken | ✅ mit Tests |
-| `packages/engine` — Monte-Carlo, CRN, Batch-SE(Δ) | ✅ mit Tests |
-| `data/season-params.json` (Track C pooled) | ✅ ausgeliefert |
-| `pipeline` — Klub-Mapping fail closed | ✅ mit Gate-Skript |
-| `pipeline` — Datenbeschaffung, Snapshots, Provenance | ✅ mit Tests |
-| `pipeline` — vorberechnete Artefakte | ✅ |
-| Daten- und Deploy-Workflow | ✅ |
-| Tests in CI auf Push und PR, Deploy daran gebunden | ✅ |
-| clubelo-Erlaubnis protokolliert, Trainingsdaten committet | ✅ |
-| Reproduktionstor der Fitprozedur läuft in CI | ✅ |
-| Ein clubelo-Abruf pro Tag statt zwölf | ✅ mit Tests |
-| App B wird in CI gebaut und auf Einzeldatei geprüft | ✅ |
-| App A — fünf Seiten (V1-Umfang) | ✅ |
-| App A — Liga-Umschalter, gerenderte Tests | ✅ mit Tests |
-| App B — eine selbstständige HTML-Datei | ✅ mit Tests |
-| Refit als zwei Prozesse, Toleranzen ex ante | ✅ mit Tests |
-| `packages/fit` — Fitprozedur im Repo, bitgleich reproduziert | ✅ mit Tests |
-| Begrenzter Rating-Übertrag, Datumsprüfung der Tages-CSV | ✅ mit Tests |
-| V1.1 — 2. Bundesliga per Umschalter | ✅ mit Tests |
-| V1.1 — paarungsspezifische Relegation, Komplement bitgleich | ✅ mit Tests |
-| V1.1 — Vorsaison-Tabelle nach erwarteten Punkten | ✅ mit Tests |
-| V1.2 — Modellgüte-Seite, drei Provenienzen getrennt | ✅ mit Tests |
-| V1.2 — Live-Rating-Timeline, Frozen/Live beschreibend | ✅ mit Tests |
-| V1.2 — „Wichtigstes kommendes Spiel", Rekombinationstest im Lauf | ✅ mit Tests |
-| V2a — Szenarien (Was-wäre-wenn, Beispielsaison, Solver) | ✅ mit Tests |
-| Szenarien-UX-Politur + Methodik-Seite (§10 verfeinert) | ✅ mit Tests |
-| Ergebnis-Tabs je Ziel + Textrevisionen | ✅ mit Tests |
-| Wahrscheinlichstes Ergebnis: bedingt auf die Tendenz | ✅ mit Tests |
-| Textmaß-Token + Duell-Tabs (geteilte Tab-Komponente) | ✅ mit Tests |
-| Zahlenformat (fester Dezimal, ein Vorzeichen-Pfad, rating) + Restprogramm | ✅ mit Tests |
-| Header/Footer-Umbau, Läufe-Auswahl weg, Farbsystem (Tokens) | ✅ mit Tests |
-| Zonen-Anzahl, Spaltenlayout, „Wie gerechnet?"-Regel, Releases | ✅ mit Tests |
-| Szenario-Presets · Freigeben · Duell-Hervorhebung (Brief 16) | ✅ mit Tests |
-| Szenario-Schlusstabelle · Anwenden & rechnen · geteilte LeagueTable (Brief 17) | ✅ mit Tests |
-| Abschluss Brief 17: „Δ Platz" rechts + Release 2.2.0 (Brief 18) | ✅ mit Tests |
-| V2b.1 — Historie ab 2011/12 (Brief 19), Phase 1: Gates | ✅ mit Tests |
-| V2b.1 — Phasen 2–5 (Artefakte, Saison-Dimension, Seiten, Release 2.3.0) | ⏳ in Arbeit |
-| V2b.2 — Historie vor 2011 | ⏳ zurückgestellt (clubelo-Trigger im Brief) |
+Der aktuelle Projektzustand — was gebaut ist, was aussteht, welche Klubs mit
+übertragenem Rating rechnen — steht **ausschließlich** in
+[../CLAUDE.md](../CLAUDE.md) unter „Aktueller Zustand". Hier steht er bewusst
+nicht doppelt: zwei Statuslisten laufen unweigerlich auseinander (genau das war
+ein Codex-Befund).
 
 Gemessener Durchsatz der Saisonsimulation (306 Spiele, 18 Klubs, ein Kern):
-**≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 5 000 in 3,4 s. Das kanonische
-20 000-Lauf-Artefakt entsteht deshalb in der Pipeline; im Browser läuft die
-Simulation im Web Worker, mit 5 000 als mobiler Voreinstellung.
+**≈ 1 300 Läufe/s** — 20 000 Läufe in gut 15 s, 2 000 in 1,5 s. Das kanonische
+20 000-Lauf-Artefakt entsteht deshalb in der Pipeline; im Browser rechnet nur das
+Was-wäre-wenn nach, im Web Worker und fest mit 2 000 Läufen (die übrigen Seiten
+lesen das committete 20 000-Lauf-Artefakt).
 
 ## Verifikationen vor dem Bau
 
@@ -176,12 +138,12 @@ Die Pipeline schreibt **nichts**, solange eine Prüfung scheitert: sie endet mit
 Exit-Code 1 und unverändertem `data/`. Das ist das vorgesehene Verhalten, kein
 Defekt.
 
-Der geplante Workflow läuft bewusst **ohne** `--carry-forward-until`. Solange
-clubelo die vier Klubs nicht wieder führt, scheitert er deshalb und meldet das —
-die committeten Daten bleiben stehen, veralten aber. Den Schalter in den Cron zu
-nehmen wäre der Sache nach ein Automatismus, und genau davor warnt das Addendum.
-Wer die Saison laufend aktualisieren will, ruft die Pipeline mit dem Schalter
-manuell auf, bis clubelo sich fängt.
+Der geplante Workflow läuft derzeit mit einem befristeten
+`--carry-forward-until` (Stand: 2026-08-14), weil clubelo vier Klubs seit dem
+03.07.2026 nicht fortführt; die genauen Termine und die harte 42-Tage-Decke
+stehen in [../CLAUDE.md](../CLAUDE.md) unter „Aktueller Zustand". Ohne den
+Schalter — und nach seinem Ablauf — scheitert ein fehlender Klub weiterhin
+fail-closed; der Schalter ist ein befristeter Ausnahmezustand, kein Automatismus.
 
 Eine abgeschlossene Saison lässt sich vollständig neu aufbauen; der geplante
 Workflow übergibt diese Flags nie:

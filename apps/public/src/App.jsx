@@ -84,6 +84,9 @@ export default function App() {
         const isArchive = selectedSeason !== newest.season;
         if (!cancelled) setState({ status: "ready", seasonId: selectedSeason, league: chosen, data, isArchive });
       } catch (e) {
+        // §Codex §4: a load failure is a FAILURE, not an empty data stand. The
+        // detail goes to the console; the UI says so plainly.
+        console.error("Datenladefehler:", e);
         if (!cancelled) setState({ status: "error", error: e.message });
       }
     })();
@@ -101,7 +104,10 @@ export default function App() {
   if (state.status === "error") {
     return (
       <Shell {...shellProps}>
-        <p className="empty">Die Daten konnten nicht geladen werden: {state.error}</p>
+        <p className="empty" role="alert">
+          Die Daten konnten nicht geladen werden — das ist ein Fehler, kein leerer Datenstand.
+          Neu laden hilft möglicherweise; sonst bitte später erneut versuchen.
+        </p>
       </Shell>
     );
   }

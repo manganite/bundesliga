@@ -164,3 +164,25 @@ test("scenario: festsetzen then rechnen shows a result; a further change marks i
   assert.ok(view.$(".whatif-result.is-stale"), "the stale result carries the dim class");
   view.unmount();
 });
+
+// ---------------------------------------------------------------------------
+//  §4 · A data-load failure fails loud — a visible error, not an empty stand.
+// ---------------------------------------------------------------------------
+
+test("App: a 500 on load renders the fail-loud error state, not an empty stand", async () => {
+  const origFetch = globalThis.fetch;
+  const origError = console.error;
+  globalThis.fetch = async () => ({ ok: false, status: 500, json: async () => ({}) });
+  console.error = () => {}; // the detail-to-console is expected; keep the log clean
+  try {
+    const view = await mount(h(bundle.App));
+    await view.act(async () => { await new Promise((r) => setTimeout(r, 20)); });
+    const text = view.text();
+    assert.ok(text.includes("Die Daten konnten nicht geladen werden"), "fail-loud headline shown");
+    assert.ok(text.includes("kein leerer Datenstand"), "explicitly not an empty data stand");
+    view.unmount();
+  } finally {
+    globalThis.fetch = origFetch;
+    console.error = origError;
+  }
+});
