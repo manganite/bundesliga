@@ -12,6 +12,24 @@ import { useState } from "react";
  * sees on hover reaches a screen-reader user on focus — colour and hover are
  * never the only carriers.
  */
+/**
+ * The Y-axis unit label, rotated vertically in the left margin (§CHART_AUSBAU
+ * §0). Horizontal placement collided with the topmost tick („1%0 %"); the
+ * conventional vertical label centred on the axis clears both the scale and the
+ * data. Callers give the axis a left padding of ~52+ so the ticks sit right of
+ * this label.
+ *
+ * @param {string} label  the unit („%", „Brier", „Bewerber", …)
+ * @param {number} top,bottom  the plot's vertical span in SVG units.
+ * @param {number} x  screen-x of the label (near the left edge).
+ */
+export function YAxisTitle({ label, top, bottom, x = 13 }) {
+  const cy = (top + bottom) / 2;
+  return (
+    <text x={-cy} y={x} transform="rotate(-90)" textAnchor="middle" className="axis-title">{label}</text>
+  );
+}
+
 export function useActivePoint(count) {
   const [active, setActive] = useState(null);
   const onKeyDown = (e) => {

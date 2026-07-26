@@ -129,6 +129,15 @@ test("the zone stack draws in zone colours (incl. the neutral Mittelfeld token) 
   assert.match(strip(html), /100 %/);
 });
 
+test("the Y-axis title is rotated vertically, never a horizontal label that overlaps the top tick", () => {
+  // Regression: the axis-title used to sit horizontally at the top-left, on top
+  // of the „100 %" tick. It must now be a rotated (vertical) label.
+  const html = renderTeams(ARCHIVE);
+  const titles = [...html.matchAll(/<text[^>]*class="axis-title"[^>]*>/g)].map((m) => m[0]);
+  assert.ok(titles.length > 0, "expected an axis title");
+  for (const t of titles) assert.match(t, /transform="rotate\(-90\)"/, `axis title not rotated: ${t}`);
+});
+
 test("the placement histogram bars carry zone colours and a % axis, with a legend", () => {
   const html = renderTeams(ARCHIVE);
   assert.match(html, /Wo die Saison endet/);

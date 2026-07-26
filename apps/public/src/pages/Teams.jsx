@@ -3,7 +3,7 @@ import { Card, Empty } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import ChartLegend from "../components/ChartLegend.jsx";
 import ChartTooltip from "../components/ChartTooltip.jsx";
-import { HitAreas, useActivePoint } from "../components/ChartInteractive.jsx";
+import { HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
 import { currentTable, scoredMatches, targetList } from "../lib/season.js";
 import { performanceVsExpectation, zonePartition } from "../../../../packages/engine/src/metrics.mjs";
 import { perfColor } from "../lib/colors.js";
@@ -167,7 +167,7 @@ function PositionBars({ positions, clubName, zones }) {
   const n = positions.length;
   const w = 720;
   const h = 220;
-  const pad = { l: 40, r: 8, t: 10, b: 28 };
+  const pad = { l: 52, r: 8, t: 10, b: 28 };
   const plotH = h - pad.t - pad.b;
   const bw = (w - pad.l - pad.r) / n;
   // A tidy axis top: the smallest 5 %-multiple above the tallest bar.
@@ -210,7 +210,7 @@ function PositionBars({ positions, clubName, zones }) {
             <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{percent(v, 0)}</text>
           </g>
         ))}
-        <text x={10} y={pad.t + 4} className="axis-title">%</text>
+        <YAxisTitle label="%" top={pad.t} bottom={pad.t + plotH} />
         {positions.map((p, i) => (
           <rect
             key={i}
@@ -257,7 +257,7 @@ function PositionBars({ positions, clubName, zones }) {
 function ZoneStack({ series, clubName }) {
   const w = 720;
   const h = 260;
-  const pad = { l: 42, r: 12, t: 12, b: 30 };
+  const pad = { l: 52, r: 12, t: 12, b: 30 };
   const plotH = h - pad.t - pad.b;
   const xs = series.map((p) => p.matchday);
   const maxX = Math.max(...xs, 1);
@@ -292,7 +292,7 @@ function ZoneStack({ series, clubName }) {
             <text x={pad.l - 6} y={y(v) + 4} textAnchor="end" className="axis-label">{Math.round(v * 100)} %</text>
           </g>
         ))}
-        <text x={10} y={pad.t + 4} className="axis-title">%</text>
+        <YAxisTitle label="%" top={pad.t} bottom={pad.t + plotH} />
         {canon.map((band, k) => {
           const dTop = series.map((p) => `${x(p.matchday).toFixed(1)},${y(cumBefore(p.bands, k)).toFixed(1)}`);
           const dBottom = series.map((p) => `${x(p.matchday).toFixed(1)},${y(cumBefore(p.bands, k) + p.bands[k].value).toFixed(1)}`).reverse();
