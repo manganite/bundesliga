@@ -307,7 +307,13 @@ export function Ready({ route, seasonId, league, data, isArchive = false, availa
 
       <div className="shell">
         <main id="inhalt">
-          <Component ctx={ctx} />
+          {/* The page is REMOUNTED on any season/league change (§Codex §2):
+              its local state (club, matchday, Verlauf target, Spiel-Zeugnis, and
+              every scenario override) belongs to one data set and must not leak
+              into another — a BL1 club does not exist in the BL2 picker, a 2014
+              scenario has no meaning under 2026/27. Discarding is the honest
+              semantics; switching back does not resurrect it. */}
+          <Component key={`${seasonId}-${league}`} ctx={ctx} />
         </main>
 
         <SiteFooter version={__APP_VERSION__} buildStamp={__BUILD_STAMP__} />
