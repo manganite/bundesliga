@@ -367,6 +367,44 @@ const deBit = (v) => `${(Math.round(v * 10) / 10).toLocaleString("de-DE", { mini
  */
 export const nonCarriedScored = (scored) => scored.filter((s) => s.provenance !== "carried-forward");
 
+/**
+ * The clubs the Verlauf multi-club chart shows for one target, in draw order
+ * (§CHART_AUSBAU §1, user rule). „Relevant" is the target's own prominence:
+ * normally P(target), but for a broad „safe" target (`invert`, e.g.
+ * Klassenerhalt) the COMPLEMENT 1 − P — the risk of MISSING it — because
+ * reaching it is the norm and the risk is the story.
+ *
+ * Selection: rank every club by its PEAK prominence over the timeline and take
+ * the top `max`. Clubs that ever cleared 2 % (`qualifies`) therefore come first
+ * automatically; if fewer than `max` qualify, the rest fill up. Peak — not the
+ * current value — because a finished (archive) season's last point collapses to
+ * 0/1 (every fate decided), which would rank arbitrary safe clubs into the
+ * chart; the peak keeps whoever was genuinely relevant at any point.
+ *
+ * @param {Array} timelinePoints  timeline.points — each {matchday, probabilities}
+ * @param {string} targetId
+ * @param {boolean} invert  rank/filter by 1 − P instead of P
+ * @param {number} [max=8]
+ * @returns {Array<{clubId:string, points:Array<{matchday:number,value:number}>, peak:number, current:number, qualifies:boolean}>}
+ */
+export function verlaufSeries(timelinePoints, targetId, invert, max = 8) {
+  if (!timelinePoints?.length) return [];
+  const clubs = Object.keys(timelinePoints[0].probabilities?.[targetId] ?? {});
+  const prominence = (v) => (invert ? 1 - v : v);
+  const byClub = clubs.map((clubId) => {
+    const points = timelinePoints.map((p) => ({
+      matchday: p.matchday,
+      value: p.probabilities?.[targetId]?.[clubId] ?? 0,
+    }));
+    const peak = Math.max(...points.map((p) => prominence(p.value)));
+    const current = prominence(points[points.length - 1].value);
+    return { clubId, points, peak, current, qualifies: peak >= 0.02 };
+  });
+  return byClub
+    .sort((a, b) => b.peak - a.peak)
+    .slice(0, max);
+}
+
 /** A fixture's prediction, for an unplayed match. */
 export function predictFixture(fixture, prematch, params, league) {
   if (!prematch || !params) return null;
