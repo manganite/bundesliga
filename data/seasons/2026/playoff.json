@@ -3269,8 +3269,8 @@
     {
       "bl1Club": "Union Berlin",
       "bl2Club": "Nürnberg",
-      "pBl1Wins": 0.71035,
-      "pBl2Wins": 0.28964999999999996,
+      "pBl1Wins": 0.7103999999999999,
+      "pBl2Wins": 0.2896000000000001,
       "hostsSecondLeg": null,
       "homeOrderMixed": true,
       "homeOrderBasis": "dates unknown",
@@ -3289,8 +3289,8 @@
     {
       "bl1Club": "Union Berlin",
       "bl2Club": "St. Pauli",
-      "pBl1Wins": 0.6151,
-      "pBl2Wins": 0.3849,
+      "pBl1Wins": 0.61505,
+      "pBl2Wins": 0.38495,
       "hostsSecondLeg": null,
       "homeOrderMixed": true,
       "homeOrderBasis": "dates unknown",
@@ -3345,9 +3345,9 @@
       "pWinsPlayoff": 0.7233019924999999
     },
     "Freiburg": {
-      "pSafe": 0.9594499999999999,
+      "pSafe": 0.95945,
       "pRelegationPlayoff": 0.01885,
-      "pKlassenerhalt": 0.9743441431941249,
+      "pKlassenerhalt": 0.974344143194125,
       "pWinsPlayoff": 0.7901402224999999
     },
     "Gladbach": {
@@ -3413,8 +3413,8 @@
     "Union Berlin": {
       "pSafe": 0.81755,
       "pRelegationPlayoff": 0.07065,
-      "pKlassenerhalt": 0.86483214052775,
-      "pWinsPlayoff": 0.6692447350000001
+      "pKlassenerhalt": 0.864831995518625,
+      "pWinsPlayoff": 0.6692426825
     }
   },
   "bl2": {
@@ -3505,8 +3505,8 @@
     "Nürnberg": {
       "pDirect": 0.08725,
       "pPlayoffPlace": 0.0565,
-      "pAufstieg": 0.10570534178874999,
-      "pWinsPlayoff": 0.3266432174999999
+      "pAufstieg": 0.10570514220249999,
+      "pWinsPlayoff": 0.32663968499999996
     },
     "Osnabrück": {
       "pDirect": 0.0115,
@@ -3517,8 +3517,8 @@
     "St. Pauli": {
       "pDirect": 0.22855,
       "pPlayoffPlace": 0.09755,
-      "pAufstieg": 0.26980719170225,
-      "pWinsPlayoff": 0.422933795
+      "pAufstieg": 0.269807536297625,
+      "pWinsPlayoff": 0.4229373275
     },
     "Wolfsburg": {
       "pDirect": 0.4229,
