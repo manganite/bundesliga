@@ -1,0 +1,24 @@
+{
+  "_comment": "clubId -> the name form Kicktipp renders (§KICKTIPP_PARSER_FIX §2). Verified against the committed fixture tippabgabe-2026-md2.html (a BL1 pool, 2. Spieltag 2026/27). The 18 BL2 forms are NOT yet verified — they come from the public Kicktipp Spielplan in a follow-up; until then BL2 clubs match via the canonical name and fail-closed on a divergent form (never guessed).",
+  "_source": "apps/kicktipp/tests/fixtures/tippabgabe-2026-md2.html",
+  "names": {
+    "Stuttgart": "VfB Stuttgart",
+    "Köln": "1. FC Köln",
+    "Bremen": "Werder Bremen",
+    "Leipzig": "RB Leipzig",
+    "Gladbach": "Bor. Mönchengladbach",
+    "Elversberg": "SV Elversberg",
+    "Leverkusen": "Bayer 04 Leverkusen",
+    "Union Berlin": "1. FC Union Berlin",
+    "Paderborn": "SC Paderborn 07",
+    "Freiburg": "SC Freiburg",
+    "Hoffenheim": "1899 Hoffenheim",
+    "Dortmund": "Borussia Dortmund",
+    "Schalke": "FC Schalke 04",
+    "Bayern": "FC Bayern München",
+    "HSV": "Hamburger SV",
+    "Mainz": "FSV Mainz 05",
+    "Frankfurt": "Eintracht Frankfurt",
+    "Augsburg": "FC Augsburg"
+  }
+}

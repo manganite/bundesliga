@@ -34,6 +34,7 @@ Addendum vor dem Erratum, das es ergänzt. Deshalb dieser Index.
 | 22 | [DUELLE_ERGEBNISSE_PROMPT.md](DUELLE_ERGEBNISSE_PROMPT.md) | Fix vor 2.3.0: die Duelle-Karte zeigt je Ziel-Tab „Anstehend" und „Gespielt" (mit Endergebnis, Heim zuerst); leere Abschnitte verbergen sich, Tab-Zähler = Summe. Reiner Daten-Join. |
 | 23 | [CHART_AUSBAU_BRIEF.md](CHART_AUSBAU_BRIEF.md) | Diagramm-Ausbau (Referenz WM-App): geteilte `ChartTooltip`/`ChartLegend`/`ChartInteractive`, Zonenverteilung statt Titelchance-Linie, Kalibrierung/Güte-Zeitreihen mit Achsen/Legenden/Tooltips. Zwei erlaubte reine Engine-Aggregationen (`zonePartition`, `cumulativeSeries`). Danach Release 2.3.0. |
 | 24 | [CODEX_REVIEW_FIXES_BRIEF.md](CODEX_REVIEW_FIXES_BRIEF.md) | Codex-Review-Fixes: jsdom-Interaktions-Testschicht, datensatzgebundener Remount-Key, ARIA-Tabs-Tastatur, `getOptionalJson`-Fail-loud, README-Kausalfix + repo-weiter Scan, Doku-Zustand nur in CLAUDE.md. Danach Release 2.3.2. |
+| 25 | [KICKTIPP_PARSER_FIX_BRIEF.md](KICKTIPP_PARSER_FIX_BRIEF.md) | App B: struktureller Parser gegen das echte Kicktipp-Markup (Wettquoten nur aus dem Quotenblock, Punkteregel getrennt, Nur-Modell-Modus, „Das habe ich verstanden"-Panel, text/html-Paste). Committete Fixture als Referenz; Register um Kicktipp-Namensformen (BL1 verifiziert, BL2 als Folge). Kein Release-Bump (App B wird nie deployt). |
 
 **Stehende Regel:** Ein neuer Brief bekommt seinen Ketteneintrag in
 [../../CLAUDE.md](../../CLAUDE.md) **und** seine Zeile in diesem Index im selben

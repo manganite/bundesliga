@@ -18,6 +18,17 @@ const OUT = path.resolve(import.meta.dirname, "../src/generated");
 
 const exists = async (p) => { try { await fs.access(p); return true; } catch { return false; } };
 
+// §KICKTIPP_PARSER_FIX §2: the name form Kicktipp renders, per club, so the
+// parser matches „Bor. Mönchengladbach"/„1899 Hoffenheim"/… exactly instead of
+// guessing. Verified forms only; unknown clubs stay fail-closed.
+let kicktippNames = {};
+try {
+  const raw = JSON.parse(await fs.readFile(path.join(import.meta.dirname, "kicktipp-names.json"), "utf8"));
+  kicktippNames = raw.names ?? {};
+} catch {
+  kicktippNames = {};
+}
+
 const clubs = new Map();
 let newest = null;
 let params = null;
@@ -42,7 +53,15 @@ if (await exists(SEASONS)) {
       for (const club of seasonData.clubs) {
         const rating = outlook.ratings?.[club.clubId];
         if (Number.isFinite(rating)) {
-          clubs.set(club.clubId, { clubId: club.clubId, name: club.name, league, rating });
+          clubs.set(club.clubId, {
+            clubId: club.clubId,
+            name: club.name,
+            // The Kicktipp form, when verified; null means the parser matches on
+            // the canonical name alone (BL2 until the Spielplan is added).
+            kicktipp: kicktippNames[club.clubId] ?? null,
+            league,
+            rating,
+          });
         }
       }
     }

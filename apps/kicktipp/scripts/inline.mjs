@@ -23,16 +23,21 @@ const styles = [...html.matchAll(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"[
 const assetPath = (href) => path.join(DIST, href.replace(/^\.?\//, ""));
 const inlined = [];
 
+// Replacements go through a FUNCTION, not a string: minified JS legitimately
+// contains `$&`/`$\``/`$'` sequences (a var renamed to `$`, e.g. `$&&$`), and a
+// string replacement would interpret those as backreferences and splice the
+// original tag back in. A function replacement keeps the content literal.
 for (const [tag, href] of styles) {
   const css = await fs.readFile(assetPath(href), "utf8");
-  html = html.replace(tag, `<style>\n${css}\n</style>`);
+  html = html.replace(tag, () => `<style>\n${css}\n</style>`);
   inlined.push(href);
 }
 
 for (const [tag, src] of scripts) {
   const js = await fs.readFile(assetPath(src), "utf8");
   // `</script>` inside a string literal would close the tag early.
-  html = html.replace(tag, `<script type="module">\n${js.replace(/<\/script>/g, "<\\/script>")}\n</script>`);
+  const inline = `<script type="module">\n${js.replace(/<\/script>/g, "<\\/script>")}\n</script>`;
+  html = html.replace(tag, () => inline);
   inlined.push(src);
 }
 
