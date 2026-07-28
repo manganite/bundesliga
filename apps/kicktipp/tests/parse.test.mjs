@@ -129,17 +129,28 @@ test("the Kicktipp form resolves to its club; an unknown name resolves to null",
   assert.equal(resolveClub("FC Fantasialand", REGISTER), null, "unknown → never guessed");
 });
 
-test("every club of the committed fixture resolves against the bundled register (BL1 acceptance)", () => {
-  const clubs = JSON.parse(fs.readFileSync(
-    path.resolve(import.meta.dirname, "../src/generated/clubs.json"), "utf8",
-  )).clubs;
+test("every club of the committed fixture has a verified Kicktipp form in the mapping (BL1 acceptance)", () => {
+  // Check the committed mapping, not the generated clubs.json (a build artefact
+  // that does not exist when `node --test` runs in CI). Every fixture name IS a
+  // Kicktipp form, so it must appear among the mapping's values — that is what
+  // guarantees `resolveClub` matches it exactly for a real BL1 paste.
+  const mapping = JSON.parse(fs.readFileSync(
+    path.resolve(import.meta.dirname, "../scripts/kicktipp-names.json"), "utf8",
+  ));
+  const forms = new Set(Object.values(mapping.names));
   const { fixtures } = parseTippPage(FIXTURE, parser);
-  const unresolved = [];
+  const missing = [];
   for (const f of fixtures) {
-    if (!resolveClub(f.home, clubs)) unresolved.push(f.home);
-    if (!resolveClub(f.away, clubs)) unresolved.push(f.away);
+    if (!forms.has(f.home)) missing.push(f.home);
+    if (!forms.has(f.away)) missing.push(f.away);
   }
-  assert.deepEqual(unresolved, [], "these fixture clubs did not resolve");
+  assert.deepEqual(missing, [], "these fixture clubs lack a verified Kicktipp form");
+  // And they resolve against a register built from those verified forms.
+  const register = Object.entries(mapping.names).map(([clubId, name]) => ({ clubId, name, kicktipp: name }));
+  for (const f of fixtures) {
+    assert.ok(resolveClub(f.home, register), `home unresolved: ${f.home}`);
+    assert.ok(resolveClub(f.away, register), `away unresolved: ${f.away}`);
+  }
 });
 
 // ---------------------------------------------------------------------------
