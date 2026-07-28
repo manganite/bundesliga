@@ -3269,8 +3269,8 @@
     {
       "bl1Club": "Union Berlin",
       "bl2Club": "Nürnberg",
-      "pBl1Wins": 0.7103999999999999,
-      "pBl2Wins": 0.2896000000000001,
+      "pBl1Wins": 0.71035,
+      "pBl2Wins": 0.28964999999999996,
       "hostsSecondLeg": null,
       "homeOrderMixed": true,
       "homeOrderBasis": "dates unknown",
@@ -3413,8 +3413,8 @@
     "Union Berlin": {
       "pSafe": 0.81755,
       "pRelegationPlayoff": 0.07065,
-      "pKlassenerhalt": 0.864831995518625,
-      "pWinsPlayoff": 0.6692426825
+      "pKlassenerhalt": 0.864831795932375,
+      "pWinsPlayoff": 0.6692398575
     }
   },
   "bl2": {
@@ -3505,8 +3505,8 @@
     "Nürnberg": {
       "pDirect": 0.08725,
       "pPlayoffPlace": 0.0565,
-      "pAufstieg": 0.10570514220249999,
-      "pWinsPlayoff": 0.32663968499999996
+      "pAufstieg": 0.10570534178874999,
+      "pWinsPlayoff": 0.3266432174999999
     },
     "Osnabrück": {
       "pDirect": 0.0115,
