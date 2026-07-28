@@ -1,23 +1,48 @@
 // ============================================================================
-//  Parsing the pasted Kicktipp page (§9).
+//  Parsing the pasted Kicktipp page (§9), STRUCTURALLY (§KICKTIPP_PARSER_FIX).
 //
 //  PASTED CONTENT IS UNTRUSTED INPUT AND IS TREATED AS SUCH.
 //
 //   - parsed with `DOMParser`, never assigned via `innerHTML` or any equivalent
-//   - only VALIDATED, TYPED fields (club names, quotas, odds) leave this module
+//   - only VALIDATED, TYPED fields (club names, odds, point rule, id) leave here
 //   - anything unparsed is DISCARDED, not displayed
 //
 //  `DOMParser.parseFromString(..., "text/html")` builds an inert document: it
 //  does not execute scripts and does not run event handlers. Nothing from the
 //  paste is ever inserted into the live document — the UI renders the typed
-//  fields below as text nodes.
+//  fields as text nodes.
 //
 //  No automation against Kicktipp or Oddset. Manual paste only.
+//
+//  WHY STRUCTURAL, NOT POSITIONAL. Kicktipp renders a fixture as a responsive
+//  „stack": the home cell (col1) carries the club name, the point rule
+//  („3 - 9 - 9") AND the bookmaker odds (the `quote-heim/remis/gast` spans),
+//  while the columns named for them (col3/col5) sit empty and hidden. The old
+//  one-number-per-cell reader could never see that — and it was the very thing
+//  that risked reading the point rule as odds. The positional number approach
+//  is gone: odds come ONLY from the `tippabgabe-quoten` block, so the point
+//  rule can never be mistaken for them.
 // ============================================================================
 
 export class ParseError extends Error {}
 
-/** Numbers on the page are German: „2,45". */
+/**
+ * A decimal number written with a point OR a comma as the separator — Kicktipp's
+ * odds use a point („1.11"), the manual form uses German commas („2,45").
+ */
+export function parseDecimal(text) {
+  if (text == null) return null;
+  let s = String(text).trim().replace(/\s/g, "");
+  if (!s) return null;
+  // A comma means German notation (point = thousands); otherwise the point is
+  // the decimal separator and is left in place.
+  if (s.includes(",")) s = s.replace(/\./g, "").replace(",", ".");
+  if (!/^-?\d+(\.\d+)?$/.test(s)) return null;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+}
+
+/** The German-comma reader kept for the manual-entry form. */
 export function parseGermanNumber(text) {
   if (text == null) return null;
   const cleaned = String(text).trim().replace(/\s/g, "").replace(/\./g, "").replace(",", ".");
@@ -38,16 +63,59 @@ export function sanitiseClubName(raw) {
 
 const cellText = (el) => (el?.textContent ?? "").replace(/\s+/g, " ").trim();
 
+// The pool's point rule per tendency: three payouts, each 3–9 („3 - 9 - 9").
+const POINT_RULE = /^([3-9])\s*[-–]\s*([3-9])\s*[-–]\s*([3-9])$/;
+
+/** Parse the „N - N - N" point rule; null if it is not that shape. */
+export function parsePointRule(text) {
+  const m = POINT_RULE.exec((text ?? "").trim());
+  if (!m) return null;
+  return { homeWin: Number(m[1]), draw: Number(m[2]), awayWin: Number(m[3]) };
+}
+
 /**
- * Parse a pasted Kicktipp tipping page.
- *
- * The page carries both the pool's Tippquoten (the 3–9 payout per tendency) and
- * the 1X2 bookmaker odds. Layouts vary, so this reads defensively: a row that
- * does not yield a complete, validated fixture is skipped and reported as
- * unparsed rather than half-rendered.
+ * The three 1X2 bookmaker odds, read by their named spans (heim/remis/gast) so
+ * page order cannot swap them. Returns null when the round carries no odds block
+ * at all — the app then runs in model-only mode. A present-but-implausible odds
+ * set (≤ 1) also returns null rather than a guess.
+ */
+function extractOdds(scope) {
+  const block = scope.querySelector(".tippabgabe-quoten");
+  if (!block) return null;
+  const pick = (cls) => parseDecimal(cellText(block.querySelector(`.quote-${cls} .quote-text`)));
+  const home = pick("heim");
+  const draw = pick("remis");
+  const away = pick("gast");
+  if (home == null || draw == null || away == null) return null;
+  if (!(home > 1) || !(draw > 1) || !(away > 1)) return null;
+  return { home, draw, away };
+}
+
+const idOf = (row) => {
+  const input = row.querySelector('input[name^="spieltippForms"]');
+  return input?.getAttribute("name")?.match(/spieltippForms\[(\w+)\]/)?.[1] ?? null;
+};
+
+// A row is a fixture candidate unless it is a date/section header. Tolerant: the
+// structural markers are preferred, but a row that merely carries two name cells
+// still qualifies (the table may arrive without its id/classes after a paste).
+function isCandidate(row) {
+  if (row.classList.contains("rowheader")) return false;
+  if (row.classList.contains("label")) return false;
+  // Date/section rows span the table with a single colspan cell — on a td as
+  // well as a th (the committed fixture uses `td colspan="99"`). Skip either, so
+  // a class-less pasted fragment does not push them into the rejected list.
+  if (row.querySelector("td[colspan], th[colspan]")) return false;
+  return true;
+}
+
+/**
+ * Parse a pasted Kicktipp tipping page into typed fixtures.
  *
  * @param {string} html      the pasted markup
  * @param {DOMParser} parser injectable so tests run without a browser
+ * @returns {{fixtures: Array, skipped: Array}}  a skipped entry names why a row
+ *   was not used, so the „Das habe ich verstanden" panel can show it (§3).
  */
 export function parseTippPage(html, parser = new DOMParser()) {
   if (typeof html !== "string" || !html.trim()) throw new ParseError("nichts eingefügt");
@@ -59,51 +127,69 @@ export function parseTippPage(html, parser = new DOMParser()) {
   const skipped = [];
 
   for (const row of doc.querySelectorAll("tr")) {
-    const cells = [...row.querySelectorAll("td, th")].map(cellText);
-    if (cells.length < 3) continue;
+    if (!isCandidate(row)) continue;
+    const cells = [...row.querySelectorAll("td, th")];
+    if (cells.length < 2) continue;
 
-    // Two club names, then the numbers. Names are validated, not trusted.
-    const names = cells.map(sanitiseClubName).filter(Boolean);
-    const numbers = cells.map(parseGermanNumber).filter((n) => n !== null);
+    const col1 = row.querySelector("td.col1, th.col1") ?? cells[0];
+    const col2 = row.querySelector("td.col2, th.col2") ?? cells[1];
 
-    // A fixture row needs two plausible club names and at least three numbers
-    // that look like odds (> 1).
-    const odds = numbers.filter((n) => n > 1 && n < 1000);
-    if (names.length < 2 || odds.length < 3) {
-      if (cells.some((c) => c.length)) skipped.push(cells.join(" | ").slice(0, 120));
+    // Home/away: the stack element when present, else the plain cell text.
+    const homeRaw = cellText(col1.querySelector?.('.stackElement[data-from="1"]')) || cellText(col1);
+    const awayRaw = cellText(col2.querySelector?.('.stackElement[data-from="2"]')) || cellText(col2);
+    const home = sanitiseClubName(homeRaw);
+    const away = sanitiseClubName(awayRaw);
+    const id = idOf(row);
+
+    if (!home || !away) {
+      // Only report rows that actually held something — an empty spacer row is
+      // not a „rejected fixture".
+      const text = cells.map(cellText).filter(Boolean).join(" | ").slice(0, 120);
+      if (text) skipped.push({ id, reason: "unvollständige Zeile (kein gültiges Vereinspaar)", text });
       continue;
     }
 
-    fixtures.push({
-      home: names[0],
-      away: names[1],
-      // The three 1X2 bookmaker odds, in page order.
-      odds: { home: odds[0], draw: odds[1], away: odds[2] },
-      // Quotas, where the page carried a further three small numbers in the
-      // 3–11 range. Absent means the user supplies them manually.
-      quotas: extractQuotas(numbers),
-      raw: cells.length,
-    });
+    // Odds ONLY from the named quote block; the point rule ONLY from its stack
+    // element / col3. Neither can be mistaken for the other.
+    const odds = extractOdds(col1) ?? extractOdds(row);
+    const ruleText = cellText(col1.querySelector?.('.stackElement[data-from="3"]'))
+      || cellText(row.querySelector("td.col3, th.col3"));
+    const quotas = parsePointRule(ruleText);
+
+    fixtures.push({ id, home, away, odds, quotas });
   }
 
   if (!fixtures.length) {
     throw new ParseError(
-      "keine Spiele erkannt. Bitte die Tippabgabe-Seite vollständig kopieren, oder die Werte von Hand eintragen.",
+      "keine Spiele erkannt. Bitte die Tippabgabe-Seite vollständig kopieren (nicht nur den Text) "
+      + "— oder in den DevTools das Tabellen-HTML kopieren.",
     );
   }
   return { fixtures, skipped };
 }
 
 /**
- * Pull the pool quotas out of a row's numbers: three integers in the schema's
- * own range. Returns null when the page did not carry them, rather than
- * inventing values.
+ * Resolve a pasted club name to a bundled club (§2). Matches BOTH the canonical
+ * name and the verified Kicktipp form. Returns null rather than a near miss — an
+ * unresolved club is reported by name, never guessed. Exactly one plausible
+ * partial is accepted; two or more is ambiguous and left unresolved.
+ *
+ * @param {string} name   the pasted name
+ * @param {Array<{name:string, kicktipp?:string}>} clubs  the register
  */
-function extractQuotas(numbers) {
-  const candidates = numbers.filter((n) => Number.isInteger(n) && n >= 3 && n <= 9);
-  if (candidates.length < 3) return null;
-  const [homeWin, draw, awayWin] = candidates.slice(0, 3);
-  return { homeWin, draw, awayWin };
+export function resolveClub(name, clubs) {
+  const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+  const target = norm(name);
+  if (!target) return null;
+  let exact = null;
+  const partial = [];
+  for (const c of clubs) {
+    const forms = [c.name, c.kicktipp].filter(Boolean).map(norm);
+    if (forms.includes(target)) { exact = c; break; }
+    if (forms.some((n) => n.includes(target) || target.includes(n))) partial.push(c);
+  }
+  if (exact) return exact;
+  return partial.length === 1 ? partial[0] : null;
 }
 
 /**
@@ -115,11 +201,14 @@ export function validateManualFixture(input) {
   const away = sanitiseClubName(input.away);
   if (!home || !away) throw new ParseError("Vereinsnamen fehlen oder enthalten unerlaubte Zeichen");
 
-  const odds = {};
-  for (const key of ["home", "draw", "away"]) {
-    const v = typeof input.odds?.[key] === "number" ? input.odds[key] : parseGermanNumber(input.odds?.[key]);
-    if (v === null || !(v > 1)) throw new ParseError(`Quote „${key}" fehlt oder ist unplausibel`);
-    odds[key] = v;
+  let odds = null;
+  if (input.odds && Object.keys(input.odds).length) {
+    odds = {};
+    for (const key of ["home", "draw", "away"]) {
+      const v = typeof input.odds?.[key] === "number" ? input.odds[key] : parseGermanNumber(input.odds?.[key]);
+      if (v === null || !(v > 1)) throw new ParseError(`Quote „${key}" fehlt oder ist unplausibel`);
+      odds[key] = v;
+    }
   }
 
   let quotas = null;

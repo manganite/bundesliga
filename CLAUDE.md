@@ -164,6 +164,13 @@ spätere schlägt die frühere:**
     Fehlerzustand); §5 README-Kausalfix + **repo-weiter** RATING_SIGMA-Scan mit
     Selbsttest; §6 Doku-Zustand nur in CLAUDE.md, Brief-Index vervollständigt,
     Übersichtstext zahlenfrei. Danach **Release 2.3.2**.
+25. `KICKTIPP_PARSER_FIX_BRIEF.md` — App B: struktureller Parser gegen das echte
+    Kicktipp-Markup statt der Zahl-je-Zelle-Heuristik (Wettquoten nur aus dem
+    `quoten`-Block, Punkteregel getrennt, Nur-Modell-Modus, Fail-closed je Zeile,
+    „Das habe ich verstanden"-Panel, text/html-Paste). Committete Fixture als
+    Referenz; Register um Kicktipp-Namensformen (BL1 verifiziert, **BL2 als
+    Folge-PR** aus dem Spielplan). Reiner App-B-Fix, kein Release-Bump nötig
+    (App B wird nie deployt).
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -289,6 +296,20 @@ veröffentlicht ausschließlich `apps/public`. Eingefügtes ist nicht vertrauens
 `DOMParser`, nur validierte typisierte Felder kommen zurück, alles andere wird
 **verworfen statt bereinigt angezeigt**. Ein Test durchsucht den Quelltext nach
 `innerHTML`, `outerHTML`, `insertAdjacentHTML` und `document.write`.
+
+Der Parser ist **strukturell, nicht positionsbasiert** (KICKTIPP_PARSER_FIX): je
+`tr.datarow` liest er Heim aus `stackElement[data-from="1"]`, Gast aus col2, die
+**Wettquoten NUR aus dem `.tippabgabe-quoten`-Block** (`quote-heim/remis/gast`),
+die Punkteregel aus `stackElement[data-from="3"]` und die Spiel-ID aus
+`spieltippForms[<id>]`. Die alte Eine-Zahl-je-Zelle-Heuristik ist ersatzlos weg —
+sie war die Quelle der Gefahr, die Punkteregel „3 - 9 - 9" als Wettquoten zu
+lesen; die Struktur trennt beides. Fehlt der Quotenblock: **Nur-Modell-Modus**
+(odds null, sichtbarer Hinweis). Fail-closed je Zeile; die maßgebliche Referenz
+ist `tests/fixtures/tippabgabe-2026-md2.html` (echtes Markup, BL1-Pool). Klub-
+Register trägt die **Kicktipp-Namensform** als dritte Spalte (BL1 aus der Fixture
+verifiziert; **BL2 folgt aus dem Kicktipp-Spielplan**, bis dahin Kanonik + fail-
+closed, nie geraten). `inline.mjs` ersetzt per **Funktions**-Replacer (minifiertes
+JS kann `$&` enthalten — ein String-Replacer spleißt sonst das Asset-Tag zurück).
 
 Punkteschema ist **best-of, max 11**: Quote 3–9 plus genau *ein* Bonus (Sieg: +2 exakt
 oder +1 Tordifferenz; Remis: nur +2 exakt, kein Tordifferenz-Rang). Scoreline-Form durch

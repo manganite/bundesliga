@@ -9,7 +9,7 @@
 
 import "./style.css";
 import clubData from "./generated/clubs.json";
-import { parseTippPage, ParseError } from "./parse.mjs";
+import { parseTippPage, resolveClub, ParseError } from "./parse.mjs";
 import { buildMarketMatrix } from "./market.mjs";
 import { optimiseMatchday } from "./optimise.mjs";
 import { quotaFromPool } from "./scoring.mjs";
@@ -71,61 +71,63 @@ function say(el, text, kind = "") {
  * Match a pasted club name to a bundled club. Returns null rather than a near
  * miss — the user sees what was matched and what was not.
  */
-function matchClub(name) {
-  const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
-  const target = norm(name);
-  let exact = null;
-  const partial = [];
-  for (const c of clubData.clubs) {
-    const n = norm(c.name);
-    if (n === target) exact = c;
-    else if (n.includes(target) || target.includes(n)) partial.push(c);
-  }
-  if (exact) return exact;
-  // Exactly one plausible partial is accepted; two or more is ambiguous and
-  // resolving it by guessing is how the wrong club silently gets used.
-  return partial.length === 1 ? partial[0] : null;
-}
+// Resolution against the bundled register lives in parse.mjs (pure, tested);
+// here it is bound to the embedded clubs.
+const matchClub = (name) => resolveClub(name, clubData.clubs);
 
 function buildFixtures(parsed) {
   const notes = [];
   const built = [];
+  // The „Das habe ich verstanden" panel (§3): every row, used or rejected, with
+  // its reason — nothing is guessed and nothing is silently dropped.
+  const understood = [];
+  const rejected = parsed.skipped.map((s) => ({ text: s.text, reason: s.reason }));
 
   for (const f of parsed.fixtures) {
     const home = matchClub(f.home);
     const away = matchClub(f.away);
     if (!home || !away || !params) {
-      notes.push(
-        `„${f.home} – ${f.away}“ konnte keinem Klub mit hinterlegtem Rating zugeordnet werden `
-        + "und bleibt deshalb außen vor.",
-      );
+      const which = !home ? f.home : !away ? f.away : "Rating";
+      rejected.push({
+        text: `${f.home} – ${f.away}`,
+        reason: params ? `„${which}" ist keinem Klub im Register zugeordnet` : "keine Ratings eingebettet",
+      });
       continue;
     }
 
-    const quotas = f.quotas ?? null;
-    if (!quotas) {
-      notes.push(`Für „${f.home} – ${f.away}“ standen keine Tippquoten auf der Seite; es gilt 3/3/3.`);
-    }
-
+    // Odds ONLY where the page carried them; otherwise model-only mode (§1).
     const market = buildMarketMatrix({
       eloHome: home.rating, eloAway: away.rating, params, odds: f.odds,
     });
-    if (market.note) notes.push(`${f.home} – ${f.away}: ${market.note}`);
+    const modelOnly = !f.odds;
+    if (market.note && !modelOnly) notes.push(`${f.home} – ${f.away}: ${market.note}`);
 
     built.push({
-      id: `${home.clubId}-${away.clubId}`,
-      homeName: f.home,
-      awayName: f.away,
-      odds: f.odds,
-      quotas: quotas ?? { homeWin: 3, draw: 3, awayWin: 3 },
+      id: f.id ?? `${home.clubId}-${away.clubId}`,
+      homeName: home.name,
+      awayName: away.name,
+      odds: f.odds ?? null,
+      quotas: f.quotas ?? { homeWin: 3, draw: 3, awayWin: 3 },
       matrix: market.matrix,
       maxGoals: market.maxGoals,
       market: market.market,
       source: market.source,
     });
+    understood.push({
+      pairing: `${home.name} – ${away.name}`,
+      rule: f.quotas ? `${f.quotas.homeWin} - ${f.quotas.draw} - ${f.quotas.awayWin}` : "—",
+      odds: f.odds ? `${fmt(f.odds.home)} / ${fmt(f.odds.draw)} / ${fmt(f.odds.away)}` : "ohne",
+    });
   }
 
-  return { built, notes };
+  const withoutOdds = built.filter((f) => !f.odds).length;
+  if (withoutOdds === built.length && built.length) {
+    notes.push("Diese Runde trägt keine Wettquoten — die Empfehlungen entstehen rein aus dem Modell.");
+  } else if (withoutOdds > 0) {
+    notes.push(`${withoutOdds} Spiel(e) ohne Wettquoten — dort empfiehlt allein das Modell.`);
+  }
+
+  return { built, notes, understood, rejected };
 }
 
 function renderFixtures() {
@@ -134,12 +136,54 @@ function renderFixtures() {
     ["Begegnung", "Quote H", "Quote U", "Quote A", "Tippquote H/U/A", "Grundlage"],
     fixtures.map((f) => [
       `${f.homeName} – ${f.awayName}`,
-      fmt(f.odds.home), fmt(f.odds.draw), fmt(f.odds.away),
+      f.odds ? fmt(f.odds.home) : "—",
+      f.odds ? fmt(f.odds.draw) : "—",
+      f.odds ? fmt(f.odds.away) : "—",
       `${f.quotas.homeWin}/${f.quotas.draw}/${f.quotas.awayWin}`,
       f.source === "market" ? "Markt" : "Modell",
     ]),
   );
   $("fixtures-section").hidden = fixtures.length === 0;
+}
+
+/**
+ * „Das habe ich verstanden" (§3): after every paste, what the parser made of the
+ * page — the used rows (pairing · point rule · odds or „ohne") and, named, the
+ * rows it could not use. The reader checks this BEFORE trusting the suggestion.
+ */
+function renderUnderstood(understood, rejected) {
+  const el = $("understood");
+  el.replaceChildren();
+
+  const h = document.createElement("p");
+  h.textContent = understood.length
+    ? `${understood.length} Spiel(e) erkannt:`
+    : "Kein Spiel konnte verwertet werden.";
+  el.append(h);
+
+  if (understood.length) {
+    renderTable(
+      el,
+      ["Begegnung", "Punkteregel", "Wettquoten H/U/A"],
+      understood.map((u) => [u.pairing, u.rule, u.odds]),
+    );
+  }
+
+  if (rejected.length) {
+    const r = document.createElement("p");
+    r.className = "note";
+    r.textContent = `${rejected.length} Zeile(n) nicht verwertet:`;
+    el.append(r);
+    const ul = document.createElement("ul");
+    for (const item of rejected) {
+      const li = document.createElement("li");
+      li.textContent = `${item.text} — ${item.reason}`;
+      ul.append(li);
+    }
+    el.append(ul);
+  }
+
+  $("understood-section").hidden = understood.length === 0 && rejected.length === 0;
 }
 
 function renderResult() {
@@ -210,16 +254,48 @@ function renderLogFigures() {
 
 // --- wiring -----------------------------------------------------------------
 
+// The rich clipboard HTML captured on paste (§3): Strg+A/Strg+C on the live
+// Kicktipp page delivers `text/html`, the DevTools-outerHTML path delivers plain
+// markup in the textarea. Both land in the same parser. A manual edit clears it,
+// so the textarea path stays authoritative when the user types.
+let pastedHtml = null;
+
+$("paste").addEventListener("paste", (event) => {
+  const html = event.clipboardData?.getData("text/html");
+  if (html && html.trim()) pastedHtml = html;
+});
+// A paste ALSO fires an `input` (inputType "insertFromPaste") right after — do
+// not let it wipe the rich HTML the paste handler just captured. Manual typing
+// (any other inputType) clears it, so the textarea path stays authoritative.
+$("paste").addEventListener("input", (event) => {
+  if (event.inputType !== "insertFromPaste") pastedHtml = null;
+});
+
 $("parse").addEventListener("click", () => {
   const status = $("paste-status");
+  // Prefer the captured rich HTML; fall back to whatever is in the textarea.
+  const typed = $("paste").value;
+  const source = pastedHtml && pastedHtml.includes("<") ? pastedHtml : typed;
+  if (!source || !source.includes("<")) {
+    $("understood-section").hidden = true;
+    $("fixtures-section").hidden = true;
+    $("result-section").hidden = true;
+    say(status, "Bitte die Seite kopieren, nicht nur den Text — oder in den DevTools das Tabellen-HTML kopieren.", "warn");
+    return;
+  }
+
   try {
-    const parsed = parseTippPage($("paste").value);
-    const { built, notes } = buildFixtures(parsed);
+    const parsed = parseTippPage(source);
+    const { built, notes, understood, rejected } = buildFixtures(parsed);
     fixtures = built;
+
+    // The verification panel first — the reader confirms it before trusting the
+    // suggestion below.
+    renderUnderstood(understood, rejected);
 
     const n = $("notes");
     n.replaceChildren();
-    for (const note of [...notes, ...parsed.skipped.map((s) => `Nicht verwertbare Zeile übersprungen: ${s}`)]) {
+    for (const note of notes) {
       const li = document.createElement("p");
       li.className = "note";
       li.textContent = note;
@@ -236,6 +312,7 @@ $("parse").addEventListener("click", () => {
       say(status, "Keine Begegnung konnte zugeordnet werden.", "warn");
     }
   } catch (e) {
+    $("understood-section").hidden = true;
     $("fixtures-section").hidden = true;
     $("result-section").hidden = true;
     say(status, e instanceof ParseError ? e.message : `Fehler: ${e.message}`, "warn");
@@ -245,11 +322,26 @@ $("parse").addEventListener("click", () => {
 $("demo").addEventListener("click", () => {
   const sample = clubData.clubs.slice(0, 4);
   if (sample.length < 4) return;
-  const rows = [
-    [sample[0].name, sample[1].name, "1,75", "3,90", "4,20", 3, 6, 8],
-    [sample[2].name, sample[3].name, "2,40", "3,30", "2,95", 5, 5, 5],
-  ];
-  $("paste").value = `<table>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("")}</table>`;
+  // The real Kicktipp „stack" structure, so the demo exercises the same
+  // structural path a pasted page does (home name + point rule + odds in col1).
+  const datarow = (home, away, id, rule, oh, od, oa) => `
+    <tr class="datarow"><td class="cell col0 hide">Fr.</td>
+      <td class="cell col1"><div class="stack">
+        <div class="stackElement" data-from="1">${home}</div>
+        <div class="stackElement" data-from="3">${rule}</div>
+        <div class="stackElement" data-from="5"><div class="tippabgabe-quoten">
+          <span class="quote quote-heim"><span class="quote-text">${oh}</span></span>
+          <span class="quote quote-remis"><span class="quote-text">${od}</span></span>
+          <span class="quote quote-gast"><span class="quote-text">${oa}</span></span>
+        </div></div>
+      </div></td>
+      <td class="cell col2">${away}</td>
+      <td class="cell col4"><input name="spieltippForms[${id}].heimTipp"></td></tr>`;
+  $("paste").value = "<table id=\"tippabgabeSpiele\"><tbody>"
+    + datarow(sample[0].kicktipp ?? sample[0].name, sample[1].kicktipp ?? sample[1].name, "9000001", "3 - 6 - 8", "1.75", "3.90", "4.20")
+    + datarow(sample[2].kicktipp ?? sample[2].name, sample[3].kicktipp ?? sample[3].name, "9000002", "5 - 5 - 5", "2.40", "3.30", "2.95")
+    + "</tbody></table>";
+  pastedHtml = null;
   say($("paste-status"), "Beispiel eingefügt — jetzt „Einlesen“.", "");
 });
 
@@ -261,7 +353,7 @@ $("log-add").addEventListener("click", () => {
       tippedAt: now,
       home: r.homeName,
       away: r.awayName,
-      odds: r.odds,
+      odds: r.odds ?? {},
       quotas: r.quotas,
       tip: r.tip,
       expectedPoints: r.tip.expected,
