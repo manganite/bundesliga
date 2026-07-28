@@ -264,7 +264,12 @@ $("paste").addEventListener("paste", (event) => {
   const html = event.clipboardData?.getData("text/html");
   if (html && html.trim()) pastedHtml = html;
 });
-$("paste").addEventListener("input", () => { pastedHtml = null; });
+// A paste ALSO fires an `input` (inputType "insertFromPaste") right after — do
+// not let it wipe the rich HTML the paste handler just captured. Manual typing
+// (any other inputType) clears it, so the textarea path stays authoritative.
+$("paste").addEventListener("input", (event) => {
+  if (event.inputType !== "insertFromPaste") pastedHtml = null;
+});
 
 $("parse").addEventListener("click", () => {
   const status = $("paste-status");

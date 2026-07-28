@@ -102,7 +102,10 @@ const idOf = (row) => {
 function isCandidate(row) {
   if (row.classList.contains("rowheader")) return false;
   if (row.classList.contains("label")) return false;
-  if (row.querySelector("th[colspan]")) return false;
+  // Date/section rows span the table with a single colspan cell — on a td as
+  // well as a th (the committed fixture uses `td colspan="99"`). Skip either, so
+  // a class-less pasted fragment does not push them into the rejected list.
+  if (row.querySelector("td[colspan], th[colspan]")) return false;
   return true;
 }
 
