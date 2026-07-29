@@ -176,8 +176,17 @@ spätere schlägt die frühere:**
     Zerlegung Tendenz+Differenz+exakt = `expectedPoints` bitgleich) und ein
     **Grundlage-Umschalter Markt/Modell** (Modell-Basis = `buildMarketMatrix(odds:
     null)`, der bestehende Fallback). Reines Surfacing, keine Optimierungs-/
-    Scoring-Änderung; verankerte Ehrlichkeits-Caption. **§1 (Spieltag-1-Quotenfix)
-    wartet auf die md1-Fixture (Gate G1), §2/§3 sind gelandet.** Kein Release-Bump.
+    Scoring-Änderung; verankerte Ehrlichkeits-Caption. §2/§3 gelandet; §1
+    (Spieltag-1-Quotenfix) folgt als eigener Brief (27). Kein Release-Bump.
+27. `KICKTIPP_MD1_QUOTENFIX_BRIEF.md` — Ergänzung zu 26 (Gate G1 erfüllt): App B
+    parst jetzt **beide** Quotenblock-Varianten mit einer Extraktion. md1 rendert
+    die Quoten als **Oddset-Anker** `quoteheim/…` (ohne Bindestrich) statt der
+    Spans `quote-heim/…` (md2) und stellt den **Gast in col1s Stack**
+    (`data-from="2"`, col2 leer). Fix: Quoten primär über `quote-label` (1/X/2,
+    in beiden Varianten stabil), Klassenschreibweise nur Fallback; Gast
+    spiegelbildlich zu Heim aus `stackElement[data-from="2"]`. md1-Fixture
+    committet; Zeilen-Fehlersichtbarkeit für gemischte Spieltage. Kein
+    Release-Bump.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -305,14 +314,23 @@ veröffentlicht ausschließlich `apps/public`. Eingefügtes ist nicht vertrauens
 `innerHTML`, `outerHTML`, `insertAdjacentHTML` und `document.write`.
 
 Der Parser ist **strukturell, nicht positionsbasiert** (KICKTIPP_PARSER_FIX): je
-`tr.datarow` liest er Heim aus `stackElement[data-from="1"]`, Gast aus col2, die
-**Wettquoten NUR aus dem `.tippabgabe-quoten`-Block** (`quote-heim/remis/gast`),
-die Punkteregel aus `stackElement[data-from="3"]` und die Spiel-ID aus
-`spieltippForms[<id>]`. Die alte Eine-Zahl-je-Zelle-Heuristik ist ersatzlos weg —
-sie war die Quelle der Gefahr, die Punkteregel „3 - 9 - 9" als Wettquoten zu
-lesen; die Struktur trennt beides. Fehlt der Quotenblock: **Nur-Modell-Modus**
-(odds null, sichtbarer Hinweis). Fail-closed je Zeile; die maßgebliche Referenz
-ist `tests/fixtures/tippabgabe-2026-md2.html` (echtes Markup, BL1-Pool). Klub-
+`tr.datarow` liest er Heim aus `stackElement[data-from="1"]`, Gast aus
+`stackElement[data-from="2"]` (sonst col2-Text), die **Wettquoten NUR aus dem
+`.tippabgabe-quoten`-Block** und die Punkteregel aus `stackElement[data-from="3"]`,
+Spiel-ID aus `spieltippForms[<id>]`. **Kicktipp rendert den Quotenblock in zwei
+Varianten** (KICKTIPP_MD1_QUOTENFIX): Spans `quote-heim/remis/gast` (md2,
+margenfrei) ODER Oddset-Anker `quoteheim/…` ohne Bindestrich (md1, ~5 % Overround,
+den `impliedProbabilities` entfernt). Deshalb ist der **primäre Schlüssel das
+`quote-label` (1/X/2)** — in beiden Varianten stabil —, die Klassenschreibweise
+(beide Formen) nur Fallback. In md1 stehen **beide Klubs in col1s Stack**
+(data-from 1 und 2), col2 ist leer; darum wird `stackElement` zeilenweit gesucht.
+Die alte Eine-Zahl-je-Zelle-Heuristik ist ersatzlos weg — sie war die Quelle der
+Gefahr, die Punkteregel „3 - 9 - 9" als Wettquoten zu lesen; die Struktur trennt
+beides. Fehlt der Quotenblock: **Nur-Modell-Modus** (odds null, Zeilen-Hinweis
+„nicht gefunden — Nur-Modell-Modus", Grundlage: Modell — gemischte Spieltage erste
+Klasse). Fail-closed je Zeile; die maßgeblichen Referenzen sind
+`tests/fixtures/tippabgabe-2026-md1.html` (Oddset-Variante) und `…-md2.html`
+(Span-Variante) — beide parsen mit **einer** Extraktion. Klub-
 Register trägt die **Kicktipp-Namensform** als dritte Spalte, **alle 36
 verifiziert** (BL1 aus der Fixture, BL2 aus dem öffentlichen Kicktipp-Spielplan
 1. Spieltag 2026/27 — ein einmaliger manueller Abruf, die manual-paste-only-Regel
@@ -337,8 +355,8 @@ odds: null})`** (der bestehende Quoten-Fallback), damit der Modell-Modus ihn
 bitgleich reproduziert statt einer zweiten, leicht anderen Modellrechnung. Bei
 `odds: null` fallen beide Basen zusammen. Verankerte Caption: margenfreie
 Marktquoten sind langfristig die bessere Einzelspiel-Schätzung, Modell-Abweichungen
-sind interessant, nicht automatisch besser. **§1 (Spieltag-1-Quotenfix) wartet auf
-die md1-Fixture** ([USER]-Gate G1) und ist noch offen.
+sind interessant, nicht automatisch besser. Der **Spieltag-1-Quotenfix** (§1, jetzt
+als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
 
 ## Aktueller Zustand
 

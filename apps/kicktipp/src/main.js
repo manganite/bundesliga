@@ -151,7 +151,12 @@ function buildFixtures(parsed) {
     understood.push({
       pairing: `${home.name} – ${away.name}`,
       rule: f.quotas ? `${f.quotas.homeWin} - ${f.quotas.draw} - ${f.quotas.awayWin}` : "—",
-      odds: f.odds ? `${fmt(f.odds.home)} / ${fmt(f.odds.draw)} / ${fmt(f.odds.away)}` : "ohne",
+      // §KICKTIPP_MD1_QUOTENFIX §2: a quote-less row says so at its line, and the
+      // suggestion table shows „Grundlage: Modell" for it — mixed matchdays are
+      // first class, not a special case.
+      odds: f.odds
+        ? `${fmt(f.odds.home)} / ${fmt(f.odds.draw)} / ${fmt(f.odds.away)}`
+        : "nicht gefunden — Nur-Modell-Modus",
     });
   }
 
