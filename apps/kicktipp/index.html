@@ -57,8 +57,17 @@
 
       <section id="result-section" aria-labelledby="result-h" hidden>
         <h2 id="result-h">3 · Vorschlag</h2>
+        <div id="grundlage-row" class="row" hidden>
+          <label for="grundlage">Grundlage:</label>
+          <select id="grundlage">
+            <option value="market">Markt</option>
+            <option value="model">Modell</option>
+          </select>
+          <p id="grundlage-caption" class="hint"></p>
+        </div>
         <div id="warning" role="status"></div>
         <div id="result" class="table-wrap"></div>
+        <div id="rechenweg"></div>
         <div id="totals"></div>
       </section>
 

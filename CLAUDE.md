@@ -171,6 +171,13 @@ spätere schlägt die frühere:**
     Referenz; Register um Kicktipp-Namensformen (BL1 aus der Fixture; **BL2 im
     Folge-PR** aus dem öffentlichen Spielplan nachgetragen — alle 36 verifiziert).
     Reiner App-B-Fix, kein Release-Bump nötig (App B wird nie deployt).
+26. `KICKTIPP_TRANSPARENZ_BRIEF.md` — App B: Rechenweg je Spiel („Wie gerechnet?"-
+    Aufklapper: Markt-% mit Marge, Modell-%, Abweichung ≥ 10 Pp., Erwartungswert-
+    Zerlegung Tendenz+Differenz+exakt = `expectedPoints` bitgleich) und ein
+    **Grundlage-Umschalter Markt/Modell** (Modell-Basis = `buildMarketMatrix(odds:
+    null)`, der bestehende Fallback). Reines Surfacing, keine Optimierungs-/
+    Scoring-Änderung; verankerte Ehrlichkeits-Caption. **§1 (Spieltag-1-Quotenfix)
+    wartet auf die md1-Fixture (Gate G1), §2/§3 sind gelandet.** Kein Release-Bump.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -318,6 +325,20 @@ Punkteschema ist **best-of, max 11**: Quote 3–9 plus genau *ein* Bonus (Sieg: 
 oder +1 Tordifferenz; Remis: nur +2 exakt, kein Tordifferenz-Rang). Scoreline-Form durch
 **Region-Umgewichtung, nicht λ-Fitting** — die Marktränder stimmen dadurch exakt by
 construction.
+
+**Rechenweg-Transparenz (KICKTIPP_TRANSPARENZ §2/§3), reines Surfacing — keine
+Optimierungs-/Scoring-Änderung.** `rechenweg.mjs` (rein, getestet) liefert je Spiel:
+Markt-% via `impliedProbabilities` mit sichtbarer Marge (= `overround`), Modell-%,
+Abweichungsmarkierung (≥ 10 Pp.), und die Erwartungswert-Zerlegung je Tendenz
+(Tendenz + Differenz + exakt) — die Summe ist **bitgleich** `expectedPoints`
+(Identitätstest). Der **Grundlage-Umschalter Markt/Modell** rechnet dieselbe
+Optimierung auf einer anderen Matrix; die **Modell-Basis IST `buildMarketMatrix({…,
+odds: null})`** (der bestehende Quoten-Fallback), damit der Modell-Modus ihn
+bitgleich reproduziert statt einer zweiten, leicht anderen Modellrechnung. Bei
+`odds: null` fallen beide Basen zusammen. Verankerte Caption: margenfreie
+Marktquoten sind langfristig die bessere Einzelspiel-Schätzung, Modell-Abweichungen
+sind interessant, nicht automatisch besser. **§1 (Spieltag-1-Quotenfix) wartet auf
+die md1-Fixture** ([USER]-Gate G1) und ist noch offen.
 
 ## Aktueller Zustand
 
