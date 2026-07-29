@@ -135,8 +135,8 @@ const MAPPING = JSON.parse(fs.readFileSync(
 )).names;
 
 test("BL2 Kicktipp forms resolve to their clubs — incl. the ones canonical alone would miss", () => {
-  // Sample the divergence-prone BL2 forms (§2). „Arminia Bielefeld" drops the
-  // „DSC" its canonical carries; the others are long forms Kicktipp keeps.
+  // Sample the divergence-prone BL2 forms (KICKTIPP_PARSER_FIX §2). „Arminia
+  // Bielefeld" drops the „DSC" its canonical carries; the others are long forms.
   const register = [
     { clubId: "Heidenheim", name: "1. FC Heidenheim 1846", kicktipp: "1. FC Heidenheim 1846" },
     { clubId: "Cottbus", name: "Energie Cottbus", kicktipp: "Energie Cottbus" },
@@ -149,14 +149,18 @@ test("BL2 Kicktipp forms resolve to their clubs — incl. the ones canonical alo
   assert.equal(resolveClub("Arminia Bielefeld", register)?.clubId, "Bielefeld");
 });
 
-test("the mapping carries a verified Kicktipp form for all 36 current clubs (BL1 + BL2)", () => {
+test("the mapping carries a verified Kicktipp form for every club of the newest season (BL1 + BL2)", () => {
+  // The current season is discovered, never hardcoded (§5.5) — the newest
+  // committed season directory.
+  const newest = fs.readdirSync(path.join(REPO, "data/seasons"))
+    .filter((n) => /^\d+$/.test(n)).map(Number).sort((a, b) => b - a)[0];
   const ids = new Set(Object.keys(MAPPING));
   const missing = [];
   for (const lg of ["bl1", "bl2"]) {
-    const season = JSON.parse(fs.readFileSync(path.join(REPO, `data/seasons/2026/${lg}/season.json`), "utf8"));
+    const season = JSON.parse(fs.readFileSync(path.join(REPO, `data/seasons/${newest}/${lg}/season.json`), "utf8"));
     for (const c of season.clubs) if (!ids.has(c.clubId)) missing.push(`${lg}/${c.clubId}`);
   }
-  assert.deepEqual(missing, [], "these current clubs lack a Kicktipp form");
+  assert.deepEqual(missing, [], `these clubs of season ${newest} lack a Kicktipp form`);
 });
 
 test("every club of the committed fixture has a verified Kicktipp form in the mapping (BL1 acceptance)", () => {
