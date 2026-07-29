@@ -4,8 +4,8 @@
     "Augsburg": 1636.4465332,
     "Bayern": 2000.87036133,
     "Bremen": 1606.01940918,
-    "Dortmund": 1834.76879883,
-    "Elversberg": 1523.3984375,
+    "Dortmund": 1834.7689209,
+    "Elversberg": 1523.39855957,
     "Frankfurt": 1663.77990723,
     "Freiburg": 1724.91345215,
     "Gladbach": 1640.84326172,
@@ -16,7 +16,7 @@
     "Leverkusen": 1804.02624512,
     "Mainz": 1671.92553711,
     "Paderborn": 1525.36755371,
-    "Schalke": 1519.74230957,
+    "Schalke": 1519.74243164,
     "Stuttgart": 1763.83459473,
     "Union Berlin": 1619.43078613
   },
@@ -11911,94 +11911,94 @@
   "ratingProvenance": {
     "Augsburg": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Bayern": {
       "provenance": "carried-forward",
       "effectiveAt": "2026-07-03",
-      "ageDays": 25,
+      "ageDays": 26,
       "snapshotId": "clubelo-2026-07-03-15da4e2e4cf808de"
     },
     "Bremen": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Dortmund": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Elversberg": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Frankfurt": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Freiburg": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Gladbach": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Hoffenheim": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "HSV": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Köln": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Leipzig": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Leverkusen": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Mainz": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Paderborn": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Schalke": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Stuttgart": {
       "provenance": "carried-forward",
       "effectiveAt": "2026-07-03",
-      "ageDays": 25,
+      "ageDays": 26,
       "snapshotId": "clubelo-2026-07-03-15da4e2e4cf808de"
     },
     "Union Berlin": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     }
   }

@@ -9,11 +9,11 @@
     "Dresden": 1414.36071777,
     "Fürth": 1394.82678223,
     "Hannover": 1527.87036133,
-    "Heidenheim": 1552.56994629,
+    "Heidenheim": 1552.56982422,
     "Hertha": 1461.53942871,
     "Kaiserslautern": 1456.03540039,
     "Karlsruhe": 1435.78125,
-    "Kiel": 1462.63525391,
+    "Kiel": 1462.63537598,
     "Magdeburg": 1439.74853516,
     "Nürnberg": 1458.71105957,
     "Osnabrück": 1342.63476562,
@@ -11493,94 +11493,94 @@
   "ratingProvenance": {
     "Bielefeld": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Bochum": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Braunschweig": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Cottbus": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Darmstadt": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Dresden": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Fürth": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Hannover": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Heidenheim": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Hertha": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Kaiserslautern": {
       "provenance": "carried-forward",
       "effectiveAt": "2026-07-03",
-      "ageDays": 25,
+      "ageDays": 26,
       "snapshotId": "clubelo-2026-07-03-15da4e2e4cf808de"
     },
     "Karlsruhe": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Kiel": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Magdeburg": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Nürnberg": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Osnabrück": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "St. Pauli": {
       "provenance": "live",
-      "effectiveAt": "2026-07-28",
+      "effectiveAt": "2026-07-29",
       "ageDays": 0
     },
     "Wolfsburg": {
       "provenance": "carried-forward",
       "effectiveAt": "2026-07-03",
-      "ageDays": 25,
+      "ageDays": 26,
       "snapshotId": "clubelo-2026-07-03-15da4e2e4cf808de"
     }
   }
