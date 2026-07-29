@@ -188,6 +188,16 @@ spätere schlägt die frühere:**
     spiegelbildlich zu Heim aus `stackElement[data-from="2"]`. md1-Fixture
     committet; Zeilen-Fehlersichtbarkeit für gemischte Spieltage. Kein
     Release-Bump.
+28. `KICKTIPP_QUELLENLABEL_PROMPT.md` — App B, drei kleine Teile: (1) „entrandet"
+    raus aus allen Nutzertexten → „ohne Marge" plus Erklärsatz (Jargon-Quellscan);
+    (2) **Quotenquelle benennen** über die Marge (`oddsSourceLabel`, Schwelle
+    `BOOKMAKER_MARGIN_THRESHOLD` = 2 %): Buchmacherquoten vs. margenfreie
+    rechnerische Quoten („vermutlich aus dem Tippverhalten"); (3) **Wächter**: die
+    Rechenweg-Darstellung wandert in `render.mjs` (DOM-testbar), ein jsdom-Test
+    beweist, dass die Modell-Zeile die `odds:null`-Werte zeigt, nicht die
+    Marktprozente (Referenz Augsburg–Schalke: Markt 44,0/25,5/30,5 vs. Modell
+    56,6/23,9/19,5), plus Selbsttest gegen die Fehlverdrahtung. Keine
+    Optimierungs-/Scoring-Änderung, kein Release-Bump.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.

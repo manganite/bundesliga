@@ -12,7 +12,8 @@ import clubData from "./generated/clubs.json";
 import { parseTippPage, resolveClub, ParseError } from "./parse.mjs";
 import { buildMarketMatrix } from "./market.mjs";
 import { optimiseMatchday, favouriteTendency } from "./optimise.mjs";
-import { marketPercent, tendencyBreakdown, deviation, decisionSentence, TENDENCIES, MODEL_BASIS_CAPTION } from "./rechenweg.mjs";
+import { marketPercent, oddsSourceShort, MODEL_BASIS_CAPTION } from "./rechenweg.mjs";
+import { renderRechenweg } from "./render.mjs";
 import { quotaFromPool } from "./scoring.mjs";
 import { effectiveParams } from "../../../packages/engine/src/model.mjs";
 import {
@@ -31,8 +32,6 @@ let basis = "market";
 
 const effectiveBasis = (f) => (basis === "model" || !f.hasOdds ? "model" : "market");
 const basisData = (f) => f[effectiveBasis(f)];
-const TENDENCY_LABEL = { homeWin: "H", draw: "U", awayWin: "A" };
-const tendencyLabel = (t) => TENDENCY_LABEL[t];
 
 /**
  * Run the SAME optimiser on the chosen basis matrix per fixture (§3). The TIP
@@ -148,6 +147,9 @@ function buildFixtures(parsed) {
       market: { matrix: market.matrix, maxGoals: market.maxGoals, region: market.market },
       model: { matrix: model.matrix, maxGoals: model.maxGoals, region: model.market },
     });
+    // The odds source, from the margin (§Quellen-Label §2): a short tag in the
+    // check table, the full sentence in the Rechenweg.
+    const source = f.odds ? oddsSourceShort(marketPercent(f.odds).margin) : null;
     understood.push({
       pairing: `${home.name} – ${away.name}`,
       rule: f.quotas ? `${f.quotas.homeWin} - ${f.quotas.draw} - ${f.quotas.awayWin}` : "—",
@@ -155,7 +157,7 @@ function buildFixtures(parsed) {
       // suggestion table shows „Grundlage: Modell" for it — mixed matchdays are
       // first class, not a special case.
       odds: f.odds
-        ? `${fmt(f.odds.home)} / ${fmt(f.odds.draw)} / ${fmt(f.odds.away)}`
+        ? `${fmt(f.odds.home)} / ${fmt(f.odds.draw)} / ${fmt(f.odds.away)} (${source})`
         : "nicht gefunden — Nur-Modell-Modus",
     });
   }
@@ -226,57 +228,6 @@ function renderUnderstood(understood, rejected) {
   $("understood-section").hidden = understood.length === 0 && rejected.length === 0;
 }
 
-const p3 = (v) => `${new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 }).format(v * 100)} %`;
-
-/** The per-fixture „Wie gerechnet?" disclosure (§2) — one Disclosure pattern. */
-function rechenwegDetails(r) {
-  const details = document.createElement("details");
-  details.className = "method-disclosure";
-  const summary = document.createElement("summary");
-  summary.textContent = `${r.homeName} – ${r.awayName} — Wie gerechnet?`;
-  details.append(summary);
-  const body = document.createElement("div");
-  body.className = "method-body";
-
-  const line = (text) => { const p = document.createElement("p"); p.textContent = text; body.append(p); return p; };
-
-  // 1 · Market in %, with the visible margin (or the model-only note).
-  const mkt = r.odds ? marketPercent(r.odds) : null;
-  if (mkt) {
-    line(`Markt: Quoten ${fmt(r.odds.home)} / ${fmt(r.odds.draw)} / ${fmt(r.odds.away)} → entrandet `
-      + `${p3(mkt.homeWin)} / ${p3(mkt.draw)} / ${p3(mkt.awayWin)} (Marge ${p3(mkt.margin)}).`);
-  } else {
-    line("Markt: keine Wettquoten auf der Seite — dieses Spiel läuft im Nur-Modell-Modus.");
-  }
-
-  // 2 · Model in %, deviations named.
-  const model = r.model.region;
-  const dev = deviation(mkt, model);
-  const flagged = TENDENCIES.filter((t) => dev[t]).map((t) => tendencyLabel(t));
-  line(`Modell: ${p3(model.homeWin)} / ${p3(model.draw)} / ${p3(model.awayWin)}`
-    + (flagged.length ? ` — deutliche Abweichung vom Markt bei ${flagged.join(", ")}.` : "."));
-
-  // 3 · Per tendency: best tip, expected value split into the three tiers.
-  line("Je Tendenz der beste Tipp (erwartete Punkte = Tendenz + Differenz + exakt):");
-  const ul = document.createElement("ul");
-  const breakdown = tendencyBreakdown(r.matrix, r.maxGoals, r.quotas);
-  breakdown.forEach((b, i) => {
-    const li = document.createElement("li");
-    li.textContent =
-      `${tendencyLabel(b.tendency)} · ${b.tip.home}:${b.tip.away} · ${fmt(b.expected)} = `
-      + `${fmt(b.parts.tendenz)} (Tendenz) + ${fmt(b.parts.differenz)} (Differenz) + ${fmt(b.parts.exakt)} (exakt)`
-      + (i === 0 ? "  ← Empfehlung" : "");
-    ul.append(li);
-  });
-  body.append(ul);
-
-  // 4 · One sentence on the decision — the favourite follows the chosen basis.
-  line(decisionSentence(breakdown, r.basisTendency ?? r.favouriteTendency, tendencyLabel));
-
-  details.append(body);
-  return details;
-}
-
 function renderResult() {
   if (!optimised) return;
 
@@ -296,7 +247,7 @@ function renderResult() {
   // §2: each fixture gets a „Wie gerechnet?" disclosure, following the chosen basis.
   const rw = $("rechenweg");
   rw.replaceChildren();
-  for (const r of optimised.rows) rw.append(rechenwegDetails(r));
+  for (const r of optimised.rows) rw.append(renderRechenweg(r, document));
 
   const t = $("totals");
   t.replaceChildren();
