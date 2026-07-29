@@ -180,8 +180,9 @@ spätere schlägt die frühere:**
     (Spieltag-1-Quotenfix) folgt als eigener Brief (27). Kein Release-Bump.
 27. `KICKTIPP_MD1_QUOTENFIX_BRIEF.md` — Ergänzung zu 26 (Gate G1 erfüllt): App B
     parst jetzt **beide** Quotenblock-Varianten mit einer Extraktion. md1 rendert
-    die Quoten als **Oddset-Anker** `quoteheim/…` (ohne Bindestrich) statt der
-    Spans `quote-heim/…` (md2) und stellt den **Gast in col1s Stack**
+    die Quoten als **Oddset-Anker** mit den Klassen `quoteheim`, `quoteremis`,
+    `quotegast` (ohne Bindestrich) statt der Spans mit `quote-heim`, `quote-remis`,
+    `quote-gast` (md2) und stellt den **Gast in col1s Stack**
     (`data-from="2"`, col2 leer). Fix: Quoten primär über `quote-label` (1/X/2,
     in beiden Varianten stabil), Klassenschreibweise nur Fallback; Gast
     spiegelbildlich zu Heim aus `stackElement[data-from="2"]`. md1-Fixture
@@ -318,8 +319,9 @@ Der Parser ist **strukturell, nicht positionsbasiert** (KICKTIPP_PARSER_FIX): je
 `stackElement[data-from="2"]` (sonst col2-Text), die **Wettquoten NUR aus dem
 `.tippabgabe-quoten`-Block** und die Punkteregel aus `stackElement[data-from="3"]`,
 Spiel-ID aus `spieltippForms[<id>]`. **Kicktipp rendert den Quotenblock in zwei
-Varianten** (KICKTIPP_MD1_QUOTENFIX): Spans `quote-heim/remis/gast` (md2,
-margenfrei) ODER Oddset-Anker `quoteheim/…` ohne Bindestrich (md1, ~5 % Overround,
+Varianten** (KICKTIPP_MD1_QUOTENFIX): Spans mit den Klassen `quote-heim`,
+`quote-remis`, `quote-gast` (md2, margenfrei) ODER Oddset-Anker mit `quoteheim`,
+`quoteremis`, `quotegast` — ohne Bindestrich (md1, ~5 % Overround,
 den `impliedProbabilities` entfernt). Deshalb ist der **primäre Schlüssel das
 `quote-label` (1/X/2)** — in beiden Varianten stabil —, die Klassenschreibweise
 (beide Formen) nur Fallback. In md1 stehen **beide Klubs in col1s Stack**
