@@ -15,6 +15,32 @@ import { EXACT_BONUS, GOAL_DIFFERENCE_BONUS } from "./scoring.mjs";
 export const TENDENCIES = ["homeWin", "draw", "awayWin"];
 export const DEVIATION_THRESHOLD = 0.10; // 10 percentage points
 
+// A margin at or above this reads as a real bookmaker line; below it the odds
+// are margin-free and (very likely) computed from the pool's tipping behaviour
+// rather than posted by a bookmaker. 2 Pp. sits comfortably between the ~5 %
+// overround of the Oddset lines and the ~0 % of the computed ones (§2).
+export const BOOKMAKER_MARGIN_THRESHOLD = 0.02;
+
+const pctText = (v) => `${new Intl.NumberFormat("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(v * 100)} %`;
+
+/**
+ * What the odds ARE, from their margin — the app says what it sees, no more (§2).
+ * The „vermutlich" is deliberate: the source of the margin-free odds is plausibly
+ * inferred (the pool's tipping behaviour), not documented.
+ */
+export function oddsSourceLabel(margin) {
+  if (margin == null) return null;
+  return margin >= BOOKMAKER_MARGIN_THRESHOLD
+    ? `Buchmacherquoten (Marge ${pctText(margin)})`
+    : "rechnerische Quoten ohne Marge — vermutlich aus dem Tippverhalten der Runde, nicht von einem Buchmacher";
+}
+
+/** The short tag for the check table: „Buchmacher" / „rechnerisch" / null. */
+export function oddsSourceShort(margin) {
+  if (margin == null) return null;
+  return margin >= BOOKMAKER_MARGIN_THRESHOLD ? "Buchmacher" : "rechnerisch";
+}
+
 // The honest, anchored caption for the model basis (§3). Model deviations are
 // interesting, not automatically better — margin-free market odds are expected
 // to be the better single-match estimate over the long run.
