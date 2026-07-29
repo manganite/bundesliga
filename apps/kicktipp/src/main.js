@@ -11,7 +11,8 @@ import "./style.css";
 import clubData from "./generated/clubs.json";
 import { parseTippPage, resolveClub, ParseError } from "./parse.mjs";
 import { buildMarketMatrix } from "./market.mjs";
-import { optimiseMatchday } from "./optimise.mjs";
+import { optimiseMatchday, favouriteTendency } from "./optimise.mjs";
+import { marketPercent, tendencyBreakdown, deviation, decisionSentence, TENDENCIES, MODEL_BASIS_CAPTION } from "./rechenweg.mjs";
 import { quotaFromPool } from "./scoring.mjs";
 import { effectiveParams } from "../../../packages/engine/src/model.mjs";
 import {
@@ -24,6 +25,23 @@ const params = clubData.params ? effectiveParams(clubData.params, { league: "bl1
 let fixtures = [];
 let optimised = null;
 let log = loadLog();
+// The Grundlage toggle (§KICKTIPP_TRANSPARENZ §3): "market" | "model". A
+// fixture without odds is always on the model basis regardless of the toggle.
+let basis = "market";
+
+const effectiveBasis = (f) => (basis === "model" || !f.hasOdds ? "model" : "market");
+const basisData = (f) => f[effectiveBasis(f)];
+const TENDENCY_LABEL = { homeWin: "H", draw: "U", awayWin: "A" };
+const tendencyLabel = (t) => TENDENCY_LABEL[t];
+
+/** Run the SAME optimiser on the chosen basis matrix per fixture (§3). */
+function optimiseCurrent() {
+  const forOpt = fixtures.map((f) => {
+    const b = basisData(f);
+    return { ...f, matrix: b.matrix, maxGoals: b.maxGoals, market: b.region };
+  });
+  return optimiseMatchday(forOpt);
+}
 
 const fmt = (v, d = 2) => new Intl.NumberFormat("de-DE", {
   minimumFractionDigits: d, maximumFractionDigits: d,
@@ -99,6 +117,10 @@ function buildFixtures(parsed) {
     const market = buildMarketMatrix({
       eloHome: home.rating, eloAway: away.rating, params, odds: f.odds,
     });
+    // The model basis IS the existing odds-less fallback path (§3), so model
+    // mode reproduces it bit-identically — not a second, slightly different
+    // model computation.
+    const model = buildMarketMatrix({ eloHome: home.rating, eloAway: away.rating, params, odds: null });
     const modelOnly = !f.odds;
     if (market.note && !modelOnly) notes.push(`${f.home} – ${f.away}: ${market.note}`);
 
@@ -107,11 +129,12 @@ function buildFixtures(parsed) {
       homeName: home.name,
       awayName: away.name,
       odds: f.odds ?? null,
+      hasOdds: Boolean(f.odds),
       quotas: f.quotas ?? { homeWin: 3, draw: 3, awayWin: 3 },
-      matrix: market.matrix,
-      maxGoals: market.maxGoals,
-      market: market.market,
-      source: market.source,
+      // Both bases, so the Grundlage toggle (§3) runs the SAME optimiser on
+      // either without recomputing. For a model-only fixture the two coincide.
+      market: { matrix: market.matrix, maxGoals: market.maxGoals, region: market.market },
+      model: { matrix: model.matrix, maxGoals: model.maxGoals, region: model.market },
     });
     understood.push({
       pairing: `${home.name} – ${away.name}`,
@@ -140,7 +163,7 @@ function renderFixtures() {
       f.odds ? fmt(f.odds.draw) : "—",
       f.odds ? fmt(f.odds.away) : "—",
       `${f.quotas.homeWin}/${f.quotas.draw}/${f.quotas.awayWin}`,
-      f.source === "market" ? "Markt" : "Modell",
+      effectiveBasis(f) === "market" ? "Markt" : "Modell",
     ]),
   );
   $("fixtures-section").hidden = fixtures.length === 0;
@@ -186,20 +209,77 @@ function renderUnderstood(understood, rejected) {
   $("understood-section").hidden = understood.length === 0 && rejected.length === 0;
 }
 
+const p3 = (v) => `${new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 }).format(v * 100)} %`;
+
+/** The per-fixture „Wie gerechnet?" disclosure (§2) — one Disclosure pattern. */
+function rechenwegDetails(r) {
+  const details = document.createElement("details");
+  details.className = "method-disclosure";
+  const summary = document.createElement("summary");
+  summary.textContent = `${r.homeName} – ${r.awayName} — Wie gerechnet?`;
+  details.append(summary);
+  const body = document.createElement("div");
+  body.className = "method-body";
+
+  const line = (text) => { const p = document.createElement("p"); p.textContent = text; body.append(p); return p; };
+
+  // 1 · Market in %, with the visible margin (or the model-only note).
+  const mkt = r.odds ? marketPercent(r.odds) : null;
+  if (mkt) {
+    line(`Markt: Quoten ${fmt(r.odds.home)} / ${fmt(r.odds.draw)} / ${fmt(r.odds.away)} → entrandet `
+      + `${p3(mkt.homeWin)} / ${p3(mkt.draw)} / ${p3(mkt.awayWin)} (Marge ${p3(mkt.margin)}).`);
+  } else {
+    line("Markt: keine Wettquoten auf der Seite — dieses Spiel läuft im Nur-Modell-Modus.");
+  }
+
+  // 2 · Model in %, deviations named.
+  const model = r.model.region;
+  const dev = deviation(mkt, model);
+  const flagged = TENDENCIES.filter((t) => dev[t]).map((t) => tendencyLabel(t));
+  line(`Modell: ${p3(model.homeWin)} / ${p3(model.draw)} / ${p3(model.awayWin)}`
+    + (flagged.length ? ` — deutliche Abweichung vom Markt bei ${flagged.join(", ")}.` : "."));
+
+  // 3 · Per tendency: best tip, expected value split into the three tiers.
+  line("Je Tendenz der beste Tipp (erwartete Punkte = Tendenz + Differenz + exakt):");
+  const ul = document.createElement("ul");
+  const breakdown = tendencyBreakdown(r.matrix, r.maxGoals, r.quotas);
+  breakdown.forEach((b, i) => {
+    const li = document.createElement("li");
+    li.textContent =
+      `${tendencyLabel(b.tendency)} · ${b.tip.home}:${b.tip.away} · ${fmt(b.expected)} = `
+      + `${fmt(b.parts.tendenz)} (Tendenz) + ${fmt(b.parts.differenz)} (Differenz) + ${fmt(b.parts.exakt)} (exakt)`
+      + (i === 0 ? "  ← Empfehlung" : "");
+    ul.append(li);
+  });
+  body.append(ul);
+
+  // 4 · One sentence on the decision.
+  line(decisionSentence(breakdown, r.favouriteTendency, tendencyLabel));
+
+  details.append(body);
+  return details;
+}
+
 function renderResult() {
   if (!optimised) return;
 
   renderTable(
     $("result"),
-    ["Begegnung", "Tipp", "erwartete Punkte", "Favoriten-Tipp", "dessen Punkte"],
+    ["Begegnung", "Tipp", "erwartete Punkte", "Favoriten-Tipp", "dessen Punkte", "Grundlage"],
     optimised.rows.map((r) => [
       `${r.homeName} – ${r.awayName}`,
       `${r.tip.home}:${r.tip.away}`,
       fmt(r.tip.expected),
       `${r.favouriteTip.home}:${r.favouriteTip.away}`,
       fmt(r.favouriteTip.expected),
+      effectiveBasis(r) === "market" ? "Markt" : "Modell",
     ]),
   );
+
+  // §2: each fixture gets a „Wie gerechnet?" disclosure, following the chosen basis.
+  const rw = $("rechenweg");
+  rw.replaceChildren();
+  for (const r of optimised.rows) rw.append(rechenwegDetails(r));
 
   const t = $("totals");
   t.replaceChildren();
@@ -234,6 +314,22 @@ function renderResult() {
   }
 
   $("result-section").hidden = false;
+}
+
+/** Re-optimise on the current basis and redraw everything that depends on it. */
+function recompute() {
+  optimised = optimiseCurrent();
+  renderFixtures();
+  renderResult();
+  const cap = $("grundlage-caption");
+  cap.textContent = MODEL_BASIS_CAPTION;
+  $("grundlage-row").hidden = fixtures.length === 0;
+}
+
+/** Reflect the basis state in the toggle control. */
+function syncBasisControl() {
+  const sel = $("grundlage");
+  if (sel) sel.value = basis;
 }
 
 function renderLogFigures() {
@@ -304,8 +400,10 @@ $("parse").addEventListener("click", () => {
 
     renderFixtures();
     if (fixtures.length) {
-      optimised = optimiseMatchday(fixtures);
-      renderResult();
+      // Default the toggle to Markt when any fixture carries odds, else Modell.
+      basis = fixtures.some((f) => f.hasOdds) ? "market" : "model";
+      syncBasisControl();
+      recompute();
       say(status, `${fixtures.length} Spiel(e) erkannt.`, "ok");
     } else {
       $("result-section").hidden = true;
@@ -317,6 +415,11 @@ $("parse").addEventListener("click", () => {
     $("result-section").hidden = true;
     say(status, e instanceof ParseError ? e.message : `Fehler: ${e.message}`, "warn");
   }
+});
+
+$("grundlage").addEventListener("change", (event) => {
+  basis = event.target.value === "model" ? "model" : "market";
+  recompute();
 });
 
 $("demo").addEventListener("click", () => {
