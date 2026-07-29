@@ -74,18 +74,39 @@ export function parsePointRule(text) {
 }
 
 /**
- * The three 1X2 bookmaker odds, read by their named spans (heim/remis/gast) so
- * page order cannot swap them. Returns null when the round carries no odds block
- * at all — the app then runs in model-only mode. A present-but-implausible odds
- * set (≤ 1) also returns null rather than a guess.
+ * The three 1X2 bookmaker odds. Read PRIMARILY by the semantic label 1/X/2
+ * (§KICKTIPP_MD1_QUOTENFIX §2): Kicktipp renders the block in two variants —
+ * plain spans `quote-heim/quote-remis/quote-gast` (md2), or Oddset anchors
+ * `quoteheim/quoteremis/quotegast` (no hyphen, md1) wrapping the same
+ * `quote-label`/`quote-text`. The label is present and stable in BOTH, so it is
+ * the primary key; the class spelling (either variant) is only a fallback.
+ *
+ * Returns null when the round carries no odds block at all — the app then runs
+ * in model-only mode. A present-but-implausible odds set (≤ 1) also returns null
+ * rather than a guess. The overround of a real (md1) set is removed downstream
+ * by `impliedProbabilities` — no handling needed here.
  */
 function extractOdds(scope) {
   const block = scope.querySelector(".tippabgabe-quoten");
   if (!block) return null;
-  const pick = (cls) => parseDecimal(cellText(block.querySelector(`.quote-${cls} .quote-text`)));
-  const home = pick("heim");
-  const draw = pick("remis");
-  const away = pick("gast");
+
+  const byLabel = { 1: null, X: null, 2: null };
+  for (const q of block.querySelectorAll(".quote")) {
+    const label = cellText(q.querySelector(".quote-label"));
+    const value = parseDecimal(cellText(q.querySelector(".quote-text")));
+    if (label in byLabel && value != null) byLabel[label] = value;
+  }
+  let home = byLabel[1];
+  let draw = byLabel.X;
+  let away = byLabel[2];
+
+  // Fallback: the class-based spelling, either variant, if a label is missing.
+  const pickClass = (...classes) =>
+    parseDecimal(cellText(block.querySelector(classes.map((c) => `.${c} .quote-text`).join(", "))));
+  if (home == null) home = pickClass("quote-heim", "quoteheim");
+  if (draw == null) draw = pickClass("quote-remis", "quoteremis");
+  if (away == null) away = pickClass("quote-gast", "quotegast");
+
   if (home == null || draw == null || away == null) return null;
   if (!(home > 1) || !(draw > 1) || !(away > 1)) return null;
   return { home, draw, away };
@@ -134,9 +155,12 @@ export function parseTippPage(html, parser = new DOMParser()) {
     const col1 = row.querySelector("td.col1, th.col1") ?? cells[0];
     const col2 = row.querySelector("td.col2, th.col2") ?? cells[1];
 
-    // Home/away: the stack element when present, else the plain cell text.
-    const homeRaw = cellText(col1.querySelector?.('.stackElement[data-from="1"]')) || cellText(col1);
-    const awayRaw = cellText(col2.querySelector?.('.stackElement[data-from="2"]')) || cellText(col2);
+    // Home/away: the stack element when present, else the plain cell text. In
+    // the md1 variant BOTH clubs live in col1's stack (data-from 1 and 2) and
+    // col2 is empty — so the stack element is searched across the WHOLE row,
+    // mirror-symmetric for home and away (§KICKTIPP_MD1_QUOTENFIX §2).
+    const homeRaw = cellText(row.querySelector('.stackElement[data-from="1"]')) || cellText(col1);
+    const awayRaw = cellText(row.querySelector('.stackElement[data-from="2"]')) || cellText(col2);
     const home = sanitiseClubName(homeRaw);
     const away = sanitiseClubName(awayRaw);
     const id = idOf(row);

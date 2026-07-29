@@ -7,6 +7,7 @@ import {
   parseTippPage, parseDecimal, parseGermanNumber, parsePointRule, resolveClub,
   sanitiseClubName, validateManualFixture, ParseError,
 } from "../src/parse.mjs";
+import { impliedProbabilities } from "../src/market.mjs";
 
 // A real DOMParser, in a document that WOULD run scripts if anything let it —
 // `runScripts: "dangerously"` makes the „nothing executes" assertions meaningful.
@@ -15,6 +16,9 @@ const parser = new dom.window.DOMParser();
 
 const FIXTURE = fs.readFileSync(
   path.resolve(import.meta.dirname, "fixtures/tippabgabe-2026-md2.html"), "utf8",
+);
+const FIXTURE_MD1 = fs.readFileSync(
+  path.resolve(import.meta.dirname, "fixtures/tippabgabe-2026-md1.html"), "utf8",
 );
 
 // ---------------------------------------------------------------------------
@@ -51,6 +55,62 @@ test("all nine pairings and ids come through in order", () => {
     "1503034646 Hamburger SV–FSV Mainz 05",
     "1503034647 Eintracht Frankfurt–FC Augsburg",
   ]);
+});
+
+// ---------------------------------------------------------------------------
+//  §KICKTIPP_MD1_QUOTENFIX — md1 (Oddset-anchor variant) parses with the SAME
+//  extraction: odds keyed by the 1/X/2 label, away from stackElement data-from=2.
+// ---------------------------------------------------------------------------
+
+test("md1 parses fully with the SAME extraction: 9 fixtures, none skipped", () => {
+  const { fixtures, skipped } = parseTippPage(FIXTURE_MD1, parser);
+  assert.equal(fixtures.length, 9);
+  assert.equal(skipped.length, 0);
+});
+
+test("md1 row 1 word-exact: FC Bayern München – VfB Stuttgart, 3-9-9, odds 1.32/6.50/7.25, id 1503034386", () => {
+  const { fixtures } = parseTippPage(FIXTURE_MD1, parser);
+  assert.deepEqual(fixtures[0], {
+    id: "1503034386",
+    home: "FC Bayern München",
+    away: "VfB Stuttgart",
+    odds: { home: 1.32, draw: 6.5, away: 7.25 },
+    quotas: { homeWin: 3, draw: 9, awayWin: 9 },
+  });
+});
+
+test("md1: every fixture carries a full odds triple (the away-in-col1 / Oddset-anchor case)", () => {
+  const { fixtures } = parseTippPage(FIXTURE_MD1, parser);
+  for (const f of fixtures) {
+    assert.ok(f.home && f.away, `pairing incomplete: ${JSON.stringify(f)}`);
+    assert.ok(f.odds && f.odds.home > 1 && f.odds.draw > 1 && f.odds.away > 1, `odds missing: ${f.id}`);
+  }
+});
+
+test("md1 real odds carry an overround that impliedProbabilities removes to sum 1", () => {
+  const { odds } = parseTippPage(FIXTURE_MD1, parser).fixtures[0];
+  const raw = 1 / odds.home + 1 / odds.draw + 1 / odds.away;
+  assert.ok(raw > 1.02, `md1 odds should carry a real overround, got ${raw}`);
+  const p = impliedProbabilities({ home: odds.home, draw: odds.draw, away: odds.away });
+  assert.ok(Math.abs(p.homeWin + p.draw + p.awayWin - 1) < 1e-12, "normalised to sum 1");
+});
+
+test("a mixed matchday: an odds row keeps its odds, a quote-less row is model-only", () => {
+  const withOdds = `<tr class="datarow">
+    <td class="cell col1"><div class="stack"><div class="stackElement" data-from="1">FC Bayern München</div>
+      <div class="stackElement" data-from="5"><div class="tippabgabe-quoten">
+        <a class="quote quoteheim"><span class="quote-label">1</span><span class="quote-text">1.40</span></a>
+        <a class="quote quoteremis"><span class="quote-label">X</span><span class="quote-text">4.80</span></a>
+        <a class="quote quotegast"><span class="quote-label">2</span><span class="quote-text">7.00</span></a>
+      </div></div></div></td>
+    <td class="cell col2">VfB Stuttgart</td></tr>`;
+  const noOdds = `<tr class="datarow">
+    <td class="cell col1"><div class="stack"><div class="stackElement" data-from="1">SC Freiburg</div></div></td>
+    <td class="cell col2">1. FC Köln</td></tr>`;
+  const { fixtures } = parseTippPage(`<table>${withOdds}${noOdds}</table>`, parser);
+  assert.equal(fixtures.length, 2);
+  assert.deepEqual(fixtures[0].odds, { home: 1.4, draw: 4.8, away: 7.0 });
+  assert.equal(fixtures[1].odds, null, "the quote-less row runs model-only");
 });
 
 // ---------------------------------------------------------------------------
