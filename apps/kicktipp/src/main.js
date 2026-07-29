@@ -34,11 +34,23 @@ const basisData = (f) => f[effectiveBasis(f)];
 const TENDENCY_LABEL = { homeWin: "H", draw: "U", awayWin: "A" };
 const tendencyLabel = (t) => TENDENCY_LABEL[t];
 
-/** Run the SAME optimiser on the chosen basis matrix per fixture (§3). */
+/**
+ * Run the SAME optimiser on the chosen basis matrix per fixture (§3). The TIP
+ * follows the chosen basis (its matrix), but the hit-rate warning always
+ * references the true MARKET masses (`f.market.region`) — the honest „weicht vom
+ * Markt ab" reading, not the model comparing against itself. The chosen-basis
+ * favourite travels separately as `basisTendency` for the decision sentence.
+ */
 function optimiseCurrent() {
   const forOpt = fixtures.map((f) => {
     const b = basisData(f);
-    return { ...f, matrix: b.matrix, maxGoals: b.maxGoals, market: b.region };
+    return {
+      ...f,
+      matrix: b.matrix,
+      maxGoals: b.maxGoals,
+      market: f.market.region, // the real market (or the model fallback when odds-less)
+      basisTendency: favouriteTendency(b.region),
+    };
   });
   return optimiseMatchday(forOpt);
 }
@@ -253,8 +265,8 @@ function rechenwegDetails(r) {
   });
   body.append(ul);
 
-  // 4 · One sentence on the decision.
-  line(decisionSentence(breakdown, r.favouriteTendency, tendencyLabel));
+  // 4 · One sentence on the decision — the favourite follows the chosen basis.
+  line(decisionSentence(breakdown, r.basisTendency ?? r.favouriteTendency, tendencyLabel));
 
   details.append(body);
   return details;

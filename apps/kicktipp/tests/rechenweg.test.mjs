@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { effectiveParams } from "../../../packages/engine/src/model.mjs";
 import { buildMarketMatrix, impliedProbabilities } from "../src/market.mjs";
-import { optimiseMatchday, expectedPoints } from "../src/optimise.mjs";
+import { expectedPoints } from "../src/optimise.mjs";
 import {
   marketPercent, tendencyBreakdown, deviation, decisionSentence,
   MODEL_BASIS_CAPTION, DEVIATION_THRESHOLD,
@@ -32,11 +32,12 @@ const modelBasis = (eloHome, eloAway) => {
 test("the per-tendency decomposition sums EXACTLY to the optimiser's expected value", () => {
   const m = modelBasis(1780, 1610);
   for (const b of tendencyBreakdown(m.matrix, m.maxGoals, QUOTAS)) {
-    const sum = b.parts.tendenz + b.parts.differenz + b.parts.exakt;
-    assert.ok(Math.abs(sum - b.expected) < 1e-12, `${b.tendency}: parts ${sum} vs expected ${b.expected}`);
-    // …and equals expectedPoints for that exact tip (no separate computation).
-    const e = expectedPoints(b.tip, m.matrix, m.maxGoals, QUOTAS);
-    assert.ok(Math.abs(e.expected - b.expected) < 1e-12);
+    // The parts ARE the three products expectedPoints sums; adding them in the
+    // SAME order (tendenz, exakt, differenz) reproduces it bit-for-bit.
+    const sum = b.parts.tendenz + b.parts.exakt + b.parts.differenz;
+    assert.equal(sum, b.expected, `${b.tendency}: parts ${sum} vs expected ${b.expected}`);
+    // …and it IS expectedPoints for that exact tip (no separate computation).
+    assert.equal(expectedPoints(b.tip, m.matrix, m.maxGoals, QUOTAS).expected, b.expected);
   }
 });
 
