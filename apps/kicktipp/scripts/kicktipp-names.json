@@ -1,6 +1,6 @@
 {
-  "_comment": "clubId -> the name form Kicktipp renders (§KICKTIPP_PARSER_FIX §2). Verified against the committed fixture tippabgabe-2026-md2.html (a BL1 pool, 2. Spieltag 2026/27). The 18 BL2 forms are NOT yet verified — they come from the public Kicktipp Spielplan in a follow-up; until then BL2 clubs match via the canonical name and fail-closed on a divergent form (never guessed).",
-  "_source": "apps/kicktipp/tests/fixtures/tippabgabe-2026-md2.html",
+  "_comment": "clubId -> the name form Kicktipp renders (§KICKTIPP_PARSER_FIX §2). All 36 current clubs verified: BL1 against the committed fixture tippabgabe-2026-md2.html, BL2 against the public Kicktipp Spielplan (1. Spieltag 2026/27). Forms that would NOT match on the canonical name alone justify the fail-closed caution — e.g. Bor. Mönchengladbach, 1899 Hoffenheim, 1. FC Heidenheim 1846 (long form with year), Energie Cottbus (no FC prefix), Arminia Bielefeld (drops DSC).",
+  "_source": "BL1: apps/kicktipp/tests/fixtures/tippabgabe-2026-md2.html. BL2: kicktipp.de/tippspiel-2-bundesliga, Spielplan 1. Spieltag 2026/27, abgerufen 2026-07-28 — ein einmaliger manueller Abruf durch den Betreiber; die manual-paste-only-Regel der App bleibt unberührt (die App ruft Kicktipp nie selbst ab).",
   "names": {
     "Stuttgart": "VfB Stuttgart",
     "Köln": "1. FC Köln",
@@ -19,6 +19,24 @@
     "HSV": "Hamburger SV",
     "Mainz": "FSV Mainz 05",
     "Frankfurt": "Eintracht Frankfurt",
-    "Augsburg": "FC Augsburg"
+    "Augsburg": "FC Augsburg",
+    "Bielefeld": "Arminia Bielefeld",
+    "Bochum": "VfL Bochum",
+    "Braunschweig": "Eintracht Braunschweig",
+    "Cottbus": "Energie Cottbus",
+    "Darmstadt": "SV Darmstadt 98",
+    "Dresden": "Dynamo Dresden",
+    "Fürth": "SpVgg Greuther Fürth",
+    "Hannover": "Hannover 96",
+    "Heidenheim": "1. FC Heidenheim 1846",
+    "Hertha": "Hertha BSC",
+    "Kaiserslautern": "1. FC Kaiserslautern",
+    "Karlsruhe": "Karlsruher SC",
+    "Kiel": "Holstein Kiel",
+    "Magdeburg": "1. FC Magdeburg",
+    "Nürnberg": "1. FC Nürnberg",
+    "Osnabrück": "VfL Osnabrück",
+    "St. Pauli": "FC St. Pauli",
+    "Wolfsburg": "VfL Wolfsburg"
   }
 }

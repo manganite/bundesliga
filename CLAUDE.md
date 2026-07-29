@@ -168,9 +168,9 @@ spätere schlägt die frühere:**
     Kicktipp-Markup statt der Zahl-je-Zelle-Heuristik (Wettquoten nur aus dem
     `quoten`-Block, Punkteregel getrennt, Nur-Modell-Modus, Fail-closed je Zeile,
     „Das habe ich verstanden"-Panel, text/html-Paste). Committete Fixture als
-    Referenz; Register um Kicktipp-Namensformen (BL1 verifiziert, **BL2 als
-    Folge-PR** aus dem Spielplan). Reiner App-B-Fix, kein Release-Bump nötig
-    (App B wird nie deployt).
+    Referenz; Register um Kicktipp-Namensformen (BL1 aus der Fixture; **BL2 im
+    Folge-PR** aus dem öffentlichen Spielplan nachgetragen — alle 36 verifiziert).
+    Reiner App-B-Fix, kein Release-Bump nötig (App B wird nie deployt).
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -306,10 +306,13 @@ sie war die Quelle der Gefahr, die Punkteregel „3 - 9 - 9" als Wettquoten zu
 lesen; die Struktur trennt beides. Fehlt der Quotenblock: **Nur-Modell-Modus**
 (odds null, sichtbarer Hinweis). Fail-closed je Zeile; die maßgebliche Referenz
 ist `tests/fixtures/tippabgabe-2026-md2.html` (echtes Markup, BL1-Pool). Klub-
-Register trägt die **Kicktipp-Namensform** als dritte Spalte (BL1 aus der Fixture
-verifiziert; **BL2 folgt aus dem Kicktipp-Spielplan**, bis dahin Kanonik + fail-
-closed, nie geraten). `inline.mjs` ersetzt per **Funktions**-Replacer (minifiertes
-JS kann `$&` enthalten — ein String-Replacer spleißt sonst das Asset-Tag zurück).
+Register trägt die **Kicktipp-Namensform** als dritte Spalte, **alle 36
+verifiziert** (BL1 aus der Fixture, BL2 aus dem öffentlichen Kicktipp-Spielplan
+1. Spieltag 2026/27 — ein einmaliger manueller Abruf, die manual-paste-only-Regel
+der App bleibt unberührt). Ein Test hält fest, dass jeder aktuelle BL1/BL2-Klub
+eine Form trägt; unbekannte Namen bleiben fail-closed, nie geraten. `inline.mjs`
+ersetzt per **Funktions**-Replacer (minifiertes JS kann `$&` enthalten — ein
+String-Replacer spleißt sonst das Asset-Tag zurück).
 
 Punkteschema ist **best-of, max 11**: Quote 3–9 plus genau *ein* Bonus (Sieg: +2 exakt
 oder +1 Tordifferenz; Remis: nur +2 exakt, kein Tordifferenz-Rang). Scoreline-Form durch
