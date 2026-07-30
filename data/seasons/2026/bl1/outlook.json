@@ -4,18 +4,18 @@
     "Augsburg": 1636.4465332,
     "Bayern": 2000.87036133,
     "Bremen": 1606.01940918,
-    "Dortmund": 1834.7689209,
+    "Dortmund": 1834.76879883,
     "Elversberg": 1523.39855957,
     "Frankfurt": 1663.77990723,
-    "Freiburg": 1724.91345215,
+    "Freiburg": 1724.91357422,
     "Gladbach": 1640.84326172,
     "Hoffenheim": 1700.35388184,
     "HSV": 1602.14746094,
     "Köln": 1568.16882324,
     "Leipzig": 1761.90356445,
     "Leverkusen": 1804.02624512,
-    "Mainz": 1671.92553711,
-    "Paderborn": 1525.36755371,
+    "Mainz": 1671.92541504,
+    "Paderborn": 1525.36743164,
     "Schalke": 1519.74243164,
     "Stuttgart": 1763.83459473,
     "Union Berlin": 1619.43078613
@@ -2708,8 +2708,8 @@
       0.03925,
       0.0521,
       0.0563,
-      0.06555,
-      0.07055,
+      0.0655,
+      0.0706,
       0.0746,
       0.07765,
       0.07645,
@@ -2728,8 +2728,8 @@
       0.07675,
       0.07855,
       0.08745,
-      0.08785,
-      0.08365,
+      0.0879,
+      0.0836,
       0.0738,
       0.07275,
       0.0628,
@@ -2972,7 +2972,7 @@
       "p90": 59
     },
     "Hoffenheim": {
-      "expected": 49.58785,
+      "expected": 49.5879,
       "median": 49,
       "p10": 34,
       "p90": 65
@@ -3002,7 +3002,7 @@
       "p90": 75
     },
     "Mainz": {
-      "expected": 46.559,
+      "expected": 46.5589,
       "median": 46,
       "p10": 31,
       "p90": 62
@@ -7069,25 +7069,25 @@
       "home": "Mainz",
       "away": "Hoffenheim",
       "outcomeProbabilities": {
-        "homeWin": 0.41165,
-        "draw": 0.25195,
+        "homeWin": 0.4116,
+        "draw": 0.252,
         "awayWin": 0.3364
       },
-      "smallestConditionalRuns": 5039,
+      "smallestConditionalRuns": 5040,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.015152715,
-            "smallestConditionalSample": 5039,
+            "value": 0.015172520000000002,
+            "smallestConditionalSample": 5040,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.02050551375000001,
-            "smallestConditionalSample": 5039,
+            "value": 0.0204668,
+            "smallestConditionalSample": 5040,
             "places": 2
           }
         }
@@ -11911,94 +11911,94 @@
   "ratingProvenance": {
     "Augsburg": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Bayern": {
       "provenance": "carried-forward",
       "effectiveAt": "2026-07-03",
-      "ageDays": 26,
+      "ageDays": 27,
       "snapshotId": "clubelo-2026-07-03-15da4e2e4cf808de"
     },
     "Bremen": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Dortmund": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Elversberg": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Frankfurt": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Freiburg": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Gladbach": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Hoffenheim": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "HSV": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Köln": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Leipzig": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Leverkusen": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Mainz": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Paderborn": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Schalke": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     },
     "Stuttgart": {
       "provenance": "carried-forward",
       "effectiveAt": "2026-07-03",
-      "ageDays": 26,
+      "ageDays": 27,
       "snapshotId": "clubelo-2026-07-03-15da4e2e4cf808de"
     },
     "Union Berlin": {
       "provenance": "live",
-      "effectiveAt": "2026-07-29",
+      "effectiveAt": "2026-07-30",
       "ageDays": 0
     }
   }

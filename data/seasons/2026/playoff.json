@@ -3289,8 +3289,8 @@
     {
       "bl1Club": "Union Berlin",
       "bl2Club": "St. Pauli",
-      "pBl1Wins": 0.61505,
-      "pBl2Wins": 0.38495,
+      "pBl1Wins": 0.6151,
+      "pBl2Wins": 0.3849,
       "hostsSecondLeg": null,
       "homeOrderMixed": true,
       "homeOrderBasis": "dates unknown",
@@ -3413,8 +3413,8 @@
     "Union Berlin": {
       "pSafe": 0.81755,
       "pRelegationPlayoff": 0.07065,
-      "pKlassenerhalt": 0.864831795932375,
-      "pWinsPlayoff": 0.6692398575
+      "pKlassenerhalt": 0.86483214052775,
+      "pWinsPlayoff": 0.6692447350000001
     }
   },
   "bl2": {
@@ -3517,8 +3517,8 @@
     "St. Pauli": {
       "pDirect": 0.22855,
       "pPlayoffPlace": 0.09755,
-      "pAufstieg": 0.269807536297625,
-      "pWinsPlayoff": 0.4229373275
+      "pAufstieg": 0.26980719170225,
+      "pWinsPlayoff": 0.422933795
     },
     "Wolfsburg": {
       "pDirect": 0.4229,
