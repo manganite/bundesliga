@@ -225,6 +225,129 @@ test("enrichment is idempotent — a second run changes nothing", async () => {
   assert.deepEqual(second, first, "a second run must produce a byte-identical dataset");
 });
 
+// ---------------------------------------------------------------------------
+//  Recompute until kickoff, freeze from kickoff on (PREMATCH_FENSTER).
+//
+//  The defect these pin down: entries were created for EVERY fixture of the
+//  season on the first run and then frozen, so a match in May 2027 carried the
+//  ratings of July 2026 forever. Model quality would have measured the whole
+//  season against one snapshot, unnoticed until the season was over.
+// ---------------------------------------------------------------------------
+
+const s1 = { snapshotId: "s1", effectiveAt: "2026-08-26", observedAt: "2026-08-26T04:00:00.000Z" };
+const s2 = { snapshotId: "s2", effectiveAt: "2026-09-02", observedAt: "2026-09-02T04:00:00.000Z" };
+const ratings = {
+  s1: { snapshotId: "s1", ratings: { A: 1800, B: 1700 } },
+  s2: { snapshotId: "s2", ratings: { A: 1820, B: 1690 } },
+};
+// One fixture, kicking off 4 September.
+const future = [{ id: "f1", kickoff: "2026-09-04T18:30:00Z", homeClubId: "A", awayClubId: "B" }];
+
+const buildFuture = (over = {}) => buildPreMatchDataset({
+  league: "bl1",
+  season: 2026,
+  fixtures: future,
+  index: { snapshots: [s1] },
+  loadSnapshot: async (id) => ratings[id],
+  modelVersion: "v1",
+  createdAt: "2026-08-27T04:00:00.000Z",
+  ...over,
+});
+
+test("a fixture 60 days out still gets an entry — the app needs it to predict at all", async () => {
+  const { dataset } = await buildPreMatchDataset({
+    league: "bl1",
+    season: 2026,
+    fixtures: [{ id: "far", kickoff: "2026-10-26T18:30:00Z", homeClubId: "A", awayClubId: "B" }],
+    index: { snapshots: [s1] },
+    loadSnapshot: async (id) => ratings[id],
+    modelVersion: "v1",
+    createdAt: "2026-08-27T04:00:00.000Z",
+  });
+  assert.equal(dataset.entries.length, 1, "no window: every fixture of the season carries an entry");
+  assert.equal(dataset.gaps.length, 0);
+  assert.equal(dataset.entries[0].eloHome, 1800, "and it carries usable ratings, not a placeholder");
+});
+
+test("before kickoff a newer snapshot replaces the entry", async () => {
+  const first = (await buildFuture()).dataset;
+  assert.equal(first.entries[0].ratingSnapshotId, "s1");
+
+  const { dataset: second, updated } = await buildFuture({
+    existing: first,
+    index: { snapshots: [s1, s2] },
+    createdAt: "2026-09-03T04:00:00.000Z",
+  });
+  assert.equal(updated, 1);
+  assert.equal(second.entries[0].ratingSnapshotId, "s2", "the better snapshot wins while the match is open");
+  assert.equal(second.entries[0].eloHome, 1820);
+  assert.equal(second.entries[0].createdAt, "2026-09-03T04:00:00.000Z");
+});
+
+test("from kickoff on the entry is frozen, even with a newer snapshot available", async () => {
+  const first = (await buildFuture()).dataset;
+
+  const { dataset: second, updated } = await buildFuture({
+    existing: first,
+    index: { snapshots: [s1, s2] },
+    // Now the run happens AFTER the 4 September kickoff.
+    createdAt: "2026-09-05T04:00:00.000Z",
+  });
+  assert.equal(updated, 0);
+  assert.deepEqual(second.entries[0], first.entries[0], "a played match keeps the state of knowledge it was played under");
+});
+
+test("a carry-forward mark disappears once clubelo lists the club again", async () => {
+  const withoutA = { snapshotId: "s1", ratings: { B: 1700 } };
+  const carried = (await buildFuture({
+    loadSnapshot: async () => withoutA,
+    carryForward: async ({ clubId }) => ({ rating: 1999, effectiveAt: "2026-07-03", ageDays: 54, clubId }),
+  })).dataset;
+  assert.equal(carried.entries[0].provenance, "carried-forward");
+  assert.deepEqual(carried.entries[0].carriedFrom, { A: { effectiveAt: "2026-07-03", ageDays: 54 } });
+
+  // clubelo publishes A again, the match has still not kicked off.
+  const healed = (await buildFuture({ existing: carried })).dataset;
+  assert.equal(healed.entries[0].provenance, "contemporaneous", "the mark is not sticky");
+  assert.equal(healed.entries[0].carriedFrom, undefined);
+  assert.equal(healed.entries[0].eloHome, 1800);
+});
+
+test("NO CHURN — a rerun with unchanged data writes a byte-identical file", async () => {
+  const first = (await buildFuture()).dataset;
+  // The cron passes a fresh timestamp every two hours. That alone must not move
+  // a single byte, or every run commits and deploys an identical file (§5.1).
+  const { dataset: second, updated } = await buildFuture({
+    existing: first,
+    createdAt: "2026-08-27T06:00:00.000Z",
+  });
+  assert.equal(updated, 0);
+  assert.deepEqual(second, first);
+  assert.equal(second.entries[0].createdAt, "2026-08-27T04:00:00.000Z", "createdAt must not tick on a no-op rerun");
+});
+
+test("DETERMINISM — the kickoff boundary follows the run timestamp, never the clock", async () => {
+  const base = (await buildFuture()).dataset;
+  const args = { existing: base, index: { snapshots: [s1, s2] } };
+
+  // Same inputs, same as-of: identical output, twice.
+  const a = (await buildFuture({ ...args, createdAt: "2026-09-03T04:00:00.000Z" })).dataset;
+  const b = (await buildFuture({ ...args, createdAt: "2026-09-03T04:00:00.000Z" })).dataset;
+  assert.deepEqual(a, b);
+
+  // Only the as-of moves — and that alone decides open vs frozen.
+  const after = (await buildFuture({ ...args, createdAt: "2026-09-05T04:00:00.000Z" })).dataset;
+  assert.equal(a.entries[0].ratingSnapshotId, "s2", "before kickoff: rebuilt");
+  assert.equal(after.entries[0].ratingSnapshotId, "s1", "after kickoff: frozen");
+});
+
+test("a run timestamp that is not a date fails loudly instead of guessing the boundary", async () => {
+  await assert.rejects(
+    () => buildFuture({ createdAt: "irgendwann" }),
+    /must be an ISO timestamp/,
+  );
+});
+
 test("an entry whose snapshot is no longer in the index is left exactly as it was", async () => {
   const old = {
     fixtureId: "1", kickoff: "2026-08-28T18:30:00Z", homeClubId: "A", awayClubId: "B",

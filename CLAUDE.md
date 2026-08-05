@@ -198,6 +198,18 @@ spätere schlägt die frühere:**
     Marktprozente (Referenz Augsburg–Schalke: Markt 44,0/25,5/30,5 vs. Modell
     56,6/23,9/19,5), plus Selbsttest gegen die Fehlverdrahtung. Keine
     Optimierungs-/Scoring-Änderung, kein Release-Bump.
+29. `PREMATCH_FENSTER_BRIEF.md` — Pipeline-Defektfix: Pre-Match-Einträge werden
+    **bis zum Anstoß neu berechnet** und erst **ab Anstoß** eingefroren.
+    `write-once` war die richtige Regel, nur zu früh angewandt: Einträge
+    entstanden beim ersten Lauf für *jedes* Fixture der Saison und froren dort
+    ein — alle 612 Einträge der Saison 2026/27 hingen am Snapshot vom
+    2026-07-23, bis Mai 2027. Zwei Fallen sind Spezifikation, nicht Fußnote: die
+    **Substanz-Regel** (nur Snapshot-ID/Elo/Provenienz/carriedFrom bewegen die
+    Datei, sonst committet der Cron alle zwei Stunden eine inhaltsgleiche Datei)
+    und die **Anstoßgrenze am Laufzeitpunkt** statt an der Uhr. Der Briefkopf
+    dokumentiert bewusst den **verworfenen** Weg: ein Anlege-Fenster hätte App A
+    gebrochen, weil `prematch.json` zwei Jobs hat — Provenienz-Protokoll *und*
+    einzige Quelle der Einzelspiel-Vorhersagen. Release 2.3.3.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -388,6 +400,22 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   Lücke hebt das Treppenfunktions-Argument auf. Führt clubelo sie bis dahin nicht
   wieder, scheitert der Lauf ab dem 07.08. wieder fail-closed. Die Eskalation ist
   also Anfang August fällig, nicht Mitte.
+- **Pre-Match-Einträge werden bis zum Anstoß neu berechnet, ab Anstoß eingefroren**
+  (Brief 29, Defektfix). Drei Stellen, an denen es leicht wieder kaputtgeht:
+  - **`prematch.json` hat zwei Jobs.** Es ist das Provenienz-Protokoll der
+    Modellgüte **und** die einzige Quelle der Einzelspiel-Vorhersagen —
+    `predictFixture` liefert ohne Eintrag `null`, womit Spieltags-Tendenzen, die
+    Szenarien-Vorbelegung samt aller Presets und `forecastCompletedSeason`
+    ausfallen. Einträge für *künftige* Fixtures sind daher kein Ballast, den man
+    wegoptimiert; `apps/public/tests/prematchFenster.test.mjs` hält das gegen die
+    committete Saison fest.
+  - **Die Substanz-Regel ist der Churn-Schutz.** Ein neu berechneter Eintrag wird
+    nur geschrieben, wenn Snapshot-ID, Elo, Provenienz, `carriedFrom` oder
+    `modelVersion` sich ändern — `createdAt` allein tickt nie. Ohne sie committet
+    und deployt der Zwei-Stunden-Cron eine inhaltsgleiche Datei.
+  - **Die Anstoßgrenze ist der Laufzeitpunkt** (`createdAt`/`observedAt`), nie
+    `Date.now()`; ein unlesbarer Wert scheitert laut. Sonst wird ein
+    `--as-of`-Neuaufbau nichtdeterministisch.
 - Die Fitprozedur liegt seit der Extraktion in `packages/fit` und reproduziert die
   ausgelieferten Parameter **bitgleich** (`docs/FIT_EXTRACTION.md`). `LAB_REPO_TOKEN`
   ist entfallen; erlaubt ist nur noch `GITHUB_TOKEN`.
@@ -515,9 +543,10 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
 - **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
-  package.json` wird je Release-Brief gebumpt (aktuell **2.3.2**, Release über
+  package.json` wird je Release-Brief gebumpt (aktuell **2.3.3**, Release über
   V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau; 2.3.1 = Achsentitel-Fix +
-  Verlauf-Auswahl invertiert; 2.3.2 = Codex-Review-Fixes), dann ein Git-Tag
+  Verlauf-Auswahl invertiert; 2.3.2 = Codex-Review-Fixes; 2.3.3 =
+  Pre-Match-Defektfix, Brief 29), dann ein Git-Tag
   `v<version>` und ein GitHub-Release mit 2–6 Zeilen deutschen Notes aus dem
   zugehörigen Brief bzw. Fix.
   **Jede deployte, nutzersichtbare Änderung erhöht mindestens die Patch-Version
@@ -559,7 +588,7 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.3.2) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.3.3) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
