@@ -51,6 +51,25 @@ Punkte (kein Spiel gespielt), `timeline-frozen` existiert nicht, weil Bayern und
 Stuttgart im Vorsaison-Snapshot kein Rating tragen und der Bau darum
 ausgesetzt ist.
 
+## Benannte Approximation: der Stichtag im Kreuzungsfall
+
+Der Rating-Stichtag eines Punktes ist **ein** Datum: der Tag nach dem letzten
+Anstoß über alle Spieltage ≤ M. Das löst den Widerspruch, den die Regel „letzter
+Anstoß des Spieltags M" hinterließe (Ratings vor einem Ergebnis, das der Punkt
+enthält) — aber es bleibt eine Näherung, und zwar eine, die hier benannt und
+nicht versteckt wird:
+
+**Kreuzen sich Verlegungen, enthält der Stichtag auch Rating-Updates späterer
+Spieltage, die dazwischen gespielt wurden.** Enthält Punkt 17 ein Nachholspiel
+vom 4. März, so trägt er die Ratings vom 5. März — und die kennen die regulären
+Spieltage 18 bis 24, die im Februar liefen.
+
+Das ist unter **jeder** Ein-Datum-Regel unvermeidlich, sobald Kalender und
+Spielplan auseinanderlaufen; die Alternative wäre ein Rating je Klub aus je
+eigenem Stichtag, also kein Snapshot mehr, sondern eine Konstruktion. Die Kurve
+heißt darum weiterhin „Ratings, wie sie nach dem jeweiligen Spieltag galten" und
+nicht „Ratings, die genau das Wissen dieses Spieltags abbilden".
+
 ## Folge
 
 Kein Commit von regenerierten Ständen nötig. Der Fix wirkt ab der laufenden

@@ -833,6 +833,13 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
 - **Der Echtdaten-Ranker-Test ist weniger trennscharf, als er aussieht.** Keine der 22
   Saisons brauchte Kriterium 3 oder höher — die H2H-Logik deckt nur `ranking.test.mjs`
   ab. Steht so im Test; die Aussage nicht überdehnen.
+- **Jede neue Datums- oder Zustandsgrenze bekommt im selben PR ihre Zeile in
+  `docs/verification/grenzfaelle.md` samt Randtests.** Die Tabelle ist eine
+  wachsende Methode, keine abgehakte Liste — ohne diese Pflicht ist sie in drei
+  Briefen genau das, was sie verhindern soll: unvollständig. Die Fälle sind
+  immer dieselben: darunter, genau darauf, darüber — und bei Zeitgrenzen
+  zusätzlich, was passiert, wenn sich der verglichene Wert nachträglich bewegt.
+  Hat die Grenze mehrere Konsumenten, wird die Gleichheitskante an jedem geprüft.
 - **Tests aus der Anforderung schreiben, nicht aus der Implementierung.** Die
   Freeze-Bedingung aus Brief 30 hatte eine volle Testrunde, war grün und war
   falsch: getestet wurde die Bedingung, die gebaut worden war, statt der Fälle,
