@@ -341,6 +341,80 @@ test("DETERMINISM — the kickoff boundary follows the run timestamp, never the 
   assert.equal(after.entries[0].ratingSnapshotId, "s1", "after kickoff: frozen");
 });
 
+// ---------------------------------------------------------------------------
+//  Postponements (Codex-Audit 2026-08-05).
+//
+//  The freeze condition used to read the STORED kickoff as well, which froze a
+//  rescheduled match on the date it was moved away from. What settles an entry
+//  is the result, or the CURRENT kickoff having passed — never the old one.
+// ---------------------------------------------------------------------------
+
+test("a match moved to a later date follows the new date and the newer snapshot", async () => {
+  const first = (await buildFuture()).dataset;
+  assert.equal(first.entries[0].ratingSnapshotId, "s1");
+
+  // 4 September is moved to 20 September. The run happens after the OLD date.
+  const moved = [{ ...future[0], kickoff: "2026-09-20T18:30:00Z" }];
+  const { dataset, updated } = await buildFuture({
+    existing: first,
+    fixtures: moved,
+    index: { snapshots: [s1, s2] },
+    createdAt: "2026-09-05T04:00:00.000Z",
+  });
+  assert.equal(updated, 1, "the old kickoff must not freeze a match that has not been played");
+  assert.equal(dataset.entries[0].kickoff, "2026-09-20T18:30:00Z");
+  assert.equal(dataset.entries[0].ratingSnapshotId, "s2");
+});
+
+test("a match called off after its entry froze thaws again", async () => {
+  // Entry written and frozen while the match sat on 4 September.
+  const frozen = (await buildFuture({ createdAt: "2026-09-05T04:00:00.000Z" })).dataset;
+  assert.equal(frozen.entries[0].ratingSnapshotId, "s1");
+
+  // Called off on the day, no result, rescheduled into the future.
+  const { dataset, updated } = await buildFuture({
+    existing: frozen,
+    fixtures: [{ ...future[0], kickoff: "2026-10-15T18:30:00Z" }],
+    index: { snapshots: [s1, s2] },
+    createdAt: "2026-09-06T04:00:00.000Z",
+  });
+  assert.equal(updated, 1);
+  assert.equal(dataset.entries[0].kickoff, "2026-10-15T18:30:00Z");
+  assert.equal(dataset.entries[0].ratingSnapshotId, "s2");
+});
+
+test("a PLAYED match stays frozen even if its kickoff is later moved into the future", async () => {
+  const played = [{ ...future[0], gh: 2, ga: 1 }];
+  const frozen = (await buildFuture({
+    fixtures: played,
+    createdAt: "2026-09-05T04:00:00.000Z",
+  })).dataset;
+
+  // The source data now claims a kickoff far ahead — the result outranks it.
+  const { dataset, updated } = await buildFuture({
+    existing: frozen,
+    fixtures: [{ ...played[0], kickoff: "2027-05-01T18:30:00Z" }],
+    index: { snapshots: [s1, s2] },
+    createdAt: "2026-09-06T04:00:00.000Z",
+  });
+  assert.equal(updated, 0);
+  assert.deepEqual(dataset.entries[0], frozen.entries[0], "a played match is settled, whatever the schedule says");
+});
+
+test("a postponement rewrites the entry even when the ratings are unchanged", async () => {
+  const first = (await buildFuture()).dataset;
+  // Same snapshot available, only the date moves — the record must not keep
+  // naming a day the match was not played on.
+  const { dataset, updated } = await buildFuture({
+    existing: first,
+    fixtures: [{ ...future[0], kickoff: "2026-09-05T18:30:00Z" }],
+    createdAt: "2026-08-28T04:00:00.000Z",
+  });
+  assert.equal(updated, 1);
+  assert.equal(dataset.entries[0].kickoff, "2026-09-05T18:30:00Z");
+  assert.equal(dataset.entries[0].ratingSnapshotId, "s1", "same snapshot, new date");
+});
+
 test("a run timestamp that is not a date fails loudly instead of guessing the boundary", async () => {
   await assert.rejects(
     () => buildFuture({ createdAt: "irgendwann" }),

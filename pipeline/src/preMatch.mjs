@@ -59,7 +59,11 @@ export class PreMatchError extends Error {}
  * superseded procedure. It cannot cause churn — it only ever moves when the
  * shipped parameters really did.
  */
-const SUBSTANCE_KEYS = ["ratingSnapshotId", "eloHome", "eloAway", "provenance", "carriedFrom", "modelVersion"];
+// `kickoff` is in the list because a postponement must rewrite the entry even
+// when the ratings happen to be unchanged — otherwise the record would name a
+// date the match was not played on. It cannot churn: kickoffs move only when a
+// match is really rescheduled.
+const SUBSTANCE_KEYS = ["ratingSnapshotId", "eloHome", "eloAway", "provenance", "carriedFrom", "modelVersion", "kickoff"];
 
 /** Order-insensitive comparison, so a re-serialised `carriedFrom` is not a change. */
 function canonical(value) {
@@ -140,14 +144,28 @@ export async function buildPreMatchDataset({
     const t = Date.parse(kickoff);
     return !Number.isFinite(t) || t <= runMs;
   };
+  // Same rule as `playedFixtures`: a result needs BOTH goals, never a partial.
+  const isPlayed = (fx) => fx.gh !== undefined && fx.ga !== undefined;
 
   for (const fx of fixtures) {
     const prior = entries.get(fx.id);
 
-    // Frozen from kickoff on. Either date saying "kicked off" is enough — the
-    // fixture list can be rescheduled, and preserving the record is the safe
-    // side of that disagreement.
-    if (prior && (kickedOff(fx.kickoff) || kickedOff(prior.kickoff))) continue;
+    // WHAT FREEZES AN ENTRY IS THE RESULT, NOT THE OLD KICKOFF (Codex-Audit
+    // 2026-08-05). Two cases, and the earlier condition got the second wrong:
+    //
+    //   played — both goals are in. The entry is the state of knowledge the
+    //            match was played under and stays put, even if the kickoff in
+    //            the source data were later altered.
+    //   kicked off — the CURRENT kickoff has passed. A match still listed as
+    //            unplayed but past its kickoff is being played right now; its
+    //            pre-match rating is settled.
+    //
+    // Reading `prior.kickoff` here — as this did — freezes a match on its
+    // OUTDATED date: an 8 August fixture moved to the 20th would keep the
+    // ratings of the 8th forever. A postponed, unplayed match must thaw and
+    // keep tracking until its new kickoff, including when it is called off on
+    // the day itself, after the entry had already frozen.
+    if (prior && (isPlayed(fx) || kickedOff(fx.kickoff))) continue;
 
     const snapMeta = findPreMatchSnapshot(index, fx.kickoff);
     if (!snapMeta) {
