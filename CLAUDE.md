@@ -810,6 +810,15 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
 - **Der Echtdaten-Ranker-Test ist weniger trennscharf, als er aussieht.** Keine der 22
   Saisons brauchte Kriterium 3 oder höher — die H2H-Logik deckt nur `ranking.test.mjs`
   ab. Steht so im Test; die Aussage nicht überdehnen.
+- **Tests aus der Anforderung schreiben, nicht aus der Implementierung.** Die
+  Freeze-Bedingung aus Brief 30 hatte eine volle Testrunde, war grün und war
+  falsch: getestet wurde die Bedingung, die gebaut worden war, statt der Fälle,
+  die sie treffen muss — Verlegungen kamen darin schlicht nicht vor. Dieselbe
+  Verwandtschaft wie „durch die Seite testen, nicht unterhalb des Wächters", nur
+  eine Ebene früher, im Entwurf. Die Fundklasse kam **zweimal von fremden Augen**
+  (der verworfene Fenster-Entwurf zu Brief 29, die Freeze-Bedingung zu Brief 30);
+  beide Male las sich der Begründungskommentar plausibel und die Konsequenz war
+  verkehrt. Wer eine Bedingung ändert, listet zuerst die Fälle auf.
 
 ## Ehrlichkeit (§8) — gilt für Code, Captions und Commit-Messages
 
