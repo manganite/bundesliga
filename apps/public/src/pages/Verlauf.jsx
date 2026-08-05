@@ -4,7 +4,7 @@ import Chart from "../components/Chart.jsx";
 import ChartLegend from "../components/ChartLegend.jsx";
 import ChartTooltip from "../components/ChartTooltip.jsx";
 import { HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
-import { targetList, scoredMatches, matchdaySurprises, verlaufSeries } from "../lib/season.js";
+import { targetList, scoredMatches, matchdaySurprises, verlaufSeries, pausedTimelineMatchday } from "../lib/season.js";
 import { retrospectiveLabel } from "../lib/archive.js";
 import { effectiveContenders } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, pp } from "../lib/format.js";
@@ -53,6 +53,9 @@ export default function Verlauf({ ctx }) {
   // shown club sits flat near 100 % (Bayern was never in danger, nobody cares).
   const clubCount = season?.clubs?.length ?? 18;
   const invert = target ? target.places > clubCount / 2 : false;
+
+  // The matchday holding the curve back, or null (§AUDIT_FAMILIE §2).
+  const pausedMatchday = useMemo(() => pausedTimelineMatchday(season?.fixtures), [season]);
 
   const selectionNote = invert
     ? `Höchstens acht Klubs, gereiht nach dem höchsten Risiko im Verlauf, „${target?.label}“ zu verpassen — zuerst die, die dabei mindestens einmal ≥ 2 % erreichten, danach bei Bedarf aufgefüllt.`
@@ -143,6 +146,13 @@ export default function Verlauf({ ctx }) {
               ? " Die Gegenüberstellung darunter zeigt daneben die Kurve mit den Ratings, die zum jeweiligen Zeitpunkt tatsächlich galten."
               : " Die Gegenüberstellung mit aktuellen Ratings erscheint, sobald archivierte Ratings für gespielte Spieltage vorliegen."}
             {" "}Jeder Punkt beruht auf {number(timeline.runs, 0)} Simulationsläufen.
+            {/* §AUDIT_FAMILIE §2: renders only in the case it describes (§7). A
+                point needs ALL matches up to its matchday, so a postponement
+                pauses the curve — that has to be said, not left to guessing. */}
+            {pausedMatchday
+              ? ` Spieltag ${pausedMatchday} ist noch unvollständig (Nachholspiel) — weitere Punkte`
+                + " erscheinen, sobald alle Spiele bis dahin gespielt sind."
+              : ""}
           </p>
         </Card>
       </div>

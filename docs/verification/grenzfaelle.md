@@ -1,0 +1,49 @@
+# Grenzfälle — Anforderungsfall-Tabelle
+
+**Angelegt 2026-08-05** (AUDIT_FAMILIE §4). Arbeitsweise, nicht Bestandsaufnahme:
+Für jede Datums- oder Zustandsgrenze im Projekt steht hier, **welche realen Fälle
+sie treffen muss** — und je Fall ein Test.
+
+Der Anlass steht in CLAUDE.md bei den Lektionen: zweimal wurde eine Bedingung
+getestet, wie sie gebaut war, statt gegen die Fälle, die sie treffen muss. Beide
+Male fand es erst ein fremder Blick. Eine Bedingung zu ändern heißt ab jetzt:
+zuerst die Fälle auflisten, dann den Code.
+
+## Die Regel
+
+1. Grenze benennen (welcher Vergleich, welche Einheit — Tage? Datum? Wahrscheinlichkeit?).
+2. Fälle auflisten: **darunter, genau darauf, darüber** — und für Zeitgrenzen zusätzlich
+   *was passiert, wenn sich der verglichene Wert nachträglich bewegt.*
+3. Je Fall ein Test. Fehlt einer, ist die Grenze nicht abgenommen.
+4. Hat die Grenze mehrere Konsumenten, wird die Gleichheitskante **an jedem** geprüft.
+
+Schritt 2 zweite Hälfte ist die eigentliche Lehre aus der Freeze-Familie: Eine
+Grenze gegen einen *gespeicherten* Wert ist eine andere Grenze als eine gegen den
+*aktuellen*.
+
+## Inventar
+
+| # | Grenze | Ort | Fälle | Test |
+|---|---|---|---|---|
+| 1 | Carry-forward-Decke: 42 Tage erlaubt, 43 nicht | `carryForward.mjs` | 42 ✓, 43 ✗, Flag länger gesetzt ändert nichts | `pipeline/tests/carryForward.test.mjs` — „the 42-day ceiling refuses regardless of the flag" |
+| 2 | Pre-Match-Snapshot: **strikt** vor dem Anstoßdatum | `snapshots.mjs` `findPreMatchSnapshot` | Vortag ✓, Anstoßtag ✗, keiner davor → `null` statt Ersatz | `pipeline/tests/snapshots.test.mjs` — „strictly before the kickoff date" |
+| 3 | Provenienz: `observedAt < kickoff` | `snapshots.mjs` `provenanceFor` | davor → `contemporaneous`, **exakt gleich → `backfilled`**, danach → `backfilled` | `pipeline/tests/snapshots.test.mjs:162` |
+| 4 | Duell-θ: beide Klubs **≥ 10 %** | `metrics.mjs` `directDuels` | beide exakt θ ✓, einer knapp darunter ✗, an **beiden** Konsumenten (`duels`, `historicalDuels`) | `apps/public/tests/grenzfaelle.test.mjs` |
+| 5 | Einfrieren eines Pre-Match-Eintrags | `preMatch.mjs` | gespielt ✓, aktueller Anstoß vergangen ✓, **verlegt und ungespielt → taut auf**, Anstoß nachträglich verschoben | `pipeline/tests/preMatch.test.mjs` (Brief 30) |
+| 6 | Timeline-Punkt M: alle Spiele **1–M** gespielt | `artefacts.mjs` | Spieltag unvollständig → kein Punkt, Nachholspiel fällt → Punkte holen auf, live = retro | `pipeline/tests/timelineVollstaendigkeit.test.mjs` (Brief 31) |
+
+Nummern 1–3 waren beim Anlegen der Tabelle **bereits abgedeckt** — geprüft, nicht
+nachgetragen. Nummer 4 fehlte die Gleichheitskante; sie ist ergänzt. 5 und 6 sind
+die beiden Grenzen, die die Freeze-Familie hervorgebracht hat.
+
+## Untersucht und unauffällig (2026-08-05)
+
+Der Sweep der Freeze-Familie hat diese Stellen geprüft und **keinen** Fund ergeben;
+sie stehen hier, damit die nächste Runde nicht dieselbe Arbeit bezahlt:
+
+- **Rating-Rekonstruktion** (`reconstruct.mjs`) — Nachholspiel-Test existiert.
+- **`remainingFixtures`** — ergebnis-, nicht zeitbasiert; eine Verlegung ändert nichts.
+- **Snapshot-Archiv** — append-only by design, kein Zustand, der veralten könnte.
+- **Provenienz-Klassifikation** — rechnet seit dem Freeze-Fix stets mit dem
+  aktuellen Anstoß.
+- **App B** — kein Anstoß- oder Datumsbezug.

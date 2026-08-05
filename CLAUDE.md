@@ -220,6 +220,19 @@ spätere schlägt die frühere:**
     `npm ci` die Drift stillschweigend akzeptiert. §3 Kenntnisnahme: Tag
     `v2.3.3` enthält die ungeheilten Julidaten — Tags konservieren den Moment,
     nicht umgetaggt. Release 2.3.4.
+31. `AUDIT_FAMILIE_BRIEF.md` — interner Sweep nach weiteren Fällen der
+    Freeze-Familie (`docs/reviews/2026-08-05-interner-sweep.md`). **Ein Fund mit
+    drei Gesichtern:** Timeline-Punkte cachten die Prämisse „ein abgeschlossener
+    Spieltag kann sich nicht ändern", prüften dafür aber nur, ob *irgendein
+    späterer* Spieltag begonnen hatte. Ein Spieltag mit verlegtem Spiel ging mit
+    8 von 9 Ergebnissen in den Cache; der Live-Stichtag hing vom
+    Berechnungszeitpunkt ab; retro und live gebaute Timelines bekamen
+    **verschiedene Bedeutung bei gleichem Artefakttyp**, womit die
+    Determinismus-Zusage fiel. Fix: **kumulative Vollständigkeit** — Punkt M
+    entsteht, sobald alle Spiele der Spieltage 1–M gespielt sind. Dazu die
+    Grenzfall-Methode (`docs/verification/grenzfaelle.md`) und die
+    Bestandsprüfung (`docs/verification/timeline-vollstaendigkeit.md`, 31
+    Timelines, deckungsgleich). Release 2.3.5.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -428,6 +441,16 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   - **Die Anstoßgrenze ist der Laufzeitpunkt** (`createdAt`/`observedAt`), nie
     `Date.now()`; ein unlesbarer Wert scheitert laut. Sonst wird ein
     `--as-of`-Neuaufbau nichtdeterministisch.
+  - **Ein Timeline-Punkt braucht ALLE Spiele bis zu seinem Spieltag** (Brief 31).
+    `completeThroughMatchday` in `artefacts.mjs` ist das Tor für beide Kurven:
+    Punkt M entsteht, sobald die Spieltage 1–M lückenlos gespielt sind. Damit
+    wird die Cache-Zusage („ein abgeschlossener Punkt ändert sich nicht") wahr
+    statt behauptet, und ein live gewachsener Verlauf ist bitgleich der
+    retroaktiv gebaute. Sichtbarer Preis, beabsichtigt: eine Verlegung
+    **pausiert die Kurve**, mehrere Punkte holen danach auf einmal auf; die
+    Verlauf-Caption sagt es (`pausedTimelineMatchday`, rendert nur im Fall). Der
+    Live-Stichtag folgt dem letzten Anstoß **bis M**, nicht dem des Spieltags M
+    allein — sonst lägen die Ratings vor einem Ergebnis, das der Punkt enthält.
   - **Was einfriert, ist das Ergebnis oder der *aktuelle* Anstoß** (Brief 30,
     Codex-Audit). Der gespeicherte Anstoß darf die Bedingung nicht mitbestimmen:
     ein auf später verlegtes Spiel fröre sonst auf dem Datum ein, von dem es
@@ -562,11 +585,11 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
 - **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
-  package.json` wird je Release-Brief gebumpt (aktuell **2.3.4**, Release über
+  package.json` wird je Release-Brief gebumpt (aktuell **2.3.5**, Release über
   V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau; 2.3.1 = Achsentitel-Fix +
   Verlauf-Auswahl invertiert; 2.3.2 = Codex-Review-Fixes; 2.3.3 =
   Pre-Match-Defektfix, Brief 29; 2.3.4 = Nachholspiel-Freeze + Lockfile-Wächter,
-  Brief 30), dann ein Git-Tag
+  Brief 30; 2.3.5 = Timeline-Vollständigkeit, Brief 31), dann ein Git-Tag
   `v<version>` und ein GitHub-Release mit 2–6 Zeilen deutschen Notes aus dem
   zugehörigen Brief bzw. Fix.
   **Jede deployte, nutzersichtbare Änderung erhöht mindestens die Patch-Version
@@ -614,7 +637,7 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.3.4) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.3.5) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
@@ -810,6 +833,13 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
 - **Der Echtdaten-Ranker-Test ist weniger trennscharf, als er aussieht.** Keine der 22
   Saisons brauchte Kriterium 3 oder höher — die H2H-Logik deckt nur `ranking.test.mjs`
   ab. Steht so im Test; die Aussage nicht überdehnen.
+- **Jede neue Datums- oder Zustandsgrenze bekommt im selben PR ihre Zeile in
+  `docs/verification/grenzfaelle.md` samt Randtests.** Die Tabelle ist eine
+  wachsende Methode, keine abgehakte Liste — ohne diese Pflicht ist sie in drei
+  Briefen genau das, was sie verhindern soll: unvollständig. Die Fälle sind
+  immer dieselben: darunter, genau darauf, darüber — und bei Zeitgrenzen
+  zusätzlich, was passiert, wenn sich der verglichene Wert nachträglich bewegt.
+  Hat die Grenze mehrere Konsumenten, wird die Gleichheitskante an jedem geprüft.
 - **Tests aus der Anforderung schreiben, nicht aus der Implementierung.** Die
   Freeze-Bedingung aus Brief 30 hatte eine volle Testrunde, war grün und war
   falsch: getestet wurde die Bedingung, die gebaut worden war, statt der Fälle,

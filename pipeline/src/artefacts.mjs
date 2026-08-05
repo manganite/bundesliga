@@ -54,6 +54,32 @@ function stateAfterMatchday(fixtures, matchday) {
     : { id: f.id, matchday: f.matchday, kickoff: f.kickoff, homeClubId: f.homeClubId, awayClubId: f.awayClubId }));
 }
 
+/**
+ * The highest matchday M for which EVERY fixture of matchdays 1..M has a result
+ * (AUDIT_FAMILIE §2). Zero when even the first matchday is still open.
+ *
+ * Both timelines cache their points on the promise that „a point for a completed
+ * matchday cannot change". The old gate — some later matchday has begun — did
+ * not keep that promise: a matchday with one postponed fixture was computed from
+ * the other eight results and then frozen for good. Cumulative completeness
+ * makes the promise true instead of merely asserted, and it is what makes a
+ * live-grown timeline identical to a retroactively built one.
+ *
+ * The visible price is intended: a long postponement PAUSES the curve, and
+ * several points appear at once when the makeup match is played. A gap that is
+ * visible is the honest form of „we do not know yet"; a point silently computed
+ * from eight ninths of a matchday is not.
+ */
+function completeThroughMatchday(fixtures, matchdays) {
+  let last = 0;
+  for (const m of matchdays) {
+    if (m <= 0) continue;
+    if (fixtures.some((f) => f.matchday === m && f.gh === undefined)) break;
+    last = m;
+  }
+  return last;
+}
+
 const toEngineFixtures = (fixtures) => fixtures.map((f) => ({
   id: f.id,
   home: f.homeClubId,
@@ -106,7 +132,7 @@ export function buildFrozenTimeline({
   runs = TIMELINE_RUNS, existing = null, log = () => {},
 }) {
   const matchdays = [...new Set(fixtures.map((f) => f.matchday))].sort((a, b) => a - b);
-  const lastPlayed = fixtures.reduce((m, f) => (f.gh !== undefined ? Math.max(m, f.matchday) : m), 0);
+  const completeThrough = completeThroughMatchday(fixtures, matchdays);
 
   const byMatchday = new Map();
   for (const p of existing?.points ?? []) {
@@ -120,7 +146,7 @@ export function buildFrozenTimeline({
   }
 
   // Matchday 0 is the pre-season forecast: nothing played, frozen ratings.
-  const wanted = [0, ...matchdays.filter((m) => m <= lastPlayed)];
+  const wanted = [0, ...matchdays.filter((m) => m > 0 && m <= completeThrough)];
   let computed = 0;
   for (const md of wanted) {
     if (byMatchday.has(md)) continue;
@@ -184,7 +210,7 @@ export function buildLiveTimeline({
   ratingsOn, runs = TIMELINE_RUNS, existing = null, log = () => {},
 }) {
   const matchdays = [...new Set(fixtures.map((f) => f.matchday))].sort((a, b) => a - b);
-  const lastPlayed = fixtures.reduce((m, f) => (f.gh !== undefined ? Math.max(m, f.matchday) : m), 0);
+  const completeThrough = completeThroughMatchday(fixtures, matchdays);
 
   const byMatchday = new Map();
   for (const point of existing?.points ?? []) {
@@ -203,10 +229,19 @@ export function buildLiveTimeline({
 
   const gaps = [];
   let computed = 0;
-  for (const md of matchdays.filter((m) => m <= lastPlayed)) {
+  for (const md of matchdays.filter((m) => m > 0 && m <= completeThrough)) {
     if (byMatchday.has(md)) continue;
-    const dayFixtures = fixtures.filter((f) => f.matchday === md);
-    const lastKickoff = dayFixtures.reduce((max, f) => (f.kickoff > max ? f.kickoff : max), dayFixtures[0].kickoff);
+    // The day the state of point M actually came about: the last kickoff among
+    // ALL fixtures up to and including M, not just M's own.
+    //
+    // Without a postponement the two are the same, and every existing point
+    // keeps its value. With one they differ, and only the cumulative form is
+    // right: a match of matchday 3 made up in October is part of point 5, so
+    // ratings from September would predate a result the point contains. That
+    // would reintroduce, in the asOf, exactly the mismatch the completeness
+    // rule removes from the state. See the note in AUDIT_FAMILIE §2.
+    const upToHere = fixtures.filter((f) => f.matchday <= md);
+    const lastKickoff = upToHere.reduce((max, f) => (f.kickoff > max ? f.kickoff : max), upToHere[0].kickoff);
     const asOf = shiftDays(lastKickoff, 1);
 
     const snap = ratingsOn(asOf);
