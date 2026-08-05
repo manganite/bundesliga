@@ -693,6 +693,30 @@ export function ratingAgeEntries(season, prematch) {
 }
 
 /**
+ * The matchday that is holding the timeline back, or null (AUDIT_FAMILIE §2).
+ *
+ * A timeline point is computed once EVERY fixture up to that matchday has a
+ * result. A postponement therefore pauses the curve, and the page has to say so
+ * rather than let readers wonder why the line stops short of the table.
+ *
+ * The tell-tale is a LATER matchday already having results while an earlier one
+ * does not. A matchday merely in progress is not that — it looks the same to a
+ * pure completeness check, but it is the ordinary Saturday, and saying
+ * „Nachholspiel" there would be wrong.
+ */
+export function pausedTimelineMatchday(fixtures = []) {
+  const matchdays = [...new Set(fixtures.map((f) => f.matchday))].sort((a, b) => a - b);
+  let complete = 0;
+  for (const m of matchdays) {
+    if (fixtures.some((f) => f.matchday === m && f.gh === undefined)) break;
+    complete = m;
+  }
+  const blocking = complete + 1;
+  const laterPlayed = fixtures.some((f) => f.matchday > blocking && f.gh !== undefined);
+  return laterPlayed ? blocking : null;
+}
+
+/**
  * The same predictions, but computed from the FROZEN pre-season ratings — the
  * „Trefferquote live vs eingefroren" comparison.
  *
