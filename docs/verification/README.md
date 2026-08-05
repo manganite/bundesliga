@@ -15,6 +15,16 @@ Abrufdatum aller Prüfungen unten: **2026-07-23**.
 | 6 | 3-Punkte-Regel: exakte Cutoff-Saison | ✅ geschlossen — 1995/96 | [drei-punkte-regel.md](drei-punkte-regel.md) |
 | 7 | Track C: trägt `season-params.json` per-league Felder? | ✅ geschlossen — **ja** | [track-c-parameter.md](track-c-parameter.md) |
 
+## Befunde aus dem Betrieb
+
+Kein §11-Gate, sondern nachträglich gefundene Defekte, deren **Fundklasse**
+dokumentiert gehört — Fehler, die keinen roten Lauf erzeugen und erst nach
+Monaten sichtbar würden.
+
+| Datum | Befund | Datei |
+|---|---|---|
+| 2026-08-05 | Pre-Match-Einträge froren vor dem Anstoß ein — 612 Einträge einer Saison an einem einzigen Julisnapshot | [prematch-einfrieren.md](prematch-einfrieren.md) |
+
 Bereits im Brief als verifiziert markiert und hier **nicht** wieder geöffnet:
 Kicktipp-Punkteschema (§9), Auswärtstor-Grenze 2020/21 → 2021/22 (§5.4/§6),
 Heimrecht-Regel im Relegations-Rückspiel (§6). Gate 4 hat die letzten beiden

@@ -432,7 +432,7 @@ export async function runUpdate({
     } catch (e) {
       if (e.code !== "ENOENT") throw e;
     }
-    const { dataset, created } = await buildPreMatchDataset({
+    const { dataset, created, updated } = await buildPreMatchDataset({
       league,
       season: detected.season,
       fixtures: seasons[league].fixtures,
@@ -460,7 +460,9 @@ export async function runUpdate({
         : null,
     });
     if (await writeIfChanged(file, stable(dataset))) {
-      changes.push(`${league} pre-match dataset (+${created})`);
+      // `updated` counts entries rebuilt before kickoff (PREMATCH_FENSTER). It
+      // is a run diagnostic in the commit message, never a persisted field.
+      changes.push(`${league} pre-match dataset (+${created}, ~${updated})`);
     }
   }
 
