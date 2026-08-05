@@ -388,18 +388,20 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
 
 - **Saison 2026/27 ist live**, Vorsaison-Zustand, noch kein Spiel gespielt. Die
   abgeschlossene Saison 2025/26 liegt weiterhin committet daneben.
-- **Vier Klubs rechnen mit einem übertragenen Rating vom 2026-07-03**, weil clubelo
-  ihre Reihen seither nicht fortführt: Bayern und Stuttgart (BL1), Wolfsburg und
-  Kaiserslautern (BL2). In der App je Klub mit ⚑ markiert, in der Kopfzeile benannt.
-  Der Cron läuft mit `--carry-forward-until=2026-08-14`; jeder andere Einstiegspunkt
-  bleibt ohne Flag fail-closed.
-- **Der Übertrag läuft von selbst aus, und für BL2 früher als für BL1.** Die harte
-  42-Tage-Decke ab `effectiveAt` endet am **2026-08-14** — danach ist er unabhängig
-  von jeder Flag unmöglich. Wolfsburg und Kaiserslautern fallen aber schon ab
-  **2026-08-07** heraus: das ist der 1. BL2-Spieltag, und ein bekanntes Spiel in der
-  Lücke hebt das Treppenfunktions-Argument auf. Führt clubelo sie bis dahin nicht
-  wieder, scheitert der Lauf ab dem 07.08. wieder fail-closed. Die Eskalation ist
-  also Anfang August fällig, nicht Mitte.
+- **Noch zwei Klubs rechnen mit einem übertragenen Rating vom 2026-07-03**, weil
+  clubelo ihre Reihen seither nicht fortführt: Bayern und Stuttgart (BL1). In der
+  App je Klub mit ⚑ markiert, in der Kopfzeile benannt. Der Cron läuft mit
+  `--carry-forward-until=2026-08-14`; jeder andere Einstiegspunkt bleibt ohne
+  Flag fail-closed.
+- **Die BL2-Hälfte hat sich erledigt (2026-08-05).** Wolfsburg und Kaiserslautern
+  stehen seit dem Tagessnapshot vom 2026-08-05 wieder in der clubelo-CSV (34 statt
+  32 Zeilen); `npm run gate:clubelo` löst BL2 mit 18/18 auf, BL1 mit 16/18. Damit
+  ist die Eskalationsfrist zum 1. BL2-Spieltag am 2026-08-07 gegenstandslos — sie
+  galt, weil ein bekanntes Spiel in der Lücke das Treppenfunktions-Argument
+  aufhebt. Offen bleibt allein die harte 42-Tage-Decke ab `effectiveAt` für Bayern
+  und Stuttgart: sie endet am **2026-08-14**, danach ist der Übertrag unabhängig
+  von jeder Flag unmöglich und der Lauf scheitert fail-closed. Führt clubelo die
+  beiden Reihen bis dahin nicht fort, ist die Eskalation Mitte August fällig.
 - **Pre-Match-Einträge werden bis zum Anstoß neu berechnet, ab Anstoß eingefroren**
   (Brief 29, Defektfix). Drei Stellen, an denen es leicht wieder kaputtgeht:
   - **`prematch.json` hat zwei Jobs.** Es ist das Provenienz-Protokoll der
