@@ -210,6 +210,16 @@ spätere schlägt die frühere:**
     dokumentiert bewusst den **verworfenen** Weg: ein Anlege-Fenster hätte App A
     gebrochen, weil `prematch.json` zwei Jobs hat — Provenienz-Protokoll *und*
     einzige Quelle der Einzelspiel-Vorhersagen. Release 2.3.3.
+30. `NACHHOLSPIEL_FREEZE_BRIEF.md` — zwei Befunde des Codex-Audits vom
+    2026-08-05 zu Brief 29 (`docs/reviews/2026-08-05-codex.md`). §1 **hoch**:
+    die Einfrierbedingung las auch den *gespeicherten* Anstoß und fror ein
+    verlegtes Spiel damit auf dem Datum ein, von dem es weggeschoben wurde —
+    was einfriert, ist ab jetzt **das Ergebnis oder der aktuelle Anstoß**,
+    `prior.kickoff` fällt raus, `kickoff` kommt in die Substanz-Liste. §2
+    **niedrig**: Lockfile-Gleichlauf als stehende Regel plus Wächter, weil
+    `npm ci` die Drift stillschweigend akzeptiert. §3 Kenntnisnahme: Tag
+    `v2.3.3` enthält die ungeheilten Julidaten — Tags konservieren den Moment,
+    nicht umgetaggt. Release 2.3.4.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -418,6 +428,13 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   - **Die Anstoßgrenze ist der Laufzeitpunkt** (`createdAt`/`observedAt`), nie
     `Date.now()`; ein unlesbarer Wert scheitert laut. Sonst wird ein
     `--as-of`-Neuaufbau nichtdeterministisch.
+  - **Was einfriert, ist das Ergebnis oder der *aktuelle* Anstoß** (Brief 30,
+    Codex-Audit). Der gespeicherte Anstoß darf die Bedingung nicht mitbestimmen:
+    ein auf später verlegtes Spiel fröre sonst auf dem Datum ein, von dem es
+    weggeschoben wurde. Ein verlegtes, ungespieltes Spiel taut auf und rechnet
+    bis zum neuen Anstoß weiter; ein gespieltes bleibt eingefroren, auch wenn
+    sein Anstoß in den Quelldaten nachträglich wandert. Darum steht `kickoff`
+    auch in der Substanz-Liste.
 - Die Fitprozedur liegt seit der Extraktion in `packages/fit` und reproduziert die
   ausgelieferten Parameter **bitgleich** (`docs/FIT_EXTRACTION.md`). `LAB_REPO_TOKEN`
   ist entfallen; erlaubt ist nur noch `GITHUB_TOKEN`.
@@ -545,10 +562,11 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
 - **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
-  package.json` wird je Release-Brief gebumpt (aktuell **2.3.3**, Release über
+  package.json` wird je Release-Brief gebumpt (aktuell **2.3.4**, Release über
   V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau; 2.3.1 = Achsentitel-Fix +
   Verlauf-Auswahl invertiert; 2.3.2 = Codex-Review-Fixes; 2.3.3 =
-  Pre-Match-Defektfix, Brief 29), dann ein Git-Tag
+  Pre-Match-Defektfix, Brief 29; 2.3.4 = Nachholspiel-Freeze + Lockfile-Wächter,
+  Brief 30), dann ein Git-Tag
   `v<version>` und ein GitHub-Release mit 2–6 Zeilen deutschen Notes aus dem
   zugehörigen Brief bzw. Fix.
   **Jede deployte, nutzersichtbare Änderung erhöht mindestens die Patch-Version
@@ -557,6 +575,12 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   Ältere Stände werden **nicht** rückwirkend getaggt; die Historie beginnt bei
   2.1.0. Die Footer-Version (`__APP_VERSION__` aus `apps/public/package.json` via
   Vite-`define`) verlinkt auf `…/releases/tag/v<version>`.
+  **Der Bump schließt den Lockfile-Gleichlauf im selben Commit ein**
+  (`npm install --package-lock-only`): `npm ci` akzeptiert eine veraltete
+  Workspace-Version in `package-lock.json` **stillschweigend** — kein Warnhinweis,
+  kein falscher Build, nur ein dauerhaft falscher Eintrag.
+  `pipeline/tests/lockfileVersion.test.mjs` bewacht das und testet sich gegen
+  eine konstruierte Drift.
 - **Chart-Infrastruktur ist geteilt und einfach-implementiert (CHART_AUSBAU §0).**
   `ChartTooltip` ist der einzige Schreiber von `.chart-tooltip`, `ChartLegend` der
   einzige von `.chart-legend`, `ChartInteractive` (`useActivePoint` + `HitAreas`)
@@ -590,7 +614,7 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.3.3) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.3.4) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
@@ -786,6 +810,15 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
 - **Der Echtdaten-Ranker-Test ist weniger trennscharf, als er aussieht.** Keine der 22
   Saisons brauchte Kriterium 3 oder höher — die H2H-Logik deckt nur `ranking.test.mjs`
   ab. Steht so im Test; die Aussage nicht überdehnen.
+- **Tests aus der Anforderung schreiben, nicht aus der Implementierung.** Die
+  Freeze-Bedingung aus Brief 30 hatte eine volle Testrunde, war grün und war
+  falsch: getestet wurde die Bedingung, die gebaut worden war, statt der Fälle,
+  die sie treffen muss — Verlegungen kamen darin schlicht nicht vor. Dieselbe
+  Verwandtschaft wie „durch die Seite testen, nicht unterhalb des Wächters", nur
+  eine Ebene früher, im Entwurf. Die Fundklasse kam **zweimal von fremden Augen**
+  (der verworfene Fenster-Entwurf zu Brief 29, die Freeze-Bedingung zu Brief 30);
+  beide Male las sich der Begründungskommentar plausibel und die Konsequenz war
+  verkehrt. Wer eine Bedingung ändert, listet zuerst die Fälle auf.
 
 ## Ehrlichkeit (§8) — gilt für Code, Captions und Commit-Messages
 
