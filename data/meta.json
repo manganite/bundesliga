@@ -1,10 +1,15 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "dataUpdatedAt": "2026-08-05T11:05:10.661Z",
+  "dataUpdatedAt": "2026-08-06T00:47:36.398Z",
   "dataHash": "1b76c40376fc4626",
   "lastChanges": [
+    "1 backfilled snapshot(s)",
     "bl1 pre-match dataset (+0, ~306)",
-    "bl2 pre-match dataset (+0, ~306)"
+    "bl2 pre-match dataset (+0, ~306)",
+    "bl1 current outlook",
+    "bl2 current outlook",
+    "bl2 frozen timeline (+0 point(s))",
+    "relegation play-off"
   ]
 }

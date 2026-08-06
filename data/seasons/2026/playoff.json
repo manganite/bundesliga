@@ -1859,8 +1859,8 @@
     {
       "bl1Club": "HSV",
       "bl2Club": "Wolfsburg",
-      "pBl1Wins": 0.50185,
-      "pBl2Wins": 0.49815,
+      "pBl1Wins": 0.5019,
+      "pBl2Wins": 0.4981,
       "hostsSecondLeg": null,
       "homeOrderMixed": true,
       "homeOrderBasis": "dates unknown",
@@ -3365,8 +3365,8 @@
     "HSV": {
       "pSafe": 0.7710999999999999,
       "pRelegationPlayoff": 0.0838,
-      "pKlassenerhalt": 0.8253093325579999,
-      "pWinsPlayoff": 0.64688941
+      "pKlassenerhalt": 0.8253098211119999,
+      "pWinsPlayoff": 0.64689524
     },
     "Köln": {
       "pSafe": 0.6815000000000001,
@@ -3523,8 +3523,8 @@
     "Wolfsburg": {
       "pDirect": 0.4229,
       "pPlayoffPlace": 0.1166,
-      "pAufstieg": 0.482879313427,
-      "pWinsPlayoff": 0.514402345
+      "pAufstieg": 0.482878824873,
+      "pWinsPlayoff": 0.5143981550000001
     }
   }
 }
