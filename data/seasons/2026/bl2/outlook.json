@@ -11502,9 +11502,10 @@
       "ageDays": 0
     },
     "Braunschweig": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-07",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-07-a1c94ab421f25116"
     },
     "Cottbus": {
       "provenance": "live",

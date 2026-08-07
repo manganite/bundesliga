@@ -11936,9 +11936,10 @@
       "ageDays": 0
     },
     "Frankfurt": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-07",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-07-a1c94ab421f25116"
     },
     "Freiburg": {
       "provenance": "live",
@@ -11961,14 +11962,16 @@
       "ageDays": 0
     },
     "Köln": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-07",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-07-a1c94ab421f25116"
     },
     "Leipzig": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-07",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-07-a1c94ab421f25116"
     },
     "Leverkusen": {
       "provenance": "live",
