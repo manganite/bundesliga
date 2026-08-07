@@ -107,7 +107,9 @@
       "awayClubId": "Hertha",
       "homeName": "VfL Bochum",
       "awayName": "Hertha BSC",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83513",
