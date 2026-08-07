@@ -1710,6 +1710,24 @@
       "contentHash": "a1c94ab421f25116",
       "correctionOf": null,
       "clubs": 34
+    },
+    {
+      "snapshotId": "clubelo-2026-08-07-e6d0de0bd482c5a3",
+      "source": "clubelo",
+      "observedAt": "2026-08-07T00:17:20.054Z",
+      "effectiveAt": "2026-08-07",
+      "contentHash": "e6d0de0bd482c5a3",
+      "correctionOf": null,
+      "clubs": 30
+    },
+    {
+      "snapshotId": "clubelo-2026-08-07-a1c94ab421f25116",
+      "source": "clubelo",
+      "observedAt": "2026-08-07T00:17:20.054Z",
+      "effectiveAt": "2026-08-07",
+      "contentHash": "a1c94ab421f25116",
+      "correctionOf": "clubelo-2026-08-07-e6d0de0bd482c5a3",
+      "clubs": 34
     }
   ]
 }
