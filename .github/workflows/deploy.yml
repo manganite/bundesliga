@@ -10,6 +10,11 @@ on:
       - "apps/public/**"
       - "packages/**"
       - "pipeline/**"
+      # `data/**` fängt hier NUR menschliche Pushes (committete Historien-
+      # Artefakte, Handkorrekturen). Die Datencommits des Crons erreichen diesen
+      # Trigger nicht — ein Push mit dem GITHUB_TOKEN löst keine Workflows aus.
+      # data.yml stößt den Deploy deshalb selbst per workflow_dispatch an; wer
+      # diesen Pfad hier für ausreichend hält, schaltet den Cron-Deploy ab.
       - "data/**"
       - "package.json"
       # A lockfile change alone can break the build — it did once, when a new
