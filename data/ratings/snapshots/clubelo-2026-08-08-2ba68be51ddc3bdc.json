@@ -1,0 +1,17 @@
+{
+  "snapshotId": "clubelo-2026-08-08-2ba68be51ddc3bdc",
+  "schemaVersion": 1,
+  "source": "clubelo",
+  "observedAt": "2026-08-08T08:28:03.291Z",
+  "effectiveAt": "2026-08-08",
+  "contentHash": "2ba68be51ddc3bdc",
+  "correctionOf": null,
+  "note": "backfilled from clubelo published history — retrospective use only",
+  "ratings": {
+    "Bremen": 1606.01940918,
+    "Dortmund": 1834.76879883,
+    "Elversberg": 1523.3984375,
+    "Schalke": 1519.74243164,
+    "Union Berlin": 1619.43066406
+  }
+}
