@@ -167,7 +167,9 @@
       "awayClubId": "Kaiserslautern",
       "homeName": "VfL Wolfsburg",
       "awayName": "1. FC Kaiserslautern",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83511",
