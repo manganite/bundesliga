@@ -11463,94 +11463,112 @@
   ],
   "ratingProvenance": {
     "Bielefeld": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Bochum": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Braunschweig": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Cottbus": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Darmstadt": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Dresden": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Fürth": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Hannover": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Heidenheim": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Hertha": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Kaiserslautern": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Karlsruhe": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Kiel": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Magdeburg": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Nürnberg": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Osnabrück": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "St. Pauli": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Wolfsburg": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     }
   }
 }

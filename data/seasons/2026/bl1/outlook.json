@@ -11910,9 +11910,10 @@
   ],
   "ratingProvenance": {
     "Augsburg": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Bayern": {
       "provenance": "carried-forward",
@@ -11936,54 +11937,64 @@
       "ageDays": 0
     },
     "Frankfurt": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Freiburg": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Gladbach": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Hoffenheim": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "HSV": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Köln": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Leipzig": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Leverkusen": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Mainz": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Paderborn": {
-      "provenance": "live",
+      "provenance": "carried-forward",
       "effectiveAt": "2026-08-08",
-      "ageDays": 0
+      "ageDays": 0,
+      "snapshotId": "clubelo-2026-08-08-a1c94ab421f25116"
     },
     "Schalke": {
       "provenance": "live",
