@@ -503,6 +503,10 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   `actions: write`). „Commit only on change" bleibt damit „deploy only on
   change". Die Falle ist allgemein: **jeder Trigger, der auf einem
   Cron-Commit steht, ist tot** — ein Pfadfilter in `deploy.yml` reicht nie.
+  `pipeline/tests/deployTrigger.test.mjs` bewacht die vier Glieder der Kette
+  (Dispatch vorhanden, `actions: write`, `workflow_dispatch` in `deploy.yml`,
+  Gatterung auf den gepushten Commit) und testet sich gegen jedes einzeln
+  gebrochene Glied — darunter genau die Regression „Pfadfilter genügt".
 - **CI: `test.yml` ist das Tor.** Läuft auf jedem Push und jedem Pull Request ohne
   Pfadfilter; der Deploy ruft dieselbe Datei per `workflow_call` als Vorbedingung
   auf, statt `npm test` erneut zu buchstabieren — eine Definition von „grün", die
