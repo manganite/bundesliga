@@ -119,7 +119,9 @@
       "awayClubId": "Osnabrück",
       "homeName": "1. FC Heidenheim 1846",
       "awayName": "VfL Osnabrück",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 3
     },
     {
       "id": "83516",
@@ -129,7 +131,9 @@
       "awayClubId": "Kiel",
       "homeName": "SV Darmstadt 98",
       "awayName": "Holstein Kiel",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83522",
@@ -139,7 +143,9 @@
       "awayClubId": "Bielefeld",
       "homeName": "Karlsruher SC",
       "awayName": "DSC Arminia Bielefeld",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83524",
@@ -149,7 +155,9 @@
       "awayClubId": "Braunschweig",
       "homeName": "1. FC Magdeburg",
       "awayName": "Eintracht Braunschweig",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 6
     },
     {
       "id": "83510",
