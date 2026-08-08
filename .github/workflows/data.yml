@@ -12,6 +12,10 @@ on:
 
 permissions:
   contents: write
+  # Nötig für den expliziten Deploy-Anstoß unten. Ein Push mit dem
+  # GITHUB_TOKEN löst KEINE weiteren Workflows aus (GitHubs Rekursionsschutz),
+  # deshalb muss dieser Job den Deploy selbst anstoßen.
+  actions: write
 
 concurrency:
   group: data
@@ -54,6 +58,7 @@ jobs:
       # repository untouched, so dataUpdatedAt does not move and no deployment
       # is triggered.
       - name: Änderungen committen
+        id: commit
         if: steps.pipeline.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
@@ -65,6 +70,30 @@ jobs:
           fi
           git commit -m "Daten: Saison ${{ steps.pipeline.outputs.season }} aktualisiert"
           git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      # Der Deploy MUSS hier explizit angestoßen werden. deploy.yml lauscht auf
+      # `push` mit `paths: data/**` — diese Bedingung ist erfüllt, der Trigger
+      # feuert trotzdem nie: GitHub löst aus einem Push, der mit dem
+      # GITHUB_TOKEN erfolgt, grundsätzlich keine weiteren Workflows aus
+      # (Rekursionsschutz). Der Datenstand im Repo lief dadurch dem
+      # ausgelieferten Stand hinterher, bis irgendein Mensch etwas pushte; die
+      # App zeigte am 2026-08-08 noch den Stand vom 2026-08-05 und damit das
+      # Eröffnungsspiel der 2. Liga als ungespielt.
+      #
+      # Warum nicht der offensichtlichere Weg: ein PAT statt GITHUB_TOKEN würde
+      # den Push-Trigger scharf machen, kauft das aber mit einem dauerhaft
+      # gelagerten Schreib-Token und einer stillen Kopplung — der Grund stünde
+      # nirgends im Repo. Der explizite Dispatch steht dort, wo er wirkt.
+      #
+      # Kein `if: always()` — nur ein tatsächlich gepushter Commit rechtfertigt
+      # ein Deployment; „commit only on change" bleibt damit auch „deploy only
+      # on change".
+      - name: Deploy anstoßen
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --ref main
 
 # On failure the job simply fails. Nothing is committed and no status field is
 # written into the repository — the two contradict, and the app must not derive

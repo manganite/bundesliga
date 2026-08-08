@@ -490,6 +490,23 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
     Clinch-Logik „Klassenerhalt nicht mehr möglich", sobald Platz 15 unerreichbar ist —
     und das ist eine **Garantie**, die falsch wäre, solange Platz 16 noch geht.
     `pipeline/tests/seasonConfig.test.mjs` hält das fest.
+- **Der Cron stößt den Deploy selbst an (2026-08-08, Defektfix).** `deploy.yml`
+  lauscht auf `push` mit `paths: data/**`, und die Bedingung war erfüllt — der
+  Trigger feuerte trotzdem nie: **ein Push mit dem `GITHUB_TOKEN` löst keine
+  weiteren Workflows aus** (GitHubs Rekursionsschutz). Da `prebuild` die
+  committeten Daten in den Build hineinkopiert (kein Browser-Fetch, §5.1), hing
+  der ausgelieferte Stand am letzten *menschlichen* Push: am 2026-08-08 zeigte
+  die App noch den Stand vom 2026-08-05 und damit das BL2-Eröffnungsspiel
+  (Bochum–Hertha, 2026-08-07) als ungespielt, obwohl das Ergebnis seit dem
+  Commit um 20:29 UTC im Repo lag. `data.yml` ruft jetzt nach einem
+  tatsächlich gepushten Commit `gh workflow run deploy.yml` (Berechtigung
+  `actions: write`). „Commit only on change" bleibt damit „deploy only on
+  change". Die Falle ist allgemein: **jeder Trigger, der auf einem
+  Cron-Commit steht, ist tot** — ein Pfadfilter in `deploy.yml` reicht nie.
+  `pipeline/tests/deployTrigger.test.mjs` bewacht die vier Glieder der Kette
+  (Dispatch vorhanden, `actions: write`, `workflow_dispatch` in `deploy.yml`,
+  Gatterung auf den gepushten Commit) und testet sich gegen jedes einzeln
+  gebrochene Glied — darunter genau die Regression „Pfadfilter genügt".
 - **CI: `test.yml` ist das Tor.** Läuft auf jedem Push und jedem Pull Request ohne
   Pfadfilter; der Deploy ruft dieselbe Datei per `workflow_call` als Vorbedingung
   auf, statt `npm test` erneut zu buchstabieren — eine Definition von „grün", die
