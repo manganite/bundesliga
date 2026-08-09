@@ -179,7 +179,9 @@
       "awayClubId": "Fürth",
       "homeName": "FC St. Pauli",
       "awayName": "SpVgg Greuther Fürth",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83519",
@@ -189,7 +191,9 @@
       "awayClubId": "Dresden",
       "homeName": "1. FC Nürnberg",
       "awayName": "Dynamo Dresden",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83525",
@@ -199,7 +203,9 @@
       "awayClubId": "Hannover",
       "homeName": "Energie Cottbus",
       "awayName": "Hannover 96",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83533",

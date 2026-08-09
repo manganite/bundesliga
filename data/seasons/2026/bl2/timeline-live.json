@@ -4,6 +4,228 @@
   "seasonId": "2026-bl2",
   "runs": 5000,
   "ratingBasis": "Ratings, wie sie nach dem jeweiligen Spieltag galten",
-  "points": [],
+  "points": [
+    {
+      "matchday": 1,
+      "asOf": "2026-08-10",
+      "snapshotId": "clubelo-2026-08-09-70469cbfef058681",
+      "runs": 5000,
+      "engineVersion": 1,
+      "simulationProtocolVersion": 2,
+      "playedCount": 9,
+      "probabilities": {
+        "aufstieg": {
+          "Bielefeld": 0.0306,
+          "Bochum": 0.102,
+          "Braunschweig": 0.0332,
+          "Cottbus": 0.0176,
+          "Darmstadt": 0.0914,
+          "Dresden": 0.0358,
+          "Fürth": 0.0284,
+          "Hannover": 0.182,
+          "Heidenheim": 0.3198,
+          "Hertha": 0.1136,
+          "Kaiserslautern": 0.0906,
+          "Karlsruhe": 0.0798,
+          "Kiel": 0.0922,
+          "Magdeburg": 0.0494,
+          "Nürnberg": 0.1096,
+          "Osnabrück": 0.008,
+          "St. Pauli": 0.207,
+          "Wolfsburg": 0.409
+        },
+        "relegationsplatzAufstieg": {
+          "Bielefeld": 0.0284,
+          "Bochum": 0.0598,
+          "Braunschweig": 0.0288,
+          "Cottbus": 0.017,
+          "Darmstadt": 0.0562,
+          "Dresden": 0.0256,
+          "Fürth": 0.0296,
+          "Hannover": 0.0864,
+          "Heidenheim": 0.1056,
+          "Hertha": 0.0752,
+          "Kaiserslautern": 0.0624,
+          "Karlsruhe": 0.0508,
+          "Kiel": 0.0544,
+          "Magdeburg": 0.0366,
+          "Nürnberg": 0.0596,
+          "Osnabrück": 0.0112,
+          "St. Pauli": 0.0954,
+          "Wolfsburg": 0.117
+        },
+        "klassenerhalt": {
+          "Bielefeld": 0.7394,
+          "Bochum": 0.8916,
+          "Braunschweig": 0.753,
+          "Cottbus": 0.637,
+          "Darmstadt": 0.8762,
+          "Dresden": 0.7534,
+          "Fürth": 0.7258,
+          "Hannover": 0.942,
+          "Heidenheim": 0.9766,
+          "Hertha": 0.906,
+          "Kaiserslautern": 0.8788,
+          "Karlsruhe": 0.8548,
+          "Kiel": 0.8782,
+          "Magdeburg": 0.8044,
+          "Nürnberg": 0.9012,
+          "Osnabrück": 0.5442,
+          "St. Pauli": 0.9502,
+          "Wolfsburg": 0.9872
+        },
+        "relegationsplatzAbstieg": {
+          "Bielefeld": 0.0812,
+          "Bochum": 0.0432,
+          "Braunschweig": 0.0836,
+          "Cottbus": 0.0998,
+          "Darmstadt": 0.0484,
+          "Dresden": 0.0818,
+          "Fürth": 0.094,
+          "Hannover": 0.0242,
+          "Heidenheim": 0.013,
+          "Hertha": 0.0376,
+          "Kaiserslautern": 0.0448,
+          "Karlsruhe": 0.0572,
+          "Kiel": 0.046,
+          "Magdeburg": 0.0694,
+          "Nürnberg": 0.0396,
+          "Osnabrück": 0.111,
+          "St. Pauli": 0.0196,
+          "Wolfsburg": 0.0056
+        },
+        "abstieg": {
+          "Bielefeld": 0.1794,
+          "Bochum": 0.0652,
+          "Braunschweig": 0.1634,
+          "Cottbus": 0.2632,
+          "Darmstadt": 0.0754,
+          "Dresden": 0.1648,
+          "Fürth": 0.1802,
+          "Hannover": 0.0338,
+          "Heidenheim": 0.0104,
+          "Hertha": 0.0564,
+          "Kaiserslautern": 0.0764,
+          "Karlsruhe": 0.088,
+          "Kiel": 0.0758,
+          "Magdeburg": 0.1262,
+          "Nürnberg": 0.0592,
+          "Osnabrück": 0.3448,
+          "St. Pauli": 0.0302,
+          "Wolfsburg": 0.0072
+        }
+      },
+      "points": {
+        "Bielefeld": {
+          "expected": 40.813,
+          "median": 40,
+          "p10": 26,
+          "p90": 56
+        },
+        "Bochum": {
+          "expected": 48.2632,
+          "median": 48,
+          "p10": 33,
+          "p90": 63
+        },
+        "Braunschweig": {
+          "expected": 41.4614,
+          "median": 41,
+          "p10": 27,
+          "p90": 57
+        },
+        "Cottbus": {
+          "expected": 37.8562,
+          "median": 37,
+          "p10": 24,
+          "p90": 53
+        },
+        "Darmstadt": {
+          "expected": 47.3084,
+          "median": 47,
+          "p10": 32,
+          "p90": 63
+        },
+        "Dresden": {
+          "expected": 41.638,
+          "median": 41,
+          "p10": 27,
+          "p90": 57
+        },
+        "Fürth": {
+          "expected": 40.7016,
+          "median": 40,
+          "p10": 26,
+          "p90": 56
+        },
+        "Hannover": {
+          "expected": 52.4922,
+          "median": 53,
+          "p10": 37,
+          "p90": 68
+        },
+        "Heidenheim": {
+          "expected": 57.7364,
+          "median": 58,
+          "p10": 42,
+          "p90": 73
+        },
+        "Hertha": {
+          "expected": 49.3034,
+          "median": 49,
+          "p10": 34,
+          "p90": 65
+        },
+        "Kaiserslautern": {
+          "expected": 47.4374,
+          "median": 47,
+          "p10": 32,
+          "p90": 63
+        },
+        "Karlsruhe": {
+          "expected": 46.1996,
+          "median": 46,
+          "p10": 31,
+          "p90": 62
+        },
+        "Kiel": {
+          "expected": 47.3704,
+          "median": 47,
+          "p10": 32,
+          "p90": 63
+        },
+        "Magdeburg": {
+          "expected": 43.504,
+          "median": 43,
+          "p10": 29,
+          "p90": 59
+        },
+        "Nürnberg": {
+          "expected": 48.3578,
+          "median": 48,
+          "p10": 33,
+          "p90": 64
+        },
+        "Osnabrück": {
+          "expected": 34.9754,
+          "median": 35,
+          "p10": 21,
+          "p90": 50
+        },
+        "St. Pauli": {
+          "expected": 53.7968,
+          "median": 54,
+          "p10": 38,
+          "p90": 69
+        },
+        "Wolfsburg": {
+          "expected": 60.4622,
+          "median": 61,
+          "p10": 45,
+          "p90": 75
+        }
+      }
+    }
+  ],
   "gaps": []
 }
