@@ -411,20 +411,19 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
 
 - **Saison 2026/27 ist live**, Vorsaison-Zustand, noch kein Spiel gespielt. Die
   abgeschlossene Saison 2025/26 liegt weiterhin committet daneben.
-- **Noch zwei Klubs rechnen mit einem übertragenen Rating vom 2026-07-03**, weil
-  clubelo ihre Reihen seither nicht fortführt: Bayern und Stuttgart (BL1). In der
-  App je Klub mit ⚑ markiert, in der Kopfzeile benannt. Der Cron läuft mit
-  `--carry-forward-until=2026-08-14`; jeder andere Einstiegspunkt bleibt ohne
-  Flag fail-closed.
-- **Die BL2-Hälfte hat sich erledigt (2026-08-05).** Wolfsburg und Kaiserslautern
-  stehen seit dem Tagessnapshot vom 2026-08-05 wieder in der clubelo-CSV (34 statt
-  32 Zeilen); `npm run gate:clubelo` löst BL2 mit 18/18 auf, BL1 mit 16/18. Damit
-  ist die Eskalationsfrist zum 1. BL2-Spieltag am 2026-08-07 gegenstandslos — sie
-  galt, weil ein bekanntes Spiel in der Lücke das Treppenfunktions-Argument
-  aufhebt. Offen bleibt allein die harte 42-Tage-Decke ab `effectiveAt` für Bayern
-  und Stuttgart: sie endet am **2026-08-14**, danach ist der Übertrag unabhängig
-  von jeder Flag unmöglich und der Lauf scheitert fail-closed. Führt clubelo die
-  beiden Reihen bis dahin nicht fort, ist die Eskalation Mitte August fällig.
+- **Die Carry-forward-Episode ist beendet (2026-08-11).** clubelo führt alle
+  Reihen wieder: der Tagessnapshot vom 2026-08-11 hat 36 Klubs, darunter die
+  vier zuvor eingefrorenen (Wolfsburg und Kaiserslautern ab 2026-08-05, Bayern
+  und Stuttgart danach). Beide Ligen rechnen mit `provenance: "live"` für alle
+  18 Klubs; **kein Klub läuft mehr auf einem übertragenen Rating**, die
+  ⚑-Markierung und die Kopfzeilen-Nennung sind gegenstandslos. Die Eskalation
+  ist damit nicht mehr fällig, und die harte 42-Tage-Decke am 2026-08-14 läuft
+  ins Leere. Die Flag `--carry-forward-until=2026-08-14` steht noch in
+  `data.yml` und **läuft von selbst ab — nicht verlängern**; jeder andere
+  Einstiegspunkt bleibt ohne Flag fail-closed. Historische
+  `carried-forward`-Einträge in `bl2/prematch.json` (4 Stück) bleiben stehen:
+  sie sind eingefrorenes Protokoll dessen, womit damals gerechnet wurde, kein
+  aktueller Zustand.
 - **Pre-Match-Einträge werden bis zum Anstoß neu berechnet, ab Anstoß eingefroren**
   (Brief 29, Defektfix). Drei Stellen, an denen es leicht wieder kaputtgeht:
   - **`prematch.json` hat zwei Jobs.** Es ist das Provenienz-Protokoll der
@@ -857,6 +856,21 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   immer dieselben: darunter, genau darauf, darüber — und bei Zeitgrenzen
   zusätzlich, was passiert, wenn sich der verglichene Wert nachträglich bewegt.
   Hat die Grenze mehrere Konsumenten, wird die Gleichheitskante an jedem geprüft.
+- **Ein Test auf die laufende Saison darf keine vergängliche Eigenschaft
+  behaupten — er hält sonst den Deploy an.** `modelQuality.test.mjs` prüfte
+  `counts["carried-forward"] > 0` gegen `data/seasons/2026/bl1/prematch.json`,
+  geschrieben, als Bayern und Stuttgart auf übertragenen Ratings liefen. Das
+  las sich wie eine Abdeckungsprüfung und war ein Wetterbericht: als clubelo
+  beide Reihen wieder führte, leerte sich die Gruppe und der Test fiel. Weil
+  `test.yml` das Deploy-Tor ist, starben daran **vier Deploys in Folge** — das
+  Repo committete zwei Tage lang richtige Daten, während die Seite den Stand
+  vom 2026-08-08 auslieferte (2. Liga: 6 statt 9 Spiele, 18 Klubs als ⚑
+  markiert, obwohl längst alle wieder live waren). Die Trennlinie: gegen die
+  laufende Saison sind **strukturelle** Zusicherungen erlaubt (jede vorkommende
+  Provenienz ist eine bekannte; jedes Fixture ist vorhersagbar), **Aussagen
+  über Gruppengrößen gehören an konstruierte Eingaben**, wo die Größe uns
+  gehört. Verwandt mit dem Punkt unten, aber eigenständig: dort ist die
+  *Bedingung* falsch, hier die *Datenquelle*.
 - **Tests aus der Anforderung schreiben, nicht aus der Implementierung.** Die
   Freeze-Bedingung aus Brief 30 hatte eine volle Testrunde, war grün und war
   falsch: getestet wurde die Bedingung, die gebaut worden war, statt der Fälle,
