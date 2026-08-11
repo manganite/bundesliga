@@ -79,3 +79,40 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # `needs` covers ALL THREE jobs, not just `deploy`. The failure that hid for
+  # two days was in `test`: the gate went red, `build` and `deploy` were skipped,
+  # and a reporter hanging off `deploy` alone would have stayed silent through
+  # exactly the outage it exists for.
+  melden:
+    needs: [test, build, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rot melden
+        if: contains(needs.*.result, 'failure')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BETRIEB_STATUS: rot
+          BETRIEB_WORKFLOW: deploy
+          BETRIEB_TITEL: Nach GitHub Pages deployen
+          BETRIEB_LAUF: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: .github/scripts/betrieb-melden.sh
+
+      # This workflow uses `cancel-in-progress: true` on the pages group, so
+      # cancellation is ROUTINE here — two data commits in quick succession cancel
+      # the older deploy. It must never be read as either red or green.
+      - name: Grün melden
+        if: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BETRIEB_STATUS: gruen
+          BETRIEB_WORKFLOW: deploy
+          BETRIEB_TITEL: Nach GitHub Pages deployen
+          BETRIEB_LAUF: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: .github/scripts/betrieb-melden.sh

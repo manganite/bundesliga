@@ -211,6 +211,18 @@ Pipeline aber nur Ligaspiele sieht und nicht Pokal oder europäische
 Qualifikation, verfällt die Regel nach spätestens 42 Tagen — auch dann, wenn der
 Schalter länger gesetzt ist.
 
+**Das Flag ist das Vorfalls-Instrument, kein Dauerzustand.** Es wird **je
+Vorfall neu gesetzt**, mit einem explizit begründeten Ablaufdatum, und **nach
+dem Vorfall wieder entfernt** — es soll nicht als abgelaufener Rest im Workflow
+stehen bleiben, wo der nächste Leser es für Normalbetrieb hält. Der Vorfall
+2026-07/08 endete, als clubelo wieder alle 36 Klubs führte (Wolfsburg und
+Kaiserslautern ab 2026-08-05, Bayern und Stuttgart bis 2026-08-11); das Flag
+wurde daraufhin aus `data.yml` entfernt. Die **42-Tage-Decke bleibt davon
+unberührt** — sie ist eine Code-Konstante in `carryForward.mjs`, kein Teil der
+Flag, und gilt auch dann, wenn jemand das Flag großzügiger setzt. Ohne Flag ist
+der Normalzustand wieder fail-closed: ein unaufgelöster Klub scheitert den Lauf
+(§5.2).
+
 **Ein Punkt, den das Addendum nicht vorhersah.** Der Übertrag braucht einen
 archivierten Snapshot aus der Zeit, als clubelo die Klubs noch führte. Unser
 Archiv reichte nur bis 2026-06-01 (52 Tage, jenseits der Decke), und *Warten

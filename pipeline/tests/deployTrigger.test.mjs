@@ -68,6 +68,38 @@ export function deployChainProblems(dataYml, deployYml) {
     }
   }
 
+  // 5. Both workflows have to report red AND green. The red half is the alarm;
+  //    the green half is what makes the open issue trustworthy as a state marker
+  //    — a reporter that only ever opens issues teaches the operator to ignore
+  //    them. `issues: write` is checked too, because without it the reporting
+  //    job fails at the API call, which reads as „the reporter is broken" rather
+  //    than „the workflow is red".
+  for (const [name, yml] of [["data.yml", dataYml], ["deploy.yml", deployYml]]) {
+    if (!/betrieb-melden\.sh/.test(yml)) {
+      problems.push(`${name} does not report its status — a red run would notify nobody`);
+      continue;
+    }
+    if (!/BETRIEB_STATUS:\s*rot/.test(yml)) {
+      problems.push(`${name} has no red path — failures would go unreported`);
+    }
+    if (!/BETRIEB_STATUS:\s*gruen/.test(yml)) {
+      problems.push(`${name} has no green path — the marker would never clear itself`);
+    }
+    if (!/^\s*issues:\s*write\s*$/m.test(yml)) {
+      problems.push(`${name} lacks \`issues: write\` — the report cannot be filed`);
+    }
+  }
+
+  // 6. deploy.yml's reporter must watch the TEST job, not just the deploy job.
+  //    This is the concrete regression: on 2026-08-09..11 the gate went red,
+  //    `build` and `deploy` were skipped, and four deploys died unannounced.
+  const meldenNeeds = deployYml.match(/needs:\s*\[([^\]]*)\][^]*?betrieb-melden\.sh/);
+  if (meldenNeeds && !/\btest\b/.test(meldenNeeds[1])) {
+    problems.push(
+      "deploy.yml's reporter does not depend on the test job — a red gate would be silent",
+    );
+  }
+
   return problems;
 }
 
@@ -98,4 +130,31 @@ test("that check can fail — it recognises each broken link", () => {
     "if: always()",
   );
   assert.match(deployChainProblems(ungated, deploy).join("\n"), /changed or not/);
+});
+
+test("that check can fail — it recognises a silently removed status report", () => {
+  const data = readWorkflow("data.yml");
+  const deploy = readWorkflow("deploy.yml");
+
+  // A later edit drops the reporting job entirely — the case this guard exists
+  // for, since nothing else in the suite would notice.
+  const mute = (yml) => yml.replace(/betrieb-melden\.sh/g, "true");
+  assert.match(deployChainProblems(mute(data), deploy).join("\n"), /data\.yml does not report/);
+  assert.match(deployChainProblems(data, mute(deploy)).join("\n"), /deploy\.yml does not report/);
+
+  // Half-removed: the alarm stays, the self-healing half goes. An issue that
+  // never closes is worse than none, because it trains the operator to ignore it.
+  const noGreen = (yml) => yml.replace(/BETRIEB_STATUS:\s*gruen/g, "BETRIEB_STATUS: rot");
+  assert.match(deployChainProblems(noGreen(data), deploy).join("\n"), /never clear itself/);
+
+  const noRed = (yml) => yml.replace(/BETRIEB_STATUS:\s*rot/g, "BETRIEB_STATUS: gruen");
+  assert.match(deployChainProblems(data, noRed(deploy)).join("\n"), /no red path/);
+
+  const noScope = (yml) => yml.replace(/^\s*issues:\s*write\s*$/m, "");
+  assert.match(deployChainProblems(noScope(data), deploy).join("\n"), /cannot be filed/);
+
+  // The 2026-08-09..11 regression in its exact shape: the reporter watches the
+  // deploy job only, so a red TEST gate skips build+deploy and says nothing.
+  const deployOnly = deploy.replace(/needs:\s*\[test, build, deploy\]/, "needs: [deploy]");
+  assert.match(deployChainProblems(data, deployOnly).join("\n"), /red gate would be silent/);
 });

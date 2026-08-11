@@ -418,9 +418,8 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   18 Klubs; **kein Klub läuft mehr auf einem übertragenen Rating**, die
   ⚑-Markierung und die Kopfzeilen-Nennung sind gegenstandslos. Die Eskalation
   ist damit nicht mehr fällig, und die harte 42-Tage-Decke am 2026-08-14 läuft
-  ins Leere. Die Flag `--carry-forward-until=2026-08-14` steht noch in
-  `data.yml` und **läuft von selbst ab — nicht verlängern**; jeder andere
-  Einstiegspunkt bleibt ohne Flag fail-closed. Historische
+  ins Leere. Die Flag `--carry-forward-until` ist aus `data.yml` **entfernt**;
+  der Cron läuft wieder fail-closed wie jeder andere Einstiegspunkt. Historische
   `carried-forward`-Einträge in `bl2/prematch.json` (4 Stück) bleiben stehen:
   sie sind eingefrorenes Protokoll dessen, womit damals gerechnet wurde, kein
   aktueller Zustand.
@@ -506,6 +505,38 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   (Dispatch vorhanden, `actions: write`, `workflow_dispatch` in `deploy.yml`,
   Gatterung auf den gepushten Commit) und testet sich gegen jedes einzeln
   gebrochene Glied — darunter genau die Regression „Pfadfilter genügt".
+- **Rot meldet sich als Issue, und das Issue ist der Zustandsmerker
+  (2026-08-11).** Zweimal in einer Woche hing die Auslieferung, und beide Male
+  fiel es einem Menschen auf, nicht der Kette — Fehlschlag-Mails
+  bot-gestarteter Läufe erreichen den Betreiber nicht zuverlässig. Beide
+  Workflows haben jetzt einen `melden`-Job (`if: always()`), der über
+  `.github/scripts/betrieb-melden.sh` **ein** Issue je Workflow führt: Label
+  `betrieb`, Identität über eine unsichtbare Marke im Body (nicht über den
+  Titel), Dauerrot kommentiert statt zu eröffnen. Drei Stellen, an denen es
+  leicht wieder kaputtgeht:
+  - **Die grüne Hälfte ist nicht Kosmetik.** Das Issue schließt sich beim
+    nächsten grünen Lauf selbst — ohne das sammeln sich offene Issues an und
+    trainieren den Betreiber, sie zu ignorieren. Derselbe selbstheilende
+    Gedanke wie bei der Carry-forward-Anzeige.
+  - **`needs` deckt in `deploy.yml` alle drei Jobs ab, nicht nur `deploy`.**
+    Der Ausfall vom 2026-08-09 bis 08-11 saß im `test`-Job; `build` und
+    `deploy` wurden übersprungen, und ein Melder am `deploy`-Job allein hätte
+    genau durch diesen Ausfall geschwiegen. Der Wächter prüft das eigens.
+  - **Abgebrochen ist weder rot noch grün.** `deploy.yml` fährt
+    `cancel-in-progress: true` auf der Pages-Gruppe, Abbrüche sind dort
+    Normalbetrieb (zwei Datencommits kurz hintereinander). Darum `if:` auf
+    `failure` bzw. auf „weder failure noch cancelled", nie `success()`.
+  Der Ketten-Wächter prüft zusätzlich beide Melde-Pfade und `issues: write` je
+  Workflow und testet sich gegen die stille Entfernung jeder Hälfte.
+- **`--carry-forward-until` ist das Vorfalls-Instrument, kein Dauerzustand.**
+  Je Vorfall neu gesetzt, mit begründetem Ablaufdatum, und **nach dem Vorfall
+  wieder entfernt** — sonst steht ein abgelaufener Rest im Workflow, den der
+  nächste Leser für Normalbetrieb hält. Aus `data.yml` entfernt am 2026-08-11,
+  nachdem clubelo wieder alle 36 Klubs führte; nachgewiesen verhaltensneutral
+  (Pre-Match-Datensatz beider Ligen mit und ohne Flag bitgleich, und bitgleich
+  dem committeten). Die **42-Tage-Decke bleibt** — sie ist Code-Konstante in
+  `carryForward.mjs`, nicht Teil der Flag. Begründung in
+  `docs/verification/clubelo.md`.
 - **CI: `test.yml` ist das Tor.** Läuft auf jedem Push und jedem Pull Request ohne
   Pfadfilter; der Deploy ruft dieselbe Datei per `workflow_call` als Vorbedingung
   auf, statt `npm test` erneut zu buchstabieren — eine Definition von „grün", die
