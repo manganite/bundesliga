@@ -194,14 +194,34 @@ test("a shared table place is carried through, not flattened away", () => {
 const REPO = path.resolve(import.meta.dirname, "../../..");
 const read = (p) => JSON.parse(fs.readFileSync(path.join(REPO, p), "utf8"));
 
-test("the current season's pre-match dataset splits into exactly the expected groups", () => {
-  const pre = read("data/seasons/2026/bl1/prematch.json");
-  const counts = {};
-  for (const e of pre.entries) counts[e.provenance] = (counts[e.provenance] ?? 0) + 1;
-  for (const p of Object.keys(counts)) {
-    assert.ok(PROVENANCE_ORDER.includes(p), `${p} is not a provenance this module knows`);
+// What the live season can honestly be asked: does every provenance that ACTUALLY
+// occurs in the committed data have a group in this module? That holds whatever
+// clubelo published this week.
+//
+// What it must NOT be asked: whether a PARTICULAR group is non-empty. This test
+// once asserted `counts["carried-forward"] > 0`, written while Bayern and
+// Stuttgart ran on carried ratings — and it read as a coverage check. It was a
+// weather report. When clubelo resumed publishing both clubs the group emptied,
+// the assertion failed, and because test.yml is the deployment gate, four
+// consecutive deploys died on it: the repository kept committing correct data for
+// two days while the site served the state from 2026-08-08. Carried-forward is
+// covered above against constructed input, where a group's size is ours to set —
+// that is where a group-specific claim belongs.
+test("the live season's pre-match dataset uses only provenances this module groups", () => {
+  let entries = 0;
+  for (const league of ["bl1", "bl2"]) {
+    const pre = read(`data/seasons/2026/${league}/prematch.json`);
+    for (const e of pre.entries) {
+      assert.ok(
+        PROVENANCE_ORDER.includes(e.provenance),
+        `${league}: ${e.provenance} is not a provenance this module knows`,
+      );
+    }
+    entries += pre.entries.length;
   }
-  assert.ok(counts["carried-forward"] > 0, "the carried-forward group is the one this release had to add");
+  // Without this the loop above passes on an empty dataset, which is the
+  // vacuous-gate failure verify.mjs is careful about everywhere else.
+  assert.ok(entries > 0, "no pre-match entries at all — the check would be vacuous");
 });
 
 test("the completed season is entirely backfilled — and a figure on it must say so", () => {
