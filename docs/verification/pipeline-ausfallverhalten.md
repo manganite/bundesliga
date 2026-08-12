@@ -242,8 +242,8 @@ Zugesichert wird deshalb auf beiden Ebenen:
 
 | Ebene | Test | Aussage |
 |---|---|---|
-| Datumsliste | `duennerSnapshot.test.mjs` — „never covers today" | gestern ✓, heute ✗, morgen ✗ |
-| Naht in `runUpdate` | `update.test.mjs` — „a run never backfills its own day" | heute trägt **genau einen** Snapshot, und es ist die Tagesbeobachtung |
+| Datumsliste | `pipeline/tests/duennerSnapshot.test.mjs` — „never covers today" | gestern ✓, heute ✗, morgen ✗ |
+| Naht in `runUpdate` | `pipeline/tests/update.test.mjs` — „a run never backfills its own day" | heute trägt **genau einen** Snapshot, und es ist die Tagesbeobachtung |
 
 Der Nahttest prüft das **Ergebnis**, nicht die nachgebaute Rechnung: unabhängig
 davon, was intern geschieht, muss der heutige Tag mit einem Snapshot enden, und
