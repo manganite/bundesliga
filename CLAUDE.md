@@ -528,6 +528,22 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
     `failure` bzw. auf „weder failure noch cancelled", nie `success()`.
   Der Ketten-Wächter prüft zusätzlich beide Melde-Pfade und `issues: write` je
   Workflow und testet sich gegen die stille Entfernung jeder Hälfte.
+- **Offener Defekt: ein dünner Backfill-Snapshot verdrängt den vollständigen
+  desselben Tages** (`docs/verification/pipeline-ausfallverhalten.md`, §3).
+  Gemessen am 2026-08-11: drei Sonntagsspiele des 1. BL2-Spieltags rechneten
+  auf einem **Fünf-Klub-Snapshot**, während ein 34-Klub-Snapshot desselben
+  Datums daneben im Archiv lag. Ursache ist eine Kollision im selben Lauf —
+  `runUpdate` legt den Backfill-Snapshot **vor** dem Tagessnapshot an, beide
+  mit identischem `observedAt`, und die Verdrängungsregel („späteres
+  `observedAt` gewinnt") kann sie deshalb nicht trennen; es entscheidet die
+  Einfügereihenfolge. Ein dünner Snapshot ist **schlechter als gar keiner**: er
+  verdrängt den Rückgriff auf den letzten vollständigen früheren Snapshot, also
+  genau die Treppenfunktion, die hier richtig wäre. Zwei Folgerungen: die vier
+  `carried-forward`-Einträge in `bl2/prematch.json` sind **nicht** die
+  Carry-forward-Regel bei der Arbeit, sondern die Pipeline, die ihren eigenen
+  dünnen Snapshot kompensiert — und seit der Flag-Entfernung erzeugt dieselbe
+  Konstellation **`gap`-Einträge statt getragener**, also Spiele ganz ohne
+  Vorhersage. Nicht behoben; Lösungsrichtungen stehen im Dokument.
 - **`--carry-forward-until` ist das Vorfalls-Instrument, kein Dauerzustand.**
   Je Vorfall neu gesetzt, mit begründetem Ablaufdatum, und **nach dem Vorfall
   wieder entfernt** — sonst steht ein abgelaufener Rest im Workflow, den der
