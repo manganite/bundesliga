@@ -231,11 +231,42 @@ Grenzen 7–9 in `grenzfaelle.md`; Regressionstests in
 `pipeline/tests/duennerSnapshot.test.mjs` — die Wochenend-Konstellation selbst,
 in beiden Einfügereihenfolgen.
 
-## 6 · Weiter offen
+## 6 · Die Naht, auf zwei Ebenen zugesichert
+
+Grenze 8 sichert die Datumsliste selbst (`backfillDates` lässt heute weg). Die
+verbleibende Lücke war die **Naht davor**: `runUpdate` bringt die Pflichttermine,
+das Archiv und den Tagesabruf zusammen, und ein späterer Umbau dieser Reihenfolge
+— oder eine Rückkehr zu `<= today` — fiele erst im Betrieb auf.
+
+Zugesichert wird deshalb auf beiden Ebenen:
+
+| Ebene | Test | Aussage |
+|---|---|---|
+| Datumsliste | `pipeline/tests/duennerSnapshot.test.mjs` — „never covers today" | gestern ✓, heute ✗, morgen ✗ |
+| Naht in `runUpdate` | `pipeline/tests/update.test.mjs` — „a run never backfills its own day" | heute trägt **genau einen** Snapshot, und es ist die Tagesbeobachtung |
+
+Der Nahttest prüft das **Ergebnis**, nicht die nachgebaute Rechnung: unabhängig
+davon, was intern geschieht, muss der heutige Tag mit einem Snapshot enden, und
+`note` unterscheidet ihn — der Backfill stempelt „retrospective use only", der
+Tagesabruf lässt das Feld leer. Ein Vollständigkeitssatz verlangt zusätzlich,
+dass der Backfill überhaupt gelaufen ist, damit die Zusicherung nicht leer
+durchgeht.
+
+Gegenprobe gemacht: mit `<= today` zurückgebaut scheitert der Nahttest mit
+*„today must carry exactly one snapshot, found 2"* — die Wochenend-Konstellation
+durch die volle Pipeline reproduziert.
+
+Mehr wäre Wächter-Inflation; die Reihenfolge Backfill/Tagesabruf selbst bleibt
+ungeprüft, weil ihr Ergebnis genau der obige Satz ist.
+
+## 7 · Weiter offen
 
 1. **Weg B** (§4), an seiner Auslösebedingung: ein UTC-Tag mit Ligaspielen, an
    dem **kein** Lauf grün wurde.
-2. **Kein Wächter gegen die Wiedereinführung eines Heute-Backfills.** Die
-   Grenzen 7–9 sind getestet, aber ein späterer Umbau, der den Tagesabruf und
-   den Backfill anders anordnet, fiele erst wieder im Betrieb auf. Bisher nicht
-   für nötig gehalten, hier notiert, damit die Entscheidung eine ist.
+2. **Ein chronisch unvollständiges Datum wird still ewig wiederholt.** Die
+   Abdeckungsregel aus §5 lässt einen Termin offen, den clubelo nicht
+   vollständig bedienen kann — der nächste Lauf versucht es erneut, alle zwei
+   Stunden, ohne dass jemand davon erfährt. Bisher rein hypothetisch (am
+   2026-08-11 fehlt kein Pflichttermin), und **bewusst nicht gebaut**. Sollte es
+   chronisch werden, ist der `betrieb`-Kanal der natürliche Ort: eine Meldung
+   nach N vergeblichen Anläufen, kein neuer Mechanismus.
