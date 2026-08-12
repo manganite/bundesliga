@@ -7,6 +7,7 @@ import {
   runUpdate, attachClubIds, extractRatings, backfillDates, backfillSnapshots, BACKFILL_DELAY_MS,
 } from "../src/update.mjs";
 import { normaliseSeason } from "../src/sources/openligadb.mjs";
+import { readIndex, readSnapshot, resolveArchiveBase } from "../src/snapshots.mjs";
 
 const SEASON = 2026;
 const NOW = new Date("2026-09-10T04:00:00.000Z");
@@ -734,4 +735,51 @@ test("in the steady state the missing-date backfill fetches NO club history", as
   await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: later, log: silent });
   const historyCallsSecond = s.calls.text.slice(before).filter((u) => !/\d{4}-\d{2}-\d{2}$/.test(u)).length;
   assert.equal(historyCallsSecond, 0, "a steady-state run must not fetch club history");
+});
+
+// The SEAM, not the date list. `backfillDates` is unit-tested to drop today
+// (duennerSnapshot.test.mjs), but the reintroduction risk sits one level up, in
+// runUpdate, where the required dates meet the archive and the daily append.
+// Reordering those two, or widening the filter back to `<= today`, would put a
+// history-built snapshot and the daily one on the same date again — which is
+// exactly what happened on 2026-08-08
+// (docs/verification/pipeline-ausfallverhalten.md §3).
+//
+// Asserted on the outcome rather than by recomputing the seam: whatever the
+// internals do, today must end up with ONE snapshot, and it must be the daily
+// observation. `note` is the discriminator — the backfill stamps its snapshots
+// „retrospective use only", the daily append leaves it null.
+test("a run never backfills its own day, however much else it has to fill", async () => {
+  const dataDir = await makeDataDir();
+  const s = makeSources();
+
+  // A first run ON a kickoff date: the archive is empty, so the backfill has the
+  // most to do, and today is a date it would otherwise be asked for.
+  const onMatchday = new Date(`${MATCHDAY_DATE[0]}T04:00:00.000Z`);
+  await runUpdate({ dataDir, fetchJson: s.fetchJson, fetchText: s.fetchText, now: onMatchday, log: silent });
+
+  const ratingsDir = resolveArchiveBase(dataDir, {});
+  const index = await readIndex(ratingsDir);
+  const today = MATCHDAY_DATE[0];
+
+  const forToday = index.snapshots.filter((m) => m.effectiveAt === today);
+  assert.equal(forToday.length, 1, `today must carry exactly one snapshot, found ${forToday.length}`);
+
+  const snap = await readSnapshot(ratingsDir, forToday[0].snapshotId);
+  assert.equal(snap.note, null, "today's snapshot must be the daily observation, not a history reconstruction");
+
+  // And nowhere in the archive is a reconstructed snapshot stamped with the day
+  // the run happened — the general form of the same claim.
+  for (const meta of index.snapshots) {
+    const s2 = await readSnapshot(ratingsDir, meta.snapshotId);
+    if (s2.note) {
+      assert.notEqual(meta.effectiveAt, today, `a backfilled snapshot must never carry the run's own date`);
+    }
+  }
+
+  // The backfill did run — otherwise the assertions above pass vacuously.
+  assert.ok(
+    index.snapshots.some((m) => m.effectiveAt < today),
+    "the run should have backfilled earlier dates, or this test proves nothing",
+  );
 });
