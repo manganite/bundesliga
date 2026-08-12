@@ -178,6 +178,42 @@ export async function readSnapshot(dir, snapshotId) {
 }
 
 /**
+ * Of two index entries carrying the SAME `effectiveAt`, does `candidate`
+ * supersede `incumbent`?
+ *
+ * One implementation for all three lookups below, because a supersession rule
+ * that exists in three copies is a rule that will drift.
+ *
+ * Three steps, and the middle one was learned the hard way:
+ *
+ *  1. Later `observedAt` wins. The archive is append-only and a correction
+ *     names its predecessor rather than editing it — corrections are meant to
+ *     be used.
+ *
+ *  2. Same `observedAt` → MORE CLUBS wins. Two entries written by the SAME run
+ *     share an instant to the millisecond, and step 1 cannot separate them; it
+ *     silently fell through to array order, which is insertion order. On
+ *     2026-08-08 that handed three fixtures a five-club backfill snapshot while
+ *     a 34-club one for the same date sat beside it
+ *     (docs/verification/pipeline-ausfallverhalten.md §3). A selection rule
+ *     whose answer depends on insertion order is not deterministic, which is
+ *     reason enough to fix it even now that the root cause is gone.
+ *
+ *  3. Still tied → higher `snapshotId`. Arbitrary but STABLE: two entries with
+ *     the same instant and the same club count still differ in content, and the
+ *     lookup must return the same one every time it is asked.
+ */
+export function supersedes(candidate, incumbent) {
+  if (candidate.observedAt !== incumbent.observedAt) {
+    return candidate.observedAt > incumbent.observedAt;
+  }
+  const a = candidate.clubs ?? 0;
+  const b = incumbent.clubs ?? 0;
+  if (a !== b) return a > b;
+  return candidate.snapshotId > incumbent.snapshotId;
+}
+
+/**
  * The snapshot that was valid before `kickoff` — the latest one whose
  * `effectiveAt` is strictly earlier than the kickoff DATE.
  *
@@ -187,8 +223,7 @@ export async function readSnapshot(dir, snapshotId) {
  * snapshot exists, this returns null and the caller records the gap rather than
  * substituting something plausible.
  *
- * When several snapshots share an `effectiveAt` (a correction), the LATEST
- * observed one wins — corrections are meant to be used.
+ * Ties on `effectiveAt` are broken by `supersedes` — see there.
  */
 export function findPreMatchSnapshot(index, kickoffIso) {
   const kickoffDate = String(kickoffIso).slice(0, 10);
@@ -197,7 +232,7 @@ export function findPreMatchSnapshot(index, kickoffIso) {
     if (s.effectiveAt >= kickoffDate) continue;
     if (!best
       || s.effectiveAt > best.effectiveAt
-      || (s.effectiveAt === best.effectiveAt && s.observedAt > best.observedAt)) {
+      || (s.effectiveAt === best.effectiveAt && supersedes(s, best))) {
       best = s;
     }
   }
@@ -209,15 +244,14 @@ export function findPreMatchSnapshot(index, kickoffIso) {
  *
  * Not `snapshots.find(...)`: the archive is append-only and a correction never
  * edits its predecessor, it names it. Several entries can therefore carry the
- * same `effectiveAt`, and the one that counts is the one observed LAST — the
- * same supersession rule `findPreMatchSnapshot` applies, kept here beside it so
- * the two cannot drift apart.
+ * same `effectiveAt`, and which one counts is decided by `supersedes` — the one
+ * shared rule, so the three lookups here cannot drift apart.
  */
 export function findSnapshotOn(index, date, source = "clubelo") {
   let best = null;
   for (const s of index.snapshots) {
     if (s.source !== source || s.effectiveAt !== date) continue;
-    if (!best || s.observedAt > best.observedAt) best = s;
+    if (!best || supersedes(s, best)) best = s;
   }
   return best;
 }
@@ -239,7 +273,7 @@ export function findSnapshotAsOf(index, date, source = "clubelo") {
     if (s.source !== source || s.effectiveAt > date) continue;
     if (!best
       || s.effectiveAt > best.effectiveAt
-      || (s.effectiveAt === best.effectiveAt && s.observedAt > best.observedAt)) {
+      || (s.effectiveAt === best.effectiveAt && supersedes(s, best))) {
       best = s;
     }
   }

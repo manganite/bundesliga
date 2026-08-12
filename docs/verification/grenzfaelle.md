@@ -31,10 +31,16 @@ Grenze gegen einen *gespeicherten* Wert ist eine andere Grenze als eine gegen de
 | 4 | Duell-θ: beide Klubs **≥ 10 %** | `metrics.mjs` `directDuels` | beide exakt θ ✓, einer knapp darunter ✗, an **beiden** Konsumenten (`duels`, `historicalDuels`) | `apps/public/tests/grenzfaelle.test.mjs` |
 | 5 | Einfrieren eines Pre-Match-Eintrags | `preMatch.mjs` | gespielt ✓, aktueller Anstoß vergangen ✓, **verlegt und ungespielt → taut auf**, Anstoß nachträglich verschoben | `pipeline/tests/preMatch.test.mjs` (Brief 30) |
 | 6 | Timeline-Punkt M: alle Spiele **1–M** gespielt | `artefacts.mjs` | Spieltag unvollständig → kein Punkt, Nachholspiel fällt → Punkte holen auf, live = retro | `pipeline/tests/timelineVollstaendigkeit.test.mjs` (Brief 31) |
+| 7 | Verdrängung bei **gleichem `effectiveAt`** | `snapshots.mjs` `supersedes` | späteres `observedAt` gewinnt; **`observedAt` exakt gleich → mehr Klubs gewinnt**; auch das gleich → `snapshotId`, damit die Antwort stabil ist; an **allen drei** Konsumenten (`findPreMatchSnapshot`, `findSnapshotOn`, `findSnapshotAsOf`) und in **beiden** Einfügereihenfolgen | `pipeline/tests/duennerSnapshot.test.mjs` |
+| 8 | Backfill-Termine: **echt vor** heute | `update.mjs` `backfillDates` | gestern ✓, **heute ✗** (der Tagesabruf desselben Laufs deckt ihn ab), morgen ✗ | `pipeline/tests/duennerSnapshot.test.mjs` — „never covers today" |
+| 9 | Backfill-Snapshot: **alle** Klubs oder keiner | `update.mjs` `backfillSnapshots` | vollständig → archiviert, 1 von 3 → gar nichts + Termin bleibt offen, 0 von 3 → dasselbe mit eigener Begründung; danach greift der Rückgriff auf den letzten **vollständigen** früheren Snapshot | `pipeline/tests/duennerSnapshot.test.mjs` |
 
 Nummern 1–3 waren beim Anlegen der Tabelle **bereits abgedeckt** — geprüft, nicht
 nachgetragen. Nummer 4 fehlte die Gleichheitskante; sie ist ergänzt. 5 und 6 sind
-die beiden Grenzen, die die Freeze-Familie hervorgebracht hat.
+die beiden Grenzen, die die Freeze-Familie hervorgebracht hat. 7–9 kommen aus dem
+Fund vom 2026-08-11 (`pipeline-ausfallverhalten.md` §3); bei 7 ist die
+Gleichheitskante die eigentliche Grenze — sie war vorher gar keine Regel, sondern
+fiel auf die Einfügereihenfolge durch.
 
 ## Untersucht und unauffällig (2026-08-05)
 

@@ -148,7 +148,16 @@ export function backfillDates(fixtures, today) {
   for (const f of fixtures) dates.add(String(f.kickoff).slice(0, 10));
   // A future date cannot have been published; inventing one would be exactly the
   // silent fabrication §5.3 forbids.
-  return [...dates].filter((d) => d <= today).sort();
+  //
+  // TODAY is excluded too, and that is not the same reason. The daily fetch in
+  // the SAME run archives today from the daily CSV — one request, every club at
+  // once, and the authority for that date. Backfilling it as well means building
+  // a second snapshot for the same day out of dozens of per-club history calls,
+  // which is redundant when they succeed and harmful when they do not: on
+  // 2026-08-08 a partly-failed history sweep wrote a five-club snapshot for
+  // today that then outranked the 34-club daily one
+  // (docs/verification/pipeline-ausfallverhalten.md §3).
+  return [...dates].filter((d) => d < today).sort();
 }
 
 /**
@@ -188,8 +197,30 @@ export async function backfillSnapshots({
       const row = ratingOn(hist, date);
       if (row) ratings[club.clubId] = row.elo;
     }
-    if (Object.keys(ratings).length === 0) {
-      gaps.push({ date, reason: "no club had a published rating for this date" });
+    // A PARTIAL snapshot is worse than none, so it is not archived at all.
+    //
+    // The pre-match rule picks a snapshot by DATE and then looks up whichever
+    // clubs happen to play — so a hole anywhere in it can surface later, for any
+    // fixture. Archiving a thin one also displaces the fallback that would
+    // otherwise be correct: without it, the lookup reaches back to the last
+    // COMPLETE earlier snapshot, which is exactly the step function clubelo
+    // ratings are. With it, the date looks covered and the clubs it omits turn
+    // into carried values or gaps.
+    //
+    // Leaving the date open means the next run tries again; that costs one more
+    // sweep every two hours while clubelo's history endpoints are flaky, and it
+    // stops as soon as they answer. Writing something wrong instead would not
+    // stop at all.
+    const uncovered = clubs.filter((c) => ratings[c.clubId] === undefined);
+    if (uncovered.length) {
+      gaps.push({
+        date,
+        reason: Object.keys(ratings).length === 0
+          ? "no club had a published rating for this date"
+          : `only ${Object.keys(ratings).length} of ${clubs.length} clubs — a partial snapshot `
+            + `would displace the last complete one, so the date stays open`,
+      });
+      log(`backfill ${date}: ${Object.keys(ratings).length}/${clubs.length} clubs — not archived, date stays open`);
       continue;
     }
     const res = await appendSnapshot(ratingsDir, {
