@@ -182,22 +182,60 @@ knappes Fenster nicht der Fall. Tritt es ein, ist B fällig, nicht A und nicht C
 er trifft die Prognosequalität heute schon — anders als B, das einen Fall
 absichert, der noch nicht eingetreten ist.
 
-## 5 · Offen
+## 5 · Behoben am 2026-08-12
 
-1. **Dünne Backfill-Snapshots** (§3). Nicht behoben. Denkbare Richtungen, keine
-   entschieden:
-   - Der Backfill überspringt **den heutigen Tag** — der Tagesabruf desselben
-     Laufs deckt ihn vollständig ab, der Backfill dafür ist immer redundant.
-     Behebt die Kollision an der Wurzel, aber nur für heute.
-   - Ein Backfill-Snapshot wird **nur angelegt, wenn er die Klubs abdeckt**, die
-     die Fixtures dieses Datums brauchen; sonst bleibt die Lücke offen und der
-     Rückgriff auf den letzten vollständigen Snapshot erhalten. Deckt auch
-     vergangene Daten ab.
-   - Die Verdrängungsregel bei gleichem `observedAt` entscheiden lassen (mehr
-     Klubs gewinnt). Pflaster: behandelt das Symptom, nicht die Entstehung.
-2. **Weg B**, an seiner Auslösebedingung oben.
-3. **Zwei Snapshots gleichen Datums** sind archivrechtlich in Ordnung
-   (append-only, Korrektur benennt den Vorgänger). Dass die Verdrängungsregel
-   sie bei identischem `observedAt` nicht trennen kann, ist die eigentliche
-   Lücke — sie gehört in `grenzfaelle.md`, sobald einer der Wege unter 1
-   gewählt ist.
+Der Fund aus §3 ist behoben, und zwar mit **allen drei** Richtungen zusammen —
+zwei gegen die Ursache, eine gegen die Fundklasse.
+
+**1 · Der Backfill überspringt den heutigen Tag** (`backfillDates`, jetzt
+`d < today`). Der Tagesabruf desselben Laufs ist für heute die Autorität: eine
+Anfrage, alle Klubs auf einmal. Denselben Tag zusätzlich aus dutzenden
+Klub-Historien zusammenzusetzen ist redundant, wenn sie gelingen, und schädlich,
+wenn nicht. Das beseitigt die beobachtete Kollision an der Wurzel.
+
+**2 · Ein Backfill-Snapshot entsteht nur vollständig oder gar nicht**
+(`backfillSnapshots`). Deckt er nicht jeden Klub ab, wird er **nicht
+archiviert**; der Termin bleibt offen und der Rückgriff auf den letzten
+vollständigen früheren Snapshot erhalten — die Treppenfunktion, die hier richtig
+ist. Deckt auch die Vergangenheitsfälle, die Richtung 1 nicht erreicht.
+
+Warum die Abdeckung über *alle* Klubs geht und nicht nur über die des Spieltags:
+`findPreMatchSnapshot` wählt nach **Datum** und schlägt danach nach, welche Klubs
+gerade spielen. Ein Loch an beliebiger Stelle kann deshalb später jedes Fixture
+treffen.
+
+Preis, bewusst in Kauf genommen: bleibt ein Termin offen, versucht es der
+nächste Lauf erneut — ein zusätzlicher Historien-Durchlauf alle zwei Stunden,
+solange clubelos History-Endpunkte wackeln, und Schluss, sobald sie antworten.
+Etwas Falsches zu schreiben hörte dagegen nie auf. Gemessen am 2026-08-11: kein
+Pflichttermin fehlt, der Backfill löst also gar nicht erst aus.
+
+**3 · Die Verdrängungsregel ist deterministisch** (`supersedes` in
+`snapshots.mjs`, **eine** Implementierung für alle drei Lookups). Späteres
+`observedAt` gewinnt wie bisher; bei identischem `observedAt` gewinnt **mehr
+Klubs**; bei Gleichstand auch dort die höhere `snapshotId`, damit dieselbe Frage
+immer dieselbe Antwort bekommt. Als alleinige Maßnahme wäre das ein Pflaster —
+neben 1 und 2 ist es die Zeile, die den Fall entscheidbar macht, unabhängig
+davon, ob je wieder zwei Snapshots im selben Lauf entstehen. Eine Auswahlregel,
+deren Antwort von der Einfügereihenfolge abhängt, ist ein Determinismus-Defekt
+für sich.
+
+**Wirkung auf den Bestand, gemessen:** die Pre-Match-Datensätze beider Ligen
+bleiben **bitgleich** — die vier `carried-forward`-Einträge sind eingefroren und
+stehen als Protokoll dessen, womit damals gerechnet wurde. Die Auswahl antwortet
+für die beiden Kollisionstage jetzt aber mit dem 34-Klub-Snapshot statt mit dem
+30er bzw. dem 5er. Im gesamten Archiv (197 Snapshots) gibt es genau diese zwei
+Kollisionstage.
+
+Grenzen 7–9 in `grenzfaelle.md`; Regressionstests in
+`pipeline/tests/duennerSnapshot.test.mjs` — die Wochenend-Konstellation selbst,
+in beiden Einfügereihenfolgen.
+
+## 6 · Weiter offen
+
+1. **Weg B** (§4), an seiner Auslösebedingung: ein UTC-Tag mit Ligaspielen, an
+   dem **kein** Lauf grün wurde.
+2. **Kein Wächter gegen die Wiedereinführung eines Heute-Backfills.** Die
+   Grenzen 7–9 sind getestet, aber ein späterer Umbau, der den Tagesabruf und
+   den Backfill anders anordnet, fiele erst wieder im Betrieb auf. Bisher nicht
+   für nötig gehalten, hier notiert, damit die Entscheidung eine ist.

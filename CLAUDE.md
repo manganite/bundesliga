@@ -528,22 +528,36 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
     `failure` bzw. auf „weder failure noch cancelled", nie `success()`.
   Der Ketten-Wächter prüft zusätzlich beide Melde-Pfade und `issues: write` je
   Workflow und testet sich gegen die stille Entfernung jeder Hälfte.
-- **Offener Defekt: ein dünner Backfill-Snapshot verdrängt den vollständigen
-  desselben Tages** (`docs/verification/pipeline-ausfallverhalten.md`, §3).
-  Gemessen am 2026-08-11: drei Sonntagsspiele des 1. BL2-Spieltags rechneten
-  auf einem **Fünf-Klub-Snapshot**, während ein 34-Klub-Snapshot desselben
-  Datums daneben im Archiv lag. Ursache ist eine Kollision im selben Lauf —
-  `runUpdate` legt den Backfill-Snapshot **vor** dem Tagessnapshot an, beide
-  mit identischem `observedAt`, und die Verdrängungsregel („späteres
-  `observedAt` gewinnt") kann sie deshalb nicht trennen; es entscheidet die
-  Einfügereihenfolge. Ein dünner Snapshot ist **schlechter als gar keiner**: er
-  verdrängt den Rückgriff auf den letzten vollständigen früheren Snapshot, also
-  genau die Treppenfunktion, die hier richtig wäre. Zwei Folgerungen: die vier
-  `carried-forward`-Einträge in `bl2/prematch.json` sind **nicht** die
-  Carry-forward-Regel bei der Arbeit, sondern die Pipeline, die ihren eigenen
-  dünnen Snapshot kompensiert — und seit der Flag-Entfernung erzeugt dieselbe
-  Konstellation **`gap`-Einträge statt getragener**, also Spiele ganz ohne
-  Vorhersage. Nicht behoben; Lösungsrichtungen stehen im Dokument.
+- **Ein dünner Snapshot ist schlechter als gar keiner (2026-08-12, Defektfix).**
+  Gemessen am 2026-08-11: drei Sonntagsspiele des 1. BL2-Spieltags rechneten auf
+  einem **Fünf-Klub-Snapshot**, während ein 34-Klub-Snapshot desselben Datums
+  daneben im Archiv lag (`docs/verification/pipeline-ausfallverhalten.md` §3).
+  Ursache war eine Kollision im selben Lauf: `runUpdate` legte den
+  Backfill-Snapshot **vor** dem Tagessnapshot an, beide mit identischem
+  `observedAt`, womit die Verdrängungsregel sie nicht trennen konnte und die
+  **Einfügereihenfolge** entschied. Drei Stellen, an denen es leicht wieder
+  kaputtgeht:
+  - **Der Backfill fasst den heutigen Tag nicht an** (`backfillDates`:
+    `d < today`). Der Tagesabruf desselben Laufs ist für heute die Autorität —
+    eine Anfrage, alle Klubs. Wer `<= today` zurückholt, baut die Kollision
+    wieder ein.
+  - **Ein Backfill-Snapshot entsteht vollständig oder gar nicht.** Fehlt ein
+    Klub, wird **nichts** archiviert und der Termin bleibt offen; damit greift
+    der Rückgriff auf den letzten vollständigen früheren Snapshot, also die
+    Treppenfunktion. Die Abdeckung geht über **alle** Klubs, nicht nur die des
+    Spieltags: `findPreMatchSnapshot` wählt nach Datum und schlägt erst danach
+    Klubs nach, ein Loch trifft also später irgendein Fixture. Preis: ein
+    offener Termin lässt den nächsten Lauf erneut versuchen — alle zwei
+    Stunden, bis clubelo antwortet.
+  - **`supersedes` ist die eine Verdrängungsregel** für alle drei Lookups
+    (`findPreMatchSnapshot`, `findSnapshotOn`, `findSnapshotAsOf`). Späteres
+    `observedAt`, dann mehr Klubs, dann höhere `snapshotId`. Eine Auswahlregel,
+    deren Antwort von der Einfügereihenfolge abhängt, ist für sich schon ein
+    Determinismus-Defekt — auch wenn die Ursache weg ist.
+  Die vier `carried-forward`-Einträge in `bl2/prematch.json` bleiben stehen und
+  sind **nicht** die Carry-forward-Regel bei der Arbeit, sondern das Protokoll
+  der Pipeline, die ihren eigenen dünnen Snapshot kompensierte. Grenzen 7–9 in
+  `grenzfaelle.md`, Regression in `pipeline/tests/duennerSnapshot.test.mjs`.
 - **`--carry-forward-until` ist das Vorfalls-Instrument, kein Dauerzustand.**
   Je Vorfall neu gesetzt, mit begründetem Ablaufdatum, und **nach dem Vorfall
   wieder entfernt** — sonst steht ein abgelaufener Rest im Workflow, den der
