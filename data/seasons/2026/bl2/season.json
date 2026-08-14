@@ -215,7 +215,9 @@
       "awayClubId": "St. Pauli",
       "homeName": "Holstein Kiel",
       "awayName": "FC St. Pauli",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83536",
@@ -225,7 +227,9 @@
       "awayClubId": "Bochum",
       "homeName": "Eintracht Braunschweig",
       "awayName": "VfL Bochum",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83528",
