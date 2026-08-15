@@ -239,7 +239,9 @@
       "awayClubId": "Heidenheim",
       "homeName": "Hertha BSC",
       "awayName": "1. FC Heidenheim 1846",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 1
     },
     {
       "id": "83537",
@@ -249,7 +251,9 @@
       "awayClubId": "Nürnberg",
       "homeName": "SpVgg Greuther Fürth",
       "awayName": "1. FC Nürnberg",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 4
     },
     {
       "id": "83538",
@@ -259,7 +263,9 @@
       "awayClubId": "Magdeburg",
       "homeName": "VfL Osnabrück",
       "awayName": "1. FC Magdeburg",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 3
     },
     {
       "id": "83527",
