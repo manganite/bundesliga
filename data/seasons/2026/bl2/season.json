@@ -275,7 +275,9 @@
       "awayClubId": "Karlsruhe",
       "homeName": "1. FC Kaiserslautern",
       "awayName": "Karlsruher SC",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83526",
