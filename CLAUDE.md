@@ -928,10 +928,22 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   vom 2026-08-08 auslieferte (2. Liga: 6 statt 9 Spiele, 18 Klubs als ⚑
   markiert, obwohl längst alle wieder live waren). Die Trennlinie: gegen die
   laufende Saison sind **strukturelle** Zusicherungen erlaubt (jede vorkommende
-  Provenienz ist eine bekannte; jedes Fixture ist vorhersagbar), **Aussagen
-  über Gruppengrößen gehören an konstruierte Eingaben**, wo die Größe uns
-  gehört. Verwandt mit dem Punkt unten, aber eigenständig: dort ist die
-  *Bedingung* falsch, hier die *Datenquelle*.
+  Provenienz ist eine bekannte; jedes Fixture ist vorhersagbar; das Artefakt ist
+  aus seinen Eingaben reproduzierbar), **Aussagen über vergängliche Zustände
+  gehören an konstruierte Eingaben**, wo der Zustand uns gehört. Verwandt mit
+  dem Punkt unten, aber eigenständig: dort ist die *Bedingung* falsch, hier die
+  *Datenquelle*.
+  **Zweimal passiert, deshalb gibt es dafür jetzt einen Ort:**
+  `apps/public/tests/harness/seasonStates.mjs` (`preSeason`, `separated`,
+  `withPlayed`) nimmt die **Form** der committeten Saison und setzt den
+  **Zustand** im Test. Am 2026-08-15 trennte der 2. BL2-Spieltag die Klubs, die
+  Caption „Reihenfolge der Prognose" verschwand korrekt — und drei Deploys
+  starben an einem Test, der den geteilten Tabellenplatz für einen Dauerzustand
+  hielt. Ein Probelauf mit versuchsweise gespieltem 1. BL1-Spieltag fand
+  **sechs weitere** derselben Klasse in fünf Dateien; alle sind umgestellt. Wer
+  einen neuen Test gegen `data/seasons/2026/**` schreibt, prüft zuerst, ob die
+  Behauptung den nächsten Spieltag überlebt — die Sonde dafür ist billig
+  (Spieltag einspielen, Suite laufen lassen, Datenstand zurücksetzen).
 - **Tests aus der Anforderung schreiben, nicht aus der Implementierung.** Die
   Freeze-Bedingung aus Brief 30 hatte eine volle Testrunde, war grün und war
   falsch: getestet wurde die Bedingung, die gebaut worden war, statt der Fälle,

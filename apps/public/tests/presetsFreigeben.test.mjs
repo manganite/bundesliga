@@ -5,6 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
+import { withPlayed } from "./harness/seasonStates.mjs";
 import {
   recipeScoreline,
   scenarioFixtures,
@@ -193,8 +194,10 @@ test("applying „forecast“ to all open fixtures reports the count and the unb
 });
 
 test("„reset“ on the played area frees played fixtures and counts them as freigegeben", () => {
-  // Inject a couple of played fixtures.
-  const fixtures = SEASON.fixtures.map((f, i) => (i < 3 ? { ...f, gh: 1, ga: 0 } : f));
+  // EXACTLY three played fixtures, built from a cleared season — injecting into
+  // the live one would count its own results too once the season starts
+  // (harness/seasonStates.mjs).
+  const fixtures = withPlayed(SEASON, 3).fixtures;
   const { overrides, message } = computePreset({
     fixtures, overrides: {}, area: "played", recipe: "reset", modelOf,
   });

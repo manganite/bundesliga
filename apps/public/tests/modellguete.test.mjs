@@ -5,6 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
+import { preSeason } from "./harness/seasonStates.mjs";
 import { buildLiveTimeline, targetsFromConfig } from "../../../pipeline/src/artefacts.mjs";
 import { findSnapshotAsOf } from "../../../pipeline/src/snapshots.mjs";
 
@@ -25,9 +26,11 @@ const strip = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 const PARAMS = read("data/season-params.json");
 const { Modellguete, WichtigstesSpiel, Uebersicht, Verlauf } = await harness();
 
-function ctxFor(season, league) {
+// `overrideSeason` keeps the pre-season tests below from asserting a property
+// the calendar takes away — see harness/seasonStates.mjs.
+function ctxFor(season, league, overrideSeason = null) {
   const config = read(`data/seasons/${season}/config.json`);
-  const seasonData = read(`data/seasons/${season}/${league}/season.json`);
+  const seasonData = overrideSeason ?? read(`data/seasons/${season}/${league}/season.json`);
   const names = new Map(seasonData.clubs.map((c) => [c.clubId, c.name]));
   const maybe = (rel) => (fs.existsSync(path.join(REPO, rel)) ? read(rel) : null);
   return {
@@ -56,8 +59,8 @@ const renderPage = (Component, ctx) => renderToStaticMarkup(React.createElement(
 // ---------------------------------------------------------------------------
 
 test("before the first matchday the Modellgüte page says so instead of improvising", () => {
-  const ctx = ctxFor(2026, "bl1");
-  assert.equal(ctx.season.fixtures.filter((f) => f.gh !== undefined).length, 0, "this fixture must be pre-season");
+  const ctx = ctxFor(2026, "bl1", preSeason(read("data/seasons/2026/bl1/season.json")));
+  assert.equal(ctx.season.fixtures.filter((f) => f.gh !== undefined).length, 0, "the constructed season must be pre-season");
   const html = strip(renderPage(Modellguete, ctx));
   assert.match(html, /noch kein Spiel gespielt/);
   assert.match(html, /füllt sich ab dem 1\. Spieltag/);
@@ -74,7 +77,7 @@ test("the empty page is not blank — it still names the league it is about", ()
 });
 
 test("cards with nothing to say hide — the Übersicht carries no empty scaffolding", () => {
-  const html = strip(renderPage(Uebersicht, ctxFor(2026, "bl1")));
+  const html = strip(renderPage(Uebersicht, ctxFor(2026, "bl1", preSeason(read("data/seasons/2026/bl1/season.json")))));
   // Über-/Unterperformance needs played matches; the card must be absent, not
   // present and showing zeros.
   assert.doesNotMatch(html, /Überflieger/);
