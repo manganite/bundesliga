@@ -43,12 +43,17 @@ export function preSeason(season) {
  * one whose arrival broke the render tests.
  */
 export function separated(season) {
+  // Built on `preSeason` so an open fixture OMITS gh/ga rather than carrying
+  // them as `undefined` — that is the shape `season.json` actually has, and a
+  // constructed state that differs from the real one in shape is a trap for the
+  // next reader even where no consumer tests key presence today.
+  const open = preSeason(season);
   let n = 0;
   return {
-    ...season,
-    fixtures: season.fixtures.map((f) => (f.matchday === 1
+    ...open,
+    fixtures: open.fixtures.map((f) => (f.matchday === 1
       ? { ...f, finished: true, gh: ++n, ga: 0 }
-      : { ...f, finished: false, gh: undefined, ga: undefined })),
+      : f)),
   };
 }
 
