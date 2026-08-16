@@ -5,6 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
+import { preSeason } from "./harness/seasonStates.mjs";
 
 // ============================================================================
 //  ZAHLENFORMAT — one signed path, no „ Pp." literals off format.js, and the
@@ -81,7 +82,12 @@ function tableCtx(season, league, { fixtures } = {}) {
 // ---------------------------------------------------------------------------
 
 test("before the first matchday the Restprogramm card is HIDDEN (§7)", () => {
-  const html = strip(renderToStaticMarkup(React.createElement(TabelleUndPrognose, { ctx: tableCtx(2026, "bl1") })));
+  // Constructed: the card is hidden PRE-SEASON, which the live season stops
+  // being (harness/seasonStates.mjs).
+  const open = preSeason(read("data/seasons/2026/bl1/season.json"));
+  const html = strip(renderToStaticMarkup(React.createElement(
+    TabelleUndPrognose, { ctx: tableCtx(2026, "bl1", { fixtures: open.fixtures }) },
+  )));
   assert.doesNotMatch(html, /Restprogramm-Schwere/,
     "pre-season, every club still has its full double round — the card has nothing to say");
 });

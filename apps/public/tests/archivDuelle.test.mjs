@@ -5,6 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
+import { preSeason } from "./harness/seasonStates.mjs";
 import { duels, historicalDuels, duelTargetsForCtx } from "../src/lib/season.js";
 
 // ============================================================================
@@ -82,7 +83,10 @@ test("§1: an archive season offers exactly „Alle Spiele“ — not offene/ges
 });
 
 test("§1: the pre-season offers no „gespielte“ area (nothing is played yet)", () => {
-  const html = presetHtml(ctxFor(2026, "bl1", false));
+  // Constructed, not borrowed: „nothing is played yet" stops being true of the
+  // live season on its first matchday (harness/seasonStates.mjs).
+  const open = preSeason(read("data/seasons/2026/bl1/season.json"));
+  const html = presetHtml(ctxFor(2026, "bl1", false, open));
   assert.match(html, /Alle offenen Spiele/);
   assert.doesNotMatch(html, /Alle gespielten Spiele/);
   // The full-play rename must NOT appear pre-season. „Alle Spiele" (contiguous)

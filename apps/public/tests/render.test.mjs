@@ -5,6 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
+import { preSeason, separated } from "./harness/seasonStates.mjs";
 
 // ============================================================================
 //  Rendering the actual components.
@@ -39,43 +40,6 @@ function relegationHtml(league) {
     }),
   );
 }
-
-// ---------------------------------------------------------------------------
-//  Season states, CONSTRUCTED rather than borrowed from the running season.
-//
-//  These render tests used to read the live season and assert what it happened
-//  to look like that week — „no match played yet", „every club still shares
-//  rank 1". Both are true in August and false in September, and because
-//  test.yml is the deployment gate, the day the data moves on is the day the
-//  site stops updating. It happened on 2026-08-15: the second BL2 matchday
-//  separated the clubs, the shared-place caption correctly disappeared, and
-//  three deploys died on a test that was describing the weather (CLAUDE.md,
-//  „Ein Test auf die laufende Saison darf keine vergängliche Eigenschaft
-//  behaupten").
-//
-//  So the STATE under test is ours; only the shape of the data stays real.
-// ---------------------------------------------------------------------------
-
-/** Every fixture unplayed — the pre-season, whatever the calendar says. */
-const preSeason = (s) => ({
-  ...s,
-  fixtures: s.fixtures.map(({ gh, ga, ...rest }) => ({ ...rest, finished: false })),
-});
-
-/**
- * Matchday 1 played so that NO two clubs are indistinguishable: winner i wins
- * i:0, so the goal difference alone separates every club. Which is what a real
- * matchday does to the pre-season's all-share-rank-1 table.
- */
-const separated = (s) => {
-  let n = 0;
-  return {
-    ...s,
-    fixtures: s.fixtures.map((f) => (
-      f.matchday === 1 ? { ...f, finished: true, gh: ++n, ga: 0 } : { ...f, finished: false, gh: undefined, ga: undefined }
-    )),
-  };
-};
 
 function tableHtml(league, seasonOverride = null) {
   const s = seasonOverride ?? leagueData[league].season;

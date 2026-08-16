@@ -70,8 +70,10 @@ test("a fixed fixture shows „Festgesetzt: g:g“ and a reset, no prediction", 
 
 test("an override appears in the summary even when its matchday is not selected", () => {
   // Two fixtures on different matchdays, one fixed one released; both listed.
-  const f1 = SEASON.fixtures.find((f) => f.gh === undefined && f.matchday === 1);
-  const f2 = SEASON.fixtures.find((f) => f.gh === undefined && f.matchday === 3);
+  // No played/unplayed condition: OverrideSummary only ever sees the ids, and
+  // requiring an OPEN matchday-1 fixture would find none once the season starts.
+  const f1 = SEASON.fixtures.find((f) => f.matchday === 1);
+  const f2 = SEASON.fixtures.find((f) => f.matchday === 3);
   const html = strip(renderToStaticMarkup(React.createElement(OverrideSummary, {
     overrideList: [
       { fixture: { id: f1.id, homeClubId: f1.homeClubId, awayClubId: f1.awayClubId }, o: { kind: "fixed", gh: 2, ga: 1 } },
