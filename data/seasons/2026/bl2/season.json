@@ -287,7 +287,9 @@
       "awayClubId": "Wolfsburg",
       "homeName": "Hannover 96",
       "awayName": "VfL Wolfsburg",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83530",
@@ -297,7 +299,9 @@
       "awayClubId": "Darmstadt",
       "homeName": "Dynamo Dresden",
       "awayName": "SV Darmstadt 98",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83535",
@@ -307,7 +311,9 @@
       "awayClubId": "Cottbus",
       "homeName": "DSC Arminia Bielefeld",
       "awayName": "Energie Cottbus",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83543",

@@ -1,14 +1,13 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "dataUpdatedAt": "2026-08-16T06:28:12.997Z",
-  "dataHash": "ae5e03c59e58923f",
+  "dataUpdatedAt": "2026-08-16T14:25:43.011Z",
+  "dataHash": "3cd74294e1b9613d",
   "lastChanges": [
-    "rating snapshot clubelo-2026-08-16-70469cbfef058681",
-    "bl1 pre-match dataset (+0, ~306)",
-    "bl2 pre-match dataset (+0, ~288)",
-    "bl1 current outlook",
-    "bl1 frozen timeline (+0 point(s))",
-    "bl2 current outlook"
+    "bl2 current outlook",
+    "bl2 frozen timeline (+1 point(s))",
+    "bl2 live timeline (+1 point(s))",
+    "relegation play-off",
+    "bl2 fixtures/results"
   ]
 }
