@@ -40,8 +40,45 @@ function relegationHtml(league) {
   );
 }
 
-function tableHtml(league) {
-  const s = leagueData[league].season;
+// ---------------------------------------------------------------------------
+//  Season states, CONSTRUCTED rather than borrowed from the running season.
+//
+//  These render tests used to read the live season and assert what it happened
+//  to look like that week — „no match played yet", „every club still shares
+//  rank 1". Both are true in August and false in September, and because
+//  test.yml is the deployment gate, the day the data moves on is the day the
+//  site stops updating. It happened on 2026-08-15: the second BL2 matchday
+//  separated the clubs, the shared-place caption correctly disappeared, and
+//  three deploys died on a test that was describing the weather (CLAUDE.md,
+//  „Ein Test auf die laufende Saison darf keine vergängliche Eigenschaft
+//  behaupten").
+//
+//  So the STATE under test is ours; only the shape of the data stays real.
+// ---------------------------------------------------------------------------
+
+/** Every fixture unplayed — the pre-season, whatever the calendar says. */
+const preSeason = (s) => ({
+  ...s,
+  fixtures: s.fixtures.map(({ gh, ga, ...rest }) => ({ ...rest, finished: false })),
+});
+
+/**
+ * Matchday 1 played so that NO two clubs are indistinguishable: winner i wins
+ * i:0, so the goal difference alone separates every club. Which is what a real
+ * matchday does to the pre-season's all-share-rank-1 table.
+ */
+const separated = (s) => {
+  let n = 0;
+  return {
+    ...s,
+    fixtures: s.fixtures.map((f) => (
+      f.matchday === 1 ? { ...f, finished: true, gh: ++n, ga: 0 } : { ...f, finished: false, gh: undefined, ga: undefined }
+    )),
+  };
+};
+
+function tableHtml(league, seasonOverride = null) {
+  const s = seasonOverride ?? leagueData[league].season;
   const names = new Map(s.clubs.map((c) => [c.clubId, c.name]));
   return renderToStaticMarkup(
     React.createElement(TabelleUndPrognose, {
@@ -156,9 +193,9 @@ test("no play-off artefact at all renders nothing rather than a broken card", ()
 // ---------------------------------------------------------------------------
 
 test("before the first matchday the table is ordered by expected points", () => {
-  const html = tableHtml("bl1");
-  const s = leagueData.bl1.season;
-  assert.equal(s.fixtures.filter((f) => f.gh !== undefined).length, 0, "this fixture must be pre-season");
+  const s = preSeason(leagueData.bl1.season);
+  const html = tableHtml("bl1", s);
+  assert.equal(s.fixtures.filter((f) => f.gh !== undefined).length, 0, "the constructed season must be pre-season");
 
   const names = s.clubs.map((c) => c.name);
   const order = [...html.matchAll(/style="font-weight:500">([^<]+)</g)].map((m) => m[1]);
@@ -173,14 +210,30 @@ test("before the first matchday the table is ordered by expected points", () => 
 });
 
 test("the shared table place is still shown, and the caption says whose order it is", () => {
-  const html = strip(tableHtml("bl1"));
-  assert.match(html, /geteilten? Tabellenplatz/);
-  assert.match(html, /Reihenfolge der Prognose, nicht die der Tabelle/);
+  for (const league of ["bl1", "bl2"]) {
+    const html = strip(tableHtml(league, preSeason(leagueData[league].season)));
+    assert.match(html, /geteilten? Tabellenplatz/, league);
+    assert.match(html, /Reihenfolge der Prognose, nicht die der Tabelle/, league);
+  }
+});
+
+// The other edge, and the one that actually fired: the caption belongs to a
+// shared place, so it has to GO when results separate the clubs. Nothing covered
+// this before — which is why its disappearance read as a regression instead of
+// as the feature working.
+test("once results separate the clubs, that caption disappears", () => {
+  for (const league of ["bl1", "bl2"]) {
+    const html = strip(tableHtml(league, separated(leagueData[league].season)));
+    assert.doesNotMatch(html, /Reihenfolge der Prognose, nicht die der Tabelle/, league);
+    assert.doesNotMatch(html, /geteilten? Tabellenplatz/, league);
+  }
 });
 
 test("the 2. Bundesliga renders the same way, with its own numbers", () => {
-  const html = strip(tableHtml("bl2"));
-  assert.match(html, /Reihenfolge der Prognose, nicht die der Tabelle/);
-  // The two leagues must not accidentally render the same content.
+  // Structural, so it holds in every week of the season: both leagues render a
+  // table, and the two must not accidentally show the same content.
+  for (const league of ["bl1", "bl2"]) {
+    assert.match(strip(tableHtml(league)), /Tabelle und erwartetes Saisonende/);
+  }
   assert.notEqual(tableHtml("bl1"), tableHtml("bl2"));
 });
