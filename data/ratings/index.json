@@ -1818,6 +1818,15 @@
       "contentHash": "70469cbfef058681",
       "correctionOf": null,
       "clubs": 36
+    },
+    {
+      "snapshotId": "clubelo-2026-08-17-70469cbfef058681",
+      "source": "clubelo",
+      "observedAt": "2026-08-17T00:28:41.654Z",
+      "effectiveAt": "2026-08-17",
+      "contentHash": "70469cbfef058681",
+      "correctionOf": null,
+      "clubs": 36
     }
   ]
 }
