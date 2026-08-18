@@ -245,8 +245,8 @@
       }
     }
   ],
-  "frozenSnapshotId": "clubelo-2026-08-17-70469cbfef058681",
-  "frozenEffectiveAt": "2026-08-17",
+  "frozenSnapshotId": "clubelo-2026-08-18-70469cbfef058681",
+  "frozenEffectiveAt": "2026-08-18",
   "frozenRatings": {
     "Augsburg": 1636.44641113,
     "Bayern": 2000.8704834,
@@ -270,6 +270,6 @@
   "label": {
     "degraded": false,
     "label": "Prognose mit eingefrorener Saisonstart-Stärke",
-    "from": "2026-08-17"
+    "from": "2026-08-18"
   }
 }
