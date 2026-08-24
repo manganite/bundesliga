@@ -7,6 +7,7 @@ import {
   runUpdate, attachClubIds, extractRatings, backfillDates, backfillSnapshots, BACKFILL_DELAY_MS,
 } from "../src/update.mjs";
 import { normaliseSeason } from "../src/sources/openligadb.mjs";
+import { RatingUnavailableError, defaultFetchText, FETCH_TIMEOUT_MS } from "../src/sources/clubelo.mjs";
 import { readIndex, readSnapshot, resolveArchiveBase } from "../src/snapshots.mjs";
 
 const SEASON = 2026;
@@ -483,6 +484,163 @@ test("a club with an intervening known fixture is not carried, flag or not", asy
     }),
     /known fixture\(s\) fall between/,
   );
+});
+
+// ---------------------------------------------------------------------------
+//  clubelo not there at all (2026-08-20 migration outage).
+//
+//  The operator rebuilt the website and switched the API off before bringing it
+//  up on the new server. api.clubelo.com accepted TCP connections and then never
+//  answered; the run hung for five minutes and died with a bare „fetch failed".
+//  Because the ratings gate sits before everything, that meant NO data at all —
+//  results included — for as long as the outage lasted.
+//
+//  The fallback routes this through the machinery a single absent club already
+//  uses. What must NOT change: the default, and the loudness of anything that
+//  might be format drift or a policy change after the relaunch.
+// ---------------------------------------------------------------------------
+
+/** clubelo answers for club histories but not for the daily CSV. */
+function makeSourcesWithDailyFailure(makeError) {
+  const s = makeSources();
+  const fetchText = async (url) => {
+    if (/clubelo\.com\/\d{4}-\d{2}-\d{2}$/.test(url)) throw makeError(url);
+    return s.fetchText(url);
+  };
+  return { fetchJson: s.fetchJson, fetchText };
+}
+
+const unreachable = (url) => new RatingUnavailableError(`${url} -> unreachable: ECONNREFUSED`);
+
+test("an unreachable clubelo still fails the job without the flag", async () => {
+  const dataDir = await makeDataDir();
+  const { fetchJson, fetchText } = makeSourcesWithDailyFailure(unreachable);
+  await assert.rejects(
+    () => runUpdate({ dataDir, fetchJson, fetchText, now: NOW, log: silent }),
+    /unreachable/,
+  );
+  assert.ok(!(await fs.readdir(dataDir)).includes("meta.json"), "nothing may be written");
+});
+
+test("with the flag an unreachable clubelo falls back to the archive — every club carried", async () => {
+  const dataDir = await makeDataDir();
+  const clean = makeSources();
+  await runUpdate({ dataDir, fetchJson: clean.fetchJson, fetchText: clean.fetchText, now: NOW, log: silent });
+  const indexBefore = JSON.parse(await fs.readFile(path.join(dataDir, "ratings", "index.json"), "utf8"));
+
+  const later = new Date("2026-09-11T04:00:00.000Z");
+  const down = makeSourcesWithDailyFailure(unreachable);
+  const messages = [];
+  const r = await runUpdate({
+    dataDir, fetchJson: down.fetchJson, fetchText: down.fetchText, now: later,
+    carryForwardUntil: "2026-10-31", log: (m) => messages.push(m),
+  });
+
+  // Every club of both leagues is carried, from the real date of the rating.
+  assert.ok(r.carried.length >= 4, `expected all clubs carried, got ${r.carried.length}`);
+  assert.ok(r.carried.every((c) => c.effectiveAt === "2026-09-10" && c.ageDays === 1));
+  assert.ok(messages.some((m) => /falling back to the archive/.test(m)));
+
+  // Marked per club, never silently presented as current.
+  const outlook = JSON.parse(await fs.readFile(path.join(dataDir, "seasons", String(SEASON), "bl1", "outlook.json"), "utf8"));
+  assert.ok(Object.values(outlook.ratingProvenance).every((p) => p.provenance === "carried-forward"));
+
+  // And the archive gains NOTHING: it records only what clubelo published.
+  const indexAfter = JSON.parse(await fs.readFile(path.join(dataDir, "ratings", "index.json"), "utf8"));
+  assert.equal(indexAfter.snapshots.length, indexBefore.snapshots.length,
+    "a day clubelo never answered must leave no snapshot behind");
+  assert.ok(!indexAfter.snapshots.some((s) => s.effectiveAt === "2026-09-11"));
+  assert.ok(messages.some((m) => /nothing archived/.test(m)));
+});
+
+test("a 5xx counts as unreachable, a 4xx does not", async () => {
+  const dataDir = await makeDataDir();
+  const clean = makeSources();
+  await runUpdate({ dataDir, fetchJson: clean.fetchJson, fetchText: clean.fetchText, now: NOW, log: silent });
+  const later = new Date("2026-09-11T04:00:00.000Z");
+
+  // 502 — the shape of the earlier August outage. Carried.
+  const five = makeSourcesWithDailyFailure((url) => new RatingUnavailableError(`${url} -> HTTP 502`));
+  const r = await runUpdate({
+    dataDir, fetchJson: five.fetchJson, fetchText: five.fetchText, now: later,
+    carryForwardUntil: "2026-10-31", log: silent,
+  });
+  assert.ok(r.carried.length >= 4);
+
+  // 404 — a moved endpoint or a new auth requirement. That is a policy change
+  // and has to surface, not be papered over for up to 42 days.
+  const four = makeSourcesWithDailyFailure((url) => new Error(`${url} -> HTTP 404`));
+  await assert.rejects(
+    () => runUpdate({
+      dataDir, fetchJson: four.fetchJson, fetchText: four.fetchText, now: later,
+      carryForwardUntil: "2026-10-31", log: silent,
+    }),
+    /HTTP 404/,
+  );
+});
+
+test("a response that parses wrong is never carried over — drift must stay loud", async () => {
+  const dataDir = await makeDataDir();
+  const clean = makeSources();
+  await runUpdate({ dataDir, fetchJson: clean.fetchJson, fetchText: clean.fetchText, now: NOW, log: silent });
+
+  // The playbook's real worry after the relaunch: the body arrives and is not
+  // what it used to be. Falling back would hide that for weeks.
+  const drifted = makeSources();
+  const fetchText = async (url) => (/clubelo\.com\/\d{4}-\d{2}-\d{2}$/.test(url)
+    ? "Rank;Club;Country;Level;Elo;From;To\n1;Bayern;GER;1;2000;2026-09-01;2026-09-30"
+    : drifted.fetchText(url));
+  await assert.rejects(
+    () => runUpdate({
+      dataDir, fetchJson: drifted.fetchJson, fetchText, now: new Date("2026-09-11T04:00:00.000Z"),
+      carryForwardUntil: "2026-10-31", log: silent,
+    }),
+    /unexpected header/,
+  );
+});
+
+test("the fallback reaches only to the next kickoff — it does not carry a matchday", async () => {
+  // THE LIMIT OF THIS MECHANISM, pinned so nobody promises more than it does.
+  //
+  // Rule 5 of the carry-forward evaluation refuses when a KNOWN fixture falls in
+  // the gap — scheduled, not merely played, because by the time the run asks, the
+  // match may be over and the rating provably moved. So the fallback keeps the
+  // pipeline alive right up to the next kickoff and then correctly stops: on a
+  // matchday, an unreachable clubelo still fails the job.
+  //
+  // Results reaching the app while the ratings are stale is a DIFFERENT problem
+  // and needs the two-clock separation (pipeline-ausfallverhalten.md §4, Weg B).
+  const dataDir = await makeDataDir();
+  const clean = makeSources();
+  await runUpdate({ dataDir, fetchJson: clean.fetchJson, fetchText: clean.fetchText, now: NOW, log: silent });
+
+  const down = makeSourcesWithDailyFailure(unreachable);
+  const run = (iso) => runUpdate({
+    dataDir, fetchJson: down.fetchJson, fetchText: down.fetchText,
+    now: new Date(iso), carryForwardUntil: "2026-10-31", log: silent,
+  });
+
+  // Matchday 4 is 2026-09-18. The day before, the gap is still clean.
+  const before = await run("2026-09-17T04:00:00.000Z");
+  assert.ok(before.carried.length >= 4, "up to the eve of a matchday the fallback carries");
+
+  // On the matchday itself it refuses, and the run fails closed.
+  await assert.rejects(() => run("2026-09-18T20:00:00.000Z"), /known fixture\(s\) fall between/);
+});
+
+test("an unreachable clubelo is reported with its URL and its cause", async () => {
+  // Node's bare „fetch failed" names neither. Against a closed local port, so
+  // this never touches the live API.
+  await assert.rejects(
+    () => defaultFetchText("http://127.0.0.1:1/2026-09-11", { timeoutMs: 2000 }),
+    (e) => {
+      assert.ok(e instanceof RatingUnavailableError, "a dead socket is an availability failure");
+      assert.match(e.message, /127\.0\.0\.1:1/, "the URL has to be in the message");
+      assert.match(e.message, /ECONNREFUSED|unreachable/, "and so does the cause");
+      return true;
+    },
+  );
+  assert.ok(FETCH_TIMEOUT_MS > 0 && FETCH_TIMEOUT_MS <= 60_000, "the wait must be bounded");
 });
 
 // ---------------------------------------------------------------------------

@@ -34,13 +34,18 @@ Grenze gegen einen *gespeicherten* Wert ist eine andere Grenze als eine gegen de
 | 7 | Verdrängung bei **gleichem `effectiveAt`** | `snapshots.mjs` `supersedes` | späteres `observedAt` gewinnt; **`observedAt` exakt gleich → mehr Klubs gewinnt**; auch das gleich → `snapshotId`, damit die Antwort stabil ist; an **allen drei** Konsumenten (`findPreMatchSnapshot`, `findSnapshotOn`, `findSnapshotAsOf`) und in **beiden** Einfügereihenfolgen | `pipeline/tests/duennerSnapshot.test.mjs` |
 | 8 | Backfill-Termine: **echt vor** heute | `update.mjs` `backfillDates` | gestern ✓, **heute ✗** (der Tagesabruf desselben Laufs deckt ihn ab), morgen ✗ | `pipeline/tests/duennerSnapshot.test.mjs` — „never covers today" |
 | 9 | Backfill-Snapshot: **alle** Klubs oder keiner | `update.mjs` `backfillSnapshots` | vollständig → archiviert, 1 von 3 → gar nichts + Termin bleibt offen, 0 von 3 → dasselbe mit eigener Begründung; danach greift der Rückgriff auf den letzten **vollständigen** früheren Snapshot | `pipeline/tests/duennerSnapshot.test.mjs` |
+| 10 | Was zählt als „clubelo nicht erreichbar“ | `sources/clubelo.mjs` `RatingUnavailableError` | Transportfehler ✓ und **5xx** ✓ → Rückgriff erlaubt; **4xx** ✗ (Endpunkt verschoben, Auth neu) und **Integritätsfehler** ✗ (Header, Zeilenzahl, Datumsabdeckung) → weiterhin harter Abbruch, damit Formatdrift laut bleibt | `pipeline/tests/update.test.mjs` — „a 5xx counts as unreachable, a 4xx does not“, „a response that parses wrong is never carried over“ |
+| 11 | Reichweite des Rückgriffs | `carryForward.mjs` Regel 5 | Vorabend des Spieltags → getragen; **Spieltag selbst → abgelehnt**, weil ein *geplantes* Spiel in der Lücke liegt, nicht erst ein gespieltes; danach ebenfalls abgelehnt | `pipeline/tests/update.test.mjs` — „the fallback reaches only to the next kickoff“ |
 
 Nummern 1–3 waren beim Anlegen der Tabelle **bereits abgedeckt** — geprüft, nicht
 nachgetragen. Nummer 4 fehlte die Gleichheitskante; sie ist ergänzt. 5 und 6 sind
 die beiden Grenzen, die die Freeze-Familie hervorgebracht hat. 7–9 kommen aus dem
 Fund vom 2026-08-11 (`pipeline-ausfallverhalten.md` §3); bei 7 ist die
 Gleichheitskante die eigentliche Grenze — sie war vorher gar keine Regel, sondern
-fiel auf die Einfügereihenfolge durch.
+fiel auf die Einfügereihenfolge durch. 10 und 11 kommen aus dem clubelo-Ausfall
+ab 2026-08-20. Bei 11 ist die Grenze das **geplante** Spiel, nicht das gespielte —
+und genau deshalb reicht der Rückgriff bis an den Spieltag heran, aber nicht
+hinein.
 
 ## Untersucht und unauffällig (2026-08-05)
 

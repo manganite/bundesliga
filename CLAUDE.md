@@ -558,6 +558,28 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   sind **nicht** die Carry-forward-Regel bei der Arbeit, sondern das Protokoll
   der Pipeline, die ihren eigenen dünnen Snapshot kompensierte. Grenzen 7–9 in
   `grenzfaelle.md`, Regression in `pipeline/tests/duennerSnapshot.test.mjs`.
+- **clubelo ist seit 2026-08-20 weg — Migrationslücke, kein Ausfall
+  (`docs/verification/clubelo.md`).** Der Betreiber hat die Website neu
+  aufgesetzt und die API abgeschaltet, bevor sie auf dem neuen Server stand;
+  belegt über seine Postings auf X, **ohne Terminzusage**. Der Socket nimmt die
+  Verbindung an und schweigt — kein 502, sondern gar keine Antwort. Drei
+  Stellen, an denen es leicht wieder kaputtgeht:
+  - **Erreichbarkeit ≠ Integrität.** Nur `RatingUnavailableError`
+    (Transportfehler, 5xx) darf aufs Archiv zurückgreifen. Ein 4xx oder eine
+    falsch geparste Antwort **muss** weiter laut scheitern: nach einem Relaunch
+    kann beides Formatdrift oder eine Policy-Änderung sein, und die 42 Tage
+    Rückgriff würden sie verdecken.
+  - **Der Rückgriff reicht bis zum Vorabend des Spieltags, nicht hinein.**
+    Regel 5 der Carry-forward-Bewertung lehnt ab, sobald ein **geplantes** Spiel
+    in der Lücke liegt — nicht erst ein gespieltes. Am Spieltag scheitert der
+    Lauf wieder fail-closed. Wer mehr verspricht, hat die Regel nicht gelesen;
+    „Ergebnisse trotz alter Ratings" ist Weg B, nicht dies hier.
+  - **Ein Lauf ohne Live-Rating archiviert nichts.** `appendSnapshot` wirft bei
+    leeren Ratings, und das Archiv soll ohnehin nur enthalten, was clubelo
+    veröffentlicht hat. Der Guard steht vor dem Aufruf, nicht darin.
+  Dazu: `defaultFetchText` nennt jetzt URL und Ursache (vorher bloß Node's
+  `fetch failed`) und wartet **30 s** statt undicis 300 — ein hängender Socket
+  hat je Lauf fünf Minuten verbrannt. Grenzen 10–11 in `grenzfaelle.md`.
 - **`--carry-forward-until` ist das Vorfalls-Instrument, kein Dauerzustand.**
   Je Vorfall neu gesetzt, mit begründetem Ablaufdatum, und **nach dem Vorfall
   wieder entfernt** — sonst steht ein abgelaufener Rest im Workflow, den der
