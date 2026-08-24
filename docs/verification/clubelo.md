@@ -335,6 +335,49 @@ fail-closed-Mapping. Was fehlte, war nicht Code, sondern eine Diagnosereihenfolg
 
 Der Gate-Lauf dafür ist `npm run gate:clubelo` — ein Abruf, alle Namen.
 
+### Was der Relaunch dann wirklich war (2026-08-20)
+
+Das Playbook nahm an, der Relaunch falle als **Formatdrift** auf. Er fiel als
+**Abwesenheit** auf, und die Prüfreihenfolge oben führte deshalb ins Leere:
+
+> Der Betreiber hat die Website neu aufgesetzt und die API abgeschaltet, bevor
+> sie auf dem neuen Server wieder stand. Belegt über Postings des Betreibers auf
+> X; andere Nutzer haben ebenfalls nachgefragt, **eine Zusage zum Termin gibt es
+> nicht**. Direkte Bestätigung uns gegenüber: keine.
+
+Gemessen am 2026-08-21: DNS löst auf, der TCP-Verbindungsaufbau gelingt in 32 ms,
+danach kommt **60 Sekunden lang nichts**. Das ist kein 502 wie im August davor —
+der Socket nimmt an und schweigt. Schritt 1 der Prüfreihenfolge („HTTP-Status und
+Zeilenzahl") hat damit keine Antwort, und Node meldete bloß `fetch failed`, ohne
+URL und ohne Ursache.
+
+Die neue Website trägt eine Login-Leiste, und `/register/` wie `/subscribe/`
+liefern beide nur das Login-Formular — ein Konto lässt sich nicht anlegen. Die
+alte Doku-Seite `/API` leitet auf die Startseite. **Daraus folgt nichts über die
+künftige Zugänglichkeit der API**: die Belege sind mit einem Abomodell vereinbar,
+belegen es aber nicht, und der Betreiber hat sich dazu nicht geäußert. Bis er das
+tut, bleibt es eine offene Frage und keine Annahme.
+
+**Konsequenzen im Code**, alle am 2026-08-21:
+
+1. `defaultFetchText` unterscheidet jetzt **Erreichbarkeit** von **Integrität**
+   (`RatingUnavailableError` vs. `RatingSourceError`) und nennt URL und Ursache.
+   Nur die erste Klasse darf zurückgreifen — eine falsch geparste Antwort oder
+   ein 4xx könnten Drift oder eine Policy-Änderung sein und müssen laut bleiben.
+2. Ein **Timeout von 30 s** statt undicis 300 s. Ein hängender Socket hat vorher
+   fünf Minuten Laufzeit je Lauf verbrannt.
+3. Ist clubelo unerreichbar **und** die Vorfalls-Flag gesetzt, greift der Lauf
+   auf das Archiv zurück — über dieselbe gebundene Bewertung, die ein einzelner
+   fehlender Klub durchläuft. Ohne Flag scheitert er weiter (§5.2).
+
+**Die Reichweite ist begrenzt, und zwar knapper als zunächst angenommen.** Regel 5
+der Carry-forward-Bewertung lehnt ab, sobald ein **geplantes** Spiel in die Lücke
+fällt — nicht erst ein gespieltes. Der Rückgriff trägt also bis zum Vorabend des
+nächsten Spieltags und hört dann auf. Am 2026-08-28 (BL1-Spieltag 1, BL2-Spieltag 3)
+scheitert der Lauf wieder, wenn clubelo bis dahin nicht antwortet. Dass **Ergebnisse
+die App erreichen, während die Ratings alt sind**, ist ein anderes Problem und
+braucht die Zwei-Uhren-Trennung (`pipeline-ausfallverhalten.md` §4, Weg B).
+
 **Eine Hoffnung, kein Plan:** der Relaunch könnte die vier eingefrorenen
 Rating-Reihen wieder in Gang bringen. Falls ja, räumen sich die
 Carry-Forward-Markierungen von selbst ab und die Flag `--carry-forward-until`

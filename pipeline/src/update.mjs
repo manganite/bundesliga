@@ -23,7 +23,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 
 import { detectCurrentSeason, fetchSeason } from "./sources/openligadb.mjs";
-import { fetchDailySnapshot, indexSnapshot, fetchClubHistory, ratingOn } from "./sources/clubelo.mjs";
+import { fetchDailySnapshot, indexSnapshot, fetchClubHistory, ratingOn, RatingUnavailableError } from "./sources/clubelo.mjs";
 import { resolveClub } from "./clubMapping.mjs";
 import {
   appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot, findSnapshotOn, findSnapshotAsOf,
@@ -330,8 +330,37 @@ export async function runUpdate({
     // One line, so a run's log still accounts for every source.
     log("clubelo: Tagesstand vorhanden, kein Abruf");
   } else {
-    const daily = await fetchDailySnapshot(today, fetchText);
-    ({ ratings, missing } = extractRatings([...allClubs.values()], daily));
+    // WHEN CLUBELO IS SIMPLY NOT THERE.
+    //
+    // A transport failure or a 5xx used to abort the whole run — and because the
+    // ratings gate sits before everything, „no ratings" meant „no data at all",
+    // results included. That is right as a DEFAULT and stays the default: without
+    // --carry-forward-until this still throws (§5.2).
+    //
+    // With the incident flag set, the run falls back to the archive by treating
+    // EVERY club as missing, which routes it through the same bounded evaluation
+    // a single absent club already goes through: 42-day ceiling, no intervening
+    // fixture per club, marked `carried-forward`, and never written back into the
+    // archive. If any club fails that evaluation the run still fails.
+    //
+    // Only RatingUnavailableError qualifies. A body that parses wrong, or a 4xx,
+    // may be format drift or a policy change after the operator's relaunch, and
+    // both have to stay loud (see the class comment in sources/clubelo.mjs).
+    let daily = null;
+    try {
+      daily = await fetchDailySnapshot(today, fetchText);
+    } catch (e) {
+      if (!(e instanceof RatingUnavailableError) || !carryForwardUntil) throw e;
+      log(`clubelo unavailable (${e.message}) — falling back to the archive under --carry-forward-until`);
+    }
+    if (daily) {
+      ({ ratings, missing } = extractRatings([...allClubs.values()], daily));
+    } else {
+      ratings = {};
+      missing = [...allClubs.values()].map((club) => ({
+        clubId: club.clubId, name: club.name, clubeloCsvName: club.clubeloCsvName,
+      }));
+    }
   }
 
   // Clubs the snapshot did not cover, whether it came from the network or the
@@ -435,11 +464,19 @@ export async function runUpdate({
   const observedRatings = Object.fromEntries(
     Object.entries(ratings).filter(([clubId]) => ratingProvenance[clubId].provenance === "live"),
   );
-  const appended = await appendSnapshot(ratingsDir, {
-    source: "clubelo", observedAt, effectiveAt: today, ratings: observedRatings,
-  });
-  if (appended.appended) changes.push(`rating snapshot ${appended.snapshotId}`);
-  else log(`snapshot unchanged: ${appended.reason}`);
+  // Nothing observed means nothing to archive. Reached when every club is on a
+  // carried value because clubelo was unreachable — and `appendSnapshot` would
+  // throw on empty ratings, so this is a guard, not a nicety. It is also the
+  // rule the archive has always had: it records what clubelo actually published.
+  if (Object.keys(observedRatings).length === 0) {
+    log("no live rating this run — nothing archived");
+  } else {
+    const appended = await appendSnapshot(ratingsDir, {
+      source: "clubelo", observedAt, effectiveAt: today, ratings: observedRatings,
+    });
+    if (appended.appended) changes.push(`rating snapshot ${appended.snapshotId}`);
+    else log(`snapshot unchanged: ${appended.reason}`);
+  }
 
   // --- 6. derive the per-fixture pre-match dataset --------------------------
   const index = await readIndex(ratingsDir);

@@ -19,10 +19,48 @@
 const BASE = "http://api.clubelo.com";
 export const USER_AGENT = "bundesliga-app/0.1 (+https://github.com/manganite/bundesliga)";
 
+/** The response arrived and is WRONG: bad header, empty body, non-numeric Elo. */
 export class RatingSourceError extends Error {}
 
-export async function defaultFetchText(url) {
-  const res = await fetch(url, { headers: { "user-agent": USER_AGENT } });
+/**
+ * No usable response arrived at all: the connection failed, timed out, or the
+ * server answered 5xx.
+ *
+ * The distinction is load-bearing, not decorative. Only THIS class may fall back
+ * to the archive (update.mjs §3, and only under --carry-forward-until):
+ * a server that is down says nothing about the data, whereas a body that parses
+ * wrong may be format drift after the operator's relaunch — and drift has to
+ * stay loud, which is exactly what the clubelo.md playbook asks for. A 4xx is
+ * also NOT this class: a moved endpoint or a new auth requirement is a policy
+ * change and must surface, never be papered over for up to 42 days.
+ */
+export class RatingUnavailableError extends Error {}
+
+/**
+ * How long to wait for clubelo before calling it unavailable.
+ *
+ * Node's default is undici's 300 s header timeout, which is how a single hung
+ * request burned five minutes of runner time per run during the 2026-08-20
+ * migration outage: the socket accepted the connection and then went silent.
+ */
+export const FETCH_TIMEOUT_MS = 30_000;
+
+export async function defaultFetchText(url, { timeoutMs = FETCH_TIMEOUT_MS } = {}) {
+  let res;
+  try {
+    res = await fetch(url, {
+      headers: { "user-agent": USER_AGENT },
+      signal: AbortSignal.timeout(timeoutMs),
+    });
+  } catch (cause) {
+    // Node's bare "fetch failed" names neither the URL nor the reason, which is
+    // what made the 2026-08-20 logs undiagnosable. Say both.
+    const why = cause?.name === "TimeoutError"
+      ? `no response within ${timeoutMs} ms`
+      : (cause?.cause?.code ?? cause?.cause?.message ?? cause?.message ?? String(cause));
+    throw new RatingUnavailableError(`${url} -> unreachable: ${why}`, { cause });
+  }
+  if (res.status >= 500) throw new RatingUnavailableError(`${url} -> HTTP ${res.status}`);
   if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
   return res.text();
 }
