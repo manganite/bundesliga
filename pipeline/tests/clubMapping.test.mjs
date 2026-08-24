@@ -61,6 +61,45 @@ test("aliases fold onto one identity rather than a second entry", () => {
   );
 });
 
+test("a renamed shortName keeps the club identity it already had", () => {
+  // 2026-08-22: OpenLigaDB started returning „S04" for team 9 instead of
+  // „Schalke", mid-season, and every run stopped at club resolution — before
+  // clubelo was even reached.
+  //
+  // The identity must NOT follow the rename: `clubId` is the key of every
+  // artefact, of the rating archive and of every pre-match entry. A second
+  // identity appearing beside the first is the silent failure §5.2 is about, and
+  // fail-closed is what stopped it — a blocked run, not a split club.
+  assert.equal(
+    resolveClub({ teamId: 9, shortName: "S04", teamName: "FC Schalke 04" }).clubId,
+    "Schalke",
+  );
+  assert.equal(
+    resolveClub({ teamId: 9, shortName: "S04", teamName: "FC Schalke 04" }).clubeloUrlName,
+    resolveClub({ teamId: 9, shortName: "Schalke", teamName: "FC Schalke 04" }).clubeloUrlName,
+    "both spellings must read the same clubelo history",
+  );
+});
+
+test("every club of the committed seasons still resolves to the id it is stored under", () => {
+  // The offline half of the same guard: a mapping edit that drops or renames a
+  // club would orphan the artefacts that key on it. This cannot see a FUTURE
+  // rename by OpenLigaDB — only a live run can — but it catches the version of
+  // the accident that is ours to make.
+  const repo = path.resolve(import.meta.dirname, "../..");
+  for (const season of ["2026"]) {
+    for (const league of ["bl1", "bl2"]) {
+      const file = path.join(repo, "data", "seasons", season, league, "season.json");
+      const data = JSON.parse(fs.readFileSync(file, "utf8"));
+      assert.ok(data.clubs.length > 0);
+      for (const c of data.clubs) {
+        const resolved = resolveClub({ teamId: Number(c.openLigaDbId), shortName: c.clubId, teamName: c.name });
+        assert.equal(resolved.clubId, c.clubId, `${league}: ${c.name} no longer resolves to ${c.clubId}`);
+      }
+    }
+  }
+});
+
 test("the ambiguous name pairs stay distinct", () => {
   // §5.2's dangerous case: pooling both divisions puts both clubs of these
   // pairs in the data. A substring or short-name join would silently merge them.
