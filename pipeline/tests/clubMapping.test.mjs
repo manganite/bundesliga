@@ -61,6 +61,72 @@ test("aliases fold onto one identity rather than a second entry", () => {
   );
 });
 
+test("a renamed shortName keeps the club identity it already had", () => {
+  // 2026-08-22: OpenLigaDB started returning „S04" for team 9 instead of
+  // „Schalke", mid-season, and every run stopped at club resolution — before
+  // clubelo was even reached.
+  //
+  // The identity must NOT follow the rename: `clubId` is the key of every
+  // artefact, of the rating archive and of every pre-match entry. A second
+  // identity appearing beside the first is the silent failure §5.2 is about, and
+  // fail-closed is what stopped it — a blocked run, not a split club.
+  assert.equal(
+    resolveClub({ teamId: 9, shortName: "S04", teamName: "FC Schalke 04" }).clubId,
+    "Schalke",
+  );
+  assert.equal(
+    resolveClub({ teamId: 9, shortName: "S04", teamName: "FC Schalke 04" }).clubeloUrlName,
+    resolveClub({ teamId: 9, shortName: "Schalke", teamName: "FC Schalke 04" }).clubeloUrlName,
+    "both spellings must read the same clubelo history",
+  );
+});
+
+test("every club of every live-pipeline season still resolves to the id it is stored under", () => {
+  // The offline half of the same guard: a mapping edit that drops or renames a
+  // club would orphan the artefacts that key on it. This cannot see a FUTURE
+  // rename by OpenLigaDB — only a live run can — but it catches the version of
+  // the accident that is ours to make.
+  // EVERY season the LIVE pipeline produced, discovered rather than listed, so a
+  // new season is covered without anyone remembering to add it.
+  //
+  // Where the boundary runs, and why it is not „all committed seasons": the
+  // historical artefacts (2011/12–2023/24) were reconstructed from the committed
+  // fit training data and carry no `openLigaDbId` at all — they never pass
+  // through `resolveClub`. Their identities come from the club register
+  // (`data/clubs.json`), which has its own guards in clubRegister.test.mjs
+  // („the register covers every club in the 2011/12–2025/26 training window",
+  // „names for still-active clubs match the committed season files exactly").
+  // Asserting the mapping against them would fail on clubs that predate it —
+  // Alemannia Aachen, 2011/12 — and would be testing the wrong module.
+  const repo = path.resolve(import.meta.dirname, "../..");
+  const seasonsDir = path.join(repo, "data", "seasons");
+  const seasons = fs.readdirSync(seasonsDir).filter((d) => /^\d{4}$/.test(d)).sort();
+  assert.ok(seasons.length > 1, `expected several committed seasons, found ${seasons.length}`);
+
+  let checked = 0;
+  const covered = [];
+  for (const season of seasons) {
+    for (const league of ["bl1", "bl2"]) {
+      const file = path.join(seasonsDir, season, league, "season.json");
+      if (!fs.existsSync(file)) continue;
+      const data = JSON.parse(fs.readFileSync(file, "utf8"));
+      assert.ok(data.clubs.length > 0, `${season}/${league} has no clubs`);
+      // The discriminator, not a season number: a club the live pipeline
+      // resolved carries the id it was resolved from.
+      if (!data.clubs.some((c) => c.openLigaDbId !== undefined)) continue;
+      for (const c of data.clubs) {
+        const resolved = resolveClub({ teamId: Number(c.openLigaDbId), shortName: c.clubId, teamName: c.name });
+        assert.equal(resolved.clubId, c.clubId, `${season}/${league}: ${c.name} no longer resolves to ${c.clubId}`);
+        checked++;
+      }
+      if (!covered.includes(season)) covered.push(season);
+    }
+  }
+  // Not vacuous: a broken glob would otherwise pass by checking nothing.
+  assert.ok(checked >= 36, `expected every club of the live-pipeline seasons, checked ${checked}`);
+  assert.ok(covered.length >= 2, `expected more than one live-pipeline season, got ${covered.join(", ")}`);
+});
+
 test("the ambiguous name pairs stay distinct", () => {
   // §5.2's dangerous case: pooling both divisions puts both clubs of these
   // pairs in the data. A substring or short-name join would silently merge them.

@@ -917,6 +917,16 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
 - **Deutsche Anführungszeichen in JS-Strings.** `"„Text""` beendet den String zu früh;
   schließend gehört `“`. Trifft Testnamen und Berichtstexte. Der Render-Test hat es
   einmal in einer Caption gefunden, wo es nur *falsch aussah* statt zu brechen.
+- **OpenLigaDBs `shortName` ist kein stabiler Schlüssel.** Am 2026-08-22 wurde
+  aus `Schalke` mitten in der Saison `S04`, und jeder Lauf starb an der
+  Klubauflösung — vor clubelo, vor allem anderen. Die Reparatur ist ein
+  ALIAS-Eintrag, **nicht** ein neuer MAP-Eintrag: `clubId` ist der Schlüssel
+  jedes Artefakts (allein 51 Vorkommen in einer `outlook.json`), des
+  Rating-Archivs und jedes Pre-Match-Eintrags. Folgt die Identität der
+  Umbenennung, entsteht ein zweiter Klub neben dem ersten — genau der stille
+  Fehler, den §5.2 meint. Fail-closed hat hier funktioniert: ein blockierter
+  Lauf statt eines gespaltenen Klubs. Wer den nächsten solchen Fall sieht,
+  ergänzt ALIAS und ändert nie die `clubId`.
 - **Die Heimrecht-Regel der Relegation liest sich falsch herum.** „Weniger spielfreie
   Tage vor dem Hinspiel" heißt: Der **Zweitligist** hat das Heimrecht im **Rückspiel**,
   weil sein 34. Spieltag auf den Sonntag nach dem Bundesliga-Samstag fällt. Gegen die

@@ -113,6 +113,14 @@ const TEAM_ID_FIX = { 1067: "Aue" };
  * check instead of tripping over the club's own aliases.
  */
 const ALIAS = {
+  // 2026-08-24: OpenLigaDB renamed team 9's shortName from „Schalke" to „S04"
+  // mid-season, and the run stopped at club resolution — before it ever reached
+  // clubelo. The alias is the whole fix, and it is the RIGHT fix: `clubId` is the
+  // key of every artefact (51 occurrences in one outlook alone), of the rating
+  // archive and of every pre-match entry, so the club identity must not follow a
+  // source's renaming. Fail-closed did its job here: the wrong outcome would have
+  // been a second club silently appearing beside the first.
+  "S04": "Schalke",
   "TSG 1899 Hoffenheim": "Hoffenheim",
   "TSG Hoffenheim": "Hoffenheim",
   "Werder Bremen": "Bremen",
