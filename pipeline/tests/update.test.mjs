@@ -512,6 +512,14 @@ function makeSourcesWithDailyFailure(makeError) {
 
 const unreachable = (url) => new RatingUnavailableError(`${url} -> unreachable: ECONNREFUSED`);
 
+/**
+ * Every club of both leagues, by id. „All clubs carried" is the whole claim of
+ * the fallback, so the tests below check the exact SET — a lower bound would
+ * pass while a club quietly failed to carry.
+ */
+const ALL_CLUB_IDS = [...CLUBS.bl1, ...CLUBS.bl2].map((c) => c.shortName).sort();
+const carriedIds = (r) => r.carried.map((c) => c.clubId).sort();
+
 test("an unreachable clubelo still fails the job without the flag", async () => {
   const dataDir = await makeDataDir();
   const { fetchJson, fetchText } = makeSourcesWithDailyFailure(unreachable);
@@ -537,7 +545,7 @@ test("with the flag an unreachable clubelo falls back to the archive — every c
   });
 
   // Every club of both leagues is carried, from the real date of the rating.
-  assert.ok(r.carried.length >= 4, `expected all clubs carried, got ${r.carried.length}`);
+  assert.deepEqual(carriedIds(r), ALL_CLUB_IDS, "every club of both leagues has to be carried");
   assert.ok(r.carried.every((c) => c.effectiveAt === "2026-09-10" && c.ageDays === 1));
   assert.ok(messages.some((m) => /falling back to the archive/.test(m)));
 
@@ -565,7 +573,7 @@ test("a 5xx counts as unreachable, a 4xx does not", async () => {
     dataDir, fetchJson: five.fetchJson, fetchText: five.fetchText, now: later,
     carryForwardUntil: "2026-10-31", log: silent,
   });
-  assert.ok(r.carried.length >= 4);
+  assert.deepEqual(carriedIds(r), ALL_CLUB_IDS);
 
   // 404 — a moved endpoint or a new auth requirement. That is a policy change
   // and has to surface, not be papered over for up to 42 days.
@@ -622,7 +630,7 @@ test("the fallback reaches only to the next kickoff — it does not carry a matc
 
   // Matchday 4 is 2026-09-18. The day before, the gap is still clean.
   const before = await run("2026-09-17T04:00:00.000Z");
-  assert.ok(before.carried.length >= 4, "up to the eve of a matchday the fallback carries");
+  assert.deepEqual(carriedIds(before), ALL_CLUB_IDS, "up to the eve of a matchday the fallback carries every club");
 
   // On the matchday itself it refuses, and the run fails closed.
   await assert.rejects(() => run("2026-09-18T20:00:00.000Z"), /known fixture\(s\) fall between/);
