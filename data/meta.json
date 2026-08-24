@@ -1,14 +1,10 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "dataUpdatedAt": "2026-08-19T00:28:48.328Z",
+  "dataUpdatedAt": "2026-08-24T14:54:54.053Z",
   "dataHash": "3cd74294e1b9613d",
   "lastChanges": [
-    "rating snapshot clubelo-2026-08-19-70469cbfef058681",
-    "bl1 pre-match dataset (+0, ~306)",
-    "bl2 pre-match dataset (+0, ~288)",
     "bl1 current outlook",
-    "bl1 frozen timeline (+0 point(s))",
     "bl2 current outlook"
   ]
 }
