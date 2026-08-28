@@ -558,12 +558,15 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   sind **nicht** die Carry-forward-Regel bei der Arbeit, sondern das Protokoll
   der Pipeline, die ihren eigenen dünnen Snapshot kompensierte. Grenzen 7–9 in
   `grenzfaelle.md`, Regression in `pipeline/tests/duennerSnapshot.test.mjs`.
-- **clubelo ist seit 2026-08-20 weg — Migrationslücke, kein Ausfall
-  (`docs/verification/clubelo.md`).** Der Betreiber hat die Website neu
-  aufgesetzt und die API abgeschaltet, bevor sie auf dem neuen Server stand;
-  belegt über seine Postings auf X, **ohne Terminzusage**. Der Socket nimmt die
-  Verbindung an und schweigt — kein 502, sondern gar keine Antwort. Drei
-  Stellen, an denen es leicht wieder kaputtgeht:
+- **Die clubelo-Migrationslücke ist beendet (2026-08-20 bis 2026-08-26,
+  `docs/verification/clubelo.md`).** Der Betreiber hatte die Website neu
+  aufgesetzt und die API abgeschaltet, bevor sie auf dem neuen Server stand
+  (belegt über seine Postings auf X, ohne Terminzusage); der Socket nahm die
+  Verbindung an und schwieg — kein 502, sondern gar keine Antwort. Seit dem
+  2026-08-26 antwortet clubelo wieder mit allen 36 Klubs, der Cron hat es von
+  selbst aufgefangen, und die Flag ist wieder aus `data.yml` **entfernt**. Der
+  Rückgriff bleibt als Instrument bestehen; drei Stellen, an denen er leicht
+  kaputtgeht:
   - **Erreichbarkeit ≠ Integrität.** Nur `RatingUnavailableError`
     (Transportfehler, 5xx) darf aufs Archiv zurückgreifen. Ein 4xx oder eine
     falsch geparste Antwort **muss** weiter laut scheitern: nach einem Relaunch

@@ -35,21 +35,17 @@ jobs:
       # The pipeline has no dependencies beyond Node itself, so there is nothing
       # to install and nothing to pin beyond the runtime.
       #
-      # INCIDENT 2026-08-20: clubelo rebuilt its website and switched the API off
-      # before bringing it up on the new server (operator's own channel; no
-      # return date given). api.clubelo.com accepts TCP connections and never
-      # answers, so every run fails at the ratings gate and NOTHING is committed,
-      # results included.
-      #
-      # The flag lets an unreachable clubelo fall back to the archive, bounded
-      # and marked (update.mjs §3). It expires 2026-08-28 because that is the day
-      # it stops helping anyway: BL1 matchday 1 and BL2 matchday 3 kick off, a
-      # known fixture falls in the gap, and the carry-forward evaluation refuses
-      # by design. Per the standing rule — set per incident, with an explicit
-      # expiry, and REMOVED once the incident is over.
+      # NO --carry-forward-until here, and that is the normal state. The flag is
+      # the INCIDENT instrument (docs/verification/clubelo.md): set per incident
+      # with an explicit expiry, and removed once the incident is over. The
+      # 2026-08-20 migration outage ended on 2026-08-26, when clubelo answered
+      # again with all 36 clubs. Without the flag an unresolved club — or an
+      # unreachable clubelo — fails the job and blocks the commit, which is the
+      # §5.2 default. The hard 42-day ceiling lives in carryForward.mjs and is
+      # not affected either way.
       - name: Pipeline ausführen
         id: pipeline
-        run: node pipeline/src/cli.mjs --data-dir data --carry-forward-until 2026-08-28
+        run: node pipeline/src/cli.mjs --data-dir data
 
       # Commit only on change. A run that found nothing new leaves the
       # repository untouched, so dataUpdatedAt does not move and no deployment
