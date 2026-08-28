@@ -3,6 +3,7 @@ import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import ChartLegend from "../components/ChartLegend.jsx";
 import ChartTooltip from "../components/ChartTooltip.jsx";
+import Halbzeitbilanz from "../components/Halbzeitbilanz.jsx";
 import { HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
 import { currentTable, scoredMatches, scoredMatchesFrozen, ratingAgeEntries, rulesFrom, nonCarriedScored } from "../lib/season.js";
 import { IN_SAMPLE_NOTE } from "../lib/archive.js";
@@ -82,6 +83,13 @@ export default function Modellguete({ ctx }) {
         <LeistungVsErwartung ctx={ctx} scored={scored} />
         <PlatzierungVsErwartung season={season} outlook={outlook} leagueConfig={leagueConfig} nameOf={nameOf} />
         <SpielZeugnis scored={scored} nameOf={nameOf} />
+
+        {/* §HALBSERIEN §4. Appears exactly when every fixture up to the
+            half-season boundary is played — the completeness rule of Brief 31,
+            asked of the season file. It renders nothing before that, and it is
+            the component itself that decides, so no caller can get the gate
+            subtly different. */}
+        <Halbzeitbilanz ctx={ctx} scored={scored} />
       </div>
 
       <div className="controls">
