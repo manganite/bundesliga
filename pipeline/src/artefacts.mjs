@@ -84,9 +84,23 @@ const toEngineFixtures = (fixtures) => fixtures.map((f) => ({
   id: f.id,
   home: f.homeClubId,
   away: f.awayClubId,
+  // The matchday travels into the engine for the Herbstmeister anchor
+  // (HALBSERIEN §1). It is carried unconditionally rather than only when the
+  // anchor is configured: a fixture list whose shape depends on a flag is the
+  // kind of thing that works until the flag moves.
+  matchday: f.matchday,
   isGhost: f.isGhost ?? false,
   ...(f.gh !== undefined ? { gh: f.gh, ga: f.ga } : {}),
 }));
+
+/**
+ * The half-season anchor from the season configuration, or null.
+ *
+ * §7: the boundary is configuration, never a constant. An 18-club league halves
+ * at matchday 17 — but that is a fact about this league's shape, not about
+ * football, and a season config that omits it simply has no Herbstmeister.
+ */
+export const herbstmeisterAnchor = (leagueConfig) => leagueConfig?.herbstmeisterUntilMatchday ?? null;
 
 /**
  * The current outlook — the canonical artefact for this data state.
@@ -96,7 +110,7 @@ const toEngineFixtures = (fixtures) => fixtures.map((f) => ({
  */
 export function buildCurrentOutlook({
   seasonId, league, clubs, fixtures, params, targets, runs = CANONICAL_RUNS, rules,
-  impactTargets = [],
+  impactTargets = [], herbstmeisterUntilMatchday = null,
 }) {
   return {
     kind: "currentOutlook",
@@ -108,6 +122,7 @@ export function buildCurrentOutlook({
       seasonId, league, clubs,
       fixtures: toEngineFixtures(fixtures),
       params, targets, runs, batches: BATCHES, rules,
+      herbstmeisterUntilMatchday,
       // „Wichtigstes kommendes Spiel" (§4): computed ONCE here, during the
       // canonical run, and consumed by both Übersicht and Spieltage. No extra
       // simulation — the conditionals are filtered from these very runs.
@@ -130,6 +145,7 @@ export function buildCurrentOutlook({
 export function buildFrozenTimeline({
   seasonId, league, frozenClubs, fixtures, params, targets, rules,
   runs = TIMELINE_RUNS, existing = null, log = () => {},
+  herbstmeisterUntilMatchday = null,
 }) {
   const matchdays = [...new Set(fixtures.map((f) => f.matchday))].sort((a, b) => a - b);
   const completeThrough = completeThroughMatchday(fixtures, matchdays);
@@ -161,6 +177,7 @@ export function buildFrozenTimeline({
       runs,
       batches: BATCHES,
       rules,
+      herbstmeisterUntilMatchday,
     });
     byMatchday.set(md, {
       matchday: md,
@@ -170,6 +187,7 @@ export function buildFrozenTimeline({
       playedCount: sim.playedCount,
       probabilities: sim.probabilities,
       points: sim.points,
+      herbstmeister: sim.herbstmeister,
     });
     computed++;
     log(`timeline ${league} matchday ${md}: ${sim.playedCount} played`);
@@ -208,6 +226,7 @@ export function buildFrozenTimeline({
 export function buildLiveTimeline({
   seasonId, league, clubs, fixtures, params, targets, rules,
   ratingsOn, runs = TIMELINE_RUNS, existing = null, log = () => {},
+  herbstmeisterUntilMatchday = null,
 }) {
   const matchdays = [...new Set(fixtures.map((f) => f.matchday))].sort((a, b) => a - b);
   const completeThrough = completeThroughMatchday(fixtures, matchdays);
@@ -268,6 +287,7 @@ export function buildLiveTimeline({
       runs,
       batches: BATCHES,
       rules,
+      herbstmeisterUntilMatchday,
     });
     byMatchday.set(md, {
       matchday: md,
@@ -279,6 +299,7 @@ export function buildLiveTimeline({
       playedCount: sim.playedCount,
       probabilities: sim.probabilities,
       points: sim.points,
+      herbstmeister: sim.herbstmeister,
     });
     computed++;
     log(`live timeline ${league} matchday ${md}: ratings as of ${asOf}`);

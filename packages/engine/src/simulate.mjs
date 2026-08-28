@@ -18,8 +18,17 @@ import { effectiveParams, eloToLambdas } from "./model.mjs";
 import { buildTable, rankTable, CURRENT_SEASON_RULES } from "./ranking.mjs";
 import { expectedTargetShift, conditionalsRecombine } from "./metrics.mjs";
 
-/** Bump when the tallying or artefact shape changes. Part of the cache key. */
-export const ENGINE_VERSION = 1;
+/**
+ * Bump when the tallying or artefact shape changes. Part of the cache key.
+ *
+ * 2 — the Herbstmeister tally (HALBSERIEN §1). It only READS results the run
+ *     already drew, so no random key and no drawn scoreline moves: every
+ *     pre-existing artefact number is bit-identical across this bump and only
+ *     fields are added (`packages/engine/tests/herbstmeister.test.mjs` holds
+ *     that). The bump is still required — the artefact SHAPE changed, and the
+ *     shape is what this version identifies.
+ */
+export const ENGINE_VERSION = 2;
 
 const MIN_LAMBDA = 0.12;
 
@@ -110,6 +119,12 @@ export function drawScorelineDirect(lamH, lamA, params, u, { applyDc = true } = 
  *   outcome) conditional tallies are kept — the §4 „Wichtigstes kommendes
  *   Spiel" metric. Empty by default: the tallies cost memory and a little time,
  *   and only two targets are ever shown.
+ * @param {number|null} [input.herbstmeisterUntilMatchday]  the half-season
+ *   anchor (HALBSERIEN §1). When set, each run is additionally ranked on the
+ *   matches up to and including this matchday and the leader is tallied. Season
+ *   CONFIGURATION, never a constant — an 18-club league halves at 17, and a
+ *   league that ever had a different shape must not inherit that number (§7).
+ *   Requires every fixture to carry `matchday`.
  */
 export function simulateSeason({
   seasonId,
@@ -123,6 +138,7 @@ export function simulateSeason({
   rules = CURRENT_SEASON_RULES,
   context = "league",
   impactTargets = [],
+  herbstmeisterUntilMatchday = null,
 }) {
   if (runs % batches !== 0) {
     throw new Error(`runs (${runs}) must be a multiple of batches (${batches}) — batches must be equal size`);
@@ -145,6 +161,35 @@ export function simulateSeason({
 
   const played = fixtures.filter((f) => f.gh !== undefined && f.ga !== undefined);
   const remaining = fixtures.filter((f) => f.gh === undefined || f.ga === undefined);
+
+  // ---- Herbstmeister setup (HALBSERIEN §1) ---------------------------------
+  //
+  // The half-season anchor is a SECOND ranking of the same run, over the subset
+  // of matches up to `herbstmeisterUntilMatchday`. It reads results the run has
+  // already drawn and draws nothing of its own — that is what keeps every
+  // pre-existing artefact number bit-identical across this engine version.
+  const hmUntil = herbstmeisterUntilMatchday ?? null;
+  if (hmUntil !== null) {
+    if (!Number.isInteger(hmUntil) || hmUntil < 1) {
+      throw new Error(`herbstmeisterUntilMatchday must be a positive integer, got ${hmUntil}`);
+    }
+    // Without a matchday the filter below would silently select NOTHING and
+    // report a Herbstmeister computed from an empty table — a wrong number that
+    // looks like a number. Fail closed instead.
+    const noMatchday = fixtures.find((f) => !Number.isInteger(f.matchday));
+    if (noMatchday) {
+      throw new Error(
+        `herbstmeisterUntilMatchday is set but fixture ${noMatchday.id} carries no integer matchday; `
+          + "refusing to rank a half-season table over an unknown subset",
+      );
+    }
+  }
+  // The real half-season results are the same in every run, so they are
+  // gathered once; only the drawn half changes.
+  const hmPlayed = hmUntil === null ? [] : played.filter((f) => f.matchday <= hmUntil);
+  const hmRemainingIdx = hmUntil === null
+    ? []
+    : remaining.reduce((acc, f, i) => (f.matchday <= hmUntil ? (acc.push(i), acc) : acc), []);
 
   // Random keys: run-independent halves, computed once.
   const noiseKey = clubs.map((c) => makeKeyBase({ seasonId, context, id: c.clubId, drawKind: "noise" }));
@@ -200,6 +245,25 @@ export function simulateSeason({
   const outcomeCount = Array.from({ length: remaining.length }, () => new Int32Array(OUTCOMES));
   const fixtureOutcome = new Uint8Array(remaining.length);
 
+  // Herbstmeister tallies. `hmShared` counts the runs in which rank 1 is a
+  // GETEILTER Tabellenplatz: at the half-season anchor no pair has met twice,
+  // so the SpOL stops after goal difference and goals scored (criteria 3–5 need
+  // both legs, criterion 6 never applies in a running season). A genuine tie is
+  // therefore a real state of the table, not a gap for a coin to fill.
+  //
+  // Every club on rank 1 is counted, so the exact identity is
+  //   Σ_club p = E[number of clubs on rank 1]   ≥ 1
+  // and `sharedProbability` = P(more than one). The two are not the same number
+  // whenever three or more clubs can tie, which is why the sum is not derived
+  // from P(shared) anywhere.
+  const hmTally = new Int32Array(nClubs);
+  let hmShared = 0;
+  // One buffer, filled once with the constant real half and then only
+  // overwritten in its tail. Rebuilding it per run with concat/map cost more
+  // than the ranking it feeds — 20 000 throwaway arrays of ~150 entries.
+  const hmMatches = hmUntil === null ? null : new Array(hmPlayed.length + hmRemainingIdx.length);
+  if (hmMatches) for (let i = 0; i < hmPlayed.length; i++) hmMatches[i] = hmPlayed[i];
+
   const runsPerBatch = runs / batches;
   const noisy = new Float64Array(nClubs);
   const simulated = new Array(remaining.length);
@@ -253,6 +317,28 @@ export function simulateSeason({
           batchTally[name][batch][i]++;
         }
       }
+    }
+
+    if (hmUntil !== null) {
+      // `inSeason: true` and NO decider, always: the anchor is a mid-season
+      // table by definition — matchdays after it are still to come, whatever
+      // the state of the season as a whole. Passing the decider here would
+      // invent an Entscheidungsspiel the Spielordnung explicitly withholds
+      // during a running season.
+      for (let i = 0; i < hmRemainingIdx.length; i++) {
+        hmMatches[hmPlayed.length + i] = simulated[hmRemainingIdx[i]];
+      }
+      const hmRanked = rankTable(buildTable(clubIds, hmMatches, rules), hmMatches, {
+        inSeason: true,
+        rules,
+      });
+      let sharedThisRun = false;
+      for (const row of hmRanked) {
+        if (row.rank !== 1) break; // ranked order — rank 1 rows come first
+        hmTally[idx.get(row.clubId)]++;
+        sharedThisRun = row.sharedRank;
+      }
+      if (sharedThisRun) hmShared++;
     }
 
     // Only the clubs that ARE in an impact target this run, so the cost is
@@ -357,6 +443,23 @@ export function simulateSeason({
     })
     : null;
 
+  // ---- Herbstmeister (HALBSERIEN §1) ---------------------------------------
+  //
+  // No special path for the decided case. Once every fixture up to the anchor
+  // is played, `hmRemainingIdx` is empty, every run ranks the identical match
+  // list, and the tally collapses on its own to 1 for the club that actually
+  // leads. „Decided" is therefore a statement about the DATA, read off the same
+  // fixtures, not a second way of computing the answer.
+  const herbstmeister = hmUntil === null ? null : {
+    untilMatchday: hmUntil,
+    decided: hmRemainingIdx.length === 0,
+    probabilities: Object.fromEntries(clubIds.map((id, i) => [id, hmTally[i] / runs])),
+    // P(rank 1 is shared) — usually a fraction of a percent, and the reason the
+    // probabilities above sum past 1. It ships beside them so a view can say
+    // „geteilt" instead of a reader wondering why 100 % does not add up.
+    sharedProbability: hmShared / runs,
+  };
+
   return {
     seasonId,
     league,
@@ -373,6 +476,7 @@ export function simulateSeason({
       clubIds.map((id, i) => [id, Array.from(positions[i], (n) => n / runs)]),
     ),
     points: pointsSummary,
+    herbstmeister,
     fixtureImpact,
   };
 }

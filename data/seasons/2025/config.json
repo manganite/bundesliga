@@ -81,6 +81,7 @@
         "awayGoals"
       ],
       "deciderIsPlayoff": true,
+      "herbstmeisterUntilMatchday": 17,
       "targets": {
         "aufstieg": {
           "places": 2,

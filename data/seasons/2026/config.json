@@ -61,6 +61,7 @@
       "playoffPlaces": [
         16
       ],
+      "_herbstmeisterComment": "Der Spieltag, nach dem der Herbstmeister feststeht — die Halbserien-Grenze. Konfiguration, keine Konstante: 17 folgt aus 18 Klubs und 34 Spieltagen, nicht aus dem Fußball, und eine Saison mit anderer Ligagröße darf die Zahl nicht erben. Fehlt das Feld, hat die Saison keinen Herbstmeister — die Engine rechnet ihn dann nicht. Gilt seit HALBSERIEN §7b ausdrücklich für BEIDE Ligen; der Codepfad kennt ohnehin keine Liga.",
       "herbstmeisterUntilMatchday": 17,
       "_impactTargetsComment": "Die zwei Zielverteilungen, für die „Wichtigstes kommendes Spiel“ (§4) gerechnet wird — die Karte zeigt die größere der beiden und sagt welche. Konfiguration, keine Konstante: in der Bundesliga ist es Meisterschaft gegen Abstieg, in der 2. Liga Aufstieg gegen Abstieg. Die bedingten Tallies kosten Speicher und etwas Rechenzeit, deshalb genau zwei und nicht alle.",
       "impactTargets": [
@@ -81,6 +82,8 @@
         "awayGoals"
       ],
       "deciderIsPlayoff": true,
+      "_herbstmeisterComment": "Der Spieltag, nach dem der Herbstmeister feststeht — die Halbserien-Grenze. Konfiguration, keine Konstante: 17 folgt aus 18 Klubs und 34 Spieltagen, nicht aus dem Fußball, und eine Saison mit anderer Ligagröße darf die Zahl nicht erben. Fehlt das Feld, hat die Saison keinen Herbstmeister — die Engine rechnet ihn dann nicht. Gilt seit HALBSERIEN §7b ausdrücklich für BEIDE Ligen; der Codepfad kennt ohnehin keine Liga.",
+      "herbstmeisterUntilMatchday": 17,
       "targets": {
         "aufstieg": {
           "places": 2,

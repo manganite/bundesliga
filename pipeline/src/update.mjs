@@ -31,7 +31,7 @@ import {
 } from "./snapshots.mjs";
 import { buildPreMatchDataset, frozenRatingLabel } from "./preMatch.mjs";
 import {
-  buildCurrentOutlook, buildFrozenTimeline, buildLiveTimeline, targetsFromConfig,
+  buildCurrentOutlook, buildFrozenTimeline, buildLiveTimeline, targetsFromConfig, herbstmeisterAnchor,
 } from "./artefacts.mjs";
 import { buildPlayoffArtefact } from "./playoffArtefact.mjs";
 import { verifyAll } from "./verify.mjs";
@@ -556,6 +556,8 @@ export async function runUpdate({
         league, clubs: currentClubs, fixtures: s.fixtures, params: shippedParams, targets, rules,
         // §4 „Wichtigstes kommendes Spiel", from the season configuration.
         impactTargets: leagueConfig.impactTargets ?? [],
+        // The half-season anchor, likewise from the configuration (§7).
+        herbstmeisterUntilMatchday: herbstmeisterAnchor(leagueConfig),
       }),
       // Per club, where its rating came from. The app marks anything not live.
       ratingProvenance: Object.fromEntries(
@@ -596,6 +598,7 @@ export async function runUpdate({
           rules,
           existing: existingTimeline,
           log,
+          herbstmeisterUntilMatchday: herbstmeisterAnchor(leagueConfig),
         });
         const payload = {
           ...timeline,
@@ -645,6 +648,7 @@ export async function runUpdate({
       },
       existing: existingLive,
       log,
+      herbstmeisterUntilMatchday: herbstmeisterAnchor(leagueConfig),
     });
     if (live.gaps.length) {
       log(`${league}: live timeline has ${live.gaps.length} gap(s) — named in the artefact, not filled`);

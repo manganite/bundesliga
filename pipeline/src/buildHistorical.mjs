@@ -18,7 +18,10 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { buildCurrentOutlook, buildFrozenTimeline, targetsFromConfig, CANONICAL_RUNS, TIMELINE_RUNS } from "./artefacts.mjs";
+import {
+  buildCurrentOutlook, buildFrozenTimeline, targetsFromConfig, herbstmeisterAnchor,
+  CANONICAL_RUNS, TIMELINE_RUNS,
+} from "./artefacts.mjs";
 import { reconstruct } from "./reconstruct.mjs";
 import { seasonClubs, resolveClubName } from "./clubRegister.mjs";
 
@@ -141,11 +144,13 @@ export function buildHistoricalLeague({
     seasonId, league,
     clubs: clubs.map((c) => ({ clubId: c.clubId, rating: endRatings.get(c.clubId) })),
     fixtures, params, targets, rules, runs,
+    herbstmeisterUntilMatchday: herbstmeisterAnchor(leagueConfig),
   });
   const timelineFrozen = buildFrozenTimeline({
     seasonId, league,
     frozenClubs: clubs.map((c) => ({ clubId: c.clubId, rating: preSeason.get(c.clubId) })),
     fixtures, params, targets, rules, runs: timelineRuns, log,
+    herbstmeisterUntilMatchday: herbstmeisterAnchor(leagueConfig),
   });
 
   return {
