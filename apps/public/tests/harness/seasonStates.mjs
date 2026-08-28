@@ -68,3 +68,42 @@ export function withPlayed(season, count, { gh = 1, ga = 0 } = {}) {
     fixtures: open.fixtures.map((f, i) => (i < count ? { ...f, finished: true, gh, ga } : f)),
   };
 }
+
+/**
+ * Every fixture up to and including matchday `m` played, everything after it
+ * open — the state „the season has reached matchday m, cleanly".
+ *
+ * Results vary by index so the table separates rather than collapsing into one
+ * shared rank, which would make half the assertions vacuous.
+ */
+export function throughMatchday(season, m) {
+  const open = preSeason(season);
+  let n = 0;
+  return {
+    ...open,
+    fixtures: open.fixtures.map((f) => (f.matchday <= m
+      ? { ...f, finished: true, gh: (n++ % 4), ga: (n % 3) }
+      : f)),
+  };
+}
+
+/**
+ * Matchdays 1..m played EXCEPT one fixture of matchday `hole` — a postponement.
+ *
+ * This is the state the completeness rule exists for (Brief 31): the calendar
+ * has long passed matchday m, and the half-season is nonetheless not finished.
+ * A view that gates on „current matchday > 17" passes here and is wrong.
+ */
+export function withPostponed(season, m, hole) {
+  const full = throughMatchday(season, m);
+  let dropped = false;
+  return {
+    ...full,
+    fixtures: full.fixtures.map((f) => {
+      if (dropped || f.matchday !== hole) return f;
+      dropped = true;
+      const { gh, ga, ...rest } = f;
+      return { ...rest, finished: false };
+    }),
+  };
+}

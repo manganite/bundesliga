@@ -10,6 +10,7 @@ export { default as Verlauf } from "../../src/pages/Verlauf.jsx";
 export { default as Teams } from "../../src/pages/Teams.jsx";
 export { default as ChartLegend } from "../../src/components/ChartLegend.jsx";
 export { default as ChartTooltip } from "../../src/components/ChartTooltip.jsx";
+export { HalfSeasonMarker } from "../../src/components/ChartInteractive.jsx";
 export { default as Spieltage } from "../../src/pages/Spieltage.jsx";
 export {
   default as Szenarien, FixtureRow, OverrideSummary, PresetBar, WhatIfResult, ResultTabs, Explainer, ScenarioTable,

@@ -264,6 +264,33 @@ ob eine einzelne Abweichung die multiplizitätskorrigierte Schranke reißt (fän
 den Ausreißer, den die Verteilung wegmittelt). Beide Schwellen stehen im Skript
 und wurden vorab festgelegt.
 
+### Artefakte nach einem Engine-Bump regenerieren
+
+Ein Bump von `ENGINE_VERSION` ändert die Artefakt**form**. Der Cron heilt nur die
+Saison, die er erkennt; jede frühere ist committet und rechnet nichts nach. Drei
+Zuständigkeiten, je nachdem, wer die Saison gebaut hat:
+
+```bash
+# 2011–2024 — rekonstruierte Historie (aus den committeten Trainingsdaten)
+for y in $(seq 2011 2024); do node pipeline/src/buildHistoricalCli.mjs --season $y; done
+
+# 2025 und jede andere abgeschlossene, live gebaute Saison
+node pipeline/src/rebuildArtefactsCli.mjs --season 2025          # --check zeigt nur an
+node pipeline/src/rebuildArtefactsCli.mjs --all                  # alle außer der laufenden
+
+# die laufende Saison: nichts tun — der nächste Cron-Lauf baut sie neu
+```
+
+`rebuildArtefacts.mjs` rechnet Outlook und eingefrorene Timeline aus den
+Rating-Werten neu, die **diese Artefakte selbst protokollieren** (`ratings`,
+`frozenRatings`), und fasst `season.json`, `prematch.json` und `config.json`
+nicht an — die tragen Provenienz, die eine Rekonstruktion nur verschlechtern
+könnte. Eine Saison mit `timeline-live.json` daneben wird verweigert: die gehört
+dem Cron.
+
+Rund eine Minute je Liga-Saison. Danach `--check` erneut laufen lassen: es darf
+nichts mehr zu ändern geben, das ist der Determinismus-Nachweis.
+
 ## Geheimnisse
 
 Erlaubt ist ausschließlich **`GITHUB_TOKEN`**, das die Workflows selbst gestellt

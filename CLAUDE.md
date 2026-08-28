@@ -244,6 +244,19 @@ spätere schlägt die frühere:**
     das Favicon wechselt auf dasselbe Motiv (Balken in Weiß auf flachem
     `#1f5fd0`, kein Verlauf — bei 16 px trägt er nicht). Kein Engine-,
     Pipeline- oder Datenbezug. Release 2.3.6.
+33. `HALBSERIEN_BRIEF.md` — erste Substanzänderung seit der Kernphase plus
+    App-Ausbau. **Engine:** ein Herbstmeister-Tally, das je Lauf die Tabelle nach
+    dem Anker-Spieltag mit dem DFL-Ranker bestimmt — es LIEST nur gezogene
+    Ergebnisse, zieht nichts, und alle bestehenden Artefaktzahlen sind über den
+    `ENGINE_VERSION`-Bump (1 → 2) hinweg **bitidentisch** (nachgewiesen im Test
+    und an den regenerierten Artefakten). **§7b (Nutzerentscheidung 28.08.):**
+    der Anker gilt in **beiden** Ligen. **App:** Halbserien-Umschalter für die
+    reale Tabelle, Bilanz je Halbserie auf Teams, Halbserien-Marker in den
+    Diagrammen, Herbstmeister-Zeile auf der Titelrennen-Karte und als Fakt in
+    der Archiv-Saisonbilanz, Halbzeitbilanz auf Modellgüte (Güte je Halbserie,
+    Überraschungen der Hinrunde, Anker-Vergleich, Entwicklung je Klub) und der
+    Drei-Anker-Vergleich auf Verlauf. Historien-Artefakte 2011–2025 einmalig
+    regeneriert. Release 2.4.0.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -277,7 +290,7 @@ packages/engine/src/
   model.mjs      Poisson + Dixon-Coles, additive BL2-Deltas, kanonische Reihenfolge
   ranking.mjs    DFL-Ranker nach verifizierter Spielordnung, inkl. geteilter Plätze
   metrics.mjs    alle §4-Metriken
-  simulate.mjs   Monte-Carlo, CRN, per-Batch-Frequenzen
+  simulate.mjs   Monte-Carlo, CRN, per-Batch-Frequenzen, Herbstmeister-Tally
   dataState.mjs  Datenstand, Veraltungswarnung, Saisonphase (App A konsumiert das)
 ```
 
@@ -698,12 +711,13 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
 - **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
-  package.json` wird je Release-Brief gebumpt (aktuell **2.3.6**, Release über
+  package.json` wird je Release-Brief gebumpt (aktuell **2.4.0**, Release über
   V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau; 2.3.1 = Achsentitel-Fix +
   Verlauf-Auswahl invertiert; 2.3.2 = Codex-Review-Fixes; 2.3.3 =
   Pre-Match-Defektfix, Brief 29; 2.3.4 = Nachholspiel-Freeze + Lockfile-Wächter,
   Brief 30; 2.3.5 = Timeline-Vollständigkeit, Brief 31; 2.3.6 = Bildfamilie,
-  Brief 32), dann ein Git-Tag
+  Brief 32; 2.4.0 = Halbserien-Paket, Brief 33 — Minor, weil es Funktion
+  hinzufügt und das Artefaktschema erweitert), dann ein Git-Tag
   `v<version>` und ein GitHub-Release mit 2–6 Zeilen deutschen Notes aus dem
   zugehörigen Brief bzw. Fix.
   **Jede deployte, nutzersichtbare Änderung erhöht mindestens die Patch-Version
@@ -751,7 +765,7 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.3.6) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.4.0) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
@@ -911,6 +925,51 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   - **Release 2.3.0 vereint V2b.1, die drei Nachfixe (FIX_ARCHIV_SZENARIEN,
     ARCHIV_DUELLE, DUELLE_ERGEBNISSE) und den Chart-Ausbau** in einem Tag +
     GitHub-Release; die Chart-Arbeit landete danach noch im selben Release.
+- **Das Halbserien-Paket steht (2.4.0).** Fünf Stellen, an denen es leicht
+  wieder kaputtgeht:
+  - **Das Herbstmeister-Tally darf nie ziehen.** Es rankt je Lauf ein zweites
+    Mal — die realen Ergebnisse bis zum Anker plus die in DIESEM Lauf schon
+    gezogenen — und fasst keinen Zufallsstrom an. Das ist der Grund, warum der
+    `ENGINE_VERSION`-Bump 1 → 2 **keine** bestehende Zahl bewegt:
+    `packages/engine/tests/herbstmeister.test.mjs` vergleicht das ganze Artefakt
+    mit und ohne Anker, und der Regenerationslauf über 2011–2025 hat es an
+    echten Daten bestätigt (nur `engineVersion` und die neuen Felder änderten
+    sich). Wer hier einen Uniform zieht, bricht CRN gegen jedes Artefakt.
+  - **Der Anker ist Konfiguration, in beiden Ligen** (`herbstmeisterUntilMatchday`,
+    §7b). 17 folgt aus 18 Klubs und 34 Spieltagen, nicht aus dem Fußball; fehlt
+    das Feld, hat die Saison **keinen** Herbstmeister, statt 17 zu raten. Ein
+    Test prüft für jede committete Saison `anchor === matchdayCount / 2`.
+  - **Am Anker kann Platz 1 GETEILT sein, und das ist kein Fehler.** In der
+    Hinrunde hat kein Paar zweimal gespielt, also endet die Spielordnung nach
+    Tordifferenz und Toren, und Kriterium 6 gilt während der Saison nicht. Jeder
+    Klub auf Platz 1 wird gezählt, damit gilt **Σ P = E[Klubs auf Platz 1] ≥ 1**
+    — nie „= 1". `sharedProbability` steht daneben, damit die Summe erklärbar
+    ist. Wer daraus eine Verteilung mit Summe 1 macht, erfindet einen Sieger.
+  - **Der Zustand „nach der Hinrunde" ist kumulative Vollständigkeit**, nicht
+    „aktueller Spieltag > 17" (`halfComplete` in `lib/halbserie.js`, dieselbe
+    Frage wie Brief 31, an die Saisondatei gestellt). Ein Nachholspiel aus
+    Spieltag 12 hält die Hinrunde im Februar offen — Halbzeitbilanz und
+    Herbstmeister-Fakt warten dann, und ein Rendertest fährt genau diesen Fall.
+  - **Der Anker-Vergleich sagt, was seine Kurve hergibt** (`anchorSource`).
+    Die §0-Formulierung „neue Ergebnisse und aktualisierte Ratings" gilt nur für
+    die Live-Rating-Kurve; eine Archivsaison hat ausschließlich die eingefrorene,
+    in der sich per Konstruktion kein Rating bewegt. Kurve und Satz werden
+    deshalb an **einer** Stelle zusammen gewählt — getrennt gewählt ist genau
+    der Weg, auf dem eine falsche Aussage in den häufigsten Fall gerät.
+  Dazu: die Metriken der Engine liefern `{value, n, baseline, direction}`, kein
+  Skalar — das Objekt zu formatieren rendert lautlos `NaN`. Ein Seiten-Scan auf
+  `NaN` in `apps/public/tests/halbserien.test.mjs` bewacht das jetzt.
+- **`pipeline/src/rebuildArtefacts.mjs` regeneriert eine abgeschlossene Saison
+  offline.** Es rechnet Outlook und eingefrorene Timeline aus den Rating-Werten
+  neu, die **diese Artefakte selbst protokollieren** (`ratings`,
+  `frozenRatings`), und fasst `season.json`, `prematch.json` und `config.json`
+  nicht an — die tragen Provenienz. Zuständigkeiten: 2011–2024 gehören
+  `buildHistoricalCli.mjs` (rekonstruiert, kein `frozenRatings`-Feld — das
+  Werkzeug verweist dorthin), 2025 diesem hier, die laufende Saison dem Cron
+  (er wird verweigert, solange eine `timeline-live.json` daneben liegt). Nach
+  einem `ENGINE_VERSION`-Bump hinkt die laufende Saison bis zum nächsten
+  Cron-Lauf hinterher; das ist ein bekannter, selbstheilender Zustand und in
+  `pipeline/tests/herbstmeisterArtefakte.test.mjs` benannt statt wegbehauptet.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
   ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern
