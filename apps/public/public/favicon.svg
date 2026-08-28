@@ -1,5 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- The brand mark on a rounded square. Same motif as the header mark and the
+       OG image, but SOLID white on the flat accent blue: at 16 px a gradient
+       reads as mud, and the bars need every pixel of contrast they can get.
+       Bars are widened and the gaps tightened relative to the header mark for
+       the same reason. -->
   <rect width="32" height="32" rx="7" fill="#1f5fd0"/>
-  <path d="M6 23V9h3.2l4.1 7.6V9h3v14h-3.1l-4.2-7.7V23z" fill="#fff"/>
-  <circle cx="23.5" cy="20.5" r="3.5" fill="#fff"/>
+  <g fill="#fff">
+    <rect x="5.6"  y="17.6" width="3.2" height="7.4"  rx="0.9"/>
+    <rect x="10"   y="13.5" width="3.2" height="11.5" rx="0.9"/>
+    <rect x="14.4" y="16"   width="3.2" height="9"    rx="0.9"/>
+    <rect x="18.8" y="10.3" width="3.2" height="14.7" rx="0.9"/>
+    <rect x="23.2" y="7"    width="3.2" height="18"   rx="0.9"/>
+  </g>
 </svg>

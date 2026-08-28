@@ -26,6 +26,10 @@
   --heat-4: #5b90dd;
   --heat-5: #2f6dc9;
 
+  /* The site title size — the brand mark scales off it (1.3em), so title and
+     mark stay proportional wherever either is adjusted. */
+  --site-title-size: 1.35rem;
+
   --radius: 10px;
   --gap: 1rem;
   --max-width: 74rem;
@@ -168,8 +172,22 @@ body {
   margin: 0 auto;
   padding: 0 1rem;
 }
+/* The mark sits left of the h1 and scales with it — one size token feeds both,
+   so the two can never drift apart. The mark is decorative (aria-hidden in
+   SiteBrand); the h1 stays the text anchor. */
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--site-title-size);
+}
+.site-mark {
+  flex: none;
+  height: 1.3em;
+  width: auto;
+}
 .site-header h1 {
-  font-size: 1.35rem;
+  font-size: var(--site-title-size);
   margin: 0;
   letter-spacing: -0.01em;
 }

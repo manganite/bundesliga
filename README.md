@@ -1,5 +1,7 @@
 # Bundesliga-Simulator
 
+[![Bundesliga-Simulator](apps/public/public/og-image.png)](https://manganite.github.io/bundesliga)
+
 [![CI](https://github.com/manganite/bundesliga/actions/workflows/test.yml/badge.svg)](https://github.com/manganite/bundesliga/actions/workflows/test.yml)
 [![Deploy](https://github.com/manganite/bundesliga/actions/workflows/deploy.yml/badge.svg)](https://github.com/manganite/bundesliga/actions/workflows/deploy.yml)
 [![Release](https://img.shields.io/github/v/release/manganite/bundesliga?display_name=tag)](https://github.com/manganite/bundesliga/releases)
