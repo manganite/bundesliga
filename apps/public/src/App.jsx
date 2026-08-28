@@ -13,6 +13,7 @@ import Teams from "./pages/Teams.jsx";
 import Verlauf from "./pages/Verlauf.jsx";
 import Modellguete from "./pages/Modellguete.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
+import SiteBrand from "./components/SiteBrand.jsx";
 import Szenarien from "./pages/Szenarien.jsx";
 import Methodik from "./pages/Methodik.jsx";
 
@@ -136,17 +137,13 @@ export default function App() {
   );
 }
 
-function Shell({ children, league, available = [], onLeague, seasons = [], season, newestSeason, onSeason }) {
+export function Shell({ children, league, available = [], onLeague, seasons = [], season, newestSeason, onSeason }) {
   return (
     <>
       <a className="skip-link" href="#inhalt">Zum Inhalt springen</a>
       <header className="site-header">
         <div className="inner">
-          <h1>Bundesliga-Simulator</h1>
-          <p className="tagline">
-            Eine Monte-Carlo-Simulation der Bundesliga — rechnet nach jedem Spieltag mit den
-            tatsächlichen Ergebnissen neu. Keine einmalige, starre Prognose.
-          </p>
+          <SiteBrand />
           {/* The switches stay put while the new data loads, so the control the
               reader just used never disappears under them. */}
           <div className="header-switches">
@@ -266,11 +263,7 @@ export function Ready({ route, seasonId, league, data, isArchive = false, availa
 
       <header className="site-header">
         <div className="inner">
-          <h1>Bundesliga-Simulator</h1>
-          <p className="tagline">
-            Eine Monte-Carlo-Simulation der Bundesliga — rechnet nach jedem Spieltag mit den
-            tatsächlichen Ergebnissen neu. Keine einmalige, starre Prognose.
-          </p>
+          <SiteBrand />
 
           <div className="header-switches">
             <SeasonSwitch seasons={seasons} season={seasonSel} newestSeason={newestSeason} onSeason={onSeason} />

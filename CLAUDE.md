@@ -233,6 +233,17 @@ spätere schlägt die frühere:**
     Grenzfall-Methode (`docs/verification/grenzfaelle.md`) und die
     Bestandsprüfung (`docs/verification/timeline-vollstaendigkeit.md`, 31
     Timelines, deckungsgleich). Release 2.3.5.
+32. `ERSCHEINUNGSBILD_MARKE_PROMPT.md` — reine Präsentation, App A: das
+    Balkenmotiv des OG-Bildes wird eine **Bildfamilie**. Die Marke steht links
+    neben dem h1 über die geteilte `SiteBrand` (eine Implementierung für **beide**
+    Header-Varianten, Titel und Untertitel wandern mit), ist dekorativ
+    (`alt=""` + `aria-hidden`) und trägt ihre Hex-Werte im **SVG-Asset** — der
+    Token-Scan gilt für `.jsx`, Assets sind Bilder, keine Themefarben.
+    `og-image.png` wird README-Banner über den Badges (relativer Pfad, damit
+    Forks nicht auf die Live-Seite zeigen). §3 war Nutzerentscheidung: **ja**,
+    das Favicon wechselt auf dasselbe Motiv (Balken in Weiß auf flachem
+    `#1f5fd0`, kein Verlauf — bei 16 px trägt er nicht). Kein Engine-,
+    Pipeline- oder Datenbezug. Release 2.3.6.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -687,11 +698,12 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
 - **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
-  package.json` wird je Release-Brief gebumpt (aktuell **2.3.5**, Release über
+  package.json` wird je Release-Brief gebumpt (aktuell **2.3.6**, Release über
   V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau; 2.3.1 = Achsentitel-Fix +
   Verlauf-Auswahl invertiert; 2.3.2 = Codex-Review-Fixes; 2.3.3 =
   Pre-Match-Defektfix, Brief 29; 2.3.4 = Nachholspiel-Freeze + Lockfile-Wächter,
-  Brief 30; 2.3.5 = Timeline-Vollständigkeit, Brief 31), dann ein Git-Tag
+  Brief 30; 2.3.5 = Timeline-Vollständigkeit, Brief 31; 2.3.6 = Bildfamilie,
+  Brief 32), dann ein Git-Tag
   `v<version>` und ein GitHub-Release mit 2–6 Zeilen deutschen Notes aus dem
   zugehörigen Brief bzw. Fix.
   **Jede deployte, nutzersichtbare Änderung erhöht mindestens die Patch-Version
@@ -739,7 +751,7 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.3.5) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.3.6) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein

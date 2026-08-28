@@ -22,4 +22,5 @@ export { default as Tabs } from "../../src/components/Tabs.jsx";
 export { default as Disclosure } from "../../src/components/Disclosure.jsx";
 export { Card } from "../../src/components/ui.jsx";
 export { default as SiteFooter } from "../../src/components/SiteFooter.jsx";
-export { default as App, Ready, SeasonSwitch } from "../../src/App.jsx";
+export { default as SiteBrand } from "../../src/components/SiteBrand.jsx";
+export { default as App, Ready, Shell, SeasonSwitch } from "../../src/App.jsx";

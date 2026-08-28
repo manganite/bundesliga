@@ -15,17 +15,20 @@ const read = (p) => JSON.parse(fs.readFileSync(path.join(REPO, p), "utf8"));
 const strip = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 const srcOf = (rel) => fs.readFileSync(path.join(REPO, rel), "utf8");
 
-const { SiteFooter, Uebersicht, Methodik, FixturePrediction } = await harness();
+const { SiteFooter, SiteBrand, Uebersicht, Methodik, FixturePrediction } = await harness();
 const PARAMS = read("data/season-params.json");
 
 // ---------------------------------------------------------------------------
 //  Subtitle + header (§2.4, §2.6 / B14 §1).
 // ---------------------------------------------------------------------------
 
+// Anchored on the RENDER, not on App.jsx's source: the title and subtitle live
+// in the shared SiteBrand (one implementation for both header variants), and
+// what the wording anchor protects is what the reader sees, not which file it
+// happens to sit in.
 test("the header subtitle is the decided verbatim wording", () => {
-  const app = srcOf("apps/public/src/App.jsx");
-  assert.ok(app.includes("Eine Monte-Carlo-Simulation der Bundesliga — rechnet nach jedem Spieltag mit den"));
-  assert.ok(app.includes("tatsächlichen Ergebnissen neu. Keine einmalige, starre Prognose."));
+  const html = strip(renderToStaticMarkup(React.createElement(SiteBrand, {})));
+  assert.ok(html.includes("Eine Monte-Carlo-Simulation der Bundesliga — rechnet nach jedem Spieltag mit den tatsächlichen Ergebnissen neu. Keine einmalige, starre Prognose."));
 });
 
 test("the run-count selector is gone — no simulation controls, no jargon line", () => {
