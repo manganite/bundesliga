@@ -36,3 +36,24 @@ export const DUEL_ARCHIVE_CAPTION =
  */
 export const DUEL_PLAYED_NOTE =
   "Gespielte Duelle sind nach dem Rechnungsstand vor ihrem jeweiligen Spieltag bestimmt; die Prozente sind die von damals, das Ergebnis das echte.";
+
+/**
+ * §HALBSERIEN §5 — the honesty anchor of the half-season package, required
+ * verbatim wherever over/under performance is split into Hinrunde and
+ * Rückrunde.
+ *
+ * Without it the view tells regression to the mean as a collapse in form. The
+ * Rückrunde forecasts already know the Hinrunde — they run on live ratings that
+ * moved with those results — so a club that overachieved in the first half and
+ * then merely meets its RAISED expectation shows a smaller number here without
+ * having played worse. What is measured is performance relative to the
+ * expectation of the moment, never points form.
+ *
+ * The word „Form" is deliberately absent from every UI string of this package
+ * for the same reason; a source scan enforces it.
+ */
+export const HALBSERIE_ERWARTUNG_NOTE =
+  "Die Erwartung lernt mit: Die Rückrunden-Prognosen kennen die Hinrunde bereits (Live-Ratings). "
+  + "Ein Klub, der in der Hinrunde überraschte und in der Rückrunde seine neue Erwartung erfüllt, "
+  + "zeigt hier keinen Einbruch — gemessen wird Leistung relativ zur jeweils aktuellen Erwartung, "
+  + "nicht Punkteform.";

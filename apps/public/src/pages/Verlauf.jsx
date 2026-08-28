@@ -3,8 +3,10 @@ import { Card, Empty } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import ChartLegend from "../components/ChartLegend.jsx";
 import ChartTooltip from "../components/ChartTooltip.jsx";
-import { HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
+import { HalfSeasonMarker, HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
 import { targetList, scoredMatches, matchdaySurprises, verlaufSeries, pausedTimelineMatchday } from "../lib/season.js";
+import { halfBoundary } from "../lib/halbserie.js";
+import DreiAnker from "../components/DreiAnker.jsx";
 import { retrospectiveLabel } from "../lib/archive.js";
 import { effectiveContenders } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, pp } from "../lib/format.js";
@@ -38,6 +40,10 @@ export default function Verlauf({ ctx }) {
   const [targetId, setTargetId] = useState(targets[0]?.id);
 
   const target = targets.find((t) => t.id === targetId) ?? targets[0];
+  // §2 — the half-season ruler, from the season configuration. One value feeds
+  // all three charts on this page so they cannot disagree about where the
+  // season halves.
+  const boundary = halfBoundary(leagueConfig);
 
   // The two biggest surprises of each matchday, for the multi-club tooltip
   // (§CHART_AUSBAU §1): a played fixture whose actual tendency the pre-match
@@ -114,7 +120,7 @@ export default function Verlauf({ ctx }) {
       <div className="stack">
         <Card title={`${target?.label} im Saisonverlauf`}>
           {series?.length
-            ? <MultiLine series={series} nameOf={nameOf} targetLabel={target.label} label={timeline.label?.label} surprisesByMatchday={surprisesByMatchday} selectionNote={selectionNote} />
+            ? <MultiLine series={series} nameOf={nameOf} targetLabel={target.label} label={timeline.label?.label} surprisesByMatchday={surprisesByMatchday} selectionNote={selectionNote} boundary={boundary} />
             : <Empty>Zu diesem Ziel gibt es im Verlauf nichts zu zeigen.</Empty>}
         </Card>
 
@@ -127,7 +133,7 @@ export default function Verlauf({ ctx }) {
             + `tiefste mögliche Wert ${number(target?.places, 1)} — dann ist alles entschieden, nicht 1,0.`
           }
         >
-          <TensionLine series={tensionSeries} floor={target?.places ?? 1} targetLabel={target?.label} />
+          <TensionLine series={tensionSeries} floor={target?.places ?? 1} targetLabel={target?.label} boundary={boundary} />
         </Card>
 
         <FrozenVsLive
@@ -136,6 +142,12 @@ export default function Verlauf({ ctx }) {
           target={target}
           nameOf={nameOf}
         />
+
+        {/* §HALBSERIEN §6 — the three anchors. Gated on a COMPLETE season, so it
+            is there for every archive season at once and appears in the live one
+            with the final matchday. It uses this page's target selector rather
+            than growing a second one. */}
+        <DreiAnker ctx={ctx} target={target} />
 
         <Card title="Was diese Kurven sind">
           <p className="caption" style={{ margin: 0 }}>
@@ -165,7 +177,7 @@ export default function Verlauf({ ctx }) {
 // lists every visible club with its value and Δpp plus the two biggest
 // surprises of that matchday. The old truncated end-labels are gone — the
 // legend carries the full names now.
-function MultiLine({ series, nameOf, targetLabel, label, surprisesByMatchday, selectionNote }) {
+function MultiLine({ series, nameOf, targetLabel, label, surprisesByMatchday, selectionNote, boundary }) {
   const w = 760;
   const h = 320;
   const pad = { l: 52, r: 14, t: 12, b: 32 };
@@ -217,6 +229,7 @@ function MultiLine({ series, nameOf, targetLabel, label, surprisesByMatchday, se
           </g>
         ))}
         <YAxisTitle label="%" top={pad.t} bottom={h - pad.b} />
+        <HalfSeasonMarker boundary={boundary} maxMatchday={maxX} x={x} top={pad.t} bottom={h - pad.b} />
         {series.map((s, i) => {
           const dimmed = highlight != null && highlight !== s.clubId;
           return (
@@ -268,7 +281,7 @@ function tickValues(maxY) {
   return out;
 }
 
-function TensionLine({ series, floor, targetLabel }) {
+function TensionLine({ series, floor, targetLabel, boundary }) {
   const usable = series.filter((p) => p.value != null);
   if (!usable.length) return <Empty>Kein Verlauf verfügbar.</Empty>;
 
@@ -301,6 +314,7 @@ function TensionLine({ series, floor, targetLabel }) {
         </g>
       ))}
       <YAxisTitle label="Bewerber" top={pad.t} bottom={h - pad.b} />
+      <HalfSeasonMarker boundary={boundary} maxMatchday={maxX} x={x} top={pad.t} bottom={h - pad.b} label={false} />
       <line x1={pad.l} y1={y(floor)} x2={w - pad.r} y2={y(floor)} stroke="var(--text-muted)" strokeDasharray="4 3" strokeWidth="1.5" />
       <text x={pad.l + 6} y={y(floor) - 6} className="axis-label">
         Minimum {number(floor, 1)} — vollständig entschieden

@@ -3,13 +3,15 @@ import { Card, Empty } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import ChartLegend from "../components/ChartLegend.jsx";
 import ChartTooltip from "../components/ChartTooltip.jsx";
-import { HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
+import { HalfSeasonMarker, HitAreas, useActivePoint, YAxisTitle } from "../components/ChartInteractive.jsx";
 import { currentTable, scoredMatches, targetList } from "../lib/season.js";
 import { performanceVsExpectation, zonePartition } from "../../../../packages/engine/src/metrics.mjs";
 import { perfColor } from "../lib/colors.js";
 import { zoneColor, zoneOfRank } from "../lib/zones.js";
-import { percent, number, signed, weekdayDate } from "../lib/format.js";
+import { percent, number, signed, signedInt, weekdayDate } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
+import { HALVES, halfBoundary, halfSeasonBalance, performanceByHalf } from "../lib/halbserie.js";
+import { HALBSERIE_ERWARTUNG_NOTE } from "../lib/archive.js";
 import { carriedRatingNote } from "../../../../packages/engine/src/dataState.mjs";
 
 export default function Teams({ ctx }) {
@@ -51,6 +53,29 @@ export default function Teams({ ctx }) {
 
   const remaining = remainingFixtures(season.fixtures)
     .filter((f) => f.homeClubId === clubId || f.awayClubId === clubId);
+
+  // §2 — the real balance per half, and §5 — over/under expectation per half.
+  // Both are the existing figures over a filtered match set; neither computes a
+  // new metric (the ranking and `performanceVsExpectation` stay in the engine).
+  const boundary = halfBoundary(leagueConfig);
+  const balances = useMemo(() => {
+    if (!boundary) return null;
+    const byHalf = Object.fromEntries(
+      HALVES.map(({ id }) => [id, halfSeasonBalance(season, leagueConfig, id)?.get(clubId)]),
+    );
+    // Both halves must have matches. With only the first half played „Gesamt"
+    // and „Hinrunde" are the same row twice — a split that does not split.
+    if (!(byHalf.hin?.played > 0) || !(byHalf.rueck?.played > 0)) return null;
+    return HALVES.map(({ id, label }) => ({ id, label, ...byHalf[id] }));
+  }, [season, leagueConfig, boundary, clubId]);
+
+  const halfPerf = useMemo(() => {
+    if (!boundary) return null;
+    const row = performanceByHalf(scored, leagueConfig).get(clubId);
+    // The card only earns its place once BOTH halves have matches — with one
+    // half played it would merely repeat „Leistung gegenüber der Erwartung".
+    return row?.hin && row?.rueck ? row : null;
+  }, [scored, leagueConfig, boundary, clubId]);
 
   const positions = outlook?.positionDistribution?.[clubId] ?? null;
 
@@ -124,6 +149,86 @@ export default function Teams({ ctx }) {
         </Card>
 
         <Card
+          title="Bilanz je Halbserie"
+          when={Boolean(balances)}
+          caption="Die echten Ergebnisse, nach Hinrunde und Rückrunde getrennt — keine Prognose."
+        >
+          {balances ? (
+            <div className="table-scroll"><table className="data">
+              <thead>
+                <tr>
+                  <th scope="col" className="left">Zeitraum</th>
+                  <th scope="col">Sp</th>
+                  <th scope="col">S/U/N</th>
+                  <th scope="col">Tore</th>
+                  <th scope="col">Diff</th>
+                  <th scope="col">Pkt</th>
+                </tr>
+              </thead>
+              <tbody>
+                {balances.map((b) => (
+                  <tr key={b.id}>
+                    <th scope="row" className="left" style={{ fontWeight: b.id === "gesamt" ? 500 : 400 }}>
+                      {b.label}
+                    </th>
+                    <td>{b.played}</td>
+                    <td>{b.won}/{b.drawn}/{b.lost}</td>
+                    <td>{b.gf}:{b.ga}</td>
+                    <td>{signedInt(b.gd)}</td>
+                    <td>{b.pts}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table></div>
+          ) : null}
+        </Card>
+
+        <Card
+          title="Über die Halbserien"
+          when={Boolean(halfPerf)}
+          caption={HALBSERIE_ERWARTUNG_NOTE}
+          method={
+            <p className="caption" style={{ marginTop: "0.5rem" }}>
+              Je Halbserie dieselbe Rechnung wie oben — tatsächliche Punkte minus erwartete Punkte
+              aus der Vorhersage vor jedem Spiel, geteilt durch die Spiele der jeweiligen Halbserie.
+              „Entwicklung“ ist die Differenz der beiden Werte je Spiel: sie misst, ob ein Klub seine
+              Erwartung in der Rückrunde stärker übertrifft als in der Hinrunde — nicht, ob er mehr
+              Punkte holt.
+            </p>
+          }
+        >
+          {halfPerf ? (
+            <div className="table-scroll"><table className="data">
+              <thead>
+                <tr>
+                  <th scope="col" className="left">Zeitraum</th>
+                  <th scope="col">Sp</th>
+                  <th scope="col">Punkte</th>
+                  <th scope="col">erwartet</th>
+                  <th scope="col">je Spiel</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[["Hinrunde", halfPerf.hin], ["Rückrunde", halfPerf.rueck]].map(([label, r]) => (
+                  <tr key={label}>
+                    <th scope="row" className="left" style={{ fontWeight: 400 }}>{label}</th>
+                    <td>{r.played}</td>
+                    <td>{number(r.actual, 0)}</td>
+                    <td>{number(r.expected, 1)}</td>
+                    <td style={{ color: perfColor(r.perMatch) }}>{signed(r.perMatch, 2)}</td>
+                  </tr>
+                ))}
+                <tr>
+                  <th scope="row" className="left">Entwicklung</th>
+                  <td colSpan={3} />
+                  <td style={{ color: perfColor(halfPerf.entwicklung) }}>{signed(halfPerf.entwicklung, 2)}</td>
+                </tr>
+              </tbody>
+            </table></div>
+          ) : null}
+        </Card>
+
+        <Card
           title="Zonenverteilung im Saisonverlauf"
           when={Boolean(zoneSeries)}
           caption={
@@ -132,7 +237,7 @@ export default function Teams({ ctx }) {
             + "Rating-Aktualisierungen, sie zeigt, was allein die Ergebnisse bewirkt haben."
           }
         >
-          {zoneSeries ? <ZoneStack series={zoneSeries} clubName={nameOf(clubId)} /> : null}
+          {zoneSeries ? <ZoneStack series={zoneSeries} clubName={nameOf(clubId)} boundary={boundary} /> : null}
         </Card>
 
         <Card title="Restprogramm" when={remaining.length > 0}>
@@ -254,7 +359,7 @@ function PositionBars({ positions, clubName, zones }) {
 // „Zonenverteilung im Saisonverlauf" (§CHART_AUSBAU §2.1): stacked area of the
 // zone partition per matchday, Meister at the top of the plot to Abstieg at the
 // bottom. Legend + per-matchday tooltip over the shared components.
-function ZoneStack({ series, clubName }) {
+function ZoneStack({ series, clubName, boundary }) {
   const w = 720;
   const h = 260;
   const pad = { l: 52, r: 12, t: 12, b: 30 };
@@ -299,6 +404,7 @@ function ZoneStack({ series, clubName }) {
           const d = `M${dTop.join(" L")} L${dBottom.join(" L")} Z`;
           return <path key={band.id} d={d} fill={zoneColor(band.id)} opacity={active == null ? 0.85 : 0.7} stroke="var(--surface)" strokeWidth="0.5" />;
         })}
+        <HalfSeasonMarker boundary={boundary} maxMatchday={maxX} x={x} top={pad.t} bottom={pad.t + plotH} />
         <text x={w - pad.r} y={h - 8} textAnchor="end" className="axis-label">Spieltag</text>
         <HitAreas
           centers={centers}
