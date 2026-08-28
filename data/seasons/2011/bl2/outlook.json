@@ -24,7 +24,7 @@
   "league": "bl2",
   "runs": 20000,
   "batches": 20,
-  "engineVersion": 1,
+  "engineVersion": 2,
   "simulationProtocolVersion": 2,
   "clubs": [
     "1860 München",
@@ -2613,6 +2613,31 @@
       "p10": 48,
       "p90": 48
     }
+  },
+  "herbstmeister": {
+    "untilMatchday": 17,
+    "decided": true,
+    "probabilities": {
+      "1860 München": 0,
+      "Aachen": 0,
+      "Aue": 0,
+      "Bochum": 0,
+      "Braunschweig": 0,
+      "Cottbus": 0,
+      "Dresden": 0,
+      "Duisburg": 0,
+      "Düsseldorf": 1,
+      "Frankfurt": 0,
+      "FSV Frankfurt": 0,
+      "Fürth": 0,
+      "Ingolstadt": 0,
+      "Karlsruhe": 0,
+      "Paderborn": 0,
+      "Rostock": 0,
+      "St. Pauli": 0,
+      "Union Berlin": 0
+    },
+    "sharedProbability": 0
   },
   "fixtureImpact": null
 }

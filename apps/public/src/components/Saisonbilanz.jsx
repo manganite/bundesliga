@@ -1,6 +1,8 @@
 import { Card } from "./ui.jsx";
+import Herbstmeister from "./Herbstmeister.jsx";
 import { currentTable, scoredMatches, targetList } from "../lib/season.js";
 import { zoneColor } from "../lib/zones.js";
+import { herbstmeisterFact } from "../lib/halbserie.js";
 import { percent, number } from "../lib/format.js";
 
 // ============================================================================
@@ -59,6 +61,15 @@ export default function Saisonbilanz({ ctx }) {
   const relLines = relegationLines(relegation, season.season, league);
   const annotation = config?.annotation; // §5 [USER]: empty until content is supplied
 
+  // §3 — the Herbstmeister as a fact, beside what the model expected of him at
+  // the START of the season (timeline point 0): the „war das absehbar?" reading.
+  // Point 0 is the frozen pre-season forecast, so the pairing is honest — it
+  // compares the outcome against what was thought before a ball was kicked, not
+  // against a figure that already knew half the season.
+  const hmFact = herbstmeisterFact(season, leagueConfig);
+  const startPoint = timeline?.points?.find((p) => p.matchday === 0);
+  const hmStart = startPoint?.herbstmeister?.probabilities ?? null;
+
   return (
     <>
       <h2>Saisonbilanz — {leagueLabel}</h2>
@@ -84,6 +95,7 @@ export default function Saisonbilanz({ ctx }) {
               })}
             </tbody>
           </table>
+          <Herbstmeister fact={hmFact} nameOf={nameOf} startProbabilities={hmStart} />
         </Card>
 
         <Card

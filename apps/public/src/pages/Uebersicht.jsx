@@ -2,11 +2,13 @@ import { useMemo } from "react";
 import { Card, ProbList, Empty } from "../components/ui.jsx";
 import WichtigstesSpiel from "../components/WichtigstesSpiel.jsx";
 import Saisonbilanz from "../components/Saisonbilanz.jsx";
+import Herbstmeister, { HerbstmeisterDetail } from "../components/Herbstmeister.jsx";
 import { currentTable, targetList, tension, clinched, scoredMatches, rulesFrom } from "../lib/season.js";
 import { ZONE_TOKEN, zoneColor } from "../lib/zones.js";
 import { performanceVsExpectation } from "../../../../packages/engine/src/metrics.mjs";
 import { percent, number, weekdayDate, signed } from "../lib/format.js";
 import { playedFixtures } from "../lib/data.js";
+import { herbstmeisterFact, herbstmeisterForecast } from "../lib/halbserie.js";
 
 /**
  * Übersicht (§7):
@@ -40,6 +42,13 @@ export default function Uebersicht({ ctx }) {
   const zoneCards = targets.filter(
     (t) => ZONE_TOKEN[t.id] && t.id !== titleTarget?.id && t.id !== dropTarget?.id,
   );
+
+  // §3 — the half-season anchor rides ON the title card, never as a card of its
+  // own. Which of the two states shows is decided by the DATA: once every
+  // fixture up to the anchor is played the fact replaces the probability, and
+  // the fact is read off the real results, not off the artefact.
+  const hmFact = useMemo(() => herbstmeisterFact(season, leagueConfig), [season, leagueConfig]);
+  const hmForecast = useMemo(() => herbstmeisterForecast(outlook), [outlook]);
 
   const titleTension = titleTarget ? tension(outlook, titleTarget) : null;
   const dropTension = dropTarget ? tension(outlook, dropTarget) : null;
@@ -119,8 +128,10 @@ export default function Uebersicht({ ctx }) {
           title={titleTarget?.label === "Meister" ? "Titelrennen" : "Aufstiegsrennen"}
           when={Boolean(titleTarget) && ranked(titleTarget.id).some((e) => e.value > 0)}
           caption="Wahrscheinlichkeit, die Saison auf diesem Platz zu beenden."
+          method={hmFact ? null : <HerbstmeisterDetail forecast={hmForecast} nameOf={nameOf} />}
         >
           <ProbList entries={ranked(titleTarget?.id)} nameOf={nameOf} limit={5} />
+          <Herbstmeister forecast={hmForecast} fact={hmFact} nameOf={nameOf} />
         </Card>
 
         <WichtigstesSpiel

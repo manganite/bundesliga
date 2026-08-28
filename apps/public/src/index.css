@@ -836,3 +836,35 @@ td.zone-stripe, th.zone-stripe {
   vertical-align: middle;
   white-space: nowrap;
 }
+
+/* The Herbstmeister line (§HALBSERIEN §3). It sits INSIDE the Titelrennen card
+   under the probability list, so it needs a rule above it — it answers a second
+   question about the same race, and without the separator it reads as another
+   row of the list. */
+.herbstmeister {
+  margin: 0.7rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+.herbstmeister .caption { font-size: 0.85rem; }
+
+/* The half-season marker (§HALBSERIEN §2). Dashed and neutral: it is a ruler on
+   the axis, not a data series, and must never read as one. Only
+   ChartInteractive writes this class — a source guard holds that. */
+.half-marker line {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.half-marker text { fill: var(--text-muted); }
+
+/* A group heading above a run of cards (§HALBSERIEN §4). Card titles are h3, so
+   this one is too — it groups them rather than nesting them, and the extra
+   weight plus the rule is what carries the grouping visually. */
+.section-heading {
+  font-size: 1.1rem;
+  margin: 1.4rem 0 0.2rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--border);
+}

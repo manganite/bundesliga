@@ -87,3 +87,38 @@ export function HitAreas({ centers, top = 0, bottom, active, setActive, onKeyDow
     );
   });
 }
+
+/**
+ * The half-season marker (§HALBSERIEN §2): one vertical rule at the boundary
+ * matchday, on every matchday-axis chart that spans it.
+ *
+ * ONE implementation, like `ChartTooltip` and `ChartLegend` — a source guard
+ * forbids a second writer of `.half-marker`. Three charts draw it (Verlauf, the
+ * Teams zone stack, the Modellgüte quality series) and they must agree to the
+ * pixel about where the season halves, or the eye reads three different
+ * boundaries.
+ *
+ * It renders NOTHING when the boundary is unset or outside the plotted range —
+ * a marker on a chart that stops at matchday 9 would assert a boundary the data
+ * has not reached. It is decorative: the same fact is in the axis and in the
+ * tooltip, so it carries `aria-hidden` rather than a second announcement.
+ *
+ * @param {number|null} boundary  the configured half-season matchday
+ * @param {number} maxMatchday    the largest matchday actually plotted
+ * @param {(md:number)=>number} x  the chart's own x scale
+ * @param {number} top
+ * @param {number} bottom
+ * @param {boolean} [label=true]  draw the „Halbserie" caption above the rule
+ */
+export function HalfSeasonMarker({ boundary, maxMatchday, x, top, bottom, label = true }) {
+  if (!boundary || !(maxMatchday > boundary)) return null;
+  const cx = x(boundary);
+  return (
+    <g className="half-marker" aria-hidden="true">
+      <line x1={cx} y1={top} x2={cx} y2={bottom} />
+      {label ? (
+        <text x={cx + 4} y={top + 10} className="axis-label">Halbserie</text>
+      ) : null}
+    </g>
+  );
+}

@@ -8,7 +8,7 @@
     {
       "matchday": 0,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 0,
       "probabilities": {
@@ -222,12 +222,37 @@
           "p10": 35,
           "p90": 66
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0168,
+          "Bielefeld": 0.0428,
+          "Bochum": 0.0548,
+          "Darmstadt": 0.0652,
+          "Dresden": 0.0228,
+          "Duisburg": 0.0308,
+          "Fürth": 0.0292,
+          "Heidenheim": 0.0262,
+          "HSV": 0.2272,
+          "Ingolstadt": 0.0574,
+          "Kiel": 0.068,
+          "Köln": 0.1798,
+          "Magdeburg": 0.0108,
+          "Paderborn": 0.0152,
+          "Regensburg": 0.0272,
+          "Sandhausen": 0.0278,
+          "St. Pauli": 0.0328,
+          "Union Berlin": 0.0658
+        },
+        "sharedProbability": 0.0006
       }
     },
     {
       "matchday": 1,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 9,
       "probabilities": {
@@ -441,12 +466,37 @@
           "p10": 35,
           "p90": 66
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.012,
+          "Bielefeld": 0.037,
+          "Bochum": 0.0268,
+          "Darmstadt": 0.0906,
+          "Dresden": 0.0326,
+          "Duisburg": 0.016,
+          "Fürth": 0.0308,
+          "Heidenheim": 0.0234,
+          "HSV": 0.145,
+          "Ingolstadt": 0.0392,
+          "Kiel": 0.11,
+          "Köln": 0.2508,
+          "Magdeburg": 0.0078,
+          "Paderborn": 0.008,
+          "Regensburg": 0.0352,
+          "Sandhausen": 0.0136,
+          "St. Pauli": 0.0448,
+          "Union Berlin": 0.0768
+        },
+        "sharedProbability": 0.0004
       }
     },
     {
       "matchday": 2,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 18,
       "probabilities": {
@@ -660,12 +710,37 @@
           "p10": 36,
           "p90": 66
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0088,
+          "Bielefeld": 0.054,
+          "Bochum": 0.0538,
+          "Darmstadt": 0.0604,
+          "Dresden": 0.0232,
+          "Duisburg": 0.0078,
+          "Fürth": 0.0314,
+          "Heidenheim": 0.0164,
+          "HSV": 0.2138,
+          "Ingolstadt": 0.032,
+          "Kiel": 0.0872,
+          "Köln": 0.208,
+          "Magdeburg": 0.0064,
+          "Paderborn": 0.014,
+          "Regensburg": 0.0218,
+          "Sandhausen": 0.0096,
+          "St. Pauli": 0.0668,
+          "Union Berlin": 0.0858
+        },
+        "sharedProbability": 0.0012
       }
     },
     {
       "matchday": 3,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 27,
       "probabilities": {
@@ -879,12 +954,37 @@
           "p10": 37,
           "p90": 67
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0032,
+          "Bielefeld": 0.0334,
+          "Bochum": 0.0566,
+          "Darmstadt": 0.0766,
+          "Dresden": 0.0098,
+          "Duisburg": 0.0052,
+          "Fürth": 0.0242,
+          "Heidenheim": 0.0308,
+          "HSV": 0.2548,
+          "Ingolstadt": 0.0204,
+          "Kiel": 0.066,
+          "Köln": 0.2376,
+          "Magdeburg": 0.0042,
+          "Paderborn": 0.0094,
+          "Regensburg": 0.0172,
+          "Sandhausen": 0.0038,
+          "St. Pauli": 0.0392,
+          "Union Berlin": 0.1084
+        },
+        "sharedProbability": 0.0008
       }
     },
     {
       "matchday": 4,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 36,
       "probabilities": {
@@ -1098,12 +1198,37 @@
           "p10": 38,
           "p90": 66
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0008,
+          "Bielefeld": 0.0334,
+          "Bochum": 0.0372,
+          "Darmstadt": 0.0974,
+          "Dresden": 0.0052,
+          "Duisburg": 0.0024,
+          "Fürth": 0.0288,
+          "Heidenheim": 0.01,
+          "HSV": 0.2894,
+          "Ingolstadt": 0.0266,
+          "Kiel": 0.0766,
+          "Köln": 0.2848,
+          "Magdeburg": 0.0008,
+          "Paderborn": 0.006,
+          "Regensburg": 0.007,
+          "Sandhausen": 0.002,
+          "St. Pauli": 0.0164,
+          "Union Berlin": 0.0758
+        },
+        "sharedProbability": 0.0006
       }
     },
     {
       "matchday": 5,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 45,
       "probabilities": {
@@ -1317,12 +1442,37 @@
           "p10": 37,
           "p90": 65
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.002,
+          "Bielefeld": 0.0284,
+          "Bochum": 0.0724,
+          "Darmstadt": 0.089,
+          "Dresden": 0.0072,
+          "Duisburg": 0.0004,
+          "Fürth": 0.0466,
+          "Heidenheim": 0.007,
+          "HSV": 0.41,
+          "Ingolstadt": 0.0152,
+          "Kiel": 0.0472,
+          "Köln": 0.1776,
+          "Magdeburg": 0.0012,
+          "Paderborn": 0.0134,
+          "Regensburg": 0.002,
+          "Sandhausen": 0.0024,
+          "St. Pauli": 0.008,
+          "Union Berlin": 0.0706
+        },
+        "sharedProbability": 0.0006
       }
     },
     {
       "matchday": 6,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 54,
       "probabilities": {
@@ -1536,12 +1686,37 @@
           "p10": 37,
           "p90": 65
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0048,
+          "Bielefeld": 0.031,
+          "Bochum": 0.0818,
+          "Darmstadt": 0.0578,
+          "Dresden": 0.017,
+          "Duisburg": 0.0002,
+          "Fürth": 0.041,
+          "Heidenheim": 0.013,
+          "HSV": 0.27,
+          "Ingolstadt": 0.0046,
+          "Kiel": 0.0432,
+          "Köln": 0.3188,
+          "Magdeburg": 0.001,
+          "Paderborn": 0.0118,
+          "Regensburg": 0.0086,
+          "Sandhausen": 0.0002,
+          "St. Pauli": 0.023,
+          "Union Berlin": 0.0726
+        },
+        "sharedProbability": 0.0004
       }
     },
     {
       "matchday": 7,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 63,
       "probabilities": {
@@ -1755,12 +1930,37 @@
           "p10": 39,
           "p90": 66
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0018,
+          "Bielefeld": 0.0482,
+          "Bochum": 0.037,
+          "Darmstadt": 0.0292,
+          "Dresden": 0.0292,
+          "Duisburg": 0,
+          "Fürth": 0.031,
+          "Heidenheim": 0.0094,
+          "HSV": 0.2208,
+          "Ingolstadt": 0.0014,
+          "Kiel": 0.0206,
+          "Köln": 0.4236,
+          "Magdeburg": 0.0002,
+          "Paderborn": 0.0058,
+          "Regensburg": 0.0162,
+          "Sandhausen": 0.0004,
+          "St. Pauli": 0.0308,
+          "Union Berlin": 0.0952
+        },
+        "sharedProbability": 0.0008
       }
     },
     {
       "matchday": 8,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 72,
       "probabilities": {
@@ -1974,12 +2174,37 @@
           "p10": 41,
           "p90": 67
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0.016,
+          "Bochum": 0.0152,
+          "Darmstadt": 0.0102,
+          "Dresden": 0.0098,
+          "Duisburg": 0,
+          "Fürth": 0.0496,
+          "Heidenheim": 0.0102,
+          "HSV": 0.134,
+          "Ingolstadt": 0.0002,
+          "Kiel": 0.0278,
+          "Köln": 0.5472,
+          "Magdeburg": 0.0006,
+          "Paderborn": 0.005,
+          "Regensburg": 0.0188,
+          "Sandhausen": 0,
+          "St. Pauli": 0.0182,
+          "Union Berlin": 0.138
+        },
+        "sharedProbability": 0.0008
       }
     },
     {
       "matchday": 9,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 81,
       "probabilities": {
@@ -2193,12 +2418,37 @@
           "p10": 41,
           "p90": 66
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0008,
+          "Bielefeld": 0.0078,
+          "Bochum": 0.0324,
+          "Darmstadt": 0.0036,
+          "Dresden": 0.0092,
+          "Duisburg": 0,
+          "Fürth": 0.0378,
+          "Heidenheim": 0.0078,
+          "HSV": 0.2696,
+          "Ingolstadt": 0,
+          "Kiel": 0.0142,
+          "Köln": 0.4072,
+          "Magdeburg": 0.0002,
+          "Paderborn": 0.0154,
+          "Regensburg": 0.0206,
+          "Sandhausen": 0,
+          "St. Pauli": 0.0422,
+          "Union Berlin": 0.1314
+        },
+        "sharedProbability": 0.0002
       }
     },
     {
       "matchday": 10,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 90,
       "probabilities": {
@@ -2412,12 +2662,37 @@
           "p10": 41,
           "p90": 65
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0002,
+          "Bielefeld": 0.0014,
+          "Bochum": 0.0294,
+          "Darmstadt": 0.0016,
+          "Dresden": 0.0048,
+          "Duisburg": 0,
+          "Fürth": 0.086,
+          "Heidenheim": 0.0182,
+          "HSV": 0.2124,
+          "Ingolstadt": 0,
+          "Kiel": 0.0094,
+          "Köln": 0.4172,
+          "Magdeburg": 0,
+          "Paderborn": 0.009,
+          "Regensburg": 0.014,
+          "Sandhausen": 0,
+          "St. Pauli": 0.0884,
+          "Union Berlin": 0.1082
+        },
+        "sharedProbability": 0.0002
       }
     },
     {
       "matchday": 11,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 99,
       "probabilities": {
@@ -2631,12 +2906,37 @@
           "p10": 40,
           "p90": 64
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0004,
+          "Bielefeld": 0,
+          "Bochum": 0.0194,
+          "Darmstadt": 0.0028,
+          "Dresden": 0.0032,
+          "Duisburg": 0,
+          "Fürth": 0.0554,
+          "Heidenheim": 0.0142,
+          "HSV": 0.3564,
+          "Ingolstadt": 0,
+          "Kiel": 0.0162,
+          "Köln": 0.37,
+          "Magdeburg": 0,
+          "Paderborn": 0.0104,
+          "Regensburg": 0.012,
+          "Sandhausen": 0,
+          "St. Pauli": 0.0474,
+          "Union Berlin": 0.0924
+        },
+        "sharedProbability": 0.0002
       }
     },
     {
       "matchday": 12,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 108,
       "probabilities": {
@@ -2850,12 +3150,37 @@
           "p10": 41,
           "p90": 64
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0078,
+          "Darmstadt": 0.006,
+          "Dresden": 0.0068,
+          "Duisburg": 0,
+          "Fürth": 0.0296,
+          "Heidenheim": 0.0194,
+          "HSV": 0.5336,
+          "Ingolstadt": 0,
+          "Kiel": 0.0068,
+          "Köln": 0.2158,
+          "Magdeburg": 0,
+          "Paderborn": 0.0012,
+          "Regensburg": 0.0048,
+          "Sandhausen": 0,
+          "St. Pauli": 0.1064,
+          "Union Berlin": 0.0622
+        },
+        "sharedProbability": 0.0004
       }
     },
     {
       "matchday": 13,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 117,
       "probabilities": {
@@ -3069,12 +3394,37 @@
           "p10": 43,
           "p90": 64
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0046,
+          "Darmstadt": 0,
+          "Dresden": 0.0002,
+          "Duisburg": 0,
+          "Fürth": 0.005,
+          "Heidenheim": 0.0026,
+          "HSV": 0.6632,
+          "Ingolstadt": 0,
+          "Kiel": 0.0002,
+          "Köln": 0.2128,
+          "Magdeburg": 0,
+          "Paderborn": 0.0002,
+          "Regensburg": 0.005,
+          "Sandhausen": 0,
+          "St. Pauli": 0.0338,
+          "Union Berlin": 0.0724
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 14,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 126,
       "probabilities": {
@@ -3288,12 +3638,37 @@
           "p10": 43,
           "p90": 64
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0.0084,
+          "Darmstadt": 0,
+          "Dresden": 0.0004,
+          "Duisburg": 0,
+          "Fürth": 0.0078,
+          "Heidenheim": 0,
+          "HSV": 0.4904,
+          "Ingolstadt": 0,
+          "Kiel": 0.0002,
+          "Köln": 0.4524,
+          "Magdeburg": 0,
+          "Paderborn": 0.0004,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0.0162,
+          "Union Berlin": 0.024
+        },
+        "sharedProbability": 0.0002
       }
     },
     {
       "matchday": 15,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 135,
       "probabilities": {
@@ -3507,12 +3882,37 @@
           "p10": 45,
           "p90": 65
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 0.6158,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0.3748,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0.0002,
+          "Union Berlin": 0.0092
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 16,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 144,
       "probabilities": {
@@ -3726,12 +4126,37 @@
           "p10": 45,
           "p90": 64
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 0.6084,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0.3916,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 17,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 153,
       "probabilities": {
@@ -3945,12 +4370,37 @@
           "p10": 46,
           "p90": 65
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 18,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 162,
       "probabilities": {
@@ -4164,12 +4614,37 @@
           "p10": 45,
           "p90": 63
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 19,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 171,
       "probabilities": {
@@ -4383,12 +4858,37 @@
           "p10": 47,
           "p90": 65
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 20,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 180,
       "probabilities": {
@@ -4602,12 +5102,37 @@
           "p10": 47,
           "p90": 63
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 21,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 189,
       "probabilities": {
@@ -4821,12 +5346,37 @@
           "p10": 48,
           "p90": 63
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 22,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 198,
       "probabilities": {
@@ -5040,12 +5590,37 @@
           "p10": 50,
           "p90": 65
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 23,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 207,
       "probabilities": {
@@ -5259,12 +5834,37 @@
           "p10": 50,
           "p90": 64
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 24,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 216,
       "probabilities": {
@@ -5478,12 +6078,37 @@
           "p10": 52,
           "p90": 65
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 25,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 225,
       "probabilities": {
@@ -5697,12 +6322,37 @@
           "p10": 54,
           "p90": 66
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 26,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 234,
       "probabilities": {
@@ -5916,12 +6566,37 @@
           "p10": 53,
           "p90": 64
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 27,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 243,
       "probabilities": {
@@ -6135,12 +6810,37 @@
           "p10": 52,
           "p90": 62
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 28,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 252,
       "probabilities": {
@@ -6354,12 +7054,37 @@
           "p10": 52,
           "p90": 61
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 29,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 261,
       "probabilities": {
@@ -6573,12 +7298,37 @@
           "p10": 52,
           "p90": 60
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 30,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 270,
       "probabilities": {
@@ -6792,12 +7542,37 @@
           "p10": 52,
           "p90": 59
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 31,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 279,
       "probabilities": {
@@ -7011,12 +7786,37 @@
           "p10": 54,
           "p90": 60
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 32,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 288,
       "probabilities": {
@@ -7230,12 +8030,37 @@
           "p10": 54,
           "p90": 59
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 33,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 297,
       "probabilities": {
@@ -7449,12 +8274,37 @@
           "p10": 56,
           "p90": 59
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 34,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 306,
       "probabilities": {
@@ -7668,6 +8518,31 @@
           "p10": 57,
           "p90": 57
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bielefeld": 0,
+          "Bochum": 0,
+          "Darmstadt": 0,
+          "Dresden": 0,
+          "Duisburg": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Ingolstadt": 0,
+          "Kiel": 0,
+          "Köln": 0,
+          "Magdeburg": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     }
   ],

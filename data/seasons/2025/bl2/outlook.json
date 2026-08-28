@@ -24,7 +24,7 @@
   "league": "bl2",
   "runs": 20000,
   "batches": 20,
-  "engineVersion": 1,
+  "engineVersion": 2,
   "simulationProtocolVersion": 2,
   "clubs": [
     "Bielefeld",
@@ -2613,5 +2613,31 @@
       "p10": 70,
       "p90": 70
     }
-  }
+  },
+  "herbstmeister": {
+    "untilMatchday": 17,
+    "decided": true,
+    "probabilities": {
+      "Bielefeld": 0,
+      "Bochum": 0,
+      "Braunschweig": 0,
+      "Darmstadt": 0,
+      "Dresden": 0,
+      "Düsseldorf": 0,
+      "Elversberg": 0,
+      "Fürth": 0,
+      "Hannover": 0,
+      "Hertha": 0,
+      "Kaiserslautern": 0,
+      "Karlsruhe": 0,
+      "Kiel": 0,
+      "Magdeburg": 0,
+      "Münster": 0,
+      "Nürnberg": 0,
+      "Paderborn": 0,
+      "Schalke": 1
+    },
+    "sharedProbability": 0
+  },
+  "fixtureImpact": []
 }

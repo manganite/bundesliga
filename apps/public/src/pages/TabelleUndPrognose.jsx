@@ -3,10 +3,12 @@ import { Card, Empty, ExpertToggle } from "../components/ui.jsx";
 import Chart from "../components/Chart.jsx";
 import DirekteDuelle from "../components/DirekteDuelle.jsx";
 import LeagueTable from "../components/LeagueTable.jsx";
+import Tabs from "../components/Tabs.jsx";
 import { currentTable, orderWithinSharedRanks, scheduleStrength, pendingDuels, playedDuels, rulesFrom, targetList } from "../lib/season.js";
 import Relegation from "../components/Relegation.jsx";
 import { percent, integer, signedInt, rating } from "../lib/format.js";
 import { remainingFixtures } from "../lib/data.js";
+import { HALVES, halfBoundary, halfSeasonTable } from "../lib/halbserie.js";
 import { effectiveParams } from "../../../../packages/engine/src/model.mjs";
 
 const HEAT_STEPS = ["--heat-0", "--heat-1", "--heat-2", "--heat-3", "--heat-4", "--heat-5"];
@@ -83,6 +85,70 @@ export default function TabelleUndPrognose({ ctx }) {
     [season, ctx.isArchive, ctx.timeline, ctx.timelineLive, leagueConfig],
   );
 
+  // §2: Gesamt / Hinrunde / Rückrunde over the REAL table. The projected end
+  // table stays „Gesamt" — a projected half-season table would be a second
+  // tally, not a filtered view of this one, and the brief keeps it out on
+  // purpose. The half views therefore drop the forecast columns entirely rather
+  // than pairing half-season results with full-season expectations, which is
+  // the reading that would quietly mislead.
+  //
+  // Zones go with them: a Hinrunde table has no relegation place, and a stripe
+  // would assert one.
+  //
+  // The switch appears only once BOTH halves have played matches — the same rule
+  // the preset areas follow (§ARCHIV_DUELLE): an area that would match nothing
+  // is not offered. Here it is sharper than „not empty": while only the first
+  // half has been played, „Gesamt" IS the Hinrunde, and offering both would put
+  // two identical tables behind two different labels. The switch therefore
+  // arrives with the first Rückrunde result, and before that the card is exactly
+  // what it was.
+  const boundary = halfBoundary(leagueConfig);
+  const halves = useMemo(() => {
+    if (!boundary) return null;
+    const playedIn = (id) => season.fixtures.some(
+      (f) => f.gh !== undefined && (id === "hin" ? f.matchday <= boundary : f.matchday > boundary),
+    );
+    if (!playedIn("hin") || !playedIn("rueck")) return null;
+    return HALVES.map(({ id, label }) => ({
+      id,
+      label,
+      // The explanatory line belongs to the PANEL, not to the card: a card-level
+      // caption promising „erwartete Punkte und der 10–90-Bereich" would stand
+      // over a half-season table that has neither column.
+      content: id === "gesamt"
+        ? (
+          <>
+            <LeagueTable
+              table={table}
+              nameOf={nameOf}
+              zoneTargets={zoneTargets}
+              points={outlook?.points}
+              carriedByClub={carriedByClub}
+            />
+            <p className="caption">
+              Erwartete Punkte und der Bereich, in dem 80 % der simulierten Saisons enden
+              (10.–90. Perzentil).
+            </p>
+          </>
+        )
+        : (
+          <>
+            <LeagueTable
+              table={halfSeasonTable(season, leagueConfig, id)}
+              nameOf={nameOf}
+              zoneTargets={[]}
+              legend={false}
+            />
+            <p className="caption">
+              Nur die echten Ergebnisse {id === "hin" ? `der Spieltage 1–${boundary}` : `ab dem ${boundary + 1}. Spieltag`}
+              {" "}— ohne Prognose und ohne Tabellenzonen.
+            </p>
+          </>
+        ),
+    }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [boundary, table, season, leagueConfig, outlook, nameOf, zoneTargets, carriedByClub]);
+
   const anyShared = table.some((r) => r.sharedRank);
   const sharedNote = anyShared
     ? "Klubs auf einem geteilten Tabellenplatz sind nach der Spielordnung nicht getrennt: vor absolviertem "
@@ -110,16 +176,38 @@ export default function TabelleUndPrognose({ ctx }) {
               ? `Klubs mit ⚑ rechnen mit einem älteren Rating, weil clubelo sie derzeit nicht fortführt. ${sharedNote}`
               : anyShared
               ? sharedNote
+              // With the switch present the forecast sentence lives in the
+              // „Gesamt" panel, where the columns it describes actually are.
+              : halves
+              ? ""
               : "Erwartete Punkte und der Bereich, in dem 80 % der simulierten Saisons enden (10.–90. Perzentil)."
           }
+          method={halves ? (
+            <p className="caption" style={{ marginTop: "0.5rem" }}>
+              Hinrunde sind die Spieltage 1–{boundary}, Rückrunde alles danach — dieselbe
+              Spielordnung, nur über einen Ausschnitt der echten Ergebnisse. Die Prognose bleibt
+              bei „Gesamt“: eine projizierte Halbserien-Tabelle wäre eine eigene Rechnung, keine
+              gefilterte Ansicht dieser, und steht deshalb nicht daneben. Tabellenzonen zeigt nur
+              die Gesamttabelle — eine Hinrunde kennt keinen Absteiger.
+            </p>
+          ) : null}
         >
-          <LeagueTable
-            table={table}
-            nameOf={nameOf}
-            zoneTargets={zoneTargets}
-            points={outlook?.points}
-            carriedByClub={carriedByClub}
-          />
+          {halves ? (
+            <Tabs
+              tabs={halves}
+              defaultId="gesamt"
+              idPrefix="halbserie"
+              ariaLabel="Zeitraum der Tabelle"
+            />
+          ) : (
+            <LeagueTable
+              table={table}
+              nameOf={nameOf}
+              zoneTargets={zoneTargets}
+              points={outlook?.points}
+              carriedByClub={carriedByClub}
+            />
+          )}
         </Card>
 
         {/* The placement heatmap degenerates to a diagonal once the season is
