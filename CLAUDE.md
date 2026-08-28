@@ -945,6 +945,16 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
     Klub auf Platz 1 wird gezählt, damit gilt **Σ P = E[Klubs auf Platz 1] ≥ 1**
     — nie „= 1". `sharedProbability` steht daneben, damit die Summe erklärbar
     ist. Wer daraus eine Verteilung mit Summe 1 macht, erfindet einen Sieger.
+  - **Eine Halbserien-Tabelle wird IMMER `inSeason: true` gerankt**, auch eine
+    fertige (`halfSeasonTable`; Codex-Befund zu PR #47). `inSeason: false` gibt
+    den direkten Vergleich frei, und den erlaubt die Spielordnung erst nach Hin-
+    **und** Rückspiel — innerhalb einer Halbserie hat kein Paar zweimal gespielt.
+    Die fertige Hinrunde `!complete` zu ranken trennte Klubs also über einen
+    einbeinigen H2H, lautlos: die Tabelle sieht bloß entschieden aus. Schlimmer,
+    sie widersprach dem Artefakt — das Engine-Tally rankt denselben Anker mit
+    `inSeason: true`. Nur „Gesamt" behält die Vollständigkeitsregel, weil dort
+    beide Beine wirklich gespielt sind. Zwei Tests halten das fest, einer davon
+    stellt Engine-Tally und Seiten-Fakt direkt gegeneinander.
   - **Der Zustand „nach der Hinrunde" ist kumulative Vollständigkeit**, nicht
     „aktueller Spieltag > 17" (`halfComplete` in `lib/halbserie.js`, dieselbe
     Frage wie Brief 31, an die Saisondatei gestellt). Ein Nachholspiel aus

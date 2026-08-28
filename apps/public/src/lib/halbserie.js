@@ -42,12 +42,25 @@ export const inHalf = (fixture, half, boundary) =>
 /**
  * The REAL table over one half of the season.
  *
- * `inSeason` follows the same rule as the full table: it is false only when the
- * selected half is complete. That matters for more than tidiness — the
- * Spielordnung withholds criteria 3)–5) until a tied group has met home and
- * away, and inside the Hinrunde no pair ever has. A finished Hinrunde is
- * therefore still ranked under the in-season rules, and a genuine tie is a
- * geteilter Tabellenplatz rather than an invented order.
+ * A HALF IS ALWAYS RANKED UNDER THE IN-SEASON RULES, complete or not.
+ *
+ * That is not the same rule the full table follows, and the difference is the
+ * whole point. `inSeason: false` tells the ranker that criteria 3)–5) — the
+ * direct comparison — may be applied. The Spielordnung allows them only once a
+ * tied group has met home AND away, and inside a half no pair ever does: the
+ * Hinrunde is exactly one leg per pairing. Ranking a *finished* Hinrunde with
+ * `inSeason: false` therefore separates clubs on a single-leg head-to-head the
+ * rules do not permit, and it does so silently — the table simply looks decided.
+ *
+ * Two clubs level on points, goal difference and goals scored after the anchor
+ * are level. That is a geteilter Tabellenplatz, and `herbstmeisterFact` must
+ * report both, because the engine's tally ranks the same anchor the same way
+ * (`simulate.mjs`, `inSeason: true`, no decider). Getting this wrong put the
+ * page in contradiction with the artefact it is supposed to display.
+ *
+ * „Gesamt" keeps the completeness rule: over a full season both legs HAVE been
+ * played, so the direct comparison is available and a finished season really is
+ * fully ordered.
  *
  * Returns null when the season has no configured half.
  */
@@ -60,10 +73,10 @@ export function halfSeasonTable(season, leagueConfig, half) {
   const played = playedFixtures(scope).map((f) => ({
     home: f.homeClubId, away: f.awayClubId, gh: f.gh, ga: f.ga,
   }));
-  const complete = remainingFixtures(scope).length === 0;
+  const inSeason = half === "gesamt" ? remainingFixtures(scope).length > 0 : true;
   // A half with nothing played yet still ranks — every club shares rank 1, which
   // is the honest table, not an empty state.
-  return rankTable(buildTable(clubIds, played, rules), played, { inSeason: !complete, rules });
+  return rankTable(buildTable(clubIds, played, rules), played, { inSeason, rules });
 }
 
 /**

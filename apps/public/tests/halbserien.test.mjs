@@ -6,7 +6,8 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
 import { preSeason, throughMatchday, withPostponed } from "./harness/seasonStates.mjs";
-import { anchorSource } from "../src/lib/halbserie.js";
+import { anchorSource, halfSeasonTable, herbstmeisterFact } from "../src/lib/halbserie.js";
+import { simulateSeason } from "../../../packages/engine/src/simulate.mjs";
 
 // ============================================================================
 //  The half-season package (HALBSERIEN §2–§6), through the PAGES.
@@ -179,6 +180,91 @@ test("every number the Halbzeitbilanz prints is a number", () => {
   // of the floor.
   assert.match(html, /Treffsicherheit/);
   assert.match(html, /\d{2,3},\d %/, "a percentage with real digits");
+});
+
+// ---------------------------------------------------------------------------
+//  The anchor is ranked ONCE. Engine and page must not disagree about it.
+// ---------------------------------------------------------------------------
+
+test("a half is ranked under the IN-SEASON rules even when it is complete", () => {
+  // Codex review of PR #47. `inSeason: false` unlocks the direct comparison
+  // (criteria 3–5), and the Spielordnung releases it only once a tied group has
+  // met home AND away. Inside a half no pair ever does — the Hinrunde is exactly
+  // one leg per pairing. Ranking a finished Hinrunde as „not in season" therefore
+  // separates clubs on a single-leg head-to-head, silently: the table just looks
+  // decided.
+  //
+  // Four clubs, one leg each. A and B beat C and D and draw with each other, so
+  // both stand on 7 points, +2, 2 scored — level on criteria 1 and 2, and the
+  // rules stop there.
+  const clubs = ["A", "B", "C", "D"].map((clubId) => ({ clubId, name: clubId }));
+  const results = [
+    ["A", "B", 0, 0], ["A", "C", 1, 0], ["D", "A", 0, 1],
+    ["B", "C", 1, 0], ["B", "D", 1, 0], ["C", "D", 0, 0],
+  ];
+  const season = {
+    clubs,
+    fixtures: results.map(([home, away, gh, ga], i) => ({
+      id: `f${i}`, matchday: i < 3 ? 1 : i < 5 ? 2 : 3,
+      homeClubId: home, awayClubId: away, gh, ga, finished: true,
+      kickoff: `2026-08-0${i + 1}T15:30:00Z`,
+    })),
+  };
+  const leagueConfig = {
+    pointsForWin: 3, pointsForDraw: 1, matchdayCount: 6, herbstmeisterUntilMatchday: 3,
+    tiebreakCriteria: ["goalDifference", "goalsFor", "h2hAggregate", "h2hAwayGoals", "awayGoals"],
+    targets: { meister: { places: 1, from: 1, to: 1, label: "Meister" } },
+  };
+
+  const table = halfSeasonTable(season, leagueConfig, "hin");
+  const leaders = table.filter((r) => r.rank === 1).map((r) => r.clubId).sort();
+  assert.deepEqual(leaders, ["A", "B"], "a single-leg head-to-head must not separate them");
+  assert.ok(table[0].sharedRank);
+
+  const fact = herbstmeisterFact(season, leagueConfig);
+  assert.deepEqual(fact.clubIds.slice().sort(), ["A", "B"]);
+  assert.equal(fact.shared, true);
+});
+
+test("the page's Herbstmeister fact agrees with the engine's tally, club for club", () => {
+  // The invariant that matters: two implementations of „who leads at the anchor"
+  // exist — the engine ranks it per run, the page reads it off the real results.
+  // They must never contradict each other, or the page disputes the artefact it
+  // is there to display. This is the case that caught it.
+  const ids = ["A", "B", "C", "D"];
+  const clubs = ids.map((clubId, i) => ({ clubId, name: clubId, rating: 1700 - i * 40 }));
+  const results = [
+    ["A", "B", 0, 0], ["A", "C", 1, 0], ["D", "A", 0, 1],
+    ["B", "C", 1, 0], ["B", "D", 1, 0], ["C", "D", 0, 0],
+  ];
+  const fixtures = results.map(([home, away, gh, ga], i) => ({
+    id: `f${i}`, matchday: i < 3 ? 1 : i < 5 ? 2 : 3,
+    homeClubId: home, awayClubId: away, gh, ga, finished: true,
+    kickoff: `2026-08-0${i + 1}T15:30:00Z`,
+  }));
+  const leagueConfig = {
+    pointsForWin: 3, pointsForDraw: 1, matchdayCount: 6, herbstmeisterUntilMatchday: 3,
+    tiebreakCriteria: ["goalDifference", "goalsFor", "h2hAggregate", "h2hAwayGoals", "awayGoals"],
+    targets: { meister: { places: 1, from: 1, to: 1, label: "Meister" } },
+  };
+
+  const sim = simulateSeason({
+    seasonId: "agree", league: "bl1", clubs, params: read("data/season-params.json").params,
+    targets: { meister: { places: 1, positions: (r) => r === 1 } },
+    runs: 200, batches: 10,
+    rules: { pointsForWin: 3, pointsForDraw: 1, criteria: leagueConfig.tiebreakCriteria },
+    fixtures: fixtures.map((f) => ({
+      id: f.id, home: f.homeClubId, away: f.awayClubId, matchday: f.matchday, gh: f.gh, ga: f.ga,
+    })),
+    herbstmeisterUntilMatchday: 3,
+  });
+
+  const engineLeaders = Object.entries(sim.herbstmeister.probabilities)
+    .filter(([, p]) => p === 1).map(([id]) => id).sort();
+  const pageLeaders = herbstmeisterFact({ clubs, fixtures }, leagueConfig).clubIds.slice().sort();
+  assert.deepEqual(pageLeaders, engineLeaders, "page and artefact must name the same leaders");
+  assert.deepEqual(engineLeaders, ["A", "B"]);
+  assert.equal(sim.herbstmeister.sharedProbability, 1);
 });
 
 // ---------------------------------------------------------------------------
