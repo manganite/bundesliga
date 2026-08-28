@@ -370,13 +370,34 @@ tut, bleibt es eine offene Frage und keine Annahme.
    auf das Archiv zurück — über dieselbe gebundene Bewertung, die ein einzelner
    fehlender Klub durchläuft. Ohne Flag scheitert er weiter (§5.2).
 
-**Die Reichweite ist begrenzt, und zwar knapper als zunächst angenommen.** Regel 5
-der Carry-forward-Bewertung lehnt ab, sobald ein **geplantes** Spiel in die Lücke
-fällt — nicht erst ein gespieltes. Der Rückgriff trägt also bis zum Vorabend des
-nächsten Spieltags und hört dann auf. Am 2026-08-28 (BL1-Spieltag 1, BL2-Spieltag 3)
-scheitert der Lauf wieder, wenn clubelo bis dahin nicht antwortet. Dass **Ergebnisse
-die App erreichen, während die Ratings alt sind**, ist ein anderes Problem und
-braucht die Zwei-Uhren-Trennung (`pipeline-ausfallverhalten.md` §4, Weg B).
+**Der Vorfall ist beendet (2026-08-26).** clubelo antwortet seit dem
+2026-08-26 gegen 16:36 UTC wieder, mit allen 36 Klubs; der Cron hat den
+Tagesstand von selbst geholt, die ⚑-Markierung ist verschwunden, und beide
+Ligen rechnen wieder mit `provenance: "live"`. Der Rückgriff hat genau das
+getan, wofür er gebaut wurde: die Läufe blieben grün, nichts Erfundenes kam ins
+Archiv, und die Übergabe zurück in den Normalbetrieb brauchte keinen Eingriff.
+Die Flag ist am 2026-08-28 wieder aus `data.yml` entfernt worden.
+
+Zwei Dinge, die dabei erhalten geblieben sind: die **Archivlücke vom 20. bis
+25.08.** bleibt eine Lücke — dort steht nichts, weil clubelo nichts
+veröffentlicht hat, und kein Pflichttermin fällt hinein. Und die 18 Spiele des
+Wochenendes 28.–30.08. (BL1-Auftakt, BL2-Spieltag 3) haben **zeitgenössische**
+Pre-Match-Ratings aus dem Snapshot vom 27.08., keine übertragenen und keine
+rekonstruierten.
+
+**Die Reichweite ist begrenzt, und zwar knapper als zunächst angenommen** — eine
+stehende Eigenschaft des Mechanismus, unabhängig von diesem Vorfall. Regel 5 der
+Carry-forward-Bewertung lehnt ab, sobald ein **geplantes** Spiel in die Lücke
+fällt, nicht erst ein gespieltes. Der Rückgriff trägt damit bis zum Vorabend des
+nächsten Spieltags und hört dann auf.
+
+Im Vorfall 2026-08 wurde diese Grenze nie erreicht: clubelo kam am 26.08. zurück,
+zwei Tage vor dem Wochenende vom 28.–30.08. (BL1-Spieltag 1, BL2-Spieltag 3).
+Hätte der Ausfall angehalten, wäre der Lauf an diesem Wochenende wieder
+gescheitert — der Rückgriff hätte ihn nicht getragen. Dass **Ergebnisse die App
+erreichen, während die Ratings alt sind**, bleibt ein anderes Problem und
+braucht die Zwei-Uhren-Trennung (`pipeline-ausfallverhalten.md` §4, Weg B); sie
+ist weiterhin nicht gebaut und wartet auf ihre Auslösebedingung.
 
 **Eine Hoffnung, kein Plan:** der Relaunch könnte die vier eingefrorenen
 Rating-Reihen wieder in Gang bringen. Falls ja, räumen sich die
