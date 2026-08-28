@@ -323,7 +323,9 @@
       "awayClubId": "Osnabrück",
       "homeName": "VfL Bochum",
       "awayName": "VfL Osnabrück",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83546",
@@ -333,7 +335,9 @@
       "awayClubId": "Hertha",
       "homeName": "Eintracht Braunschweig",
       "awayName": "Hertha BSC",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 5
     },
     {
       "id": "83540",

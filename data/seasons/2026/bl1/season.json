@@ -107,7 +107,9 @@
       "awayClubId": "Stuttgart",
       "homeName": "FC Bayern München",
       "awayName": "VfB Stuttgart",
-      "finished": false
+      "finished": true,
+      "gh": 5,
+      "ga": 1
     },
     {
       "id": "83158",

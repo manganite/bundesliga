@@ -8,9 +8,9 @@
     {
       "matchday": 1,
       "asOf": "2026-08-10",
-      "snapshotId": "clubelo-2026-08-09-70469cbfef058681",
+      "snapshotId": "clubelo-2026-08-10-70469cbfef058681",
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 9,
       "probabilities": {
@@ -224,14 +224,39 @@
           "p10": 45,
           "p90": 75
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Bielefeld": 0.0118,
+          "Bochum": 0.0394,
+          "Braunschweig": 0.0278,
+          "Cottbus": 0.0136,
+          "Darmstadt": 0.0468,
+          "Dresden": 0.0148,
+          "Fürth": 0.0136,
+          "Hannover": 0.0728,
+          "Heidenheim": 0.173,
+          "Hertha": 0.0664,
+          "Kaiserslautern": 0.044,
+          "Karlsruhe": 0.0516,
+          "Kiel": 0.0472,
+          "Magdeburg": 0.0196,
+          "Nürnberg": 0.0664,
+          "Osnabrück": 0.004,
+          "St. Pauli": 0.0912,
+          "Wolfsburg": 0.1968
+        },
+        "sharedProbability": 0.0008
       }
     },
     {
       "matchday": 2,
       "asOf": "2026-08-17",
-      "snapshotId": "clubelo-2026-08-16-70469cbfef058681",
+      "snapshotId": "clubelo-2026-08-17-70469cbfef058681",
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 18,
       "probabilities": {
@@ -445,6 +470,31 @@
           "p10": 47,
           "p90": 77
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Bielefeld": 0.0184,
+          "Bochum": 0.059,
+          "Braunschweig": 0.017,
+          "Cottbus": 0.0068,
+          "Darmstadt": 0.0256,
+          "Dresden": 0.0184,
+          "Fürth": 0.007,
+          "Hannover": 0.0472,
+          "Heidenheim": 0.105,
+          "Hertha": 0.1058,
+          "Kaiserslautern": 0.0304,
+          "Karlsruhe": 0.0366,
+          "Kiel": 0.039,
+          "Magdeburg": 0.0278,
+          "Nürnberg": 0.1008,
+          "Osnabrück": 0.0022,
+          "St. Pauli": 0.0838,
+          "Wolfsburg": 0.2702
+        },
+        "sharedProbability": 0.001
       }
     }
   ],
