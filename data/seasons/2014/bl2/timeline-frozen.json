@@ -8,7 +8,7 @@
     {
       "matchday": 0,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 0,
       "probabilities": {
@@ -222,12 +222,37 @@
           "p10": 31,
           "p90": 62
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0452,
+          "Aalen": 0.0384,
+          "Aue": 0.024,
+          "Bochum": 0.0172,
+          "Braunschweig": 0.0948,
+          "Darmstadt": 0.013,
+          "Düsseldorf": 0.0978,
+          "FSV Frankfurt": 0.0324,
+          "Fürth": 0.146,
+          "Heidenheim": 0.0122,
+          "Ingolstadt": 0.0478,
+          "Kaiserslautern": 0.1122,
+          "Karlsruhe": 0.0458,
+          "Leipzig": 0.0154,
+          "Nürnberg": 0.1588,
+          "Sandhausen": 0.0204,
+          "St. Pauli": 0.045,
+          "Union Berlin": 0.0342
+        },
+        "sharedProbability": 0.0006
       }
     },
     {
       "matchday": 1,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 9,
       "probabilities": {
@@ -441,12 +466,37 @@
           "p10": 30,
           "p90": 61
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0344,
+          "Aalen": 0.0308,
+          "Aue": 0.016,
+          "Bochum": 0.0144,
+          "Braunschweig": 0.0952,
+          "Darmstadt": 0.0174,
+          "Düsseldorf": 0.0886,
+          "FSV Frankfurt": 0.0182,
+          "Fürth": 0.1312,
+          "Heidenheim": 0.0226,
+          "Ingolstadt": 0.0468,
+          "Kaiserslautern": 0.1546,
+          "Karlsruhe": 0.0404,
+          "Leipzig": 0.0118,
+          "Nürnberg": 0.1974,
+          "Sandhausen": 0.0102,
+          "St. Pauli": 0.0364,
+          "Union Berlin": 0.0338
+        },
+        "sharedProbability": 0.0002
       }
     },
     {
       "matchday": 2,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 18,
       "probabilities": {
@@ -660,12 +710,37 @@
           "p10": 31,
           "p90": 60
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0156,
+          "Aalen": 0.0436,
+          "Aue": 0.0084,
+          "Bochum": 0.0272,
+          "Braunschweig": 0.1256,
+          "Darmstadt": 0.019,
+          "Düsseldorf": 0.0762,
+          "FSV Frankfurt": 0.0116,
+          "Fürth": 0.1892,
+          "Heidenheim": 0.0134,
+          "Ingolstadt": 0.0326,
+          "Kaiserslautern": 0.139,
+          "Karlsruhe": 0.0624,
+          "Leipzig": 0.0178,
+          "Nürnberg": 0.153,
+          "Sandhausen": 0.0102,
+          "St. Pauli": 0.0254,
+          "Union Berlin": 0.0308
+        },
+        "sharedProbability": 0.001
       }
     },
     {
       "matchday": 3,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 27,
       "probabilities": {
@@ -879,12 +954,37 @@
           "p10": 31,
           "p90": 59
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0132,
+          "Aalen": 0.0314,
+          "Aue": 0.0024,
+          "Bochum": 0.0278,
+          "Braunschweig": 0.1048,
+          "Darmstadt": 0.0304,
+          "Düsseldorf": 0.0466,
+          "FSV Frankfurt": 0.0214,
+          "Fürth": 0.1452,
+          "Heidenheim": 0.0138,
+          "Ingolstadt": 0.0582,
+          "Kaiserslautern": 0.1982,
+          "Karlsruhe": 0.1172,
+          "Leipzig": 0.033,
+          "Nürnberg": 0.092,
+          "Sandhausen": 0.0054,
+          "St. Pauli": 0.0366,
+          "Union Berlin": 0.0236
+        },
+        "sharedProbability": 0.0012
       }
     },
     {
       "matchday": 4,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 36,
       "probabilities": {
@@ -1098,12 +1198,37 @@
           "p10": 30,
           "p90": 58
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0104,
+          "Aalen": 0.0168,
+          "Aue": 0.002,
+          "Bochum": 0.0456,
+          "Braunschweig": 0.0484,
+          "Darmstadt": 0.03,
+          "Düsseldorf": 0.0714,
+          "FSV Frankfurt": 0.017,
+          "Fürth": 0.193,
+          "Heidenheim": 0.009,
+          "Ingolstadt": 0.0928,
+          "Kaiserslautern": 0.1782,
+          "Karlsruhe": 0.0786,
+          "Leipzig": 0.0314,
+          "Nürnberg": 0.1442,
+          "Sandhausen": 0.002,
+          "St. Pauli": 0.0188,
+          "Union Berlin": 0.0108
+        },
+        "sharedProbability": 0.0004
       }
     },
     {
       "matchday": 5,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 45,
       "probabilities": {
@@ -1317,12 +1442,37 @@
           "p10": 29,
           "p90": 56
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0158,
+          "Aalen": 0.0098,
+          "Aue": 0.0002,
+          "Bochum": 0.0396,
+          "Braunschweig": 0.0206,
+          "Darmstadt": 0.0444,
+          "Düsseldorf": 0.124,
+          "FSV Frankfurt": 0.007,
+          "Fürth": 0.121,
+          "Heidenheim": 0.017,
+          "Ingolstadt": 0.125,
+          "Kaiserslautern": 0.254,
+          "Karlsruhe": 0.0686,
+          "Leipzig": 0.0524,
+          "Nürnberg": 0.087,
+          "Sandhausen": 0.0028,
+          "St. Pauli": 0.007,
+          "Union Berlin": 0.0052
+        },
+        "sharedProbability": 0.0012
       }
     },
     {
       "matchday": 6,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 54,
       "probabilities": {
@@ -1536,12 +1686,37 @@
           "p10": 30,
           "p90": 57
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0092,
+          "Aalen": 0.0054,
+          "Aue": 0.001,
+          "Bochum": 0.0676,
+          "Braunschweig": 0.0366,
+          "Darmstadt": 0.0272,
+          "Düsseldorf": 0.1536,
+          "FSV Frankfurt": 0.0022,
+          "Fürth": 0.1624,
+          "Heidenheim": 0.011,
+          "Ingolstadt": 0.1238,
+          "Kaiserslautern": 0.1814,
+          "Karlsruhe": 0.1246,
+          "Leipzig": 0.036,
+          "Nürnberg": 0.0408,
+          "Sandhausen": 0.006,
+          "St. Pauli": 0.0052,
+          "Union Berlin": 0.0074
+        },
+        "sharedProbability": 0.0014
       }
     },
     {
       "matchday": 7,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 63,
       "probabilities": {
@@ -1755,12 +1930,37 @@
           "p10": 30,
           "p90": 56
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0046,
+          "Aalen": 0.0024,
+          "Aue": 0.0002,
+          "Bochum": 0.0646,
+          "Braunschweig": 0.016,
+          "Darmstadt": 0.0614,
+          "Düsseldorf": 0.1492,
+          "FSV Frankfurt": 0.0002,
+          "Fürth": 0.1408,
+          "Heidenheim": 0.0248,
+          "Ingolstadt": 0.1,
+          "Kaiserslautern": 0.2652,
+          "Karlsruhe": 0.071,
+          "Leipzig": 0.0618,
+          "Nürnberg": 0.0198,
+          "Sandhausen": 0.0086,
+          "St. Pauli": 0.0072,
+          "Union Berlin": 0.0038
+        },
+        "sharedProbability": 0.0016
       }
     },
     {
       "matchday": 8,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 72,
       "probabilities": {
@@ -1974,12 +2174,37 @@
           "p10": 30,
           "p90": 55
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0058,
+          "Aalen": 0.0004,
+          "Aue": 0.001,
+          "Bochum": 0.0462,
+          "Braunschweig": 0.0304,
+          "Darmstadt": 0.0574,
+          "Düsseldorf": 0.1198,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.0946,
+          "Heidenheim": 0.0476,
+          "Ingolstadt": 0.213,
+          "Kaiserslautern": 0.2252,
+          "Karlsruhe": 0.0424,
+          "Leipzig": 0.0768,
+          "Nürnberg": 0.028,
+          "Sandhausen": 0.0072,
+          "St. Pauli": 0.0038,
+          "Union Berlin": 0.001
+        },
+        "sharedProbability": 0.0006
       }
     },
     {
       "matchday": 9,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 81,
       "probabilities": {
@@ -2193,12 +2418,37 @@
           "p10": 29,
           "p90": 53
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0006,
+          "Aalen": 0.0008,
+          "Aue": 0.0002,
+          "Bochum": 0.0272,
+          "Braunschweig": 0.0064,
+          "Darmstadt": 0.022,
+          "Düsseldorf": 0.1604,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.1064,
+          "Heidenheim": 0.0334,
+          "Ingolstadt": 0.2736,
+          "Kaiserslautern": 0.2908,
+          "Karlsruhe": 0.0106,
+          "Leipzig": 0.0468,
+          "Nürnberg": 0.013,
+          "Sandhausen": 0.0022,
+          "St. Pauli": 0.0064,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0.0008
       }
     },
     {
       "matchday": 10,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 90,
       "probabilities": {
@@ -2412,12 +2662,37 @@
           "p10": 30,
           "p90": 54
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0.0002,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0.0138,
+          "Braunschweig": 0.0012,
+          "Darmstadt": 0.0132,
+          "Düsseldorf": 0.2116,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.0768,
+          "Heidenheim": 0.0198,
+          "Ingolstadt": 0.4098,
+          "Kaiserslautern": 0.218,
+          "Karlsruhe": 0.0038,
+          "Leipzig": 0.0192,
+          "Nürnberg": 0.0128,
+          "Sandhausen": 0,
+          "St. Pauli": 0.0006,
+          "Union Berlin": 0.0002
+        },
+        "sharedProbability": 0.001
       }
     },
     {
       "matchday": 11,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 99,
       "probabilities": {
@@ -2631,12 +2906,37 @@
           "p10": 32,
           "p90": 56
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0.0054,
+          "Braunschweig": 0.003,
+          "Darmstadt": 0.0236,
+          "Düsseldorf": 0.18,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.0188,
+          "Heidenheim": 0.0046,
+          "Ingolstadt": 0.564,
+          "Kaiserslautern": 0.1486,
+          "Karlsruhe": 0.0126,
+          "Leipzig": 0.0404,
+          "Nürnberg": 0.0006,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0.0016
       }
     },
     {
       "matchday": 12,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 108,
       "probabilities": {
@@ -2850,12 +3150,37 @@
           "p10": 32,
           "p90": 54
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0.0002,
+          "Bochum": 0.0006,
+          "Braunschweig": 0.0076,
+          "Darmstadt": 0.023,
+          "Düsseldorf": 0.1158,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.0436,
+          "Heidenheim": 0.003,
+          "Ingolstadt": 0.6492,
+          "Kaiserslautern": 0.1198,
+          "Karlsruhe": 0.0064,
+          "Leipzig": 0.0322,
+          "Nürnberg": 0.0002,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0.0016
       }
     },
     {
       "matchday": 13,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 117,
       "probabilities": {
@@ -3069,12 +3394,37 @@
           "p10": 32,
           "p90": 53
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.0164,
+          "Darmstadt": 0.0372,
+          "Düsseldorf": 0.2562,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.0044,
+          "Heidenheim": 0.0056,
+          "Ingolstadt": 0.5894,
+          "Kaiserslautern": 0.0712,
+          "Karlsruhe": 0.016,
+          "Leipzig": 0.0074,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0.0038
       }
     },
     {
       "matchday": 14,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 126,
       "probabilities": {
@@ -3288,12 +3638,37 @@
           "p10": 31,
           "p90": 52
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0.0002,
+          "Braunschweig": 0.05,
+          "Darmstadt": 0.0458,
+          "Düsseldorf": 0.221,
+          "FSV Frankfurt": 0,
+          "Fürth": 0.0002,
+          "Heidenheim": 0.0222,
+          "Ingolstadt": 0.5496,
+          "Kaiserslautern": 0.0342,
+          "Karlsruhe": 0.0464,
+          "Leipzig": 0.0338,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0.0034
       }
     },
     {
       "matchday": 15,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 135,
       "probabilities": {
@@ -3507,12 +3882,37 @@
           "p10": 33,
           "p90": 53
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0.0676,
+          "Darmstadt": 0.0092,
+          "Düsseldorf": 0.029,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0.0032,
+          "Ingolstadt": 0.8246,
+          "Kaiserslautern": 0.0594,
+          "Karlsruhe": 0.0028,
+          "Leipzig": 0.0056,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0.0014
       }
     },
     {
       "matchday": 16,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 144,
       "probabilities": {
@@ -3726,12 +4126,37 @@
           "p10": 35,
           "p90": 54
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 17,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 153,
       "probabilities": {
@@ -3945,12 +4370,37 @@
           "p10": 35,
           "p90": 53
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 18,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 162,
       "probabilities": {
@@ -4164,12 +4614,37 @@
           "p10": 37,
           "p90": 54
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 19,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 171,
       "probabilities": {
@@ -4383,12 +4858,37 @@
           "p10": 36,
           "p90": 53
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 20,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 180,
       "probabilities": {
@@ -4602,12 +5102,37 @@
           "p10": 38,
           "p90": 54
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 21,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 189,
       "probabilities": {
@@ -4821,12 +5346,37 @@
           "p10": 37,
           "p90": 53
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 22,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 198,
       "probabilities": {
@@ -5040,12 +5590,37 @@
           "p10": 39,
           "p90": 54
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 23,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 207,
       "probabilities": {
@@ -5259,12 +5834,37 @@
           "p10": 38,
           "p90": 52
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 24,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 216,
       "probabilities": {
@@ -5478,12 +6078,37 @@
           "p10": 38,
           "p90": 51
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 25,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 225,
       "probabilities": {
@@ -5697,12 +6322,37 @@
           "p10": 37,
           "p90": 49
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 26,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 234,
       "probabilities": {
@@ -5916,12 +6566,37 @@
           "p10": 39,
           "p90": 50
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 27,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 243,
       "probabilities": {
@@ -6135,12 +6810,37 @@
           "p10": 39,
           "p90": 49
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 28,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 252,
       "probabilities": {
@@ -6354,12 +7054,37 @@
           "p10": 39,
           "p90": 48
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 29,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 261,
       "probabilities": {
@@ -6573,12 +7298,37 @@
           "p10": 40,
           "p90": 48
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 30,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 270,
       "probabilities": {
@@ -6792,12 +7542,37 @@
           "p10": 40,
           "p90": 47
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 31,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 279,
       "probabilities": {
@@ -7011,12 +7786,37 @@
           "p10": 42,
           "p90": 48
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 32,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 288,
       "probabilities": {
@@ -7230,12 +8030,37 @@
           "p10": 41,
           "p90": 47
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 33,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 297,
       "probabilities": {
@@ -7449,12 +8274,37 @@
           "p10": 44,
           "p90": 47
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 34,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 306,
       "probabilities": {
@@ -7668,6 +8518,31 @@
           "p10": 47,
           "p90": 47
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "1860 München": 0,
+          "Aalen": 0,
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "FSV Frankfurt": 0,
+          "Fürth": 0,
+          "Heidenheim": 0,
+          "Ingolstadt": 1,
+          "Kaiserslautern": 0,
+          "Karlsruhe": 0,
+          "Leipzig": 0,
+          "Nürnberg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0
       }
     }
   ],

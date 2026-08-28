@@ -24,7 +24,7 @@
   "league": "bl2",
   "runs": 20000,
   "batches": 20,
-  "engineVersion": 1,
+  "engineVersion": 2,
   "simulationProtocolVersion": 2,
   "clubs": [
     "Braunschweig",
@@ -2613,6 +2613,31 @@
       "p10": 32,
       "p90": 32
     }
+  },
+  "herbstmeister": {
+    "untilMatchday": 17,
+    "decided": true,
+    "probabilities": {
+      "Braunschweig": 0,
+      "Düsseldorf": 0,
+      "Elversberg": 0,
+      "Fürth": 0,
+      "Hannover": 0,
+      "Hertha": 0,
+      "HSV": 0,
+      "Kaiserslautern": 0,
+      "Karlsruhe": 0,
+      "Kiel": 1,
+      "Magdeburg": 0,
+      "Nürnberg": 0,
+      "Osnabrück": 0,
+      "Paderborn": 0,
+      "Rostock": 0,
+      "Schalke": 0,
+      "St. Pauli": 0,
+      "Wiesbaden": 0
+    },
+    "sharedProbability": 0
   },
   "fixtureImpact": null
 }

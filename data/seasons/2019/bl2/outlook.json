@@ -24,7 +24,7 @@
   "league": "bl2",
   "runs": 20000,
   "batches": 20,
-  "engineVersion": 1,
+  "engineVersion": 2,
   "simulationProtocolVersion": 2,
   "clubs": [
     "Aue",
@@ -2613,6 +2613,31 @@
       "p10": 34,
       "p90": 34
     }
+  },
+  "herbstmeister": {
+    "untilMatchday": 17,
+    "decided": true,
+    "probabilities": {
+      "Aue": 0,
+      "Bielefeld": 1,
+      "Bochum": 0,
+      "Darmstadt": 0,
+      "Dresden": 0,
+      "Fürth": 0,
+      "Hannover": 0,
+      "Heidenheim": 0,
+      "HSV": 0,
+      "Karlsruhe": 0,
+      "Kiel": 0,
+      "Nürnberg": 0,
+      "Osnabrück": 0,
+      "Regensburg": 0,
+      "Sandhausen": 0,
+      "St. Pauli": 0,
+      "Stuttgart": 0,
+      "Wiesbaden": 0
+    },
+    "sharedProbability": 0
   },
   "fixtureImpact": null
 }

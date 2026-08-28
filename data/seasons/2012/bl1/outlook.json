@@ -24,7 +24,7 @@
   "league": "bl1",
   "runs": 20000,
   "batches": 20,
-  "engineVersion": 1,
+  "engineVersion": 2,
   "simulationProtocolVersion": 2,
   "clubs": [
     "Augsburg",
@@ -3031,6 +3031,31 @@
       "p10": 43,
       "p90": 43
     }
+  },
+  "herbstmeister": {
+    "untilMatchday": 17,
+    "decided": true,
+    "probabilities": {
+      "Augsburg": 0,
+      "Bayern": 1,
+      "Bremen": 0,
+      "Dortmund": 0,
+      "Düsseldorf": 0,
+      "Frankfurt": 0,
+      "Freiburg": 0,
+      "Fürth": 0,
+      "Gladbach": 0,
+      "Hannover": 0,
+      "Hoffenheim": 0,
+      "HSV": 0,
+      "Leverkusen": 0,
+      "Mainz": 0,
+      "Nürnberg": 0,
+      "Schalke": 0,
+      "Stuttgart": 0,
+      "Wolfsburg": 0
+    },
+    "sharedProbability": 0
   },
   "fixtureImpact": null
 }

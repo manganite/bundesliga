@@ -8,7 +8,7 @@
     {
       "matchday": 0,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 0,
       "probabilities": {
@@ -222,12 +222,37 @@
           "p10": 26,
           "p90": 57
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0366,
+          "Bochum": 0.058,
+          "Braunschweig": 0.0252,
+          "Darmstadt": 0.0772,
+          "Düsseldorf": 0.1864,
+          "Fürth": 0.0316,
+          "Hannover": 0.085,
+          "Heidenheim": 0.0898,
+          "HSV": 0.0794,
+          "Karlsruhe": 0.027,
+          "Kiel": 0.0464,
+          "Nürnberg": 0.0318,
+          "Osnabrück": 0.031,
+          "Paderborn": 0.0656,
+          "Regensburg": 0.0356,
+          "Sandhausen": 0.0448,
+          "St. Pauli": 0.0232,
+          "Würzburg": 0.0262
+        },
+        "sharedProbability": 0.0008
       }
     },
     {
       "matchday": 1,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 9,
       "probabilities": {
@@ -441,12 +466,37 @@
           "p10": 25,
           "p90": 55
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.058,
+          "Bochum": 0.0574,
+          "Braunschweig": 0.0166,
+          "Darmstadt": 0.0556,
+          "Düsseldorf": 0.1374,
+          "Fürth": 0.0288,
+          "Hannover": 0.112,
+          "Heidenheim": 0.117,
+          "HSV": 0.1116,
+          "Karlsruhe": 0.0134,
+          "Kiel": 0.0658,
+          "Nürnberg": 0.0366,
+          "Osnabrück": 0.0226,
+          "Paderborn": 0.0418,
+          "Regensburg": 0.0298,
+          "Sandhausen": 0.0584,
+          "St. Pauli": 0.024,
+          "Würzburg": 0.0136
+        },
+        "sharedProbability": 0.0004
       }
     },
     {
       "matchday": 2,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 18,
       "probabilities": {
@@ -660,12 +710,37 @@
           "p10": 24,
           "p90": 54
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.05,
+          "Bochum": 0.0754,
+          "Braunschweig": 0.0104,
+          "Darmstadt": 0.045,
+          "Düsseldorf": 0.176,
+          "Fürth": 0.0216,
+          "Hannover": 0.0884,
+          "Heidenheim": 0.0772,
+          "HSV": 0.1764,
+          "Karlsruhe": 0.0084,
+          "Kiel": 0.0608,
+          "Nürnberg": 0.0502,
+          "Osnabrück": 0.028,
+          "Paderborn": 0.022,
+          "Regensburg": 0.023,
+          "Sandhausen": 0.0454,
+          "St. Pauli": 0.034,
+          "Würzburg": 0.0086
+        },
+        "sharedProbability": 0.0008
       }
     },
     {
       "matchday": 3,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 27,
       "probabilities": {
@@ -879,12 +954,37 @@
           "p10": 24,
           "p90": 53
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0264,
+          "Bochum": 0.0576,
+          "Braunschweig": 0.0058,
+          "Darmstadt": 0.0626,
+          "Düsseldorf": 0.118,
+          "Fürth": 0.0164,
+          "Hannover": 0.11,
+          "Heidenheim": 0.0682,
+          "HSV": 0.2302,
+          "Karlsruhe": 0.0038,
+          "Kiel": 0.0916,
+          "Nürnberg": 0.028,
+          "Osnabrück": 0.0276,
+          "Paderborn": 0.0198,
+          "Regensburg": 0.0402,
+          "Sandhausen": 0.0666,
+          "St. Pauli": 0.0222,
+          "Würzburg": 0.006
+        },
+        "sharedProbability": 0.001
       }
     },
     {
       "matchday": 4,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 36,
       "probabilities": {
@@ -1098,12 +1198,37 @@
           "p10": 23,
           "p90": 52
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0426,
+          "Bochum": 0.0352,
+          "Braunschweig": 0.0084,
+          "Darmstadt": 0.0508,
+          "Düsseldorf": 0.0872,
+          "Fürth": 0.0112,
+          "Hannover": 0.0796,
+          "Heidenheim": 0.0388,
+          "HSV": 0.3376,
+          "Karlsruhe": 0.0074,
+          "Kiel": 0.1292,
+          "Nürnberg": 0.0244,
+          "Osnabrück": 0.0264,
+          "Paderborn": 0.0244,
+          "Regensburg": 0.0392,
+          "Sandhausen": 0.0404,
+          "St. Pauli": 0.0172,
+          "Würzburg": 0.0016
+        },
+        "sharedProbability": 0.0016
       }
     },
     {
       "matchday": 5,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 45,
       "probabilities": {
@@ -1317,12 +1442,37 @@
           "p10": 23,
           "p90": 50
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.022,
+          "Bochum": 0.0514,
+          "Braunschweig": 0.0048,
+          "Darmstadt": 0.0342,
+          "Düsseldorf": 0.0472,
+          "Fürth": 0.0176,
+          "Hannover": 0.1092,
+          "Heidenheim": 0.026,
+          "HSV": 0.447,
+          "Karlsruhe": 0.0056,
+          "Kiel": 0.0832,
+          "Nürnberg": 0.0168,
+          "Osnabrück": 0.0226,
+          "Paderborn": 0.0206,
+          "Regensburg": 0.0494,
+          "Sandhausen": 0.0278,
+          "St. Pauli": 0.0144,
+          "Würzburg": 0.0004
+        },
+        "sharedProbability": 0.0002
       }
     },
     {
       "matchday": 6,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 54,
       "probabilities": {
@@ -1536,12 +1686,37 @@
           "p10": 22,
           "p90": 48
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0152,
+          "Bochum": 0.085,
+          "Braunschweig": 0.0068,
+          "Darmstadt": 0.0734,
+          "Düsseldorf": 0.066,
+          "Fürth": 0.0262,
+          "Hannover": 0.073,
+          "Heidenheim": 0.0202,
+          "HSV": 0.4028,
+          "Karlsruhe": 0.0026,
+          "Kiel": 0.08,
+          "Nürnberg": 0.0088,
+          "Osnabrück": 0.04,
+          "Paderborn": 0.0332,
+          "Regensburg": 0.0368,
+          "Sandhausen": 0.0188,
+          "St. Pauli": 0.0124,
+          "Würzburg": 0.0002
+        },
+        "sharedProbability": 0.0014
       }
     },
     {
       "matchday": 7,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 63,
       "probabilities": {
@@ -1755,12 +1930,37 @@
           "p10": 21,
           "p90": 47
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0162,
+          "Bochum": 0.0474,
+          "Braunschweig": 0.0094,
+          "Darmstadt": 0.0336,
+          "Düsseldorf": 0.0582,
+          "Fürth": 0.0514,
+          "Hannover": 0.0596,
+          "Heidenheim": 0.028,
+          "HSV": 0.4276,
+          "Karlsruhe": 0.0054,
+          "Kiel": 0.0594,
+          "Nürnberg": 0.0066,
+          "Osnabrück": 0.0824,
+          "Paderborn": 0.0788,
+          "Regensburg": 0.0214,
+          "Sandhausen": 0.0114,
+          "St. Pauli": 0.0042,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0.001
       }
     },
     {
       "matchday": 8,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 72,
       "probabilities": {
@@ -1974,12 +2174,37 @@
           "p10": 23,
           "p90": 49
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.034,
+          "Bochum": 0.0944,
+          "Braunschweig": 0.0024,
+          "Darmstadt": 0.0156,
+          "Düsseldorf": 0.1026,
+          "Fürth": 0.099,
+          "Hannover": 0.034,
+          "Heidenheim": 0.0242,
+          "HSV": 0.3032,
+          "Karlsruhe": 0.0128,
+          "Kiel": 0.0586,
+          "Nürnberg": 0.0196,
+          "Osnabrück": 0.0458,
+          "Paderborn": 0.1366,
+          "Regensburg": 0.0094,
+          "Sandhausen": 0.0066,
+          "St. Pauli": 0.002,
+          "Würzburg": 0.0002
+        },
+        "sharedProbability": 0.001
       }
     },
     {
       "matchday": 9,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 81,
       "probabilities": {
@@ -2193,12 +2418,37 @@
           "p10": 23,
           "p90": 47
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0648,
+          "Bochum": 0.1616,
+          "Braunschweig": 0.0008,
+          "Darmstadt": 0.0238,
+          "Düsseldorf": 0.033,
+          "Fürth": 0.1658,
+          "Hannover": 0.0072,
+          "Heidenheim": 0.034,
+          "HSV": 0.2158,
+          "Karlsruhe": 0.0166,
+          "Kiel": 0.114,
+          "Nürnberg": 0.0056,
+          "Osnabrück": 0.0756,
+          "Paderborn": 0.0686,
+          "Regensburg": 0.0126,
+          "Sandhausen": 0.0008,
+          "St. Pauli": 0.0002,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0.0008
       }
     },
     {
       "matchday": 10,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 90,
       "probabilities": {
@@ -2412,12 +2662,37 @@
           "p10": 22,
           "p90": 45
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.036,
+          "Bochum": 0.1172,
+          "Braunschweig": 0.0006,
+          "Darmstadt": 0.0144,
+          "Düsseldorf": 0.0726,
+          "Fürth": 0.1206,
+          "Hannover": 0.02,
+          "Heidenheim": 0.069,
+          "HSV": 0.1556,
+          "Karlsruhe": 0.0534,
+          "Kiel": 0.2088,
+          "Nürnberg": 0.0196,
+          "Osnabrück": 0.038,
+          "Paderborn": 0.0338,
+          "Regensburg": 0.0406,
+          "Sandhausen": 0.002,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0.0022
       }
     },
     {
       "matchday": 11,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 99,
       "probabilities": {
@@ -2631,12 +2906,37 @@
           "p10": 21,
           "p90": 44
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.01,
+          "Bochum": 0.1308,
+          "Braunschweig": 0,
+          "Darmstadt": 0.0006,
+          "Düsseldorf": 0.0674,
+          "Fürth": 0.1678,
+          "Hannover": 0.003,
+          "Heidenheim": 0.0694,
+          "HSV": 0.1928,
+          "Karlsruhe": 0.016,
+          "Kiel": 0.2706,
+          "Nürnberg": 0.0142,
+          "Osnabrück": 0.0492,
+          "Paderborn": 0.0048,
+          "Regensburg": 0.005,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0.0016
       }
     },
     {
       "matchday": 12,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 108,
       "probabilities": {
@@ -2850,12 +3150,37 @@
           "p10": 20,
           "p90": 43
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0212,
+          "Bochum": 0.0516,
+          "Braunschweig": 0,
+          "Darmstadt": 0.0008,
+          "Düsseldorf": 0.0882,
+          "Fürth": 0.0626,
+          "Hannover": 0.0022,
+          "Heidenheim": 0.0294,
+          "HSV": 0.3094,
+          "Karlsruhe": 0.003,
+          "Kiel": 0.4008,
+          "Nürnberg": 0.0036,
+          "Osnabrück": 0.0242,
+          "Paderborn": 0.0008,
+          "Regensburg": 0.0028,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0.0006
       }
     },
     {
       "matchday": 13,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 117,
       "probabilities": {
@@ -3069,12 +3394,37 @@
           "p10": 20,
           "p90": 41
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0006,
+          "Bochum": 0.0516,
+          "Braunschweig": 0,
+          "Darmstadt": 0.0008,
+          "Düsseldorf": 0.073,
+          "Fürth": 0.0654,
+          "Hannover": 0,
+          "Heidenheim": 0.0006,
+          "HSV": 0.3166,
+          "Karlsruhe": 0,
+          "Kiel": 0.4898,
+          "Nürnberg": 0.001,
+          "Osnabrück": 0.001,
+          "Paderborn": 0.0004,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0.0008
       }
     },
     {
       "matchday": 14,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 126,
       "probabilities": {
@@ -3288,12 +3638,37 @@
           "p10": 19,
           "p90": 39
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0.0004,
+          "Bochum": 0.0908,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.1126,
+          "Fürth": 0.0976,
+          "Hannover": 0,
+          "Heidenheim": 0.0004,
+          "HSV": 0.5016,
+          "Karlsruhe": 0,
+          "Kiel": 0.1964,
+          "Nürnberg": 0,
+          "Osnabrück": 0.0004,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0.0002
       }
     },
     {
       "matchday": 15,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 135,
       "probabilities": {
@@ -3507,12 +3882,37 @@
           "p10": 21,
           "p90": 41
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0.2564,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0.0396,
+          "Fürth": 0.0308,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 0.5322,
+          "Karlsruhe": 0,
+          "Kiel": 0.142,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0.001
       }
     },
     {
       "matchday": 16,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 144,
       "probabilities": {
@@ -3726,12 +4126,37 @@
           "p10": 21,
           "p90": 40
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0.2246,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 0.7754,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 17,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 153,
       "probabilities": {
@@ -3945,12 +4370,37 @@
           "p10": 21,
           "p90": 39
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 18,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 162,
       "probabilities": {
@@ -4164,12 +4614,37 @@
           "p10": 20,
           "p90": 37
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 19,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 171,
       "probabilities": {
@@ -4383,12 +4858,37 @@
           "p10": 22,
           "p90": 39
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 20,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 180,
       "probabilities": {
@@ -4602,12 +5102,37 @@
           "p10": 21,
           "p90": 37
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 21,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 189,
       "probabilities": {
@@ -4821,12 +5346,37 @@
           "p10": 21,
           "p90": 36
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 22,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 198,
       "probabilities": {
@@ -5040,12 +5590,37 @@
           "p10": 23,
           "p90": 37
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 23,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 207,
       "probabilities": {
@@ -5259,12 +5834,37 @@
           "p10": 22,
           "p90": 36
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 24,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 216,
       "probabilities": {
@@ -5478,12 +6078,37 @@
           "p10": 21,
           "p90": 34
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 25,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 225,
       "probabilities": {
@@ -5697,12 +6322,37 @@
           "p10": 24,
           "p90": 36
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 26,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 234,
       "probabilities": {
@@ -5916,12 +6566,37 @@
           "p10": 24,
           "p90": 35
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 27,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 243,
       "probabilities": {
@@ -6135,12 +6810,37 @@
           "p10": 23,
           "p90": 33
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 28,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 252,
       "probabilities": {
@@ -6354,12 +7054,37 @@
           "p10": 23,
           "p90": 32
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 29,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 261,
       "probabilities": {
@@ -6573,12 +7298,37 @@
           "p10": 22,
           "p90": 30
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 30,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 270,
       "probabilities": {
@@ -6792,12 +7542,37 @@
           "p10": 21,
           "p90": 29
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 31,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 279,
       "probabilities": {
@@ -7011,12 +7786,37 @@
           "p10": 22,
           "p90": 28
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 32,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 288,
       "probabilities": {
@@ -7230,12 +8030,37 @@
           "p10": 21,
           "p90": 27
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 33,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 297,
       "probabilities": {
@@ -7449,12 +8274,37 @@
           "p10": 24,
           "p90": 27
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     },
     {
       "matchday": 34,
       "runs": 5000,
-      "engineVersion": 1,
+      "engineVersion": 2,
       "simulationProtocolVersion": 2,
       "playedCount": 306,
       "probabilities": {
@@ -7668,6 +8518,31 @@
           "p10": 25,
           "p90": 25
         }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": true,
+        "probabilities": {
+          "Aue": 0,
+          "Bochum": 0,
+          "Braunschweig": 0,
+          "Darmstadt": 0,
+          "Düsseldorf": 0,
+          "Fürth": 0,
+          "Hannover": 0,
+          "Heidenheim": 0,
+          "HSV": 1,
+          "Karlsruhe": 0,
+          "Kiel": 0,
+          "Nürnberg": 0,
+          "Osnabrück": 0,
+          "Paderborn": 0,
+          "Regensburg": 0,
+          "Sandhausen": 0,
+          "St. Pauli": 0,
+          "Würzburg": 0
+        },
+        "sharedProbability": 0
       }
     }
   ],
