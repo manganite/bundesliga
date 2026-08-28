@@ -17,6 +17,15 @@ const REPO = path.resolve(import.meta.dirname, "../../..");
 const read = (p) => JSON.parse(fs.readFileSync(path.join(REPO, p), "utf8"));
 const { Shell, Ready, SiteBrand } = await harness();
 
+// The live season comes from the committed meta, not from a literal: pinning
+// „2026 is the newest" would keep passing when 2027 lands (the 2026 files stay
+// committed as an archive) while quietly rendering an ARCHIVE season under
+// `isArchive: false` — the header variant this test claims to cover would no
+// longer be the one it renders. The archive partner stays a literal; 2015/16 is
+// finished and cannot become the newest season again.
+const LIVE = read("data/meta.json").season;
+const ARCHIVE = 2015;
+
 const marks = (html) => html.match(/class="site-mark"/g)?.length ?? 0;
 
 function dataFor(year, league) {
@@ -38,7 +47,7 @@ test("the shell header (loading/error) carries the mark exactly once", () => {
   const html = renderToStaticMarkup(React.createElement(Shell, {
     children: "Daten werden geladen …",
     league: "bl1", available: ["bl1", "bl2"], onLeague: () => {},
-    seasons: [2015, 2026], season: 2026, newestSeason: 2026, onSeason: () => {},
+    seasons: [ARCHIVE, LIVE], season: LIVE, newestSeason: LIVE, onSeason: () => {},
   }));
   assert.equal(marks(html), 1, "the shell header shows the mark once");
   assert.match(html, /<h1>Bundesliga-Simulator<\/h1>/, "the h1 stays the text anchor");
@@ -47,9 +56,9 @@ test("the shell header (loading/error) carries the mark exactly once", () => {
 test("the ready header carries the mark exactly once", () => {
   const html = renderToStaticMarkup(React.createElement(Ready, {
     route: "methodik",
-    seasonId: 2026, league: "bl1", data: dataFor(2026, "bl1"), isArchive: false,
+    seasonId: LIVE, league: "bl1", data: dataFor(LIVE, "bl1"), isArchive: false,
     available: ["bl1", "bl2"], onLeague: () => {},
-    seasons: [2015, 2026], season: 2026, newestSeason: 2026, onSeason: () => {},
+    seasons: [ARCHIVE, LIVE], season: LIVE, newestSeason: LIVE, onSeason: () => {},
   }));
   assert.equal(marks(html), 1, "the ready header shows the mark once");
 });
