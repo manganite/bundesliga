@@ -1,7 +1,7 @@
 {
   "name": "@bundesliga/app",
   "private": true,
-  "version": "2.4.0",
+  "version": "2.5.0",
   "type": "module",
   "description": "App A \u2014 Bundesliga-Simulator. Statische Pages-Seite, Monte-Carlo im Web Worker, kein Backend.",
   "scripts": {

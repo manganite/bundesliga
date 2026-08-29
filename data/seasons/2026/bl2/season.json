@@ -347,7 +347,9 @@
       "awayClubId": "Dresden",
       "homeName": "1. FC Heidenheim 1846",
       "awayName": "Dynamo Dresden",
-      "finished": false
+      "finished": true,
+      "gh": 5,
+      "ga": 3
     },
     {
       "id": "83544",
@@ -357,7 +359,9 @@
       "awayClubId": "Wolfsburg",
       "homeName": "Karlsruher SC",
       "awayName": "VfL Wolfsburg",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 5
     },
     {
       "id": "83547",
@@ -367,7 +371,9 @@
       "awayClubId": "Fürth",
       "homeName": "Energie Cottbus",
       "awayName": "SpVgg Greuther Fürth",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 4
     },
     {
       "id": "83542",
