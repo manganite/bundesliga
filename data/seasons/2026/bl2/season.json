@@ -383,7 +383,9 @@
       "awayClubId": "Bielefeld",
       "homeName": "1. FC Nürnberg",
       "awayName": "DSC Arminia Bielefeld",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 1
     },
     {
       "id": "83539",
