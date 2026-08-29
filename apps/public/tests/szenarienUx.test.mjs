@@ -5,6 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
+import { preSeason } from "./harness/seasonStates.mjs";
 import { drawSeasonRun } from "../../../packages/engine/src/simulate.mjs";
 import { predictFixture } from "../src/lib/season.js";
 import { predictMatch, effectiveParams } from "../../../packages/engine/src/model.mjs";
@@ -142,7 +143,12 @@ test("the Beispielsaison renders a run identically for the same index (round-tri
 });
 
 test("real results are visually distinguished from drawn ones in the Beispielsaison", () => {
-  const withResults = { ...SEASON, fixtures: SEASON.fixtures.map((f, i) => (i < 5 ? { ...f, gh: 1, ga: 0 } : f)) };
+  // Five played, the rest open — and the state says so. Read off the running
+  // season this held only until the first matchday was complete: the sample
+  // renders one matchday, so once that matchday is fully played there is no
+  // drawn scoreline left to distinguish.
+  const blank = preSeason(SEASON);
+  const withResults = { ...blank, fixtures: blank.fixtures.map((f, i) => (i < 5 ? { ...f, gh: 1, ga: 0 } : f)) };
   const sample = drawSeasonRun({
     seasonId: "2026-bl1", league: "bl1",
     clubs: withResults.clubs.map((c) => ({ clubId: c.clubId, rating: OUTLOOK.ratings[c.clubId] })),

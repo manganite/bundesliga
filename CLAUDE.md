@@ -1049,7 +1049,23 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   gehören an konstruierte Eingaben**, wo der Zustand uns gehört. Verwandt mit
   dem Punkt unten, aber eigenständig: dort ist die *Bedingung* falsch, hier die
   *Datenquelle*.
-  **Zweimal passiert, deshalb gibt es dafür jetzt einen Ort:**
+  **Dreimal passiert.** Am 2026-08-28 hat der Cron das erste BL1-Ergebnis
+  committet, und der Deploy starb an zwei Tests, die die *laufende* Saison
+  **positionsweise** lasen. Beide Muster sind neu und lohnen den eigenen Namen:
+  `SEASON.fixtures[1]` als „irgendein anderes Spiel" kollidierte mit
+  `fixtures.find(offen)`, sobald genau das erste Spiel gespielt war (zwei
+  identische IDs, der Test prüfte sich selbst weg); und
+  `deltas.meister[clubs[0].clubId]` zog eine willkürliche Stichprobe, deren
+  Zweig — `floor > 0` oder der Nullfall — davon abhing, wie viel gespielt war.
+  Ein Zweig, der von den Daten ausgewürfelt wird, wird dort geprüft, wo er
+  wohnt (`reportDelta` direkt), nicht aus einer Simulation gefischt.
+  Ein Sondenlauf mit zwei Spieltagen und danach mit voller Hinrunde fand
+  **drei weitere** derselben Klasse; alle sind auf konstruierte Zustände
+  umgestellt. Übrig bleibt beim Sondieren genau ein Fehlschlag, und der ist
+  richtig: das Reproduktionstor („das Artefakt ist aus seinen Eingaben
+  reproduzierbar") **muss** scheitern, wenn man `season.json` ohne
+  `outlook.json` verändert.
+  **Deshalb gibt es dafür einen Ort:**
   `apps/public/tests/harness/seasonStates.mjs` (`preSeason`, `separated`,
   `withPlayed`) nimmt die **Form** der committeten Saison und setzt den
   **Zustand** im Test. Am 2026-08-15 trennte der 2. BL2-Spieltag die Klubs, die

@@ -5,6 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
+import { preSeason } from "./harness/seasonStates.mjs";
 import {
   currentTable,
   scenarioSeason,
@@ -26,6 +27,13 @@ const strip = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 const PARAMS = read("data/season-params.json");
 const CONFIG = read("data/seasons/2026/config.json");
 const SEASON = read("data/seasons/2026/bl1/season.json");
+
+// The scenario tests assert „this club has played exactly the one match we set".
+// That is only true while nothing ELSE has been played, so the state is
+// constructed rather than borrowed: with the running season it held until the
+// first kickoff and would have failed again at the second matchday, taking the
+// deploy with it (the same class as the two failures on 2026-08-28).
+const BLANK = preSeason(SEASON);
 const OUTLOOK = read("data/seasons/2026/bl1/outlook.json");
 const PREMATCH = read("data/seasons/2026/bl1/prematch.json");
 const nameOf = (() => { const m = new Map(SEASON.clubs.map((c) => [c.clubId, c.name])); return (id) => m.get(id) ?? id; })();
@@ -49,8 +57,8 @@ const ctxFor = (season = SEASON) => ({
 // ---------------------------------------------------------------------------
 
 test("a fixed fixture makes both clubs show a played match with its result", () => {
-  const fx = SEASON.fixtures[0];
-  const table = currentTable(scenarioSeason(SEASON, { [fx.id]: { kind: "fixed", gh: 3, ga: 0 } }), CONFIG.leagues.bl1);
+  const fx = BLANK.fixtures[0];
+  const table = currentTable(scenarioSeason(BLANK, { [fx.id]: { kind: "fixed", gh: 3, ga: 0 } }), CONFIG.leagues.bl1);
   const home = table.find((r) => r.clubId === fx.homeClubId);
   const away = table.find((r) => r.clubId === fx.awayClubId);
   assert.equal(home.played, 1);
@@ -62,9 +70,9 @@ test("a fixed fixture makes both clubs show a played match with its result", () 
 });
 
 test("a released fixture drops a played result back out of the real table", () => {
-  const fx = SEASON.fixtures[0];
+  const fx = BLANK.fixtures[0];
   // Start from a state where fx is played 2:1…
-  const played = { ...SEASON, fixtures: SEASON.fixtures.map((f) => (f.id === fx.id ? { ...f, gh: 2, ga: 1 } : f)) };
+  const played = { ...BLANK, fixtures: BLANK.fixtures.map((f) => (f.id === fx.id ? { ...f, gh: 2, ga: 1 } : f)) };
   assert.equal(currentTable(played, CONFIG.leagues.bl1).find((r) => r.clubId === fx.homeClubId).played, 1);
   // …releasing it removes both goals, so neither club has played it any more.
   const releasedTable = currentTable(scenarioSeason(played, { [fx.id]: { kind: "released" } }), CONFIG.leagues.bl1);
@@ -93,7 +101,7 @@ test("forecastCompletedSeason fills every open game so the table is a full seaso
 });
 
 test("forecastCompletedSeason honours fixed and played results over the forecast", () => {
-  const fx = SEASON.fixtures[0];
+  const fx = BLANK.fixtures[0];
   const completed = forecastCompletedSeason(SEASON, { [fx.id]: { kind: "fixed", gh: 5, ga: 0 } }, PREMATCH, PARAMS, "bl1");
   const done = completed.fixtures.find((f) => f.id === fx.id);
   assert.deepEqual([done.gh, done.ga], [5, 0], "a fixed result survives the completion");
