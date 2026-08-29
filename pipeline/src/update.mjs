@@ -27,6 +27,7 @@ import { fetchDailySnapshot, indexSnapshot, fetchClubHistory, ratingOn, RatingUn
 import { resolveClub } from "./clubMapping.mjs";
 import {
   appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot, findSnapshotOn, findSnapshotAsOf,
+  newestCompleteSnapshot,
   resolveArchiveBase,
 } from "./snapshots.mjs";
 import { buildPreMatchDataset, frozenRatingLabel } from "./preMatch.mjs";
@@ -36,7 +37,8 @@ import {
 import { buildPlayoffArtefact } from "./playoffArtefact.mjs";
 import { verifyAll } from "./verify.mjs";
 import {
-  resolveMissingClubs, groupFixturesByClub, evaluateCarryForward, latestArchivedRating, CARRIED_PROVENANCE,
+  resolveMissingClubs, groupFixturesByClub, evaluateCarryForward, latestArchivedRating,
+  CARRIED_PROVENANCE, dayDiff,
 } from "./carryForward.mjs";
 
 export const LEAGUES = ["bl1", "bl2"];
@@ -254,6 +256,20 @@ export async function runUpdate({
   asOf = null,
   ratingsDir: ratingsDirOverride = null,
   carryForwardUntil = null,
+  // ENTKOPPLUNG (Brief 34). `false` means: do not touch clubelo at all; compute
+  // the forecast from the newest COMPLETE snapshot the archive already holds and
+  // stamp the outlook with that snapshot's date.
+  //
+  // Why this is not the carry-forward instrument: that one fills a club MISSING
+  // from an otherwise present snapshot and writes a per-club `carried-forward`
+  // provenance into prematch.json — a claim about which rating applied before a
+  // particular match, which is why its rule 5 refuses during a matchday. This
+  // switch makes no claim about the past at all. It says „the current forecast
+  // was computed with the ratings of DATE", which is a fact, and the app shows
+  // that date. prematch.json is untouched by it: `findPreMatchSnapshot` already
+  // reads the archive and already picks the newest snapshot strictly before each
+  // kickoff, so its provenance stays correct on its own.
+  fetchRatings = true,
   log = (m) => process.stderr.write(`${m}\n`),
 } = {}) {
   const observedAt = now.toISOString();
@@ -318,7 +334,30 @@ export async function runUpdate({
 
   let ratings;
   let missing;
-  if (todayArchived) {
+  // The date the forecast's ratings actually carry. `today` while clubelo is
+  // healthy; the archive's newest date while it is not. This is what the app
+  // shows in its status line, so it is derived here once and never guessed.
+  let ratingsEffectiveAt = today;
+
+  if (!fetchRatings && !todayArchived) {
+    // RESULTS RUN WITHOUT CLUBELO (Brief 34). The newest COMPLETE snapshot in
+    // the archive stands in — complete in the sense that it covers every club of
+    // both leagues, because a thin snapshot is worse than an old one and that
+    // lesson is already paid for (docs/verification/pipeline-ausfallverhalten.md §3).
+    const snap = await newestCompleteSnapshot(
+      archiveIndex, [...allClubs.keys()], (id) => readSnapshot(ratingsDir, id),
+    );
+    if (!snap) {
+      throw new Error(
+        "no archived snapshot covers every club, so there is no rating basis at all — "
+          + "the forecast cannot be computed and nothing is written.",
+      );
+    }
+    ratings = { ...snap.ratings };
+    missing = [];
+    ratingsEffectiveAt = snap.effectiveAt;
+    log(`ratings from the archive (${snap.effectiveAt}) — clubelo not contacted this run`);
+  } else if (todayArchived) {
     const snap = await readSnapshot(ratingsDir, todayArchived.snapshotId);
     ratings = { ...snap.ratings };
     // A club absent from the archived snapshot is treated exactly as a club
@@ -366,8 +405,14 @@ export async function runUpdate({
   // Clubs the snapshot did not cover, whether it came from the network or the
   // archive. Fail-closed is the default: without --carry-forward-until this
   // still fails the job (§5.2, unchanged).
+  // „live" only when the ratings really are today's. On the archive-fallback path
+  // they are older, every club equally, and the entry says so — the app marks
+  // anything that is not live.
+  const ratingsAreLive = ratingsEffectiveAt === today;
   const ratingProvenance = Object.fromEntries(
-    Object.keys(ratings).map((clubId) => [clubId, { provenance: "live", effectiveAt: today, ageDays: 0 }]),
+    Object.keys(ratings).map((clubId) => [clubId, ratingsAreLive
+      ? { provenance: "live", effectiveAt: today, ageDays: 0 }
+      : { provenance: "archived", effectiveAt: ratingsEffectiveAt, ageDays: dayDiff(ratingsEffectiveAt, today) }]),
   );
   const nameOfClub = (clubId) => allClubs.get(clubId)?.name ?? clubId;
   let carried = [];
@@ -448,7 +493,18 @@ export async function runUpdate({
   // archiving is done. So instead: whatever required date the archive still
   // lacks and clubelo could now supply, fill it. When nothing is missing — the
   // steady state — no history is fetched at all, and the courtesy rule holds.
-  const requiredDates = backfillDates(seasons.bl1.fixtures.concat(seasons.bl2.fixtures), today);
+  //
+  // ON THE RESULTS PATH THIS IS SKIPPED ENTIRELY (Brief 34, Codex-Befund zu
+  // PR #51). The backfill fetches one full club history per club — it is the
+  // single heaviest clubelo caller in the repository. Leaving it here would have
+  // made „this job never contacts clubelo" false in exactly the situation the
+  // split exists for: a missing required date would drag the results job into
+  // an outage and fail it. The archive is the ratings job's business, and
+  // `ratingsCli.mjs` runs the same backfill on its own schedule and its own
+  // channel.
+  const requiredDates = fetchRatings
+    ? backfillDates(seasons.bl1.fixtures.concat(seasons.bl2.fixtures), today)
+    : [];
   const archivedDates = new Set(existingIndex.snapshots.map((s) => s.effectiveAt));
   const missingDates = requiredDates.filter((d) => !archivedDates.has(d));
   if (missingDates.length) {
@@ -468,7 +524,7 @@ export async function runUpdate({
   // carried value because clubelo was unreachable — and `appendSnapshot` would
   // throw on empty ratings, so this is a guard, not a nicety. It is also the
   // rule the archive has always had: it records what clubelo actually published.
-  if (Object.keys(observedRatings).length === 0) {
+  if (!ratingsAreLive || Object.keys(observedRatings).length === 0) {
     log("no live rating this run — nothing archived");
   } else {
     const appended = await appendSnapshot(ratingsDir, {
@@ -563,6 +619,10 @@ export async function runUpdate({
       ratingProvenance: Object.fromEntries(
         s.clubs.map((c) => [c.clubId, ratingProvenance[c.clubId]]),
       ),
+      // The date of the ratings THIS forecast was computed with (Brief 34). The
+      // app shows it; it is the whole reason the forecast may go on being
+      // recomputed while clubelo is unreachable instead of freezing.
+      ratingsEffectiveAt,
     };
     if (await writeIfChanged(path.join(dir, "outlook.json"), stable(outlook))) {
       changes.push(`${league} current outlook`);
@@ -706,12 +766,26 @@ export async function runUpdate({
     return { changed: false, season: detected.season, changes: [], dataUpdatedAt: meta.dataUpdatedAt, carried };
   }
 
+  // TWO CLOCKS (Brief 34). Results and ratings come from different sources with
+  // different failure modes, and one timestamp for both is what made an outage
+  // of one look like an outage of everything. `dataUpdatedAt` keeps its meaning
+  // — the last substantive change of anything — and the two new fields say what
+  // that change actually consisted of.
+  //
+  // Both stay pure functions of the inputs, or „commit only on change" breaks:
+  // `resultsUpdatedAt` moves only when a result changed, `ratingsEffectiveAt` is
+  // the date of the snapshot the forecast used.
+  const resultsChanged = changes.some((c) => c.includes("fixtures/results"));
   meta = {
     schemaVersion: 1,
     season: detected.season,
     // The moment of the last SUBSTANTIVE change. The app shows this neutrally
     // as „Datenstand" and must not derive any workflow-health claim from it.
     dataUpdatedAt: observedAt,
+    resultsUpdatedAt: resultsChanged ? observedAt : (meta.resultsUpdatedAt ?? observedAt),
+    // A DATE, not a timestamp: clubelo publishes one snapshot per day, so an
+    // hour here would suggest a precision the source does not have.
+    ratingsEffectiveAt,
     dataHash: sha(LEAGUES.map((l) => stable(seasons[l].fixtures)).join("")),
     lastChanges: changes,
   };

@@ -149,6 +149,51 @@ export function carriedRatingNote(entry, locale = "de-DE") {
   return `Rating vom ${when} — clubelo führt diesen Klub derzeit nicht fort.`;
 }
 
+/**
+ * How current the ratings behind the forecast are (Brief 34).
+ *
+ * A DATA statement, never a workflow-health claim: it says which day's ratings
+ * the committed forecast used, which is a fact the committed files carry. It
+ * does not and cannot say whether the pipeline is well — the standing rule
+ * („Datenalter ≠ Workflow-Gesundheit") applies here as much as to `dataUpdatedAt`.
+ *
+ * `fresh` allows one day. clubelo publishes once per day and our run may land
+ * before that day's file exists, so „yesterday" is the ordinary state for part
+ * of every day; calling it stale would make the warning meaningless by crying
+ * wolf daily. Two days means a publication was actually missed.
+ *
+ * Returns null when the data carries no rating date at all — an artefact from
+ * before this field existed, which must render nothing rather than „unbekannt".
+ */
+export function ratingStatus(meta, now = new Date()) {
+  const effectiveAt = meta?.ratingsEffectiveAt;
+  if (!effectiveAt) return null;
+  const day = Date.parse(`${effectiveAt}T00:00:00Z`);
+  if (Number.isNaN(day)) return null;
+  const today = Date.parse(`${now.toISOString().slice(0, 10)}T00:00:00Z`);
+  const ageDays = Math.round((today - day) / 86400000);
+  const fresh = ageDays <= 1;
+  return {
+    effectiveAt,
+    ageDays,
+    fresh,
+    label: `Ratings: ${formatDay(effectiveAt)}`,
+    // Shown only when stale — the forecast is still computed, and this says on
+    // what. „Die Ergebnisse sind aktuell" is the half that stops the reader
+    // from distrusting the table too.
+    warning: fresh ? null
+      : `Die Prognose rechnet mit Ratings vom ${formatDay(effectiveAt)} (${ageDays} Tage alt) — `
+        + "clubelo liefert derzeit keine neueren. Die Ergebnisse und die Tabelle sind aktuell.",
+  };
+}
+
+const formatDay = (iso, locale = "de-DE") => {
+  const d = new Date(`${iso}T00:00:00Z`);
+  return Number.isNaN(d.getTime())
+    ? iso
+    : d.toLocaleDateString(locale, { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "UTC" });
+};
+
 /** One summary line for the header, while any carried rating is in use. */
 export function carriedRatingSummary(carried, nameOf = (id) => id) {
   if (!carried.length) return null;

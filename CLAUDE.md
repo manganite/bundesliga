@@ -257,6 +257,18 @@ spätere schlägt die frühere:**
     Überraschungen der Hinrunde, Anker-Vergleich, Entwicklung je Klub) und der
     Drei-Anker-Vergleich auf Verlauf. Historien-Artefakte 2011–2025 einmalig
     regeneriert. Release 2.4.0.
+34. `ENTKOPPLUNG_ERGEBNISSE_RATINGS_BRIEF.md` — Nutzeranlass: drei mehrtägige
+    clubelo-Ausfälle in einer Saison hielten jedes Mal auch die **Ligaergebnisse**
+    aus der App, obwohl die Ergebnisquelle gesund war. Der Schnitt verläuft nicht
+    zwischen „Ergebnisse" und „Elo", sondern zwischen drei Artefaktklassen:
+    Ergebnisse hängen an clubelo gar nicht; die Prognose darf mit dem neuesten
+    **vollständigen** archivierten Snapshot rechnen, wenn sie das Datum zeigt;
+    `prematch.json` bleibt unangetastet, weil es ohnehin aus dem Archiv liest und
+    damit von selbst korrekt ist. Zwei Workflows mit getrennten
+    `betrieb`-Kanälen, zwei Uhren in `meta.json`, Rating-Aktualität im Header.
+    **Weg A aus `pipeline-ausfallverhalten.md` §4 bleibt verworfen** — die
+    Statuszeile ist die Bedingung, unter der das Entkoppeln überhaupt erlaubt
+    ist. Release 2.5.0.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -711,13 +723,14 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   Toggle, und `<details>` rendert ihn im DOM, sodass die Anker greifen. Neue
   Karten befolgen die Regel von Geburt an.
 - **Ein Versions-Bump ist Tag + Release im selben Arbeitsgang.** `apps/public/
-  package.json` wird je Release-Brief gebumpt (aktuell **2.4.0**, Release über
+  package.json` wird je Release-Brief gebumpt (aktuell **2.5.0**, Release über
   V2b.1 + die Nachfixe 20–22 + den Chart-Ausbau; 2.3.1 = Achsentitel-Fix +
   Verlauf-Auswahl invertiert; 2.3.2 = Codex-Review-Fixes; 2.3.3 =
   Pre-Match-Defektfix, Brief 29; 2.3.4 = Nachholspiel-Freeze + Lockfile-Wächter,
   Brief 30; 2.3.5 = Timeline-Vollständigkeit, Brief 31; 2.3.6 = Bildfamilie,
   Brief 32; 2.4.0 = Halbserien-Paket, Brief 33 — Minor, weil es Funktion
-  hinzufügt und das Artefaktschema erweitert), dann ein Git-Tag
+  hinzufügt und das Artefaktschema erweitert; 2.5.0 = Entkopplung von Ergebnissen
+  und Ratings, Brief 34), dann ein Git-Tag
   `v<version>` und ein GitHub-Release mit 2–6 Zeilen deutschen Notes aus dem
   zugehörigen Brief bzw. Fix.
   **Jede deployte, nutzersichtbare Änderung erhöht mindestens die Patch-Version
@@ -765,7 +778,7 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   (`FixturePrediction`, `WichtigstesSpiel`) tragen die Farbregel an einer Stelle.
 - **Der Footer ist dreizeilig; die Parameter-Provenienz sitzt auf Methodik
   Schritt 4**, nicht im Footer (dort war sie Rauschen). Version aus `package.json`
-  (gepflegt je Release-Brief, aktuell 2.4.0) plus Build-Stempel via Vite-`define`.
+  (gepflegt je Release-Brief, aktuell 2.5.0) plus Build-Stempel via Vite-`define`.
 - **„Wahrscheinlichstes Ergebnis" heißt: innerhalb der wahrscheinlichsten Tendenz.**
   Das globale Modalergebnis ist fast immer ein Remis (Remis bündeln ihre Masse auf
   wenige Ergebnisse, Siege verteilen sie), was neben „Heimsieg 57 %" wie ein
@@ -980,6 +993,44 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   einem `ENGINE_VERSION`-Bump hinkt die laufende Saison bis zum nächsten
   Cron-Lauf hinterher; das ist ein bekannter, selbstheilender Zustand und in
   `pipeline/tests/herbstmeisterArtefakte.test.mjs` benannt statt wegbehauptet.
+- **Ergebnisse und Ratings sind zwei Kanäle (2.5.0, Brief 34).** Vier Stellen,
+  an denen sie leicht wieder zusammenwachsen:
+  - **`data.yml` fasst clubelo nicht an — und der Backfill auch nicht.** Der Lauf
+    trägt `--no-ratings-fetch`; das ist die eine Zeile, die einen clubelo-Ausfall
+    von den Ligaergebnissen fernhält. Der **History-Backfill** hängt am selben
+    Schalter (Codex-Befund zu PR #51): er ist der schwerste clubelo-Aufrufer im
+    Repo — eine volle Klubhistorie je Klub — und lief zunächst weiter, hätte den
+    Ergebnislauf also genau dann in den Ausfall gezogen, wenn dem Archiv ein
+    Pflichttermin fehlt. Der Wächter prüft „nicht ein einziges Mal" über die
+    **Aufrufzahl**, nicht über einen werfenden Stub: `backfillSnapshots` fängt
+    Abruffehler je Klub in `gaps`, ein bloß werfendes `fetchText` wird also
+    geschluckt und beweist nichts. `pipeline/tests/entkopplung.test.mjs` bewacht sie zusammen mit den
+    drei anderen Gliedern (Ratings-Job vorhanden, disjunkte `git add`-Pfade,
+    **getrennte `betrieb`-Kanäle**) und testet sich gegen jedes einzeln
+    gebrochene. Ein gemeinsamer Kanal wäre der stillste Rückfall: alles liefe,
+    und ein roter clubelo färbte wieder den Ergebnis-Melder.
+  - **Der Rückgriff nimmt Vollständigkeit vor Aktualität.**
+    `newestCompleteSnapshot` überspringt einen neueren Snapshot, der nicht jeden
+    Klub führt — die Lehre aus dem Fünf-Klub-Snapshot. Deckt keiner alle ab,
+    scheitert der Lauf, statt auf einem Loch zu rechnen. Seine Sortierung ist
+    eine **totale Ordnung, ausgedrückt durch `supersedes` selbst** — nicht durch
+    eine zweite Kopie der Präzedenz. Der erste Entwurf war nicht antisymmetrisch
+    und überließ die Reihenfolge der Sortierimplementierung; in der Wirkung
+    harmlos, in der Art genau der Determinismus-Defekt, den die
+    `supersedes`-Notiz oben meint.
+  - **Auf dem Ergebnispfad wird nichts archiviert und nichts „live" genannt.**
+    Das Archiv enthält, was clubelo veröffentlicht hat; die Klubs tragen
+    `archived` mit dem echten Datum. `--carry-forward-until` bleibt davon
+    unberührt — es ist der Vorfallschalter für einen Klub, den clubelo nicht mehr
+    führt, ein anderer Fall und kein Ersatz.
+  - **Die Statuszeile ist die Bedingung, nicht die Zugabe.** Weg A (nur die
+    Schreibbarriere spalten) bleibt verworfen, weil die spielplanbasierte
+    Warnung dann verstummt, wenn sie gebraucht wird. `ratingStatus` ist frisch
+    **bis einschließlich gestern** — clubelo veröffentlicht tagesgenau, und
+    „gestern" als veraltet zu melden hieße täglich Alarm. Die Warnung sagt
+    ausdrücklich mit, dass Ergebnisse und Tabelle aktuell sind; ohne diese
+    Hälfte misstraut der Leser der Tabelle gleich mit. Und sie bleibt eine
+    Aussage über die **Daten**, nie über den Workflow.
 - Das README beschreibt die App; alles Entwicklerische steht in
   `docs/DEVELOPMENT.md`. Code GPL-3.0 (`LICENSE`); committete OpenLigaDB-Daten
   ODbL; committete clubelo-Daten unter `data/ratings/` **nicht** ODbL, sondern

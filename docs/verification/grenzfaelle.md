@@ -38,6 +38,8 @@ Grenze gegen einen *gespeicherten* Wert ist eine andere Grenze als eine gegen de
 | 11 | Reichweite des Rückgriffs | `carryForward.mjs` Regel 5 | Vorabend des Spieltags → getragen; **Spieltag selbst → abgelehnt**, weil ein *geplantes* Spiel in der Lücke liegt, nicht erst ein gespieltes; danach ebenfalls abgelehnt | `pipeline/tests/update.test.mjs` — „the fallback reaches only to the next kickoff“ |
 | 12 | Halbserien-Grenze: Spieltage **1–17** | Saisonkonfiguration `herbstmeisterUntilMatchday`, `simulate.mjs` (Tally), `lib/halbserie.js` (Ansichten) | Spieltag 17 gehört zur **Hinrunde**, 18 zur Rückrunde; Anker **einen Spieltag zu früh → offen**, genau darauf → entschieden, danach → weiterhin entschieden; **Nachholspiel aus Spieltag 12 bei gespieltem Spieltag 25 → Hinrunde NICHT fertig** (kumulative Vollständigkeit wie Grenze 6, hier auf die Saisondatei angewandt); fehlende Konfiguration → gar kein Herbstmeister statt geratener 17 | `packages/engine/tests/herbstmeister.test.mjs`, `apps/public/tests/halbserien.test.mjs` |
 | 13 | Geteilter Platz **am Anker** | `simulate.mjs`, `lib/halbserie.js` `herbstmeisterFact` | in der Hinrunde hat kein Paar zweimal gespielt, also endet die Spielordnung nach Tordifferenz und Toren und Kriterium 6 gilt nicht — zwei gleichauf stehende Klubs sind **beide** Herbstmeister; Σ P = E[Klubs auf Platz 1] ≥ 1, nie „= 1“, und `sharedProbability` steht daneben | `packages/engine/tests/herbstmeister.test.mjs`, `pipeline/tests/herbstmeisterArtefakte.test.mjs` |
+| 14 | Rating-Aktualität: **frisch bis 1 Tag** | `dataState.mjs` `ratingStatus` | heute ✓ frisch, **gestern ✓ frisch** (clubelo veröffentlicht einmal täglich, ein Lauf kann vor der Datei landen — „gestern“ als veraltet zu melden hieße täglich Alarm), vorgestern ✗ veraltet mit Warnung; fehlendes Feld → **gar keine Anzeige** statt „unbekannt“; Archivsaison → nie | `apps/public/tests/ratingUhr.test.mjs` |
+| 15 | Rückfall auf das Archiv: **vollständig oder gar nicht** | `snapshots.mjs` `newestCompleteSnapshot` | neuester Snapshot, der **jeden** Klub führt, gewinnt; ein neuerer unvollständiger wird übersprungen (Lehre aus dem Fünf-Klub-Snapshot, §3 des Ausfallberichts); deckt keiner alle Klubs ab → der Lauf scheitert, statt auf einem Loch zu rechnen | `pipeline/tests/update.test.mjs` — „without any complete archived snapshot“ |
 
 Nummern 1–3 waren beim Anlegen der Tabelle **bereits abgedeckt** — geprüft, nicht
 nachgetragen. Nummer 4 fehlte die Gleichheitskante; sie ist ergänzt. 5 und 6 sind
@@ -52,7 +54,11 @@ Grenze nicht die Zahl 17, sondern die **Vollständigkeit** — ein Nachholspiel 
 dem Dezember hält die Hinrunde im Februar offen, und wer auf „aktueller Spieltag
 > 17“ prüft, liegt in genau diesem Fall falsch. 13 ist keine Datumsgrenze,
 sondern eine Regelgrenze, und sie ist die Stelle, an der es am meisten juckt,
-einen Sieger zu erfinden.
+einen Sieger zu erfinden. 14 und 15 kommen aus der Entkopplung von
+Ergebnissen und Ratings: bei 14 ist die Grenze bewusst **weich** (ein Tag), weil
+eine tagesgenaue Quelle sonst täglich Alarm auslöst; bei 15 ist die Grenze nicht
+das Alter, sondern die **Vollständigkeit** — ein alter vollständiger Snapshot ist
+eine vertretbare Grundlage, ein frischer unvollständiger nicht.
 
 ## Untersucht und unauffällig (2026-08-05)
 

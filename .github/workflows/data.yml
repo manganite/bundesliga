@@ -1,13 +1,16 @@
-name: Daten aktualisieren
+name: Ergebnisse aktualisieren
 
 # The scheduled run is the ONLY data path (§5.1). There is no browser-side live
 # fetch: committed files are the single source, so the app can never show a
 # state that mixes committed and freshly fetched data.
 on:
   schedule:
-    # Every two hours. Off-season this simply finds nothing new and commits
-    # nothing — which is the intended behaviour, not a fault.
-    - cron: "17 */2 * * *"
+    # Every fifteen minutes (Brief 34). Two-hourly meant a result could sit in
+    # OpenLigaDB for two hours before the app knew it; a Saturday afternoon was
+    # routinely an hour behind. This job no longer contacts clubelo, so running
+    # it often costs one OpenLigaDB request and, off-season, commits nothing —
+    # „commit only on change" is what makes the frequency free.
+    - cron: "2,17,32,47 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -35,17 +38,21 @@ jobs:
       # The pipeline has no dependencies beyond Node itself, so there is nothing
       # to install and nothing to pin beyond the runtime.
       #
+      # --no-ratings-fetch is the whole point of Brief 34: THIS JOB NEVER
+      # CONTACTS CLUBELO. It computes the forecast from the newest complete
+      # snapshot the archive already holds and stamps the outlook and meta.json
+      # with that snapshot's date, which the app shows. Ratings are fetched and
+      # archived by ratings.yml, on its own schedule and its own `betrieb`
+      # channel — so a clubelo outage can no longer stop league results from
+      # reaching the app, which is what it did three times this season.
+      #
       # NO --carry-forward-until here, and that is the normal state. The flag is
-      # the INCIDENT instrument (docs/verification/clubelo.md): set per incident
-      # with an explicit expiry, and removed once the incident is over. The
-      # 2026-08-20 migration outage ended on 2026-08-26, when clubelo answered
-      # again with all 36 clubs. Without the flag an unresolved club — or an
-      # unreachable clubelo — fails the job and blocks the commit, which is the
-      # §5.2 default. The hard 42-day ceiling lives in carryForward.mjs and is
-      # not affected either way.
+      # the INCIDENT instrument for a club clubelo stops listing
+      # (docs/verification/clubelo.md), which is a different situation from
+      # clubelo being down; it is not this switch and does not substitute for it.
       - name: Pipeline ausführen
         id: pipeline
-        run: node pipeline/src/cli.mjs --data-dir data
+        run: node pipeline/src/cli.mjs --data-dir data --no-ratings-fetch
 
       # Commit only on change. A run that found nothing new leaves the
       # repository untouched, so dataUpdatedAt does not move and no deployment
@@ -56,7 +63,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data
+          # Only the season data. The rating archive belongs to ratings.yml, and
+          # a job that commits files it did not produce makes the two channels
+          # lie about each other.
+          git add data/seasons data/meta.json
           if git diff --cached --quiet; then
             echo "Pipeline meldete eine Änderung, der Baum ist aber unverändert — nichts zu committen."
             exit 0
@@ -109,7 +119,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BETRIEB_STATUS: rot
           BETRIEB_WORKFLOW: data
-          BETRIEB_TITEL: Daten aktualisieren
+          BETRIEB_TITEL: Ergebnisse aktualisieren
           BETRIEB_LAUF: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: .github/scripts/betrieb-melden.sh
 
@@ -121,7 +131,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BETRIEB_STATUS: gruen
           BETRIEB_WORKFLOW: data
-          BETRIEB_TITEL: Daten aktualisieren
+          BETRIEB_TITEL: Ergebnisse aktualisieren
           BETRIEB_LAUF: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: .github/scripts/betrieb-melden.sh
 

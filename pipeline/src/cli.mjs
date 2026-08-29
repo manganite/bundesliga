@@ -5,12 +5,20 @@
  *   node pipeline/src/cli.mjs [--data-dir data]
  *   node pipeline/src/cli.mjs --season 2025 --as-of 2026-06-01
  *   node pipeline/src/cli.mjs --carry-forward-until 2026-08-15
+ *   node pipeline/src/cli.mjs --no-ratings-fetch
  *
  * --carry-forward-until lets clubs that clubelo has temporarily stopped listing
  * run on their last archived rating, bounded by that date and by a hard 42-day
  * ceiling. It is OFF BY DEFAULT: without it an unresolved club still fails the
  * job and blocks the commit. See pipeline/src/carryForward.mjs for why this is
  * sound during an off-season and why it must expire.
+ *
+ * --no-ratings-fetch is the RESULTS path (Brief 34): it does not contact clubelo
+ * at all and computes the forecast from the newest complete snapshot the archive
+ * already holds, stamping the outlook and meta.json with that snapshot's date.
+ * Results therefore reach the app on their own schedule, and a clubelo outage
+ * can no longer block them. The ratings workflow runs separately and is the only
+ * thing that ever fetches or archives.
  *
  * The two override flags rebuild a COMPLETED season from clubelo's published
  * history. They are an explicit operator action — the scheduled workflow never
@@ -39,9 +47,10 @@ const dataDir = path.resolve(flag("data-dir", "data"));
 const seasonOverride = flag("season", null);
 const asOf = flag("as-of", null);
 const carryForwardUntil = flag("carry-forward-until", null);
+const fetchRatings = !process.argv.includes("--no-ratings-fetch");
 
 try {
-  const result = await runUpdate({ dataDir, seasonOverride, asOf, carryForwardUntil });
+  const result = await runUpdate({ dataDir, seasonOverride, asOf, carryForwardUntil, fetchRatings });
   // GitHub Actions reads this to decide whether to commit at all.
   if (process.env.GITHUB_OUTPUT) {
     const { appendFileSync } = await import("node:fs");

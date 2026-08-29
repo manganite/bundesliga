@@ -281,6 +281,52 @@ export function findSnapshotAsOf(index, date, source = "clubelo") {
 }
 
 /**
+ * The newest archived snapshot that covers EVERY club in `clubIds` — the rating
+ * basis a run falls back on when clubelo is unreachable (Brief 34).
+ *
+ * „Complete" rather than „newest" is the whole point, and the reason is already
+ * paid for: on 2026-08-11 a five-club snapshot displaced a thirty-four-club one
+ * of the same day and three matches were forecast on it
+ * (docs/verification/pipeline-ausfallverhalten.md §3). An old complete snapshot
+ * is a defensible basis; a fresh partial one is not, because the clubs it omits
+ * would have no rating at all.
+ *
+ * Snapshots are read newest-first and the first complete one wins, so a healthy
+ * archive costs exactly one read. Returns null when none covers every club —
+ * the caller must fail rather than forecast on a hole.
+ *
+ * @param {object} index
+ * @param {string[]} clubIds        every club that needs a rating
+ * @param {(id:string)=>Promise<object>} loadSnapshot
+ * @param {string} [source]
+ */
+export async function newestCompleteSnapshot(index, clubIds, loadSnapshot, source = "clubelo") {
+  // A TOTAL ORDER, expressed through `supersedes` itself rather than a second
+  // copy of its precedence (Codex-Befund zu PR #51). The first draft returned 1
+  // whenever `supersedes(a, b)` was false — including for the reverse pair, so
+  // it claimed both „a after b" and „b after a" and left the order up to the
+  // sort implementation. For two genuinely equivalent snapshots that is
+  // harmless in effect and still a determinism defect in kind: a selection rule
+  // whose answer depends on input order is exactly what this repository refuses
+  // (see the `supersedes` note in CLAUDE.md).
+  const candidates = index.snapshots
+    .filter((s) => s.source === source)
+    .sort((a, b) => {
+      if (a.effectiveAt !== b.effectiveAt) return a.effectiveAt < b.effectiveAt ? 1 : -1;
+      if (supersedes(a, b)) return -1;
+      if (supersedes(b, a)) return 1;
+      return 0; // identical on every key precedence knows about
+    });
+  for (const meta of candidates) {
+    const snap = await loadSnapshot(meta.snapshotId);
+    if (clubIds.every((id) => snap.ratings[id] !== undefined)) {
+      return { ...snap, snapshotId: meta.snapshotId, effectiveAt: meta.effectiveAt };
+    }
+  }
+  return null;
+}
+
+/**
  * Was this snapshot observed before the kickoff it is being used for?
  *
  * This is what separates the two provenance values of §5.3, and it is a

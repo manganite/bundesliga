@@ -6,6 +6,7 @@ import path from "node:path";
 import {
   appendSnapshot, readIndex, readSnapshot, findPreMatchSnapshot, provenanceFor,
   contentHash, SNAPSHOT_DIR, resolveArchiveBase, createSnapshotStore, ARCHIVE_BASE_ENV,
+  newestCompleteSnapshot,
 } from "../src/snapshots.mjs";
 
 const tmpDir = () => fs.mkdtemp(path.join(os.tmpdir(), "bl-snap-"));
@@ -273,4 +274,62 @@ test("it agrees with the archive's own ordering after a real correction", async 
   });
   assert.equal(corrected.appended, true);
   assert.equal(findSnapshotOn(await readIndex(dir), "2026-07-23").snapshotId, corrected.snapshotId);
+});
+
+// ---------------------------------------------------------------------------
+//  newestCompleteSnapshot — the fallback basis of the results path (Brief 34).
+// ---------------------------------------------------------------------------
+
+test("completeness beats recency, and the answer does not depend on input order", async () => {
+  const CLUBS = ["A", "B", "C"];
+  // A fresher snapshot that is MISSING a club must lose to an older complete
+  // one. This is the five-club-snapshot lesson as a selection rule: an old
+  // complete basis is defensible, a fresh partial one leaves clubs with no
+  // rating at all.
+  const snaps = [
+    { snapshotId: "s1", source: "clubelo", effectiveAt: "2026-08-20", observedAt: "2026-08-20T03:00:00Z", clubs: 3 },
+    { snapshotId: "s2", source: "clubelo", effectiveAt: "2026-08-27", observedAt: "2026-08-27T03:00:00Z", clubs: 2 },
+    { snapshotId: "s3", source: "other", effectiveAt: "2026-08-28", observedAt: "2026-08-28T03:00:00Z", clubs: 3 },
+  ];
+  const bodies = {
+    s1: { ratings: { A: 1, B: 2, C: 3 } },
+    s2: { ratings: { A: 9, B: 9 } },          // C missing
+    s3: { ratings: { A: 5, B: 5, C: 5 } },    // wrong source
+  };
+  const load = async (id) => bodies[id];
+
+  const pick = async (order) => (await newestCompleteSnapshot({ snapshots: order }, CLUBS, load))?.snapshotId;
+  assert.equal(await pick(snaps), "s1");
+
+  // Every permutation must give the same answer. The first comparator was not
+  // antisymmetric — it claimed both „a after b" and „b after a" for equivalent
+  // entries — which left the order to the sort implementation. A selection rule
+  // whose answer depends on insertion order is a determinism defect in itself.
+  const perms = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+  for (const perm of perms) {
+    assert.equal(await pick(perm.map((i) => snaps[i])), "s1", `order ${perm.join("")}`);
+  }
+});
+
+test("ties on effectiveAt fall to the same precedence the archive already uses", async () => {
+  const CLUBS = ["A"];
+  const same = "2026-08-28";
+  const snaps = [
+    { snapshotId: "early", source: "clubelo", effectiveAt: same, observedAt: "2026-08-28T03:00:00Z", clubs: 1 },
+    { snapshotId: "late", source: "clubelo", effectiveAt: same, observedAt: "2026-08-28T21:00:00Z", clubs: 1 },
+  ];
+  const load = async (id) => ({ ratings: { A: id === "late" ? 2 : 1 } });
+  for (const order of [snaps, [...snaps].reverse()]) {
+    const got = await newestCompleteSnapshot({ snapshots: order }, CLUBS, load);
+    assert.equal(got.snapshotId, "late", "later observedAt wins, whichever way the list came in");
+  }
+});
+
+test("no complete snapshot at all returns null — the caller must fail, not forecast on a hole", async () => {
+  const got = await newestCompleteSnapshot(
+    { snapshots: [{ snapshotId: "s", source: "clubelo", effectiveAt: "2026-08-20", observedAt: "x", clubs: 1 }] },
+    ["A", "B"],
+    async () => ({ ratings: { A: 1 } }),
+  );
+  assert.equal(got, null);
 });

@@ -161,6 +161,92 @@ const silent = () => {};
 
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+//  ENTKOPPLUNG (Brief 34): the results path, without clubelo.
+// ---------------------------------------------------------------------------
+
+test("with fetchRatings:false the run touches clubelo NOT ONCE and still writes results", async () => {
+  const dataDir = await makeDataDir();
+  // First a normal run, so the archive holds a complete snapshot to fall back on.
+  const seed = makeSources();
+  await runUpdate({ dataDir, fetchJson: seed.fetchJson, fetchText: seed.fetchText, now: NOW, log: silent });
+
+  // AND THEN TAKE THE BACKFILL DATES AWAY AGAIN. Without this the first version
+  // of this test passed for the wrong reason: the seed run had already filled
+  // every required date, so the backfill — the heaviest clubelo caller in the
+  // repository — was simply never reached, and the „not once" claim went
+  // untested (Codex-Befund zu PR #51). A results run must survive a gap in the
+  // archive, because filling that gap is the ratings job's business.
+  const dir = resolveArchiveBase(dataDir, {});
+  const idx = JSON.parse(await fs.readFile(path.join(dir, "index.json"), "utf8"));
+  const keep = idx.snapshots.filter((sn) => sn.effectiveAt === NOW.toISOString().slice(0, 10));
+  assert.ok(keep.length, "the daily snapshot survives; the backfilled history does not");
+  assert.ok(keep.length < idx.snapshots.length, "there were backfilled dates to remove");
+  await fs.writeFile(path.join(dir, "index.json"), JSON.stringify({ ...idx, snapshots: keep }, null, 2));
+
+  // Now the results path. The assertion is on the CALL COUNT, not on a throwing
+  // stub: `backfillSnapshots` catches a failed history fetch per club and
+  // records it as a gap, so a stub that merely throws is swallowed and proves
+  // nothing. „Not once" is a statement about requests made, so requests are what
+  // gets counted.
+  const { fetchJson } = makeSources();
+  const clubeloCalls = [];
+  const later = new Date("2026-09-19T04:00:00.000Z");
+  const r = await runUpdate({
+    dataDir,
+    fetchJson,
+    fetchText: async (url) => {
+      clubeloCalls.push(url);
+      throw new Error(`clubelo must not be contacted: ${url}`);
+    },
+    now: later,
+    fetchRatings: false,
+    log: silent,
+  });
+  assert.deepEqual(clubeloCalls, [], "the results path must not make a single clubelo request");
+  assert.equal(r.changed, true, "results and forecast were still written");
+
+  const meta = JSON.parse(await fs.readFile(path.join(dataDir, "meta.json"), "utf8"));
+  // The forecast carries the archive's date, not today's — that is the honest
+  // stamp the app shows, and it is what makes running on old ratings legitimate.
+  assert.equal(meta.ratingsEffectiveAt, NOW.toISOString().slice(0, 10));
+  assert.ok(meta.resultsUpdatedAt, "results have their own clock");
+
+  const outlook = JSON.parse(
+    await fs.readFile(path.join(dataDir, "seasons", String(SEASON), "bl1", "outlook.json"), "utf8"),
+  );
+  assert.equal(outlook.ratingsEffectiveAt, NOW.toISOString().slice(0, 10));
+  const provenances = new Set(Object.values(outlook.ratingProvenance).map((p) => p.provenance));
+  assert.deepEqual([...provenances], ["archived"], "not claimed as live");
+});
+
+test("the results path archives NOTHING — the archive records what clubelo published", async () => {
+  const dataDir = await makeDataDir();
+  const seed = makeSources();
+  await runUpdate({ dataDir, fetchJson: seed.fetchJson, fetchText: seed.fetchText, now: NOW, log: silent });
+  const before = await readIndex(resolveArchiveBase(dataDir, {}));
+
+  const { fetchJson } = makeSources();
+  await runUpdate({
+    dataDir, fetchJson, fetchText: async () => { throw new Error("no"); },
+    now: new Date("2026-09-19T04:00:00.000Z"), fetchRatings: false, log: silent,
+  });
+  const after = await readIndex(resolveArchiveBase(dataDir, {}));
+  assert.equal(after.snapshots.length, before.snapshots.length, "no snapshot invented from a fallback");
+});
+
+test("without any complete archived snapshot the results path fails rather than forecasting on a hole", async () => {
+  const dataDir = await makeDataDir();
+  const { fetchJson } = makeSources();
+  await assert.rejects(
+    () => runUpdate({
+      dataDir, fetchJson, fetchText: async () => { throw new Error("no"); },
+      now: NOW, fetchRatings: false, log: silent,
+    }),
+    /no archived snapshot covers every club/,
+  );
+});
+
 test("a first run detects the season, archives, backfills and writes", async () => {
   const dataDir = await makeDataDir();
   const { fetchJson, fetchText } = makeSources();
