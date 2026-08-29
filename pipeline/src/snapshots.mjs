@@ -281,6 +281,41 @@ export function findSnapshotAsOf(index, date, source = "clubelo") {
 }
 
 /**
+ * The newest archived snapshot that covers EVERY club in `clubIds` — the rating
+ * basis a run falls back on when clubelo is unreachable (Brief 34).
+ *
+ * „Complete" rather than „newest" is the whole point, and the reason is already
+ * paid for: on 2026-08-11 a five-club snapshot displaced a thirty-four-club one
+ * of the same day and three matches were forecast on it
+ * (docs/verification/pipeline-ausfallverhalten.md §3). An old complete snapshot
+ * is a defensible basis; a fresh partial one is not, because the clubs it omits
+ * would have no rating at all.
+ *
+ * Snapshots are read newest-first and the first complete one wins, so a healthy
+ * archive costs exactly one read. Returns null when none covers every club —
+ * the caller must fail rather than forecast on a hole.
+ *
+ * @param {object} index
+ * @param {string[]} clubIds        every club that needs a rating
+ * @param {(id:string)=>Promise<object>} loadSnapshot
+ * @param {string} [source]
+ */
+export async function newestCompleteSnapshot(index, clubIds, loadSnapshot, source = "clubelo") {
+  const candidates = index.snapshots
+    .filter((s) => s.source === source)
+    .sort((a, b) => (a.effectiveAt === b.effectiveAt
+      ? (supersedes(a, b) ? -1 : 1)
+      : (a.effectiveAt < b.effectiveAt ? 1 : -1)));
+  for (const meta of candidates) {
+    const snap = await loadSnapshot(meta.snapshotId);
+    if (clubIds.every((id) => snap.ratings[id] !== undefined)) {
+      return { ...snap, snapshotId: meta.snapshotId, effectiveAt: meta.effectiveAt };
+    }
+  }
+  return null;
+}
+
+/**
  * Was this snapshot observed before the kickoff it is being used for?
  *
  * This is what separates the two provenance values of §5.3, and it is a

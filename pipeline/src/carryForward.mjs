@@ -25,7 +25,8 @@ export const MAX_CARRY_FORWARD_DAYS = 42;
 
 export const CARRIED_PROVENANCE = "carried-forward";
 
-const dayDiff = (fromIso, toIso) => Math.round(
+/** Whole days between two ISO dates. Shared with update.mjs's rating stamp. */
+export const dayDiff = (fromIso, toIso) => Math.round(
   (Date.parse(`${toIso}T00:00:00Z`) - Date.parse(`${fromIso}T00:00:00Z`)) / 86400000,
 );
 
