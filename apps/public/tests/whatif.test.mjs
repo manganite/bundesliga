@@ -124,9 +124,43 @@ test("the floor is 2·SE and comes from the measured batch spread, not a constan
   const modified = engineFixtures.map((f) =>
     (f.id === firstRemaining.id ? { ...f, gh: firstRemaining.gh, ga: firstRemaining.ga } : f));
   const { deltas } = whatIf(modified);
-  const sample = deltas.meister[clubs[0].clubId];
-  assert.ok(Math.abs(sample.floor - 2 * sample.se) < 1e-12, "floor must be exactly 2·SE");
-  assert.equal(sample.significant, Math.abs(sample.delta) >= sample.floor);
+  const all = Object.values(deltas.meister);
+
+  // The headline: the floor is measured, never a constant. True of every club.
+  for (const d of all) assert.ok(Math.abs(d.floor - 2 * d.se) < 1e-12, "floor must be exactly 2·SE");
+
+  // And the significance rule, stated as `reportDelta` actually defines it —
+  // including the branch that made this test a weather report. A club whose
+  // paired batches cancelled EXACTLY has floor 0 and delta 0, and „0 ≥ 0" would
+  // read as significant; the guard exists so the what-if says „unverändert"
+  // instead of „0,0 Pp.". Sampling one arbitrary club (it used to be clubs[0])
+  // meant the branch under test depended on which club happened to be first in
+  // the season file — and on how much of the season had been played.
+  for (const d of all) {
+    assert.equal(d.significant, d.floor > 0 ? Math.abs(d.delta) >= d.floor : d.delta !== 0);
+  }
+});
+
+test("reportDelta: a perfectly cancelled club reads „unverändert“, not „0,0 Pp.“", () => {
+  // The zero-floor branch, tested where it LIVES rather than fished out of a
+  // simulation. Whether any club happens to cancel exactly depends on how much
+  // of the season has been played — asserting it against the live data made the
+  // branch coverage a matter of the calendar.
+  const cancelled = reportDelta([0, 0, 0, 0]);
+  assert.equal(cancelled.floor, 0);
+  assert.equal(cancelled.delta, 0);
+  assert.equal(cancelled.significant, false, "0 ≥ 0 must not read as a change");
+  assert.equal(cancelled.display, null, "null is what renders as „unverändert“");
+
+  // A club that moved beyond the measured spread is significant…
+  const moved = reportDelta([0.04, 0.05, 0.045, 0.05]);
+  assert.ok(moved.floor > 0);
+  assert.equal(moved.significant, Math.abs(moved.delta) >= moved.floor);
+  assert.equal(moved.significant, true);
+  // …and one whose spread swamps its mean is not.
+  const noisy = reportDelta([0.05, -0.05, 0.04, -0.04]);
+  assert.ok(noisy.floor > Math.abs(noisy.delta));
+  assert.equal(noisy.significant, false);
 });
 
 test("a no-op scenario is identically zero and shown as „unverändert“, not „0,0 Pp.“", () => {

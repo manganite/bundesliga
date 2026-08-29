@@ -5,7 +5,7 @@ import path from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { harness } from "./harness/build.mjs";
-import { withPlayed } from "./harness/seasonStates.mjs";
+import { preSeason, withPlayed } from "./harness/seasonStates.mjs";
 import {
   recipeScoreline,
   scenarioFixtures,
@@ -38,6 +38,14 @@ const strip = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 const PARAMS = read("data/season-params.json");
 const CONFIG = read("data/seasons/2026/config.json");
 const SEASON = read("data/seasons/2026/bl1/season.json");
+
+// Two fixtures with DISTINCT ids and a state we own: one open, one played. Taken
+// from the committed season for their shape (real clubs, real ids) and stripped
+// of whatever the calendar has since done to them — the rule from
+// harness/seasonStates.mjs, applied to a single fixture.
+const OPEN_SEASON = preSeason(SEASON);
+const OPEN_FIXTURE = OPEN_SEASON.fixtures[0];
+const PLAYED_FIXTURE = { ...OPEN_SEASON.fixtures[1], gh: 2, ga: 1 };
 const OUTLOOK = read("data/seasons/2026/bl1/outlook.json");
 const PREMATCH = read("data/seasons/2026/bl1/prematch.json");
 const nameOf = (() => { const m = new Map(SEASON.clubs.map((c) => [c.clubId, c.name])); return (id) => m.get(id) ?? id; })();
@@ -103,9 +111,12 @@ test("„surprise“ sets the modal within the LEAST likely tendency — even wh
 // ---------------------------------------------------------------------------
 
 test("scenarioFixtures: released removes BOTH goals; fixed sets both; the guard can never fire", () => {
-  const open = SEASON.fixtures[0];
-  // A synthetic played fixture (2026 pre-season has none of its own), distinct id.
-  const played = { ...SEASON.fixtures[1], gh: 2, ga: 1 };
+  // The state is CONSTRUCTED, never read off the running season: „fixtures[0] is
+  // open" was true in the pre-season and false from the first kickoff, and
+  // „fixtures[1] is a different fixture from the first open one" stopped being
+  // true the moment exactly one match had been played. Both broke the deploy.
+  const open = OPEN_FIXTURE;
+  const played = { ...PLAYED_FIXTURE };
   const fixtures = [open, played];
   const overrides = {
     [open.id]: { kind: "fixed", gh: 3, ga: 0 },
@@ -124,8 +135,8 @@ test("scenarioFixtures: released removes BOTH goals; fixed sets both; the guard 
 });
 
 test("scenarioFixtures leaves an untouched played fixture at its real result and open ones open", () => {
-  const open = SEASON.fixtures.find((f) => f.gh === undefined);
-  const played = { ...SEASON.fixtures[1], gh: 0, ga: 0 };
+  const open = OPEN_FIXTURE;
+  const played = { ...PLAYED_FIXTURE, gh: 0, ga: 0 };
   const out = scenarioFixtures([open, played], {});
   const byId = Object.fromEntries(out.map((f) => [f.id, f]));
   assert.equal("gh" in byId[open.id], false, "an untouched open fixture stays open");

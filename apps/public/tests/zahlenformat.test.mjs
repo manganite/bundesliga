@@ -93,7 +93,12 @@ test("before the first matchday the Restprogramm card is HIDDEN (§7)", () => {
 });
 
 test("after a played match the card appears, with the new caption and a deviation column", () => {
-  const base = read("data/seasons/2026/bl1/season.json");
+  // EXACTLY one match played, and the state says so — built from the blank
+  // season, not from the running one. „One played match" was true of the live
+  // data only until the second kickoff, and the card legitimately hides again
+  // once every club has an equal home/away remainder (after a complete even
+  // number of matchdays), which would have made this fail for a correct reason.
+  const base = preSeason(read("data/seasons/2026/bl1/season.json"));
   // Play one match: the two clubs involved lose a home (or away) fixture, so
   // their home/away remaining counts diverge → the card becomes informative.
   const fixtures = base.fixtures.map((f, i) => (i === 0 ? { ...f, gh: 2, ga: 1 } : f));
@@ -106,7 +111,7 @@ test("after a played match the card appears, with the new caption and a deviatio
 });
 
 test("ratings in the card are not thousands-grouped", () => {
-  const base = read("data/seasons/2026/bl1/season.json");
+  const base = preSeason(read("data/seasons/2026/bl1/season.json"));
   const fixtures = base.fixtures.map((f, i) => (i === 0 ? { ...f, gh: 2, ga: 1 } : f));
   const html = renderToStaticMarkup(React.createElement(TabelleUndPrognose, { ctx: tableCtx(2026, "bl1", { fixtures }) }));
   // Isolate the Restprogramm card and check no „1.678"-style grouped rating.
@@ -118,7 +123,7 @@ test("ratings in the card are not thousands-grouped", () => {
 });
 
 test("the deviation carries a real minus for a below-average schedule", () => {
-  const base = read("data/seasons/2026/bl1/season.json");
+  const base = preSeason(read("data/seasons/2026/bl1/season.json"));
   const fixtures = base.fixtures.map((f, i) => (i < 3 ? { ...f, gh: 1, ga: 0 } : f));
   const html = renderToStaticMarkup(React.createElement(TabelleUndPrognose, { ctx: tableCtx(2026, "bl1", { fixtures }) }));
   const marker = html.indexOf("Restprogramm-Schwere");
