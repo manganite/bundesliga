@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   formatDataUpdatedAt, stalenessWarning, seasonPhase, SEASON_PHASE_LABEL, configStampWarning,
-  carriedRatings, carriedRatingSummary,
+  carriedRatings, carriedRatingSummary, ratingStatus,
 } from "../../../packages/engine/src/dataState.mjs";
 import { LEAGUES, leagueLabel, leagueSeasonLabel } from "../../../packages/engine/src/leagues.mjs";
 import { loadManifest, loadLeagueSeason, clubIndex, currentMatchday } from "./lib/data.js";
@@ -239,6 +239,10 @@ export function Ready({ route, seasonId, league, data, isArchive = false, availa
   // the line disappears the moment clubelo lists the clubs again.
   const carried = isArchive ? [] : carriedRatings(outlook);
   const carriedSummary = isArchive ? null : carriedRatingSummary(carried, nameOf);
+  // The rating clock. Gated on `isArchive` like every other live-only element:
+  // an archive season's ratings are as current as they will ever be, and
+  // „4 Tage alt" would be nonsense there.
+  const rating = isArchive ? null : ratingStatus(meta);
 
   const active = PAGES.find((p) => p.id === route) ?? PAGES[0];
   const { Component } = active;
@@ -282,6 +286,16 @@ export function Ready({ route, seasonId, league, data, isArchive = false, availa
                 archive it would be misleading, so it is replaced by the season's
                 state. §5.1: stated neutrally, no workflow-health claim. */}
             <span>{isArchive ? "Abgeschlossene Saison" : formatDataUpdatedAt(meta?.dataUpdatedAt)}</span>
+            {/* How current the RATINGS are — a second clock, because results and
+                ratings come from different sources with different outages
+                (Brief 34). Live seasons only: an archive has no „current" to be.
+                The date is always spelled out, so the colour is an accent and
+                never the only carrier of the meaning. */}
+            {!isArchive && rating ? (
+              <span className={rating.fresh ? "rating-age is-fresh" : "rating-age is-stale"} title={rating.warning ?? undefined}>
+                {rating.label}
+              </span>
+            ) : null}
             <a href={REPO} rel="noreferrer">Quellcode und Methodik</a>
           </div>
 
@@ -289,6 +303,7 @@ export function Ready({ route, seasonId, league, data, isArchive = false, availa
           {staleness ? <p className="banner warn" role="status">{staleness.text}</p> : null}
           {stampWarning ? <p className="banner warn" role="alert">{stampWarning}</p> : null}
           {carriedSummary ? <p className="banner warn" role="status">{carriedSummary}</p> : null}
+          {!isArchive && rating?.warning ? <p className="banner warn" role="status">{rating.warning}</p> : null}
 
           <nav className="tabs" aria-label="Seiten">
             {PAGES.map((p) => (

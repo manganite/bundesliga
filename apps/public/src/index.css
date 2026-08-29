@@ -868,3 +868,10 @@ td.zone-stripe, th.zone-stripe {
   padding-bottom: 0.35rem;
   border-bottom: 2px solid var(--border);
 }
+
+/* The rating clock in the meta row (§Brief 34). Colour is an accent on a date
+   that is always spelled out — it is never the only carrier of the meaning, and
+   it says how old the DATA is, never whether the workflow is well. */
+.rating-age { font-variant-numeric: tabular-nums; }
+.rating-age.is-fresh { color: var(--good); }
+.rating-age.is-stale { color: var(--warn); font-weight: 500; }
