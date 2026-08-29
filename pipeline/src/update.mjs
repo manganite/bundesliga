@@ -493,7 +493,18 @@ export async function runUpdate({
   // archiving is done. So instead: whatever required date the archive still
   // lacks and clubelo could now supply, fill it. When nothing is missing — the
   // steady state — no history is fetched at all, and the courtesy rule holds.
-  const requiredDates = backfillDates(seasons.bl1.fixtures.concat(seasons.bl2.fixtures), today);
+  //
+  // ON THE RESULTS PATH THIS IS SKIPPED ENTIRELY (Brief 34, Codex-Befund zu
+  // PR #51). The backfill fetches one full club history per club — it is the
+  // single heaviest clubelo caller in the repository. Leaving it here would have
+  // made „this job never contacts clubelo" false in exactly the situation the
+  // split exists for: a missing required date would drag the results job into
+  // an outage and fail it. The archive is the ratings job's business, and
+  // `ratingsCli.mjs` runs the same backfill on its own schedule and its own
+  // channel.
+  const requiredDates = fetchRatings
+    ? backfillDates(seasons.bl1.fixtures.concat(seasons.bl2.fixtures), today)
+    : [];
   const archivedDates = new Set(existingIndex.snapshots.map((s) => s.effectiveAt));
   const missingDates = requiredDates.filter((d) => !archivedDates.has(d));
   if (missingDates.length) {

@@ -995,9 +995,16 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   `pipeline/tests/herbstmeisterArtefakte.test.mjs` benannt statt wegbehauptet.
 - **Ergebnisse und Ratings sind zwei Kanäle (2.5.0, Brief 34).** Vier Stellen,
   an denen sie leicht wieder zusammenwachsen:
-  - **`data.yml` fasst clubelo nicht an.** Der Lauf trägt `--no-ratings-fetch`;
-    das ist die eine Zeile, die einen clubelo-Ausfall von den Ligaergebnissen
-    fernhält. `pipeline/tests/entkopplung.test.mjs` bewacht sie zusammen mit den
+  - **`data.yml` fasst clubelo nicht an — und der Backfill auch nicht.** Der Lauf
+    trägt `--no-ratings-fetch`; das ist die eine Zeile, die einen clubelo-Ausfall
+    von den Ligaergebnissen fernhält. Der **History-Backfill** hängt am selben
+    Schalter (Codex-Befund zu PR #51): er ist der schwerste clubelo-Aufrufer im
+    Repo — eine volle Klubhistorie je Klub — und lief zunächst weiter, hätte den
+    Ergebnislauf also genau dann in den Ausfall gezogen, wenn dem Archiv ein
+    Pflichttermin fehlt. Der Wächter prüft „nicht ein einziges Mal" über die
+    **Aufrufzahl**, nicht über einen werfenden Stub: `backfillSnapshots` fängt
+    Abruffehler je Klub in `gaps`, ein bloß werfendes `fetchText` wird also
+    geschluckt und beweist nichts. `pipeline/tests/entkopplung.test.mjs` bewacht sie zusammen mit den
     drei anderen Gliedern (Ratings-Job vorhanden, disjunkte `git add`-Pfade,
     **getrennte `betrieb`-Kanäle**) und testet sich gegen jedes einzeln
     gebrochene. Ein gemeinsamer Kanal wäre der stillste Rückfall: alles liefe,
@@ -1005,7 +1012,12 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   - **Der Rückgriff nimmt Vollständigkeit vor Aktualität.**
     `newestCompleteSnapshot` überspringt einen neueren Snapshot, der nicht jeden
     Klub führt — die Lehre aus dem Fünf-Klub-Snapshot. Deckt keiner alle ab,
-    scheitert der Lauf, statt auf einem Loch zu rechnen.
+    scheitert der Lauf, statt auf einem Loch zu rechnen. Seine Sortierung ist
+    eine **totale Ordnung, ausgedrückt durch `supersedes` selbst** — nicht durch
+    eine zweite Kopie der Präzedenz. Der erste Entwurf war nicht antisymmetrisch
+    und überließ die Reihenfolge der Sortierimplementierung; in der Wirkung
+    harmlos, in der Art genau der Determinismus-Defekt, den die
+    `supersedes`-Notiz oben meint.
   - **Auf dem Ergebnispfad wird nichts archiviert und nichts „live" genannt.**
     Das Archiv enthält, was clubelo veröffentlicht hat; die Klubs tragen
     `archived` mit dem echten Datum. `--carry-forward-until` bleibt davon

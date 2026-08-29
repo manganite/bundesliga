@@ -171,18 +171,39 @@ test("with fetchRatings:false the run touches clubelo NOT ONCE and still writes 
   const seed = makeSources();
   await runUpdate({ dataDir, fetchJson: seed.fetchJson, fetchText: seed.fetchText, now: NOW, log: silent });
 
-  // Now the results path. Any clubelo request at all is a failure of the whole
-  // point, so the stub throws rather than returning something plausible.
+  // AND THEN TAKE THE BACKFILL DATES AWAY AGAIN. Without this the first version
+  // of this test passed for the wrong reason: the seed run had already filled
+  // every required date, so the backfill — the heaviest clubelo caller in the
+  // repository — was simply never reached, and the „not once" claim went
+  // untested (Codex-Befund zu PR #51). A results run must survive a gap in the
+  // archive, because filling that gap is the ratings job's business.
+  const dir = resolveArchiveBase(dataDir, {});
+  const idx = JSON.parse(await fs.readFile(path.join(dir, "index.json"), "utf8"));
+  const keep = idx.snapshots.filter((sn) => sn.effectiveAt === NOW.toISOString().slice(0, 10));
+  assert.ok(keep.length, "the daily snapshot survives; the backfilled history does not");
+  assert.ok(keep.length < idx.snapshots.length, "there were backfilled dates to remove");
+  await fs.writeFile(path.join(dir, "index.json"), JSON.stringify({ ...idx, snapshots: keep }, null, 2));
+
+  // Now the results path. The assertion is on the CALL COUNT, not on a throwing
+  // stub: `backfillSnapshots` catches a failed history fetch per club and
+  // records it as a gap, so a stub that merely throws is swallowed and proves
+  // nothing. „Not once" is a statement about requests made, so requests are what
+  // gets counted.
   const { fetchJson } = makeSources();
+  const clubeloCalls = [];
   const later = new Date("2026-09-19T04:00:00.000Z");
   const r = await runUpdate({
     dataDir,
     fetchJson,
-    fetchText: async (url) => { throw new Error(`clubelo must not be contacted: ${url}`); },
+    fetchText: async (url) => {
+      clubeloCalls.push(url);
+      throw new Error(`clubelo must not be contacted: ${url}`);
+    },
     now: later,
     fetchRatings: false,
     log: silent,
   });
+  assert.deepEqual(clubeloCalls, [], "the results path must not make a single clubelo request");
   assert.equal(r.changed, true, "results and forecast were still written");
 
   const meta = JSON.parse(await fs.readFile(path.join(dataDir, "meta.json"), "utf8"));

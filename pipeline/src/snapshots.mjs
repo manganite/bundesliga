@@ -301,11 +301,22 @@ export function findSnapshotAsOf(index, date, source = "clubelo") {
  * @param {string} [source]
  */
 export async function newestCompleteSnapshot(index, clubIds, loadSnapshot, source = "clubelo") {
+  // A TOTAL ORDER, expressed through `supersedes` itself rather than a second
+  // copy of its precedence (Codex-Befund zu PR #51). The first draft returned 1
+  // whenever `supersedes(a, b)` was false — including for the reverse pair, so
+  // it claimed both „a after b" and „b after a" and left the order up to the
+  // sort implementation. For two genuinely equivalent snapshots that is
+  // harmless in effect and still a determinism defect in kind: a selection rule
+  // whose answer depends on input order is exactly what this repository refuses
+  // (see the `supersedes` note in CLAUDE.md).
   const candidates = index.snapshots
     .filter((s) => s.source === source)
-    .sort((a, b) => (a.effectiveAt === b.effectiveAt
-      ? (supersedes(a, b) ? -1 : 1)
-      : (a.effectiveAt < b.effectiveAt ? 1 : -1)));
+    .sort((a, b) => {
+      if (a.effectiveAt !== b.effectiveAt) return a.effectiveAt < b.effectiveAt ? 1 : -1;
+      if (supersedes(a, b)) return -1;
+      if (supersedes(b, a)) return 1;
+      return 0; // identical on every key precedence knows about
+    });
   for (const meta of candidates) {
     const snap = await loadSnapshot(meta.snapshotId);
     if (clubIds.every((id) => snap.ratings[id] !== undefined)) {

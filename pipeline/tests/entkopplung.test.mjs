@@ -38,12 +38,21 @@ export function decouplingProblems(dataYml, ratingsYml) {
     );
   }
 
-  // 2. The ratings job must exist and be the one that fetches.
+  // 2. The backfill is the heaviest clubelo caller there is — one full club
+  //    history per club. It must be gated on the same switch, or the results job
+  //    reaches for clubelo the moment the archive lacks a required date, which
+  //    is precisely when clubelo is down (Codex-Befund zu PR #51).
+  const update = fs.readFileSync(path.join(REPO, "pipeline/src/update.mjs"), "utf8");
+  if (!/fetchRatings\s*\n?\s*\?\s*backfillDates|fetchRatings\s*\?\s*backfillDates/.test(update)) {
+    problems.push("update.mjs runs the history backfill unconditionally — the results path would call clubelo");
+  }
+
+  // 3. The ratings job must exist and be the one that fetches.
   if (!/pipeline\/src\/ratingsCli\.mjs/.test(ratingsYml)) {
     problems.push("ratings.yml does not run the ratings entry point — nothing would ever archive a snapshot");
   }
 
-  // 3. Disjoint writes. A job that commits the other's files makes both markers
+  // 4. Disjoint writes. A job that commits the other's files makes both markers
   //    lie: the results channel would go red for a ratings problem and back.
   const added = (yml) => [...yml.matchAll(/git add ([^\n]+)/g)].map((m) => m[1].trim());
   const dataAdds = added(dataYml).join(" ");
@@ -56,7 +65,7 @@ export function decouplingProblems(dataYml, ratingsYml) {
     problems.push("ratings.yml commits season data — that belongs to data.yml");
   }
 
-  // 4. Separate `betrieb` channels. The marker key is what keeps one outage from
+  // 5. Separate `betrieb` channels. The marker key is what keeps one outage from
   //    opening the other channel's issue.
   const channel = (yml) => [...yml.matchAll(/BETRIEB_WORKFLOW:\s*(\S+)/g)].map((m) => m[1]);
   const dataChannels = new Set(channel(dataYml));
