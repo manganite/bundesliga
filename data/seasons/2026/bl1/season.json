@@ -179,7 +179,9 @@
       "awayClubId": "HSV",
       "homeName": "Borussia Dortmund",
       "awayName": "Hamburger SV",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83159",
