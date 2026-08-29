@@ -1,0 +1,91 @@
+name: Ratings aktualisieren
+
+# THE CLUBELO PATH, AND NOTHING ELSE (Brief 34).
+#
+# Split out of the results job because the two sources fail independently and
+# for a long time one outage looked like the other: the ratings gate sat before
+# every write, so „clubelo unreachable" meant „nothing committed at all",
+# league results included. That happened three times in one season.
+#
+# This job archives clubelo's daily snapshot and backfills the mandatory dates.
+# It writes ONLY inside data/ratings/, has its own `betrieb` channel, and does
+# not trigger a deployment: a new rating changes nothing the app shows until the
+# results job picks it up from the archive on its next run, minutes later.
+on:
+  schedule:
+    # Hourly. clubelo publishes at most once a day, and the job skips the fetch
+    # entirely once today is archived — so this is at most one request per day
+    # while healthy, and one per hour while waiting for a day that has not been
+    # published yet. That is the courtesy rule unchanged; what the hourly rhythm
+    # buys is a shorter wait once clubelo comes back.
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ratings
+  cancel-in-progress: false
+
+jobs:
+  ratings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.1"
+
+      - name: Ratings abrufen und archivieren
+        id: ratings
+        run: node pipeline/src/ratingsCli.mjs --data-dir data
+
+      # Commit only on change, same contract as the results job. An archive that
+      # already holds today commits nothing.
+      - name: Änderungen committen
+        if: steps.ratings.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # ONLY the archive. Season data belongs to the results job.
+          git add data/ratings
+          if git diff --cached --quiet; then
+            echo "Ratings meldeten eine Änderung, der Baum ist aber unverändert — nichts zu committen."
+            exit 0
+          fi
+          git commit -m "Ratings: clubelo-Snapshot archiviert"
+          git push
+
+  # Its own channel. The whole point of the split is that a red clubelo does not
+  # colour the results channel — so this must never share the marker with it.
+  melden:
+    needs: [ratings]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rot melden
+        if: contains(needs.*.result, 'failure')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BETRIEB_STATUS: rot
+          BETRIEB_WORKFLOW: ratings
+          BETRIEB_TITEL: Ratings aktualisieren
+          BETRIEB_LAUF: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: .github/scripts/betrieb-melden.sh
+
+      - name: Grün melden
+        if: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BETRIEB_STATUS: gruen
+          BETRIEB_WORKFLOW: ratings
+          BETRIEB_TITEL: Ratings aktualisieren
+          BETRIEB_LAUF: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: .github/scripts/betrieb-melden.sh
