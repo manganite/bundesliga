@@ -395,7 +395,9 @@
       "awayClubId": "Kaiserslautern",
       "homeName": "FC St. Pauli",
       "awayName": "1. FC Kaiserslautern",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83541",
@@ -405,7 +407,9 @@
       "awayClubId": "Hannover",
       "homeName": "SV Darmstadt 98",
       "awayName": "Hannover 96",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83545",
@@ -415,7 +419,9 @@
       "awayClubId": "Kiel",
       "homeName": "1. FC Magdeburg",
       "awayName": "Holstein Kiel",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83550",
