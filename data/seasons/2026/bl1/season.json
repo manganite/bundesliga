@@ -203,7 +203,9 @@
       "awayClubId": "Schalke",
       "homeName": "FC Augsburg",
       "awayName": "FC Schalke 04",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83165",
