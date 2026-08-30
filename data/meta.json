@@ -1,11 +1,13 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "dataUpdatedAt": "2026-08-30T00:58:11.495Z",
+  "dataUpdatedAt": "2026-08-30T01:50:17.763Z",
   "resultsUpdatedAt": "2026-08-29T20:38:35.612Z",
-  "ratingsEffectiveAt": "2026-08-28",
+  "ratingsEffectiveAt": "2026-08-30",
   "dataHash": "3763d0357b02fd50",
   "lastChanges": [
+    "bl1 pre-match dataset (+0, ~297)",
+    "bl2 pre-match dataset (+0, ~279)",
     "bl1 current outlook",
     "bl2 current outlook"
   ]
