@@ -191,7 +191,9 @@
       "awayClubId": "Bremen",
       "homeName": "SC Freiburg",
       "awayName": "SV Werder Bremen",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 1
     },
     {
       "id": "83160",
