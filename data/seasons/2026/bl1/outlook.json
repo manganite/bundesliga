@@ -11674,94 +11674,94 @@
   ],
   "ratingProvenance": {
     "Augsburg": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Bayern": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Bremen": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Dortmund": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Elversberg": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Frankfurt": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Freiburg": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Gladbach": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Hoffenheim": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "HSV": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Köln": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Leipzig": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Leverkusen": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Mainz": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Paderborn": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Schalke": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Stuttgart": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     },
     "Union Berlin": {
-      "provenance": "live",
+      "provenance": "archived",
       "effectiveAt": "2026-08-31",
-      "ageDays": 0
+      "ageDays": 1
     }
   },
   "ratingsEffectiveAt": "2026-08-31"
