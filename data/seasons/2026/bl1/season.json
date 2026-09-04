@@ -215,7 +215,9 @@
       "awayClubId": "Köln",
       "homeName": "VfB Stuttgart",
       "awayName": "1. FC Köln",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 1
     },
     {
       "id": "83166",
