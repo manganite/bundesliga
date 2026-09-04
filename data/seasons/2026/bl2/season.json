@@ -431,7 +431,9 @@
       "awayClubId": "Karlsruhe",
       "homeName": "Hannover 96",
       "awayName": "Karlsruher SC",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83559",
@@ -441,7 +443,9 @@
       "awayClubId": "St. Pauli",
       "homeName": "DSC Arminia Bielefeld",
       "awayName": "FC St. Pauli",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83548",
