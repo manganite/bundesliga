@@ -491,7 +491,9 @@
       "awayClubId": "Bochum",
       "homeName": "Dynamo Dresden",
       "awayName": "VfL Bochum",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83556",
