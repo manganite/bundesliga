@@ -287,7 +287,9 @@
       "awayClubId": "Bayern",
       "homeName": "FC Schalke 04",
       "awayName": "FC Bayern München",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83170",
