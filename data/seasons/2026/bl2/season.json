@@ -455,7 +455,9 @@
       "awayClubId": "Cottbus",
       "homeName": "VfL Wolfsburg",
       "awayName": "Energie Cottbus",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 4
     },
     {
       "id": "83554",
@@ -465,7 +467,9 @@
       "awayClubId": "Darmstadt",
       "homeName": "1. FC Kaiserslautern",
       "awayName": "SV Darmstadt 98",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83558",
@@ -475,7 +479,9 @@
       "awayClubId": "Nürnberg",
       "homeName": "Holstein Kiel",
       "awayName": "1. FC Nürnberg",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83557",
