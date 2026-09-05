@@ -227,7 +227,9 @@
       "awayClubId": "Dortmund",
       "homeName": "TSG Hoffenheim",
       "awayName": "Borussia Dortmund",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 3
     },
     {
       "id": "83167",
@@ -237,7 +239,9 @@
       "awayClubId": "Union Berlin",
       "homeName": "Bayer 04 Leverkusen",
       "awayName": "1. FC Union Berlin",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 0
     },
     {
       "id": "83169",
@@ -247,7 +251,9 @@
       "awayClubId": "Elversberg",
       "homeName": "Borussia Mönchengladbach",
       "awayName": "SV 07 Elversberg",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 4
     },
     {
       "id": "83171",
@@ -267,7 +273,9 @@
       "awayClubId": "Freiburg",
       "homeName": "SC Paderborn 07",
       "awayName": "SC Freiburg",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83172",
