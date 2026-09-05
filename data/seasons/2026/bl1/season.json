@@ -263,7 +263,9 @@
       "awayClubId": "Leipzig",
       "homeName": "SV Werder Bremen",
       "awayName": "RB Leipzig",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83173",
