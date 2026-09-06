@@ -311,7 +311,9 @@
       "awayClubId": "Augsburg",
       "homeName": "Eintracht Frankfurt",
       "awayName": "FC Augsburg",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 4
     },
     {
       "id": "83180",
