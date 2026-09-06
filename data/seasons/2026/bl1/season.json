@@ -299,7 +299,9 @@
       "awayClubId": "Mainz",
       "homeName": "Hamburger SV",
       "awayName": "1. FSV Mainz 05",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 5
     },
     {
       "id": "83168",
