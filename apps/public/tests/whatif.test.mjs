@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { simulateSeason, drawSeasonRun } from "../../../packages/engine/src/simulate.mjs";
 import { reportDelta } from "../../../packages/engine/src/metrics.mjs";
+import { preSeason } from "./harness/seasonStates.mjs";
 
 // ============================================================================
 //  Was-wäre-wenn — the CRN cancellation the acceptance criterion names.
@@ -32,7 +33,16 @@ const rules = {
 const targets = Object.fromEntries(
   Object.entries(CONFIG.leagues.bl1.targets).map(([n, t]) => [n, { places: t.places, positions: (r) => r >= t.from && r <= t.to }]),
 );
-const engineFixtures = SEASON.fixtures.map((f) => ({
+// CONSTRUCTED, not borrowed: every claim in this file is about the ENGINE — CRN
+// cancellation and the 2·SE noise floor — and none of them needs a played match.
+// Reading the live season made them drift with the calendar instead: as results
+// come in the table gets more determined, so fixing one fixture pushes a larger
+// share of cells above the floor. The „most cells read unverändert" test was
+// calibrated in August and fell on 2026-09-06 at 64/108 = 59,3 % against a 60 %
+// threshold — nothing about the floor had changed, only how much football had
+// been played. The clubs, ratings and fixture list stay real; only the STATE is
+// ours (harness/seasonStates.mjs).
+const engineFixtures = preSeason(SEASON).fixtures.map((f) => ({
   id: f.id, home: f.homeClubId, away: f.awayClubId,
   ...(f.gh !== undefined ? { gh: f.gh, ga: f.ga } : {}),
 }));

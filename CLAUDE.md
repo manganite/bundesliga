@@ -1127,6 +1127,15 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   einen neuen Test gegen `data/seasons/2026/**` schreibt, prüft zuerst, ob die
   Behauptung den nächsten Spieltag überlebt — die Sonde dafür ist billig
   (Spieltag einspielen, Suite laufen lassen, Datenstand zurücksetzen).
+  **Auch eine statistische Schwelle ist so eine Behauptung** (2026-09-06):
+  `whatif.test.mjs` verlangte, dass beim Festsetzen eines Mittelfeldspiels
+  über 60 % der Zellen „unverändert" lesen — kalibriert im August, gefallen bei
+  64/108 = 59,3 %. Am Rauschboden hatte sich nichts geändert, nur war mehr
+  Fußball gespielt: je determinierter die Tabelle, desto mehr Zellen bewegen
+  sich über den Boden. Die Datei rechnet jetzt auf `preSeason(SEASON)` — jede
+  ihrer Aussagen betrifft die **Engine** (CRN, 2·SE-Boden) und keine braucht ein
+  gespieltes Spiel; der Abstand zur Schwelle liegt damit bei 91,7 % statt bei
+  0,7 Prozentpunkten.
 - **Tests aus der Anforderung schreiben, nicht aus der Implementierung.** Die
   Freeze-Bedingung aus Brief 30 hatte eine volle Testrunde, war grün und war
   falsch: getestet wurde die Bedingung, die gebaut worden war, statt der Fälle,
