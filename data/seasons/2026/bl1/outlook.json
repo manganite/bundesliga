@@ -3610,35 +3610,6 @@
       }
     },
     {
-      "fixtureId": "83193",
-      "home": "Leipzig",
-      "away": "Frankfurt",
-      "outcomeProbabilities": {
-        "homeWin": 0.54325,
-        "draw": 0.23235,
-        "awayWin": 0.2244
-      },
-      "smallestConditionalRuns": 4488,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.018758945000000013,
-            "smallestConditionalSample": 4488,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.01877058874999999,
-            "smallestConditionalSample": 4488,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
       "fixtureId": "83194",
       "home": "Hoffenheim",
       "away": "HSV",
@@ -3662,35 +3633,6 @@
           "shift": {
             "value": 0.0324118675,
             "smallestConditionalSample": 4432,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
-      "fixtureId": "83195",
-      "home": "Freiburg",
-      "away": "Schalke",
-      "outcomeProbabilities": {
-        "homeWin": 0.65025,
-        "draw": 0.20145,
-        "awayWin": 0.1483
-      },
-      "smallestConditionalRuns": 2966,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.016544855000000004,
-            "smallestConditionalSample": 2966,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.040897385,
-            "smallestConditionalSample": 2966,
             "places": 2
           }
         }
@@ -3784,35 +3726,6 @@
       }
     },
     {
-      "fixtureId": "83199",
-      "home": "Köln",
-      "away": "Gladbach",
-      "outcomeProbabilities": {
-        "homeWin": 0.36835,
-        "draw": 0.25125,
-        "awayWin": 0.3804
-      },
-      "smallestConditionalRuns": 5025,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.010854355000000003,
-            "smallestConditionalSample": 5025,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.0383799325,
-            "smallestConditionalSample": 5025,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
       "fixtureId": "83200",
       "home": "Paderborn",
       "away": "Stuttgart",
@@ -3842,58 +3755,87 @@
       }
     },
     {
-      "fixtureId": "83201",
-      "home": "Bayern",
-      "away": "Leipzig",
+      "fixtureId": "83193",
+      "home": "Leipzig",
+      "away": "Frankfurt",
       "outcomeProbabilities": {
-        "homeWin": 0.67785,
-        "draw": 0.1935,
-        "awayWin": 0.12865
+        "homeWin": 0.54325,
+        "draw": 0.23235,
+        "awayWin": 0.2244
       },
-      "smallestConditionalRuns": 2573,
+      "smallestConditionalRuns": 4488,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.08316340249999998,
-            "smallestConditionalSample": 2573,
+            "value": 0.018758945000000013,
+            "smallestConditionalSample": 4488,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.007338880000000004,
-            "smallestConditionalSample": 2573,
+            "value": 0.01877058874999999,
+            "smallestConditionalSample": 4488,
             "places": 2
           }
         }
       }
     },
     {
-      "fixtureId": "83202",
-      "home": "Leverkusen",
-      "away": "Freiburg",
+      "fixtureId": "83199",
+      "home": "Köln",
+      "away": "Gladbach",
       "outcomeProbabilities": {
-        "homeWin": 0.52515,
-        "draw": 0.23175,
-        "awayWin": 0.2431
+        "homeWin": 0.36835,
+        "draw": 0.25125,
+        "awayWin": 0.3804
       },
-      "smallestConditionalRuns": 4635,
+      "smallestConditionalRuns": 5025,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.027086047500000012,
-            "smallestConditionalSample": 4635,
+            "value": 0.010854355000000003,
+            "smallestConditionalSample": 5025,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.010732200000000016,
-            "smallestConditionalSample": 4635,
+            "value": 0.0383799325,
+            "smallestConditionalSample": 5025,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83195",
+      "home": "Freiburg",
+      "away": "Schalke",
+      "outcomeProbabilities": {
+        "homeWin": 0.65025,
+        "draw": 0.20145,
+        "awayWin": 0.1483
+      },
+      "smallestConditionalRuns": 2966,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.016544855000000004,
+            "smallestConditionalSample": 2966,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.040897385,
+            "smallestConditionalSample": 2966,
             "places": 2
           }
         }
@@ -3952,35 +3894,6 @@
           "shift": {
             "value": 0.025521275000000006,
             "smallestConditionalSample": 4705,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
-      "fixtureId": "83205",
-      "home": "Gladbach",
-      "away": "Hoffenheim",
-      "outcomeProbabilities": {
-        "homeWin": 0.3798,
-        "draw": 0.2492,
-        "awayWin": 0.371
-      },
-      "smallestConditionalRuns": 4984,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.010750200000000005,
-            "smallestConditionalSample": 4984,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.029129795,
-            "smallestConditionalSample": 4984,
             "places": 2
           }
         }
@@ -4103,58 +4016,87 @@
       }
     },
     {
-      "fixtureId": "83210",
-      "home": "Dortmund",
-      "away": "Frankfurt",
+      "fixtureId": "83201",
+      "home": "Bayern",
+      "away": "Leipzig",
       "outcomeProbabilities": {
-        "homeWin": 0.61645,
-        "draw": 0.21515,
-        "awayWin": 0.1684
+        "homeWin": 0.67785,
+        "draw": 0.1935,
+        "awayWin": 0.12865
       },
-      "smallestConditionalRuns": 3368,
+      "smallestConditionalRuns": 2573,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.046241075000000006,
-            "smallestConditionalSample": 3368,
+            "value": 0.08316340249999998,
+            "smallestConditionalSample": 2573,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.014074693749999995,
-            "smallestConditionalSample": 3368,
+            "value": 0.007338880000000004,
+            "smallestConditionalSample": 2573,
             "places": 2
           }
         }
       }
     },
     {
-      "fixtureId": "83211",
-      "home": "Leipzig",
-      "away": "Elversberg",
+      "fixtureId": "83202",
+      "home": "Leverkusen",
+      "away": "Freiburg",
       "outcomeProbabilities": {
-        "homeWin": 0.68265,
-        "draw": 0.18995,
-        "awayWin": 0.1274
+        "homeWin": 0.52515,
+        "draw": 0.23175,
+        "awayWin": 0.2431
       },
-      "smallestConditionalRuns": 2548,
+      "smallestConditionalRuns": 4635,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.015130842500000014,
-            "smallestConditionalSample": 2548,
+            "value": 0.027086047500000012,
+            "smallestConditionalSample": 4635,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.029874339999999992,
-            "smallestConditionalSample": 2548,
+            "value": 0.010732200000000016,
+            "smallestConditionalSample": 4635,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83205",
+      "home": "Gladbach",
+      "away": "Hoffenheim",
+      "outcomeProbabilities": {
+        "homeWin": 0.3798,
+        "draw": 0.2492,
+        "awayWin": 0.371
+      },
+      "smallestConditionalRuns": 4984,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.010750200000000005,
+            "smallestConditionalSample": 4984,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.029129795,
+            "smallestConditionalSample": 4984,
             "places": 2
           }
         }
@@ -4190,58 +4132,29 @@
       }
     },
     {
-      "fixtureId": "83213",
-      "home": "Hoffenheim",
-      "away": "Leverkusen",
+      "fixtureId": "83211",
+      "home": "Leipzig",
+      "away": "Elversberg",
       "outcomeProbabilities": {
-        "homeWin": 0.34105,
-        "draw": 0.25405,
-        "awayWin": 0.4049
+        "homeWin": 0.68265,
+        "draw": 0.18995,
+        "awayWin": 0.1274
       },
-      "smallestConditionalRuns": 5081,
+      "smallestConditionalRuns": 2548,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.02808256500000001,
-            "smallestConditionalSample": 5081,
+            "value": 0.015130842500000014,
+            "smallestConditionalSample": 2548,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.017038041250000004,
-            "smallestConditionalSample": 5081,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
-      "fixtureId": "83214",
-      "home": "Freiburg",
-      "away": "Bayern",
-      "outcomeProbabilities": {
-        "homeWin": 0.19885,
-        "draw": 0.21925,
-        "awayWin": 0.5819
-      },
-      "smallestConditionalRuns": 3977,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.092580985,
-            "smallestConditionalSample": 3977,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.007561297500000001,
-            "smallestConditionalSample": 3977,
+            "value": 0.029874339999999992,
+            "smallestConditionalSample": 2548,
             "places": 2
           }
         }
@@ -4364,29 +4277,116 @@
       }
     },
     {
-      "fixtureId": "83219",
-      "home": "Bayern",
-      "away": "Dortmund",
+      "fixtureId": "83210",
+      "home": "Dortmund",
+      "away": "Frankfurt",
       "outcomeProbabilities": {
-        "homeWin": 0.6156,
-        "draw": 0.2149,
-        "awayWin": 0.1695
+        "homeWin": 0.61645,
+        "draw": 0.21515,
+        "awayWin": 0.1684
       },
-      "smallestConditionalRuns": 3390,
+      "smallestConditionalRuns": 3368,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.11226545999999998,
-            "smallestConditionalSample": 3390,
+            "value": 0.046241075000000006,
+            "smallestConditionalSample": 3368,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.006564689999999996,
-            "smallestConditionalSample": 3390,
+            "value": 0.014074693749999995,
+            "smallestConditionalSample": 3368,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83213",
+      "home": "Hoffenheim",
+      "away": "Leverkusen",
+      "outcomeProbabilities": {
+        "homeWin": 0.34105,
+        "draw": 0.25405,
+        "awayWin": 0.4049
+      },
+      "smallestConditionalRuns": 5081,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.02808256500000001,
+            "smallestConditionalSample": 5081,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.017038041250000004,
+            "smallestConditionalSample": 5081,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83214",
+      "home": "Freiburg",
+      "away": "Bayern",
+      "outcomeProbabilities": {
+        "homeWin": 0.19885,
+        "draw": 0.21925,
+        "awayWin": 0.5819
+      },
+      "smallestConditionalRuns": 3977,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.092580985,
+            "smallestConditionalSample": 3977,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.007561297500000001,
+            "smallestConditionalSample": 3977,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83227",
+      "home": "Elversberg",
+      "away": "Mainz",
+      "outcomeProbabilities": {
+        "homeWin": 0.2955,
+        "draw": 0.2514,
+        "awayWin": 0.4531
+      },
+      "smallestConditionalRuns": 5028,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.012846340000000008,
+            "smallestConditionalSample": 5028,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.0358801225,
+            "smallestConditionalSample": 5028,
             "places": 2
           }
         }
@@ -4422,35 +4422,6 @@
       }
     },
     {
-      "fixtureId": "83221",
-      "home": "Frankfurt",
-      "away": "HSV",
-      "outcomeProbabilities": {
-        "homeWin": 0.51095,
-        "draw": 0.23465,
-        "awayWin": 0.2544
-      },
-      "smallestConditionalRuns": 4693,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.01125632,
-            "smallestConditionalSample": 4693,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.036530658750000014,
-            "smallestConditionalSample": 4693,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
       "fixtureId": "83222",
       "home": "Augsburg",
       "away": "Freiburg",
@@ -4474,35 +4445,6 @@
           "shift": {
             "value": 0.017718329999999997,
             "smallestConditionalSample": 5062,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
-      "fixtureId": "83223",
-      "home": "Union Berlin",
-      "away": "Köln",
-      "outcomeProbabilities": {
-        "homeWin": 0.49875,
-        "draw": 0.2399,
-        "awayWin": 0.26135
-      },
-      "smallestConditionalRuns": 4798,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.009692692500000002,
-            "smallestConditionalSample": 4798,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.0385874425,
-            "smallestConditionalSample": 4798,
             "places": 2
           }
         }
@@ -4596,29 +4538,116 @@
       }
     },
     {
-      "fixtureId": "83227",
-      "home": "Elversberg",
-      "away": "Mainz",
+      "fixtureId": "83219",
+      "home": "Bayern",
+      "away": "Dortmund",
       "outcomeProbabilities": {
-        "homeWin": 0.2955,
-        "draw": 0.2514,
-        "awayWin": 0.4531
+        "homeWin": 0.6156,
+        "draw": 0.2149,
+        "awayWin": 0.1695
       },
-      "smallestConditionalRuns": 5028,
+      "smallestConditionalRuns": 3390,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.012846340000000008,
-            "smallestConditionalSample": 5028,
+            "value": 0.11226545999999998,
+            "smallestConditionalSample": 3390,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.0358801225,
-            "smallestConditionalSample": 5028,
+            "value": 0.006564689999999996,
+            "smallestConditionalSample": 3390,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83223",
+      "home": "Union Berlin",
+      "away": "Köln",
+      "outcomeProbabilities": {
+        "homeWin": 0.49875,
+        "draw": 0.2399,
+        "awayWin": 0.26135
+      },
+      "smallestConditionalRuns": 4798,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.009692692500000002,
+            "smallestConditionalSample": 4798,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.0385874425,
+            "smallestConditionalSample": 4798,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83221",
+      "home": "Frankfurt",
+      "away": "HSV",
+      "outcomeProbabilities": {
+        "homeWin": 0.51095,
+        "draw": 0.23465,
+        "awayWin": 0.2544
+      },
+      "smallestConditionalRuns": 4693,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.01125632,
+            "smallestConditionalSample": 4693,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.036530658750000014,
+            "smallestConditionalSample": 4693,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83234",
+      "home": "HSV",
+      "away": "Gladbach",
+      "outcomeProbabilities": {
+        "homeWin": 0.4069,
+        "draw": 0.2464,
+        "awayWin": 0.3467
+      },
+      "smallestConditionalRuns": 4928,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.011965415000000009,
+            "smallestConditionalSample": 4928,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.037420295000000006,
+            "smallestConditionalSample": 4928,
             "places": 2
           }
         }
@@ -4683,93 +4712,6 @@
       }
     },
     {
-      "fixtureId": "83230",
-      "home": "Stuttgart",
-      "away": "Bremen",
-      "outcomeProbabilities": {
-        "homeWin": 0.6023,
-        "draw": 0.22205,
-        "awayWin": 0.17565
-      },
-      "smallestConditionalRuns": 3513,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.015155184999999995,
-            "smallestConditionalSample": 3513,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.02202301874999999,
-            "smallestConditionalSample": 3513,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
-      "fixtureId": "83231",
-      "home": "Hoffenheim",
-      "away": "Schalke",
-      "outcomeProbabilities": {
-        "homeWin": 0.62745,
-        "draw": 0.2076,
-        "awayWin": 0.16495
-      },
-      "smallestConditionalRuns": 3299,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.009399749999999993,
-            "smallestConditionalSample": 3299,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.04250841875,
-            "smallestConditionalSample": 3299,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
-      "fixtureId": "83232",
-      "home": "Freiburg",
-      "away": "Union Berlin",
-      "outcomeProbabilities": {
-        "homeWin": 0.55085,
-        "draw": 0.2295,
-        "awayWin": 0.21965
-      },
-      "smallestConditionalRuns": 4393,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.0199235275,
-            "smallestConditionalSample": 4393,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.023318578750000006,
-            "smallestConditionalSample": 4393,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
       "fixtureId": "83233",
       "home": "Mainz",
       "away": "Bayern",
@@ -4799,29 +4741,58 @@
       }
     },
     {
-      "fixtureId": "83234",
-      "home": "HSV",
-      "away": "Gladbach",
+      "fixtureId": "83236",
+      "home": "Paderborn",
+      "away": "Frankfurt",
       "outcomeProbabilities": {
-        "homeWin": 0.4069,
-        "draw": 0.2464,
-        "awayWin": 0.3467
+        "homeWin": 0.3071,
+        "draw": 0.2496,
+        "awayWin": 0.4433
       },
-      "smallestConditionalRuns": 4928,
+      "smallestConditionalRuns": 4992,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.011965415000000009,
-            "smallestConditionalSample": 4928,
+            "value": 0.010886120000000013,
+            "smallestConditionalSample": 4992,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.037420295000000006,
-            "smallestConditionalSample": 4928,
+            "value": 0.046873244999999994,
+            "smallestConditionalSample": 4992,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83230",
+      "home": "Stuttgart",
+      "away": "Bremen",
+      "outcomeProbabilities": {
+        "homeWin": 0.6023,
+        "draw": 0.22205,
+        "awayWin": 0.17565
+      },
+      "smallestConditionalRuns": 3513,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.015155184999999995,
+            "smallestConditionalSample": 3513,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.02202301874999999,
+            "smallestConditionalSample": 3513,
             "places": 2
           }
         }
@@ -4857,29 +4828,58 @@
       }
     },
     {
-      "fixtureId": "83236",
-      "home": "Paderborn",
-      "away": "Frankfurt",
+      "fixtureId": "83232",
+      "home": "Freiburg",
+      "away": "Union Berlin",
       "outcomeProbabilities": {
-        "homeWin": 0.3071,
-        "draw": 0.2496,
-        "awayWin": 0.4433
+        "homeWin": 0.55085,
+        "draw": 0.2295,
+        "awayWin": 0.21965
       },
-      "smallestConditionalRuns": 4992,
+      "smallestConditionalRuns": 4393,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.010886120000000013,
-            "smallestConditionalSample": 4992,
+            "value": 0.0199235275,
+            "smallestConditionalSample": 4393,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.046873244999999994,
-            "smallestConditionalSample": 4992,
+            "value": 0.023318578750000006,
+            "smallestConditionalSample": 4393,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83231",
+      "home": "Hoffenheim",
+      "away": "Schalke",
+      "outcomeProbabilities": {
+        "homeWin": 0.62745,
+        "draw": 0.2076,
+        "awayWin": 0.16495
+      },
+      "smallestConditionalRuns": 3299,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.009399749999999993,
+            "smallestConditionalSample": 3299,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.04250841875,
+            "smallestConditionalSample": 3299,
             "places": 2
           }
         }
@@ -4973,35 +4973,6 @@
       }
     },
     {
-      "fixtureId": "83240",
-      "home": "Augsburg",
-      "away": "Mainz",
-      "outcomeProbabilities": {
-        "homeWin": 0.40995,
-        "draw": 0.24895,
-        "awayWin": 0.3411
-      },
-      "smallestConditionalRuns": 4979,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.015355597500000016,
-            "smallestConditionalSample": 4979,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.020630958750000004,
-            "smallestConditionalSample": 4979,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
       "fixtureId": "83241",
       "home": "Union Berlin",
       "away": "Leipzig",
@@ -5060,29 +5031,29 @@
       }
     },
     {
-      "fixtureId": "83243",
-      "home": "Bremen",
-      "away": "HSV",
+      "fixtureId": "83245",
+      "home": "Elversberg",
+      "away": "Freiburg",
       "outcomeProbabilities": {
-        "homeWin": 0.4495,
-        "draw": 0.2451,
-        "awayWin": 0.3054
+        "homeWin": 0.2527,
+        "draw": 0.2394,
+        "awayWin": 0.5079
       },
-      "smallestConditionalRuns": 4902,
+      "smallestConditionalRuns": 4788,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.00954048999999999,
-            "smallestConditionalSample": 4902,
+            "value": 0.01675743,
+            "smallestConditionalSample": 4788,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.037935699999999996,
-            "smallestConditionalSample": 4902,
+            "value": 0.032132225,
+            "smallestConditionalSample": 4788,
             "places": 2
           }
         }
@@ -5118,145 +5089,87 @@
       }
     },
     {
-      "fixtureId": "83245",
-      "home": "Elversberg",
-      "away": "Freiburg",
+      "fixtureId": "83240",
+      "home": "Augsburg",
+      "away": "Mainz",
       "outcomeProbabilities": {
-        "homeWin": 0.2527,
-        "draw": 0.2394,
-        "awayWin": 0.5079
+        "homeWin": 0.40995,
+        "draw": 0.24895,
+        "awayWin": 0.3411
       },
-      "smallestConditionalRuns": 4788,
+      "smallestConditionalRuns": 4979,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.01675743,
-            "smallestConditionalSample": 4788,
+            "value": 0.015355597500000016,
+            "smallestConditionalSample": 4979,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.032132225,
-            "smallestConditionalSample": 4788,
+            "value": 0.020630958750000004,
+            "smallestConditionalSample": 4979,
             "places": 2
           }
         }
       }
     },
     {
-      "fixtureId": "83246",
-      "home": "Dortmund",
-      "away": "Leverkusen",
+      "fixtureId": "83243",
+      "home": "Bremen",
+      "away": "HSV",
       "outcomeProbabilities": {
-        "homeWin": 0.46635,
-        "draw": 0.24995,
-        "awayWin": 0.2837
+        "homeWin": 0.4495,
+        "draw": 0.2451,
+        "awayWin": 0.3054
       },
-      "smallestConditionalRuns": 4999,
+      "smallestConditionalRuns": 4902,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.059947969999999996,
-            "smallestConditionalSample": 4999,
+            "value": 0.00954048999999999,
+            "smallestConditionalSample": 4902,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.010190910000000006,
-            "smallestConditionalSample": 4999,
+            "value": 0.037935699999999996,
+            "smallestConditionalSample": 4902,
             "places": 2
           }
         }
       }
     },
     {
-      "fixtureId": "83247",
-      "home": "Stuttgart",
-      "away": "Frankfurt",
+      "fixtureId": "83253",
+      "home": "Bremen",
+      "away": "Gladbach",
       "outcomeProbabilities": {
-        "homeWin": 0.54725,
-        "draw": 0.23335,
-        "awayWin": 0.2194
+        "homeWin": 0.3994,
+        "draw": 0.25295,
+        "awayWin": 0.34765
       },
-      "smallestConditionalRuns": 4388,
+      "smallestConditionalRuns": 5059,
       "targets": {
         "meister": {
           "places": 1,
           "shift": {
-            "value": 0.018804877499999997,
-            "smallestConditionalSample": 4388,
+            "value": 0.008271089999999991,
+            "smallestConditionalSample": 5059,
             "places": 1
           }
         },
         "abstieg": {
           "places": 2,
           "shift": {
-            "value": 0.020784358750000002,
-            "smallestConditionalSample": 4388,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
-      "fixtureId": "83248",
-      "home": "Hoffenheim",
-      "away": "Augsburg",
-      "outcomeProbabilities": {
-        "homeWin": 0.50495,
-        "draw": 0.2388,
-        "awayWin": 0.25625
-      },
-      "smallestConditionalRuns": 4776,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.010598714999999998,
-            "smallestConditionalSample": 4776,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.02185837875,
-            "smallestConditionalSample": 4776,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
-      "fixtureId": "83249",
-      "home": "Freiburg",
-      "away": "Leipzig",
-      "outcomeProbabilities": {
-        "homeWin": 0.4082,
-        "draw": 0.2474,
-        "awayWin": 0.3444
-      },
-      "smallestConditionalRuns": 4948,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.025908539999999994,
-            "smallestConditionalSample": 4948,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.011740920000000004,
-            "smallestConditionalSample": 4948,
+            "value": 0.03139478625,
+            "smallestConditionalSample": 5059,
             "places": 2
           }
         }
@@ -5350,35 +5263,6 @@
       }
     },
     {
-      "fixtureId": "83253",
-      "home": "Bremen",
-      "away": "Gladbach",
-      "outcomeProbabilities": {
-        "homeWin": 0.3994,
-        "draw": 0.25295,
-        "awayWin": 0.34765
-      },
-      "smallestConditionalRuns": 5059,
-      "targets": {
-        "meister": {
-          "places": 1,
-          "shift": {
-            "value": 0.008271089999999991,
-            "smallestConditionalSample": 5059,
-            "places": 1
-          }
-        },
-        "abstieg": {
-          "places": 2,
-          "shift": {
-            "value": 0.03139478625,
-            "smallestConditionalSample": 5059,
-            "places": 2
-          }
-        }
-      }
-    },
-    {
       "fixtureId": "83254",
       "home": "Paderborn",
       "away": "Schalke",
@@ -5402,6 +5286,122 @@
           "shift": {
             "value": 0.05860105624999999,
             "smallestConditionalSample": 4855,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83247",
+      "home": "Stuttgart",
+      "away": "Frankfurt",
+      "outcomeProbabilities": {
+        "homeWin": 0.54725,
+        "draw": 0.23335,
+        "awayWin": 0.2194
+      },
+      "smallestConditionalRuns": 4388,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.018804877499999997,
+            "smallestConditionalSample": 4388,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.020784358750000002,
+            "smallestConditionalSample": 4388,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83249",
+      "home": "Freiburg",
+      "away": "Leipzig",
+      "outcomeProbabilities": {
+        "homeWin": 0.4082,
+        "draw": 0.2474,
+        "awayWin": 0.3444
+      },
+      "smallestConditionalRuns": 4948,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.025908539999999994,
+            "smallestConditionalSample": 4948,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.011740920000000004,
+            "smallestConditionalSample": 4948,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83248",
+      "home": "Hoffenheim",
+      "away": "Augsburg",
+      "outcomeProbabilities": {
+        "homeWin": 0.50495,
+        "draw": 0.2388,
+        "awayWin": 0.25625
+      },
+      "smallestConditionalRuns": 4776,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.010598714999999998,
+            "smallestConditionalSample": 4776,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.02185837875,
+            "smallestConditionalSample": 4776,
+            "places": 2
+          }
+        }
+      }
+    },
+    {
+      "fixtureId": "83246",
+      "home": "Dortmund",
+      "away": "Leverkusen",
+      "outcomeProbabilities": {
+        "homeWin": 0.46635,
+        "draw": 0.24995,
+        "awayWin": 0.2837
+      },
+      "smallestConditionalRuns": 4999,
+      "targets": {
+        "meister": {
+          "places": 1,
+          "shift": {
+            "value": 0.059947969999999996,
+            "smallestConditionalSample": 4999,
+            "places": 1
+          }
+        },
+        "abstieg": {
+          "places": 2,
+          "shift": {
+            "value": 0.010190910000000006,
+            "smallestConditionalSample": 4999,
             "places": 2
           }
         }

@@ -712,19 +712,9 @@
       "finished": false
     },
     {
-      "id": "83608",
-      "matchday": 7,
-      "kickoff": "2026-10-11T11:30:00Z",
-      "homeClubId": "St. Pauli",
-      "awayClubId": "Karlsruhe",
-      "homeName": "FC St. Pauli",
-      "awayName": "Karlsruher SC",
-      "finished": false
-    },
-    {
       "id": "83609",
       "matchday": 7,
-      "kickoff": "2026-10-11T11:30:00Z",
+      "kickoff": "2026-10-09T16:30:00Z",
       "homeClubId": "Heidenheim",
       "awayClubId": "Kaiserslautern",
       "homeName": "1. FC Heidenheim 1846",
@@ -732,13 +722,63 @@
       "finished": false
     },
     {
+      "id": "83620",
+      "matchday": 7,
+      "kickoff": "2026-10-09T16:30:00Z",
+      "homeClubId": "Braunschweig",
+      "awayClubId": "Kiel",
+      "homeName": "Eintracht Braunschweig",
+      "awayName": "Holstein Kiel",
+      "finished": false
+    },
+    {
       "id": "83611",
       "matchday": 7,
-      "kickoff": "2026-10-11T11:30:00Z",
+      "kickoff": "2026-10-10T11:00:00Z",
       "homeClubId": "Darmstadt",
       "awayClubId": "Cottbus",
       "homeName": "SV Darmstadt 98",
       "awayName": "Energie Cottbus",
+      "finished": false
+    },
+    {
+      "id": "83617",
+      "matchday": 7,
+      "kickoff": "2026-10-10T11:00:00Z",
+      "homeClubId": "Magdeburg",
+      "awayClubId": "Hannover",
+      "homeName": "1. FC Magdeburg",
+      "awayName": "Hannover 96",
+      "finished": false
+    },
+    {
+      "id": "83622",
+      "matchday": 7,
+      "kickoff": "2026-10-10T11:00:00Z",
+      "homeClubId": "Osnabrück",
+      "awayClubId": "Dresden",
+      "homeName": "VfL Osnabrück",
+      "awayName": "Dynamo Dresden",
+      "finished": false
+    },
+    {
+      "id": "83615",
+      "matchday": 7,
+      "kickoff": "2026-10-10T18:30:00Z",
+      "homeClubId": "Nürnberg",
+      "awayClubId": "Wolfsburg",
+      "homeName": "1. FC Nürnberg",
+      "awayName": "VfL Wolfsburg",
+      "finished": false
+    },
+    {
+      "id": "83608",
+      "matchday": 7,
+      "kickoff": "2026-10-11T11:30:00Z",
+      "homeClubId": "St. Pauli",
+      "awayClubId": "Karlsruhe",
+      "homeName": "FC St. Pauli",
+      "awayName": "Karlsruher SC",
       "finished": false
     },
     {
@@ -752,16 +792,6 @@
       "finished": false
     },
     {
-      "id": "83615",
-      "matchday": 7,
-      "kickoff": "2026-10-11T11:30:00Z",
-      "homeClubId": "Nürnberg",
-      "awayClubId": "Wolfsburg",
-      "homeName": "1. FC Nürnberg",
-      "awayName": "VfL Wolfsburg",
-      "finished": false
-    },
-    {
       "id": "83616",
       "matchday": 7,
       "kickoff": "2026-10-11T11:30:00Z",
@@ -772,39 +802,29 @@
       "finished": false
     },
     {
-      "id": "83617",
-      "matchday": 7,
-      "kickoff": "2026-10-11T11:30:00Z",
-      "homeClubId": "Magdeburg",
-      "awayClubId": "Hannover",
-      "homeName": "1. FC Magdeburg",
-      "awayName": "Hannover 96",
+      "id": "83632",
+      "matchday": 8,
+      "kickoff": "2026-10-16T16:30:00Z",
+      "homeClubId": "Kiel",
+      "awayClubId": "Hertha",
+      "homeName": "Holstein Kiel",
+      "awayName": "Hertha BSC",
       "finished": false
     },
     {
-      "id": "83620",
-      "matchday": 7,
-      "kickoff": "2026-10-11T11:30:00Z",
-      "homeClubId": "Braunschweig",
-      "awayClubId": "Kiel",
-      "homeName": "Eintracht Braunschweig",
-      "awayName": "Holstein Kiel",
-      "finished": false
-    },
-    {
-      "id": "83622",
-      "matchday": 7,
-      "kickoff": "2026-10-11T11:30:00Z",
-      "homeClubId": "Osnabrück",
-      "awayClubId": "Dresden",
-      "homeName": "VfL Osnabrück",
-      "awayName": "Dynamo Dresden",
+      "id": "83641",
+      "matchday": 8,
+      "kickoff": "2026-10-16T16:30:00Z",
+      "homeClubId": "Cottbus",
+      "awayClubId": "Nürnberg",
+      "homeName": "Energie Cottbus",
+      "awayName": "1. FC Nürnberg",
       "finished": false
     },
     {
       "id": "83626",
       "matchday": 8,
-      "kickoff": "2026-10-18T11:30:00Z",
+      "kickoff": "2026-10-17T11:00:00Z",
       "homeClubId": "Wolfsburg",
       "awayClubId": "Heidenheim",
       "homeName": "VfL Wolfsburg",
@@ -812,23 +832,33 @@
       "finished": false
     },
     {
-      "id": "83627",
-      "matchday": 8,
-      "kickoff": "2026-10-18T11:30:00Z",
-      "homeClubId": "Hannover",
-      "awayClubId": "St. Pauli",
-      "homeName": "Hannover 96",
-      "awayName": "FC St. Pauli",
-      "finished": false
-    },
-    {
       "id": "83628",
       "matchday": 8,
-      "kickoff": "2026-10-18T11:30:00Z",
+      "kickoff": "2026-10-17T11:00:00Z",
       "homeClubId": "Kaiserslautern",
       "awayClubId": "Bochum",
       "homeName": "1. FC Kaiserslautern",
       "awayName": "VfL Bochum",
+      "finished": false
+    },
+    {
+      "id": "83639",
+      "matchday": 8,
+      "kickoff": "2026-10-17T11:00:00Z",
+      "homeClubId": "Fürth",
+      "awayClubId": "Braunschweig",
+      "homeName": "SpVgg Greuther Fürth",
+      "awayName": "Eintracht Braunschweig",
+      "finished": false
+    },
+    {
+      "id": "83627",
+      "matchday": 8,
+      "kickoff": "2026-10-17T18:30:00Z",
+      "homeClubId": "Hannover",
+      "awayClubId": "St. Pauli",
+      "homeName": "Hannover 96",
+      "awayName": "FC St. Pauli",
       "finished": false
     },
     {
@@ -852,16 +882,6 @@
       "finished": false
     },
     {
-      "id": "83632",
-      "matchday": 8,
-      "kickoff": "2026-10-18T11:30:00Z",
-      "homeClubId": "Kiel",
-      "awayClubId": "Hertha",
-      "homeName": "Holstein Kiel",
-      "awayName": "Hertha BSC",
-      "finished": false
-    },
-    {
       "id": "83635",
       "matchday": 8,
       "kickoff": "2026-10-18T11:30:00Z",
@@ -872,39 +892,9 @@
       "finished": false
     },
     {
-      "id": "83639",
-      "matchday": 8,
-      "kickoff": "2026-10-18T11:30:00Z",
-      "homeClubId": "Fürth",
-      "awayClubId": "Braunschweig",
-      "homeName": "SpVgg Greuther Fürth",
-      "awayName": "Eintracht Braunschweig",
-      "finished": false
-    },
-    {
-      "id": "83641",
-      "matchday": 8,
-      "kickoff": "2026-10-18T11:30:00Z",
-      "homeClubId": "Cottbus",
-      "awayClubId": "Nürnberg",
-      "homeName": "Energie Cottbus",
-      "awayName": "1. FC Nürnberg",
-      "finished": false
-    },
-    {
-      "id": "83645",
-      "matchday": 9,
-      "kickoff": "2026-10-25T12:30:00Z",
-      "homeClubId": "Heidenheim",
-      "awayClubId": "Cottbus",
-      "homeName": "1. FC Heidenheim 1846",
-      "awayName": "Energie Cottbus",
-      "finished": false
-    },
-    {
       "id": "83648",
       "matchday": 9,
-      "kickoff": "2026-10-25T12:30:00Z",
+      "kickoff": "2026-10-23T16:30:00Z",
       "homeClubId": "Darmstadt",
       "awayClubId": "St. Pauli",
       "homeName": "SV Darmstadt 98",
@@ -912,9 +902,29 @@
       "finished": false
     },
     {
+      "id": "83655",
+      "matchday": 9,
+      "kickoff": "2026-10-23T16:30:00Z",
+      "homeClubId": "Bochum",
+      "awayClubId": "Wolfsburg",
+      "homeName": "VfL Bochum",
+      "awayName": "VfL Wolfsburg",
+      "finished": false
+    },
+    {
+      "id": "83645",
+      "matchday": 9,
+      "kickoff": "2026-10-24T11:00:00Z",
+      "homeClubId": "Heidenheim",
+      "awayClubId": "Cottbus",
+      "homeName": "1. FC Heidenheim 1846",
+      "awayName": "Energie Cottbus",
+      "finished": false
+    },
+    {
       "id": "83650",
       "matchday": 9,
-      "kickoff": "2026-10-25T12:30:00Z",
+      "kickoff": "2026-10-24T11:00:00Z",
       "homeClubId": "Hertha",
       "awayClubId": "Bielefeld",
       "homeName": "Hertha BSC",
@@ -922,23 +932,23 @@
       "finished": false
     },
     {
+      "id": "83659",
+      "matchday": 9,
+      "kickoff": "2026-10-24T11:00:00Z",
+      "homeClubId": "Magdeburg",
+      "awayClubId": "Karlsruhe",
+      "homeName": "1. FC Magdeburg",
+      "awayName": "Karlsruher SC",
+      "finished": false
+    },
+    {
       "id": "83652",
       "matchday": 9,
-      "kickoff": "2026-10-25T12:30:00Z",
+      "kickoff": "2026-10-24T18:30:00Z",
       "homeClubId": "Nürnberg",
       "awayClubId": "Kaiserslautern",
       "homeName": "1. FC Nürnberg",
       "awayName": "1. FC Kaiserslautern",
-      "finished": false
-    },
-    {
-      "id": "83655",
-      "matchday": 9,
-      "kickoff": "2026-10-25T12:30:00Z",
-      "homeClubId": "Bochum",
-      "awayClubId": "Wolfsburg",
-      "homeName": "VfL Bochum",
-      "awayName": "VfL Wolfsburg",
       "finished": false
     },
     {
@@ -949,16 +959,6 @@
       "awayClubId": "Dresden",
       "homeName": "Holstein Kiel",
       "awayName": "Dynamo Dresden",
-      "finished": false
-    },
-    {
-      "id": "83659",
-      "matchday": 9,
-      "kickoff": "2026-10-25T12:30:00Z",
-      "homeClubId": "Magdeburg",
-      "awayClubId": "Karlsruhe",
-      "homeName": "1. FC Magdeburg",
-      "awayName": "Karlsruher SC",
       "finished": false
     },
     {
@@ -979,6 +979,26 @@
       "awayClubId": "Fürth",
       "homeName": "VfL Osnabrück",
       "awayName": "SpVgg Greuther Fürth",
+      "finished": false
+    },
+    {
+      "id": "83671",
+      "matchday": 10,
+      "kickoff": "2026-10-30T17:30:00Z",
+      "homeClubId": "Bielefeld",
+      "awayClubId": "Braunschweig",
+      "homeName": "DSC Arminia Bielefeld",
+      "awayName": "Eintracht Braunschweig",
+      "finished": false
+    },
+    {
+      "id": "83674",
+      "matchday": 10,
+      "kickoff": "2026-10-30T17:30:00Z",
+      "homeClubId": "Cottbus",
+      "awayClubId": "Bochum",
+      "homeName": "Energie Cottbus",
+      "awayName": "VfL Bochum",
       "finished": false
     },
     {
@@ -1042,16 +1062,6 @@
       "finished": false
     },
     {
-      "id": "83671",
-      "matchday": 10,
-      "kickoff": "2026-11-01T12:30:00Z",
-      "homeClubId": "Bielefeld",
-      "awayClubId": "Braunschweig",
-      "homeName": "DSC Arminia Bielefeld",
-      "awayName": "Eintracht Braunschweig",
-      "finished": false
-    },
-    {
       "id": "83673",
       "matchday": 10,
       "kickoff": "2026-11-01T12:30:00Z",
@@ -1059,16 +1069,6 @@
       "awayClubId": "Kiel",
       "homeName": "SpVgg Greuther Fürth",
       "awayName": "Holstein Kiel",
-      "finished": false
-    },
-    {
-      "id": "83674",
-      "matchday": 10,
-      "kickoff": "2026-11-01T12:30:00Z",
-      "homeClubId": "Cottbus",
-      "awayClubId": "Bochum",
-      "homeName": "Energie Cottbus",
-      "awayName": "VfL Bochum",
       "finished": false
     },
     {

@@ -1,12 +1,16 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "dataUpdatedAt": "2026-09-10T00:51:57.799Z",
-  "resultsUpdatedAt": "2026-09-06T17:24:14.254Z",
+  "dataUpdatedAt": "2026-09-10T15:39:41.801Z",
+  "resultsUpdatedAt": "2026-09-10T15:39:41.801Z",
   "ratingsEffectiveAt": "2026-08-31",
-  "dataHash": "ea4ecc4cd7f3d0e6",
+  "dataHash": "ccf4dcae444e242a",
   "lastChanges": [
+    "bl1 pre-match dataset (+0, ~30)",
+    "bl2 pre-match dataset (+0, ~20)",
     "bl1 current outlook",
-    "bl2 current outlook"
+    "bl2 current outlook",
+    "bl1 fixtures/results",
+    "bl2 fixtures/results"
   ]
 }

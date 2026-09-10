@@ -498,21 +498,11 @@
     {
       "id": "83192",
       "matchday": 5,
-      "kickoff": "2026-10-10T13:30:00Z",
+      "kickoff": "2026-10-09T18:30:00Z",
       "homeClubId": "Dortmund",
       "awayClubId": "Bremen",
       "homeName": "Borussia Dortmund",
       "awayName": "SV Werder Bremen",
-      "finished": false
-    },
-    {
-      "id": "83193",
-      "matchday": 5,
-      "kickoff": "2026-10-10T13:30:00Z",
-      "homeClubId": "Leipzig",
-      "awayClubId": "Frankfurt",
-      "homeName": "RB Leipzig",
-      "awayName": "Eintracht Frankfurt",
       "finished": false
     },
     {
@@ -523,16 +513,6 @@
       "awayClubId": "HSV",
       "homeName": "TSG Hoffenheim",
       "awayName": "Hamburger SV",
-      "finished": false
-    },
-    {
-      "id": "83195",
-      "matchday": 5,
-      "kickoff": "2026-10-10T13:30:00Z",
-      "homeClubId": "Freiburg",
-      "awayClubId": "Schalke",
-      "homeName": "SC Freiburg",
-      "awayName": "FC Schalke 04",
       "finished": false
     },
     {
@@ -566,16 +546,6 @@
       "finished": false
     },
     {
-      "id": "83199",
-      "matchday": 5,
-      "kickoff": "2026-10-10T13:30:00Z",
-      "homeClubId": "Köln",
-      "awayClubId": "Gladbach",
-      "homeName": "1. FC Köln",
-      "awayName": "Borussia Mönchengladbach",
-      "finished": false
-    },
-    {
       "id": "83200",
       "matchday": 5,
       "kickoff": "2026-10-10T13:30:00Z",
@@ -586,29 +556,39 @@
       "finished": false
     },
     {
-      "id": "83201",
-      "matchday": 6,
-      "kickoff": "2026-10-17T13:30:00Z",
-      "homeClubId": "Bayern",
-      "awayClubId": "Leipzig",
-      "homeName": "FC Bayern München",
-      "awayName": "RB Leipzig",
+      "id": "83193",
+      "matchday": 5,
+      "kickoff": "2026-10-10T16:30:00Z",
+      "homeClubId": "Leipzig",
+      "awayClubId": "Frankfurt",
+      "homeName": "RB Leipzig",
+      "awayName": "Eintracht Frankfurt",
       "finished": false
     },
     {
-      "id": "83202",
-      "matchday": 6,
-      "kickoff": "2026-10-17T13:30:00Z",
-      "homeClubId": "Leverkusen",
-      "awayClubId": "Freiburg",
-      "homeName": "Bayer 04 Leverkusen",
-      "awayName": "SC Freiburg",
+      "id": "83199",
+      "matchday": 5,
+      "kickoff": "2026-10-11T13:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Gladbach",
+      "homeName": "1. FC Köln",
+      "awayName": "Borussia Mönchengladbach",
+      "finished": false
+    },
+    {
+      "id": "83195",
+      "matchday": 5,
+      "kickoff": "2026-10-11T15:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Schalke",
+      "homeName": "SC Freiburg",
+      "awayName": "FC Schalke 04",
       "finished": false
     },
     {
       "id": "83203",
       "matchday": 6,
-      "kickoff": "2026-10-17T13:30:00Z",
+      "kickoff": "2026-10-16T18:30:00Z",
       "homeClubId": "Frankfurt",
       "awayClubId": "Köln",
       "homeName": "Eintracht Frankfurt",
@@ -623,16 +603,6 @@
       "awayClubId": "Dortmund",
       "homeName": "1. FC Union Berlin",
       "awayName": "Borussia Dortmund",
-      "finished": false
-    },
-    {
-      "id": "83205",
-      "matchday": 6,
-      "kickoff": "2026-10-17T13:30:00Z",
-      "homeClubId": "Gladbach",
-      "awayClubId": "Hoffenheim",
-      "homeName": "Borussia Mönchengladbach",
-      "awayName": "TSG Hoffenheim",
       "finished": false
     },
     {
@@ -676,13 +646,43 @@
       "finished": false
     },
     {
-      "id": "83210",
+      "id": "83201",
+      "matchday": 6,
+      "kickoff": "2026-10-17T16:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Leipzig",
+      "homeName": "FC Bayern München",
+      "awayName": "RB Leipzig",
+      "finished": false
+    },
+    {
+      "id": "83202",
+      "matchday": 6,
+      "kickoff": "2026-10-18T13:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Freiburg",
+      "homeName": "Bayer 04 Leverkusen",
+      "awayName": "SC Freiburg",
+      "finished": false
+    },
+    {
+      "id": "83205",
+      "matchday": 6,
+      "kickoff": "2026-10-18T15:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Hoffenheim",
+      "homeName": "Borussia Mönchengladbach",
+      "awayName": "TSG Hoffenheim",
+      "finished": false
+    },
+    {
+      "id": "83212",
       "matchday": 7,
-      "kickoff": "2026-10-24T13:30:00Z",
-      "homeClubId": "Dortmund",
-      "awayClubId": "Frankfurt",
-      "homeName": "Borussia Dortmund",
-      "awayName": "Eintracht Frankfurt",
+      "kickoff": "2026-10-23T18:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Gladbach",
+      "homeName": "VfB Stuttgart",
+      "awayName": "Borussia Mönchengladbach",
       "finished": false
     },
     {
@@ -693,36 +693,6 @@
       "awayClubId": "Elversberg",
       "homeName": "RB Leipzig",
       "awayName": "SV 07 Elversberg",
-      "finished": false
-    },
-    {
-      "id": "83212",
-      "matchday": 7,
-      "kickoff": "2026-10-24T13:30:00Z",
-      "homeClubId": "Stuttgart",
-      "awayClubId": "Gladbach",
-      "homeName": "VfB Stuttgart",
-      "awayName": "Borussia Mönchengladbach",
-      "finished": false
-    },
-    {
-      "id": "83213",
-      "matchday": 7,
-      "kickoff": "2026-10-24T13:30:00Z",
-      "homeClubId": "Hoffenheim",
-      "awayClubId": "Leverkusen",
-      "homeName": "TSG Hoffenheim",
-      "awayName": "Bayer 04 Leverkusen",
-      "finished": false
-    },
-    {
-      "id": "83214",
-      "matchday": 7,
-      "kickoff": "2026-10-24T13:30:00Z",
-      "homeClubId": "Freiburg",
-      "awayClubId": "Bayern",
-      "homeName": "SC Freiburg",
-      "awayName": "FC Bayern München",
       "finished": false
     },
     {
@@ -766,13 +736,43 @@
       "finished": false
     },
     {
-      "id": "83219",
+      "id": "83210",
+      "matchday": 7,
+      "kickoff": "2026-10-24T16:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Frankfurt",
+      "homeName": "Borussia Dortmund",
+      "awayName": "Eintracht Frankfurt",
+      "finished": false
+    },
+    {
+      "id": "83213",
+      "matchday": 7,
+      "kickoff": "2026-10-25T14:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Leverkusen",
+      "homeName": "TSG Hoffenheim",
+      "awayName": "Bayer 04 Leverkusen",
+      "finished": false
+    },
+    {
+      "id": "83214",
+      "matchday": 7,
+      "kickoff": "2026-10-25T16:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Bayern",
+      "homeName": "SC Freiburg",
+      "awayName": "FC Bayern München",
+      "finished": false
+    },
+    {
+      "id": "83227",
       "matchday": 8,
-      "kickoff": "2026-10-31T14:30:00Z",
-      "homeClubId": "Bayern",
-      "awayClubId": "Dortmund",
-      "homeName": "FC Bayern München",
-      "awayName": "Borussia Dortmund",
+      "kickoff": "2026-10-30T19:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Mainz",
+      "homeName": "SV 07 Elversberg",
+      "awayName": "1. FSV Mainz 05",
       "finished": false
     },
     {
@@ -786,16 +786,6 @@
       "finished": false
     },
     {
-      "id": "83221",
-      "matchday": 8,
-      "kickoff": "2026-10-31T14:30:00Z",
-      "homeClubId": "Frankfurt",
-      "awayClubId": "HSV",
-      "homeName": "Eintracht Frankfurt",
-      "awayName": "Hamburger SV",
-      "finished": false
-    },
-    {
       "id": "83222",
       "matchday": 8,
       "kickoff": "2026-10-31T14:30:00Z",
@@ -803,16 +793,6 @@
       "awayClubId": "Freiburg",
       "homeName": "FC Augsburg",
       "awayName": "SC Freiburg",
-      "finished": false
-    },
-    {
-      "id": "83223",
-      "matchday": 8,
-      "kickoff": "2026-10-31T14:30:00Z",
-      "homeClubId": "Union Berlin",
-      "awayClubId": "Köln",
-      "homeName": "1. FC Union Berlin",
-      "awayName": "1. FC Köln",
       "finished": false
     },
     {
@@ -846,13 +826,43 @@
       "finished": false
     },
     {
-      "id": "83227",
+      "id": "83219",
       "matchday": 8,
-      "kickoff": "2026-10-31T14:30:00Z",
-      "homeClubId": "Elversberg",
-      "awayClubId": "Mainz",
-      "homeName": "SV 07 Elversberg",
-      "awayName": "1. FSV Mainz 05",
+      "kickoff": "2026-10-31T17:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Dortmund",
+      "homeName": "FC Bayern München",
+      "awayName": "Borussia Dortmund",
+      "finished": false
+    },
+    {
+      "id": "83223",
+      "matchday": 8,
+      "kickoff": "2026-11-01T14:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Köln",
+      "homeName": "1. FC Union Berlin",
+      "awayName": "1. FC Köln",
+      "finished": false
+    },
+    {
+      "id": "83221",
+      "matchday": 8,
+      "kickoff": "2026-11-01T16:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "HSV",
+      "homeName": "Eintracht Frankfurt",
+      "awayName": "Hamburger SV",
+      "finished": false
+    },
+    {
+      "id": "83234",
+      "matchday": 9,
+      "kickoff": "2026-11-06T19:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Gladbach",
+      "homeName": "Hamburger SV",
+      "awayName": "Borussia Mönchengladbach",
       "finished": false
     },
     {
@@ -876,36 +886,6 @@
       "finished": false
     },
     {
-      "id": "83230",
-      "matchday": 9,
-      "kickoff": "2026-11-07T14:30:00Z",
-      "homeClubId": "Stuttgart",
-      "awayClubId": "Bremen",
-      "homeName": "VfB Stuttgart",
-      "awayName": "SV Werder Bremen",
-      "finished": false
-    },
-    {
-      "id": "83231",
-      "matchday": 9,
-      "kickoff": "2026-11-07T14:30:00Z",
-      "homeClubId": "Hoffenheim",
-      "awayClubId": "Schalke",
-      "homeName": "TSG Hoffenheim",
-      "awayName": "FC Schalke 04",
-      "finished": false
-    },
-    {
-      "id": "83232",
-      "matchday": 9,
-      "kickoff": "2026-11-07T14:30:00Z",
-      "homeClubId": "Freiburg",
-      "awayClubId": "Union Berlin",
-      "homeName": "SC Freiburg",
-      "awayName": "1. FC Union Berlin",
-      "finished": false
-    },
-    {
       "id": "83233",
       "matchday": 9,
       "kickoff": "2026-11-07T14:30:00Z",
@@ -913,26 +893,6 @@
       "awayClubId": "Bayern",
       "homeName": "1. FSV Mainz 05",
       "awayName": "FC Bayern München",
-      "finished": false
-    },
-    {
-      "id": "83234",
-      "matchday": 9,
-      "kickoff": "2026-11-07T14:30:00Z",
-      "homeClubId": "HSV",
-      "awayClubId": "Gladbach",
-      "homeName": "Hamburger SV",
-      "awayName": "Borussia Mönchengladbach",
-      "finished": false
-    },
-    {
-      "id": "83235",
-      "matchday": 9,
-      "kickoff": "2026-11-07T14:30:00Z",
-      "homeClubId": "Köln",
-      "awayClubId": "Leverkusen",
-      "homeName": "1. FC Köln",
-      "awayName": "Bayer 04 Leverkusen",
       "finished": false
     },
     {
@@ -946,9 +906,49 @@
       "finished": false
     },
     {
+      "id": "83230",
+      "matchday": 9,
+      "kickoff": "2026-11-07T17:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Bremen",
+      "homeName": "VfB Stuttgart",
+      "awayName": "SV Werder Bremen",
+      "finished": false
+    },
+    {
+      "id": "83235",
+      "matchday": 9,
+      "kickoff": "2026-11-08T14:30:00Z",
+      "homeClubId": "Köln",
+      "awayClubId": "Leverkusen",
+      "homeName": "1. FC Köln",
+      "awayName": "Bayer 04 Leverkusen",
+      "finished": false
+    },
+    {
+      "id": "83232",
+      "matchday": 9,
+      "kickoff": "2026-11-08T16:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Union Berlin",
+      "homeName": "SC Freiburg",
+      "awayName": "1. FC Union Berlin",
+      "finished": false
+    },
+    {
+      "id": "83231",
+      "matchday": 9,
+      "kickoff": "2026-11-08T18:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Schalke",
+      "homeName": "TSG Hoffenheim",
+      "awayName": "FC Schalke 04",
+      "finished": false
+    },
+    {
       "id": "83237",
       "matchday": 10,
-      "kickoff": "2026-11-21T14:30:00Z",
+      "kickoff": "2026-11-20T19:30:00Z",
       "homeClubId": "Bayern",
       "awayClubId": "Köln",
       "homeName": "FC Bayern München",
@@ -976,16 +976,6 @@
       "finished": false
     },
     {
-      "id": "83240",
-      "matchday": 10,
-      "kickoff": "2026-11-21T14:30:00Z",
-      "homeClubId": "Augsburg",
-      "awayClubId": "Mainz",
-      "homeName": "FC Augsburg",
-      "awayName": "1. FSV Mainz 05",
-      "finished": false
-    },
-    {
       "id": "83241",
       "matchday": 10,
       "kickoff": "2026-11-21T14:30:00Z",
@@ -1006,26 +996,6 @@
       "finished": false
     },
     {
-      "id": "83243",
-      "matchday": 10,
-      "kickoff": "2026-11-21T14:30:00Z",
-      "homeClubId": "Bremen",
-      "awayClubId": "HSV",
-      "homeName": "SV Werder Bremen",
-      "awayName": "Hamburger SV",
-      "finished": false
-    },
-    {
-      "id": "83244",
-      "matchday": 10,
-      "kickoff": "2026-11-21T14:30:00Z",
-      "homeClubId": "Schalke",
-      "awayClubId": "Stuttgart",
-      "homeName": "FC Schalke 04",
-      "awayName": "VfB Stuttgart",
-      "finished": false
-    },
-    {
       "id": "83245",
       "matchday": 10,
       "kickoff": "2026-11-21T14:30:00Z",
@@ -1036,43 +1006,43 @@
       "finished": false
     },
     {
-      "id": "83246",
-      "matchday": 11,
-      "kickoff": "2026-11-28T14:30:00Z",
-      "homeClubId": "Dortmund",
-      "awayClubId": "Leverkusen",
-      "homeName": "Borussia Dortmund",
-      "awayName": "Bayer 04 Leverkusen",
+      "id": "83244",
+      "matchday": 10,
+      "kickoff": "2026-11-21T17:30:00Z",
+      "homeClubId": "Schalke",
+      "awayClubId": "Stuttgart",
+      "homeName": "FC Schalke 04",
+      "awayName": "VfB Stuttgart",
       "finished": false
     },
     {
-      "id": "83247",
-      "matchday": 11,
-      "kickoff": "2026-11-28T14:30:00Z",
-      "homeClubId": "Stuttgart",
-      "awayClubId": "Frankfurt",
-      "homeName": "VfB Stuttgart",
-      "awayName": "Eintracht Frankfurt",
+      "id": "83240",
+      "matchday": 10,
+      "kickoff": "2026-11-22T14:30:00Z",
+      "homeClubId": "Augsburg",
+      "awayClubId": "Mainz",
+      "homeName": "FC Augsburg",
+      "awayName": "1. FSV Mainz 05",
       "finished": false
     },
     {
-      "id": "83248",
-      "matchday": 11,
-      "kickoff": "2026-11-28T14:30:00Z",
-      "homeClubId": "Hoffenheim",
-      "awayClubId": "Augsburg",
-      "homeName": "TSG Hoffenheim",
-      "awayName": "FC Augsburg",
+      "id": "83243",
+      "matchday": 10,
+      "kickoff": "2026-11-22T16:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "HSV",
+      "homeName": "SV Werder Bremen",
+      "awayName": "Hamburger SV",
       "finished": false
     },
     {
-      "id": "83249",
+      "id": "83253",
       "matchday": 11,
-      "kickoff": "2026-11-28T14:30:00Z",
-      "homeClubId": "Freiburg",
-      "awayClubId": "Leipzig",
-      "homeName": "SC Freiburg",
-      "awayName": "RB Leipzig",
+      "kickoff": "2026-11-27T19:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Gladbach",
+      "homeName": "SV Werder Bremen",
+      "awayName": "Borussia Mönchengladbach",
       "finished": false
     },
     {
@@ -1106,16 +1076,6 @@
       "finished": false
     },
     {
-      "id": "83253",
-      "matchday": 11,
-      "kickoff": "2026-11-28T14:30:00Z",
-      "homeClubId": "Bremen",
-      "awayClubId": "Gladbach",
-      "homeName": "SV Werder Bremen",
-      "awayName": "Borussia Mönchengladbach",
-      "finished": false
-    },
-    {
       "id": "83254",
       "matchday": 11,
       "kickoff": "2026-11-28T14:30:00Z",
@@ -1123,6 +1083,46 @@
       "awayClubId": "Schalke",
       "homeName": "SC Paderborn 07",
       "awayName": "FC Schalke 04",
+      "finished": false
+    },
+    {
+      "id": "83247",
+      "matchday": 11,
+      "kickoff": "2026-11-28T17:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Frankfurt",
+      "homeName": "VfB Stuttgart",
+      "awayName": "Eintracht Frankfurt",
+      "finished": false
+    },
+    {
+      "id": "83249",
+      "matchday": 11,
+      "kickoff": "2026-11-29T14:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "Leipzig",
+      "homeName": "SC Freiburg",
+      "awayName": "RB Leipzig",
+      "finished": false
+    },
+    {
+      "id": "83248",
+      "matchday": 11,
+      "kickoff": "2026-11-29T16:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Augsburg",
+      "homeName": "TSG Hoffenheim",
+      "awayName": "FC Augsburg",
+      "finished": false
+    },
+    {
+      "id": "83246",
+      "matchday": 11,
+      "kickoff": "2026-11-29T18:30:00Z",
+      "homeClubId": "Dortmund",
+      "awayClubId": "Leverkusen",
+      "homeName": "Borussia Dortmund",
+      "awayName": "Bayer 04 Leverkusen",
       "finished": false
     },
     {
