@@ -323,7 +323,9 @@
       "awayClubId": "Schalke",
       "homeName": "1. FC Union Berlin",
       "awayName": "FC Schalke 04",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 3
     },
     {
       "id": "83174",
