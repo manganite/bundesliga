@@ -539,7 +539,9 @@
       "awayClubId": "Bielefeld",
       "homeName": "SV Darmstadt 98",
       "awayName": "DSC Arminia Bielefeld",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83570",
@@ -549,7 +551,9 @@
       "awayClubId": "Hannover",
       "homeName": "1. FC Nürnberg",
       "awayName": "Hannover 96",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83573",
