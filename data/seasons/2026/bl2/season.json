@@ -587,7 +587,9 @@
       "awayClubId": "Dresden",
       "homeName": "Eintracht Braunschweig",
       "awayName": "Dynamo Dresden",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83565",
