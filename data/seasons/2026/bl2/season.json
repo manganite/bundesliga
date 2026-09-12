@@ -563,7 +563,9 @@
       "awayClubId": "Fürth",
       "homeName": "VfL Bochum",
       "awayName": "SpVgg Greuther Fürth",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83587",
@@ -573,7 +575,9 @@
       "awayClubId": "Kaiserslautern",
       "homeName": "1. FC Magdeburg",
       "awayName": "1. FC Kaiserslautern",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83588",
