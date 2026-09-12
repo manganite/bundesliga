@@ -599,7 +599,9 @@
       "awayClubId": "Wolfsburg",
       "homeName": "FC St. Pauli",
       "awayName": "VfL Wolfsburg",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83567",
