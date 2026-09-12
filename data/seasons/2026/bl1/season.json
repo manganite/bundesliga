@@ -335,7 +335,9 @@
       "awayClubId": "Paderborn",
       "homeName": "Borussia Dortmund",
       "awayName": "SC Paderborn 07",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83176",
@@ -345,7 +347,9 @@
       "awayClubId": "Stuttgart",
       "homeName": "TSG Hoffenheim",
       "awayName": "VfB Stuttgart",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83177",
@@ -355,7 +359,9 @@
       "awayClubId": "Gladbach",
       "homeName": "SC Freiburg",
       "awayName": "Borussia Mönchengladbach",
-      "finished": false
+      "finished": true,
+      "gh": 5,
+      "ga": 0
     },
     {
       "id": "83178",
@@ -365,7 +371,9 @@
       "awayClubId": "Leverkusen",
       "homeName": "FC Augsburg",
       "awayName": "Bayer 04 Leverkusen",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83179",
@@ -375,7 +383,9 @@
       "awayClubId": "Frankfurt",
       "homeName": "1. FSV Mainz 05",
       "awayName": "Eintracht Frankfurt",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 3
     },
     {
       "id": "83181",
