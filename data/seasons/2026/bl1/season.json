@@ -407,7 +407,9 @@
       "awayClubId": "HSV",
       "homeName": "RB Leipzig",
       "awayName": "Hamburger SV",
-      "finished": false
+      "finished": true,
+      "gh": 5,
+      "ga": 0
     },
     {
       "id": "83182",
