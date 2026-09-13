@@ -419,7 +419,9 @@
       "awayClubId": "Bayern",
       "homeName": "SV 07 Elversberg",
       "awayName": "FC Bayern München",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83183",
