@@ -611,7 +611,9 @@
       "awayClubId": "Kiel",
       "homeName": "1. FC Heidenheim 1846",
       "awayName": "Holstein Kiel",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83582",
@@ -621,7 +623,9 @@
       "awayClubId": "Cottbus",
       "homeName": "Karlsruher SC",
       "awayName": "Energie Cottbus",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 3
     },
     {
       "id": "83589",
@@ -631,7 +635,9 @@
       "awayClubId": "Hertha",
       "homeName": "VfL Osnabrück",
       "awayName": "Hertha BSC",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 3
     },
     {
       "id": "83591",
