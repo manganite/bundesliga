@@ -431,7 +431,9 @@
       "awayClubId": "Union Berlin",
       "homeName": "FC Bayern München",
       "awayName": "1. FC Union Berlin",
-      "finished": false
+      "finished": true,
+      "gh": 7,
+      "ga": 0
     },
     {
       "id": "83186",
