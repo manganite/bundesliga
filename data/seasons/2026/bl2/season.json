@@ -647,7 +647,9 @@
       "awayClubId": "Darmstadt",
       "homeName": "VfL Wolfsburg",
       "awayName": "SV Darmstadt 98",
-      "finished": false
+      "finished": true,
+      "gh": 5,
+      "ga": 1
     },
     {
       "id": "83606",
