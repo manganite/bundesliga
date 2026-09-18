@@ -659,7 +659,9 @@
       "awayClubId": "Magdeburg",
       "homeName": "SpVgg Greuther Fürth",
       "awayName": "1. FC Magdeburg",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83595",
