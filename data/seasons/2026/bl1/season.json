@@ -491,7 +491,9 @@
       "awayClubId": "Dortmund",
       "homeName": "VfB Stuttgart",
       "awayName": "Borussia Dortmund",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83185",
