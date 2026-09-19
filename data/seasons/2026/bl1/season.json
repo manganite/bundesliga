@@ -443,7 +443,9 @@
       "awayClubId": "Freiburg",
       "homeName": "Eintracht Frankfurt",
       "awayName": "SC Freiburg",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83187",
@@ -463,7 +465,9 @@
       "awayClubId": "Köln",
       "homeName": "Hamburger SV",
       "awayName": "1. FC Köln",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83189",
@@ -473,7 +477,9 @@
       "awayClubId": "Augsburg",
       "homeName": "SV Werder Bremen",
       "awayName": "FC Augsburg",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 2
     },
     {
       "id": "83184",
