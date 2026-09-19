@@ -671,7 +671,9 @@
       "awayClubId": "Braunschweig",
       "homeName": "1. FC Kaiserslautern",
       "awayName": "Eintracht Braunschweig",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83597",
@@ -681,7 +683,9 @@
       "awayClubId": "Nürnberg",
       "homeName": "Karlsruher SC",
       "awayName": "1. FC Nürnberg",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83600",
@@ -691,7 +695,9 @@
       "awayClubId": "Osnabrück",
       "homeName": "Holstein Kiel",
       "awayName": "VfL Osnabrück",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83598",
