@@ -707,7 +707,9 @@
       "awayClubId": "Hertha",
       "homeName": "Dynamo Dresden",
       "awayName": "Hertha BSC",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83593",
