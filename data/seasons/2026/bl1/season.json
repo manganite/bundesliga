@@ -455,7 +455,9 @@
       "awayClubId": "Mainz",
       "homeName": "Borussia Mönchengladbach",
       "awayName": "1. FSV Mainz 05",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 4
     },
     {
       "id": "83188",
