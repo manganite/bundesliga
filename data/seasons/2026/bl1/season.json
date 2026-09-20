@@ -503,7 +503,9 @@
       "awayClubId": "Leipzig",
       "homeName": "Bayer 04 Leverkusen",
       "awayName": "RB Leipzig",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83190",
