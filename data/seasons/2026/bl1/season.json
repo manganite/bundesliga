@@ -527,7 +527,9 @@
       "awayClubId": "Hoffenheim",
       "homeName": "SC Paderborn 07",
       "awayName": "TSG Hoffenheim",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83192",
