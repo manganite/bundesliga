@@ -515,7 +515,9 @@
       "awayClubId": "Elversberg",
       "homeName": "FC Schalke 04",
       "awayName": "SV 07 Elversberg",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83191",
