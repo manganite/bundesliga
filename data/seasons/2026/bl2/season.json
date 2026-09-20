@@ -719,7 +719,9 @@
       "awayClubId": "Bochum",
       "homeName": "Hannover 96",
       "awayName": "VfL Bochum",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83604",
@@ -729,7 +731,9 @@
       "awayClubId": "Heidenheim",
       "homeName": "DSC Arminia Bielefeld",
       "awayName": "1. FC Heidenheim 1846",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83607",
@@ -739,7 +743,9 @@
       "awayClubId": "St. Pauli",
       "homeName": "Energie Cottbus",
       "awayName": "FC St. Pauli",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83609",
