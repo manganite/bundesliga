@@ -539,7 +539,9 @@
       "awayClubId": "Bremen",
       "homeName": "Borussia Dortmund",
       "awayName": "SV Werder Bremen",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83194",
