@@ -755,7 +755,9 @@
       "awayClubId": "Kaiserslautern",
       "homeName": "1. FC Heidenheim 1846",
       "awayName": "1. FC Kaiserslautern",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83620",
@@ -765,7 +767,9 @@
       "awayClubId": "Kiel",
       "homeName": "Eintracht Braunschweig",
       "awayName": "Holstein Kiel",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83611",
