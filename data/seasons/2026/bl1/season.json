@@ -611,7 +611,9 @@
       "awayClubId": "Frankfurt",
       "homeName": "RB Leipzig",
       "awayName": "Eintracht Frankfurt",
-      "finished": false
+      "finished": true,
+      "gh": 6,
+      "ga": 0
     },
     {
       "id": "83199",
