@@ -789,7 +789,9 @@
       "awayClubId": "Hannover",
       "homeName": "1. FC Magdeburg",
       "awayName": "Hannover 96",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83622",
