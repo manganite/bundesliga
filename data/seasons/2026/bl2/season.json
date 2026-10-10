@@ -815,7 +815,9 @@
       "awayClubId": "Wolfsburg",
       "homeName": "1. FC Nürnberg",
       "awayName": "VfL Wolfsburg",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 4
     },
     {
       "id": "83608",
