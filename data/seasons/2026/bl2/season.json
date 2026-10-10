@@ -779,7 +779,9 @@
       "awayClubId": "Cottbus",
       "homeName": "SV Darmstadt 98",
       "awayName": "Energie Cottbus",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83617",
@@ -801,7 +803,9 @@
       "awayClubId": "Dresden",
       "homeName": "VfL Osnabrück",
       "awayName": "Dynamo Dresden",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83615",
