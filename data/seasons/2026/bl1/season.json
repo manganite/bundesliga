@@ -635,7 +635,9 @@
       "awayClubId": "Schalke",
       "homeName": "SC Freiburg",
       "awayName": "FC Schalke 04",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83203",
