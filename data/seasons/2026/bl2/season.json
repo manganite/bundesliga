@@ -827,7 +827,9 @@
       "awayClubId": "Karlsruhe",
       "homeName": "FC St. Pauli",
       "awayName": "Karlsruher SC",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83613",
@@ -837,7 +839,9 @@
       "awayClubId": "Fürth",
       "homeName": "Hertha BSC",
       "awayName": "SpVgg Greuther Fürth",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83616",
@@ -847,7 +851,9 @@
       "awayClubId": "Bielefeld",
       "homeName": "VfL Bochum",
       "awayName": "DSC Arminia Bielefeld",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83632",
