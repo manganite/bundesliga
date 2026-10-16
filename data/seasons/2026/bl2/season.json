@@ -863,7 +863,9 @@
       "awayClubId": "Hertha",
       "homeName": "Holstein Kiel",
       "awayName": "Hertha BSC",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83641",
