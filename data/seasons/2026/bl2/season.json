@@ -875,7 +875,9 @@
       "awayClubId": "Nürnberg",
       "homeName": "Energie Cottbus",
       "awayName": "1. FC Nürnberg",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83626",
