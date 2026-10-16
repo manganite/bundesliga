@@ -647,7 +647,9 @@
       "awayClubId": "Köln",
       "homeName": "Eintracht Frankfurt",
       "awayName": "1. FC Köln",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83204",
