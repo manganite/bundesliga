@@ -887,7 +887,9 @@
       "awayClubId": "Heidenheim",
       "homeName": "VfL Wolfsburg",
       "awayName": "1. FC Heidenheim 1846",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83628",
@@ -897,7 +899,9 @@
       "awayClubId": "Bochum",
       "homeName": "1. FC Kaiserslautern",
       "awayName": "VfL Bochum",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83639",
@@ -907,7 +911,9 @@
       "awayClubId": "Braunschweig",
       "homeName": "SpVgg Greuther Fürth",
       "awayName": "Eintracht Braunschweig",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83627",
