@@ -923,7 +923,9 @@
       "awayClubId": "St. Pauli",
       "homeName": "Hannover 96",
       "awayName": "FC St. Pauli",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83629",
