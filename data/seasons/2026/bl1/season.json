@@ -719,7 +719,9 @@
       "awayClubId": "Leipzig",
       "homeName": "FC Bayern München",
       "awayName": "RB Leipzig",
-      "finished": false
+      "finished": true,
+      "gh": 6,
+      "ga": 1
     },
     {
       "id": "83202",
