@@ -25,24 +25,24 @@
   },
   "placeProbability": {
     "bl1": {
-      "Augsburg": 0.04315,
+      "Augsburg": 0.0437,
       "Bayern": 0.00005,
-      "Bremen": 0.0619,
-      "Dortmund": 0.00055,
-      "Elversberg": 0.1187,
-      "Frankfurt": 0.04025,
-      "Freiburg": 0.0066,
-      "Gladbach": 0.0957,
-      "Hoffenheim": 0.04485,
-      "HSV": 0.0791,
-      "Köln": 0.1095,
-      "Leipzig": 0.00725,
-      "Leverkusen": 0.00165,
-      "Mainz": 0.0389,
-      "Paderborn": 0.12405,
-      "Schalke": 0.13145,
-      "Stuttgart": 0.00975,
-      "Union Berlin": 0.0866
+      "Bremen": 0.0673,
+      "Dortmund": 0.00085,
+      "Elversberg": 0.1207,
+      "Frankfurt": 0.0411,
+      "Freiburg": 0.00615,
+      "Gladbach": 0.09925,
+      "Hoffenheim": 0.0442,
+      "HSV": 0.06565,
+      "Köln": 0.1099,
+      "Leipzig": 0.0072,
+      "Leverkusen": 0.002,
+      "Mainz": 0.029,
+      "Paderborn": 0.13025,
+      "Schalke": 0.13335,
+      "Stuttgart": 0.01215,
+      "Union Berlin": 0.0872
     },
     "bl2": {
       "Bielefeld": 0.02275,
@@ -3309,9 +3309,9 @@
   ],
   "bl1": {
     "Augsburg": {
-      "pSafe": 0.90015,
-      "pRelegationPlayoff": 0.04315,
-      "pKlassenerhalt": 0.929721473749625,
+      "pSafe": 0.89845,
+      "pRelegationPlayoff": 0.0437,
+      "pKlassenerhalt": 0.92839839867575,
       "pWinsPlayoff": 0.6853180475
     },
     "Bayern": {
@@ -3321,99 +3321,99 @@
       "pWinsPlayoff": 0.9635004924999999
     },
     "Bremen": {
-      "pSafe": 0.8533000000000001,
-      "pRelegationPlayoff": 0.0619,
-      "pKlassenerhalt": 0.8934071116597501,
+      "pSafe": 0.8417500000000001,
+      "pRelegationPlayoff": 0.0673,
+      "pKlassenerhalt": 0.8853559550032502,
       "pWinsPlayoff": 0.6479339525000001
     },
     "Dortmund": {
-      "pSafe": 0.9990999999999999,
-      "pRelegationPlayoff": 0.00055,
-      "pKlassenerhalt": 0.9995839884761248,
+      "pSafe": 0.9988499999999999,
+      "pRelegationPlayoff": 0.00085,
+      "pKlassenerhalt": 0.9995979821903749,
       "pWinsPlayoff": 0.8799790475
     },
     "Elversberg": {
-      "pSafe": 0.62015,
-      "pRelegationPlayoff": 0.1187,
-      "pKlassenerhalt": 0.6838963162335,
+      "pSafe": 0.6153,
+      "pRelegationPlayoff": 0.1207,
+      "pKlassenerhalt": 0.6801203906434999,
       "pWinsPlayoff": 0.5370372050000001
     },
     "Frankfurt": {
-      "pSafe": 0.91045,
-      "pRelegationPlayoff": 0.04025,
-      "pKlassenerhalt": 0.939331636546875,
+      "pSafe": 0.90845,
+      "pRelegationPlayoff": 0.0411,
+      "pKlassenerhalt": 0.93794155930625,
       "pWinsPlayoff": 0.7175561875
     },
     "Freiburg": {
-      "pSafe": 0.9887500000000001,
-      "pRelegationPlayoff": 0.0066,
-      "pKlassenerhalt": 0.9939337157680002,
+      "pSafe": 0.9890500000000001,
+      "pRelegationPlayoff": 0.00615,
+      "pKlassenerhalt": 0.9938802806020001,
       "pWinsPlayoff": 0.78541148
     },
     "Gladbach": {
-      "pSafe": 0.6939,
-      "pRelegationPlayoff": 0.0957,
-      "pKlassenerhalt": 0.7598404968585,
+      "pSafe": 0.68865,
+      "pRelegationPlayoff": 0.09925,
+      "pKlassenerhalt": 0.75703656544625,
       "pWinsPlayoff": 0.6890334049999999
     },
     "Hoffenheim": {
-      "pSafe": 0.89545,
-      "pRelegationPlayoff": 0.04485,
-      "pKlassenerhalt": 0.9294132368042499,
+      "pSafe": 0.8944500000000001,
+      "pRelegationPlayoff": 0.0442,
+      "pKlassenerhalt": 0.9279210159810001,
       "pWinsPlayoff": 0.757262805
     },
     "HSV": {
-      "pSafe": 0.78545,
-      "pRelegationPlayoff": 0.0791,
-      "pKlassenerhalt": 0.8361547369744999,
+      "pSafe": 0.83875,
+      "pRelegationPlayoff": 0.06565,
+      "pKlassenerhalt": 0.88083300862675,
       "pWinsPlayoff": 0.6410206949999999
     },
     "Köln": {
-      "pSafe": 0.6900000000000001,
-      "pRelegationPlayoff": 0.1095,
-      "pKlassenerhalt": 0.7552788613575001,
+      "pSafe": 0.6875000000000001,
+      "pRelegationPlayoff": 0.1099,
+      "pKlassenerhalt": 0.7530173229515001,
       "pWinsPlayoff": 0.5961539850000002
     },
     "Leipzig": {
-      "pSafe": 0.9871500000000001,
-      "pRelegationPlayoff": 0.00725,
-      "pKlassenerhalt": 0.9930977299331251,
+      "pSafe": 0.9874000000000003,
+      "pRelegationPlayoff": 0.0072,
+      "pKlassenerhalt": 0.9933067111060003,
       "pWinsPlayoff": 0.8203765425
     },
     "Leverkusen": {
-      "pSafe": 0.9971,
-      "pRelegationPlayoff": 0.00165,
-      "pKlassenerhalt": 0.9985158903893749,
+      "pSafe": 0.9967999999999999,
+      "pRelegationPlayoff": 0.002,
+      "pKlassenerhalt": 0.998516230775,
       "pWinsPlayoff": 0.8581153875
     },
     "Mainz": {
-      "pSafe": 0.9157,
-      "pRelegationPlayoff": 0.0389,
-      "pKlassenerhalt": 0.94399412982525,
+      "pSafe": 0.9399,
+      "pRelegationPlayoff": 0.029,
+      "pKlassenerhalt": 0.9609933101525,
       "pWinsPlayoff": 0.7273555224999999
     },
     "Paderborn": {
-      "pSafe": 0.51045,
-      "pRelegationPlayoff": 0.12405,
-      "pKlassenerhalt": 0.57724489058775,
+      "pSafe": 0.5084000000000001,
+      "pRelegationPlayoff": 0.13025,
+      "pKlassenerhalt": 0.5785332889887501,
       "pWinsPlayoff": 0.538451355
     },
     "Schalke": {
-      "pSafe": 0.51675,
-      "pRelegationPlayoff": 0.13145,
-      "pKlassenerhalt": 0.586647161547125,
+      "pSafe": 0.46975,
+      "pRelegationPlayoff": 0.13335,
+      "pKlassenerhalt": 0.540657466658875,
       "pWinsPlayoff": 0.5317395325000001
     },
     "Stuttgart": {
-      "pSafe": 0.9815499999999999,
-      "pRelegationPlayoff": 0.00975,
-      "pKlassenerhalt": 0.9895788068331249,
+      "pSafe": 0.97705,
+      "pRelegationPlayoff": 0.01215,
+      "pKlassenerhalt": 0.987055128515125,
       "pWinsPlayoff": 0.8234673674999999
     },
     "Union Berlin": {
-      "pSafe": 0.75465,
-      "pRelegationPlayoff": 0.0866,
-      "pKlassenerhalt": 0.8120683583805001,
+      "pSafe": 0.7595500000000001,
+      "pRelegationPlayoff": 0.0872,
+      "pKlassenerhalt": 0.817366176106,
       "pWinsPlayoff": 0.6630295425
     }
   },
@@ -3421,110 +3421,110 @@
     "Bielefeld": {
       "pDirect": 0.02225,
       "pPlayoffPlace": 0.02275,
-      "pAufstieg": 0.028272107455,
-      "pWinsPlayoff": 0.26470802
+      "pAufstieg": 0.028296098694999997,
+      "pWinsPlayoff": 0.26576257999999997
     },
     "Bochum": {
       "pDirect": 0.03945,
       "pPlayoffPlace": 0.03545,
-      "pAufstieg": 0.05232881501725,
-      "pWinsPlayoff": 0.36329520499999995
+      "pAufstieg": 0.05236702090025,
+      "pWinsPlayoff": 0.36437294499999995
     },
     "Braunschweig": {
       "pDirect": 0.00625,
       "pPlayoffPlace": 0.008,
-      "pAufstieg": 0.00814604486,
-      "pWinsPlayoff": 0.2370056075
+      "pAufstieg": 0.008155059380000001,
+      "pWinsPlayoff": 0.23813242250000002
     },
     "Cottbus": {
       "pDirect": 0.00595,
       "pPlayoffPlace": 0.0074,
-      "pAufstieg": 0.007408629299500001,
-      "pWinsPlayoff": 0.19711206750000002
+      "pAufstieg": 0.007415818954500001,
+      "pWinsPlayoff": 0.19808364250000002
     },
     "Darmstadt": {
       "pDirect": 0.04175,
       "pPlayoffPlace": 0.0378,
-      "pAufstieg": 0.0543102396605,
-      "pWinsPlayoff": 0.33228147249999995
+      "pAufstieg": 0.0543535055405,
+      "pWinsPlayoff": 0.3334260725
     },
     "Dresden": {
       "pDirect": 0.012750000000000001,
       "pPlayoffPlace": 0.0144,
-      "pAufstieg": 0.016669981068000002,
-      "pWinsPlayoff": 0.2722209075
+      "pAufstieg": 0.016686208104,
+      "pWinsPlayoff": 0.273347785
     },
     "Fürth": {
       "pDirect": 0.014599999999999998,
       "pPlayoffPlace": 0.0155,
-      "pAufstieg": 0.01850676992375,
-      "pWinsPlayoff": 0.2520496725
+      "pAufstieg": 0.018523052789999998,
+      "pWinsPlayoff": 0.25310018
     },
     "Hannover": {
       "pDirect": 0.1163,
       "pPlayoffPlace": 0.07685,
-      "pAufstieg": 0.14844431098212502,
-      "pWinsPlayoff": 0.41827340250000006
+      "pAufstieg": 0.148538454537625,
+      "pWinsPlayoff": 0.4194984325
     },
     "Heidenheim": {
       "pDirect": 0.28300000000000003,
       "pPlayoffPlace": 0.12885,
-      "pAufstieg": 0.34110031721875,
-      "pWinsPlayoff": 0.45091437500000003
+      "pAufstieg": 0.341249260732,
+      "pWinsPlayoff": 0.45207031999999997
     },
     "Hertha": {
       "pDirect": 0.30935,
       "pPlayoffPlace": 0.13145,
-      "pAufstieg": 0.35299738886200005,
-      "pWinsPlayoff": 0.33204556
+      "pAufstieg": 0.353157469000625,
+      "pWinsPlayoff": 0.3332633625
     },
     "Kaiserslautern": {
       "pDirect": 0.13019999999999998,
       "pPlayoffPlace": 0.0825,
-      "pAufstieg": 0.156972603,
-      "pWinsPlayoff": 0.3245164
+      "pAufstieg": 0.15706588513124997,
+      "pWinsPlayoff": 0.32564709249999996
     },
     "Karlsruhe": {
       "pDirect": 0.02095,
       "pPlayoffPlace": 0.0201,
-      "pAufstieg": 0.02697176588425,
-      "pWinsPlayoff": 0.2995903425
+      "pAufstieg": 0.02699392774225,
+      "pWinsPlayoff": 0.3006929225
     },
     "Kiel": {
       "pDirect": 0.01965,
       "pPlayoffPlace": 0.02125,
-      "pAufstieg": 0.026723566815625002,
-      "pWinsPlayoff": 0.3328737325
+      "pAufstieg": 0.026748625718750002,
+      "pWinsPlayoff": 0.334052975
     },
     "Magdeburg": {
       "pDirect": 0.08635000000000001,
       "pPlayoffPlace": 0.0586,
-      "pAufstieg": 0.10414146850150001,
-      "pWinsPlayoff": 0.3036086775
+      "pAufstieg": 0.10420409886300001,
+      "pWinsPlayoff": 0.30467745500000004
     },
     "Nürnberg": {
       "pDirect": 0.18914999999999998,
       "pPlayoffPlace": 0.1029,
-      "pAufstieg": 0.22280412491174997,
-      "pWinsPlayoff": 0.32705660749999993
+      "pAufstieg": 0.2229241544175,
+      "pWinsPlayoff": 0.32822307500000003
     },
     "Osnabrück": {
       "pDirect": 0.00595,
       "pPlayoffPlace": 0.0064,
-      "pAufstieg": 0.007217630848,
-      "pWinsPlayoff": 0.19806732
+      "pAufstieg": 0.007223367136000001,
+      "pWinsPlayoff": 0.198963615
     },
     "St. Pauli": {
       "pDirect": 0.17915,
       "pPlayoffPlace": 0.1003,
-      "pAufstieg": 0.22162815330000002,
-      "pWinsPlayoff": 0.4235110000000001
+      "pAufstieg": 0.221763813062,
+      "pWinsPlayoff": 0.42486354
     },
     "Wolfsburg": {
       "pDirect": 0.51695,
       "pPlayoffPlace": 0.1295,
-      "pAufstieg": 0.5836493654425,
-      "pWinsPlayoff": 0.515053015
+      "pAufstieg": 0.5838052125412501,
+      "pWinsPlayoff": 0.5162564675
     }
   }
 }

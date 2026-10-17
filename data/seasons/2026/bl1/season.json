@@ -659,7 +659,9 @@
       "awayClubId": "Dortmund",
       "homeName": "1. FC Union Berlin",
       "awayName": "Borussia Dortmund",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83206",
@@ -669,7 +671,9 @@
       "awayClubId": "Stuttgart",
       "homeName": "Hamburger SV",
       "awayName": "VfB Stuttgart",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83207",
@@ -679,7 +683,9 @@
       "awayClubId": "Paderborn",
       "homeName": "SV Werder Bremen",
       "awayName": "SC Paderborn 07",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83208",
@@ -689,7 +695,9 @@
       "awayClubId": "Mainz",
       "homeName": "FC Schalke 04",
       "awayName": "1. FSV Mainz 05",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83209",
