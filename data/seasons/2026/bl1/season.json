@@ -743,7 +743,9 @@
       "awayClubId": "Hoffenheim",
       "homeName": "Borussia Mönchengladbach",
       "awayName": "TSG Hoffenheim",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83212",
