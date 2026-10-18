@@ -935,7 +935,9 @@
       "awayClubId": "Darmstadt",
       "homeName": "Karlsruher SC",
       "awayName": "SV Darmstadt 98",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 0
     },
     {
       "id": "83630",
@@ -945,7 +947,9 @@
       "awayClubId": "Magdeburg",
       "homeName": "Dynamo Dresden",
       "awayName": "1. FC Magdeburg",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83635",
@@ -955,7 +959,9 @@
       "awayClubId": "Osnabrück",
       "homeName": "DSC Arminia Bielefeld",
       "awayName": "VfL Osnabrück",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83648",
