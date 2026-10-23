@@ -971,7 +971,9 @@
       "awayClubId": "St. Pauli",
       "homeName": "SV Darmstadt 98",
       "awayName": "FC St. Pauli",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83655",
@@ -981,7 +983,9 @@
       "awayClubId": "Wolfsburg",
       "homeName": "VfL Bochum",
       "awayName": "VfL Wolfsburg",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83645",
