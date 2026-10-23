@@ -755,7 +755,9 @@
       "awayClubId": "Gladbach",
       "homeName": "VfB Stuttgart",
       "awayName": "Borussia Mönchengladbach",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 3
     },
     {
       "id": "83211",
