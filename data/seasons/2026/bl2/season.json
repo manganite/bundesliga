@@ -1031,7 +1031,9 @@
       "awayClubId": "Kaiserslautern",
       "homeName": "1. FC Nürnberg",
       "awayName": "1. FC Kaiserslautern",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83658",
