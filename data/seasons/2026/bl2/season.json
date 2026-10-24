@@ -995,7 +995,9 @@
       "awayClubId": "Cottbus",
       "homeName": "1. FC Heidenheim 1846",
       "awayName": "Energie Cottbus",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83650",
@@ -1005,7 +1007,9 @@
       "awayClubId": "Bielefeld",
       "homeName": "Hertha BSC",
       "awayName": "DSC Arminia Bielefeld",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83659",
@@ -1015,7 +1019,9 @@
       "awayClubId": "Karlsruhe",
       "homeName": "1. FC Magdeburg",
       "awayName": "Karlsruher SC",
-      "finished": false
+      "finished": true,
+      "gh": 6,
+      "ga": 1
     },
     {
       "id": "83652",
