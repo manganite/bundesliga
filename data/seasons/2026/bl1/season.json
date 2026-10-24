@@ -827,7 +827,9 @@
       "awayClubId": "Frankfurt",
       "homeName": "Borussia Dortmund",
       "awayName": "Eintracht Frankfurt",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83213",
