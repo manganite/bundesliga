@@ -839,7 +839,9 @@
       "awayClubId": "Leverkusen",
       "homeName": "TSG Hoffenheim",
       "awayName": "Bayer 04 Leverkusen",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83214",
