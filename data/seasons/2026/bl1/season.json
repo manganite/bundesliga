@@ -851,7 +851,9 @@
       "awayClubId": "Bayern",
       "homeName": "SC Freiburg",
       "awayName": "FC Bayern München",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 3
     },
     {
       "id": "83227",
