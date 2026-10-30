@@ -863,7 +863,9 @@
       "awayClubId": "Mainz",
       "homeName": "SV 07 Elversberg",
       "awayName": "1. FSV Mainz 05",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 1
     },
     {
       "id": "83220",
