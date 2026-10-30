@@ -1079,7 +1079,9 @@
       "awayClubId": "Braunschweig",
       "homeName": "DSC Arminia Bielefeld",
       "awayName": "Eintracht Braunschweig",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83674",
@@ -1089,7 +1091,9 @@
       "awayClubId": "Bochum",
       "homeName": "Energie Cottbus",
       "awayName": "VfL Bochum",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83663",
