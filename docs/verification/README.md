@@ -25,6 +25,7 @@ Monaten sichtbar würden.
 |---|---|---|
 | 2026-08-05 | Pre-Match-Einträge froren vor dem Anstoß ein — 612 Einträge einer Saison an einem einzigen Julisnapshot | [prematch-einfrieren.md](prematch-einfrieren.md) |
 | 2026-08-11 | Ein teilweise gescheiterter Backfill legt einen dünnen Snapshot an, der den vollständigen desselben Tages verdrängt — drei Spiele rechneten auf 5 statt 34 Klubs. **Behoben am 2026-08-12** (§5). Dieselbe Datei hält das gemessene Ausfallverhalten bei clubelo-Störungen und die Entkopplungsentscheidung fest | [pipeline-ausfallverhalten.md](pipeline-ausfallverhalten.md) |
+| 2026-10-30 | clubelo schweigt seit dem 2026-08-31. Gemessen, wie gut eine Brücke aus Ligaergebnissen der echten Reihe folgt (Update-Regel aus den Daten geschätzt, rückwirkender Test 2012–2025), welche Quellen es für Pokal und Europa gibt, und dass zwei Monate alte Snapshots als `contemporaneous` laufen | [elo-bruecke.md](elo-bruecke.md) |
 
 Bereits im Brief als verifiziert markiert und hier **nicht** wieder geöffnet:
 Kicktipp-Punkteschema (§9), Auswärtstor-Grenze 2020/21 → 2021/22 (§5.4/§6),

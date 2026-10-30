@@ -404,3 +404,16 @@ Rating-Reihen wieder in Gang bringen. Falls ja, räumen sich die
 Carry-Forward-Markierungen von selbst ab und die Flag `--carry-forward-until`
 vom 2026-08-14 läuft ungenutzt aus. Planungsgrundlage ist das nicht: die
 Eskalationsfrist Anfang August bleibt stehen.
+
+## Zweiter Ausfall ab 2026-08-31
+
+Der letzte archivierte Snapshot ist vom **2026-08-31**; seitdem ist
+`ratings.yml` rot (Issue #60). Gemessen am 2026-10-30: `api.clubelo.com`
+antwortet mit **HTTP 502**, `clubelo.com` liefert eine Cloudflare-Prüfseite
+(„Just a moment…"). Anders als im August ist das also eine Antwort, kein
+schweigender Socket. Nachfragen auf X, auch von Dritten, haben bisher keine
+konkrete Auskunft gebracht; ein Termin ist nicht bekannt.
+
+Der Ergebniskanal ist davon nicht betroffen (Brief 34). Wie die Prognose bis
+zur Rückkehr weiterrechnen kann, ist in [elo-bruecke.md](elo-bruecke.md)
+gemessen; der zugehörige Brief ist `ELO_BRUECKE_BRIEF.md` (Brief 35, Entwurf).

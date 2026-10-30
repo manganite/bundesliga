@@ -269,6 +269,17 @@ spätere schlägt die frühere:**
     **Weg A aus `pipeline-ausfallverhalten.md` §4 bleibt verworfen** — die
     Statuszeile ist die Bedingung, unter der das Entkoppeln überhaupt erlaubt
     ist. Release 2.5.0.
+35. `ELO_BRUECKE_BRIEF.md` — **Entwurf, offene Entscheidungen markiert.**
+    clubelo schweigt seit dem 2026-08-31 ohne absehbares Ende. Eine Brücke
+    schreibt die Ratings aus den OpenLigaDB-Ligaergebnissen fort: clubelos
+    Update-Regel ist aus 4142 sauberen Ligaspielen **geschätzt** (nicht die
+    veröffentlichte Formel), und im rückwirkenden Test liegt der Fehler der
+    Elo-Differenz nach 10 Spieltagen bei 5 statt 30 (eingefroren). Brückenwerte
+    sind Rechenwerte, **nie im Archiv**, eigene Provenienz `bridged`; kehrt
+    clubelo zurück, wird dessen Snapshot von selbst neuer Anker. Pokal und Europa
+    bleiben draußen (Gegner-Ratings fehlen bzw. zwei offene Gates). Messung:
+    `docs/verification/elo-bruecke.md`, reproduzierbar über
+    `pipeline/src/eloBridgeStudy.mjs`. Release 2.6.0.
 
 Die Briefe selbst werden **nicht bearbeitet**: sie sind das Protokoll dessen, was
 wann entschieden wurde, auch dort, wo es sich später als falsch erwies.
@@ -594,6 +605,15 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   sind **nicht** die Carry-forward-Regel bei der Arbeit, sondern das Protokoll
   der Pipeline, die ihren eigenen dünnen Snapshot kompensierte. Grenzen 7–9 in
   `grenzfaelle.md`, Regression in `pipeline/tests/duennerSnapshot.test.mjs`.
+- **clubelo schweigt wieder, seit dem 2026-08-31 (Stand 2026-10-30).** Der
+  letzte archivierte Snapshot ist vom 2026-08-31; `ratings.yml` ist seitdem rot
+  (Issue #60), `api.clubelo.com` antwortet mit 502, die Website zeigt eine
+  Cloudflare-Prüfseite, und auf Nachfragen auf X gibt es keine Antwort. Der
+  Ergebniskanal läuft dank Brief 34 grün weiter; die Prognose rechnet seitdem
+  auf dem Stand vom 31.08., und **108 gespielte Partien** stehen dadurch als
+  `contemporaneous` auf einem bis zu acht Wochen alten Snapshot
+  (`docs/verification/elo-bruecke.md` §6). Die Antwort darauf ist Brief 35
+  (Elo-Brücke), noch Entwurf.
 - **Die clubelo-Migrationslücke ist beendet (2026-08-20 bis 2026-08-26,
   `docs/verification/clubelo.md`).** Der Betreiber hatte die Website neu
   aufgesetzt und die API abgeschaltet, bevor sie auf dem neuen Server stand
