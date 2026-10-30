@@ -1,8 +1,9 @@
 # Brief — Elo-Brücke aus Ligaergebnissen, solange clubelo schweigt
 
-**Status: Entwurf zur Prüfung (2026-10-30).** Wird mit dem Merge dieses PRs
-verbindlich. Die mit **[Entscheidung]** markierten Punkte sind offen und
-gehören vorher beantwortet.
+**Status: entschieden am 2026-10-30, verbindlich mit dem Merge.** Die drei
+offenen Punkte des Entwurfs hat der Nutzer im Sinne der Vorschläge entschieden
+(**[Entschieden]** unten). Der vierte, das Archivieren der vollen Tages-CSV,
+ist **zurückgestellt** (§6).
 
 **Anlass (Nutzer, 2026-10-30):** „Clubelo ist immer noch down. Und es ist nicht
 absehbar, wann es wieder online geht." Der letzte Snapshot ist vom 2026-08-31.
@@ -74,20 +75,21 @@ Der Brief stützt sich nur auf diese Messung. Kein Parameter wird geraten.
   (`HOME_ADV`, `ELO_PER_GOAL`). Sie beschreiben clubelos Update, nicht unsere
   Torvorhersage. Beides bleibt getrennt benannt, damit niemand den einen Wert
   für den anderen hält.
-- **[Entscheidung] H nachführen?** Die Daten zeigen, dass clubelo den
-  Heimvorteil dynamisch führt (42–70 je Saison). V1 hält H fest, so wie
-  gemessen. Ein mitlaufendes H wäre eine zweite, ungemessene Regel.
+- **[Entschieden] H bleibt fest.** Die Daten zeigen, dass clubelo den
+  Heimvorteil dynamisch führt (42–70 je Saison). Die Brücke hält H trotzdem
+  fest, so wie gemessen. Ein mitlaufendes H wäre eine zweite, ungemessene
+  Regel.
 
 ## 3 · Wann die Brücke rechnet
 
-**[Entscheidung] Schalter oder Automatik.**
+**[Entschieden] Schalter, keine Automatik.**
 
-- **Vorschlag: Schalter.** `--elo-bridge-until <datum>` steht in `data.yml`,
+- **Schalter:** `--elo-bridge-until <datum>` steht in `data.yml`,
   mit begründetem Ablaufdatum, und wird nach dem Vorfall **wieder entfernt**.
   Das folgt der Linie von `--carry-forward-until`: Ein Vorfallsinstrument ist
   sichtbar im Workflow, kein Dauerzustand. Ohne den Schalter ändert sich am
   heutigen Verhalten nichts.
-- **Alternative: Automatik** ab N Tagen Rating-Alter. Sie wäre bequemer, aber
+- **Verworfen: Automatik** ab N Tagen Rating-Alter. Sie wäre bequemer, aber
   die Brücke liefe dann ohne menschliche Entscheidung über Monate. Das ist
   genau das, was die Carry-forward-Episode vermeiden sollte.
 - **Kein Deckel wie die 42 Tage.** Der Test zeigt keinen Punkt, an dem die
@@ -110,10 +112,10 @@ Der Brief stützt sich nur auf diese Messung. Kein Parameter wird geraten.
     **substanzielle** Änderung und bewegt die Datei. Darum stehen `eloHome`
     und `eloAway` schon in der Substanz-Liste. Ein Lauf ohne neues Ergebnis
     bewegt nichts.
-- **[Entscheidung] Die 108 alten Einträge.** Stand 2026-10-30 stehen 108
+- **[Entschieden] Die 108 alten Einträge.** Stand 2026-10-30 stehen 108
   gespielte Partien als `contemporaneous` auf dem Snapshot vom 31.08.
   (`elo-bruecke.md` §6).
-  - Vorschlag: die Einträge **nicht umschreiben**, sie sind eingefrorenes
+  - Die Einträge werden **nicht umgeschrieben**, sie sind eingefrorenes
     Protokoll.
   - Stattdessen trennt Modellgüte nach **Snapshot-Alter beim Anstoß**, also
     `kickoff − snapshotEffectiveAt`. Die Schwelle muss mit Begründung gewählt
@@ -156,10 +158,25 @@ Der Brief stützt sich nur auf diese Messung. Kein Parameter wird geraten.
   - Erst wenn beide stehen, gehört der Pokal in die Brücke.
 - **Europapokal:** ausgeschlossen. Die Gegner-Ratings fehlen, weil das Archiv
   nur die 36 deutschen Klubs hält.
-- **[Entscheidung, nicht Teil dieses Briefs]** Ob das Archiv künftig die volle
-  Tages-CSV aufbewahren soll, damit ein nächster Ausfall auch Europa
-  überbrücken kann. Das berührt Archivgröße und Lizenzumfang
-  (`docs/verification/clubelo.md`) und braucht einen eigenen Beschluss.
+- **[Zurückgestellt] Die volle Tages-CSV archivieren.** Damit könnte ein
+  nächster Ausfall auch Europa überbrücken. Zurückgestellt, nicht verworfen;
+  drei Gründe:
+  - **Die Erlaubnis nennt den Umfang.** Frage 2 an den Betreiber sprach
+    ausdrücklich von „36 German clubs" (`clubelo.md`). Die volle Liste ist
+    clubelos ganzer Tagesdatensatz. Ihn öffentlich ins Repo zu legen, hieße
+    ihn zu spiegeln, und das deckt die Antwort nicht. Der Betreiber bietet
+    eigene Projektionen an, und die Login-Leiste nach dem Relaunch deutet auf
+    ein mögliches Abomodell. Belegt ist das nicht, aber ein öffentlicher
+    Spiegel könnte ihm genau dort schaden.
+  - **Ein privates Archiv ist kein Ausweg.** Der Ablageort ist zwar
+    Konfiguration (`BUNDESLIGA_RATINGS_DIR`). Die Brücke muss aber im Cron und
+    in CI rechnen, und beide arbeiten auf dem öffentlichen Repo.
+  - **Der Nutzen ist ungemessen.** Wie viel vom BL1-Fehler auf Europa entfällt,
+    ist nicht zerlegt (`elo-bruecke.md` §3). Selbst mit Gegner-Ratings bliebe
+    offen, wie clubelo Europapokalspiele gewichtet.
+  - **Auslösebedingung:** eine ausdrückliche Zustimmung des Betreibers zum
+    erweiterten Umfang. Am besten wird sie in derselben Nachricht erfragt, in
+    der man nach dem Ausfall fragt. Erst dann ein eigener Brief.
 
 ## 7 · App
 

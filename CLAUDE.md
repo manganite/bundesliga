@@ -269,7 +269,8 @@ spätere schlägt die frühere:**
     **Weg A aus `pipeline-ausfallverhalten.md` §4 bleibt verworfen** — die
     Statuszeile ist die Bedingung, unter der das Entkoppeln überhaupt erlaubt
     ist. Release 2.5.0.
-35. `ELO_BRUECKE_BRIEF.md` — **Entwurf, offene Entscheidungen markiert.**
+35. `ELO_BRUECKE_BRIEF.md` — **Entschieden 2026-10-30** (Schalter mit Ablauf, H fest,
+    alte Einträge unangetastet, Modellgüte trennt nach Snapshot-Alter).
     clubelo schweigt seit dem 2026-08-31 ohne absehbares Ende. Eine Brücke
     schreibt die Ratings aus den OpenLigaDB-Ligaergebnissen fort: clubelos
     Update-Regel ist aus 4142 sauberen Ligaspielen **geschätzt** (nicht die
@@ -613,7 +614,7 @@ als eigener Brief KICKTIPP_MD1_QUOTENFIX gelandet) steht oben beim Parser.
   auf dem Stand vom 31.08., und **108 gespielte Partien** stehen dadurch als
   `contemporaneous` auf einem bis zu acht Wochen alten Snapshot
   (`docs/verification/elo-bruecke.md` §6). Die Antwort darauf ist Brief 35
-  (Elo-Brücke), noch Entwurf.
+  (Elo-Brücke), entschieden, noch nicht gebaut.
 - **Die clubelo-Migrationslücke ist beendet (2026-08-20 bis 2026-08-26,
   `docs/verification/clubelo.md`).** Der Betreiber hatte die Website neu
   aufgesetzt und die API abgeschaltet, bevor sie auf dem neuen Server stand

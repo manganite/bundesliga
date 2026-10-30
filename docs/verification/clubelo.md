@@ -416,4 +416,4 @@ konkrete Auskunft gebracht; ein Termin ist nicht bekannt.
 
 Der Ergebniskanal ist davon nicht betroffen (Brief 34). Wie die Prognose bis
 zur Rückkehr weiterrechnen kann, ist in [elo-bruecke.md](elo-bruecke.md)
-gemessen; der zugehörige Brief ist `ELO_BRUECKE_BRIEF.md` (Brief 35, Entwurf).
+gemessen; der zugehörige Brief ist `ELO_BRUECKE_BRIEF.md` (Brief 35).
