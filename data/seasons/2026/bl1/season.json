@@ -935,7 +935,9 @@
       "awayClubId": "Dortmund",
       "homeName": "FC Bayern München",
       "awayName": "Borussia Dortmund",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83223",
