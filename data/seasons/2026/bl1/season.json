@@ -885,7 +885,9 @@
       "awayClubId": "Freiburg",
       "homeName": "FC Augsburg",
       "awayName": "SC Freiburg",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83224",
