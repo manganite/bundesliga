@@ -1103,7 +1103,9 @@
       "awayClubId": "Osnabrück",
       "homeName": "VfL Wolfsburg",
       "awayName": "VfL Osnabrück",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83667",
@@ -1113,7 +1115,9 @@
       "awayClubId": "Magdeburg",
       "homeName": "SV Darmstadt 98",
       "awayName": "1. FC Magdeburg",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83668",
@@ -1123,7 +1127,9 @@
       "awayClubId": "Hertha",
       "homeName": "1. FC Kaiserslautern",
       "awayName": "Hertha BSC",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 3
     },
     {
       "id": "83669",
