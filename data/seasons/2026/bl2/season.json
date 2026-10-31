@@ -1139,7 +1139,9 @@
       "awayClubId": "Heidenheim",
       "homeName": "Karlsruher SC",
       "awayName": "1. FC Heidenheim 1846",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83664",
