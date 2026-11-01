@@ -947,7 +947,9 @@
       "awayClubId": "Köln",
       "homeName": "1. FC Union Berlin",
       "awayName": "1. FC Köln",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83221",
