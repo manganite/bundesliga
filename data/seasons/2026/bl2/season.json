@@ -1151,7 +1151,9 @@
       "awayClubId": "Nürnberg",
       "homeName": "FC St. Pauli",
       "awayName": "1. FC Nürnberg",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 3
     },
     {
       "id": "83665",
@@ -1161,7 +1163,9 @@
       "awayClubId": "Dresden",
       "homeName": "Hannover 96",
       "awayName": "Dynamo Dresden",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83673",
