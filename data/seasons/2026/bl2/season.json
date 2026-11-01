@@ -1171,7 +1171,9 @@
       "awayClubId": "Kiel",
       "homeName": "SpVgg Greuther Fürth",
       "awayName": "Holstein Kiel",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83684",
