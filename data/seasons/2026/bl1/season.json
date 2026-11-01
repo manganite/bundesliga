@@ -959,7 +959,9 @@
       "awayClubId": "HSV",
       "homeName": "Eintracht Frankfurt",
       "awayName": "Hamburger SV",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83234",
