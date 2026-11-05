@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "dataUpdatedAt": "2026-11-05T12:38:31.198Z",
-  "resultsUpdatedAt": "2026-11-05T12:38:31.198Z",
+  "dataUpdatedAt": "2026-11-05T15:38:38.873Z",
+  "resultsUpdatedAt": "2026-11-05T15:38:38.873Z",
   "ratingsEffectiveAt": "2026-08-31",
-  "dataHash": "0ab288209ea9b12a",
+  "dataHash": "768c7efa09da2d00",
   "lastChanges": [
-    "bl1 pre-match dataset (+0, ~19)",
-    "bl1 current outlook",
-    "bl1 fixtures/results"
+    "bl2 pre-match dataset (+0, ~29)",
+    "bl2 current outlook",
+    "bl2 fixtures/results"
   ]
 }
