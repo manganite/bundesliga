@@ -1506,7 +1506,7 @@
     {
       "id": "83282",
       "matchday": 15,
-      "kickoff": "2027-01-09T14:30:00Z",
+      "kickoff": "2027-01-08T19:30:00Z",
       "homeClubId": "Dortmund",
       "awayClubId": "Mainz",
       "homeName": "Borussia Dortmund",
@@ -1544,26 +1544,6 @@
       "finished": false
     },
     {
-      "id": "83286",
-      "matchday": 15,
-      "kickoff": "2027-01-09T14:30:00Z",
-      "homeClubId": "Gladbach",
-      "awayClubId": "Bayern",
-      "homeName": "Borussia Mönchengladbach",
-      "awayName": "FC Bayern München",
-      "finished": false
-    },
-    {
-      "id": "83287",
-      "matchday": 15,
-      "kickoff": "2027-01-09T14:30:00Z",
-      "homeClubId": "HSV",
-      "awayClubId": "Leverkusen",
-      "homeName": "Hamburger SV",
-      "awayName": "Bayer 04 Leverkusen",
-      "finished": false
-    },
-    {
       "id": "83288",
       "matchday": 15,
       "kickoff": "2027-01-09T14:30:00Z",
@@ -1571,16 +1551,6 @@
       "awayClubId": "Freiburg",
       "homeName": "1. FC Köln",
       "awayName": "SC Freiburg",
-      "finished": false
-    },
-    {
-      "id": "83289",
-      "matchday": 15,
-      "kickoff": "2027-01-09T14:30:00Z",
-      "homeClubId": "Bremen",
-      "awayClubId": "Union Berlin",
-      "homeName": "SV Werder Bremen",
-      "awayName": "1. FC Union Berlin",
       "finished": false
     },
     {
@@ -1594,33 +1564,43 @@
       "finished": false
     },
     {
-      "id": "83291",
-      "matchday": 16,
-      "kickoff": "2027-01-12T19:30:00Z",
-      "homeClubId": "Bayern",
+      "id": "83286",
+      "matchday": 15,
+      "kickoff": "2027-01-09T17:30:00Z",
+      "homeClubId": "Gladbach",
+      "awayClubId": "Bayern",
+      "homeName": "Borussia Mönchengladbach",
+      "awayName": "FC Bayern München",
+      "finished": false
+    },
+    {
+      "id": "83289",
+      "matchday": 15,
+      "kickoff": "2027-01-10T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Union Berlin",
+      "homeName": "SV Werder Bremen",
+      "awayName": "1. FC Union Berlin",
+      "finished": false
+    },
+    {
+      "id": "83287",
+      "matchday": 15,
+      "kickoff": "2027-01-10T16:30:00Z",
+      "homeClubId": "HSV",
       "awayClubId": "Leverkusen",
-      "homeName": "FC Bayern München",
+      "homeName": "Hamburger SV",
       "awayName": "Bayer 04 Leverkusen",
       "finished": false
     },
     {
       "id": "83292",
       "matchday": 16,
-      "kickoff": "2027-01-12T19:30:00Z",
+      "kickoff": "2027-01-12T17:30:00Z",
       "homeClubId": "Leipzig",
       "awayClubId": "Stuttgart",
       "homeName": "RB Leipzig",
       "awayName": "VfB Stuttgart",
-      "finished": false
-    },
-    {
-      "id": "83293",
-      "matchday": 16,
-      "kickoff": "2027-01-12T19:30:00Z",
-      "homeClubId": "Freiburg",
-      "awayClubId": "HSV",
-      "homeName": "SC Freiburg",
-      "awayName": "Hamburger SV",
       "finished": false
     },
     {
@@ -1644,16 +1624,6 @@
       "finished": false
     },
     {
-      "id": "83296",
-      "matchday": 16,
-      "kickoff": "2027-01-12T19:30:00Z",
-      "homeClubId": "Union Berlin",
-      "awayClubId": "Paderborn",
-      "homeName": "1. FC Union Berlin",
-      "awayName": "SC Paderborn 07",
-      "finished": false
-    },
-    {
       "id": "83297",
       "matchday": 16,
       "kickoff": "2027-01-12T19:30:00Z",
@@ -1664,9 +1634,49 @@
       "finished": false
     },
     {
+      "id": "83299",
+      "matchday": 16,
+      "kickoff": "2027-01-13T17:30:00Z",
+      "homeClubId": "Elversberg",
+      "awayClubId": "Frankfurt",
+      "homeName": "SV 07 Elversberg",
+      "awayName": "Eintracht Frankfurt",
+      "finished": false
+    },
+    {
+      "id": "83291",
+      "matchday": 16,
+      "kickoff": "2027-01-13T19:30:00Z",
+      "homeClubId": "Bayern",
+      "awayClubId": "Leverkusen",
+      "homeName": "FC Bayern München",
+      "awayName": "Bayer 04 Leverkusen",
+      "finished": false
+    },
+    {
+      "id": "83293",
+      "matchday": 16,
+      "kickoff": "2027-01-13T19:30:00Z",
+      "homeClubId": "Freiburg",
+      "awayClubId": "HSV",
+      "homeName": "SC Freiburg",
+      "awayName": "Hamburger SV",
+      "finished": false
+    },
+    {
+      "id": "83296",
+      "matchday": 16,
+      "kickoff": "2027-01-13T19:30:00Z",
+      "homeClubId": "Union Berlin",
+      "awayClubId": "Paderborn",
+      "homeName": "1. FC Union Berlin",
+      "awayName": "SC Paderborn 07",
+      "finished": false
+    },
+    {
       "id": "83298",
       "matchday": 16,
-      "kickoff": "2027-01-12T19:30:00Z",
+      "kickoff": "2027-01-13T19:30:00Z",
       "homeClubId": "Schalke",
       "awayClubId": "Bremen",
       "homeName": "FC Schalke 04",
@@ -1674,13 +1684,13 @@
       "finished": false
     },
     {
-      "id": "83299",
-      "matchday": 16,
-      "kickoff": "2027-01-12T19:30:00Z",
-      "homeClubId": "Elversberg",
-      "awayClubId": "Frankfurt",
-      "homeName": "SV 07 Elversberg",
-      "awayName": "Eintracht Frankfurt",
+      "id": "83301",
+      "matchday": 17,
+      "kickoff": "2027-01-15T19:30:00Z",
+      "homeClubId": "Stuttgart",
+      "awayClubId": "Mainz",
+      "homeName": "VfB Stuttgart",
+      "awayName": "1. FSV Mainz 05",
       "finished": false
     },
     {
@@ -1694,16 +1704,6 @@
       "finished": false
     },
     {
-      "id": "83301",
-      "matchday": 17,
-      "kickoff": "2027-01-16T14:30:00Z",
-      "homeClubId": "Stuttgart",
-      "awayClubId": "Mainz",
-      "homeName": "VfB Stuttgart",
-      "awayName": "1. FSV Mainz 05",
-      "finished": false
-    },
-    {
       "id": "83302",
       "matchday": 17,
       "kickoff": "2027-01-16T14:30:00Z",
@@ -1711,26 +1711,6 @@
       "awayClubId": "Leipzig",
       "homeName": "TSG Hoffenheim",
       "awayName": "RB Leipzig",
-      "finished": false
-    },
-    {
-      "id": "83303",
-      "matchday": 17,
-      "kickoff": "2027-01-16T14:30:00Z",
-      "homeClubId": "Leverkusen",
-      "awayClubId": "Schalke",
-      "homeName": "Bayer 04 Leverkusen",
-      "awayName": "FC Schalke 04",
-      "finished": false
-    },
-    {
-      "id": "83304",
-      "matchday": 17,
-      "kickoff": "2027-01-16T14:30:00Z",
-      "homeClubId": "Frankfurt",
-      "awayClubId": "Bayern",
-      "homeName": "Eintracht Frankfurt",
-      "awayName": "FC Bayern München",
       "finished": false
     },
     {
@@ -1754,16 +1734,6 @@
       "finished": false
     },
     {
-      "id": "83307",
-      "matchday": 17,
-      "kickoff": "2027-01-16T14:30:00Z",
-      "homeClubId": "Bremen",
-      "awayClubId": "Elversberg",
-      "homeName": "SV Werder Bremen",
-      "awayName": "SV 07 Elversberg",
-      "finished": false
-    },
-    {
       "id": "83308",
       "matchday": 17,
       "kickoff": "2027-01-16T14:30:00Z",
@@ -1771,6 +1741,46 @@
       "awayClubId": "Köln",
       "homeName": "SC Paderborn 07",
       "awayName": "1. FC Köln",
+      "finished": false
+    },
+    {
+      "id": "83304",
+      "matchday": 17,
+      "kickoff": "2027-01-16T17:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Bayern",
+      "homeName": "Eintracht Frankfurt",
+      "awayName": "FC Bayern München",
+      "finished": false
+    },
+    {
+      "id": "83307",
+      "matchday": 17,
+      "kickoff": "2027-01-17T14:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Elversberg",
+      "homeName": "SV Werder Bremen",
+      "awayName": "SV 07 Elversberg",
+      "finished": false
+    },
+    {
+      "id": "83303",
+      "matchday": 17,
+      "kickoff": "2027-01-17T16:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Schalke",
+      "homeName": "Bayer 04 Leverkusen",
+      "awayName": "FC Schalke 04",
+      "finished": false
+    },
+    {
+      "id": "83315",
+      "matchday": 18,
+      "kickoff": "2027-01-22T19:30:00Z",
+      "homeClubId": "Bremen",
+      "awayClubId": "Freiburg",
+      "homeName": "SV Werder Bremen",
+      "awayName": "SC Freiburg",
       "finished": false
     },
     {
@@ -1784,36 +1794,6 @@
       "finished": false
     },
     {
-      "id": "83310",
-      "matchday": 18,
-      "kickoff": "2027-01-23T14:30:00Z",
-      "homeClubId": "Hoffenheim",
-      "awayClubId": "Köln",
-      "homeName": "TSG Hoffenheim",
-      "awayName": "1. FC Köln",
-      "finished": false
-    },
-    {
-      "id": "83311",
-      "matchday": 18,
-      "kickoff": "2027-01-23T14:30:00Z",
-      "homeClubId": "Leverkusen",
-      "awayClubId": "Elversberg",
-      "homeName": "Bayer 04 Leverkusen",
-      "awayName": "SV 07 Elversberg",
-      "finished": false
-    },
-    {
-      "id": "83312",
-      "matchday": 18,
-      "kickoff": "2027-01-23T14:30:00Z",
-      "homeClubId": "Frankfurt",
-      "awayClubId": "Union Berlin",
-      "homeName": "Eintracht Frankfurt",
-      "awayName": "1. FC Union Berlin",
-      "finished": false
-    },
-    {
       "id": "83313",
       "matchday": 18,
       "kickoff": "2027-01-23T14:30:00Z",
@@ -1821,26 +1801,6 @@
       "awayClubId": "Leipzig",
       "homeName": "Borussia Mönchengladbach",
       "awayName": "RB Leipzig",
-      "finished": false
-    },
-    {
-      "id": "83314",
-      "matchday": 18,
-      "kickoff": "2027-01-23T14:30:00Z",
-      "homeClubId": "HSV",
-      "awayClubId": "Dortmund",
-      "homeName": "Hamburger SV",
-      "awayName": "Borussia Dortmund",
-      "finished": false
-    },
-    {
-      "id": "83315",
-      "matchday": 18,
-      "kickoff": "2027-01-23T14:30:00Z",
-      "homeClubId": "Bremen",
-      "awayClubId": "Freiburg",
-      "homeName": "SV Werder Bremen",
-      "awayName": "SC Freiburg",
       "finished": false
     },
     {
@@ -1861,6 +1821,46 @@
       "awayClubId": "Mainz",
       "homeName": "SC Paderborn 07",
       "awayName": "1. FSV Mainz 05",
+      "finished": false
+    },
+    {
+      "id": "83314",
+      "matchday": 18,
+      "kickoff": "2027-01-23T17:30:00Z",
+      "homeClubId": "HSV",
+      "awayClubId": "Dortmund",
+      "homeName": "Hamburger SV",
+      "awayName": "Borussia Dortmund",
+      "finished": false
+    },
+    {
+      "id": "83312",
+      "matchday": 18,
+      "kickoff": "2027-01-24T14:30:00Z",
+      "homeClubId": "Frankfurt",
+      "awayClubId": "Union Berlin",
+      "homeName": "Eintracht Frankfurt",
+      "awayName": "1. FC Union Berlin",
+      "finished": false
+    },
+    {
+      "id": "83311",
+      "matchday": 18,
+      "kickoff": "2027-01-24T16:30:00Z",
+      "homeClubId": "Leverkusen",
+      "awayClubId": "Elversberg",
+      "homeName": "Bayer 04 Leverkusen",
+      "awayName": "SV 07 Elversberg",
+      "finished": false
+    },
+    {
+      "id": "83310",
+      "matchday": 18,
+      "kickoff": "2027-01-24T18:30:00Z",
+      "homeClubId": "Hoffenheim",
+      "awayClubId": "Köln",
+      "homeName": "TSG Hoffenheim",
+      "awayName": "1. FC Köln",
       "finished": false
     },
     {
