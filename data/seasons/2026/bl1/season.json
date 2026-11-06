@@ -971,7 +971,9 @@
       "awayClubId": "Gladbach",
       "homeName": "Hamburger SV",
       "awayName": "Borussia Mönchengladbach",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83228",
