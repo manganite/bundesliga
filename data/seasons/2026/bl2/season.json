@@ -1197,7 +1197,9 @@
       "awayClubId": "Cottbus",
       "homeName": "Eintracht Braunschweig",
       "awayName": "Energie Cottbus",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83682",
