@@ -1187,7 +1187,9 @@
       "awayClubId": "Fürth",
       "homeName": "Dynamo Dresden",
       "awayName": "SpVgg Greuther Fürth",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83687",
