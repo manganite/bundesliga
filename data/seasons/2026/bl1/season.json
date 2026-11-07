@@ -983,7 +983,9 @@
       "awayClubId": "Elversberg",
       "homeName": "Borussia Dortmund",
       "awayName": "SV 07 Elversberg",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83229",
@@ -993,7 +995,9 @@
       "awayClubId": "Augsburg",
       "homeName": "RB Leipzig",
       "awayName": "FC Augsburg",
-      "finished": false
+      "finished": true,
+      "gh": 5,
+      "ga": 2
     },
     {
       "id": "83233",
@@ -1003,7 +1007,9 @@
       "awayClubId": "Bayern",
       "homeName": "1. FSV Mainz 05",
       "awayName": "FC Bayern München",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83236",
@@ -1013,7 +1019,9 @@
       "awayClubId": "Frankfurt",
       "homeName": "SC Paderborn 07",
       "awayName": "Eintracht Frankfurt",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83230",
