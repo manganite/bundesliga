@@ -1211,7 +1211,9 @@
       "awayClubId": "Darmstadt",
       "homeName": "1. FC Nürnberg",
       "awayName": "SV Darmstadt 98",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83685",
@@ -1221,7 +1223,9 @@
       "awayClubId": "Bielefeld",
       "homeName": "Holstein Kiel",
       "awayName": "DSC Arminia Bielefeld",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83688",
@@ -1231,7 +1235,9 @@
       "awayClubId": "Kaiserslautern",
       "homeName": "VfL Osnabrück",
       "awayName": "1. FC Kaiserslautern",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83681",
