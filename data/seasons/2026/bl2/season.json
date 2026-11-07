@@ -1247,7 +1247,9 @@
       "awayClubId": "Wolfsburg",
       "homeName": "Hertha BSC",
       "awayName": "VfL Wolfsburg",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83678",
