@@ -1031,7 +1031,9 @@
       "awayClubId": "Bremen",
       "homeName": "VfB Stuttgart",
       "awayName": "SV Werder Bremen",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 0
     },
     {
       "id": "83235",
