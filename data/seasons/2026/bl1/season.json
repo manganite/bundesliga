@@ -1043,7 +1043,9 @@
       "awayClubId": "Leverkusen",
       "homeName": "1. FC Köln",
       "awayName": "Bayer 04 Leverkusen",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83232",

@@ -1,15 +1,13 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "dataUpdatedAt": "2026-11-08T14:36:34.784Z",
-  "resultsUpdatedAt": "2026-11-08T14:36:34.784Z",
+  "dataUpdatedAt": "2026-11-08T16:36:43.989Z",
+  "resultsUpdatedAt": "2026-11-08T16:36:43.989Z",
   "ratingsEffectiveAt": "2026-08-31",
-  "dataHash": "5ef54c0d11327ab7",
+  "dataHash": "d330bb5a34edf464",
   "lastChanges": [
-    "bl2 current outlook",
-    "bl2 frozen timeline (+1 point(s))",
-    "bl2 live timeline (+1 point(s))",
+    "bl1 current outlook",
     "relegation play-off",
-    "bl2 fixtures/results"
+    "bl1 fixtures/results"
   ]
 }
