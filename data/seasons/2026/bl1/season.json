@@ -1055,7 +1055,9 @@
       "awayClubId": "Union Berlin",
       "homeName": "SC Freiburg",
       "awayName": "1. FC Union Berlin",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83231",
