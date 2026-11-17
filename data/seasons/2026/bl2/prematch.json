@@ -2412,7 +2412,7 @@
     },
     {
       "fixtureId": "83859",
-      "kickoff": "2027-01-24T12:30:00Z",
+      "kickoff": "2027-01-23T19:30:00Z",
       "homeClubId": "Kaiserslautern",
       "awayClubId": "Wolfsburg",
       "ratingSnapshotId": "clubelo-2026-08-31-70469cbfef058681",
@@ -2420,7 +2420,7 @@
       "snapshotProvenance": "contemporaneous",
       "rule": "latest snapshot whose effectiveAt is strictly before the kickoff date",
       "provenance": "contemporaneous",
-      "createdAt": "2026-08-31T01:59:27.408Z",
+      "createdAt": "2026-11-17T20:51:07.908Z",
       "modelVersion": "track-c-part0-v1",
       "eloHome": 1456.03515625,
       "eloAway": 1599.56994629
