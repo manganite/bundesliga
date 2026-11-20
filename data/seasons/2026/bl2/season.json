@@ -1307,7 +1307,9 @@
       "awayClubId": "Magdeburg",
       "homeName": "DSC Arminia Bielefeld",
       "awayName": "1. FC Magdeburg",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83689",
