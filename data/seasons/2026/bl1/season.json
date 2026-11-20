@@ -1079,7 +1079,9 @@
       "awayClubId": "Köln",
       "homeName": "FC Bayern München",
       "awayName": "1. FC Köln",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 1
     },
     {
       "id": "83238",
