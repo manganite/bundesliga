@@ -1295,7 +1295,9 @@
       "awayClubId": "Heidenheim",
       "homeName": "SV Darmstadt 98",
       "awayName": "1. FC Heidenheim 1846",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83705",
