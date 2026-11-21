@@ -1131,7 +1131,9 @@
       "awayClubId": "Freiburg",
       "homeName": "SV 07 Elversberg",
       "awayName": "SC Freiburg",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 1
     },
     {
       "id": "83244",
