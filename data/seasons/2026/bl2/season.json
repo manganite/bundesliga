@@ -1319,7 +1319,9 @@
       "awayClubId": "Kiel",
       "homeName": "VfL Wolfsburg",
       "awayName": "Holstein Kiel",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83694",
@@ -1329,7 +1331,9 @@
       "awayClubId": "Fürth",
       "homeName": "Hannover 96",
       "awayName": "SpVgg Greuther Fürth",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83699",
@@ -1339,7 +1343,9 @@
       "awayClubId": "Braunschweig",
       "homeName": "1. FC Nürnberg",
       "awayName": "Eintracht Braunschweig",
-      "finished": false
+      "finished": true,
+      "gh": 1,
+      "ga": 2
     },
     {
       "id": "83691",
