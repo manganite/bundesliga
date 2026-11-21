@@ -1355,7 +1355,9 @@
       "awayClubId": "Bochum",
       "homeName": "FC St. Pauli",
       "awayName": "VfL Bochum",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83698",
