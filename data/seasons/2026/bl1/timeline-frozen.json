@@ -2644,6 +2644,270 @@
         },
         "sharedProbability": 0
       }
+    },
+    {
+      "matchday": 10,
+      "runs": 5000,
+      "engineVersion": 2,
+      "simulationProtocolVersion": 2,
+      "playedCount": 90,
+      "probabilities": {
+        "meister": {
+          "Augsburg": 0,
+          "Bayern": 0.6872,
+          "Bremen": 0.001,
+          "Dortmund": 0.1774,
+          "Elversberg": 0,
+          "Frankfurt": 0.0026,
+          "Freiburg": 0.0322,
+          "Gladbach": 0,
+          "Hoffenheim": 0.0008,
+          "HSV": 0.0002,
+          "Köln": 0.0002,
+          "Leipzig": 0.0446,
+          "Leverkusen": 0.0466,
+          "Mainz": 0.0002,
+          "Paderborn": 0,
+          "Schalke": 0,
+          "Stuttgart": 0.007,
+          "Union Berlin": 0
+        },
+        "platz1bis4": {
+          "Augsburg": 0.0366,
+          "Bayern": 0.979,
+          "Bremen": 0.072,
+          "Dortmund": 0.8376,
+          "Elversberg": 0.0052,
+          "Frankfurt": 0.0896,
+          "Freiburg": 0.4434,
+          "Gladbach": 0.0036,
+          "Hoffenheim": 0.0852,
+          "HSV": 0.0218,
+          "Köln": 0.0098,
+          "Leipzig": 0.5388,
+          "Leverkusen": 0.583,
+          "Mainz": 0.0376,
+          "Paderborn": 0.003,
+          "Schalke": 0.001,
+          "Stuttgart": 0.2442,
+          "Union Berlin": 0.0086
+        },
+        "platz5bis6": {
+          "Augsburg": 0.0968,
+          "Bayern": 0.017,
+          "Bremen": 0.1554,
+          "Dortmund": 0.1086,
+          "Elversberg": 0.0324,
+          "Frankfurt": 0.1606,
+          "Freiburg": 0.264,
+          "Gladbach": 0.023,
+          "Hoffenheim": 0.155,
+          "HSV": 0.063,
+          "Köln": 0.025,
+          "Leipzig": 0.2448,
+          "Leverkusen": 0.233,
+          "Mainz": 0.0906,
+          "Paderborn": 0.0144,
+          "Schalke": 0.0082,
+          "Stuttgart": 0.2754,
+          "Union Berlin": 0.0328
+        },
+        "klassenerhalt": {
+          "Augsburg": 0.8838,
+          "Bayern": 1,
+          "Bremen": 0.9484,
+          "Dortmund": 1,
+          "Elversberg": 0.6922,
+          "Frankfurt": 0.9524,
+          "Freiburg": 0.9978,
+          "Gladbach": 0.6128,
+          "Hoffenheim": 0.9458,
+          "HSV": 0.8156,
+          "Köln": 0.6666,
+          "Leipzig": 0.999,
+          "Leverkusen": 0.9996,
+          "Mainz": 0.875,
+          "Paderborn": 0.5432,
+          "Schalke": 0.4096,
+          "Stuttgart": 0.9854,
+          "Union Berlin": 0.6728
+        },
+        "relegationsplatz": {
+          "Augsburg": 0.058,
+          "Bayern": 0,
+          "Bremen": 0.0296,
+          "Dortmund": 0,
+          "Elversberg": 0.1194,
+          "Frankfurt": 0.0276,
+          "Freiburg": 0.0012,
+          "Gladbach": 0.1084,
+          "Hoffenheim": 0.028,
+          "HSV": 0.078,
+          "Köln": 0.1106,
+          "Leipzig": 0.0006,
+          "Leverkusen": 0.0002,
+          "Mainz": 0.0588,
+          "Paderborn": 0.1356,
+          "Schalke": 0.129,
+          "Stuttgart": 0.0088,
+          "Union Berlin": 0.1062
+        },
+        "abstieg": {
+          "Augsburg": 0.0582,
+          "Bayern": 0,
+          "Bremen": 0.022,
+          "Dortmund": 0,
+          "Elversberg": 0.1884,
+          "Frankfurt": 0.02,
+          "Freiburg": 0.001,
+          "Gladbach": 0.2788,
+          "Hoffenheim": 0.0262,
+          "HSV": 0.1064,
+          "Köln": 0.2228,
+          "Leipzig": 0.0004,
+          "Leverkusen": 0.0002,
+          "Mainz": 0.0662,
+          "Paderborn": 0.3212,
+          "Schalke": 0.4614,
+          "Stuttgart": 0.0058,
+          "Union Berlin": 0.221
+        }
+      },
+      "points": {
+        "Augsburg": {
+          "expected": 42.5578,
+          "median": 42,
+          "p10": 31,
+          "p90": 54
+        },
+        "Bayern": {
+          "expected": 77.4086,
+          "median": 78,
+          "p10": 67,
+          "p90": 87
+        },
+        "Bremen": {
+          "expected": 46.2582,
+          "median": 46,
+          "p10": 35,
+          "p90": 58
+        },
+        "Dortmund": {
+          "expected": 68.5038,
+          "median": 69,
+          "p10": 57,
+          "p90": 80
+        },
+        "Elversberg": {
+          "expected": 36.5262,
+          "median": 36,
+          "p10": 26,
+          "p90": 48
+        },
+        "Frankfurt": {
+          "expected": 47.0858,
+          "median": 47,
+          "p10": 35,
+          "p90": 59
+        },
+        "Freiburg": {
+          "expected": 58.1812,
+          "median": 58,
+          "p10": 46,
+          "p90": 70
+        },
+        "Gladbach": {
+          "expected": 34.4984,
+          "median": 34,
+          "p10": 23,
+          "p90": 46
+        },
+        "Hoffenheim": {
+          "expected": 46.4904,
+          "median": 46,
+          "p10": 35,
+          "p90": 58
+        },
+        "HSV": {
+          "expected": 40.4306,
+          "median": 40,
+          "p10": 29,
+          "p90": 52
+        },
+        "Köln": {
+          "expected": 35.8338,
+          "median": 35,
+          "p10": 25,
+          "p90": 48
+        },
+        "Leipzig": {
+          "expected": 60.0126,
+          "median": 60,
+          "p10": 48,
+          "p90": 72
+        },
+        "Leverkusen": {
+          "expected": 60.916,
+          "median": 61,
+          "p10": 49,
+          "p90": 72
+        },
+        "Mainz": {
+          "expected": 42.2326,
+          "median": 42,
+          "p10": 31,
+          "p90": 54
+        },
+        "Paderborn": {
+          "expected": 33.384,
+          "median": 33,
+          "p10": 23,
+          "p90": 45
+        },
+        "Schalke": {
+          "expected": 30.1298,
+          "median": 30,
+          "p10": 19,
+          "p90": 41
+        },
+        "Stuttgart": {
+          "expected": 52.9592,
+          "median": 53,
+          "p10": 41,
+          "p90": 65
+        },
+        "Union Berlin": {
+          "expected": 36.4366,
+          "median": 36,
+          "p10": 25,
+          "p90": 48
+        }
+      },
+      "herbstmeister": {
+        "untilMatchday": 17,
+        "decided": false,
+        "probabilities": {
+          "Augsburg": 0,
+          "Bayern": 0.5446,
+          "Bremen": 0.0008,
+          "Dortmund": 0.32,
+          "Elversberg": 0,
+          "Frankfurt": 0,
+          "Freiburg": 0.0598,
+          "Gladbach": 0,
+          "Hoffenheim": 0,
+          "HSV": 0,
+          "Köln": 0,
+          "Leipzig": 0.0542,
+          "Leverkusen": 0.0206,
+          "Mainz": 0,
+          "Paderborn": 0,
+          "Schalke": 0,
+          "Stuttgart": 0.0002,
+          "Union Berlin": 0
+        },
+        "sharedProbability": 0.0002
+      }
     }
   ],
   "frozenSnapshotId": "clubelo-2026-08-27-70469cbfef058681",
