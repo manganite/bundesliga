@@ -1163,7 +1163,9 @@
       "awayClubId": "Mainz",
       "homeName": "FC Augsburg",
       "awayName": "1. FSV Mainz 05",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83243",
