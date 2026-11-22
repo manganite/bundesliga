@@ -1367,7 +1367,9 @@
       "awayClubId": "Dresden",
       "homeName": "1. FC Kaiserslautern",
       "awayName": "Dynamo Dresden",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 2
     },
     {
       "id": "83702",
@@ -1377,7 +1379,9 @@
       "awayClubId": "Osnabrück",
       "homeName": "Karlsruher SC",
       "awayName": "VfL Osnabrück",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83706",
@@ -1387,7 +1391,9 @@
       "awayClubId": "Hertha",
       "homeName": "Energie Cottbus",
       "awayName": "Hertha BSC",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 4
     },
     {
       "id": "83707",
