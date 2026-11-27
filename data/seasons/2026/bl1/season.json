@@ -1187,7 +1187,9 @@
       "awayClubId": "Gladbach",
       "homeName": "SV Werder Bremen",
       "awayName": "Borussia Mönchengladbach",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 3
     },
     {
       "id": "83250",
