@@ -1403,7 +1403,9 @@
       "awayClubId": "Nürnberg",
       "homeName": "1. FC Heidenheim 1846",
       "awayName": "1. FC Nürnberg",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 1
     },
     {
       "id": "83709",
@@ -1413,7 +1415,9 @@
       "awayClubId": "Darmstadt",
       "homeName": "VfL Bochum",
       "awayName": "SV Darmstadt 98",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 0
     },
     {
       "id": "83708",
