@@ -1199,7 +1199,9 @@
       "awayClubId": "Union Berlin",
       "homeName": "1. FSV Mainz 05",
       "awayName": "1. FC Union Berlin",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83251",
@@ -1233,7 +1235,9 @@
       "awayClubId": "Schalke",
       "homeName": "SC Paderborn 07",
       "awayName": "FC Schalke 04",
-      "finished": false
+      "finished": true,
+      "gh": 8,
+      "ga": 1
     },
     {
       "id": "83247",
