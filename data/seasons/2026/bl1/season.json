@@ -1209,7 +1209,9 @@
       "awayClubId": "Bayern",
       "homeName": "Hamburger SV",
       "awayName": "FC Bayern München",
-      "finished": false
+      "finished": true,
+      "gh": 0,
+      "ga": 0
     },
     {
       "id": "83252",
@@ -1219,7 +1221,9 @@
       "awayClubId": "Elversberg",
       "homeName": "1. FC Köln",
       "awayName": "SV 07 Elversberg",
-      "finished": false
+      "finished": true,
+      "gh": 5,
+      "ga": 0
     },
     {
       "id": "83254",
