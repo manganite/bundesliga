@@ -1427,7 +1427,9 @@
       "awayClubId": "Karlsruhe",
       "homeName": "Hertha BSC",
       "awayName": "Karlsruher SC",
-      "finished": false
+      "finished": true,
+      "gh": 4,
+      "ga": 0
     },
     {
       "id": "83710",
@@ -1437,7 +1439,9 @@
       "awayClubId": "St. Pauli",
       "homeName": "Dynamo Dresden",
       "awayName": "FC St. Pauli",
-      "finished": false
+      "finished": true,
+      "gh": 2,
+      "ga": 1
     },
     {
       "id": "83712",
@@ -1447,7 +1451,9 @@
       "awayClubId": "Kaiserslautern",
       "homeName": "Holstein Kiel",
       "awayName": "1. FC Kaiserslautern",
-      "finished": false
+      "finished": true,
+      "gh": 3,
+      "ga": 0
     },
     {
       "id": "83722",
